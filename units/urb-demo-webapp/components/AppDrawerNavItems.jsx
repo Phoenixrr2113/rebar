@@ -1,63 +1,91 @@
 // @flow
 
-import List from 'material-ui/List'
+import Divider from 'material-ui/Divider'
+import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
+import { withStyles } from 'material-ui/styles'
+import InboxIcon from 'material-ui-icons/Inbox'
+import DraftsIcon from 'material-ui-icons/Drafts'
+import StarIcon from 'material-ui-icons/Star'
+import SendIcon from 'material-ui-icons/Send'
+import MailIcon from 'material-ui-icons/Mail'
+import DeleteIcon from 'material-ui-icons/Delete'
+import ReportIcon from 'material-ui-icons/Report'
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import AppDrawerNavItem from '../../urb-appdrawer-webapp/components/AppDrawerNavItem'
+const styles = {
+  list: {
+    width: 250,
+    flex: 'initial',
+  },
+}
 
-export default class AppDrawernavItems extends React.Component<{}> {
+class AppDrawernavItems extends React.Component<{ classes: Object }> {
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  }
+
+  _handle_GoTo( to: string ) {
+    this.context.router.push( to )
+  }
   render() {
+    const { classes } = this.props
+
     return (
       <List>
-        <AppDrawerNavItem
-          key="/force-login"
-          openImmediately={true}
-          title="Force Login"
-          to="/force-login"
-        />
-        <AppDrawerNavItem
-          key="/todo"
-          openImmediately={true}
-          title="To Dos"
-          to="/todo"
-        />
-        <AppDrawerNavItem
-          key="/Ensayo/edit"
-          openImmediately={true}
-          title="Ensayo edit"
-          to="/Ensayo/edit"
-        />
-        <AppDrawerNavItem
-          key="/ensayo/in-place-edit"
-          openImmediately={true}
-          title="Ensayo in place"
-          to="/ensayo/in-place-edit"
-        />
-        <AppDrawerNavItem
-          key="/ensayo"
-          openImmediately={true}
-          title="Ensayo public"
-          to="/ensayo"
-        />
-        <AppDrawerNavItem
-          key="/inscriptio"
-          openImmediately={true}
-          title="Inscriptio"
-          to="/inscriptio"
-        />
-        <AppDrawerNavItem
-          key="/translaticiarum"
-          openImmediately={true}
-          title="Translaticiarum"
-          to="/translaticiarum"
-        />
-        <AppDrawerNavItem
-          key="/viewport-dimensions"
-          openImmediately={true}
-          title="Viewport Dimensions"
-          to="/viewport-dimensions"
-        />
+        <div>
+          <Divider />
+          <List className={classes.list}>
+            <ListItem button onClick={() => this._handle_GoTo( '/todo/' )}>
+              <ListItemIcon>
+                <InboxIcon />
+              </ListItemIcon>
+              <ListItemText primary="To Dos" />
+            </ListItem>
+            <ListItem button onClick={() => this._handle_GoTo( '/ensayo/in-place-edit/' )}>
+              <ListItemIcon>
+                <StarIcon />
+              </ListItemIcon>
+              <ListItemText primary="Ensayo Edit" />
+            </ListItem>
+            <ListItem button onClick={() => this._handle_GoTo( '/ensayo/' )}>
+              <ListItemIcon>
+                <SendIcon />
+              </ListItemIcon>
+              <ListItemText primary="Ensayo Public" />
+            </ListItem>
+            <ListItem button onClick={() => this._handle_GoTo( '/inscriptio/' )}>
+              <ListItemIcon>
+                <DraftsIcon />
+              </ListItemIcon>
+              <ListItemText primary="Inscriptio" />
+            </ListItem>
+            <ListItem button onClick={() => this._handle_GoTo( '/translaticiarum/' )}>
+              <ListItemIcon>
+                <MailIcon />
+              </ListItemIcon>
+              <ListItemText primary="Translaticiarum" />
+            </ListItem>
+          </List>
+          <Divider />
+          <List className={classes.list}>
+            <ListItem button onClick={() => this._handle_GoTo( '/viewport-dimensions/' )}>
+              <ListItemIcon>
+                <DeleteIcon />
+              </ListItemIcon>
+              <ListItemText primary="Viewport Dimensions" />
+            </ListItem>
+            <ListItem button onClick={() => this._handle_GoTo( '/force-login/' )}>
+              <ListItemIcon>
+                <ReportIcon />
+              </ListItemIcon>
+              <ListItemText primary="Force Login" />
+            </ListItem>
+          </List>
+        </div>
       </List>
     )
   }
 }
+
+export default withStyles( styles )( AppDrawernavItems )
