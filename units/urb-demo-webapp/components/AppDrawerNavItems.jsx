@@ -4,12 +4,12 @@ import Divider from 'material-ui/Divider'
 import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
 import { withStyles } from 'material-ui/styles'
 import InboxIcon from 'material-ui-icons/Inbox'
-import DraftsIcon from 'material-ui-icons/Drafts'
-import StarIcon from 'material-ui-icons/Star'
-import SendIcon from 'material-ui-icons/Send'
-import MailIcon from 'material-ui-icons/Mail'
-import DeleteIcon from 'material-ui-icons/Delete'
-import ReportIcon from 'material-ui-icons/Report'
+import TodayIcon from 'material-ui-icons/Today'
+import ModeEditIcon from 'material-ui-icons/ModeEdit'
+import ImportContactsIcon from 'material-ui-icons/ImportContacts'
+import MyLocationIcon from 'material-ui-icons/MyLocation'
+import OpenWithIcon from 'material-ui-icons/OpenWith'
+import LockOutlineIcon from 'material-ui-icons/LockOutline'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -44,25 +44,25 @@ class AppDrawernavItems extends React.Component<{ classes: Object }> {
             </ListItem>
             <ListItem button onClick={() => this._handle_GoTo( '/ensayo/in-place-edit/' )}>
               <ListItemIcon>
-                <StarIcon />
+                <ModeEditIcon />
               </ListItemIcon>
               <ListItemText primary="Ensayo Edit" />
             </ListItem>
             <ListItem button onClick={() => this._handle_GoTo( '/ensayo/' )}>
               <ListItemIcon>
-                <SendIcon />
+                <ImportContactsIcon />
               </ListItemIcon>
               <ListItemText primary="Ensayo Public" />
             </ListItem>
             <ListItem button onClick={() => this._handle_GoTo( '/inscriptio/' )}>
               <ListItemIcon>
-                <DraftsIcon />
+                <MyLocationIcon />
               </ListItemIcon>
               <ListItemText primary="Inscriptio" />
             </ListItem>
             <ListItem button onClick={() => this._handle_GoTo( '/translaticiarum/' )}>
               <ListItemIcon>
-                <MailIcon />
+                <TodayIcon />
               </ListItemIcon>
               <ListItemText primary="Translaticiarum" />
             </ListItem>
@@ -71,13 +71,13 @@ class AppDrawernavItems extends React.Component<{ classes: Object }> {
           <List className={classes.list}>
             <ListItem button onClick={() => this._handle_GoTo( '/viewport-dimensions/' )}>
               <ListItemIcon>
-                <DeleteIcon />
+                <OpenWithIcon />
               </ListItemIcon>
               <ListItemText primary="Viewport Dimensions" />
             </ListItem>
             <ListItem button onClick={() => this._handle_GoTo( '/force-login/' )}>
               <ListItemIcon>
-                <ReportIcon />
+                <LockOutlineIcon />
               </ListItemIcon>
               <ListItemText primary="Force Login" />
             </ListItem>
