@@ -14,8 +14,7 @@ export default function defaultrequestLoggerPublic( requestAndResponse ) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestPublic ) )
-    logLevel = 'info'
+  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestPublic ) ) logLevel = 'info'
 
   if ( logLevel ) log.log( logLevel, 'Public request', requestAndResponse )
 }

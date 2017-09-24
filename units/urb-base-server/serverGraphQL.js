@@ -26,19 +26,14 @@ const serverGraphQL = express()
 serverGraphQL.use( bodyParser.json() )
 
 // Set up logging
-serverGraphQL.use( ( req, res, next ) =>
-  logServerRequest( req, res, next, requestLoggerGraphQL )
-)
+serverGraphQL.use( ( req, res, next ) => logServerRequest( req, res, next, requestLoggerGraphQL ) )
 
 async function root( req, res, next ) {
   try {
     const objectManager = await getObjectManager( req, res )
     if ( objectManager.siteInformation ) {
       try {
-        const a_User = ( await getUserAndSessionIDByUserToken1(
-          objectManager,
-          req
-        ) ).User
+        const a_User = ( await getUserAndSessionIDByUserToken1( objectManager, req ) ).User
 
         res.codeFoundriesInjected = { user: a_User }
         await verifyUserAuthToken( a_User, req )
@@ -60,7 +55,7 @@ async function root( req, res, next ) {
     res.status( 500 ).send(
       JSON.stringify({
         error: 'An error has occurred while running GraphQL query',
-      })
+      }),
     )
   }
 }

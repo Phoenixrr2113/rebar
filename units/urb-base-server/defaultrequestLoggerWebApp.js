@@ -14,9 +14,7 @@ export default function defaultrequestLoggerWebApp( requestAndResponse ) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestWebApp ) )
-    logLevel = 'info'
+  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestWebApp ) ) logLevel = 'info'
 
-  if ( logLevel )
-    log.log( logLevel, 'Render on server request', requestAndResponse )
+  if ( logLevel ) log.log( logLevel, 'Render on server request', requestAndResponse )
 }

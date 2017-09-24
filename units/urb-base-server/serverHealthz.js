@@ -14,5 +14,4 @@ serverHealthz.get( '/', async( req, res, next ) => {
     next( new Error( '💔 DB is unreachable' ) )
   }
 })
-
 export default serverHealthz
