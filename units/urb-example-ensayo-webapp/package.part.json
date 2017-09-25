@@ -2,5 +2,8 @@
   "dependencies": {
     "html-to-react": "1.2.11",
     "react-rte": "0.15.0"
+  },
+  "scripts": {
+    "postinstall": "node ./units/urb-example-ensayo-webapp/fix-react-rte.js"
   }
 }

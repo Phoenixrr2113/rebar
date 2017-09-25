@@ -1,5 +1,9 @@
 // @flow
 
+import os from 'os' // Import to demonstrate server-based site settings
+
+import { version } from '../package'
+
 import defaultPersister from './graphql/defaultPersister'
 
 // Read environment
@@ -15,7 +19,10 @@ const siteInformation = {
   inEditingMode: false,
   isSiteBuilderDisabled: true,
   siteConfiguration: {
-    webapp: { api: { googleMapsJavascriptAPI } },
+    webapp: {
+      api: { googleMapsJavascriptAPI },
+      urbDemo: { version, OSType: os.type(), OSHostName: os.hostname(), OSFreeMem: os.freemem() },
+    },
     server: {},
     builderClient: {},
   },
