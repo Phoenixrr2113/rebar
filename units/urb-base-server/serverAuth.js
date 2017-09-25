@@ -77,7 +77,7 @@ async function login( req, res ) {
     }
   }
 }
-serverAuth.post( '/login', login ) //
+serverAuth.post( '/login', login )
 async function createuser( req, res ) {
   const objectManager = await getObjectManager( req, res )
   if ( objectManager.siteInformation ) {
@@ -112,14 +112,16 @@ async function createuser( req, res ) {
       objectManager.assignPrimaryKey( 'User', a_User )
       // Create user session object
       const a_UserSession = {
-        UserSession_site_id: objectManager.siteInformation.site_id, // Get previously assigned primary key
+        UserSession_site_id: objectManager.siteInformation.site_id,
+        // Get previously assigned primary key
         UserSession_User_id: a_User.id,
         UserSession_Start: new Date(),
         UserSession_Expired: false,
       }
       // Create user account object
       const a_UserAccount = {
-        UserAccount_site_id: objectManager.siteInformation.site_id, // Get previously assigned primary key
+        UserAccount_site_id: objectManager.siteInformation.site_id,
+        // Get previously assigned primary key
         UserAccount_User_id: a_User.id,
         UserAccount_Identifier: UserAccount_Identifier,
         UserAccount_Type: 'un',

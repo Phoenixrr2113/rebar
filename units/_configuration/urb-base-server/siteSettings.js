@@ -1,5 +1,7 @@
 // @flow
 
+import defaultPersister from './graphql/defaultPersister'
+
 // Read environment
 require( 'dotenv' ).load()
 
@@ -9,7 +11,7 @@ if ( googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'stri
     '💔  urb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set',
   )
 const siteInformation = {
-  site_id: '00000000-0000-0000-0000-000000000000',
+  site_id: defaultPersister.uuidNull(),
   inEditingMode: false,
   isSiteBuilderDisabled: true,
   siteConfiguration: {

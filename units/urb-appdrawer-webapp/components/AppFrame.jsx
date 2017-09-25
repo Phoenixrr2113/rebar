@@ -18,7 +18,6 @@ import NavBarLoginButton from '../../urb-account-management-webapp/components/Na
 const drawerWidth = 240
 
 const styles = theme => ({
-  // TODO XXX Should the global be here? It is not in the MUI drawer example.
   '@global': {
     html: {
       boxSizing: 'border-box',
