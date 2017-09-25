@@ -42,7 +42,7 @@ const styles = theme => ({
   },
   root: {
     width: '100%',
-    height: '100%',
+    height: '100vh',
     zIndex: 1,
     overflow: 'hidden',
   },
@@ -99,6 +99,7 @@ const styles = theme => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
+    overflow: 'scroll',
     height: 'calc(100% - 56px)',
     marginTop: 56,
     [theme.breakpoints.up( 'sm' )]: {
