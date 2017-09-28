@@ -5,6 +5,7 @@ import defaultPersister from '../../../_configuration/urb-base-server/graphql/de
 defaultPersister.addTableSchema( 'Inscriptio', {
   fields: {
     id: 'uuid',
+    Inscriptio_site_id: 'uuid',
     Inscriptio_User_id: 'uuid',
     Inscriptio_LocationLon: 'text',
     Inscriptio_LocationLat: 'text',

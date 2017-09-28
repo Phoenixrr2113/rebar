@@ -46,8 +46,8 @@ const deletedRecord = {
 }
 
 // Regular expressions for detecting use of site_id and user_id in GraphQL Object Type
-const re_site_id_Present = /this\.([\w\d]*site_id)/i
-const re_user_id_Present = /this\.([\w\d]*user_id)/i
+const re_site_id_Present = /this\.([\w\d]*site_id)/i // Notice it can be <TableName>_site_id or just site_id
+const re_user_id_Present = /this\.([\w\d]*_user_id)/i // Noice that it has to be <TableName>_user_id
 
 export default class ObjectManager {
   loadersSingle: Object
@@ -98,15 +98,16 @@ export default class ObjectManager {
     const match_site_id = entityTypeSource.match( re_site_id_Present )
     const match_user_id = entityTypeSource.match( re_user_id_Present )
 
-    console.log( '' + entityTypeSource )
-    console.log( JSON.stringify( match_site_id ) )
-    console.log( JSON.stringify( match_user_id ) )
+    // For the User-related tables, there is no automatic support:
+    // User_id and site_id have to be explicitly specified
+    const isNotUserTable =
+      entityName !== 'User' && entityName !== 'UserAccount' && entityName !== 'UserSession'
 
     entityDefinitions[entityName] = {
       EntityName: entityName,
       EntityType: EntityType,
-      fieldName_site_id: match_site_id ? match_site_id[1] : null,
-      fieldName_user_id: match_user_id ? match_user_id[1] : null,
+      fieldName_site_id: isNotUserTable && match_site_id ? match_site_id[1] : null,
+      fieldName_user_id: isNotUserTable && match_user_id ? match_user_id[1] : null,
       Persister: persister,
       TriggersForAdd: [],
       TriggersForUpdate: [],
@@ -320,7 +321,8 @@ export default class ObjectManager {
   assignPrimaryKey( entityName: string, fields: any ) {
     const entityDefinition = entityDefinitions[entityName]
 
-    if ( entityDefinition == null ) console.log( 'Cound not find entity ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
     // Generate primary key, overwrite if already present
     fields.id = entityDefinition.Persister.uuidRandom()

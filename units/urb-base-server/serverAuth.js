@@ -40,7 +40,7 @@ async function login( req, res ) {
       })
 
       if ( arr_UserAccount.length === 0 ) {
-        res.status( 401 ).json({ error: '💔  User account not found' })
+        res.status( 401 ).json({ error: 'User account not found' })
       } else {
         const a_User = await objectManager.getOneObject( 'User', {
           id: arr_UserAccount[0].UserAccount_User_id,
@@ -70,7 +70,7 @@ async function login( req, res ) {
           )
           res.cookie( 'UserToken1', UserToken1, { httpOnly: true })
           res.json({ success: true, UserToken2: a_User.UserToken2 })
-        } else res.status( 401 ).json({ error: '💔  Incorrect password' })
+        } else res.status( 401 ).json({ error: 'Incorrect password' })
       }
     } catch ( error ) {
       res.status( 401 ).json({ error: error.message })
@@ -78,6 +78,7 @@ async function login( req, res ) {
   }
 }
 serverAuth.post( '/login', login )
+
 async function createuser( req, res ) {
   const objectManager = await getObjectManager( req, res )
   if ( objectManager.siteInformation ) {
@@ -88,7 +89,7 @@ async function createuser( req, res ) {
         UserAccount_site_id: objectManager.siteInformation.site_id,
         UserAccount_Identifier: UserAccount_Identifier,
       })
-      if ( arr_UserAccount.length > 0 ) throw new Error( '💔  User account already exists' )
+      if ( arr_UserAccount.length > 0 ) throw new Error( 'User account already exists' )
       const User_PasswordHash = await new Promise( resolve =>
         bcryptjs.hash( User_Secret, 8, ( err, hash ) => resolve( hash ) ),
       )
@@ -132,7 +133,9 @@ async function createuser( req, res ) {
         objectManager.add( 'UserSession', a_UserSession ),
         objectManager.add( 'UserAccount', a_UserAccount ),
       ])
+
       res.codeFoundriesInjected = { user: a_User }
+
       // User has been created thus we create a JWT token.
       const UserToken1 = jwt.encode(
         // $FlowIssue - id will be filled in by ObjectManager.add
@@ -143,12 +146,13 @@ async function createuser( req, res ) {
       res.cookie( 'UserToken1', UserToken1, { httpOnly: true })
       res.json({ success: true })
     } catch ( error ) {
+      console.log( error )
       res.status( 401 ).json({ error: '' + error.message })
     }
   }
 }
 serverAuth.post( '/createuser', createuser )
-//
+
 serverAuth.post( '/logout', async( req, res ) => {
   const objectManager = await getObjectManager( req, res )
   const UserSession = ( await getUserAndSessionIDByUserToken1( objectManager, req ) ).UserSession
@@ -156,6 +160,7 @@ serverAuth.post( '/logout', async( req, res ) => {
   res.cookie( 'UserToken1', '', { httpOnly: true, expires: new Date( 1 ) })
   res.json({ success: true })
 })
+
 // Add extensions - custom configurations
 authExtensions( serverAuth )
 export default serverAuth

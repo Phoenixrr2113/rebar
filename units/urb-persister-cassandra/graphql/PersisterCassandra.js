@@ -91,7 +91,9 @@ export default class PersisterCassandra {
       const fieldType = schemaFields[fieldName]
       if ( fieldType === 'uuid' ) {
         const fieldValue = fields[fieldName]
-        if ( !( fieldValue instanceof Uuid ) ) fields[fieldName] = Uuid.fromString( fieldValue )
+        if ( !( fieldValue instanceof Uuid ) ) {
+          fields[fieldName] = Uuid.fromString( fieldValue )
+        }
       }
     }
   }
