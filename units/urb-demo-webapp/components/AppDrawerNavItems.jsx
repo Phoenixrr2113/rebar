@@ -20,7 +20,7 @@ const styles = {
   },
 }
 
-class AppDrawernavItems extends React.Component<{ classes: Object }> {
+class AppDrawerNavItems extends React.Component<{ classes: Object }> {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   }
@@ -32,60 +32,58 @@ class AppDrawernavItems extends React.Component<{ classes: Object }> {
     const { classes } = this.props
 
     return (
-      <List>
-        <div>
-          <Divider />
-          <List className={classes.list}>
-            <ListItem button onClick={() => this._handle_GoTo( '/todo/' )}>
-              <ListItemIcon>
-                <InboxIcon />
-              </ListItemIcon>
-              <ListItemText primary="To Dos" />
-            </ListItem>
-            <ListItem button onClick={() => this._handle_GoTo( '/ensayo/in-place-edit/' )}>
-              <ListItemIcon>
-                <ModeEditIcon />
-              </ListItemIcon>
-              <ListItemText primary="Ensayo Edit" />
-            </ListItem>
-            <ListItem button onClick={() => this._handle_GoTo( '/ensayo/' )}>
-              <ListItemIcon>
-                <ImportContactsIcon />
-              </ListItemIcon>
-              <ListItemText primary="Ensayo Public" />
-            </ListItem>
-            <ListItem button onClick={() => this._handle_GoTo( '/inscriptio/' )}>
-              <ListItemIcon>
-                <MyLocationIcon />
-              </ListItemIcon>
-              <ListItemText primary="Inscriptio" />
-            </ListItem>
-            <ListItem button onClick={() => this._handle_GoTo( '/translaticiarum/' )}>
-              <ListItemIcon>
-                <TodayIcon />
-              </ListItemIcon>
-              <ListItemText primary="Translaticiarum" />
-            </ListItem>
-          </List>
-          <Divider />
-          <List className={classes.list}>
-            <ListItem button onClick={() => this._handle_GoTo( '/viewport-dimensions/' )}>
-              <ListItemIcon>
-                <OpenWithIcon />
-              </ListItemIcon>
-              <ListItemText primary="Viewport Dimensions" />
-            </ListItem>
-            <ListItem button onClick={() => this._handle_GoTo( '/force-login/' )}>
-              <ListItemIcon>
-                <LockOutlineIcon />
-              </ListItemIcon>
-              <ListItemText primary="Force Login" />
-            </ListItem>
-          </List>
-        </div>
-      </List>
+      <div>
+        <Divider />
+        <List className={classes.list}>
+          <ListItem button onClick={() => this._handle_GoTo( '/todo/' )}>
+            <ListItemIcon>
+              <InboxIcon />
+            </ListItemIcon>
+            <ListItemText primary="To Dos" />
+          </ListItem>
+          <ListItem button onClick={() => this._handle_GoTo( '/ensayo/in-place-edit/' )}>
+            <ListItemIcon>
+              <ModeEditIcon />
+            </ListItemIcon>
+            <ListItemText primary="Ensayo Edit" />
+          </ListItem>
+          <ListItem button onClick={() => this._handle_GoTo( '/ensayo/' )}>
+            <ListItemIcon>
+              <ImportContactsIcon />
+            </ListItemIcon>
+            <ListItemText primary="Ensayo Public" />
+          </ListItem>
+          <ListItem button onClick={() => this._handle_GoTo( '/inscriptio/' )}>
+            <ListItemIcon>
+              <MyLocationIcon />
+            </ListItemIcon>
+            <ListItemText primary="Inscriptio" />
+          </ListItem>
+          <ListItem button onClick={() => this._handle_GoTo( '/translaticiarum/' )}>
+            <ListItemIcon>
+              <TodayIcon />
+            </ListItemIcon>
+            <ListItemText primary="Translaticiarum" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List className={classes.list}>
+          <ListItem button onClick={() => this._handle_GoTo( '/viewport-dimensions/' )}>
+            <ListItemIcon>
+              <OpenWithIcon />
+            </ListItemIcon>
+            <ListItemText primary="Viewport Dimensions" />
+          </ListItem>
+          <ListItem button onClick={() => this._handle_GoTo( '/force-login/' )}>
+            <ListItemIcon>
+              <LockOutlineIcon />
+            </ListItemIcon>
+            <ListItemText primary="Force Login" />
+          </ListItem>
+        </List>
+      </div>
     )
   }
 }
 
-export default withStyles( styles )( AppDrawernavItems )
+export default withStyles( styles )( AppDrawerNavItems )

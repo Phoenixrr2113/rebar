@@ -4,15 +4,16 @@ import classNames from 'classnames'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
-import ChevronLeft from 'material-ui-icons/ChevronLeft'
-import MenuIcon from 'material-ui-icons/Menu'
-import React, { Component } from 'react'
-import { createFragmentContainer, graphql } from 'react-relay'
 import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
+import ChevronLeft from 'material-ui-icons/ChevronLeft'
+import MenuIcon from 'material-ui-icons/Menu'
+import React from 'react'
+import { createFragmentContainer, graphql } from 'react-relay'
 
 import AppDrawerNavItems from '../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems'
+import AppDrawerTitle from '../../_configuration/urb-appdrawer-webapp/AppDrawerTitle'
 import NavBarLoginButton from '../../urb-account-management-webapp/components/NavBarLoginButton'
 
 const drawerWidth = 240
@@ -118,7 +119,7 @@ const styles = theme => ({
   },
 })
 
-class AppFrame extends Component<any, { open: boolean }> {
+class AppFrame extends React.Component<any, { open: boolean }> {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
@@ -166,6 +167,8 @@ class AppFrame extends Component<any, { open: boolean }> {
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
+                <AppDrawerTitle />
+                <div className={classes.grow} />
                 <IconButton onClick={this.handleDrawerClose}>
                   <ChevronLeft />
                 </IconButton>
