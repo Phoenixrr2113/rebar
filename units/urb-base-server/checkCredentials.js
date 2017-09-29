@@ -48,11 +48,12 @@ export async function getUserAndSessionIDByUserToken1( objectManager, req ) {
     objectManager.setViewerUserId( user_id )
     return { User: a_User, UserSession: a_UserSession }
   } else {
-    throw new Error( '💔  User ' + JSON.stringify( user_id ) + ' not found' )
+    throw new Error( 'User ' + JSON.stringify( user_id ) + ' not found' )
   }
 }
+
 export function verifyUserAuthToken( a_User, req ) {
-  if ( !a_User ) return Promise.reject( '💔  User not found' )
+  if ( !a_User ) return Promise.reject( 'User not found' )
   else {
     const request_UserToken2 = req.get( 'UserToken2' )
     if (
@@ -65,17 +66,16 @@ export function verifyUserAuthToken( a_User, req ) {
       return Promise.resolve( a_User.id )
     else
       return Promise.reject(
-        '💔  Authentication token expected: ' +
-          a_User.UserToken2 +
-          ', provided:' +
-          request_UserToken2,
+        'Authentication token expected: ' + a_User.UserToken2 + ', provided:' + request_UserToken2,
       )
   }
 }
+
 const httpError403FileName = path.resolve(
   __dirname,
   '../_configuration/urb-base-server/httpError/403.html',
 )
+
 export function serveAuthenticationFailed( req, res, err, respondWithJSON ) {
   // Collect information about the request
   var ip = req.headers['x-real-ip'] || req.connection.remoteAddress
@@ -89,8 +89,9 @@ export function serveAuthenticationFailed( req, res, err, respondWithJSON ) {
     errorMessage: err.message,
     errorStack: err.stack,
     requestDetails,
-  }) // Expire cookie. This is the only way to 'delete' a cookie
+  })
+  // Expire cookie. This is the only way to 'delete' a cookie
   res.cookie( 'UserToken1', '', { httpOnly: true, expires: new Date( 1 ) })
-  if ( respondWithJSON ) res.status( 403 ).send( '{ "error": "💔  Authentication Failed" }' )
+  if ( respondWithJSON ) res.status( 403 ).send( '{ "error": "Authentication Failed" }' )
   else res.status( 403 ).sendFile( httpError403FileName )
 }
