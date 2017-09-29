@@ -10,7 +10,9 @@ class Translaticiarum {
 
 
 
+
   constructor(fields)
+
 
 
 
@@ -18,6 +20,7 @@ class Translaticiarum {
 
   {
     this.id = fields.id;
+    this.Translaticiarum_site_id = fields.Translaticiarum_site_id;
     this.Translaticiarum_User_id = fields.Translaticiarum_User_id;
     this.Translaticiarum_Start = fields.Translaticiarum_Start;
     this.Translaticiarum_Stop = fields.Translaticiarum_Stop;

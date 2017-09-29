@@ -1,63 +1,59 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
+var _Divider = require('material-ui/Divider');var _Divider2 = _interopRequireDefault(_Divider);
 var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
+var _styles = require('material-ui/styles');
+var _Inbox = require('material-ui-icons/Inbox');var _Inbox2 = _interopRequireDefault(_Inbox);
+var _Today = require('material-ui-icons/Today');var _Today2 = _interopRequireDefault(_Today);
+var _ModeEdit = require('material-ui-icons/ModeEdit');var _ModeEdit2 = _interopRequireDefault(_ModeEdit);
+var _ImportContacts = require('material-ui-icons/ImportContacts');var _ImportContacts2 = _interopRequireDefault(_ImportContacts);
+var _MyLocation = require('material-ui-icons/MyLocation');var _MyLocation2 = _interopRequireDefault(_MyLocation);
+var _OpenWith = require('material-ui-icons/OpenWith');var _OpenWith2 = _interopRequireDefault(_OpenWith);
+var _LockOutline = require('material-ui-icons/LockOutline');var _LockOutline2 = _interopRequireDefault(_LockOutline);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 
-var _AppDrawerNavItem = require('../../urb-appdrawer-webapp/components/AppDrawerNavItem');var _AppDrawerNavItem2 = _interopRequireDefault(_AppDrawerNavItem);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _NavMenuItemWithIcon = require('../../urb-appdrawer-webapp/components/NavMenuItemWithIcon');var _NavMenuItemWithIcon2 = _interopRequireDefault(_NavMenuItemWithIcon);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class AppDrawernavItems extends _react2.default.Component {
+const styles = {
+  list: {
+    width: 250,
+    flex: 'initial' } };
+
+
+
+class AppDrawerNavItems extends _react2.default.Component {
   render() {
+    const { classes } = this.props;
+
     return (
-      _react2.default.createElement(_List2.default, null,
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/force-login',
-          openImmediately: true,
-          title: 'Force Login',
-          to: '/force-login' }),
+      _react2.default.createElement('div', null,
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(_List2.default, { className: classes.list },
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_Inbox2.default, null), label: 'To Dos', to: '/todo/' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_ModeEdit2.default, null),
+            label: 'Ensayo Edit',
+            to: '/ensayo/in-place-edit/' }),
 
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/todo',
-          openImmediately: true,
-          title: 'To Dos',
-          to: '/todo' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_ImportContacts2.default, null), label: 'Ensayo Public', to: '/ensayo/' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_MyLocation2.default, null), label: 'Inscriptio', to: '/inscriptio/' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Today2.default, null),
+            label: 'Translaticiarum',
+            to: '/translaticiarum/' }),
 
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/Ensayo/edit',
-          openImmediately: true,
-          title: 'Ensayo edit',
-          to: '/Ensayo/edit' }),
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_OpenWith2.default, null),
+            label: 'Viewport Dimensions',
+            to: '/viewport-dimensions/' }),
 
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/ensayo/in-place-edit',
-          openImmediately: true,
-          title: 'Ensayo in place',
-          to: '/ensayo/in-place-edit' }),
-
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/ensayo',
-          openImmediately: true,
-          title: 'Ensayo public',
-          to: '/ensayo' }),
-
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/inscriptio',
-          openImmediately: true,
-          title: 'Inscriptio',
-          to: '/inscriptio' }),
-
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/translaticiarum',
-          openImmediately: true,
-          title: 'Translaticiarum',
-          to: '/translaticiarum' }),
-
-        _react2.default.createElement(_AppDrawerNavItem2.default, {
-          key: '/viewport-dimensions',
-          openImmediately: true,
-          title: 'Viewport Dimensions',
-          to: '/viewport-dimensions' })));
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_LockOutline2.default, null), label: 'Force Login', to: '/force-login/' }))));
 
 
 
-  }}exports.default = AppDrawernavItems;
+  }}exports.default =
+
+
+(0, _styles.withStyles)(styles)(AppDrawerNavItems);
 //# sourceMappingURL=AppDrawerNavItems.js.map

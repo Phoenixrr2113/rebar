@@ -26,19 +26,14 @@ const serverGraphQL = (0, _express2.default)();
 // Schema for GraphQL server
 // Guarantee that all object registrations and schema definitions are executed
 serverGraphQL.use(_bodyParser2.default.json()); // Set up logging
-serverGraphQL.use((req, res, next) =>
-(0, _logServerRequest2.default)(req, res, next, _requestLoggers.requestLoggerGraphQL));
-
+serverGraphQL.use((req, res, next) => (0, _logServerRequest2.default)(req, res, next, _requestLoggers.requestLoggerGraphQL));
 
 async function root(req, res, next) {
   try {
     const objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
     if (objectManager.siteInformation) {
       try {
-        const a_User = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1)(
-        objectManager,
-        req)).
-        User;
+        const a_User = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1)(objectManager, req)).User;
 
         res.codeFoundriesInjected = { user: a_User };
         await (0, _checkCredentials.verifyUserAuthToken)(a_User, req);

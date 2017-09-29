@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 628dd381a93059eb16746e3615e9db55
+ * @relayHash 6f2bc8cb48d6cfcaf48f2aaf0624f529
  */
 
 /* eslint-disable */
@@ -16,7 +16,6 @@ export type ToDoListUpdateMarkAllMutationVariables = {|
   };
   status: string;
 |};
-
 export type ToDoListUpdateMarkAllMutationResponse = {|
   +ToDoListUpdateMarkAll: ?{|
     +Viewer: ?{|

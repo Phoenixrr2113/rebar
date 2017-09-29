@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 06b9a17a9a6f93df5a69d521b44ff3bc
+ * @relayHash 8cec3a23b316e97ccd531b7ce33e5ca5
  */
 
 /* eslint-disable */
@@ -15,7 +15,6 @@ export type InscriptioDeleteMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type InscriptioDeleteMutationResponse = {|
   +InscriptioDelete: ?{|
     +deletedId: ?string;

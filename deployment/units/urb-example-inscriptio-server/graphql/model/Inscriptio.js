@@ -10,7 +10,9 @@ class Inscriptio {
 
 
 
+
   constructor(fields)
+
 
 
 
@@ -18,6 +20,7 @@ class Inscriptio {
 
   {
     this.id = fields.id;
+    this.Inscriptio_site_id = fields.Inscriptio_site_id;
     this.Inscriptio_User_id = fields.Inscriptio_User_id;
     this.Inscriptio_LocationLat = fields.Inscriptio_LocationLat;
     this.Inscriptio_LocationLon = fields.Inscriptio_LocationLon;

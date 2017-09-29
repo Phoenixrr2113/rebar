@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bf98d350069dcbe6ed1092f490662820
+ * @relayHash 28fe33a0e0cf101830fe8b4b860d7843
  */
 
 /* eslint-disable */
@@ -15,7 +15,6 @@ export type ToDoDeleteMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type ToDoDeleteMutationResponse = {|
   +ToDoDelete: ?{|
     +Viewer: ?{|

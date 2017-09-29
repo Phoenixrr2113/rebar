@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash b982f546e313779ed205aeadd12f87d4
+ * @relayHash e55547bfdf447375e74468d43200f6a9
  */
 
 /* eslint-disable */
@@ -15,7 +15,6 @@ export type ToDoAddMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type ToDoAddMutationResponse = {|
   +ToDoAdd: ?{|
     +Viewer: ?{|

@@ -6,11 +6,7 @@ class ErrorComponent extends React.Component<{
   httpStatus: number,
 }> {
   render() {
-    return (
-      <div>
-        An error has occurred: {this.props.httpStatus}
-      </div>
-    )
+    return <div>An error has occurred: {this.props.httpStatus}</div>
   }
 }
 
