@@ -5,6 +5,7 @@ import defaultPersister from '../../../_configuration/urb-base-server/graphql/de
 defaultPersister.addTableSchema( 'ToDo', {
   fields: {
     id: 'uuid',
+    ToDo_site_id: 'uuid',
     ToDo_User_id: 'uuid',
     ToDo_Text: 'text',
     ToDo_Complete: 'boolean',

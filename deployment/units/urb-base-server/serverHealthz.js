@@ -14,6 +14,5 @@ serverHealthz.get('/', async (req, res, next) => {
     next(new Error('💔 DB is unreachable'));
   }
 });exports.default =
-
 serverHealthz;
 //# sourceMappingURL=serverHealthz.js.map

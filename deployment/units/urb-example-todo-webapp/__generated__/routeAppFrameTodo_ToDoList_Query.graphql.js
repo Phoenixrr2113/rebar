@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8a434d84158c24f0b08c45017b9e289a
+ * @relayHash c085a9be07ecd96acf3df43d790278d4
  */
 
 /* eslint-disable */
@@ -29,10 +29,10 @@ fragment ToDoList_Viewer on Viewer {
   ToDos(status: $status, first: 2147483647) {
     edges {
       node {
+        __typename
         id
         ToDo_Complete
         ...ToDoItem_ToDo
-        __typename
       }
       cursor
     }
@@ -157,6 +157,13 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
                         "name": "id",
                         "storageKey": null
                       },
@@ -172,13 +179,6 @@ const batch /*: ConcreteBatch*/ = {
                         "alias": null,
                         "args": null,
                         "name": "ToDo_Text",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
                         "storageKey": null
                       }
                     ],
@@ -272,7 +272,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query routeAppFrameTodo_ToDoList_Query(\n  $status: String!\n) {\n  Viewer {\n    ...ToDoList_Viewer\n    id\n  }\n}\n\nfragment ToDoList_Viewer on Viewer {\n  ToDos(status: $status, first: 2147483647) {\n    edges {\n      node {\n        id\n        ToDo_Complete\n        ...ToDoItem_ToDo\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ToDo_TotalCount\n  ToDo_CompletedCount\n  ...ToDoItem_Viewer\n}\n\nfragment ToDoItem_ToDo on ToDo {\n  id\n  ToDo_Complete\n  ToDo_Text\n}\n\nfragment ToDoItem_Viewer on Viewer {\n  id\n}\n"
+  "text": "query routeAppFrameTodo_ToDoList_Query(\n  $status: String!\n) {\n  Viewer {\n    ...ToDoList_Viewer\n    id\n  }\n}\n\nfragment ToDoList_Viewer on Viewer {\n  ToDos(status: $status, first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        ToDo_Complete\n        ...ToDoItem_ToDo\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ToDo_TotalCount\n  ToDo_CompletedCount\n  ...ToDoItem_Viewer\n}\n\nfragment ToDoItem_ToDo on ToDo {\n  id\n  ToDo_Complete\n  ToDo_Text\n}\n\nfragment ToDoItem_Viewer on Viewer {\n  id\n}\n"
 };
 
 module.exports = batch;

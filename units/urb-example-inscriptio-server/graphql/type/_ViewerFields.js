@@ -1,11 +1,7 @@
 // @flow weak
 
 import { GraphQLID } from 'graphql'
-import {
-  fromGlobalId,
-  connectionArgs,
-  connectionFromArray,
-} from 'graphql-relay'
+import { fromGlobalId, connectionArgs, connectionFromArray } from 'graphql-relay'
 
 import InscriptiosConnection from './InscriptiosConnection'
 import InscriptioType from './InscriptioType'
@@ -16,15 +12,8 @@ export default {
 
     args: { ...connectionArgs },
 
-    resolve: async(
-      obj,
-      { ...args },
-      context,
-      { rootValue: objectManager }
-    ) => {
-      const arr = await objectManager.getObjectList( 'Inscriptio', {
-        Inscriptio_User_id: objectManager.getViewerUserId(),
-      })
+    resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
+      const arr = await objectManager.getObjectList( 'Inscriptio', {})
 
       return connectionFromArray( arr, args )
     },

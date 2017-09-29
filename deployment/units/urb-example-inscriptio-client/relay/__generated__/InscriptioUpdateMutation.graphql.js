@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 8d7964e9d557cc5ce6c8f985929503c6
+ * @relayHash 1498e7bf8401606400480fad04501306
  */
 
 /* eslint-disable */
@@ -18,7 +18,6 @@ export type InscriptioUpdateMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type InscriptioUpdateMutationResponse = {|
   +InscriptioUpdate: ?{|
     +Inscriptio: ?{|

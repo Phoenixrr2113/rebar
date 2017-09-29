@@ -5,6 +5,7 @@ var _defaultPersister = require('../../../_configuration/urb-base-server/graphql
 _defaultPersister2.default.addTableSchema('ToDo', {
   fields: {
     id: 'uuid',
+    ToDo_site_id: 'uuid',
     ToDo_User_id: 'uuid',
     ToDo_Text: 'text',
     ToDo_Complete: 'boolean' },

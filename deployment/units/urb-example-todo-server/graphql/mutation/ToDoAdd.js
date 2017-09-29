@@ -16,26 +16,15 @@ exports.default =
   outputFields: {
     ToDosEdge: {
       type: _ToDosConnection2.default.edgeType,
-      resolve: async (
-      { local_id }, _ref,
-
-      context,
-      { rootValue: objectManager }) =>
-      {let args = _objectWithoutProperties(_ref, []);
+      resolve: async ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
         const an_Object = await objectManager.getOneObject('ToDo', {
           id: local_id });
 
 
-        const arr = await objectManager.getObjectList('ToDo', {
-          ToDo_User_id: objectManager.getViewerUserId() });
-
+        const arr = await objectManager.getObjectList('ToDo', {});
 
         return {
-          cursor: objectManager.cursorForObjectInConnection(
-          'ToDo',
-          arr,
-          an_Object),
-
+          cursor: objectManager.cursorForObjectInConnection('ToDo', arr, an_Object),
           node: an_Object };
 
       } },
@@ -50,13 +39,8 @@ exports.default =
 
 
 
-  mutateAndGetPayload: async (
-  { ToDo_Text },
-  context,
-  { rootValue: objectManager }) =>
-  {
+  mutateAndGetPayload: async ({ ToDo_Text }, context, { rootValue: objectManager }) => {
     const local_id = await objectManager.add('ToDo', {
-      ToDo_User_id: objectManager.getViewerUserId(),
       ToDo_Text,
       ToDo_Complete: false });
 

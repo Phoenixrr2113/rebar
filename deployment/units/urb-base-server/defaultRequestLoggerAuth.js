@@ -14,8 +14,7 @@ defaultrequestLoggerAuth;var _debug = require('../_configuration/debug');var _lo
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ((0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth))
-  logLevel = 'info';
+  if ((0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth)) logLevel = 'info';
 
   if (logLevel) _log2.default.log(logLevel, 'Auth request', requestAndResponse);
 } //  weak

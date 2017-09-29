@@ -30,11 +30,7 @@ export default class PersisterCassandra {
     this.tableSchemas = new Map()
   }
 
-  getOneObject(
-    entityName: string,
-    ObjectType: any,
-    filters: Array<any>
-  ): Promise<any> {
+  getOneObject( entityName: string, ObjectType: any, filters: Array<any> ): Promise<any> {
     const resultPromises = []
 
     for ( let filter of filters )
@@ -53,19 +49,15 @@ export default class PersisterCassandra {
                 if ( entity != null ) resolve( new ObjectType( entity ) )
                 else resolve( null )
               }
-            }
+            },
           )
-        })
+        }),
       )
 
     return Promise.all( resultPromises )
   }
 
-  getObjectList(
-    entityName: string,
-    ObjectType: any,
-    filters: Array<any>
-  ): Promise<Array<any>> {
+  getObjectList( entityName: string, ObjectType: any, filters: Array<any> ): Promise<Array<any>> {
     const resultPromises = []
 
     for ( let filter of filters )
@@ -82,27 +74,26 @@ export default class PersisterCassandra {
               if ( err ) reject( err )
               else {
                 const arrRetObj = []
-                for ( let entity of arrEntities )
-                  arrRetObj.push( new ObjectType( entity ) )
+                for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
                 resolve( arrRetObj )
               }
-            }
+            },
           )
-        })
+        }),
       )
 
     return Promise.all( resultPromises )
   }
 
   updateUuidsInFields( entityName: string, fields: any ) {
-    const schemaFields =
-      ExpressCassandraClient.instance[entityName]._properties.schema.fields
+    const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields
     for ( let fieldName in fields ) {
       const fieldType = schemaFields[fieldName]
       if ( fieldType === 'uuid' ) {
         const fieldValue = fields[fieldName]
-        if ( !( fieldValue instanceof Uuid ) )
+        if ( !( fieldValue instanceof Uuid ) ) {
           fields[fieldName] = Uuid.fromString( fieldValue )
+        }
       }
     }
   }
@@ -168,36 +159,26 @@ export default class PersisterCassandra {
   addTableSchema( tableName: string, tableSchema: Object ): void {
     if ( this.tableSchemas ) this.tableSchemas.set( tableName, tableSchema )
     else {
-      console.error(
-        '💔 Attempting to add table schemas after express-cassandra client connect.'
-      )
+      console.error( '💔 Attempting to add table schemas after express-cassandra client connect.' )
       process.exit( 1 )
     }
   }
-
   confirmHealth(): Promise<any> {
     return new Promise( ( resolve, reject ) => {
-      ExpressCassandraClient.modelInstance.User.get_cql_client(
-        ( err, client ) => {
-          if ( err ) reject( err )
-          else
-            client.execute(
-              'select release_version from system.local;',
-              ( err, result ) => {
-                if ( err ) reject( err )
-                else resolve()
-              }
-            )
-        }
-      )
+      ExpressCassandraClient.modelInstance.User.get_cql_client( ( err, client ) => {
+        if ( err ) reject( err )
+        else
+          client.execute( 'select release_version from system.local;', ( err, result ) => {
+            if ( err ) reject( err )
+            else resolve()
+          })
+      })
     })
   }
-
   initialize( runAsPartOfSetupDatabase: boolean, cb: Function ): void {
     // All table schemas should have been added by now.
     const enrolledTables = this.tableSchemas
     this.tableSchemas = null // Free up the memory that is not needed any more and indicate that we can not add any more
-
     ExpressCassandraClient.connect( err => {
       if ( err ) {
         console.log( '💔 Could not connect to Cassandra: ' + err.message )
@@ -207,33 +188,23 @@ export default class PersisterCassandra {
         const arrSchemas = []
         for ( let tableName of enrolledTables.keys() )
           arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
-
-        this.loadOneTableSchemaFromArray(
-          arrSchemas,
-          runAsPartOfSetupDatabase,
-          cb
-        )
+        this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
       }
     })
   }
-
   loadOneTableSchemaFromArray(
     arrSchemas: Array<any>,
     runAsPartOfSetupDatabase: boolean,
-    cb: Function
+    cb: Function,
   ): void {
     if ( arrSchemas.length > 0 ) {
       const tableName = arrSchemas[0][0]
       const tableSchema = arrSchemas[0][1]
-
       arrSchemas.splice( 0, 1 )
-
       ExpressCassandraClient.loadSchema( tableName, tableSchema, err => {
         if ( err ) {
           console.log(
-            '💔 Initializing Cassandra persister - error while creating ' +
-              tableName +
-              '!'
+            '💔 Initializing Cassandra persister - error while creating ' + tableName + '!',
           )
           console.error( err.message )
           process.exit( 1 )
@@ -241,16 +212,11 @@ export default class PersisterCassandra {
           if ( runAsPartOfSetupDatabase )
             console.log(
               '🛢 Table ' +
-                ExpressCassandraClient.modelInstance[tableName]._properties
-                  .name +
-                ' ready.'
+                ExpressCassandraClient.modelInstance[tableName]._properties.name +
+                ' ready.',
             )
-
-          this.loadOneTableSchemaFromArray(
-            arrSchemas,
-            runAsPartOfSetupDatabase,
-            cb
-          ) // Load the next table
+          this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
+          // Load the next table
           return
         }
       })
