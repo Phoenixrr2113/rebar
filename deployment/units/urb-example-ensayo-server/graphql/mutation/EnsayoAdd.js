@@ -18,26 +18,15 @@ exports.default =
   outputFields: {
     EnsayosEdge: {
       type: _EnsayosConnection2.default.edgeType,
-      resolve: async (
-      { local_id }, _ref,
-
-      context,
-      { rootValue: objectManager }) =>
-      {let args = _objectWithoutProperties(_ref, []);
+      resolve: async ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
         const an_Object = await objectManager.getOneObject('Ensayo', {
           id: local_id });
 
 
-        const arr = await objectManager.getObjectList('Ensayo', {
-          Ensayo_User_id: objectManager.getViewerUserId() });
-
+        const arr = await objectManager.getObjectList('Ensayo', {});
 
         return {
-          cursor: objectManager.cursorForObjectInConnection(
-          'Ensayo',
-          arr,
-          an_Object),
-
+          cursor: objectManager.cursorForObjectInConnection('Ensayo', arr, an_Object),
           node: an_Object };
 
       } },
@@ -58,7 +47,6 @@ exports.default =
   { rootValue: objectManager }) =>
   {
     const local_id = await objectManager.add('Ensayo', {
-      Ensayo_User_id: objectManager.getViewerUserId(),
       Ensayo_Title,
       Ensayo_Description,
       Ensayo_Content });

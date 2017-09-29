@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 95c87071a24a67336d744a294320040a
+ * @relayHash 4d40fface17e0e350462236509a4f343
  */
 
 /* eslint-disable */
@@ -27,10 +27,10 @@ fragment InscriptioScreen_Viewer on Viewer {
   Inscriptios(first: 2147483647) {
     edges {
       node {
+        __typename
         id
         Inscriptio_LocationLat
         Inscriptio_LocationLon
-        __typename
       }
       cursor
     }
@@ -121,6 +121,13 @@ const batch /*: ConcreteBatch*/ = {
                         "kind": "ScalarField",
                         "alias": null,
                         "args": null,
+                        "name": "__typename",
+                        "storageKey": null
+                      },
+                      {
+                        "kind": "ScalarField",
+                        "alias": null,
+                        "args": null,
                         "name": "id",
                         "storageKey": null
                       },
@@ -136,13 +143,6 @@ const batch /*: ConcreteBatch*/ = {
                         "alias": null,
                         "args": null,
                         "name": "Inscriptio_LocationLon",
-                        "storageKey": null
-                      },
-                      {
-                        "kind": "ScalarField",
-                        "alias": null,
-                        "args": null,
-                        "name": "__typename",
                         "storageKey": null
                       }
                     ],
@@ -214,7 +214,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query routeAppFrameInscriptio_InscriptioScreen_Query {\n  Viewer {\n    ...InscriptioScreen_Viewer\n    id\n  }\n}\n\nfragment InscriptioScreen_Viewer on Viewer {\n  Inscriptios(first: 2147483647) {\n    edges {\n      node {\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
+  "text": "query routeAppFrameInscriptio_InscriptioScreen_Query {\n  Viewer {\n    ...InscriptioScreen_Viewer\n    id\n  }\n}\n\nfragment InscriptioScreen_Viewer on Viewer {\n  Inscriptios(first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n"
 };
 
 module.exports = batch;

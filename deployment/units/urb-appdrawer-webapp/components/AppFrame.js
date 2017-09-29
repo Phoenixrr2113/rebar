@@ -1,17 +1,22 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
+var _classnames = require('classnames');var _classnames2 = _interopRequireDefault(_classnames);
 var _AppBar = require('material-ui/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
+var _Drawer = require('material-ui/Drawer');var _Drawer2 = _interopRequireDefault(_Drawer);
 var _IconButton = require('material-ui/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
-var _Menu = require('material-ui-icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactRelay = require('react-relay');
 var _styles = require('material-ui/styles');
 var _Toolbar = require('material-ui/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
 var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+var _ChevronLeft = require('material-ui-icons/ChevronLeft');var _ChevronLeft2 = _interopRequireDefault(_ChevronLeft);
+var _Menu = require('material-ui-icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _reactRelay = require('react-relay');
 
-var _NavBarLoginButton = require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2 = _interopRequireDefault(_NavBarLoginButton);
+var _AppDrawerNavItems = require('../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems');var _AppDrawerNavItems2 = _interopRequireDefault(_AppDrawerNavItems);
+var _AppDrawerTitle = require('../../_configuration/urb-appdrawer-webapp/AppDrawerTitle');var _AppDrawerTitle2 = _interopRequireDefault(_AppDrawerTitle);
+var _NavBarLoginButton = require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2 = _interopRequireDefault(_NavBarLoginButton);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-var _AppDrawer = require('./AppDrawer');var _AppDrawer2 = _interopRequireDefault(_AppDrawer);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+const drawerWidth = 240;
 
 const styles = theme => ({
   '@global': {
@@ -36,103 +41,145 @@ const styles = theme => ({
       width: 'auto' } },
 
 
+  root: {
+    width: '100%',
+    height: '100vh',
+    zIndex: 1,
+    overflow: 'hidden' },
+
   appFrame: {
+    position: 'relative',
     display: 'flex',
-    alignItems: 'stretch',
-    minHeight: '100vh',
-    width: '100%' },
+    width: '100%',
+    height: '100%' },
+
+  appBar: {
+    position: 'absolute',
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }) },
+
+
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen }) },
+
 
   grow: {
     flex: '1 1 auto' },
 
-  title: {
-    marginLeft: 24,
-    flex: '0 1 auto' },
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20 },
 
-  appBar: {
-    transition: theme.transitions.create('width') },
+  hide: {
+    display: 'none' },
 
-  // appBarHome: {
-  //   backgroundColor: 'transparent',
-  //   boxShadow: 'none',
-  // },
-  [theme.breakpoints.up('lg')]: {
-    drawer: {
-      width: '250px' },
+  drawerPaper: {
+    position: 'relative',
+    height: '100%',
+    width: drawerWidth },
 
-    appBarShift: {
-      width: 'calc(100% - 250px)' },
+  drawerHeader: Object.assign({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-end',
+    padding: '0 8px' },
+  theme.mixins.toolbar),
 
-    navIconHide: {
-      display: 'none' } } });
+  content: {
+    width: '100%',
+    marginLeft: -drawerWidth,
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }),
+
+    overflow: 'scroll',
+    height: 'calc(100% - 56px)',
+    marginTop: 56,
+    [theme.breakpoints.up('sm')]: {
+      content: {
+        height: 'calc(100% - 64px)',
+        marginTop: 64 } } },
+
+
+
+  contentShift: {
+    marginLeft: 0,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.easeOut,
+      duration: theme.transitions.duration.enteringScreen }) } });
 
 
 
 
-class AppFrame extends _react.Component {
+class AppFrame extends _react2.default.Component {
   constructor(props, context) {
     super(props, context);this.
 
 
 
 
-    handleDrawerClose = () => {
-      this.setState({ drawerOpen: false });
+    handleDrawerOpen = () => {
+      this.setState({ open: true });
     };this.
 
-    handleDrawerToggle = () => {
-      this.setState({ drawerOpen: !this.state.drawerOpen });
-    };this.state = { drawerOpen: false };}
+    handleDrawerClose = () => {
+      this.setState({ open: false });
+    };this.state = { open: false };}
 
   render() {
     const { children, classes, Viewer } = this.props;
 
-    let drawerDocked = false;
-
-    let appBarClassName = classes.appBar;
-    let navIconClassName = classes.icon;
-
-    if (drawerDocked) {
-      navIconClassName += ` ${classes.navIconHide}`;
-      appBarClassName += ` ${classes.appBarShift}`;
-    } else {
-      appBarClassName += ` ${classes.appBarHome}`;
-    }
-
-    const title = 'Hello World';
-
     return (
-      _react2.default.createElement('div', { className: classes.appFrame },
-        _react2.default.createElement(_AppBar2.default, { className: appBarClassName },
-          _react2.default.createElement(_Toolbar2.default, null,
-            _react2.default.createElement(_IconButton2.default, {
-                color: 'contrast',
-                onClick: this.handleDrawerToggle,
-                className: navIconClassName },
+      _react2.default.createElement('div', { className: classes.root },
+        _react2.default.createElement('div', { className: classes.appFrame },
+          _react2.default.createElement(_AppBar2.default, { className: (0, _classnames2.default)(classes.appBar, this.state.open && classes.appBarShift) },
+            _react2.default.createElement(_Toolbar2.default, { disableGutters: !this.state.open },
+              _react2.default.createElement(_IconButton2.default, {
+                  color: 'contrast',
+                  'aria-label': 'open drawer',
+                  onClick: this.handleDrawerOpen,
+                  className: (0, _classnames2.default)(classes.menuButton, this.state.open && classes.hide) },
 
-              _react2.default.createElement(_Menu2.default, null)),
+                _react2.default.createElement(_Menu2.default, null)),
 
-            title !== null &&
-            _react2.default.createElement(_Typography2.default, {
-                className: classes.title,
-                type: 'title',
-                color: 'inherit',
-                noWrap: true },
-
-              title),
+              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Rebar Rules'),
 
 
-            _react2.default.createElement('div', { className: classes.grow }),
-            _react2.default.createElement(_NavBarLoginButton2.default, { Viewer: Viewer }))),
+
+              _react2.default.createElement('div', { className: classes.grow }),
+              _react2.default.createElement(_NavBarLoginButton2.default, { Viewer: Viewer }))),
 
 
-        _react2.default.createElement(_AppDrawer2.default, {
-          className: classes.drawer,
-          docked: drawerDocked,
-          onRequestClose: this.handleDrawerClose,
-          open: drawerDocked || this.state.drawerOpen }),
+          _react2.default.createElement(_Drawer2.default, {
+              type: 'persistent',
+              classes: {
+                paper: classes.drawerPaper },
 
-        children));
+              open: this.state.open },
+
+            _react2.default.createElement('div', { className: classes.drawerInner },
+              _react2.default.createElement('div', { className: classes.drawerHeader },
+                _react2.default.createElement(_AppDrawerTitle2.default, null),
+                _react2.default.createElement('div', { className: classes.grow }),
+                _react2.default.createElement(_IconButton2.default, { onClick: this.handleDrawerClose },
+                  _react2.default.createElement(_ChevronLeft2.default, null)))),
+
+
+
+            _react2.default.createElement(_AppDrawerNavItems2.default, null)),
+
+          _react2.default.createElement('main', { className: (0, _classnames2.default)(classes.content, this.state.open && classes.contentShift) },
+            children))));
+
+
 
 
   }}exports.default =

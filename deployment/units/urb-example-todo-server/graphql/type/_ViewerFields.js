@@ -17,22 +17,11 @@ exports.default =
 
 
 
-    resolve: async (
-    obj, _ref,
-
-    context,
-    { rootValue: objectManager }) =>
-    {let { status } = _ref,args = _objectWithoutProperties(_ref, ['status']);
-      const arr = await objectManager.getObjectList('ToDo', {
-        ToDo_User_id: objectManager.getViewerUserId() });
-
+    resolve: async (obj, _ref, context, { rootValue: objectManager }) => {let { status } = _ref,args = _objectWithoutProperties(_ref, ['status']);
+      const arr = await objectManager.getObjectList('ToDo', {});
 
       return (0, _graphqlRelay.connectionFromArray)(
-      arr.filter(
-      a_ToDo =>
-      status === 'any' ||
-      a_ToDo.ToDo_Complete === (status === 'completed')),
-
+      arr.filter(a_ToDo => status === 'any' || a_ToDo.ToDo_Complete === (status === 'completed')),
       args);
 
     } },
@@ -41,15 +30,8 @@ exports.default =
   ToDo_TotalCount: {
     type: _graphql.GraphQLInt,
 
-    resolve: async (
-    obj, _ref2,
-
-    context,
-    { rootValue: objectManager }) =>
-    {let args = _objectWithoutProperties(_ref2, []);
-      const arr = await objectManager.getObjectList('ToDo', {
-        ToDo_User_id: objectManager.getViewerUserId() });
-
+    resolve: async (obj, _ref2, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref2, []);
+      const arr = await objectManager.getObjectList('ToDo', {});
 
       return arr.length;
     } },
@@ -58,15 +40,8 @@ exports.default =
   ToDo_CompletedCount: {
     type: _graphql.GraphQLInt,
 
-    resolve: async (
-    obj, _ref3,
-
-    context,
-    { rootValue: objectManager }) =>
-    {let args = _objectWithoutProperties(_ref3, []);
-      const arr = await objectManager.getObjectList('ToDo', {
-        ToDo_User_id: objectManager.getViewerUserId() });
-
+    resolve: async (obj, _ref3, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref3, []);
+      const arr = await objectManager.getObjectList('ToDo', {});
 
       return arr.filter(a_ToDo => a_ToDo.ToDo_Complete).length;
     } } };

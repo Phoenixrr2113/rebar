@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash bcc2061363d9ea93d11beb8fc698e837
+ * @relayHash 7307f5794cdf95383015c30af0fd5762
  */
 
 /* eslint-disable */
@@ -17,7 +17,6 @@ export type TranslaticiarumAddMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type TranslaticiarumAddMutationResponse = {|
   +TranslaticiarumAdd: ?{|
     +Viewer: ?{|
