@@ -352,13 +352,53 @@ export default class ObjectManager {
     return fields.id
   }
 
+  async ensure( entityName: string, keyFields: Object, ensureFields: Object ): Promise<Object> {
+    const entityDefinition = entityDefinitions[entityName]
+    if ( entityDefinition == null )
+      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+
+    const entity = await this.getOneObject( entityName, keyFields )
+
+    for ( let ensuredFieldName of Object.keys( ensureFields ) ) {
+      let isMatchingValue = false
+
+      if ( ensuredFieldName === 'id' || ensuredFieldName.endsWith( '_id' ) ) {
+        let ensureValue = ensureFields[ensuredFieldName]
+        if ( typeof ensureValue === 'string' )
+          ensureValue = entityDefinition.Persister.uuidFromString( ensureValue )
+
+        isMatchingValue = entityDefinition.Persister.uuidEquals(
+          ensureValue,
+          // $FlowIssue by convention the field should be present
+          entity[ensuredFieldName],
+        )
+      } else {
+        isMatchingValue =
+          // $FlowIssue by convention the field should be present
+          ensureFields[ensuredFieldName] === entity[ensuredFieldName]
+      }
+
+      if ( !isMatchingValue )
+        throw new Error(
+          'Object Manager: Field value can not be ensured for field ' +
+            ensuredFieldName +
+            ' of ' +
+            entityName,
+        )
+    }
+    return entity
+  }
+
   async update( entityName: string, fields: Object ): Promise<void> {
     const entityDefinition = entityDefinitions[entityName]
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
-    // Apply site_id, User_id security
-    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
+    // Apply site_id, User_id security - ensure a copy of the fields has the correct
+    // site_id and user_id
+    const fieldsEnsured = { id: fields.id }
+    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fieldsEnsured )
+    await this.ensure( entityName, { id: fields.id }, fieldsEnsured )
 
     // Should that be recorded somewhere? Could be another
     let oldFields = null
@@ -373,55 +413,16 @@ export default class ObjectManager {
     this.invalidateLoaderCache( entityName, fields )
   }
 
-  async ensure( entityName: string, keyFields: Object, ensureFields: Object ): Promise<Object> {
-    const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
-
-    // Apply site_id, User_id security
-    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, ensureFields )
-
-    const entity = await this.getOneObject( entityName, keyFields )
-    for ( let ensuredFieldName of Object.keys( ensureFields ) ) {
-      let isMatchingValue = false
-      if ( ensuredFieldName.endsWith( 'site_id' ) ) {
-        if ( !entity.site_id )
-          throw new Error(
-            'ensuredFieldName = ' +
-              ensuredFieldName +
-              ', however the entity does not have field site_id',
-          )
-        isMatchingValue =
-          entityDefinition.Persister.uuidToString( entity.site_id ) === ensureFields.site_id
-      } else if ( ensuredFieldName.endsWith( '_id' ) ) {
-        isMatchingValue = entityDefinition.Persister.uuidEquals(
-          ensureFields[ensuredFieldName],
-          // $FlowIssue by convention the field should be present
-          entity[ensuredFieldName],
-        )
-      } else {
-        isMatchingValue =
-          // $FlowIssue by convention the field should be present
-          ensureFields[ensuredFieldName] === entity[ensuredFieldName]
-      }
-      if ( !isMatchingValue )
-        throw new Error(
-          'Object Manager: Field value can not be ensured for field ' +
-            ensuredFieldName +
-            ' of ' +
-            entityName,
-        )
-    }
-    return entity
-  }
-
   async remove( entityName: string, fields: Object ): Promise<void> {
     const entityDefinition = entityDefinitions[entityName]
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
-    // Apply site_id, User_id security
-    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
+    // Apply site_id, User_id security - ensure a copy of the fields has the correct
+    // site_id and user_id
+    const fieldsEnsured = { id: fields.id }
+    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fieldsEnsured )
+    await this.ensure( entityName, { id: fields.id }, fieldsEnsured )
 
     this.recordChange( entityName, fields, true )
     await this.executeTriggers( entityDefinition.TriggersForRemove, fields )
