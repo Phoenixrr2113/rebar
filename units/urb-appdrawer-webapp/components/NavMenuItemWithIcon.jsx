@@ -19,7 +19,7 @@ class NavMenuItemWithIcon extends React.Component<{
 
   render() {
     return (
-      <ListItem button onClick={() => this._handle_GoTo( '/todo/' )}>
+      <ListItem button onClick={() => this._handle_GoTo( this.props.to )}>
         <ListItemIcon>{this.props.icon}</ListItemIcon>
         <ListItemText primary={this.props.label} />
       </ListItem>
