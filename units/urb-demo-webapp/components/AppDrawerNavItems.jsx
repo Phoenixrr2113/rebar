@@ -3,13 +3,13 @@
 import Divider from 'material-ui/Divider'
 import List from 'material-ui/List'
 import { withStyles } from 'material-ui/styles'
-import InboxIcon from 'material-ui-icons/Inbox'
-import TodayIcon from 'material-ui-icons/Today'
-import ModeEditIcon from 'material-ui-icons/ModeEdit'
-import ImportContactsIcon from 'material-ui-icons/ImportContacts'
-import MyLocationIcon from 'material-ui-icons/MyLocation'
-import OpenWithIcon from 'material-ui-icons/OpenWith'
-import LockOutlineIcon from 'material-ui-icons/LockOutline'
+import IconInbox from 'material-ui-icons/Inbox'
+import IconToday from 'material-ui-icons/Today'
+import IconModeEdit from 'material-ui-icons/ModeEdit'
+import IconImportContacts from 'material-ui-icons/ImportContacts'
+import IconMyLocation from 'material-ui-icons/MyLocation'
+import IconOpenWith from 'material-ui-icons/OpenWith'
+import IconLockOutline from 'material-ui-icons/LockOutline'
 import React from 'react'
 
 import NavMenuItemWithIcon from '../../urb-appdrawer-webapp/components/NavMenuItemWithIcon'
@@ -30,38 +30,38 @@ class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Func
         <Divider />
         <List className={classes.list}>
           <NavMenuItemWithIcon
-            icon={<InboxIcon />}
+            icon={<IconInbox />}
             label="To Dos"
             onClick={() => onClick( '/todo/' )}
           />
           <NavMenuItemWithIcon
-            icon={<ModeEditIcon />}
+            icon={<IconModeEdit />}
             label="Ensayo Edit"
             onClick={() => onClick( '/ensayo/in-place-edit/' )}
           />
           <NavMenuItemWithIcon
-            icon={<ImportContactsIcon />}
+            icon={<IconImportContacts />}
             label="Ensayo Public"
             onClick={() => onClick( '/ensayo/' )}
           />
           <NavMenuItemWithIcon
-            icon={<MyLocationIcon />}
+            icon={<IconMyLocation />}
             label="Inscriptio"
             onClick={() => onClick( '/inscriptio/' )}
           />
           <NavMenuItemWithIcon
-            icon={<TodayIcon />}
+            icon={<IconToday />}
             label="Translaticiarum"
             onClick={() => onClick( '/translaticiarum/' )}
           />
           <Divider />
           <NavMenuItemWithIcon
-            icon={<OpenWithIcon />}
+            icon={<IconOpenWith />}
             label="Viewport Dimensions"
             onClick={() => onClick( '/viewport-dimensions/' )}
           />
           <NavMenuItemWithIcon
-            icon={<LockOutlineIcon />}
+            icon={<IconLockOutline />}
             label="Force Login"
             onClick={() => onClick( '/force-login/' )}
           />
