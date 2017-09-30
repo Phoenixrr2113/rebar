@@ -57,18 +57,18 @@ const styles = theme => ({
   },
   appBar: {
     position: 'absolute',
-    transition: theme.transitions.create([ 'margin', 'width' ], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.leavingScreen,
+    // }),
   },
   appBarShift: {
     marginLeft: drawerWidth,
     width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create([ 'margin', 'width' ], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
   },
   grow: {
     flex: '1 1 auto',
@@ -114,10 +114,10 @@ const styles = theme => ({
   },
   contentShift: {
     marginLeft: 0,
-    transition: theme.transitions.create( 'margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
+    // transition: theme.transitions.create( 'margin', {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
   },
 })
 
@@ -191,6 +191,8 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
             open={drawerIsOpen}
             onRequestClose={this._handle_Drawer_Close}
             type={drawerType}
+            enterTransitionDuration={drawerIsPinned ? 0 : 300}
+            leaveTransitionDuration={0}
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
