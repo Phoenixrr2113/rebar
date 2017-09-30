@@ -10,9 +10,7 @@ defaultRequestLoggerGraphQL;var _debug = require('../_configuration/debug');var 
 
   // If there is an error, log it as an error
   if (requestAndResponse.response.indexOf('"errors": [') > 0) logLevel = 'error';else
-  if (
-  (0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestGraphQL))
-
+  if ((0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestGraphQL))
     // Otherwise, if it is a trace, log it as info
     logLevel = 'info';
 

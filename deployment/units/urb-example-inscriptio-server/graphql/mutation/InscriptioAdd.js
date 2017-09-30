@@ -18,26 +18,15 @@ exports.default =
   outputFields: {
     InscriptiosEdge: {
       type: _InscriptiosConnection2.default.edgeType,
-      resolve: async (
-      { local_id }, _ref,
-
-      context,
-      { rootValue: objectManager }) =>
-      {let args = _objectWithoutProperties(_ref, []);
+      resolve: async ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
         const an_Object = await objectManager.getOneObject('Inscriptio', {
           id: local_id });
 
 
-        const arr = await objectManager.getObjectList('Inscriptio', {
-          Inscriptio_User_id: objectManager.getViewerUserId() });
-
+        const arr = await objectManager.getObjectList('Inscriptio', {});
 
         return {
-          cursor: objectManager.cursorForObjectInConnection(
-          'Inscriptio',
-          arr,
-          an_Object),
-
+          cursor: objectManager.cursorForObjectInConnection('Inscriptio', arr, an_Object),
           node: an_Object };
 
       } },
@@ -58,7 +47,6 @@ exports.default =
   { rootValue: objectManager }) =>
   {
     const local_id = await objectManager.add('Inscriptio', {
-      Inscriptio_User_id: objectManager.getViewerUserId(),
       Inscriptio_LocationLat,
       Inscriptio_LocationLon,
       Inscriptio_Notes });

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash c988896f52b8c7a02047d90ebd37da45
+ * @relayHash 44dbdde0cb885a74a2a4fd9ba5350570
  */
 
 /* eslint-disable */
@@ -17,7 +17,6 @@ export type EnsayoAddMutationVariables = {|
     clientMutationId?: ?string;
   };
 |};
-
 export type EnsayoAddMutationResponse = {|
   +EnsayoAdd: ?{|
     +Viewer: ?{|

@@ -6,11 +6,7 @@ class ErrorComponent extends _react2.default.Component
 
 {
   render() {
-    return (
-      _react2.default.createElement('div', null, 'An error has occurred: ',
-        this.props.httpStatus));
-
-
+    return _react2.default.createElement('div', null, 'An error has occurred: ', this.props.httpStatus);
   }}exports.default =
 
 
