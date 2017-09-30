@@ -94,7 +94,7 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-    marginLeft: -drawerWidth,
+    //marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
@@ -168,13 +168,13 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
-          <AppBar className={classNames( classes.appBar, drawerIsOpen && classes.appBarShift )}>
-            <Toolbar disableGutters={!drawerIsOpen}>
+          <AppBar className={classNames( classes.appBar, drawerIsPinned && classes.appBarShift )}>
+            <Toolbar disableGutters={!drawerIsPinned}>
               <IconButton
                 color="contrast"
                 aria-label="open drawer"
                 onClick={this._handle_Drawer_Open}
-                className={classNames( classes.menuButton, drawerIsOpen && classes.hide )}
+                className={classNames( classes.menuButton, drawerIsPinned && classes.hide )}
               >
                 <IconMenu />
               </IconButton>
