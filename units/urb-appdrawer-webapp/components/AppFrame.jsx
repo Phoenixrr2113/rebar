@@ -7,8 +7,10 @@ import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
-import ChevronLeft from 'material-ui-icons/ChevronLeft'
-import MenuIcon from 'material-ui-icons/Menu'
+import IconChevronLeft from 'material-ui-icons/ChevronLeft'
+import IconKeyboardTab from 'material-ui-icons/KeyboardTab'
+import IconMenu from 'material-ui-icons/Menu'
+import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -119,36 +121,62 @@ const styles = theme => ({
   },
 })
 
-class AppFrame extends React.Component<any, { open: boolean }> {
+class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPinned: boolean }> {
+  static contextTypes = {
+    router: PropTypes.object.isRequired,
+  }
+
   constructor( props: Object, context: Object ) {
     super( props, context )
 
-    this.state = { open: false }
+    this.state = { drawerIsOpen: false, drawerIsPinned: false }
   }
 
-  handleDrawerOpen = () => {
-    this.setState({ open: true })
+  _handle_Drawer_Open = () => {
+    this.setState({ drawerIsOpen: true })
+  }
+  _handle_Drawer_Pin = () => {
+    this.setState({ drawerIsPinned: true })
   }
 
-  handleDrawerClose = () => {
-    this.setState({ open: false })
+  _handle_Drawer_UnPin = () => {
+    this.setState({ drawerIsOpen: false, drawerIsPinned: false })
+  }
+
+  _handle_Drawer_Close = () => {
+    this.setState({ drawerIsOpen: false })
+  }
+
+  _handle_GoTo = ( to: string ) => {
+    if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
+
+    this.context.router.push( to )
   }
 
   render() {
     const { children, classes, Viewer } = this.props
+    const { drawerIsOpen, drawerIsPinned } = this.state
+
+    const drawerType = drawerIsPinned ? 'persistent' : 'temporary'
+
+    const drawerClasses = drawerIsPinned
+      ? {
+          paper: classes.drawerPaper,
+        }
+      : {}
 
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
-          <AppBar className={classNames( classes.appBar, this.state.open && classes.appBarShift )}>
-            <Toolbar disableGutters={!this.state.open}>
+          <AppBar className={classNames( classes.appBar, drawerIsOpen && classes.appBarShift )}>
+            <Toolbar disableGutters={!drawerIsOpen}>
               <IconButton
                 color="contrast"
                 aria-label="open drawer"
-                onClick={this.handleDrawerOpen}
-                className={classNames( classes.menuButton, this.state.open && classes.hide )}
+                onClick={this._handle_Drawer_Open}
+                className={classNames( classes.menuButton, drawerIsOpen && classes.hide )}
               >
-                <MenuIcon />
+                <IconMenu />
               </IconButton>
               <Typography className={classes.title} type="title" color="inherit" noWrap>
                 Rebar Rules
@@ -159,24 +187,30 @@ class AppFrame extends React.Component<any, { open: boolean }> {
             </Toolbar>
           </AppBar>
           <Drawer
-            type="persistent"
-            classes={{
-              paper: classes.drawerPaper,
-            }}
-            open={this.state.open}
+            classes={drawerClasses}
+            open={drawerIsOpen}
+            onRequestClose={this._handle_Drawer_Close}
+            type={drawerType}
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
                 <AppDrawerTitle />
                 <div className={classes.grow} />
-                <IconButton onClick={this.handleDrawerClose}>
-                  <ChevronLeft />
-                </IconButton>
+                {drawerIsPinned && (
+                  <IconButton onClick={this._handle_Drawer_UnPin}>
+                    <IconChevronLeft />
+                  </IconButton>
+                )}
+                {!drawerIsPinned && (
+                  <IconButton onClick={this._handle_Drawer_Pin}>
+                    <IconKeyboardTab />
+                  </IconButton>
+                )}
               </div>
             </div>
-            <AppDrawerNavItems />
+            <AppDrawerNavItems onClick={this._handle_GoTo} />
           </Drawer>
-          <main className={classNames( classes.content, this.state.open && classes.contentShift )}>
+          <main className={classNames( classes.content, drawerIsPinned && classes.contentShift )}>
             {children}
           </main>
         </div>

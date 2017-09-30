@@ -21,34 +21,50 @@ const styles = {
   },
 }
 
-class AppDrawerNavItems extends React.Component<{ classes: Object }> {
+class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Function }> {
   render() {
-    const { classes } = this.props
+    const { classes, onClick } = this.props
 
     return (
       <div>
         <Divider />
         <List className={classes.list}>
-          <NavMenuItemWithIcon icon={<InboxIcon />} label="To Dos" to="/todo/" />
+          <NavMenuItemWithIcon
+            icon={<InboxIcon />}
+            label="To Dos"
+            onClick={() => onClick( '/todo/' )}
+          />
           <NavMenuItemWithIcon
             icon={<ModeEditIcon />}
             label="Ensayo Edit"
-            to="/ensayo/in-place-edit/"
+            onClick={() => onClick( '/ensayo/in-place-edit/' )}
           />
-          <NavMenuItemWithIcon icon={<ImportContactsIcon />} label="Ensayo Public" to="/ensayo/" />
-          <NavMenuItemWithIcon icon={<MyLocationIcon />} label="Inscriptio" to="/inscriptio/" />
+          <NavMenuItemWithIcon
+            icon={<ImportContactsIcon />}
+            label="Ensayo Public"
+            onClick={() => onClick( '/ensayo/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<MyLocationIcon />}
+            label="Inscriptio"
+            onClick={() => onClick( '/inscriptio/' )}
+          />
           <NavMenuItemWithIcon
             icon={<TodayIcon />}
             label="Translaticiarum"
-            to="/translaticiarum/"
+            onClick={() => onClick( '/translaticiarum/' )}
           />
           <Divider />
           <NavMenuItemWithIcon
             icon={<OpenWithIcon />}
             label="Viewport Dimensions"
-            to="/viewport-dimensions/"
+            onClick={() => onClick( '/viewport-dimensions/' )}
           />
-          <NavMenuItemWithIcon icon={<LockOutlineIcon />} label="Force Login" to="/force-login/" />
+          <NavMenuItemWithIcon
+            icon={<LockOutlineIcon />}
+            label="Force Login"
+            onClick={() => onClick( '/force-login/' )}
+          />
         </List>
       </div>
     )
