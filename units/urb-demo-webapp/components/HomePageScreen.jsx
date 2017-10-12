@@ -62,18 +62,20 @@ class HomePageScreen extends React.Component<{
               supportability and update-ability. It allows us to update the multiple projects based
               on the boilerplate with minimum effort, providing new features, improvements and bug
               fixes. This is achieved through the following two approaches:
-              <ul>
-                <li>
-                  <b>Configurability</b> - All the configuration files, which include settings, CQL,
-                  JSON, snippets of JavaScript and JSX are separated from the common code.
-                </li>
-                <li>
-                  <b>Modularity</b> - The applications built upon the boilerplate are separated into
-                  semi-independent units, which contain the necessary front-end, back end, relay,
-                  CQL, etc. code. The parameters and settings for those units are stored in the
-                  configuration folder for eacy updating.
-                </li>
-              </ul>
+              <br />
+              <br />
+            </Typography>
+            <Typography component="ul">
+              <li>
+                <b>Configurability</b> - All the configuration files, which include settings, CQL,
+                JSON, snippets of JavaScript and JSX are separated from the common code.
+              </li>
+              <li>
+                <b>Modularity</b> - The applications built upon the boilerplate are separated into
+                semi-independent units, which contain the necessary front-end, back end, relay, CQL,
+                etc. code. The parameters and settings for those units are stored in the
+                configuration folder for eacy updating.
+              </li>
             </Typography>
           </CardContent>
         </Card>

@@ -26,7 +26,7 @@ const styles = theme => ({
 })
 
 class RequiresAuthenticationNotice extends React.Component<{
-  classes: Object
+  classes: Object,
 }> {
   componentDidMount() {
     authenticationRequiredCallback()
@@ -41,8 +41,7 @@ class RequiresAuthenticationNotice extends React.Component<{
           <CardHeader title="Please log in" />
           <CardContent>
             <Typography paragraph>
-              Accessing this area of the application requires you to be logged
-              in.
+              Accessing this area of the application requires you to be logged in.
             </Typography>
           </CardContent>
         </Card>

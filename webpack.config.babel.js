@@ -12,23 +12,25 @@ const port_webpack = process.env.PORT_WEBPACK
 const node_env = process.env.NODE_ENV
 const sassets_configuration_version = process.env.CFSB_SASSETS_CONFIGURATION_VERSION
 
-const publicPath =
-  sassets_configuration_version
-    ? `/sassets/${version}.${sassets_configuration_version}/`
-    : node_env === 'production'
-      ? `/assets/${version}/`
-      : `http://${host}:${port_webpack}/${version}/`
+const publicPath = sassets_configuration_version
+  ? `/sassets/${version}.${sassets_configuration_version}/`
+  : node_env === 'production' ? `/assets/${version}/` : `http://${host}:${port_webpack}/${version}/`
 
-console.log( '📦  webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }) )
+console.log(
+  'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
+)
+
 const ifProd = plugin => ( node_env === 'production' ? plugin : undefined )
 const ifNotProd = plugin => ( node_env !== 'production' ? plugin : undefined )
 const removeEmpty = array => array.filter( p => !!p )
+
 const config = {
   devServer: {
     host,
     port: port_webpack,
     headers: { 'Access-Control-Allow-Origin': '*' },
   },
+
   entry: {
     client: [ 'whatwg-fetch', path.resolve( 'units/urb-base-webapp/client.js' ) ],
     vendor: [
@@ -55,6 +57,7 @@ const config = {
     filename: '[name].js',
     publicPath,
   },
+
   module: {
     rules: [
       {
@@ -104,9 +107,11 @@ const config = {
       },
     ],
   },
+
   resolve: {
     extensions: [ '.js', '.jsx' ],
   },
+
   plugins: removeEmpty([
     new webpack.EnvironmentPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
@@ -142,5 +147,7 @@ const config = {
     ),
   ]),
 }
+
 if ( node_env !== 'production' ) config.devtool = 'source-map'
+
 export default config

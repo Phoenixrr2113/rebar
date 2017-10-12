@@ -103,5 +103,4 @@ function startDevelopmentServer( port, host ) {
   const localIPDevelopmentServer = express()
   localIPDevelopmentServer.use( server )
   localIPDevelopmentServer.listen( port, host )
-  console.log( 'DEVELOPMENT. Server listening on ' + host )
 }

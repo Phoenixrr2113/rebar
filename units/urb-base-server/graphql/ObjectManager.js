@@ -19,6 +19,8 @@ const User_0 = new User(
   }),
 )
 
+export { User_0 }
+
 // Type of entity definition
 type EntityDefinition = {
   EntityName: string,

@@ -6,14 +6,13 @@ import { promisify } from 'util'
 const readFileAsync = promisify( fs.readFile )
 const writeFileAsync = promisify( fs.writeFile )
 
-export default async function ensureFileContent(
+export default ( async function ensureFileContent(
   fileName: string,
   currentFileContent: ?string,
-  newFileContent: string
+  newFileContent: string,
 ) {
   // If the current file content is not provided, get it
-  if ( currentFileContent == null )
-    currentFileContent = ( await readFileAsync( fileName ) ).toString()
+  if ( currentFileContent == null ) currentFileContent = ( await readFileAsync( fileName ) ).toString()
 
   if ( currentFileContent !== newFileContent ) {
     console.log( '✍️  written:  ' + fileName )
@@ -21,4 +20,4 @@ export default async function ensureFileContent(
   } else {
     console.log( '📎  skipped:  ' + fileName )
   }
-}
+})

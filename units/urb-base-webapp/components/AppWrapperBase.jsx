@@ -1,19 +1,16 @@
 // @flow
 
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import PropTypes from 'prop-types'
 import React from 'react'
 import EventListener from 'react-event-listener'
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
-import getWrapperRbCtx from '../../_configuration/urb-base-webapp/getWrapperRbCtx'
-import createMUITheme from '../../_configuration/urb-base-webapp/createMUITheme'
 import ViewportDimensions from '../scripts/ViewportDimensions'
 
-export default class Wrapper extends React.Component<
+export default class AppWrapperBase extends React.Component<
   { siteConfiguration: Object, children: any },
   any,
 > {
-  muiTheme: Object
   rbCtx: Object
 
   static childContextTypes = {
@@ -26,12 +23,10 @@ export default class Wrapper extends React.Component<
     // TODO x0100 If a property for innerWidth is provided, use it for the initial request
 
     // Descendants can add other items to rbCtx through getWrapperRbCtx
-    this.rbCtx = getWrapperRbCtx( props.siteConfiguration )
+    this.rbCtx = this.getWrapperRbCtx()
 
     this.rbCtx.viewportDimensions = new ViewportDimensions()
     this.rbCtx.siteConfiguration = props.siteConfiguration
-
-    this.muiTheme = createMUITheme( this )
   }
 
   componentDidMount() {
@@ -44,6 +39,16 @@ export default class Wrapper extends React.Component<
     }
   }
 
+  // This should be overridden in AppDrawer
+  createMUITheme() {
+    return null
+  }
+
+  // Can be overrideen in AppDrawer
+  getWrapperRbCtx(): Object {
+    return {}
+  }
+
   handle_onResize = () => {
     this.rbCtx.viewportDimensions.handle_onResize()
   }
@@ -51,7 +56,7 @@ export default class Wrapper extends React.Component<
   render() {
     return (
       <EventListener target="window" onResize={this.handle_onResize}>
-        <MuiThemeProvider theme={this.muiTheme}>{this.props.children}</MuiThemeProvider>
+        <MuiThemeProvider theme={this.createMUITheme()}>{this.props.children}</MuiThemeProvider>
       </EventListener>
     )
   }

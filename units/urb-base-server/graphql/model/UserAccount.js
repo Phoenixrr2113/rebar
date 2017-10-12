@@ -15,7 +15,7 @@ export default class UserAccount {
     UserAccount_site_id: string,
     UserAccount_User_id: string,
     UserAccount_Identifier: string,
-    UserAccount_Type: 'un' | 'soc'
+    UserAccount_Type: 'un' | 'soc',
   }) {
     this.id = fields.id
     this.UserAccount_site_id = fields.UserAccount_site_id

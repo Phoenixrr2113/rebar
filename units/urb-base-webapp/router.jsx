@@ -39,5 +39,5 @@ export const routeConfig = makeRouteConfig(
       {routesAppFrame}
     </Route>
     {routesRoot.length > 0 && routesRoot}
-  </Route>
+  </Route>,
 )

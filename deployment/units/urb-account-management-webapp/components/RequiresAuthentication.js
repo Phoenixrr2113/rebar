@@ -47,7 +47,6 @@ class RequiresAuthenticationNotice extends _react2.default.Component
 
 
 
-
   }}exports.default =
 
 

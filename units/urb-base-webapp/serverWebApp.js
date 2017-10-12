@@ -17,24 +17,26 @@ import { getSiteInformation } from '../_configuration/urb-base-server/siteSettin
 import log from '../urb-base-server/log'
 import { version } from '../_configuration/package'
 import UserToken2ServerRendering from '../_configuration/urb-base-server/UserToken2ServerRendering'
+import AppWrapper from '../_configuration/urb-base-webapp/AppWrapper'
 
 import FetcherServer from './fetcherServer'
 import { createResolver, historyMiddlewares, routeConfig } from './router'
-import Wrapper from './components/Wrapper'
 
 // Read environment
 require( 'dotenv' ).load()
 
 const envHost = process.env.HOST
 if ( envHost == null || typeof envHost !== 'string' )
-  throw new Error( '💔  urb-base-webapp requires the environment variable HOST to be set' )
+  throw new Error( 'Error: urb-base-webapp requires the environment variable HOST to be set' )
 const envPort = process.env.PORT
 if ( envPort == null || typeof envPort !== 'string' )
-  throw new Error( '💔  urb-base-webapp requires the environment variable PORT to be set' )
+  throw new Error( 'Error: urb-base-webapp requires the environment variable PORT to be set' )
 const envPortWebpack = process.env.PORT_WEBPACK
 if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
-  throw new Error( '💔  urb-base-webapp requires the environment variable PORT_WEBPACK to be set' ) // Create express router
+  throw new Error( 'Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set' ) // Create express router
+
 const serverWebApp = express()
+
 async function gatherLocationAndSiteInformation( req: Object, res: Object ) {
   let assetsPath
   const siteInformation = await getSiteInformation( req, res )
@@ -62,11 +64,13 @@ const render = createRender({
 serverWebApp.use( async( req, res ) => {
   try {
     const { siteInformation, assetsPath } = await gatherLocationAndSiteInformation( req, res )
+
     const fetcher = new FetcherServer(
       `http://localhost:${envPort}` + getGraphQLLocalServerURL( siteInformation ),
       req.cookies.UserToken1,
       UserToken2ServerRendering,
     )
+
     const { redirect, element } = await getFarceResult({
       url: req.url,
       historyMiddlewares,
@@ -74,25 +78,29 @@ serverWebApp.use( async( req, res ) => {
       resolver: createResolver( fetcher ),
       render,
     })
+
     if ( redirect ) {
       res.redirect( 302, redirect.url )
       return
     }
+
     const userAgent = req.headers['user-agent']
     const { siteConfiguration } = siteInformation
     const siteConfigurationSubset = {
       webapp: siteConfiguration.webapp,
       builder: siteConfiguration.builder,
     }
+
     const sheets = new SheetsRegistry()
     const helmet = Helmet.rewind()
     const rootHTML = ReactDOMServer.renderToString(
       <JssProvider registry={sheets}>
-        <Wrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset}>
+        <AppWrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset}>
           {element}
-        </Wrapper>
+        </AppWrapper>
       </JssProvider>,
     )
+
     res.render( path.resolve( __dirname, 'html.ejs' ), {
       assets_path: assetsPath,
       root_html: rootHTML,

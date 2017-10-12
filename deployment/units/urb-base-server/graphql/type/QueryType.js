@@ -32,6 +32,5 @@ new _graphql.GraphQLObjectType({
     Viewer: {
       type: _ViewerType2.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', {
-        id: objectManager.getViewerUserId() }) } }) });
+      objectManager.getOneObject('User', { id: objectManager.getViewerUserId() }) } }) });
 //# sourceMappingURL=QueryType.js.map

@@ -8,7 +8,9 @@ var _styles = require('material-ui/styles');
 var _Toolbar = require('material-ui/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
 var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 var _ChevronLeft = require('material-ui-icons/ChevronLeft');var _ChevronLeft2 = _interopRequireDefault(_ChevronLeft);
+var _KeyboardTab = require('material-ui-icons/KeyboardTab');var _KeyboardTab2 = _interopRequireDefault(_KeyboardTab);
 var _Menu = require('material-ui-icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -54,20 +56,20 @@ const styles = theme => ({
     height: '100%' },
 
   appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen }) },
-
-
+    position: 'absolute'
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.leavingScreen,
+    // }),
+  },
   appBarShift: {
     marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen }) },
-
-
+    width: `calc(100% - ${drawerWidth}px)`
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
+  },
   grow: {
     flex: '1 1 auto' },
 
@@ -92,7 +94,7 @@ const styles = theme => ({
 
   content: {
     width: '100%',
-    marginLeft: -drawerWidth,
+    //marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
@@ -111,46 +113,72 @@ const styles = theme => ({
 
 
   contentShift: {
-    marginLeft: 0,
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen }) } });
-
-
+    marginLeft: 0
+    // transition: theme.transitions.create( 'margin', {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
+  } });
 
 
 class AppFrame extends _react2.default.Component {
+
+
+
+
   constructor(props, context) {
     super(props, context);this.
 
 
 
 
-    handleDrawerOpen = () => {
-      this.setState({ open: true });
+    _handle_Drawer_Open = () => {
+      this.setState({ drawerIsOpen: true });
+    };this.
+    _handle_Drawer_Pin = () => {
+      this.setState({ drawerIsPinned: true });
     };this.
 
-    handleDrawerClose = () => {
-      this.setState({ open: false });
-    };this.state = { open: false };}
+    _handle_Drawer_UnPin = () => {
+      this.setState({ drawerIsOpen: false, drawerIsPinned: false });
+    };this.
+
+    _handle_Drawer_Close = () => {
+      this.setState({ drawerIsOpen: false });
+    };this.
+
+    _handle_GoTo = to => {
+      if (!this.state.drawerIsPinned) this.setState({ drawerIsOpen: false });
+
+      this.context.router.push(to);
+    };this.state = { drawerIsOpen: false, drawerIsPinned: false };}
 
   render() {
     const { children, classes, Viewer } = this.props;
+    const { drawerIsOpen, drawerIsPinned } = this.state;
+
+    const drawerType = drawerIsPinned ? 'persistent' : 'temporary';
+
+    const drawerClasses = drawerIsPinned ?
+    {
+      paper: classes.drawerPaper } :
+
+    {};
 
     return (
       _react2.default.createElement('div', { className: classes.root },
         _react2.default.createElement('div', { className: classes.appFrame },
-          _react2.default.createElement(_AppBar2.default, { className: (0, _classnames2.default)(classes.appBar, this.state.open && classes.appBarShift) },
-            _react2.default.createElement(_Toolbar2.default, { disableGutters: !this.state.open },
+          _react2.default.createElement(_AppBar2.default, { className: (0, _classnames2.default)(classes.appBar, drawerIsPinned && classes.appBarShift) },
+            _react2.default.createElement(_Toolbar2.default, { disableGutters: !drawerIsPinned },
               _react2.default.createElement(_IconButton2.default, {
                   color: 'contrast',
                   'aria-label': 'open drawer',
-                  onClick: this.handleDrawerOpen,
-                  className: (0, _classnames2.default)(classes.menuButton, this.state.open && classes.hide) },
+                  onClick: this._handle_Drawer_Open,
+                  className: (0, _classnames2.default)(classes.menuButton, drawerIsPinned && classes.hide) },
 
                 _react2.default.createElement(_Menu2.default, null)),
 
-              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Rebar Rules'),
+              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Rebar Factory'),
 
 
 
@@ -159,30 +187,40 @@ class AppFrame extends _react2.default.Component {
 
 
           _react2.default.createElement(_Drawer2.default, {
-              type: 'persistent',
-              classes: {
-                paper: classes.drawerPaper },
+              classes: drawerClasses,
+              open: drawerIsOpen,
+              onRequestClose: this._handle_Drawer_Close,
+              type: drawerType,
+              transitionDuration: {
+                enter: drawerIsPinned ? 0 : 300,
+                leave: 0 } },
 
-              open: this.state.open },
 
             _react2.default.createElement('div', { className: classes.drawerInner },
               _react2.default.createElement('div', { className: classes.drawerHeader },
                 _react2.default.createElement(_AppDrawerTitle2.default, null),
                 _react2.default.createElement('div', { className: classes.grow }),
-                _react2.default.createElement(_IconButton2.default, { onClick: this.handleDrawerClose },
-                  _react2.default.createElement(_ChevronLeft2.default, null)))),
+                drawerIsPinned &&
+                _react2.default.createElement(_IconButton2.default, { onClick: this._handle_Drawer_UnPin },
+                  _react2.default.createElement(_ChevronLeft2.default, null)),
+
+
+                !drawerIsPinned &&
+                _react2.default.createElement(_IconButton2.default, { onClick: this._handle_Drawer_Pin },
+                  _react2.default.createElement(_KeyboardTab2.default, null)))),
 
 
 
-            _react2.default.createElement(_AppDrawerNavItems2.default, null)),
 
-          _react2.default.createElement('main', { className: (0, _classnames2.default)(classes.content, this.state.open && classes.contentShift) },
+            _react2.default.createElement(_AppDrawerNavItems2.default, { onClick: this._handle_GoTo })),
+
+          _react2.default.createElement('main', { className: (0, _classnames2.default)(classes.content, drawerIsPinned && classes.contentShift) },
             children))));
 
 
 
 
-  }}exports.default =
+  }}AppFrame.contextTypes = { router: _propTypes2.default.object.isRequired };exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(

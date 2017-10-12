@@ -18,13 +18,13 @@ const styles = theme => ({})
 class NavBarLoginButton extends React.Component<
   {
     Viewer: Object,
-    relay: Object
+    relay: Object,
   },
   {
     anchorEl: ?Object,
     loginDialogIsOpen: boolean,
-    userMenuIsOpen: boolean
-  }
+    userMenuIsOpen: boolean,
+  },
 > {
   static contextTypes = {
     router: PropTypes.object,
@@ -129,5 +129,5 @@ export default createFragmentContainer(
       User_IsAnonymous
       User_DisplayName
     }
-  `
+  `,
 )
