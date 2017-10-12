@@ -5,9 +5,7 @@ var _package = require('../_configuration/package.js');function _interopRequireD
 // Read environment
 require('dotenv').load();
 
-console.log(
-'Current version in package.json: ' + process.env.npm_package_version);
-
+console.log('Current version in package.json: ' + process.env.npm_package_version);
 console.log('Current version in package.js:   ' + _package.version);
 
 const arrVersion = _package.version.split('.');
@@ -15,10 +13,7 @@ let versionBuildNumber = arrVersion[3];
 
 if (versionBuildNumber == null) versionBuildNumber = -1;
 
-if (
-process.env.npm_package_version !=
-arrVersion[0] + '.' + arrVersion[1] + '.' + arrVersion[2])
-
+if (process.env.npm_package_version != arrVersion[0] + '.' + arrVersion[1] + '.' + arrVersion[2])
 versionBuildNumber = -1;
 
 // Increment build

@@ -16,8 +16,7 @@ const CassandraOptions = {
 
 
 if (process.env.CASSANDRA_USER) {
-  CassandraOptions.authProvider = new _cassandraDriver2.default.auth.
-  PlainTextAuthProvider(
+  CassandraOptions.authProvider = new _cassandraDriver2.default.auth.PlainTextAuthProvider(
   process.env.CASSANDRA_USER,
   process.env.CASSANDRA_PASSWORD);
 

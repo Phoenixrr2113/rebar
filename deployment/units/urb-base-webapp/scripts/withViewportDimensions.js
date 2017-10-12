@@ -22,8 +22,7 @@ dimensions)
 
       const state = {};
 
-      for (let dimension of dimensions)
-      state[dimension] = viewportDimensions.get(this, dimension);
+      for (let dimension of dimensions) state[dimension] = viewportDimensions.get(this, dimension);
 
       this.state = state;
     }
@@ -38,7 +37,6 @@ dimensions)
 
       viewportDimensions.removeComponent(this);
     }
-
 
 
 

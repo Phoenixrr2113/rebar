@@ -16,8 +16,7 @@ new _graphql.GraphQLObjectType({
     id: (0, _graphqlRelay.globalIdField)('Viewer'),
     User_IsAnonymous: {
       type: _graphql.GraphQLBoolean,
-      resolve: obj =>
-      _defaultPersister2.default.uuidEquals(obj.id, _defaultPersister2.default.uuidNull()) },
+      resolve: obj => _defaultPersister2.default.uuidEquals(obj.id, _defaultPersister2.default.uuidNull()) },
 
     UserToken2: { type: _graphql.GraphQLString, resolve: obj => obj.UserToken2 },
     User_DisplayName: {
