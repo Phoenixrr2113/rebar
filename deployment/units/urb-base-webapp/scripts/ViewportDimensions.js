@@ -53,8 +53,6 @@ class ViewportDimensions {
 
 
 
-
-
     removeComponent = component => {
       this.subscribedComponents.delete(component);
     };this.

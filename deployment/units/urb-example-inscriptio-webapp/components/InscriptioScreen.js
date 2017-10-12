@@ -5,12 +5,11 @@ var _styles = require('material-ui/styles');
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactGoogleMaps = require('react-google-maps');
-var _withScriptjs = require('react-google-maps/lib/async/withScriptjs');var _withScriptjs2 = _interopRequireDefault(_withScriptjs);
 var _reactRelay = require('react-relay');
 
 var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const MapComponent = (0, _withScriptjs2.default)(
+const MapComponent = (0, _reactGoogleMaps.withScriptjs)(
 (0, _reactGoogleMaps.withGoogleMap)(props =>
 _react2.default.createElement(_reactGoogleMaps.GoogleMap, { defaultZoom: props.defaultZoom, center: props.center },
   props.markers.map((marker, index) => _react2.default.createElement(_reactGoogleMaps.Marker, { key: index, position: marker.position })))));

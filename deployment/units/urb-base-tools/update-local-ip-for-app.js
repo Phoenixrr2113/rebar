@@ -14,8 +14,7 @@ if (IPAddress === undefined) {
     for (let k2 in interfaces[k]) {
       // $FlowIssue it will be there
       const address = interfaces[k][k2];
-      if (address.family === 'IPv4' && !address.internal)
-      addresses.push(address.address);
+      if (address.family === 'IPv4' && !address.internal) addresses.push(address.address);
     }
   }
 
@@ -51,9 +50,7 @@ function updateIPInFile(fileName, searchString, newContentOfLine) {
         fileLines[index] = newContentOfLine;
         fs.writeFileSync(fileName, fileLines.join('\n'));
 
-        console.log(
-        '[' + fileName + '] has been updated with local IP ' + IPAddress);
-
+        console.log('[' + fileName + '] has been updated with local IP ' + IPAddress);
       }
       break;
     } else index++;

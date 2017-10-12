@@ -103,6 +103,5 @@ function startDevelopmentServer(port, host) {
   const localIPDevelopmentServer = (0, _express2.default)();
   localIPDevelopmentServer.use(server);
   localIPDevelopmentServer.listen(port, host);
-  console.log('DEVELOPMENT. Server listening on ' + host);
 }
 //# sourceMappingURL=server.js.map

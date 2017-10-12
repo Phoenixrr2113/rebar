@@ -62,14 +62,16 @@ class HomePageScreen extends _react2.default.Component
 
 
 
-              _react2.default.createElement('ul', null,
-                _react2.default.createElement('li', null,
-                  _react2.default.createElement('b', null, 'Configurability'), ' - All the configuration files, which include settings, CQL, JSON, snippets of JavaScript and JSX are separated from the common code.'),
+              _react2.default.createElement('br', null),
+              _react2.default.createElement('br', null)),
+
+            _react2.default.createElement(_Typography2.default, { component: 'ul' },
+              _react2.default.createElement('li', null,
+                _react2.default.createElement('b', null, 'Configurability'), ' - All the configuration files, which include settings, CQL, JSON, snippets of JavaScript and JSX are separated from the common code.'),
 
 
-                _react2.default.createElement('li', null,
-                  _react2.default.createElement('b', null, 'Modularity'), ' - The applications built upon the boilerplate are separated into semi-independent units, which contain the necessary front-end, back end, relay, CQL, etc. code. The parameters and settings for those units are stored in the configuration folder for eacy updating.'))))),
-
+              _react2.default.createElement('li', null,
+                _react2.default.createElement('b', null, 'Modularity'), ' - The applications built upon the boilerplate are separated into semi-independent units, which contain the necessary front-end, back end, relay, CQL, etc. code. The parameters and settings for those units are stored in the configuration folder for eacy updating.')))),
 
 
 

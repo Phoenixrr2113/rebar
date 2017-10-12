@@ -27,15 +27,8 @@ class TextFieldWithError extends _react2.default.Component
     const isError = errorText !== '';
 
     return (
-      _react2.default.createElement(_FormControl2.default, {
-          className: classes.formControl,
-          error: isError,
-          id: id,
-          fullWidth: true },
-
-        _react2.default.createElement(_InputLabel2.default, { htmlFor: isError ? 'name-simple' : 'name-error' },
-          label),
-
+      _react2.default.createElement(_FormControl2.default, { className: classes.formControl, error: isError, id: id, fullWidth: true },
+        _react2.default.createElement(_InputLabel2.default, { htmlFor: isError ? 'name-simple' : 'name-error' }, label),
         _react2.default.createElement(_Input2.default, { id: 'value', value: value, onChange: onChange }),
         _react2.default.createElement(_FormHelperText2.default, null, isError ? errorText : '')));
 

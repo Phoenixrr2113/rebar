@@ -70,8 +70,7 @@ class LogoutScreen extends _react2.default.Component
         this.setState({
           currentOperation: 'failure',
           errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message });
+          'Did not receive proper response from server. Please try again. Message:' + err.message });
 
       }
     };this.

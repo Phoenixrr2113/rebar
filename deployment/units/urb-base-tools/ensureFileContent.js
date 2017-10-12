@@ -12,8 +12,7 @@ currentFileContent,
 newFileContent)
 {
   // If the current file content is not provided, get it
-  if (currentFileContent == null)
-  currentFileContent = (await readFileAsync(fileName)).toString();
+  if (currentFileContent == null) currentFileContent = (await readFileAsync(fileName)).toString();
 
   if (currentFileContent !== newFileContent) {
     console.log('✍️  written:  ' + fileName);

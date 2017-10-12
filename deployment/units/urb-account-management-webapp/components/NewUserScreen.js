@@ -83,8 +83,7 @@ class NewUserScreen extends _react2.default.Component
         this.setState({
           currentOperation: 'failure',
           errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message });
+          'Did not receive proper response from server. Please try again. Message:' + err.message });
 
       }
     };this.
@@ -180,8 +179,7 @@ class NewUserScreen extends _react2.default.Component
           label: 'Account Name',
           fullWidth: true,
           value: UserAccount_Identifier,
-          onChange: event =>
-          this.setState({ UserAccount_Identifier: event.target.value }) }),
+          onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
 
         _react2.default.createElement(_TextField2.default, {
           label: 'Password',

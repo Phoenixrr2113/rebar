@@ -1,4 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.User_0 = undefined;exports.
+
+
 
 
 
@@ -471,7 +473,7 @@
 
 
 getObjectManager = getObjectManager;var _dataloader = require('dataloader');var _dataloader2 = _interopRequireDefault(_dataloader);var _graphqlRelay = require('graphql-relay');var _UserToken2Anonymous = require('../../_configuration/urb-base-server/UserToken2Anonymous');var _UserToken2Anonymous2 = _interopRequireDefault(_UserToken2Anonymous);var _defaultPersister = require('../../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);var _getNewUser = require('../../_configuration/urb-base-server/graphql/model/getNewUser');var _getNewUser2 = _interopRequireDefault(_getNewUser);var _siteSettings = require('../../_configuration/urb-base-server/siteSettings');var _log = require('../log');var _log2 = _interopRequireDefault(_log);var _User = require('../../_configuration/urb-base-server/graphql/model/User');var _User2 = _interopRequireDefault(_User);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Anonymous user
-const User_0 = new _User2.default(Object.assign((0, _getNewUser2.default)(_defaultPersister2.default.uuidNull()), { id: _defaultPersister2.default.uuidNull(), UserToken2: _UserToken2Anonymous2.default, User_DisplayName: 'Anonymous' })); // Type of entity definition
+const User_0 = new _User2.default(Object.assign((0, _getNewUser2.default)(_defaultPersister2.default.uuidNull()), { id: _defaultPersister2.default.uuidNull(), UserToken2: _UserToken2Anonymous2.default, User_DisplayName: 'Anonymous' }));exports.User_0 = User_0; // Type of entity definition
 // Static set of entity definitions
 const entityDefinitions = {}; // Static array of object managers
 const setPersisters = new Set(); // Value for a change indicating that the record is deleted
