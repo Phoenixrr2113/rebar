@@ -38,16 +38,20 @@ const render = createRender({})
     render,
   })
 
-  ReactDOM.render(
+  // $FlowIssue for reason unknow flow does not see ReactDOM.hydrate.
+  ReactDOM.hydrate(
     <AppWrapper siteConfiguration={window.__siteConfiguration__}>
       <Router resolver={resolver} />
     </AppWrapper>,
     document.getElementById( 'root' ),
     () => {
-      // We don't need the static css any more once we have launched our application.
-      const ssStyles = document.getElementById( 'server-side-styles' )
-      // $FlowIssue it is guaranteed to be there
-      ssStyles.parentNode.removeChild( ssStyles )
+      // TODO x0100 Research if removal of styles if necessary
+      // Previous version of react required removing of JSS styles but the new one seems to handle
+      // them OK.
+      // // We don't need the static css any more once we have launched our application.
+      // const ssStyles = document.getElementById( 'server-side-styles' )
+      // // $FlowIssue it is guaranteed to be there
+      // ssStyles.parentNode.removeChild( ssStyles )
     },
   )
 })()
