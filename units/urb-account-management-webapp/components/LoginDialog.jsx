@@ -1,11 +1,7 @@
 // @flow
 
 import Button from 'material-ui/Button'
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from 'material-ui/Dialog'
+import Dialog, { DialogActions, DialogContent, DialogTitle } from 'material-ui/Dialog'
 import { LinearProgress } from 'material-ui/Progress'
 import Slide from 'material-ui/transitions/Slide'
 import TextField from 'material-ui/TextField'
@@ -26,14 +22,14 @@ class LoginDialog extends React.Component<
     open: boolean,
     handlerClose: Function,
     handlerNewUser: Function,
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'challenge' | 'in progress' | 'failure',
     errorMessage: string,
     UserAccount_Identifier: string,
-    User_Secret: string
-  }
+    User_Secret: string,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -92,8 +88,7 @@ class LoginDialog extends React.Component<
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          'Did not receive proper response from server. Please try again. Message:' + err.message,
       })
     }
   }
@@ -121,11 +116,7 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, User_Secret } = this.state
 
     return (
-      <Dialog
-        open={open}
-        transition={Slide}
-        onRequestClose={this._handle_Close}
-      >
+      <Dialog open={open} transition={Slide} onRequestClose={this._handle_Close}>
         <DialogTitle>Log In</DialogTitle>
 
         <DialogContent>
@@ -133,16 +124,14 @@ class LoginDialog extends React.Component<
             label="Account Name"
             fullWidth={true}
             value={UserAccount_Identifier}
-            onChange={event =>
-              this.setState({ UserAccount_Identifier: event.target.value })}
+            onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
           />
           <TextField
             label="Password"
             type="password"
             fullWidth={true}
             value={User_Secret}
-            onChange={event =>
-              this.setState({ User_Secret: event.target.value })}
+            onChange={event => this.setState({ User_Secret: event.target.value })}
           />
         </DialogContent>
         <DialogActions>

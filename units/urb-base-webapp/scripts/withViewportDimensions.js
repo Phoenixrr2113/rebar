@@ -7,7 +7,7 @@ import type { ViewportDimensionType } from './ViewportDimensionType'
 
 export default function withViewportDimensions(
   WrappedComponent: Object,
-  dimensions: Array<ViewportDimensionType>
+  dimensions: Array<ViewportDimensionType>,
 ) {
   // ...and returns another component...
   return class extends React.Component<Object, Object> {
@@ -22,8 +22,7 @@ export default function withViewportDimensions(
 
       const state = {}
 
-      for ( let dimension of dimensions )
-        state[dimension] = viewportDimensions.get( this, dimension )
+      for ( let dimension of dimensions ) state[dimension] = viewportDimensions.get( this, dimension )
 
       this.state = state
     }
@@ -44,8 +43,7 @@ export default function withViewportDimensions(
 
       const state = {}
 
-      for ( let dimension of dimensions )
-        state[dimension] = viewportDimensions.get( this, dimension )
+      for ( let dimension of dimensions ) state[dimension] = viewportDimensions.get( this, dimension )
 
       this.setState( state )
     }

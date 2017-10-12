@@ -179,7 +179,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
                 <IconMenu />
               </IconButton>
               <Typography className={classes.title} type="title" color="inherit" noWrap>
-                Rebar Rules
+                Rebar Factory
               </Typography>
 
               <div className={classes.grow} />
@@ -191,8 +191,10 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
             open={drawerIsOpen}
             onRequestClose={this._handle_Drawer_Close}
             type={drawerType}
-            enterTransitionDuration={drawerIsPinned ? 0 : 300}
-            leaveTransitionDuration={0}
+            transitionDuration={{
+              enter: drawerIsPinned ? 0 : 300,
+              leave: 0,
+            }}
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>

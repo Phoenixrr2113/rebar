@@ -28,6 +28,7 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 | [JSS](http://cssinjs.org/)                                      | JSS is a more powerful abstraction over CSS. It uses JavaScript as a language to describe styles in a declarative and maintainable way. |
 | [Material UI](http://www.material-ui.com/)                      | Library for implementing [Material Design](https://www.google.com/design/spec/material-design/introduction.html) in React. All user interface in this kit is built exclusively with Material UI components. |
 | [React](https://facebook.github.io/react/)                      | The best library for building modern browser-based and mobile UIs. |
+| [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
 | [React Native](https://facebook.github.io/react-native/)        | React Native enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
@@ -35,27 +36,26 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 
 | **Technology** | **Description**|
 |----------------|----------------|
-| [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
-| [GraphQL](http://graphql.org/docs/getting-started/)             | A query language for describing the capabilities and requirements of data models for client‐server applications. |
-| [Express GraphQL](https://github.com/units/urb-base-server/graphql/express-graphql) | A Node.js express library that allows the creation of GraphQL servers. |
-| [Data Loader](https://github.com/facebook/dataloader)           | Generic utility to be used as part of your application's data fetching layer to provide a consistent API over various backends and reduce requests to those backends via batching and caching. |
 | [Apache Cassandra](http://cassandra.apache.org/)                | The right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra's support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. |
+| [Data Loader](https://github.com/facebook/dataloader)           | Generic utility to be used as part of your application's data fetching layer to provide a consistent API over various backends and reduce requests to those backends via batching and caching. |
 | [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. URB works well with Elassandra. |
+| [Express GraphQL](https://github.com/units/urb-base-server/graphql/express-graphql) | A Node.js express library that allows the creation of GraphQL servers. |
+| [GraphQL](http://graphql.org/docs/getting-started/)             | A query language for describing the capabilities and requirements of data models for client‐server applications. |
 | [JWT](https://jwt.io/)                                          | JSON Web Tokens is an industry standard [RFC 7519](https://tools.ietf.org/html/rfc7519) method for representing claims securely between two parties. |
-| [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
+| [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
 
 ## Development tools
 
 | **Technology** | **Description**|
 |----------------|----------------|
-| [Babel](http://babeljs.io)                                      | Compiles ES6/ES7 to ES5. Allows using features from ES6 and ES7 today. Also, used by Relay. |
+| [Babel](http://babeljs.io)                                      | Transpiles ESX to ESX and performs relay transformations. |
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
-| [GraphiQL](https://github.com/units/urb-base-server/graphql/graphiql) | An graphical interactive in-browser GraphQL IDE. It allows to test the entire schema provided by GraphQL and can be an excellent tool for exploring the boilerplate, as well as a part of applications built on top of it. |
-| [Husky](https://github.com/typicode/husky)                      | Git hooks made easy. |
-| [Prettier](https://github.com/prettier/prettier/)               | An opinionated code formatter. |
-| [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Tweak React components in real time. |
-| [Webpack](http://webpack.github.io)                             | Bundles npm packages and the application Java Script into a single file. Also, Webpack can bundle any required CSS. |
+| [GraphiQL](https://github.com/units/urb-base-server/graphql/graphiql) | Graphical interactive in-browser GraphQL IDE. It allows to test the entire schema provided by GraphQL and can be an excellent tool for exploring the boilerplate, as well as a part of applications built on top of it. |
+| [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
+| [Prettier](https://github.com/prettier/prettier/)               | Code formatter for javaScript. |
+| [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Allows tweaking of React components in real time. |
+| [Webpack](http://webpack.github.io)                             | Bundles npm packages, application Java Script, CSS, images, etc. into bundles. |
 
 
 
@@ -148,14 +148,10 @@ The following documents, while not explicitly related to the boilerplate, can be
 * [React Cheatsheet](http://codefoundries.com/developer/react/react-cheatsheet.html). Techniques for working with React used in the starter kit.
 * [Where to Store Your JWTs - Cookies vs HTML5 Web Storage](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage/). Explains the advantages of using HTTP only cookies.
 
-
-# Universal Relay Boilerplate (URB) Classic
+## Universal Relay Boilerplate (URB) Classic
 
 The previous version of this repository with Material-UI `0.18.x` and Relay `0.10` is available at [Universal Relay Boilerplate Classic](https://github.com/codefoundries/UniversalRelayBoilerplateClassic). The current version is unfinished and under heavy development. Additional units with Windows support and DynamoDB support can be found at [Universal Relay Boilerplate Extra](https://github.com/codefoundries/UniversalRelayBoilerplateExtra).
-
-## Older Resources
-
-These mostly apply to URB classic. Will be removed once updated versions are created.
+The following mostly apply to URB classic. Will be removed once updated versions are created.
 
 * [Environment Variables Configuration](http://codefoundries.com/developer/rebar/configuration-environment-variables.html).
 * [Customizing Material-UI Look and Feel](http://codefoundries.com/developer/rebar/configuration-material-ui.html).

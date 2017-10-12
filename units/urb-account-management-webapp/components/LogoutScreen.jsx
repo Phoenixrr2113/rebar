@@ -17,12 +17,12 @@ const styles = theme => ({
 
 class LogoutScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'confirm' | 'logging out' | 'success' | 'failure',
-    errorMessage: string
-  }
+    errorMessage: string,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -70,8 +70,7 @@ class LogoutScreen extends React.Component<
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          'Did not receive proper response from server. Please try again. Message:' + err.message,
       })
     }
   }

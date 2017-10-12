@@ -48,9 +48,7 @@ export default class ViewportDimensions {
     // Now that the configuration is current, get the setting value
     let dimensionValue = this.viewportDimensions[dimensionName]
     if ( dimensionValue == null )
-      throw new Error(
-        'Could not find viewport dimension named ' + dimensionName
-      )
+      throw new Error( 'Could not find viewport dimension named ' + dimensionName )
 
     return dimensionValue
   }

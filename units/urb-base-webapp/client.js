@@ -10,10 +10,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import getGraphQLServerURL from '../_configuration/urb-base-webapp/getGraphQLServerURL'
+import AppWrapper from '../_configuration/urb-base-webapp/AppWrapper'
 
 import FetcherClient from './fetcherClient'
 import { createResolver, historyMiddlewares, routeConfig } from './router'
-import Wrapper from './components/Wrapper'
 
 // Include global CSS used in all units. Will not be chunked
 import '../_configuration/urb-base-webapp/global.css'
@@ -39,9 +39,9 @@ const render = createRender({})
   })
 
   ReactDOM.render(
-    <Wrapper siteConfiguration={window.__siteConfiguration__}>
+    <AppWrapper siteConfiguration={window.__siteConfiguration__}>
       <Router resolver={resolver} />
-    </Wrapper>,
+    </AppWrapper>,
     document.getElementById( 'root' ),
     () => {
       // We don't need the static css any more once we have launched our application.

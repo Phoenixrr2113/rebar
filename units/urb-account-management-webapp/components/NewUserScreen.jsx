@@ -18,14 +18,14 @@ const styles = theme => ({
 
 class NewUserScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'prompt' | 'creating' | 'success' | 'failure',
     errorMessage: string,
     UserAccount_Identifier: string,
-    User_Secret: string
-  }
+    User_Secret: string,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -83,8 +83,7 @@ class NewUserScreen extends React.Component<
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          'Did not receive proper response from server. Please try again. Message:' + err.message,
       })
     }
   }
@@ -180,8 +179,7 @@ class NewUserScreen extends React.Component<
           label="Account Name"
           fullWidth={true}
           value={UserAccount_Identifier}
-          onChange={event =>
-            this.setState({ UserAccount_Identifier: event.target.value })}
+          onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
         />
         <TextField
           label="Password"

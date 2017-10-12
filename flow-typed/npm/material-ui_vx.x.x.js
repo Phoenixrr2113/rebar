@@ -42,6 +42,10 @@ declare module 'material-ui/Badge/Badge' {
   declare module.exports: any
 }
 
+declare module 'material-ui/Select' {
+  declare module.exports: any
+}
+
 declare module 'material-ui/Badge/index' {
   declare module.exports: any
 }
