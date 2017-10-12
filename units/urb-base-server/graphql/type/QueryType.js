@@ -32,7 +32,7 @@ export default new GraphQLObjectType({
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {}),
+        objectManager.getOneObject( 'User', { id: objectManager.getViewerUserId() }),
     },
   }),
 })
