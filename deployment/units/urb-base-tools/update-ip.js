@@ -10,9 +10,7 @@ require('dotenv').load();
 
 const port = process.env.PORT;
 if (port == null || typeof port !== 'string')
-throw new Error(
-'💔  update-ip requires the environment variable PORT to be set');
-
+throw new Error('Error: pdate-ip requires the environment variable PORT to be set');
 
 let IPAddress = process.argv[2];
 
@@ -34,12 +32,7 @@ if (IPAddress !== undefined) {
   'const publicURL = \'http://' + IPAddress + ':' + port + '\'',
   IPAddress);
 
-  updateIPInFile(
-  './.env',
-  'PUBLIC_URL=',
-  'PUBLIC_URL=http://' + IPAddress + ':' + port,
-  IPAddress);
-
+  updateIPInFile('./.env', 'PUBLIC_URL=', 'PUBLIC_URL=http://' + IPAddress + ':' + port, IPAddress);
   updateIPInFile('./.env', 'HOST=', 'HOST=' + IPAddress, IPAddress);
 } else console.log('IP Address not specified and could not be found');
 
@@ -56,9 +49,7 @@ function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
           fileLines[index] = newContentOfLine;
           _fs2.default.writeFileSync(fileName, fileLines.join('\n'));
 
-          console.log(
-          '[' + fileName + '] has been updated with local IP ' + IPAddress);
-
+          console.log('[' + fileName + '] has been updated with local IP ' + IPAddress);
         }
         break;
       } else {
@@ -66,12 +57,7 @@ function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
       }
     }
   } catch (err) {
-    console.log(
-    '[' +
-    fileName +
-    '] has not been been updated with local IP because ' +
-    err);
-
+    console.log('[' + fileName + '] has not been been updated with local IP because ' + err);
   }
 }
 //# sourceMappingURL=update-ip.js.map

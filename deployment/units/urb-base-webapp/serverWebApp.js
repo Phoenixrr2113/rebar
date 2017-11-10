@@ -17,24 +17,26 @@ var _siteSettings = require('../_configuration/urb-base-server/siteSettings');
 var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(_log);
 var _package = require('../_configuration/package');
 var _UserToken2ServerRendering = require('../_configuration/urb-base-server/UserToken2ServerRendering');var _UserToken2ServerRendering2 = _interopRequireDefault(_UserToken2ServerRendering);
+var _AppWrapper = require('../_configuration/urb-base-webapp/AppWrapper');var _AppWrapper2 = _interopRequireDefault(_AppWrapper);
 
 var _fetcherServer = require('./fetcherServer');var _fetcherServer2 = _interopRequireDefault(_fetcherServer);
-var _router = require('./router');
-var _Wrapper = require('./components/Wrapper');var _Wrapper2 = _interopRequireDefault(_Wrapper);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _router = require('./router');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
 
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')
-throw new Error('💔  urb-base-webapp requires the environment variable HOST to be set');
+throw new Error('Error: urb-base-webapp requires the environment variable HOST to be set');
 const envPort = process.env.PORT;
 if (envPort == null || typeof envPort !== 'string')
-throw new Error('💔  urb-base-webapp requires the environment variable PORT to be set');
+throw new Error('Error: urb-base-webapp requires the environment variable PORT to be set');
 const envPortWebpack = process.env.PORT_WEBPACK;
 if (envPortWebpack == null || typeof envPortWebpack !== 'string')
-throw new Error('💔  urb-base-webapp requires the environment variable PORT_WEBPACK to be set'); // Create express router
+throw new Error('Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set'); // Create express router
+
 const serverWebApp = (0, _express2.default)();
+
 async function gatherLocationAndSiteInformation(req, res) {
   let assetsPath;
   const siteInformation = await (0, _siteSettings.getSiteInformation)(req, res);
@@ -62,9 +64,11 @@ const render = (0, _createRender2.default)({
 serverWebApp.use(async (req, res) => {
   try {
     const { siteInformation, assetsPath } = await gatherLocationAndSiteInformation(req, res);
+
     const fetcher = new _fetcherServer2.default(
     `http://localhost:${envPort}` + (0, _getGraphQLLocalServerURL2.default)(siteInformation),
     req.cookies.UserToken1, _UserToken2ServerRendering2.default);
+
 
 
     const { redirect, element } = await (0, _server.getFarceResult)({
@@ -74,22 +78,26 @@ serverWebApp.use(async (req, res) => {
       resolver: (0, _router.createResolver)(fetcher),
       render });
 
+
     if (redirect) {
       res.redirect(302, redirect.url);
       return;
     }
+
     const userAgent = req.headers['user-agent'];
     const { siteConfiguration } = siteInformation;
     const siteConfigurationSubset = {
       webapp: siteConfiguration.webapp,
       builder: siteConfiguration.builder };
 
+
     const sheets = new _reactJss.SheetsRegistry();
     const helmet = _reactHelmet2.default.rewind();
     const rootHTML = _server3.default.renderToString(
     _react2.default.createElement(_reactJss.JssProvider, { registry: sheets },
-      _react2.default.createElement(_Wrapper2.default, { userAgent: userAgent, siteConfiguration: siteConfigurationSubset },
+      _react2.default.createElement(_AppWrapper2.default, { userAgent: userAgent, siteConfiguration: siteConfigurationSubset },
         element)));
+
 
 
 

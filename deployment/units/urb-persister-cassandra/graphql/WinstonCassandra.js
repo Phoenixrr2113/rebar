@@ -64,10 +64,7 @@ Cassandra.prototype.getKey = function () {
 Cassandra.prototype._insertLog = function (level, msg, meta, callback) {
   var key = this.getKey();
   if (!key) {
-    return callback(
-    new Error('Partition ' + this.options.partitionBy + ' not supported'),
-    false);
-
+    return callback(new Error('Partition ' + this.options.partitionBy + ' not supported'), false);
   }
   //execute as a prepared query as it would be executed multiple times
   return this.client.execute(

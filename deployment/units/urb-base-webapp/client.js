@@ -10,10 +10,10 @@ var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactDom = require('react-dom');var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _getGraphQLServerURL = require('../_configuration/urb-base-webapp/getGraphQLServerURL');var _getGraphQLServerURL2 = _interopRequireDefault(_getGraphQLServerURL);
+var _AppWrapper = require('../_configuration/urb-base-webapp/AppWrapper');var _AppWrapper2 = _interopRequireDefault(_AppWrapper);
 
 var _fetcherClient = require('./fetcherClient');var _fetcherClient2 = _interopRequireDefault(_fetcherClient);
 var _router = require('./router');
-var _Wrapper = require('./components/Wrapper');var _Wrapper2 = _interopRequireDefault(_Wrapper);
 
 
 require('../_configuration/urb-base-webapp/global.css');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -38,16 +38,20 @@ const render = (0, _createRender2.default)({})
     render });
 
 
-  _reactDom2.default.render(
-  _react2.default.createElement(_Wrapper2.default, { siteConfiguration: window.__siteConfiguration__ },
+  // $FlowIssue for reason unknow flow does not see ReactDOM.hydrate.
+  _reactDom2.default.hydrate(
+  _react2.default.createElement(_AppWrapper2.default, { siteConfiguration: window.__siteConfiguration__ },
     _react2.default.createElement(Router, { resolver: resolver })),
 
   document.getElementById('root'),
   () => {
-    // We don't need the static css any more once we have launched our application.
-    const ssStyles = document.getElementById('server-side-styles');
-    // $FlowIssue it is guaranteed to be there
-    ssStyles.parentNode.removeChild(ssStyles);
+    // TODO x0100 Research if removal of styles if necessary
+    // Previous version of react required removing of JSS styles but the new one seems to handle
+    // them OK.
+    // // We don't need the static css any more once we have launched our application.
+    // const ssStyles = document.getElementById( 'server-side-styles' )
+    // // $FlowIssue it is guaranteed to be there
+    // ssStyles.parentNode.removeChild( ssStyles )
   });
 
 })();

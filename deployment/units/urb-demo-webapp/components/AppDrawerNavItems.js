@@ -23,32 +23,48 @@ const styles = {
 
 class AppDrawerNavItems extends _react2.default.Component {
   render() {
-    const { classes } = this.props;
+    const { classes, onClick } = this.props;
 
     return (
       _react2.default.createElement('div', null,
         _react2.default.createElement(_Divider2.default, null),
         _react2.default.createElement(_List2.default, { className: classes.list },
-          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_Inbox2.default, null), label: 'To Dos', to: '/todo/' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Inbox2.default, null),
+            label: 'To Dos',
+            onClick: () => onClick('/todo/') }),
+
           _react2.default.createElement(_NavMenuItemWithIcon2.default, {
             icon: _react2.default.createElement(_ModeEdit2.default, null),
             label: 'Ensayo Edit',
-            to: '/ensayo/in-place-edit/' }),
+            onClick: () => onClick('/ensayo/in-place-edit/') }),
 
-          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_ImportContacts2.default, null), label: 'Ensayo Public', to: '/ensayo/' }),
-          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_MyLocation2.default, null), label: 'Inscriptio', to: '/inscriptio/' }),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_ImportContacts2.default, null),
+            label: 'Ensayo Public',
+            onClick: () => onClick('/ensayo/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_MyLocation2.default, null),
+            label: 'Inscriptio',
+            onClick: () => onClick('/inscriptio/') }),
+
           _react2.default.createElement(_NavMenuItemWithIcon2.default, {
             icon: _react2.default.createElement(_Today2.default, null),
             label: 'Translaticiarum',
-            to: '/translaticiarum/' }),
+            onClick: () => onClick('/translaticiarum/') }),
 
           _react2.default.createElement(_Divider2.default, null),
           _react2.default.createElement(_NavMenuItemWithIcon2.default, {
             icon: _react2.default.createElement(_OpenWith2.default, null),
             label: 'Viewport Dimensions',
-            to: '/viewport-dimensions/' }),
+            onClick: () => onClick('/viewport-dimensions/') }),
 
-          _react2.default.createElement(_NavMenuItemWithIcon2.default, { icon: _react2.default.createElement(_LockOutline2.default, null), label: 'Force Login', to: '/force-login/' }))));
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_LockOutline2.default, null),
+            label: 'Force Login',
+            onClick: () => onClick('/force-login/') }))));
+
 
 
 

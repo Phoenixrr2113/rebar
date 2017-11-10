@@ -2,10 +2,6 @@
 
 var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
 var _Dialog = require('material-ui/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
-
-
-
-
 var _Progress = require('material-ui/Progress');
 var _Slide = require('material-ui/transitions/Slide');var _Slide2 = _interopRequireDefault(_Slide);
 var _TextField = require('material-ui/TextField');var _TextField2 = _interopRequireDefault(_TextField);
@@ -92,8 +88,7 @@ class LoginDialog extends _react2.default.Component
         this.setState({
           currentOperation: 'failure',
           errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message });
+          'Did not receive proper response from server. Please try again. Message:' + err.message });
 
       }
     };this.
@@ -121,11 +116,7 @@ class LoginDialog extends _react2.default.Component
     const { UserAccount_Identifier, User_Secret } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, {
-          open: open,
-          transition: _Slide2.default,
-          onRequestClose: this._handle_Close },
-
+      _react2.default.createElement(_Dialog2.default, { open: open, transition: _Slide2.default, onRequestClose: this._handle_Close },
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
@@ -133,16 +124,14 @@ class LoginDialog extends _react2.default.Component
             label: 'Account Name',
             fullWidth: true,
             value: UserAccount_Identifier,
-            onChange: event =>
-            this.setState({ UserAccount_Identifier: event.target.value }) }),
+            onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
 
           _react2.default.createElement(_TextField2.default, {
             label: 'Password',
             type: 'password',
             fullWidth: true,
             value: User_Secret,
-            onChange: event =>
-            this.setState({ User_Secret: event.target.value }) })),
+            onChange: event => this.setState({ User_Secret: event.target.value }) })),
 
 
         _react2.default.createElement(_Dialog.DialogActions, null,
