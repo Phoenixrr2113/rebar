@@ -5,9 +5,7 @@ import { graphql } from 'react-relay'
 import React from 'react'
 import Route from 'found/lib/Route'
 
-const ToDoList = props => (
-  <Async load={import( './components/ToDoList' )} componentProps={props} />
-)
+const ToDoList = props => <Async load={import( './components/ToDoList' )} componentProps={props} />
 
 const ToDoScreen = props => (
   <Async load={import( './components/ToDoScreen' )} componentProps={props} />

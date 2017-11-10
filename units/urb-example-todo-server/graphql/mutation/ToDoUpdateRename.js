@@ -16,20 +16,12 @@ export default mutationWithClientMutationId({
   outputFields: {
     ToDo: {
       type: ToDoType,
-      resolve: (
-        { local_id },
-        { ...args },
-        context,
-        { rootValue: objectManager }
-      ) => objectManager.getOneObject( 'ToDo', { id: local_id }),
+      resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
+        objectManager.getOneObject( 'ToDo', { id: local_id }),
     },
   },
 
-  mutateAndGetPayload: async(
-    { id, ToDo_Text },
-    context,
-    { rootValue: objectManager }
-  ) => {
+  mutateAndGetPayload: async({ id, ToDo_Text }, context, { rootValue: objectManager }) => {
     const local_id = fromGlobalId( id ).id
 
     await objectManager.update( 'ToDo', {

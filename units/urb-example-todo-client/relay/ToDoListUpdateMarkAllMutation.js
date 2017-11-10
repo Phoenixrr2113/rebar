@@ -4,10 +4,7 @@ import { commitMutation, graphql } from 'react-relay'
 import { ConnectionHandler } from 'relay-runtime'
 
 const mutation = graphql`
-  mutation ToDoListUpdateMarkAllMutation(
-    $input: ToDoListUpdateMarkAllInput!
-    $status: String!
-  ) {
+  mutation ToDoListUpdateMarkAllMutation($input: ToDoListUpdateMarkAllInput!, $status: String!) {
     ToDoListUpdateMarkAll(input: $input) {
       Viewer {
         ToDos(status: $status) {
@@ -40,11 +37,7 @@ function commit( environment, user, ToDos, ToDo_Complete, status ) {
 
     updater( store ) {
       const userProxy = store.get( user.id )
-      const connection = ConnectionHandler.getConnection(
-        userProxy,
-        'ToDoList_ToDos',
-        { status }
-      )
+      const connection = ConnectionHandler.getConnection( userProxy, 'ToDoList_ToDos', { status })
       const ToDosEdges = store
         .getRootField( 'ToDoListUpdateMarkAll' )
         .getLinkedRecord( 'Viewer' )
@@ -55,16 +48,9 @@ function commit( environment, user, ToDos, ToDo_Complete, status ) {
 
     optimisticUpdater( store ) {
       const userProxy = store.get( user.id )
-      const connection = ConnectionHandler.getConnection(
-        userProxy,
-        'ToDoList_ToDos',
-        { status }
-      )
+      const connection = ConnectionHandler.getConnection( userProxy, 'ToDoList_ToDos', { status })
 
-      if (
-        ( ToDo_Complete && status === 'active' ) ||
-        ( !ToDo_Complete && status === 'completed' )
-      ) {
+      if ( ( ToDo_Complete && status === 'active' ) || ( !ToDo_Complete && status === 'completed' ) ) {
         connection.setLinkedRecords([], 'edges' )
       }
     },

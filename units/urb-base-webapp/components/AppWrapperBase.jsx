@@ -54,6 +54,9 @@ export default class AppWrapperBase extends React.Component<
   }
 
   render() {
+    // Hacky hacky here ....
+    this.context = this.getChildContext()
+
     return (
       <EventListener target="window" onResize={this.handle_onResize}>
         <MuiThemeProvider theme={this.createMUITheme()}>{this.props.children}</MuiThemeProvider>
