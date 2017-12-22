@@ -187,7 +187,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
                 <IconMenu />
               </IconButton>
               <Typography className={classes.title} type="title" color="inherit" noWrap>
-                Code Foundries Maker
+                Universal Relay Boilerplate Demo
               </Typography>
 
               <div className={classes.grow} />
