@@ -10,8 +10,18 @@ import Typography from 'material-ui/Typography'
 import React from 'react'
 
 const styles = theme => ({
+  dialogPaper: {
+    minWidth: 320,
+  },
   grow: {
     flex: '1 1 auto',
+  },
+  userName: {
+    borderWidth: 1,
+    borderColor: '#c0c0c0',
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 })
 
@@ -116,7 +126,12 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, User_Secret } = this.state
 
     return (
-      <Dialog open={open} transition={Slide} onRequestClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        transition={Slide}
+        onRequestClose={this._handle_Close}
+      >
         <DialogTitle>Log In</DialogTitle>
 
         <DialogContent>
@@ -130,12 +145,18 @@ class LoginDialog extends React.Component<
             label="Password"
             type="password"
             fullWidth={true}
+            onKeyPress={ev => {
+              if ( ev.key === 'Enter' ) {
+                this._handle_onClick_LogIn()
+                ev.preventDefault()
+              }
+            }}
             value={User_Secret}
             onChange={event => this.setState({ User_Secret: event.target.value })}
           />
         </DialogContent>
         <DialogActions>
-          <Button color="accent" onClick={this._handle_onCLick_NewUser}>
+          <Button color="primary" onClick={this._handle_onCLick_NewUser}>
             New User
           </Button>
           <div className={classes.grow} />
@@ -149,19 +170,24 @@ class LoginDialog extends React.Component<
   }
 
   renderInProgress() {
-    const { open } = this.props
+    const { classes, open } = this.props
     const { UserAccount_Identifier } = this.state
 
     return (
-      <Dialog open={open} onRequestClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        onRequestClose={this._handle_Close}
+      >
         <DialogTitle>Logging in</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Logging in as
-            <br />
-            {UserAccount_Identifier}
+            <span class={classes.userName}>{UserAccount_Identifier}</span> ...
           </Typography>
+          <br />
+          <br />
           <LinearProgress mode="query" />
         </DialogContent>
         <DialogActions>
@@ -174,20 +200,21 @@ class LoginDialog extends React.Component<
   }
 
   renderFailure() {
-    const { open } = this.props
+    const { classes, open } = this.props
     const { UserAccount_Identifier, errorMessage } = this.state
 
     return (
-      <Dialog open={open} onRequestClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        onRequestClose={this._handle_Close}
+      >
         <DialogTitle>Log In Failed</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Failed loggin in as
-            <br />
-            {UserAccount_Identifier}
-            <br />
-            Reason: {errorMessage}
+            <span class={classes.userName}>{UserAccount_Identifier}</span> because: {errorMessage}!
           </Typography>
         </DialogContent>
         <DialogActions>

@@ -80,9 +80,8 @@ const styles = theme => ({
   hide: {
     display: 'none',
   },
-  drawerPaper: {
-    position: 'relative',
-    height: '100%',
+  drawerInner: {
+    // Make the items inside not wrap when transitioning:
     width: drawerWidth,
   },
   drawerHeader: {
@@ -91,6 +90,11 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
+  },
+  drawerPaper: {
+    position: 'relative',
+    height: '100%',
+    width: drawerWidth,
   },
   content: {
     width: '100%',
@@ -148,7 +152,11 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
   }
 
   _handle_GoTo = ( to: string ) => {
-    if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
+    // TODO x0500 For some reason if the drawer is not pinned, the MUI modal root will
+    // not be removed. Annoying AF. This bug was introduced around MIO 1.0 beta 17. Still a problem
+    // with beta 22.
+    //if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
+    if ( !this.state.drawerIsPinned ) this.setState({ drawerIsPinned: true })
 
     this.context.router.push( to )
   }
@@ -179,7 +187,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
                 <IconMenu />
               </IconButton>
               <Typography className={classes.title} type="title" color="inherit" noWrap>
-                Rebar Factory
+                Code Foundries Maker
               </Typography>
 
               <div className={classes.grow} />
@@ -198,7 +206,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
           >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
-                <AppDrawerTitle />
+                <AppDrawerTitle handle_GoTo={this._handle_GoTo} />
                 <div className={classes.grow} />
                 {drawerIsPinned && (
                   <IconButton onClick={this._handle_Drawer_UnPin}>

@@ -33,7 +33,7 @@ const render = createRender({})
   const Router = await createInitialFarceRouter({
     historyProtocol: new BrowserProtocol(),
     historyMiddlewares,
-    routeConfig,
+    routeConfig: routeConfig( window.__siteConfiguration__ ),
     resolver,
     render,
   })

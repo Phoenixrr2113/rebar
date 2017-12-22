@@ -71,10 +71,17 @@ serverWebApp.use( async( req, res ) => {
       UserToken2ServerRendering,
     )
 
+    const userAgent = req.headers['user-agent']
+    const { siteConfiguration } = siteInformation
+    const siteConfigurationSubset = {
+      webapp: siteConfiguration.webapp,
+      builder: siteConfiguration.builder,
+    }
+
     const { redirect, element } = await getFarceResult({
       url: req.url,
       historyMiddlewares,
-      routeConfig,
+      routeConfig: routeConfig( siteConfigurationSubset ),
       resolver: createResolver( fetcher ),
       render,
     })
@@ -82,13 +89,6 @@ serverWebApp.use( async( req, res ) => {
     if ( redirect ) {
       res.redirect( 302, redirect.url )
       return
-    }
-
-    const userAgent = req.headers['user-agent']
-    const { siteConfiguration } = siteInformation
-    const siteConfigurationSubset = {
-      webapp: siteConfiguration.webapp,
-      builder: siteConfiguration.builder,
     }
 
     const sheets = new SheetsRegistry()
