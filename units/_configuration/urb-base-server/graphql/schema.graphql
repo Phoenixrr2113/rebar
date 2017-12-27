@@ -1,10 +1,8 @@
-# A date-time string at UTC, such as 2007-12-03T10:15:30Z, compliant with the
-# `date-time` format outlined in section 5.6 of the RFC 3339 profile of the ISO
-# 8601 standard for representation of dates and times using the Gregorian calendar.
+#
 scalar DateTime
 
 type Ensayo implements Node {
-  # The ID of an object
+  #
   id: ID!
   Ensayo_Title: String
   Ensayo_Description: String
@@ -35,21 +33,21 @@ type EnsayoDeletePayload {
   clientMutationId: String
 }
 
-# A connection to a list of items.
+#
 type EnsayosConnection {
-  # Information to aid in pagination.
+  #
   pageInfo: PageInfo!
 
-  # A list of edges.
+  #
   edges: [EnsayosEdge]
 }
 
-# An edge in a connection.
+#
 type EnsayosEdge {
-  # The item at the end of the edge
+  #
   node: Ensayo
 
-  # A cursor for use in pagination
+  #
   cursor: String!
 }
 
@@ -67,7 +65,7 @@ type EnsayoUpdatePayload {
 }
 
 type Inscriptio implements Node {
-  # The ID of an object
+  #
   id: ID!
   Inscriptio_LocationLat: String
   Inscriptio_LocationLon: String
@@ -98,21 +96,21 @@ type InscriptioDeletePayload {
   clientMutationId: String
 }
 
-# A connection to a list of items.
+#
 type InscriptiosConnection {
-  # Information to aid in pagination.
+  #
   pageInfo: PageInfo!
 
-  # A list of edges.
+  #
   edges: [InscriptiosEdge]
 }
 
-# An edge in a connection.
+#
 type InscriptiosEdge {
-  # The item at the end of the edge
+  #
   node: Inscriptio
 
-  # A cursor for use in pagination
+  #
   cursor: String!
 }
 
@@ -146,24 +144,24 @@ type Mutation {
   TranslaticiarumUpdate(input: TranslaticiarumUpdateInput!): TranslaticiarumUpdatePayload
 }
 
-# An object with a globally unique id.
+#
 interface Node {
-  # The globally unique id of the object.
+  #
   id: ID!
 }
 
-# Information about pagination in a connection.
+#
 type PageInfo {
-  # When paginating forwards, are there more items?
+  #
   hasNextPage: Boolean!
 
-  # When paginating backwards, are there more items?
+  #
   hasPreviousPage: Boolean!
 
-  # When paginating backwards, the cursor to continue.
+  #
   startCursor: String
 
-  # When paginating forwards, the cursor to continue.
+  #
   endCursor: String
 }
 
@@ -173,7 +171,7 @@ type Query {
 }
 
 type ToDo implements Node {
-  # The ID of an object
+  #
   id: ID!
   ToDo_Text: String
   ToDo_Complete: Boolean
@@ -212,21 +210,21 @@ type ToDoListUpdateMarkAllPayload {
   clientMutationId: String
 }
 
-# A connection to a list of items.
+#
 type ToDosConnection {
-  # Information to aid in pagination.
+  #
   pageInfo: PageInfo!
 
-  # A list of edges.
+  #
   edges: [ToDosEdge]
 }
 
-# An edge in a connection.
+#
 type ToDosEdge {
-  # The item at the end of the edge
+  #
   node: ToDo
 
-  # A cursor for use in pagination
+  #
   cursor: String!
 }
 
@@ -254,7 +252,7 @@ type ToDoUpdateStatusPayload {
 }
 
 type Translaticiarum implements Node {
-  # The ID of an object
+  #
   id: ID!
   Translaticiarum_Start: DateTime
   Translaticiarum_Stop: DateTime
@@ -285,21 +283,21 @@ type TranslaticiarumDeletePayload {
   clientMutationId: String
 }
 
-# A connection to a list of items.
+#
 type TranslaticiarumsConnection {
-  # Information to aid in pagination.
+  #
   pageInfo: PageInfo!
 
-  # A list of edges.
+  #
   edges: [TranslaticiarumsEdge]
 }
 
-# An edge in a connection.
+#
 type TranslaticiarumsEdge {
-  # The item at the end of the edge
+  #
   node: Translaticiarum
 
-  # A cursor for use in pagination
+  #
   cursor: String!
 }
 
@@ -317,7 +315,7 @@ type TranslaticiarumUpdatePayload {
 }
 
 type Viewer implements Node {
-  # The ID of an object
+  #
   id: ID!
   User_IsAnonymous: Boolean
   UserToken2: String
