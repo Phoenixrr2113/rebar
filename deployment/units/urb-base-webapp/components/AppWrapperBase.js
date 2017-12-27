@@ -10,6 +10,7 @@ var _ViewportDimensions = require('../scripts/ViewportDimensions');var _Viewport
 class AppWrapperBase extends _react2.default.Component
 
 
+
 {
 
 
@@ -54,7 +55,10 @@ class AppWrapperBase extends _react2.default.Component
     };this.rbCtx = this.getWrapperRbCtx();this.rbCtx.viewportDimensions = new _ViewportDimensions2.default();this.rbCtx.siteConfiguration = props.siteConfiguration;}componentDidMount() {this.handle_onResize(); // Will populate the data structures for dimensions with current values
   }getChildContext() {return { rbCtx: this.rbCtx };} // This should be overridden in AppDrawer
   createMUITheme() {return null;} // Can be overrideen in AppDrawer
-  getWrapperRbCtx() {return {};}render() {return (
+  getWrapperRbCtx() {return {};}render() {// Hacky hacky here ....
+    this.context = this.getChildContext();
+
+    return (
       _react2.default.createElement(_reactEventListener2.default, { target: 'window', onResize: this.handle_onResize },
         _react2.default.createElement(_MuiThemeProvider2.default, { theme: this.createMUITheme() }, this.props.children)));
 

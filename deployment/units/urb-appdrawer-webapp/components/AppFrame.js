@@ -80,9 +80,8 @@ const styles = theme => ({
   hide: {
     display: 'none' },
 
-  drawerPaper: {
-    position: 'relative',
-    height: '100%',
+  drawerInner: {
+    // Make the items inside not wrap when transitioning:
     width: drawerWidth },
 
   drawerHeader: Object.assign({
@@ -91,6 +90,11 @@ const styles = theme => ({
     justifyContent: 'flex-end',
     padding: '0 8px' },
   theme.mixins.toolbar),
+
+  drawerPaper: {
+    position: 'relative',
+    height: '100%',
+    width: drawerWidth },
 
   content: {
     width: '100%',
@@ -148,7 +152,11 @@ class AppFrame extends _react2.default.Component {
     };this.
 
     _handle_GoTo = to => {
-      if (!this.state.drawerIsPinned) this.setState({ drawerIsOpen: false });
+      // TODO x0500 For some reason if the drawer is not pinned, the MUI modal root will
+      // not be removed. Annoying AF. This bug was introduced around MIO 1.0 beta 17. Still a problem
+      // with beta 22.
+      //if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
+      if (!this.state.drawerIsPinned) this.setState({ drawerIsPinned: true });
 
       this.context.router.push(to);
     };this.state = { drawerIsOpen: false, drawerIsPinned: false };}
@@ -178,7 +186,7 @@ class AppFrame extends _react2.default.Component {
 
                 _react2.default.createElement(_Menu2.default, null)),
 
-              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Rebar Factory'),
+              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Universal Relay Boilerplate Demo'),
 
 
 
@@ -198,7 +206,7 @@ class AppFrame extends _react2.default.Component {
 
             _react2.default.createElement('div', { className: classes.drawerInner },
               _react2.default.createElement('div', { className: classes.drawerHeader },
-                _react2.default.createElement(_AppDrawerTitle2.default, null),
+                _react2.default.createElement(_AppDrawerTitle2.default, { handle_GoTo: this._handle_GoTo }),
                 _react2.default.createElement('div', { className: classes.grow }),
                 drawerIsPinned &&
                 _react2.default.createElement(_IconButton2.default, { onClick: this._handle_Drawer_UnPin },

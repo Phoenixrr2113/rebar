@@ -25,11 +25,7 @@ const mutation = function () {return require('./__generated__/ToDoAddMutation.gr
 function sharedUpdater(store, user, ToDosEdge) {
   const userProxy = store.get(user.id);
   ['any', 'active'].forEach(status => {
-    const connection = _relayRuntime.ConnectionHandler.getConnection(
-    userProxy,
-    'ToDoList_ToDos',
-    { status });
-
+    const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'ToDoList_ToDos', { status });
     if (connection) {
       _relayRuntime.ConnectionHandler.insertEdgeAfter(connection, ToDosEdge);
     }
@@ -58,10 +54,7 @@ function commit(environment, user, ToDo_Text) {
       aToDo.setValue(ToDo_Text, 'ToDo_Text');
       aToDo.setValue(id, 'id');
 
-      const ToDosEdge = store.create(
-      `client:ToDoAdd:ToDosEdge:${clientMutationId}`,
-      'ToDosEdge');
-
+      const ToDosEdge = store.create(`client:ToDoAdd:ToDosEdge:${clientMutationId}`, 'ToDosEdge');
       ToDosEdge.setLinkedRecord(aToDo, 'node');
 
       sharedUpdater(store, user, ToDosEdge);
