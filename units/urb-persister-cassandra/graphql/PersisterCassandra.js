@@ -159,10 +159,13 @@ export default class PersisterCassandra {
   addTableSchema( tableName: string, tableSchema: Object ): void {
     if ( this.tableSchemas ) this.tableSchemas.set( tableName, tableSchema )
     else {
-      console.error( '💔 Attempting to add table schemas after express-cassandra client connect.' )
+      console.error(
+        'Error: Attempting to add table schemas after express-cassandra client connect.',
+      )
       process.exit( 1 )
     }
   }
+
   confirmHealth(): Promise<any> {
     return new Promise( ( resolve, reject ) => {
       ExpressCassandraClient.modelInstance.User.get_cql_client( ( err, client ) => {
@@ -175,23 +178,21 @@ export default class PersisterCassandra {
       })
     })
   }
+
   initialize( runAsPartOfSetupDatabase: boolean, cb: Function ): void {
     // All table schemas should have been added by now.
     const enrolledTables = this.tableSchemas
     this.tableSchemas = null // Free up the memory that is not needed any more and indicate that we can not add any more
-    ExpressCassandraClient.connect( err => {
-      if ( err ) {
-        console.log( '💔 Could not connect to Cassandra: ' + err.message )
-        setTimeout( () => process.exit( 1 ), 5000 ) // Exit the process. A process manager like pm2 would re-start
-      } else if ( !enrolledTables ) console.log( '💔 Table schemas missing!' )
-      else {
-        const arrSchemas = []
-        for ( let tableName of enrolledTables.keys() )
-          arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
-        this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
-      }
-    })
+
+    const arrSchemas = []
+    // $FlowIssue enrolledTables should be populated here
+    for ( let tableName of enrolledTables.keys() ) {
+      // $FlowIssue enrolledTables should be populated here
+      arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
+    }
+    this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
   }
+
   loadOneTableSchemaFromArray(
     arrSchemas: Array<any>,
     runAsPartOfSetupDatabase: boolean,
@@ -201,17 +202,18 @@ export default class PersisterCassandra {
       const tableName = arrSchemas[0][0]
       const tableSchema = arrSchemas[0][1]
       arrSchemas.splice( 0, 1 )
-      ExpressCassandraClient.loadSchema( tableName, tableSchema, err => {
+
+      ExpressCassandraClient.loadSchema( tableName, tableSchema ).syncDB( err => {
         if ( err ) {
           console.log(
-            '💔 Initializing Cassandra persister - error while creating ' + tableName + '!',
+            'Error:  Initializing Cassandra persister - error while creating ' + tableName + '!',
           )
           console.error( err.message )
           process.exit( 1 )
         } else {
           if ( runAsPartOfSetupDatabase )
             console.log(
-              '🛢 Table ' +
+              ' Table ' +
                 ExpressCassandraClient.modelInstance[tableName]._properties.name +
                 ' ready.',
             )

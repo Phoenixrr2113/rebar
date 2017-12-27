@@ -477,7 +477,7 @@ export async function getObjectManager( req: Object, res: Object ): Promise<Obje
   const siteInformation = await getSiteInformation( req, res ) // Create individual object manager for each request
   const objectManager = new ObjectManager() // Set request and response
 
-  objectManager.setRequest( req, res ) // Place site builder configuration into object manager
+  objectManager.setRequest( req, res ) // Place maker configuration into object manager
   objectManager.setSiteInformation( siteInformation )
   return objectManager
 }

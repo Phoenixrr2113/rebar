@@ -1,7 +1,7 @@
 // @flow
 
 import Button from 'material-ui/Button'
-import Card, { CardActions, CardHeader } from 'material-ui/Card'
+import Card, { CardActions, CardContent, CardHeader } from 'material-ui/Card'
 import { LinearProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 import Typography from 'material-ui/Typography'
@@ -11,7 +11,7 @@ import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveCo
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
+    minWidth: 400,
   },
 })
 
@@ -99,8 +99,11 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">Logging out. Please wait.</Typography>
-        <LinearProgress mode="query" />
+        <CardContent>
+          <Typography component="p">Logging out. Please wait ...</Typography>
+          <br /> <br />
+          <LinearProgress mode="query" />
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_CancelLogout}>Cancel</Button>
         </CardActions>
@@ -114,7 +117,9 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Logout" />
-        <Typography component="p">You have been logged out</Typography>
+        <CardContent>
+          <Typography component="p">You have been logged out.</Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Continue}>Continue</Button>
         </CardActions>
@@ -129,11 +134,9 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">
-          Failed logging out.
-          <br />
-          Reason: {errorMessage}
-        </Typography>
+        <CardContent>
+          <Typography component="p">Failed logging out because: {errorMessage}!</Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
         </CardActions>
@@ -147,9 +150,11 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Log Out" />
-        <Typography component="p">
-          You are currently logged in. Are you sure you want to log out?
-        </Typography>
+        <CardContent>
+          <Typography component="p">
+            You are currently logged in. Are you sure you want to log out?
+          </Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Logout}>Yes, Log Out</Button>
         </CardActions>

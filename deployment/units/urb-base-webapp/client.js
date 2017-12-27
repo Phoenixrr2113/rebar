@@ -33,14 +33,14 @@ const render = (0, _createRender2.default)({})
   const Router = await (0, _createInitialFarceRouter2.default)({
     historyProtocol: new _BrowserProtocol2.default(),
     historyMiddlewares: _router.historyMiddlewares,
-    routeConfig: _router.routeConfig,
+    routeConfig: (0, _router.routeConfig)(window.__siteConfiguration__),
     resolver,
     render });
 
 
   // $FlowIssue for reason unknow flow does not see ReactDOM.hydrate.
   _reactDom2.default.hydrate(
-  _react2.default.createElement(_AppWrapper2.default, { siteConfiguration: window.__siteConfiguration__ },
+  _react2.default.createElement(_AppWrapper2.default, { siteConfiguration: window.__siteConfiguration__, url: document.location.href },
     _react2.default.createElement(Router, { resolver: resolver })),
 
   document.getElementById('root'),

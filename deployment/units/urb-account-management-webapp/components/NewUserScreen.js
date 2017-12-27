@@ -12,7 +12,14 @@ var _ResponsiveContentArea = require('../../urb-base-webapp/components/Responsiv
 
 const styles = theme => ({
   card: {
-    minWidth: 275 } });
+    minWidth: 320 },
+
+  userName: {
+    borderWidth: 1,
+    borderColor: '#c0c0c0',
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10 } });
 
 
 
@@ -113,14 +120,15 @@ class NewUserScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Creating user' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Creating user',
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Creating user',
+
+            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ', please wait.'),
 
           _react2.default.createElement('br', null),
-          UserAccount_Identifier,
-          _react2.default.createElement('br', null), 'Please wait.'),
+          _react2.default.createElement('br', null),
+          _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' })),
 
-
-        _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' }),
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_CancelCreation }, 'Cancel'))));
 
@@ -135,10 +143,11 @@ class NewUserScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Creating user' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Created user',
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Created user',
 
-          _react2.default.createElement('br', null),
-          UserAccount_Identifier),
+            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), '.')),
+
 
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Continue }, 'Continue'))));
@@ -154,12 +163,12 @@ class NewUserScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Creating user' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed creating user',
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed creating user',
 
-          _react2.default.createElement('br', null),
-          UserAccount_Identifier,
-          _react2.default.createElement('br', null), 'Reason: ',
-          errorMessage),
+            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), 'because ',
+            errorMessage, '.')),
+
 
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_TryAgain }, 'Try Again'))));
@@ -175,18 +184,20 @@ class NewUserScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Create New User' }),
-        _react2.default.createElement(_TextField2.default, {
-          label: 'Account Name',
-          fullWidth: true,
-          value: UserAccount_Identifier,
-          onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_TextField2.default, {
+            label: 'Account Name',
+            fullWidth: true,
+            value: UserAccount_Identifier,
+            onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
 
-        _react2.default.createElement(_TextField2.default, {
-          label: 'Password',
-          type: 'password',
-          fullWidth: true,
-          value: User_Secret,
-          onChange: event => this.setState({ User_Secret: event.target.value }) }),
+          _react2.default.createElement(_TextField2.default, {
+            label: 'Password',
+            type: 'password',
+            fullWidth: true,
+            value: User_Secret,
+            onChange: event => this.setState({ User_Secret: event.target.value }) })),
+
 
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Create }, 'Create'))));

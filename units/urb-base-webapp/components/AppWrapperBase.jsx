@@ -7,10 +7,11 @@ import EventListener from 'react-event-listener'
 
 import ViewportDimensions from '../scripts/ViewportDimensions'
 
-export default class AppWrapperBase extends React.Component<
-  { siteConfiguration: Object, children: any },
-  any,
-> {
+export default class AppWrapperBase extends React.Component<{
+  siteConfiguration: Object,
+  children: any,
+  url: string,
+}> {
   rbCtx: Object
 
   static childContextTypes = {
@@ -54,6 +55,9 @@ export default class AppWrapperBase extends React.Component<
   }
 
   render() {
+    // Hacky hacky here ....
+    this.context = this.getChildContext()
+
     return (
       <EventListener target="window" onResize={this.handle_onResize}>
         <MuiThemeProvider theme={this.createMUITheme()}>{this.props.children}</MuiThemeProvider>

@@ -33,14 +33,14 @@ const render = createRender({})
   const Router = await createInitialFarceRouter({
     historyProtocol: new BrowserProtocol(),
     historyMiddlewares,
-    routeConfig,
+    routeConfig: routeConfig( window.__siteConfiguration__ ),
     resolver,
     render,
   })
 
   // $FlowIssue for reason unknow flow does not see ReactDOM.hydrate.
   ReactDOM.hydrate(
-    <AppWrapper siteConfiguration={window.__siteConfiguration__}>
+    <AppWrapper siteConfiguration={window.__siteConfiguration__} url={document.location.href}>
       <Router resolver={resolver} />
     </AppWrapper>,
     document.getElementById( 'root' ),

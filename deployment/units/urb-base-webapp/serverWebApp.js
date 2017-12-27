@@ -28,9 +28,11 @@ require('dotenv').load();
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')
 throw new Error('Error: urb-base-webapp requires the environment variable HOST to be set');
+
 const envPort = process.env.PORT;
 if (envPort == null || typeof envPort !== 'string')
 throw new Error('Error: urb-base-webapp requires the environment variable PORT to be set');
+
 const envPortWebpack = process.env.PORT_WEBPACK;
 if (envPortWebpack == null || typeof envPortWebpack !== 'string')
 throw new Error('Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set'); // Create express router
@@ -53,6 +55,7 @@ async function gatherLocationAndSiteInformation(req, res) {
   }
   return { siteInformation, assetsPath };
 }
+
 const render = (0, _createRender2.default)({
   renderError(obj) {
     const { error } = obj;
@@ -60,6 +63,7 @@ const render = (0, _createRender2.default)({
     _log2.default.log('error', 'Error: Render on server createRender renderError', obj);
     return _react2.default.createElement(_ErrorComponent2.default, { httpStatus: error.status });
   } });
+
 
 serverWebApp.use(async (req, res) => {
   try {
@@ -71,10 +75,19 @@ serverWebApp.use(async (req, res) => {
 
 
 
+    const userAgent = req.headers['user-agent'];
+    const { siteConfiguration } = siteInformation;
+    const siteConfigurationSubset = {
+      webapp: siteConfiguration.webapp,
+      builder: siteConfiguration.builder };
+
+
+    const siteRouteConfig = (0, _router.routeConfig)(siteConfigurationSubset);
+
     const { redirect, element } = await (0, _server.getFarceResult)({
       url: req.url,
       historyMiddlewares: _router.historyMiddlewares,
-      routeConfig: _router.routeConfig,
+      routeConfig: siteRouteConfig,
       resolver: (0, _router.createResolver)(fetcher),
       render });
 
@@ -84,18 +97,11 @@ serverWebApp.use(async (req, res) => {
       return;
     }
 
-    const userAgent = req.headers['user-agent'];
-    const { siteConfiguration } = siteInformation;
-    const siteConfigurationSubset = {
-      webapp: siteConfiguration.webapp,
-      builder: siteConfiguration.builder };
-
-
     const sheets = new _reactJss.SheetsRegistry();
     const helmet = _reactHelmet2.default.rewind();
     const rootHTML = _server3.default.renderToString(
     _react2.default.createElement(_reactJss.JssProvider, { registry: sheets },
-      _react2.default.createElement(_AppWrapper2.default, { userAgent: userAgent, siteConfiguration: siteConfigurationSubset },
+      _react2.default.createElement(_AppWrapper2.default, { userAgent: userAgent, siteConfiguration: siteConfigurationSubset, url: req.url },
         element)));
 
 

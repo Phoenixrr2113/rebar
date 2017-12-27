@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../units/_configuration/urb-base-webapp/createRoutes.js"],"names":[],"mappings":";;AAEA,wF","file":"createRoutes.js","sourcesContent":["// @flow\n\nimport createRoutes from '../../urb-base-webapp/scripts/createDefaultRoutes'\n\nexport default createRoutes\n"]}

@@ -17,14 +17,9 @@ export default mutationWithClientMutationId({
   outputFields: {
     changedToDos: {
       type: new GraphQLList( ToDoType ),
-      resolve: (
-        { arr_local_ids_Changed_ToDos },
-        args,
-        context,
-        { rootValue: objectManager }
-      ) =>
+      resolve: ({ arr_local_ids_Changed_ToDos }, args, context, { rootValue: objectManager }) =>
         arr_local_ids_Changed_ToDos.map( local_id =>
-          objectManager.getOneObject( 'ToDo', { id: local_id })
+          objectManager.getOneObject( 'ToDo', { id: local_id }),
         ),
     },
 
@@ -37,15 +32,8 @@ export default mutationWithClientMutationId({
     },
   },
 
-  mutateAndGetPayload: async(
-    { ToDo_Complete },
-    context,
-    { rootValue: objectManager }
-  ) => {
-    const arr_local_ids_Changed_ToDos = await ToDoListUpdateMarkAll(
-      objectManager,
-      ToDo_Complete
-    )
+  mutateAndGetPayload: async({ ToDo_Complete }, context, { rootValue: objectManager }) => {
+    const arr_local_ids_Changed_ToDos = await ToDoListUpdateMarkAll( objectManager, ToDo_Complete )
 
     return { arr_local_ids_Changed_ToDos }
   },

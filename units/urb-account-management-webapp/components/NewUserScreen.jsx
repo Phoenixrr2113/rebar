@@ -1,7 +1,7 @@
 // @flow
 
 import Button from 'material-ui/Button'
-import Card, { CardActions, CardHeader } from 'material-ui/Card'
+import Card, { CardActions, CardContent, CardHeader } from 'material-ui/Card'
 import { LinearProgress } from 'material-ui/Progress'
 import { withStyles } from 'material-ui/styles'
 import TextField from 'material-ui/TextField'
@@ -12,7 +12,14 @@ import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveCo
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
+    minWidth: 320,
+  },
+  userName: {
+    borderWidth: 1,
+    borderColor: '#c0c0c0',
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10,
   },
 })
 
@@ -113,14 +120,15 @@ class NewUserScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">
-          Creating user
+        <CardContent>
+          <Typography component="p">
+            Creating user
+            <span class={classes.userName}>{UserAccount_Identifier}</span>, please wait.
+          </Typography>
           <br />
-          {UserAccount_Identifier}
           <br />
-          Please wait.
-        </Typography>
-        <LinearProgress mode="query" />
+          <LinearProgress mode="query" />
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_CancelCreation}>Cancel</Button>
         </CardActions>
@@ -135,11 +143,12 @@ class NewUserScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">
-          Created user
-          <br />
-          {UserAccount_Identifier}
-        </Typography>
+        <CardContent>
+          <Typography component="p">
+            Created user
+            <span class={classes.userName}>{UserAccount_Identifier}</span>.
+          </Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Continue}>Continue</Button>
         </CardActions>
@@ -154,13 +163,13 @@ class NewUserScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">
-          Failed creating user
-          <br />
-          {UserAccount_Identifier}
-          <br />
-          Reason: {errorMessage}
-        </Typography>
+        <CardContent>
+          <Typography component="p">
+            Failed creating user
+            <span class={classes.userName}>{UserAccount_Identifier}</span>
+            because {errorMessage}.
+          </Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
         </CardActions>
@@ -175,19 +184,21 @@ class NewUserScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Create New User" />
-        <TextField
-          label="Account Name"
-          fullWidth={true}
-          value={UserAccount_Identifier}
-          onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
-        />
-        <TextField
-          label="Password"
-          type="password"
-          fullWidth={true}
-          value={User_Secret}
-          onChange={event => this.setState({ User_Secret: event.target.value })}
-        />
+        <CardContent>
+          <TextField
+            label="Account Name"
+            fullWidth={true}
+            value={UserAccount_Identifier}
+            onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
+          />
+          <TextField
+            label="Password"
+            type="password"
+            fullWidth={true}
+            value={User_Secret}
+            onChange={event => this.setState({ User_Secret: event.target.value })}
+          />
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Create}>Create</Button>
         </CardActions>

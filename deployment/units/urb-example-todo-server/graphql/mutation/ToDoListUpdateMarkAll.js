@@ -17,12 +17,7 @@ var _ViewerType = require('../../../../units/urb-base-server/graphql/type/Viewer
   outputFields: {
     changedToDos: {
       type: new _graphql.GraphQLList(_ToDoType2.default),
-      resolve: (
-      { arr_local_ids_Changed_ToDos },
-      args,
-      context,
-      { rootValue: objectManager }) =>
-
+      resolve: ({ arr_local_ids_Changed_ToDos }, args, context, { rootValue: objectManager }) =>
       arr_local_ids_Changed_ToDos.map(local_id =>
       objectManager.getOneObject('ToDo', { id: local_id })) },
 
@@ -37,15 +32,8 @@ var _ViewerType = require('../../../../units/urb-base-server/graphql/type/Viewer
 
 
 
-  mutateAndGetPayload: async (
-  { ToDo_Complete },
-  context,
-  { rootValue: objectManager }) =>
-  {
-    const arr_local_ids_Changed_ToDos = await (0, _ToDoListUpdateMarkAll2.default)(
-    objectManager,
-    ToDo_Complete);
-
+  mutateAndGetPayload: async ({ ToDo_Complete }, context, { rootValue: objectManager }) => {
+    const arr_local_ids_Changed_ToDos = await (0, _ToDoListUpdateMarkAll2.default)(objectManager, ToDo_Complete);
 
     return { arr_local_ids_Changed_ToDos };
   } }); //  weak

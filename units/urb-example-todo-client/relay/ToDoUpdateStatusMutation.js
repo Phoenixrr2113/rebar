@@ -23,11 +23,7 @@ function sharedUpdater( store, user, proxyToDo ) {
   // interaction is not possible from the front end.
   const userProxy = store.get( user.id )
   const status = proxyToDo.getValue( 'complete' ) ? 'active' : 'completed'
-  const connection = ConnectionHandler.getConnection(
-    userProxy,
-    'ToDoList_ToDos',
-    { status }
-  )
+  const connection = ConnectionHandler.getConnection( userProxy, 'ToDoList_ToDos', { status })
   if ( connection ) {
     ConnectionHandler.deleteNode( connection, proxyToDo.getValue( 'id' ) )
   }
@@ -53,10 +49,7 @@ function commit( environment, user, aToDo, ToDo_Complete ) {
       const userProxy = store.get( user.id )
       const ToDo_CompletedCount = userProxy.getValue( 'ToDo_CompletedCount' )
       if ( ToDo_CompletedCount != null ) {
-        userProxy.setValue(
-          ToDo_CompletedCount + ( ToDo_Complete ? 1 : -1 ),
-          'ToDo_CompletedCount'
-        )
+        userProxy.setValue( ToDo_CompletedCount + ( ToDo_Complete ? 1 : -1 ), 'ToDo_CompletedCount' )
       }
     },
   })

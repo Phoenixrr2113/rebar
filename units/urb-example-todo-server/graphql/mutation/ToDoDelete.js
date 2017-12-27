@@ -27,11 +27,7 @@ export default mutationWithClientMutationId({
     },
   },
 
-  mutateAndGetPayload: async(
-    { id },
-    context,
-    { rootValue: objectManager }
-  ) => {
+  mutateAndGetPayload: async({ id }, context, { rootValue: objectManager }) => {
     const local_id = fromGlobalId( id ).id
 
     await objectManager.remove( 'ToDo', { id: local_id })

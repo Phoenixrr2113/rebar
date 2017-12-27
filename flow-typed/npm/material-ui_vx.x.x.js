@@ -46,6 +46,30 @@ declare module 'material-ui/Select' {
   declare module.exports: any
 }
 
+declare module 'material-ui/ExpansionPanel' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/ExpansionPanel/ExpansionPanel' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/ExpansionPanel/ExpansionPanelDetails' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/ExpansionPanel/ExpansionPanelSummary' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/Grid' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/GridList' {
+  declare module.exports: any
+}
+
 declare module 'material-ui/Badge/index' {
   declare module.exports: any
 }
@@ -467,6 +491,10 @@ declare module 'material-ui/MobileStepper/index' {
 }
 
 declare module 'material-ui/MobileStepper/MobileStepper' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/Paper' {
   declare module.exports: any
 }
 
