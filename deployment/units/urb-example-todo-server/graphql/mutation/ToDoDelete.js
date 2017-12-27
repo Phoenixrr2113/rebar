@@ -27,11 +27,7 @@ var _ViewerType = require('../../../../units/urb-base-server/graphql/type/Viewer
 
 
 
-  mutateAndGetPayload: async (
-  { id },
-  context,
-  { rootValue: objectManager }) =>
-  {
+  mutateAndGetPayload: async ({ id }, context, { rootValue: objectManager }) => {
     const local_id = (0, _graphqlRelay.fromGlobalId)(id).id;
 
     await objectManager.remove('ToDo', { id: local_id });

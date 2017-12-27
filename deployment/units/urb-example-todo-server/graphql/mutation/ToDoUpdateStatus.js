@@ -17,11 +17,7 @@ exports.default =
   outputFields: {
     ToDo: {
       type: _ToDoType2.default,
-      resolve: (
-      { local_id }, _ref,
-
-      context,
-      { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);return (
+      resolve: ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);return (
           objectManager.getOneObject('ToDo', { id: local_id }));} },
 
 
@@ -34,11 +30,7 @@ exports.default =
 
 
 
-  mutateAndGetPayload: async (
-  { id, ToDo_Complete },
-  context,
-  { rootValue: objectManager }) =>
-  {
+  mutateAndGetPayload: async ({ id, ToDo_Complete }, context, { rootValue: objectManager }) => {
     const local_id = (0, _graphqlRelay.fromGlobalId)(id).id;
 
     await objectManager.update('ToDo', {

@@ -11,7 +11,7 @@ var _ResponsiveContentArea = require('../../urb-base-webapp/components/Responsiv
 
 const styles = theme => ({
   card: {
-    minWidth: 275 } });
+    minWidth: 400 } });
 
 
 
@@ -99,8 +99,11 @@ class LogoutScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Creating user' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging out. Please wait.'),
-        _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' }),
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging out. Please wait ...'),
+          _react2.default.createElement('br', null), ' ', _react2.default.createElement('br', null),
+          _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' })),
+
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_CancelLogout }, 'Cancel'))));
 
@@ -114,7 +117,9 @@ class LogoutScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Logout' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You have been logged out'),
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You have been logged out.')),
+
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Continue }, 'Continue'))));
 
@@ -129,10 +134,8 @@ class LogoutScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Creating user' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed logging out.',
-
-          _react2.default.createElement('br', null), 'Reason: ',
-          errorMessage),
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed logging out because: ', errorMessage, '!')),
 
         _react2.default.createElement(_Card.CardActions, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_TryAgain }, 'Try Again'))));
@@ -147,7 +150,9 @@ class LogoutScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_Card2.default, { className: classes.card },
         _react2.default.createElement(_Card.CardHeader, { title: 'Log Out' }),
-        _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You are currently logged in. Are you sure you want to log out?'),
+        _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You are currently logged in. Are you sure you want to log out?')),
+
 
 
         _react2.default.createElement(_Card.CardActions, null,
