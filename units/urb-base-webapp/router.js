@@ -5,7 +5,7 @@ import makeRouteConfig from 'found/lib/makeRouteConfig'
 import { Resolver } from 'found-relay'
 import { Environment, Network, RecordSource, Store } from 'relay-runtime'
 
-import Routes from '../_configuration/urb-base-webapp/Routes'
+import createRoutes from '../_configuration/urb-base-webapp/createRoutes'
 
 export const historyMiddlewares = [ queryMiddleware ]
 
@@ -19,5 +19,5 @@ export function createResolver( fetcher: any ) {
 }
 
 export function routeConfig( siteConfiguration: Object ) {
-  return makeRouteConfig( Routes )
+  return makeRouteConfig( createRoutes( siteConfiguration ) )
 }

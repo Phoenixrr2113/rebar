@@ -40,7 +40,7 @@ const render = createRender({})
 
   // $FlowIssue for reason unknow flow does not see ReactDOM.hydrate.
   ReactDOM.hydrate(
-    <AppWrapper siteConfiguration={window.__siteConfiguration__}>
+    <AppWrapper siteConfiguration={window.__siteConfiguration__} url={document.location.href}>
       <Router resolver={resolver} />
     </AppWrapper>,
     document.getElementById( 'root' ),

@@ -28,9 +28,11 @@ require( 'dotenv' ).load()
 const envHost = process.env.HOST
 if ( envHost == null || typeof envHost !== 'string' )
   throw new Error( 'Error: urb-base-webapp requires the environment variable HOST to be set' )
+
 const envPort = process.env.PORT
 if ( envPort == null || typeof envPort !== 'string' )
   throw new Error( 'Error: urb-base-webapp requires the environment variable PORT to be set' )
+
 const envPortWebpack = process.env.PORT_WEBPACK
 if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
   throw new Error( 'Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set' ) // Create express router
@@ -53,6 +55,7 @@ async function gatherLocationAndSiteInformation( req: Object, res: Object ) {
   }
   return { siteInformation, assetsPath }
 }
+
 const render = createRender({
   renderError( obj: Object ): React$Element<*> {
     const { error } = obj
@@ -61,6 +64,7 @@ const render = createRender({
     return <ErrorComponent httpStatus={error.status} />
   },
 })
+
 serverWebApp.use( async( req, res ) => {
   try {
     const { siteInformation, assetsPath } = await gatherLocationAndSiteInformation( req, res )
@@ -78,10 +82,12 @@ serverWebApp.use( async( req, res ) => {
       builder: siteConfiguration.builder,
     }
 
+    const siteRouteConfig = routeConfig( siteConfigurationSubset )
+
     const { redirect, element } = await getFarceResult({
       url: req.url,
       historyMiddlewares,
-      routeConfig: routeConfig( siteConfigurationSubset ),
+      routeConfig: siteRouteConfig,
       resolver: createResolver( fetcher ),
       render,
     })
@@ -95,7 +101,7 @@ serverWebApp.use( async( req, res ) => {
     const helmet = Helmet.rewind()
     const rootHTML = ReactDOMServer.renderToString(
       <JssProvider registry={sheets}>
-        <AppWrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset}>
+        <AppWrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset} url={req.url}>
           {element}
         </AppWrapper>
       </JssProvider>,

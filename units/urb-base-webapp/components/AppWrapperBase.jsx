@@ -7,10 +7,11 @@ import EventListener from 'react-event-listener'
 
 import ViewportDimensions from '../scripts/ViewportDimensions'
 
-export default class AppWrapperBase extends React.Component<
-  { siteConfiguration: Object, children: any },
-  any,
-> {
+export default class AppWrapperBase extends React.Component<{
+  siteConfiguration: Object,
+  children: any,
+  url: string,
+}> {
   rbCtx: Object
 
   static childContextTypes = {
