@@ -47,7 +47,7 @@ async function gatherLocationAndSiteInformation(req, res) {
     siteInformation.isSiteBuilderDisabled || siteInformation.inEditingMode ?
     // When editing in production, use the assets with the configuration readign code intact (built when cutting a site version)
     `/assets/${_package.version}` :
-    // When in production mode, serve the assets compiled by factory's publisher
+    // When in production mode, serve the assets compiled by maker
     `/sassets/${_package.version}.${siteInformation.siteConfiguration.version}`;
   } else {
     // When in development, always go to webpack over http
