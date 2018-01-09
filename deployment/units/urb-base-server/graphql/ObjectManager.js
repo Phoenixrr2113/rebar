@@ -520,6 +520,6 @@ ObjectManager.registerEntity('User', _User2.default); // Get an Object Manager w
 async function getObjectManager(req, res) {// Set site information
   const siteInformation = await (0, _siteSettings.getSiteInformation)(req, res); // Create individual object manager for each request
   const objectManager = new ObjectManager(); // Set request and response
-  objectManager.setRequest(req, res); // Place site builder configuration into object manager
+  objectManager.setRequest(req, res); // Place maker configuration into object manager
   objectManager.setSiteInformation(siteInformation);return objectManager;}
 //# sourceMappingURL=ObjectManager.js.map

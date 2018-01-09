@@ -27,9 +27,6 @@ const mutation = function () {return require('./__generated__/ToDoListUpdateMark
 
 
 
-
-
-
 function commit(environment, user, ToDos, ToDo_Complete, status) {
   return (0, _reactRelay.commitMutation)(environment, {
     mutation,
@@ -40,11 +37,7 @@ function commit(environment, user, ToDos, ToDo_Complete, status) {
 
     updater(store) {
       const userProxy = store.get(user.id);
-      const connection = _relayRuntime.ConnectionHandler.getConnection(
-      userProxy,
-      'ToDoList_ToDos',
-      { status });
-
+      const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'ToDoList_ToDos', { status });
       const ToDosEdges = store.
       getRootField('ToDoListUpdateMarkAll').
       getLinkedRecord('Viewer').
@@ -55,16 +48,9 @@ function commit(environment, user, ToDos, ToDo_Complete, status) {
 
     optimisticUpdater(store) {
       const userProxy = store.get(user.id);
-      const connection = _relayRuntime.ConnectionHandler.getConnection(
-      userProxy,
-      'ToDoList_ToDos',
-      { status });
+      const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'ToDoList_ToDos', { status });
 
-
-      if (
-      ToDo_Complete && status === 'active' ||
-      !ToDo_Complete && status === 'completed')
-      {
+      if (ToDo_Complete && status === 'active' || !ToDo_Complete && status === 'completed') {
         connection.setLinkedRecords([], 'edges');
       }
     },

@@ -5,9 +5,7 @@ var _reactRelay = require('react-relay');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _Route = require('found/lib/Route');var _Route2 = _interopRequireDefault(_Route);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const ToDoList = props =>
-_react2.default.createElement(_reactCodeSplitting2.default, { load: Promise.resolve().then(() => require('./components/ToDoList')), componentProps: props });
-
+const ToDoList = props => _react2.default.createElement(_reactCodeSplitting2.default, { load: Promise.resolve().then(() => require('./components/ToDoList')), componentProps: props });
 
 const ToDoScreen = props =>
 _react2.default.createElement(_reactCodeSplitting2.default, { load: Promise.resolve().then(() => require('./components/ToDoScreen')), componentProps: props });

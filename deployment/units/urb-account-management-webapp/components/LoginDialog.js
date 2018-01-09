@@ -10,8 +10,18 @@ var _Typography = require('material-ui/Typography');var _Typography2 = _interopR
 var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
+  dialogPaper: {
+    minWidth: 320 },
+
   grow: {
-    flex: '1 1 auto' } });
+    flex: '1 1 auto' },
+
+  userName: {
+    borderWidth: 1,
+    borderColor: '#c0c0c0',
+    fontWeight: 'bold',
+    paddingLeft: 10,
+    paddingRight: 10 } });
 
 
 
@@ -116,7 +126,12 @@ class LoginDialog extends _react2.default.Component
     const { UserAccount_Identifier, User_Secret } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, { open: open, transition: _Slide2.default, onRequestClose: this._handle_Close },
+      _react2.default.createElement(_Dialog2.default, {
+          classes: { paper: classes.dialogPaper },
+          open: open,
+          transition: _Slide2.default,
+          onRequestClose: this._handle_Close },
+
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
@@ -130,12 +145,18 @@ class LoginDialog extends _react2.default.Component
             label: 'Password',
             type: 'password',
             fullWidth: true,
+            onKeyPress: ev => {
+              if (ev.key === 'Enter') {
+                this._handle_onClick_LogIn();
+                ev.preventDefault();
+              }
+            },
             value: User_Secret,
             onChange: event => this.setState({ User_Secret: event.target.value }) })),
 
 
         _react2.default.createElement(_Dialog.DialogActions, null,
-          _react2.default.createElement(_Button2.default, { color: 'accent', onClick: this._handle_onCLick_NewUser }, 'New User'),
+          _react2.default.createElement(_Button2.default, { color: 'primary', onClick: this._handle_onCLick_NewUser }, 'New User'),
 
 
           _react2.default.createElement('div', { className: classes.grow }),
@@ -149,19 +170,24 @@ class LoginDialog extends _react2.default.Component
   }
 
   renderInProgress() {
-    const { open } = this.props;
+    const { classes, open } = this.props;
     const { UserAccount_Identifier } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, { open: open, onRequestClose: this._handle_Close },
+      _react2.default.createElement(_Dialog2.default, {
+          classes: { paper: classes.dialogPaper },
+          open: open,
+          onRequestClose: this._handle_Close },
+
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Logging in'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging in as',
 
-            _react2.default.createElement('br', null),
-            UserAccount_Identifier),
+            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ' ...'),
 
+          _react2.default.createElement('br', null),
+          _react2.default.createElement('br', null),
           _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' })),
 
         _react2.default.createElement(_Dialog.DialogActions, null,
@@ -174,20 +200,21 @@ class LoginDialog extends _react2.default.Component
   }
 
   renderFailure() {
-    const { open } = this.props;
+    const { classes, open } = this.props;
     const { UserAccount_Identifier, errorMessage } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, { open: open, onRequestClose: this._handle_Close },
+      _react2.default.createElement(_Dialog2.default, {
+          classes: { paper: classes.dialogPaper },
+          open: open,
+          onRequestClose: this._handle_Close },
+
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In Failed'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed loggin in as',
 
-            _react2.default.createElement('br', null),
-            UserAccount_Identifier,
-            _react2.default.createElement('br', null), 'Reason: ',
-            errorMessage)),
+            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ' because: ', errorMessage, '!')),
 
 
         _react2.default.createElement(_Dialog.DialogActions, null,

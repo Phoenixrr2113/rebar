@@ -18,11 +18,7 @@ const mutation = function () {return require('./__generated__/ToDoDeleteMutation
 function sharedUpdater(store, user, deletedId) {
   const userProxy = store.get(user.id);
   ['any', 'active', 'completed'].forEach(status => {
-    const connection = _relayRuntime.ConnectionHandler.getConnection(
-    userProxy,
-    'ToDoList_ToDos',
-    { status });
-
+    const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'ToDoList_ToDos', { status });
     if (connection) {
       _relayRuntime.ConnectionHandler.deleteNode(connection, deletedId);
     }
