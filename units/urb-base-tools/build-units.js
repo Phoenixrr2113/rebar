@@ -4,16 +4,20 @@ import fs from 'fs'
 import path from 'path'
 import { promisify } from 'util'
 
-import prettier from 'prettier'
+import prettierESLint from 'prettier-eslint'
 
 // $FlowIssue Not sure why it gives an error. The file does exist
 import packageJSON from '../../package.json'
+// $FlowIssue Not sure why it gives an error. The file does exist
+import eslintRC from '../../.eslintrc.json'
 
 import ensureFileContent from './ensureFileContent'
 
 const existsAsync = promisify( fs.exists )
 const readFileAsync = promisify( fs.readFile )
 const readdirAsync = promisify( fs.readdir )
+
+const prettierESLintOptions = { eslintConfig: eslintRC, prettierOptions: packageJSON.prettier }
 
 function sortObject( object: Object ) {
   var t = {}
@@ -138,7 +142,7 @@ async function createMutations( units: Array<string> ) {
   await ensureFileContent(
     path.resolve( './units/_configuration/urb-base-server/graphql/_mutations.js' ),
     null,
-    prettier.format( mutations.join( '\r\n' ), packageJSON.prettier ),
+    prettierESLint({ text: mutations.join( '\r\n' ), ...prettierESLintOptions }),
   )
 }
 
@@ -169,7 +173,7 @@ async function createSchemas( units: Array<string> ) {
   await ensureFileContent(
     path.resolve( './units/_configuration/urb-base-server/graphql/_schemas.js' ),
     null,
-    prettier.format( schemas.join( '\r\n' ), packageJSON.prettier ),
+    prettierESLint({ text: schemas.join( '\r\n' ), ...prettierESLintOptions }),
   )
 }
 
@@ -206,7 +210,7 @@ async function createViewerFields( units: Array<string> ) {
   await ensureFileContent(
     path.resolve( './units/_configuration/urb-base-server/graphql/_ViewerFields.js' ),
     null,
-    prettier.format( viewerFields.join( '\r\n' ), packageJSON.prettier ),
+    prettierESLint({ text: viewerFields.join( '\r\n' ), ...prettierESLintOptions }),
   )
 }
 
@@ -265,7 +269,7 @@ async function createRouteFile( fileName: string, imports: Array<string>, export
   await ensureFileContent(
     fileName,
     null,
-    prettier.format( routesAppFrame.join( '\r\n' ), packageJSON.prettier ),
+    prettierESLint({ text: routesAppFrame.join( '\r\n' ), ...prettierESLintOptions }),
   )
 }
 
