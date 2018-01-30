@@ -22,7 +22,7 @@ function sharedUpdater( store, user, proxyToDo ) {
   // In principle this could add to the active connection, but such an
   // interaction is not possible from the front end.
   const userProxy = store.get( user.id )
-  const status = proxyToDo.getValue( 'complete' ) ? 'active' : 'completed'
+  const status = proxyToDo.getValue( 'ToDo_Complete' ) ? 'active' : 'completed'
   const connection = ConnectionHandler.getConnection( userProxy, 'ToDoList_ToDos', { status })
   if ( connection ) {
     ConnectionHandler.deleteNode( connection, proxyToDo.getValue( 'id' ) )
