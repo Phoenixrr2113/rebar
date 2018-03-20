@@ -9,8 +9,6 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 * [Live demo I](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister.
 
-* [Live demo II](https://alexlechuck.com/) - uses Cassandra persister with Elassandra storage hosted on AWS micro instance.
-
 * Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
 
 
@@ -29,7 +27,7 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 | [Material UI](http://www.material-ui.com/)                      | Library for implementing [Material Design](https://www.google.com/design/spec/material-design/introduction.html) in React. All user interface in this kit is built exclusively with Material UI components. |
 | [React](https://facebook.github.io/react/)                      | The best library for building modern browser-based and mobile UIs. |
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
-| [React Native](https://facebook.github.io/react-native/)        | React Native enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. |
+| [React Native](https://facebook.github.io/react-native/)        | React Native (currently not available) enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
 ## Server side
@@ -69,7 +67,7 @@ The setup is for OS X only. Prerequisites:
 
 * **Install [Node.js](https://nodejs.org)** minimum version: `8.6.0`.  
 * **Install [Git](https://git-scm.com/downloads)** minimum version: `5.0.0`.  
-* **Install react-native-cli** run `npm install -g react-native-cli` for app development with React Native only.
+* (currently not available) **Install react-native-cli** run `npm install -g react-native-cli` for app development with React Native only.
 * **Install yarn** run `npm install -g yarn`
 
 ## Initial Project setup on local machine
@@ -90,7 +88,7 @@ In order to develop, three servers need to be started:
 
 * Web server.
 * Webpack server.
-* React Native packager.
+* (currently not available) React Native packager.
 
 This can be done with one command:
 
@@ -100,7 +98,7 @@ To open the app:
 
 * Navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip` or after installation.
 
-To run the iOS app in the emulator:
+(currently not available) To run the iOS app in the emulator:
 
 * If the IP of your development machine has changed, run `yarn update-ip`.
 * Run `react-native run-ios`.
