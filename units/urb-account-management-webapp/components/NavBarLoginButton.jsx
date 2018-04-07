@@ -13,10 +13,15 @@ import {
 } from './RequiresAuthentication'
 import LoginDialog from './LoginDialog'
 
-const styles = theme => ({})
+const styles = theme => ({
+  buttonRoot: {
+    color: '#ffffff',
+  },
+})
 
 class NavBarLoginButton extends React.Component<
   {
+    classes: Object,
     Viewer: Object,
     relay: Object,
   },
@@ -81,18 +86,19 @@ class NavBarLoginButton extends React.Component<
   }
 
   render() {
+    const { classes } = this.props
     const { User_IsAnonymous, User_DisplayName } = this.props.Viewer
     const { loginDialogIsOpen, userMenuIsOpen } = this.state
 
     return (
       <div>
         {User_IsAnonymous && (
-          <Button color="contrast" onClick={this._handle_onClick_Login}>
+          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_Login}>
             Login
           </Button>
         )}
         {!User_IsAnonymous && (
-          <Button color="contrast" onClick={this._handle_onClick_UserMenu}>
+          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_UserMenu}>
             {User_DisplayName}
           </Button>
         )}
@@ -105,7 +111,7 @@ class NavBarLoginButton extends React.Component<
           id="lock-menu"
           anchorEl={this.state.anchorEl}
           open={userMenuIsOpen}
-          onRequestClose={this._handle_UserMenu_Close}
+          onClose={this._handle_UserMenu_Close}
         >
           <MenuItem key="profile" onClick={this._handle_onClick_Profile}>
             Profile

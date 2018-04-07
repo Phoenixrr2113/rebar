@@ -11,15 +11,17 @@ defaultPersister.addTableSchema( 'ToDo', {
     ToDo_Complete: 'boolean',
   },
 
+  indexes: [ 'ToDo_User_id' ],
+
   key: [ 'id' ],
 
-  custom_indexes: [
-    {
-      on: 'ToDo_User_id',
-      using: 'org.apache.cassandra.index.sasi.SASIIndex',
-      options: {},
-    },
-  ],
+  // custom_indexes: [
+  //   {
+  //     on: 'ToDo_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
 })
 
 export default true

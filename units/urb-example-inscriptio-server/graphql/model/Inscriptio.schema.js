@@ -12,15 +12,17 @@ defaultPersister.addTableSchema( 'Inscriptio', {
     Inscriptio_Notes: 'text',
   },
 
+  indexes: [ 'Inscriptio_User_id' ],
+
   key: [ 'id' ],
 
-  custom_indexes: [
-    {
-      on: 'Inscriptio_User_id',
-      using: 'org.apache.cassandra.index.sasi.SASIIndex',
-      options: {},
-    },
-  ],
+  // custom_indexes: [
+  //   {
+  //     on: 'Inscriptio_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
 })
 
 export default true
