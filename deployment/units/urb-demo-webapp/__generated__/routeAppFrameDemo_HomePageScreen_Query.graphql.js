@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash d6d1b8fb34bbeb1b02184d70f915e746
+ * 
+ * @relayHash 3e2ab55f02fa45715604da8d4042851f
  */
 
 /* eslint-disable */
@@ -8,83 +8,88 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type routeAppFrameDemo_HomePageScreen_QueryResponse = {|
-  +Viewer: ?{| |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              type HomePageScreen_Viewer$ref = any;
+              export type routeAppFrameDemo_HomePageScreen_QueryVariables = {| |};
+              export type routeAppFrameDemo_HomePageScreen_QueryResponse = {|
+                +Viewer: ?{|
+                  +$fragmentRefs: HomePageScreen_Viewer$ref,
+                |},
+              |};
+              */
 
 
 /*
-query routeAppFrameDemo_HomePageScreen_Query {
-  Viewer {
-    ...HomePageScreen_Viewer
-    id
-  }
-}
+                 query routeAppFrameDemo_HomePageScreen_Query {
+                   Viewer {
+                     ...HomePageScreen_Viewer
+                     id
+                   }
+                 }
+                 
+                 fragment HomePageScreen_Viewer on Viewer {
+                   id
+                 }
+                 */
 
-fragment HomePageScreen_Viewer on Viewer {
-  id
-}
-*/
-
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "routeAppFrameDemo_HomePageScreen_Query",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "HomePageScreen_Viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Query"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
+const node /*: ConcreteRequest*/ = {
+  "kind": "Request",
+  "operationKind": "query",
   "name": "routeAppFrameDemo_HomePageScreen_Query",
-  "query": {
-    "argumentDefinitions": [],
-    "kind": "Root",
+  "id": null,
+  "text": "query routeAppFrameDemo_HomePageScreen_Query {\n  Viewer {\n    ...HomePageScreen_Viewer\n    id\n  }\n}\n\nfragment HomePageScreen_Viewer on Viewer {\n  id\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "routeAppFrameDemo_HomePageScreen_Query",
-    "operation": "query",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": [],
     "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "query routeAppFrameDemo_HomePageScreen_Query {\n  Viewer {\n    ...HomePageScreen_Viewer\n    id\n  }\n}\n\nfragment HomePageScreen_Viewer on Viewer {\n  id\n}\n"
-};
+        "kind": "FragmentSpread",
+        "name": "HomePageScreen_Viewer",
+        "args": null }] }] },
 
-module.exports = batch;
+
+
+
+
+  "operation": {
+    "kind": "Operation",
+    "name": "routeAppFrameDemo_HomePageScreen_Query",
+    "argumentDefinitions": [],
+    "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "id",
+        "args": null,
+        "storageKey": null }] }] } };
+
+
+
+
+
+
+node /*: any*/.hash = 'dd5a657362a3fea622cbb7f0dfde2a72';
+module.exports = node;
+//# sourceMappingURL=routeAppFrameDemo_HomePageScreen_Query.graphql.js.map

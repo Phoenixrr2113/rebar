@@ -12,15 +12,17 @@ defaultPersister.addTableSchema( 'Ensayo', {
     Ensayo_Title: 'text',
   },
 
+  indexes: [ 'Ensayo_User_id' ],
+
   key: [ 'id' ],
 
-  custom_indexes: [
-    {
-      on: 'Ensayo_User_id',
-      using: 'org.apache.cassandra.index.sasi.SASIIndex',
-      options: {},
-    },
-  ],
+  // custom_indexes: [
+  //   {
+  //     on: 'Ensayo_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
 })
 
 export default true

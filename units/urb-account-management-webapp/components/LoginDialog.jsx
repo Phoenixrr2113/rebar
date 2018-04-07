@@ -27,8 +27,6 @@ const styles = theme => ({
 
 class LoginDialog extends React.Component<
   {
-    UserAccount_Identifier: string,
-    User_Secret: string,
     open: boolean,
     handlerClose: Function,
     handlerNewUser: Function,
@@ -130,7 +128,7 @@ class LoginDialog extends React.Component<
         classes={{ paper: classes.dialogPaper }}
         open={open}
         transition={Slide}
-        onRequestClose={this._handle_Close}
+        onClose={this._handle_Close}
       >
         <DialogTitle>Log In</DialogTitle>
 
@@ -174,24 +172,20 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier } = this.state
 
     return (
-      <Dialog
-        classes={{ paper: classes.dialogPaper }}
-        open={open}
-        onRequestClose={this._handle_Close}
-      >
+      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
         <DialogTitle>Logging in</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Logging in as
-            <span class={classes.userName}>{UserAccount_Identifier}</span> ...
+            <span className={classes.userName}>{UserAccount_Identifier}</span> ...
           </Typography>
           <br />
           <br />
           <LinearProgress mode="query" />
         </DialogContent>
         <DialogActions>
-          <Button color="accent" onClick={this._handle_onCLick_CancelLogIn}>
+          <Button color="primary" onClick={this._handle_onCLick_CancelLogIn}>
             Cancel
           </Button>
         </DialogActions>
@@ -204,17 +198,14 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, errorMessage } = this.state
 
     return (
-      <Dialog
-        classes={{ paper: classes.dialogPaper }}
-        open={open}
-        onRequestClose={this._handle_Close}
-      >
+      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
         <DialogTitle>Log In Failed</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Failed loggin in as
-            <span class={classes.userName}>{UserAccount_Identifier}</span> because: {errorMessage}!
+            <span className={classes.userName}>{UserAccount_Identifier}</span> because:{' '}
+            {errorMessage}!
           </Typography>
         </DialogContent>
         <DialogActions>

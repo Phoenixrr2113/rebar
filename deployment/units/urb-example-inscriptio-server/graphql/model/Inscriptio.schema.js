@@ -12,16 +12,18 @@ _defaultPersister2.default.addTableSchema('Inscriptio', {
     Inscriptio_Notes: 'text' },
 
 
-  key: ['id'],
+  indexes: ['Inscriptio_User_id'],
 
-  custom_indexes: [
-  {
-    on: 'Inscriptio_User_id',
-    using: 'org.apache.cassandra.index.sasi.SASIIndex',
-    options: {} }] });exports.default =
+  key: ['id']
 
-
-
+  // custom_indexes: [
+  //   {
+  //     on: 'Inscriptio_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
+});exports.default =
 
 true;
 //# sourceMappingURL=Inscriptio.schema.js.map

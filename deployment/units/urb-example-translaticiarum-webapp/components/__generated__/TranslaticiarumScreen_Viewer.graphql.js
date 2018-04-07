@@ -1,147 +1,151 @@
-/**
- * @flow
- */
+
+
+
 
 /* eslint-disable */
 
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
-export type TranslaticiarumScreen_Viewer = {|
-  +Translaticiarums: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string;
-        +Translaticiarum_Description: ?string;
-        +Translaticiarum_Start: ?any;
-        +Translaticiarum_Stop: ?any;
-      |};
-    |}>;
-  |};
-|};
-*/
+              import type { ConcreteFragment } from 'relay-runtime';
+              import type { FragmentReference } from 'relay-runtime';
+              declare export opaque type TranslaticiarumScreen_Viewer$ref: FragmentReference;
+              export type TranslaticiarumScreen_Viewer = {|
+                +Translaticiarums: ?{|
+                  +edges: ?$ReadOnlyArray<?{|
+                    +node: ?{|
+                      +id: string,
+                      +Translaticiarum_Description: ?string,
+                      +Translaticiarum_Start: ?any,
+                      +Translaticiarum_Stop: ?any,
+                    |},
+                  |}>,
+                |},
+                +$refType: TranslaticiarumScreen_Viewer$ref,
+              |};
+              */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node /*: ConcreteFragment*/ = {
   "kind": "Fragment",
+  "name": "TranslaticiarumScreen_Viewer",
+  "type": "Viewer",
   "metadata": {
     "connection": [
-      {
-        "count": null,
-        "cursor": null,
-        "direction": "forward",
-        "path": [
-          "Translaticiarums"
-        ]
-      }
-    ]
-  },
-  "name": "TranslaticiarumScreen_Viewer",
+    {
+      "count": null,
+      "cursor": null,
+      "direction": "forward",
+      "path": [
+      "Translaticiarums"] }] },
+
+
+
+
+  "argumentDefinitions": [],
   "selections": [
+  {
+    "kind": "LinkedField",
+    "alias": "Translaticiarums",
+    "name": "__TranslaticiarumScreen_Translaticiarums_connection",
+    "storageKey": null,
+    "args": null,
+    "concreteType": "TranslaticiarumsConnection",
+    "plural": false,
+    "selections": [
     {
       "kind": "LinkedField",
-      "alias": "Translaticiarums",
+      "alias": null,
+      "name": "edges",
+      "storageKey": null,
       "args": null,
-      "concreteType": "TranslaticiarumsConnection",
-      "name": "__TranslaticiarumScreen_Translaticiarums_connection",
+      "concreteType": "TranslaticiarumsEdge",
+      "plural": true,
+      "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "node",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "Translaticiarum",
+        "plural": false,
+        "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "id",
+          "args": null,
+          "storageKey": null },
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "Translaticiarum_Description",
+          "args": null,
+          "storageKey": null },
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "Translaticiarum_Start",
+          "args": null,
+          "storageKey": null },
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "Translaticiarum_Stop",
+          "args": null,
+          "storageKey": null },
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "__typename",
+          "args": null,
+          "storageKey": null }] },
+
+
+
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "cursor",
+        "args": null,
+        "storageKey": null }] },
+
+
+
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "pageInfo",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "PageInfo",
       "plural": false,
       "selections": [
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "TranslaticiarumsEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "Translaticiarum",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "id",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "Translaticiarum_Description",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "Translaticiarum_Start",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "Translaticiarum_Stop",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "__typename",
-                  "storageKey": null
-                }
-              ],
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "cursor",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "PageInfo",
-          "name": "pageInfo",
-          "plural": false,
-          "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "endCursor",
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "hasNextPage",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    }
-  ],
-  "type": "Viewer"
-};
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "endCursor",
+        "args": null,
+        "storageKey": null },
 
-module.exports = fragment;
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "hasNextPage",
+        "args": null,
+        "storageKey": null }] }] }] };
+
+
+
+
+
+
+
+node /*: any*/.hash = 'f71272f1673eeb2851bcbd54fe8bc678';
+module.exports = node;
+//# sourceMappingURL=TranslaticiarumScreen_Viewer.graphql.js.map

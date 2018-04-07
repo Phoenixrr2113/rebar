@@ -13,9 +13,14 @@ var _RequiresAuthentication = require('./RequiresAuthentication');
 
 var _LoginDialog = require('./LoginDialog');var _LoginDialog2 = _interopRequireDefault(_LoginDialog);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const styles = theme => ({});
+const styles = theme => ({
+  buttonRoot: {
+    color: '#ffffff' } });
+
+
 
 class NavBarLoginButton extends _react2.default.Component
+
 
 
 
@@ -81,18 +86,19 @@ class NavBarLoginButton extends _react2.default.Component
     };this.state = { anchorEl: undefined, loginDialogIsOpen: false, userMenuIsOpen: false };} // Handle popping open the login dialog if authentication is required
   componentWillMount() {(0, _RequiresAuthentication.registerAuthenticationRequiredCallback)(this._handle_onClick_Login);}componentWillUnmount() {(0, _RequiresAuthentication.unregisterAuthenticationRequiredCallback)();}
   render() {
+    const { classes } = this.props;
     const { User_IsAnonymous, User_DisplayName } = this.props.Viewer;
     const { loginDialogIsOpen, userMenuIsOpen } = this.state;
 
     return (
       _react2.default.createElement('div', null,
         User_IsAnonymous &&
-        _react2.default.createElement(_Button2.default, { color: 'contrast', onClick: this._handle_onClick_Login }, 'Login'),
+        _react2.default.createElement(_Button2.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_Login }, 'Login'),
 
 
 
         !User_IsAnonymous &&
-        _react2.default.createElement(_Button2.default, { color: 'contrast', onClick: this._handle_onClick_UserMenu },
+        _react2.default.createElement(_Button2.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_UserMenu },
           User_DisplayName),
 
 
@@ -105,7 +111,7 @@ class NavBarLoginButton extends _react2.default.Component
             id: 'lock-menu',
             anchorEl: this.state.anchorEl,
             open: userMenuIsOpen,
-            onRequestClose: this._handle_UserMenu_Close },
+            onClose: this._handle_UserMenu_Close },
 
           _react2.default.createElement(_Menu.MenuItem, { key: 'profile', onClick: this._handle_onClick_Profile }, 'Profile'),
 
