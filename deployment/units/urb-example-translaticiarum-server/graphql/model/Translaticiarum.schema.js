@@ -12,16 +12,18 @@ _defaultPersister2.default.addTableSchema('Translaticiarum', {
     Translaticiarum_Description: 'text' },
 
 
-  key: ['id'],
+  indexes: ['Translaticiarum_User_id'],
 
-  custom_indexes: [
-  {
-    on: 'Translaticiarum_User_id',
-    using: 'org.apache.cassandra.index.sasi.SASIIndex',
-    options: {} }] });exports.default =
+  key: ['id']
 
-
-
+  // custom_indexes: [
+  //   {
+  //     on: 'Translaticiarum_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
+});exports.default =
 
 true;
 //# sourceMappingURL=Translaticiarum.schema.js.map

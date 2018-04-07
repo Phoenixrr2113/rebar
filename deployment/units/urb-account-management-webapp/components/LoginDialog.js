@@ -38,8 +38,6 @@ class LoginDialog extends _react2.default.Component
 
 
 
-
-
 {
   constructor(props, context) {
     super(props, context);this.
@@ -130,7 +128,7 @@ class LoginDialog extends _react2.default.Component
           classes: { paper: classes.dialogPaper },
           open: open,
           transition: _Slide2.default,
-          onRequestClose: this._handle_Close },
+          onClose: this._handle_Close },
 
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In'),
 
@@ -174,24 +172,20 @@ class LoginDialog extends _react2.default.Component
     const { UserAccount_Identifier } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, {
-          classes: { paper: classes.dialogPaper },
-          open: open,
-          onRequestClose: this._handle_Close },
-
+      _react2.default.createElement(_Dialog2.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Logging in'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging in as',
 
-            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ' ...'),
+            _react2.default.createElement('span', { className: classes.userName }, UserAccount_Identifier), ' ...'),
 
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null),
           _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' })),
 
         _react2.default.createElement(_Dialog.DialogActions, null,
-          _react2.default.createElement(_Button2.default, { color: 'accent', onClick: this._handle_onCLick_CancelLogIn }, 'Cancel'))));
+          _react2.default.createElement(_Button2.default, { color: 'primary', onClick: this._handle_onCLick_CancelLogIn }, 'Cancel'))));
 
 
 
@@ -204,17 +198,14 @@ class LoginDialog extends _react2.default.Component
     const { UserAccount_Identifier, errorMessage } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, {
-          classes: { paper: classes.dialogPaper },
-          open: open,
-          onRequestClose: this._handle_Close },
-
+      _react2.default.createElement(_Dialog2.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
         _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In Failed'),
 
         _react2.default.createElement(_Dialog.DialogContent, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed loggin in as',
 
-            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ' because: ', errorMessage, '!')),
+            _react2.default.createElement('span', { className: classes.userName }, UserAccount_Identifier), ' because:', ' ',
+            errorMessage, '!')),
 
 
         _react2.default.createElement(_Dialog.DialogActions, null,
