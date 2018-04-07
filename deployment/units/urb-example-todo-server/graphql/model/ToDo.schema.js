@@ -11,16 +11,18 @@ _defaultPersister2.default.addTableSchema('ToDo', {
     ToDo_Complete: 'boolean' },
 
 
-  key: ['id'],
+  indexes: ['ToDo_User_id'],
 
-  custom_indexes: [
-  {
-    on: 'ToDo_User_id',
-    using: 'org.apache.cassandra.index.sasi.SASIIndex',
-    options: {} }] });exports.default =
+  key: ['id']
 
-
-
+  // custom_indexes: [
+  //   {
+  //     on: 'ToDo_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
+});exports.default =
 
 true;
 //# sourceMappingURL=ToDo.schema.js.map

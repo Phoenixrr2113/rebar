@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash 50365f34c60a25958272fd68a507e6aa
+ * 
+ * @relayHash c7fd75ff33115644da85ebb13a479495
  */
 
 /* eslint-disable */
@@ -8,83 +8,88 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryResponse = {|
-  +Viewer: ?{| |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              type ViewportDimensionsScreen_Viewer$ref = any;
+              export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryVariables = {| |};
+              export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryResponse = {|
+                +Viewer: ?{|
+                  +$fragmentRefs: ViewportDimensionsScreen_Viewer$ref,
+                |},
+              |};
+              */
 
 
 /*
-query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {
-  Viewer {
-    ...ViewportDimensionsScreen_Viewer
-    id
-  }
-}
+                 query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {
+                   Viewer {
+                     ...ViewportDimensionsScreen_Viewer
+                     id
+                   }
+                 }
+                 
+                 fragment ViewportDimensionsScreen_Viewer on Viewer {
+                   id
+                 }
+                 */
 
-fragment ViewportDimensionsScreen_Viewer on Viewer {
-  id
-}
-*/
-
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "ViewportDimensionsScreen_Viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Query"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
+const node /*: ConcreteRequest*/ = {
+  "kind": "Request",
+  "operationKind": "query",
   "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
-  "query": {
-    "argumentDefinitions": [],
-    "kind": "Root",
+  "id": null,
+  "text": "query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {\n  Viewer {\n    ...ViewportDimensionsScreen_Viewer\n    id\n  }\n}\n\nfragment ViewportDimensionsScreen_Viewer on Viewer {\n  id\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
-    "operation": "query",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": [],
     "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {\n  Viewer {\n    ...ViewportDimensionsScreen_Viewer\n    id\n  }\n}\n\nfragment ViewportDimensionsScreen_Viewer on Viewer {\n  id\n}\n"
-};
+        "kind": "FragmentSpread",
+        "name": "ViewportDimensionsScreen_Viewer",
+        "args": null }] }] },
 
-module.exports = batch;
+
+
+
+
+  "operation": {
+    "kind": "Operation",
+    "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
+    "argumentDefinitions": [],
+    "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "id",
+        "args": null,
+        "storageKey": null }] }] } };
+
+
+
+
+
+
+node /*: any*/.hash = 'fd4b596cb5564462f401210ca2e12734';
+module.exports = node;
+//# sourceMappingURL=routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query.graphql.js.map

@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash 4e7a8f72648b242141792f5f5d233488
+ * 
+ * @relayHash c81603ccebb7bc2dd3e7553fc1c66fe6
  */
 
 /* eslint-disable */
@@ -8,90 +8,95 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type routeAppFrameForceLogin_ForceLogin_QueryResponse = {|
-  +Viewer: ?{| |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              type ForceLogin_Viewer$ref = any;
+              export type routeAppFrameForceLogin_ForceLogin_QueryVariables = {| |};
+              export type routeAppFrameForceLogin_ForceLogin_QueryResponse = {|
+                +Viewer: ?{|
+                  +$fragmentRefs: ForceLogin_Viewer$ref,
+                |},
+              |};
+              */
 
 
 /*
-query routeAppFrameForceLogin_ForceLogin_Query {
-  Viewer {
-    ...ForceLogin_Viewer
-    id
-  }
-}
+                 query routeAppFrameForceLogin_ForceLogin_Query {
+                   Viewer {
+                     ...ForceLogin_Viewer
+                     id
+                   }
+                 }
+                 
+                 fragment ForceLogin_Viewer on Viewer {
+                   User_IsAnonymous
+                 }
+                 */
 
-fragment ForceLogin_Viewer on Viewer {
-  User_IsAnonymous
-}
-*/
-
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "routeAppFrameForceLogin_ForceLogin_Query",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "ForceLogin_Viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Query"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
+const node /*: ConcreteRequest*/ = {
+  "kind": "Request",
+  "operationKind": "query",
   "name": "routeAppFrameForceLogin_ForceLogin_Query",
-  "query": {
-    "argumentDefinitions": [],
-    "kind": "Root",
+  "id": null,
+  "text": "query routeAppFrameForceLogin_ForceLogin_Query {\n  Viewer {\n    ...ForceLogin_Viewer\n    id\n  }\n}\n\nfragment ForceLogin_Viewer on Viewer {\n  User_IsAnonymous\n}\n",
+  "metadata": {},
+  "fragment": {
+    "kind": "Fragment",
     "name": "routeAppFrameForceLogin_ForceLogin_Query",
-    "operation": "query",
+    "type": "Query",
+    "metadata": null,
+    "argumentDefinitions": [],
     "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
       {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": null,
-        "concreteType": "Viewer",
-        "name": "Viewer",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "User_IsAnonymous",
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "query routeAppFrameForceLogin_ForceLogin_Query {\n  Viewer {\n    ...ForceLogin_Viewer\n    id\n  }\n}\n\nfragment ForceLogin_Viewer on Viewer {\n  User_IsAnonymous\n}\n"
-};
+        "kind": "FragmentSpread",
+        "name": "ForceLogin_Viewer",
+        "args": null }] }] },
 
-module.exports = batch;
+
+
+
+
+  "operation": {
+    "kind": "Operation",
+    "name": "routeAppFrameForceLogin_ForceLogin_Query",
+    "argumentDefinitions": [],
+    "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "Viewer",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "Viewer",
+      "plural": false,
+      "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "User_IsAnonymous",
+        "args": null,
+        "storageKey": null },
+
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "id",
+        "args": null,
+        "storageKey": null }] }] } };
+
+
+
+
+
+
+node /*: any*/.hash = 'c6caf31fca5281f05d717603162982b7';
+module.exports = node;
+//# sourceMappingURL=routeAppFrameForceLogin_ForceLogin_Query.graphql.js.map

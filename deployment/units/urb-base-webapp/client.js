@@ -43,6 +43,7 @@ const render = (0, _createRender2.default)({})
   _react2.default.createElement(_AppWrapper2.default, { siteConfiguration: window.__siteConfiguration__, url: document.location.href },
     _react2.default.createElement(Router, { resolver: resolver })),
 
+  // $FlowIssue
   document.getElementById('root'),
   () => {
     // TODO x0100 Research if removal of styles if necessary
