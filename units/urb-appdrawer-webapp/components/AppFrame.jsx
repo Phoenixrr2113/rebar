@@ -77,6 +77,9 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20,
   },
+  menuButtonRoot: {
+    color: '#ffffff',
+  },
   hide: {
     display: 'none',
   },
@@ -179,15 +182,15 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
           <AppBar className={classNames( classes.appBar, drawerIsPinned && classes.appBarShift )}>
             <Toolbar disableGutters={!drawerIsPinned}>
               <IconButton
-                color="contrast"
                 aria-label="open drawer"
                 onClick={this._handle_Drawer_Open}
                 className={classNames( classes.menuButton, drawerIsPinned && classes.hide )}
+                classes={{ root: classes.menuButtonRoot }}
               >
                 <IconMenu />
               </IconButton>
               <Typography className={classes.title} type="title" color="inherit" noWrap>
-                Universal Relay Boilerplate Demo
+                Code Foundries Maker
               </Typography>
 
               <div className={classes.grow} />
@@ -197,7 +200,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
           <Drawer
             classes={drawerClasses}
             open={drawerIsOpen}
-            onRequestClose={this._handle_Drawer_Close}
+            onClose={this._handle_Drawer_Close}
             type={drawerType}
             transitionDuration={{
               enter: drawerIsPinned ? 0 : 300,

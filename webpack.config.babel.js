@@ -88,7 +88,7 @@ const config = {
                 [
                   'relay',
                   {
-                    schema: 'units/_configuration/urb-base-server/graphql/schema.graphql',
+                    schema: 'schema.graphql',
                   },
                 ],
               ]),

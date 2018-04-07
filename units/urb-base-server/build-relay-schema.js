@@ -25,11 +25,7 @@ async function main() {
       null,
       JSON.stringify( result, null, 2 ),
     ),
-    ensureFileContent(
-      path.resolve( './units/_configuration/urb-base-server/graphql/schema.graphql' ),
-      null,
-      printedSchema,
-    ),
+    ensureFileContent( path.resolve( 'schema.graphql' ), null, printedSchema ),
   ]
 
   await Promise.all( taskPromises )

@@ -11,17 +11,15 @@ defaultPersister.addTableSchema( 'UserSession', {
     UserSession_Expired: 'boolean',
   },
 
-  indexes: [ 'UserSession_User_id' ],
-
   key: [ 'id' ],
 
-  // custom_indexes: [
-  //   {
-  //     on: 'UserSession_User_id',
-  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
-  //     options: {},
-  //   },
-  // ],
+  custom_indexes: [
+    {
+      on: 'UserSession_User_id',
+      using: 'org.apache.cassandra.index.sasi.SASIIndex',
+      options: {},
+    },
+  ],
 })
 
 export default true

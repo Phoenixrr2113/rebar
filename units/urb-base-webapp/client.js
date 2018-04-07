@@ -43,6 +43,7 @@ const render = createRender({})
     <AppWrapper siteConfiguration={window.__siteConfiguration__} url={document.location.href}>
       <Router resolver={resolver} />
     </AppWrapper>,
+    // $FlowIssue
     document.getElementById( 'root' ),
     () => {
       // TODO x0100 Research if removal of styles if necessary

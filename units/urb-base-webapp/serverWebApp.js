@@ -33,26 +33,32 @@ const envPort = process.env.PORT
 if ( envPort == null || typeof envPort !== 'string' )
   throw new Error( 'Error: urb-base-webapp requires the environment variable PORT to be set' )
 
-const envPortWebpack = process.env.PORT_WEBPACK
-if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
-  throw new Error( 'Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set' ) // Create express router
-
+// Create express router for the web app
 const serverWebApp = express()
 
 async function gatherLocationAndSiteInformation( req: Object, res: Object ) {
   let assetsPath
   const siteInformation = await getSiteInformation( req, res )
+
   if ( process.env.NODE_ENV === 'production' ) {
     assetsPath =
-      siteInformation.isSiteBuilderDisabled || siteInformation.inEditingMode
+      siteInformation.isCfMakerDisabled || siteInformation.inEditingMode
         ? // When editing in production, use the assets with the configuration readign code intact (built when cutting a site version)
           `/assets/${version}`
         : // When in production mode, serve the assets compiled by maker
           `/sassets/${version}.${siteInformation.siteConfiguration.version}`
   } else {
+    // Get webpack port only in development. In production it can be omitted
+    const envPortWebpack = process.env.PORT_WEBPACK
+    if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
+      throw new Error(
+        'Error: urb-base-webapp requires the environment variable PORT_WEBPACK to be set',
+      )
+
     // When in development, always go to webpack over http
     assetsPath = `http://${envHost}:${envPortWebpack}/${version}`
   }
+
   return { siteInformation, assetsPath }
 }
 
@@ -68,6 +74,15 @@ const render = createRender({
 serverWebApp.use( async( req, res ) => {
   try {
     const { siteInformation, assetsPath } = await gatherLocationAndSiteInformation( req, res )
+
+    // It is possible that site_id can not be determined during development. For instance, when browsing
+    // the project on localhost using a specific port, Chrome will request robots.txt and favicon.ico and
+    // they will not have the proper dev-host header. In this case simply report the file missing.
+    // This does not affect operation in production, since host will be passed for all requests.
+    if ( !siteInformation ) {
+      res.status( 404 )
+      return
+    }
 
     const fetcher = new FetcherServer(
       `http://localhost:${envPort}` + getGraphQLLocalServerURL( siteInformation ),
@@ -97,8 +112,11 @@ serverWebApp.use( async( req, res ) => {
       return
     }
 
+    const relayPayload = serialize( fetcher, { isJSON: true })
+
     const sheets = new SheetsRegistry()
     const helmet = Helmet.rewind()
+
     const rootHTML = ReactDOMServer.renderToString(
       <JssProvider registry={sheets}>
         <AppWrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset} url={req.url}>
@@ -113,7 +131,7 @@ serverWebApp.use( async( req, res ) => {
       server_side_styles: sheets.toString(),
       helmet,
       siteConfiguration: JSON.stringify( siteConfigurationSubset ),
-      relay_payload: serialize( fetcher, { isJSON: true }),
+      relay_payload: relayPayload,
     })
   } catch ( err ) {
     log.log( 'error', 'Error: Render on server request', err )

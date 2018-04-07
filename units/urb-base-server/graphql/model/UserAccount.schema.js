@@ -11,17 +11,15 @@ defaultPersister.addTableSchema( 'UserAccount', {
     UserAccount_Type: 'text',
   },
 
-  indexes: [ 'UserAccount_Identifier' ],
-
   key: [ 'id' ],
 
-  // custom_indexes: [
-  //   {
-  //     on: 'UserAccount_Identifier',
-  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
-  //     options: {},
-  //   },
-  // ],
+  custom_indexes: [
+    {
+      on: 'UserAccount_Identifier',
+      using: 'org.apache.cassandra.index.sasi.SASIIndex',
+      options: {},
+    },
+  ],
 })
 
 export default true
