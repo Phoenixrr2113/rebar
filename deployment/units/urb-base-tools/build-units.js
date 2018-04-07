@@ -4,16 +4,20 @@ var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
 var _path = require('path');var _path2 = _interopRequireDefault(_path);
 var _util = require('util');
 
-var _prettier = require('prettier');var _prettier2 = _interopRequireDefault(_prettier);
+var _prettierEslint = require('prettier-eslint');var _prettierEslint2 = _interopRequireDefault(_prettierEslint);
 
 
 var _package = require('../../package.json');var _package2 = _interopRequireDefault(_package);
 
+var _eslintrc = require('../../.eslintrc.json');var _eslintrc2 = _interopRequireDefault(_eslintrc);
+
 var _ensureFileContent = require('./ensureFileContent');var _ensureFileContent2 = _interopRequireDefault(_ensureFileContent);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // $FlowIssue Not sure why it gives an error. The file does exist
 
-const existsAsync = (0, _util.promisify)(_fs2.default.exists);
+const existsAsync = (0, _util.promisify)(_fs2.default.exists); // $FlowIssue Not sure why it gives an error. The file does exist
 const readFileAsync = (0, _util.promisify)(_fs2.default.readFile);
 const readdirAsync = (0, _util.promisify)(_fs2.default.readdir);
+
+const prettierESLintOptions = { eslintConfig: _eslintrc2.default, prettierOptions: _package2.default.prettier };
 
 function sortObject(object) {
   var t = {};
@@ -138,7 +142,7 @@ async function createMutations(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_mutations.js'),
   null,
-  _prettier2.default.format(mutations.join('\r\n'), _package2.default.prettier));
+  (0, _prettierEslint2.default)(Object.assign({ text: mutations.join('\r\n') }, prettierESLintOptions)));
 
 }
 
@@ -169,7 +173,7 @@ async function createSchemas(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_schemas.js'),
   null,
-  _prettier2.default.format(schemas.join('\r\n'), _package2.default.prettier));
+  (0, _prettierEslint2.default)(Object.assign({ text: schemas.join('\r\n') }, prettierESLintOptions)));
 
 }
 
@@ -206,7 +210,7 @@ async function createViewerFields(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_ViewerFields.js'),
   null,
-  _prettier2.default.format(viewerFields.join('\r\n'), _package2.default.prettier));
+  (0, _prettierEslint2.default)(Object.assign({ text: viewerFields.join('\r\n') }, prettierESLintOptions)));
 
 }
 
@@ -265,7 +269,7 @@ async function createRouteFile(fileName, imports, exports) {
   await (0, _ensureFileContent2.default)(
   fileName,
   null,
-  _prettier2.default.format(routesAppFrame.join('\r\n'), _package2.default.prettier));
+  (0, _prettierEslint2.default)(Object.assign({ text: routesAppFrame.join('\r\n') }, prettierESLintOptions)));
 
 }
 
