@@ -5,7 +5,7 @@ import ObjectManager from '../../../../units/urb-base-server/graphql/ObjectManag
 // Class used by GraphQL Server
 export default class Ensayo {
   id: string
-  Ensayo_site_id: string
+  Ensayo_artifact_id: string
   Ensayo_User_id: string
   Ensayo_Title: string
   Ensayo_Description: string
@@ -13,14 +13,14 @@ export default class Ensayo {
 
   constructor( fields: {
     id: string,
-    Ensayo_site_id: string,
+    Ensayo_artifact_id: string,
     Ensayo_User_id: string,
     Ensayo_Title: string,
     Ensayo_Description: string,
     Ensayo_Content: string,
   }) {
     this.id = fields.id
-    this.Ensayo_site_id = fields.Ensayo_site_id
+    this.Ensayo_artifact_id = fields.Ensayo_artifact_id
     this.Ensayo_User_id = fields.Ensayo_User_id
     this.Ensayo_Title = fields.Ensayo_Title
     this.Ensayo_Description = fields.Ensayo_Description

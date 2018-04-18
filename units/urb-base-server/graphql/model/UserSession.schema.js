@@ -5,7 +5,7 @@ import defaultPersister from '../../../_configuration/urb-base-server/graphql/de
 defaultPersister.addTableSchema( 'UserSession', {
   fields: {
     id: 'uuid',
-    UserSession_site_id: 'uuid',
+    UserSession_artifact_id: 'uuid',
     UserSession_User_id: 'uuid',
     UserSession_Start: 'timestamp',
     UserSession_Expired: 'boolean',

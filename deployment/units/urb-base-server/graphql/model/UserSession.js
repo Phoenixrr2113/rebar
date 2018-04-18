@@ -18,7 +18,7 @@ class UserSession {
 
   {
     this.id = fields.id;
-    this.UserSession_site_id = fields.UserSession_site_id;
+    this.UserSession_artifact_id = fields.UserSession_artifact_id;
     this.UserSession_User_id = fields.UserSession_User_id;
     this.UserSession_Start = fields.UserSession_Start;
     this.UserSession_Expired = fields.UserSession_Expired;

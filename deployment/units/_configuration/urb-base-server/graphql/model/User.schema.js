@@ -5,7 +5,7 @@ var _defaultPersister = require('../defaultPersister');var _defaultPersister2 = 
 _defaultPersister2.default.addTableSchema('User', {
   fields: {
     id: 'uuid',
-    User_site_id: 'uuid',
+    User_artifact_id: 'uuid',
     UserToken2: 'text',
     User_Secret: 'text',
     User_DisplayName: 'text',

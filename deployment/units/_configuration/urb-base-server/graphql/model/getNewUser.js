@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = getNewUser;function getNewUser(User_site_id) {
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = getNewUser;function getNewUser(User_artifact_id) {
   return {
-    User_site_id,
+    User_artifact_id,
     UserToken2: '',
     User_Secret: '',
     User_DisplayName: '',

@@ -75,7 +75,7 @@ serverWebApp.use( async( req, res ) => {
   try {
     const { siteInformation, assetsPath } = await gatherLocationAndSiteInformation( req, res )
 
-    // It is possible that site_id can not be determined during development. For instance, when browsing
+    // It is possible that artifact_id can not be determined during development. For instance, when browsing
     // the project on localhost using a specific port, Chrome will request robots.txt and favicon.ico and
     // they will not have the proper dev-host header. In this case simply report the file missing.
     // This does not affect operation in production, since host will be passed for all requests.

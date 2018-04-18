@@ -1,6 +1,7 @@
 // @flow
 
-import AddIcon from 'material-ui-icons/Add'
+import AddIcon from '@material-ui/icons/Add'
+
 import Button from 'material-ui/Button'
 import Card, { CardContent, CardHeader } from 'material-ui/Card'
 import { withStyles } from 'material-ui/styles'
@@ -24,11 +25,11 @@ class EnsayoInPaceEditScreen extends React.Component<
     classes: Object,
     Viewer: Object,
     children: Object,
-    relay: Object
+    relay: Object,
   },
   {
-    propertiesIsOpen: boolean
-  }
+    propertiesIsOpen: boolean,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -37,11 +38,7 @@ class EnsayoInPaceEditScreen extends React.Component<
   }
 
   _handle_updateHandler_Ensayo = EnsayoInPlaceEditProperties => {
-    const {
-      Ensayo_Title,
-      Ensayo_Description,
-      Ensayo_Content,
-    } = EnsayoInPlaceEditProperties
+    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties
     const { relay, Viewer } = this.props
 
     EnsayoAddMutation.commit(
@@ -49,7 +46,7 @@ class EnsayoInPaceEditScreen extends React.Component<
       Viewer,
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content
+      Ensayo_Content,
     )
   }
 
@@ -85,14 +82,15 @@ class EnsayoInPaceEditScreen extends React.Component<
             {this.props.children}
           </CardContent>
 
-          {propertiesIsOpen &&
+          {propertiesIsOpen && (
             <EnsayoInPlaceEditProperties
               Ensayo_Title=""
               Ensayo_Content=""
               Ensayo_Description=""
               handlerUpdate={this._handle_updateHandler_Ensayo}
               handlerClose={this._handle_Close_Properties}
-            />}
+            />
+          )}
         </Card>
       </ResponsiveContentArea>
     )
@@ -105,5 +103,5 @@ export default createFragmentContainer(
     fragment EnsayoInPaceEditScreen_Viewer on Viewer {
       id
     }
-  `
+  `,
 )

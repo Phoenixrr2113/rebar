@@ -3,13 +3,21 @@
 import Divider from 'material-ui/Divider'
 import List from 'material-ui/List'
 import { withStyles } from 'material-ui/styles'
-import IconInbox from 'material-ui-icons/Inbox'
-import IconToday from 'material-ui-icons/Today'
-import IconModeEdit from 'material-ui-icons/ModeEdit'
-import IconImportContacts from 'material-ui-icons/ImportContacts'
-import IconMyLocation from 'material-ui-icons/MyLocation'
-import IconOpenWith from 'material-ui-icons/OpenWith'
-import IconLockOutline from 'material-ui-icons/LockOutline'
+
+import IconInbox from '@material-ui/icons/Inbox'
+
+import IconToday from '@material-ui/icons/Today'
+
+import IconModeEdit from '@material-ui/icons/ModeEdit'
+
+import IconImportContacts from '@material-ui/icons/ImportContacts'
+
+import IconMyLocation from '@material-ui/icons/MyLocation'
+
+import IconOpenWith from '@material-ui/icons/OpenWith'
+
+import IconLockOutline from '@material-ui/icons/LockOutline'
+
 import React from 'react'
 
 import NavMenuItemWithIcon from '../../urb-appdrawer-webapp/components/NavMenuItemWithIcon'

@@ -25,7 +25,7 @@ export { User_0 }
 type EntityDefinition = {
   EntityName: string,
   EntityType: Object,
-  fieldName_site_id: ?string,
+  fieldName_artifact_id: ?string,
   fieldName_user_id: ?string,
   Persister: Object,
   TriggersForAdd: Array<Function>,
@@ -47,8 +47,8 @@ const deletedRecord = {
   deleted: true,
 }
 
-// Regular expressions for detecting use of site_id and user_id in GraphQL Object Type
-const re_site_id_Present = /this\.([\w\d]*site_id)/i // Notice it can be <TableName>_site_id or just site_id
+// Regular expressions for detecting use of artifact_id and user_id in GraphQL Object Type
+const re_artifact_id_Present = /this\.([\w\d]*artifact_id)/i // Notice it can be <TableName>_artifact_id or just artifact_id
 const re_user_id_Present = /this\.([\w\d]*_user_id)/i // Noice that it has to be <TableName>_user_id
 
 export default class ObjectManager {
@@ -58,7 +58,7 @@ export default class ObjectManager {
   changes: Object
   request: ?Object
   response: ?Object
-  siteInformation: { site_id: string }
+  siteInformation: { artifact_id: string }
 
   constructor() {
     // Loaders for a single record, by entity name
@@ -80,7 +80,7 @@ export default class ObjectManager {
     // Setting site information mostly to satify flow;
     // also, in order to be able to better detect errors when not set
     this.siteInformation = {
-      site_id: 'Object Manager: site id has not been set',
+      artifact_id: 'Object Manager: artifact_id has not been set',
     }
   }
 
@@ -97,18 +97,18 @@ export default class ObjectManager {
     setPersisters.add( persister )
 
     const entityTypeSource = EntityType.toString()
-    const match_site_id = entityTypeSource.match( re_site_id_Present )
+    const match_artifact_id = entityTypeSource.match( re_artifact_id_Present )
     const match_user_id = entityTypeSource.match( re_user_id_Present )
 
     // For the User-related tables, there is no automatic support:
-    // User_id and site_id have to be explicitly specified
+    // User_id and artifact_id have to be explicitly specified
     const isNotUserTable =
       entityName !== 'User' && entityName !== 'UserAccount' && entityName !== 'UserSession'
 
     entityDefinitions[entityName] = {
       EntityName: entityName,
       EntityType: EntityType,
-      fieldName_site_id: isNotUserTable && match_site_id ? match_site_id[1] : null,
+      fieldName_artifact_id: isNotUserTable && match_artifact_id ? match_artifact_id[1] : null,
       fieldName_user_id: isNotUserTable && match_user_id ? match_user_id[1] : null,
       Persister: persister,
       TriggersForAdd: [],
@@ -143,9 +143,9 @@ export default class ObjectManager {
   }
 
   addUserIdAndOrSiteIdToFilterOrFields( entityDefinition: EntityDefinition, filterOrFields: Object ) {
-    if ( entityDefinition.fieldName_site_id ) {
-      if ( !filterOrFields.hasOwnProperty( entityDefinition.fieldName_site_id ) )
-        filterOrFields[entityDefinition.fieldName_site_id] = this.siteInformation.site_id
+    if ( entityDefinition.fieldName_artifact_id ) {
+      if ( !filterOrFields.hasOwnProperty( entityDefinition.fieldName_artifact_id ) )
+        filterOrFields[entityDefinition.fieldName_artifact_id] = this.siteInformation.artifact_id
     }
 
     if ( entityDefinition.fieldName_user_id ) {
@@ -248,7 +248,7 @@ export default class ObjectManager {
       if ( defaultPersister.uuidEquals( defaultPersister.uuidNull(), query.id ) )
         return Promise.resolve( User_0 )
 
-    // Apply site_id, User_id security
+    // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinitions[entityName], query )
 
     // For all non-user, non 0 ids, load from data loader per protocol
@@ -263,8 +263,8 @@ export default class ObjectManager {
         // $FlowIssue - by convention all entity objects are expected to have an id
         const change = changes[result.id]
         if ( change != null ) {
-          if ( change === deletedRecord )
-            result = null // Object is not found, return null // Add or update
+          if ( change === deletedRecord ) result = null
+          // Object is not found, return null // Add or update
           else Object.assign( result, change )
         }
       }
@@ -273,7 +273,7 @@ export default class ObjectManager {
   }
 
   getObjectList( entityName: string, query: Object ) {
-    // Apply site_id, User_id security
+    // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinitions[entityName], query )
 
     const loaderIdentifier = Object.keys( query )
@@ -290,9 +290,8 @@ export default class ObjectManager {
             if ( change === deletedRecord )
               // Reduce ix in order not to skip over a record
               arrResults.splice( ix--, 1 )
-            else
-              // Add or update
-              Object.assign( arrResults[ix], change )
+            // Add or update
+            else Object.assign( arrResults[ix], change )
           }
         }
       }
@@ -335,7 +334,7 @@ export default class ObjectManager {
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
-    // Apply site_id, User_id security
+    // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
 
     // Generate primary key, if not already present
@@ -396,8 +395,8 @@ export default class ObjectManager {
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
-    // Apply site_id, User_id security - ensure a copy of the fields has the correct
-    // site_id and user_id
+    // Apply artifact_id, User_id security - ensure a copy of the fields has the correct
+    // artifact_id and user_id
     const fieldsEnsured = { id: fields.id }
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fieldsEnsured )
     await this.ensure( entityName, { id: fields.id }, fieldsEnsured )
@@ -420,8 +419,8 @@ export default class ObjectManager {
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
 
-    // Apply site_id, User_id security - ensure a copy of the fields has the correct
-    // site_id and user_id
+    // Apply artifact_id, User_id security - ensure a copy of the fields has the correct
+    // artifact_id and user_id
     const fieldsEnsured = { id: fields.id }
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fieldsEnsured )
     await this.ensure( entityName, { id: fields.id }, fieldsEnsured )

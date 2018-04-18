@@ -34,14 +34,14 @@ export async function getUserAndSessionIDByUserToken1( objectManager, req ) {
   if ( session_id )
     a_UserSession = await objectManager.getOneObject( 'UserSession', {
       id: session_id,
-      UserSession_site_id: objectManager.siteInformation.site_id,
+      UserSession_artifact_id: objectManager.siteInformation.artifact_id,
     })
 
   const user_id = a_UserSession ? a_UserSession.UserSession_User_id : defaultPersister.uuidNull()
 
   const a_User = await objectManager.getOneObject( 'User', {
     id: user_id,
-    User_site_id: objectManager.siteInformation.site_id,
+    User_artifact_id: objectManager.siteInformation.artifact_id,
   })
 
   if ( a_User ) {
