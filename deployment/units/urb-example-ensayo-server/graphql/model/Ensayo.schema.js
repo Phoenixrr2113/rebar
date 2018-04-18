@@ -5,7 +5,7 @@ var _defaultPersister = require('../../../_configuration/urb-base-server/graphql
 _defaultPersister2.default.addTableSchema('Ensayo', {
   fields: {
     id: 'uuid',
-    Ensayo_site_id: 'uuid',
+    Ensayo_artifact_id: 'uuid',
     Ensayo_User_id: 'uuid',
     Ensayo_Content: 'text',
     Ensayo_Description: 'text',

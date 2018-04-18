@@ -7,9 +7,13 @@ var _IconButton = require('material-ui/IconButton');var _IconButton2 = _interopR
 var _styles = require('material-ui/styles');
 var _Toolbar = require('material-ui/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
 var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
-var _ChevronLeft = require('material-ui-icons/ChevronLeft');var _ChevronLeft2 = _interopRequireDefault(_ChevronLeft);
-var _KeyboardTab = require('material-ui-icons/KeyboardTab');var _KeyboardTab2 = _interopRequireDefault(_KeyboardTab);
-var _Menu = require('material-ui-icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+
+var _ChevronLeft = require('@material-ui/icons/ChevronLeft');var _ChevronLeft2 = _interopRequireDefault(_ChevronLeft);
+
+var _KeyboardTab = require('@material-ui/icons/KeyboardTab');var _KeyboardTab2 = _interopRequireDefault(_KeyboardTab);
+
+var _Menu = require('@material-ui/icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');

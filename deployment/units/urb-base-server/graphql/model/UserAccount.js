@@ -18,7 +18,7 @@ class UserAccount {
 
   {
     this.id = fields.id;
-    this.UserAccount_site_id = fields.UserAccount_site_id;
+    this.UserAccount_artifact_id = fields.UserAccount_artifact_id;
     this.UserAccount_User_id = fields.UserAccount_User_id;
     this.UserAccount_Identifier = fields.UserAccount_Identifier;
     this.UserAccount_Type = fields.UserAccount_Type;
