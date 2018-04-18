@@ -7,9 +7,13 @@ import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
-import IconChevronLeft from 'material-ui-icons/ChevronLeft'
-import IconKeyboardTab from 'material-ui-icons/KeyboardTab'
-import IconMenu from 'material-ui-icons/Menu'
+
+import IconChevronLeft from '@material-ui/icons/ChevronLeft'
+
+import IconKeyboardTab from '@material-ui/icons/KeyboardTab'
+
+import IconMenu from '@material-ui/icons/Menu'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'

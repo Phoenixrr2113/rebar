@@ -3,7 +3,7 @@
 // Class used by GraphQL Server
 export default class User {
   id: string
-  User_site_id: string
+  User_artifact_id: string
   UserToken2: string
   User_Secret: string
   User_DisplayName: string
@@ -15,17 +15,17 @@ export default class User {
 
   constructor( fields: {
     id: string,
-    User_site_id: string,
+    User_artifact_id: string,
     UserToken2: string,
     User_Secret: string,
     User_DisplayName: string,
     User_Email: string,
     User_PhoneNumberMobile: string,
     User_Latitude: number,
-    User_Longitude: number
+    User_Longitude: number,
   }) {
     this.id = fields.id
-    this.User_site_id = fields.User_site_id
+    this.User_artifact_id = fields.User_artifact_id
     this.UserToken2 = fields.UserToken2
     this.User_Secret = fields.User_Secret
     this.User_DisplayName = fields.User_DisplayName

@@ -5,7 +5,7 @@ import defaultPersister from '../defaultPersister'
 defaultPersister.addTableSchema( 'User', {
   fields: {
     id: 'uuid',
-    User_site_id: 'uuid',
+    User_artifact_id: 'uuid',
     UserToken2: 'text',
     User_Secret: 'text',
     User_DisplayName: 'text',

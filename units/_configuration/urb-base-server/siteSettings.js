@@ -12,10 +12,11 @@ require( 'dotenv' ).load()
 const googleMapsJavascriptAPI = process.env.GOOGLE_MAPS_JAVASCRIPT_API
 if ( googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'string' )
   throw new Error(
-    '💔  urb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set',
+    'urb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set',
   )
+
 const siteInformation = {
-  site_id: defaultPersister.uuidNull(),
+  artifact_id: defaultPersister.uuidNull(),
   inEditingMode: false,
   isSiteBuilderDisabled: true,
   siteConfiguration: {
@@ -27,6 +28,7 @@ const siteInformation = {
     builderClient: {},
   },
 }
+
 export async function getSiteInformation( req: Object, res: Object ): Object {
   return siteInformation
 }
