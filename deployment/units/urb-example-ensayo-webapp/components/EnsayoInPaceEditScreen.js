@@ -1,6 +1,7 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Add = require('material-ui-icons/Add');var _Add2 = _interopRequireDefault(_Add);
+var _Add = require('@material-ui/icons/Add');var _Add2 = _interopRequireDefault(_Add);
+
 var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
 var _Card = require('material-ui/Card');var _Card2 = _interopRequireDefault(_Card);
 var _styles = require('material-ui/styles');
@@ -37,11 +38,7 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
 
 
     _handle_updateHandler_Ensayo = EnsayoInPlaceEditProperties => {
-      const {
-        Ensayo_Title,
-        Ensayo_Description,
-        Ensayo_Content } =
-      EnsayoInPlaceEditProperties;
+      const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties;
       const { relay, Viewer } = this.props;
 
       _EnsayoAddMutation2.default.commit(
@@ -92,6 +89,7 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
             Ensayo_Description: '',
             handlerUpdate: this._handle_updateHandler_Ensayo,
             handlerClose: this._handle_Close_Properties }))));
+
 
 
 

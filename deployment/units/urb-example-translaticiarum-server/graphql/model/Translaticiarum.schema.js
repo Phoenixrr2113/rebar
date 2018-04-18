@@ -5,7 +5,7 @@ var _defaultPersister = require('../../../_configuration/urb-base-server/graphql
 _defaultPersister2.default.addTableSchema('Translaticiarum', {
   fields: {
     id: 'uuid',
-    Translaticiarum_site_id: 'uuid',
+    Translaticiarum_artifact_id: 'uuid',
     Translaticiarum_User_id: 'uuid',
     Translaticiarum_Stop: 'timestamp',
     Translaticiarum_Start: 'timestamp',

@@ -3,13 +3,21 @@
 var _Divider = require('material-ui/Divider');var _Divider2 = _interopRequireDefault(_Divider);
 var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
 var _styles = require('material-ui/styles');
-var _Inbox = require('material-ui-icons/Inbox');var _Inbox2 = _interopRequireDefault(_Inbox);
-var _Today = require('material-ui-icons/Today');var _Today2 = _interopRequireDefault(_Today);
-var _ModeEdit = require('material-ui-icons/ModeEdit');var _ModeEdit2 = _interopRequireDefault(_ModeEdit);
-var _ImportContacts = require('material-ui-icons/ImportContacts');var _ImportContacts2 = _interopRequireDefault(_ImportContacts);
-var _MyLocation = require('material-ui-icons/MyLocation');var _MyLocation2 = _interopRequireDefault(_MyLocation);
-var _OpenWith = require('material-ui-icons/OpenWith');var _OpenWith2 = _interopRequireDefault(_OpenWith);
-var _LockOutline = require('material-ui-icons/LockOutline');var _LockOutline2 = _interopRequireDefault(_LockOutline);
+
+var _Inbox = require('@material-ui/icons/Inbox');var _Inbox2 = _interopRequireDefault(_Inbox);
+
+var _Today = require('@material-ui/icons/Today');var _Today2 = _interopRequireDefault(_Today);
+
+var _ModeEdit = require('@material-ui/icons/ModeEdit');var _ModeEdit2 = _interopRequireDefault(_ModeEdit);
+
+var _ImportContacts = require('@material-ui/icons/ImportContacts');var _ImportContacts2 = _interopRequireDefault(_ImportContacts);
+
+var _MyLocation = require('@material-ui/icons/MyLocation');var _MyLocation2 = _interopRequireDefault(_MyLocation);
+
+var _OpenWith = require('@material-ui/icons/OpenWith');var _OpenWith2 = _interopRequireDefault(_OpenWith);
+
+var _LockOutline = require('@material-ui/icons/LockOutline');var _LockOutline2 = _interopRequireDefault(_LockOutline);
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 
 var _NavMenuItemWithIcon = require('../../urb-appdrawer-webapp/components/NavMenuItemWithIcon');var _NavMenuItemWithIcon2 = _interopRequireDefault(_NavMenuItemWithIcon);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}

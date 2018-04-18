@@ -35,7 +35,7 @@ async function login(req, res) {
 
     try {
       const arr_UserAccount = await objectManager.getObjectList('UserAccount', {
-        UserAccount_site_id: objectManager.siteInformation.site_id,
+        UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
         UserAccount_Identifier: UserAccount_Identifier });
 
 
@@ -54,7 +54,7 @@ async function login(req, res) {
         {
           // Create user session object
           const a_UserSession = {
-            UserSession_site_id: objectManager.siteInformation.site_id, // Get previously assigned primary key
+            UserSession_artifact_id: objectManager.siteInformation.artifact_id, // Get previously assigned primary key
             UserSession_User_id: a_User.id,
             UserSession_Start: new Date(),
             UserSession_Expired: false
@@ -86,7 +86,7 @@ async function createuser(req, res) {
     const User_Secret = req.body.User_Secret;
     try {
       const arr_UserAccount = await objectManager.getObjectList('UserAccount', {
-        UserAccount_site_id: objectManager.siteInformation.site_id,
+        UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
         UserAccount_Identifier: UserAccount_Identifier });
 
       if (arr_UserAccount.length > 0) throw new Error('User account already exists');
@@ -97,8 +97,8 @@ async function createuser(req, res) {
       const accountNameIsValidEmail = (0, _validation.validateEmail)(UserAccount_Identifier);
       const User_Email = accountNameIsValidEmail ? UserAccount_Identifier : '';
       // Create the user object
-      const a_User = Object.assign((0, _getNewUser2.default)(objectManager.siteInformation.site_id), {
-        User_site_id: objectManager.siteInformation.site_id,
+      const a_User = Object.assign((0, _getNewUser2.default)(objectManager.siteInformation.artifact_id), {
+        User_artifact_id: objectManager.siteInformation.artifact_id,
         UserToken2:
         Math.random().
         toString(36).
@@ -113,7 +113,7 @@ async function createuser(req, res) {
       objectManager.assignPrimaryKey('User', a_User);
       // Create user session object
       const a_UserSession = {
-        UserSession_site_id: objectManager.siteInformation.site_id,
+        UserSession_artifact_id: objectManager.siteInformation.artifact_id,
         // Get previously assigned primary key
         UserSession_User_id: a_User.id,
         UserSession_Start: new Date(),
@@ -121,7 +121,7 @@ async function createuser(req, res) {
 
         // Create user account object
       };const a_UserAccount = {
-        UserAccount_site_id: objectManager.siteInformation.site_id,
+        UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
         // Get previously assigned primary key
         UserAccount_User_id: a_User.id,
         UserAccount_Identifier: UserAccount_Identifier,
