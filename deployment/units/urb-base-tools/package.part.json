@@ -1,7 +1,7 @@
 {
   "engines": {
-    "node": "^8.3.0",
-    "npm": "^5.0.0"
+    "node": ">=8.6.0",
+    "npm": ">=5.0.0"
   },
   "lint-staged": {
     "units/**/*.js": ["eslint --fix", "prettier-eslint --write", "git add"],

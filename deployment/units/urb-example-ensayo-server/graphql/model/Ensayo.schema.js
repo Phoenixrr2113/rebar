@@ -12,16 +12,18 @@ _defaultPersister2.default.addTableSchema('Ensayo', {
     Ensayo_Title: 'text' },
 
 
-  key: ['id'],
+  indexes: ['Ensayo_User_id'],
 
-  custom_indexes: [
-  {
-    on: 'Ensayo_User_id',
-    using: 'org.apache.cassandra.index.sasi.SASIIndex',
-    options: {} }] });exports.default =
+  key: ['id']
 
-
-
+  // custom_indexes: [
+  //   {
+  //     on: 'Ensayo_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
+});exports.default =
 
 true;
 //# sourceMappingURL=Ensayo.schema.js.map

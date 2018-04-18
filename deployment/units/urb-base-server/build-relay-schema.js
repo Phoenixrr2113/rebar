@@ -25,11 +25,7 @@ async function main() {
   null,
   JSON.stringify(result, null, 2)),
 
-  (0, _ensureFileContent2.default)(
-  _path2.default.resolve('./units/_configuration/urb-base-server/graphql/schema.graphql'),
-  null,
-  printedSchema)];
-
+  (0, _ensureFileContent2.default)(_path2.default.resolve('schema.graphql'), null, printedSchema)];
 
 
   await Promise.all(taskPromises);

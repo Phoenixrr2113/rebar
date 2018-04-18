@@ -77,6 +77,9 @@ const styles = theme => ({
     marginLeft: 12,
     marginRight: 20 },
 
+  menuButtonRoot: {
+    color: '#ffffff' },
+
   hide: {
     display: 'none' },
 
@@ -179,14 +182,14 @@ class AppFrame extends _react2.default.Component {
           _react2.default.createElement(_AppBar2.default, { className: (0, _classnames2.default)(classes.appBar, drawerIsPinned && classes.appBarShift) },
             _react2.default.createElement(_Toolbar2.default, { disableGutters: !drawerIsPinned },
               _react2.default.createElement(_IconButton2.default, {
-                  color: 'contrast',
                   'aria-label': 'open drawer',
                   onClick: this._handle_Drawer_Open,
-                  className: (0, _classnames2.default)(classes.menuButton, drawerIsPinned && classes.hide) },
+                  className: (0, _classnames2.default)(classes.menuButton, drawerIsPinned && classes.hide),
+                  classes: { root: classes.menuButtonRoot } },
 
                 _react2.default.createElement(_Menu2.default, null)),
 
-              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Universal Relay Boilerplate Demo'),
+              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Code Foundries Maker'),
 
 
 
@@ -197,7 +200,7 @@ class AppFrame extends _react2.default.Component {
           _react2.default.createElement(_Drawer2.default, {
               classes: drawerClasses,
               open: drawerIsOpen,
-              onRequestClose: this._handle_Drawer_Close,
+              onClose: this._handle_Drawer_Close,
               type: drawerType,
               transitionDuration: {
                 enter: drawerIsPinned ? 0 : 300,

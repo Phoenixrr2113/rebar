@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash 81db52b92f36bfb581af091920a65ec0
+ * 
+ * @relayHash ab63a32cdad0d70d9a28190785a1ae14
  */
 
 /* eslint-disable */
@@ -8,150 +8,148 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type routeAppFrameEnsayo_EnsayoPublicItem_QueryResponse = {|
-  +Viewer: ?{| |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              type EnsayoPublicItem_Viewer$ref = any;
+              export type routeAppFrameEnsayo_EnsayoPublicItem_QueryVariables = {|
+                id: string,
+              |};
+              export type routeAppFrameEnsayo_EnsayoPublicItem_QueryResponse = {|
+                +Viewer: ?{|
+                  +$fragmentRefs: EnsayoPublicItem_Viewer$ref,
+                |},
+              |};
+              */
 
 
 /*
-query routeAppFrameEnsayo_EnsayoPublicItem_Query(
-  $id: ID!
-) {
-  Viewer {
-    ...EnsayoPublicItem_Viewer
-    id
-  }
-}
+                 query routeAppFrameEnsayo_EnsayoPublicItem_Query(
+                   $id: ID!
+                 ) {
+                   Viewer {
+                     ...EnsayoPublicItem_Viewer
+                     id
+                   }
+                 }
+                 
+                 fragment EnsayoPublicItem_Viewer on Viewer {
+                   Ensayo(id: $id) {
+                     Ensayo_Title
+                     Ensayo_Description
+                     Ensayo_Content
+                     id
+                   }
+                 }
+                 */
 
-fragment EnsayoPublicItem_Viewer on Viewer {
-  Ensayo(id: $id) {
-    Ensayo_Title
-    Ensayo_Description
-    Ensayo_Content
-    id
-  }
-}
-*/
+const node /*: ConcreteRequest*/ = function () {
+  var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "id",
+    "type": "ID!",
+    "defaultValue": null }],
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
+
+  v1 = {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null };
+
+  return {
+    "kind": "Request",
+    "operationKind": "query",
     "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
-    "selections": [
+    "id": null,
+    "text": "query routeAppFrameEnsayo_EnsayoPublicItem_Query(\n  $id: ID!\n) {\n  Viewer {\n    ...EnsayoPublicItem_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicItem_Viewer on Viewer {\n  Ensayo(id: $id) {\n    Ensayo_Title\n    Ensayo_Description\n    Ensayo_Content\n    id\n  }\n}\n",
+    "metadata": {},
+    "fragment": {
+      "kind": "Fragment",
+      "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
+      "type": "Query",
+      "metadata": null,
+      "argumentDefinitions": v0,
+      "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "Viewer",
+        "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
-        "name": "Viewer",
         "plural": false,
         "selections": [
-          {
-            "kind": "FragmentSpread",
-            "name": "EnsayoPublicItem_Viewer",
-            "args": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Query"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "id",
-        "type": "ID!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
-    "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
-    "operation": "query",
-    "selections": [
+        {
+          "kind": "FragmentSpread",
+          "name": "EnsayoPublicItem_Viewer",
+          "args": null }] }] },
+
+
+
+
+
+    "operation": {
+      "kind": "Operation",
+      "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
+      "argumentDefinitions": v0,
+      "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
+        "name": "Viewer",
+        "storageKey": null,
         "args": null,
         "concreteType": "Viewer",
-        "name": "Viewer",
         "plural": false,
         "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "Ensayo",
+          "storageKey": null,
+          "args": [
           {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": [
-              {
-                "kind": "Variable",
-                "name": "id",
-                "variableName": "id",
-                "type": "ID"
-              }
-            ],
-            "concreteType": "Ensayo",
-            "name": "Ensayo",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "Ensayo_Title",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "Ensayo_Description",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "Ensayo_Content",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
+            "kind": "Variable",
+            "name": "id",
+            "variableName": "id",
+            "type": "ID" }],
+
+
+          "concreteType": "Ensayo",
+          "plural": false,
+          "selections": [
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "Ensayo_Title",
             "args": null,
-            "name": "id",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "query routeAppFrameEnsayo_EnsayoPublicItem_Query(\n  $id: ID!\n) {\n  Viewer {\n    ...EnsayoPublicItem_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicItem_Viewer on Viewer {\n  Ensayo(id: $id) {\n    Ensayo_Title\n    Ensayo_Description\n    Ensayo_Content\n    id\n  }\n}\n"
-};
+            "storageKey": null },
 
-module.exports = batch;
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "Ensayo_Description",
+            "args": null,
+            "storageKey": null },
+
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "Ensayo_Content",
+            "args": null,
+            "storageKey": null },
+
+          v1] },
+
+
+        v1] }] } };
+
+
+
+
+
+}();
+node /*: any*/.hash = '2f4657c9a6e2c5334ae892d11fc4d966';
+module.exports = node;
+//# sourceMappingURL=routeAppFrameEnsayo_EnsayoPublicItem_Query.graphql.js.map
