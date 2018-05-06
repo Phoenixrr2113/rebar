@@ -1,16 +1,11 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _classnames = require('classnames');var _classnames2 = _interopRequireDefault(_classnames);
 var _AppBar = require('material-ui/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
 var _Drawer = require('material-ui/Drawer');var _Drawer2 = _interopRequireDefault(_Drawer);
 var _IconButton = require('material-ui/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
 var _styles = require('material-ui/styles');
 var _Toolbar = require('material-ui/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
 var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
-
-var _ChevronLeft = require('@material-ui/icons/ChevronLeft');var _ChevronLeft2 = _interopRequireDefault(_ChevronLeft);
-
-var _KeyboardTab = require('@material-ui/icons/KeyboardTab');var _KeyboardTab2 = _interopRequireDefault(_KeyboardTab);
 
 var _Menu = require('@material-ui/icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
 
@@ -20,7 +15,8 @@ var _reactRelay = require('react-relay');
 
 var _AppDrawerNavItems = require('../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems');var _AppDrawerNavItems2 = _interopRequireDefault(_AppDrawerNavItems);
 var _AppDrawerTitle = require('../../_configuration/urb-appdrawer-webapp/AppDrawerTitle');var _AppDrawerTitle2 = _interopRequireDefault(_AppDrawerTitle);
-var _NavBarLoginButton = require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2 = _interopRequireDefault(_NavBarLoginButton);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _NavBarLoginButton = require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2 = _interopRequireDefault(_NavBarLoginButton);
+var _NavBarTitle = require('../../_configuration/urb-appdrawer-webapp/NavBarTitle');var _NavBarTitle2 = _interopRequireDefault(_NavBarTitle);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const drawerWidth = 240;
 
@@ -60,20 +56,12 @@ const styles = theme => ({
     height: '100%' },
 
   appBar: {
-    position: 'absolute'
-    // transition: theme.transitions.create([ 'margin', 'width' ], {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
-  },
-  appBarShift: {
-    marginLeft: drawerWidth,
-    width: `calc(100% - ${drawerWidth}px)`
-    // transition: theme.transitions.create([ 'margin', 'width' ], {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
-  },
+    position: 'absolute',
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }) },
+
+
   grow: {
     flex: '1 1 auto' },
 
@@ -84,9 +72,6 @@ const styles = theme => ({
   menuButtonRoot: {
     color: '#ffffff' },
 
-  hide: {
-    display: 'none' },
-
   drawerInner: {
     // Make the items inside not wrap when transitioning:
     width: drawerWidth },
@@ -94,7 +79,7 @@ const styles = theme => ({
   drawerHeader: Object.assign({
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'flex-start',
     padding: '0 8px' },
   theme.mixins.toolbar),
 
@@ -119,17 +104,10 @@ const styles = theme => ({
     [theme.breakpoints.up('sm')]: {
       content: {
         height: 'calc(100% - 64px)',
-        marginTop: 64 } } },
+        marginTop: 64 } } } });
 
 
 
-  contentShift: {
-    marginLeft: 0
-    // transition: theme.transitions.create( 'margin', {
-    //   easing: theme.transitions.easing.easeOut,
-    //   duration: theme.transitions.duration.enteringScreen,
-    // }),
-  } });
 
 
 class AppFrame extends _react2.default.Component {
@@ -146,92 +124,51 @@ class AppFrame extends _react2.default.Component {
     _handle_Drawer_Open = () => {
       this.setState({ drawerIsOpen: true });
     };this.
-    _handle_Drawer_Pin = () => {
-      this.setState({ drawerIsPinned: true });
-    };this.
-
-    _handle_Drawer_UnPin = () => {
-      this.setState({ drawerIsOpen: false, drawerIsPinned: false });
-    };this.
 
     _handle_Drawer_Close = () => {
       this.setState({ drawerIsOpen: false });
     };this.
 
     _handle_GoTo = to => {
-      // TODO x0500 For some reason if the drawer is not pinned, the MUI modal root will
-      // not be removed. Annoying AF. This bug was introduced around MIO 1.0 beta 17. Still a problem
-      // with beta 22.
-      //if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
-      if (!this.state.drawerIsPinned) this.setState({ drawerIsPinned: true });
+      this.setState({ drawerIsOpen: false });
 
       this.context.router.push(to);
-    };this.state = { drawerIsOpen: false, drawerIsPinned: false };}
+    };this.state = { drawerIsOpen: false };}
 
   render() {
     const { children, classes, Viewer } = this.props;
-    const { drawerIsOpen, drawerIsPinned } = this.state;
-
-    const drawerType = drawerIsPinned ? 'persistent' : 'temporary';
-
-    const drawerClasses = drawerIsPinned ?
-    {
-      paper: classes.drawerPaper } :
-
-    {};
+    const { drawerIsOpen } = this.state;
 
     return (
       _react2.default.createElement('div', { className: classes.root },
         _react2.default.createElement('div', { className: classes.appFrame },
-          _react2.default.createElement(_AppBar2.default, { className: (0, _classnames2.default)(classes.appBar, drawerIsPinned && classes.appBarShift) },
-            _react2.default.createElement(_Toolbar2.default, { disableGutters: !drawerIsPinned },
+          _react2.default.createElement(_AppBar2.default, { className: classes.appBar },
+            _react2.default.createElement(_Toolbar2.default, { disableGutters: true },
               _react2.default.createElement(_IconButton2.default, {
                   'aria-label': 'open drawer',
                   onClick: this._handle_Drawer_Open,
-                  className: (0, _classnames2.default)(classes.menuButton, drawerIsPinned && classes.hide),
+                  className: classes.menuButton,
                   classes: { root: classes.menuButtonRoot } },
 
                 _react2.default.createElement(_Menu2.default, null)),
 
-              _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', color: 'inherit', noWrap: true }, 'Code Foundries Maker'),
-
+              _react2.default.createElement(_Typography2.default, { variant: 'title', color: 'inherit', noWrap: true },
+                _NavBarTitle2.default),
 
 
               _react2.default.createElement('div', { className: classes.grow }),
               _react2.default.createElement(_NavBarLoginButton2.default, { Viewer: Viewer }))),
 
 
-          _react2.default.createElement(_Drawer2.default, {
-              classes: drawerClasses,
-              open: drawerIsOpen,
-              onClose: this._handle_Drawer_Close,
-              type: drawerType,
-              transitionDuration: {
-                enter: drawerIsPinned ? 0 : 300,
-                leave: 0 } },
-
-
+          _react2.default.createElement(_Drawer2.default, { open: drawerIsOpen, onClose: this._handle_Drawer_Close },
             _react2.default.createElement('div', { className: classes.drawerInner },
               _react2.default.createElement('div', { className: classes.drawerHeader },
-                _react2.default.createElement(_AppDrawerTitle2.default, { handle_GoTo: this._handle_GoTo }),
-                _react2.default.createElement('div', { className: classes.grow }),
-                drawerIsPinned &&
-                _react2.default.createElement(_IconButton2.default, { onClick: this._handle_Drawer_UnPin },
-                  _react2.default.createElement(_ChevronLeft2.default, null)),
-
-
-                !drawerIsPinned &&
-                _react2.default.createElement(_IconButton2.default, { onClick: this._handle_Drawer_Pin },
-                  _react2.default.createElement(_KeyboardTab2.default, null)))),
-
-
+                _react2.default.createElement(_AppDrawerTitle2.default, { handle_GoTo: this._handle_GoTo }))),
 
 
             _react2.default.createElement(_AppDrawerNavItems2.default, { onClick: this._handle_GoTo })),
 
-          _react2.default.createElement('main', { className: (0, _classnames2.default)(classes.content, drawerIsPinned && classes.contentShift) },
-            children))));
-
+          _react2.default.createElement('main', { className: classes.content }, children))));
 
 
 

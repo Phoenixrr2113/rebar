@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 666edf83bce0ee66bb82a9895331b4fa
+ * @relayHash 4d6d0965a69c2261301d635a031ee4d8
  */
 
 /* eslint-disable */
@@ -9,11 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type ToDoAddInput = {
+                ToDo_Text: string,
+                clientMutationId?: ?string,
+              };
               export type ToDoAddMutationVariables = {|
-                input: {
-                  ToDo_Text: string,
-                  clientMutationId?: ?string,
-                },
+                input: ToDoAddInput
               |};
               export type ToDoAddMutationResponse = {|
                 +ToDoAdd: ?{|
@@ -29,7 +30,7 @@
                       +ToDo_Text: ?string,
                     |},
                   |},
-                |},
+                |}
               |};
               */
 
@@ -177,6 +178,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '684ae97e6e6d46d3fd07c9e663e1a314';
 module.exports = node;
 //# sourceMappingURL=ToDoAddMutation.graphql.js.map

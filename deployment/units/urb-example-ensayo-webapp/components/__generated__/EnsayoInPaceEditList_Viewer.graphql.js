@@ -10,7 +10,7 @@
               import type { ConcreteFragment } from 'relay-runtime';
               type EnsayoInPlaceEditItem_Ensayo$ref = any;
               type EnsayoInPlaceEditItem_Viewer$ref = any;
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoInPaceEditList_Viewer$ref: FragmentReference;
               export type EnsayoInPaceEditList_Viewer = {|
                 +Ensayos: ?{|
@@ -18,8 +18,8 @@
                     +node: ?{|
                       +id: string,
                       +$fragmentRefs: EnsayoInPlaceEditItem_Ensayo$ref,
-                    |},
-                  |}>,
+                    |}
+                  |}>
                 |},
                 +id: string,
                 +$fragmentRefs: EnsayoInPlaceEditItem_Viewer$ref,
@@ -141,6 +141,7 @@ const node /*: ConcreteFragment*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '0264c9c908d073effc0c969d9ac3ecd2';
 module.exports = node;
 //# sourceMappingURL=EnsayoInPaceEditList_Viewer.graphql.js.map

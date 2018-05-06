@@ -18,14 +18,14 @@ class AppDrawerTitle extends _react2.default.Component {constructor(...args) {va
 
 
     _handle_GoToHome = () => {
-      this.context.router.push('/');
+      this.props.handle_GoTo('/');
     }, _temp;}
   render() {
     const { classes } = this.props;
 
     return (
       _react2.default.createElement('div', { onClick: this._handle_GoToHome },
-        _react2.default.createElement(_Typography2.default, { className: classes.title, type: 'title', gutterBottom: true, color: 'inherit' }, 'Rebar')));
+        _react2.default.createElement(_Typography2.default, { className: classes.title, variant: 'title', gutterBottom: true, color: 'inherit' }, 'Code Foundries URB')));
 
 
 

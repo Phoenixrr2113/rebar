@@ -1,5 +1,6 @@
 // @flow
 
+import AppBar from 'material-ui/AppBar'
 import Checkbox from 'material-ui/Checkbox'
 import { FormGroup, FormControlLabel } from 'material-ui/Form'
 import List from 'material-ui/List'
@@ -24,9 +25,9 @@ const styles = theme => ({
 class ToDoList extends React.Component<
   {
     Viewer: Object,
-    relay: Object
+    relay: Object,
   },
-  null
+  null,
 > {
   static contextTypes = {
     relay: PropTypes.object,
@@ -43,15 +44,12 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status
+      variables.status,
     )
   }
 
   _handle_onChange = ( event, tabsValue ) => {
-    const url =
-      tabsValue === 2
-        ? '/todo/completed'
-        : tabsValue === 1 ? '/todo/active' : '/todo'
+    const url = tabsValue === 2 ? '/todo/completed' : tabsValue === 1 ? '/todo/active' : '/todo'
     this.context.router.push( url )
   }
 
@@ -60,11 +58,13 @@ class ToDoList extends React.Component<
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0
 
     return (
-      <Tabs value={tabsValue} onChange={this._handle_onChange}>
-        <Tab label="All" />
-        <Tab label="Active" />
-        <Tab label="Completed" />
-      </Tabs>
+      <AppBar position="static">
+        <Tabs value={tabsValue} onChange={this._handle_onChange}>
+          <Tab label="All" />
+          <Tab label="Active" />
+          <Tab label="Completed" />
+        </Tabs>
+      </AppBar>
     )
   }
 
@@ -91,9 +91,7 @@ class ToDoList extends React.Component<
           />
         </FormGroup>
         <List>
-          {ToDos.edges.map( ({ node }) =>
-            <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} />
-          )}
+          {ToDos.edges.map( ({ node }) => <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} /> )}
         </List>
       </div>
     )
@@ -104,8 +102,7 @@ export default createFragmentContainer(
   withStyles( styles )( ToDoList ),
   graphql`
     fragment ToDoList_Viewer on Viewer {
-      ToDos(status: $status, first: 2147483647)
-        @connection(key: "ToDoList_ToDos") {
+      ToDos(status: $status, first: 2147483647) @connection(key: "ToDoList_ToDos") {
         edges {
           node {
             id
@@ -119,5 +116,5 @@ export default createFragmentContainer(
       ToDo_CompletedCount
       ...ToDoItem_Viewer
     }
-  `
+  `,
 )

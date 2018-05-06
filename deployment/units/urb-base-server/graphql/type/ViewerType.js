@@ -26,5 +26,8 @@ new _graphql.GraphQLObjectType({
     User_Email: { type: _graphql.GraphQLString, resolve: obj => obj.User_Email },
     User_PhoneNumberMobile: {
       type: _graphql.GraphQLString,
-      resolve: obj => obj.User_PhoneNumberMobile } }, _ViewerFields3.default) });
+      resolve: obj => obj.User_PhoneNumberMobile } },
+
+
+  _ViewerFields3.default) });
 //# sourceMappingURL=ViewerType.js.map

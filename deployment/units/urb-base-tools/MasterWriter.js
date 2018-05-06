@@ -60,7 +60,6 @@ class MasterWriter {
   }
 
   async executeQueue() {
-    console.log({ XXX: { countAtEnd: this.arrPromises.length } });
     await Promise.all(this.arrPromises);
     this.arrPromises = [];
   }}exports.default = MasterWriter;

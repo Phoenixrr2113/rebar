@@ -13,4 +13,5 @@ var debugWriteToLogServerRequestWebApp = exports.debugWriteToLogServerRequestWeb
 var debugWriteToLogServerRequestPublic = exports.debugWriteToLogServerRequestPublic = { trace: 'none' };
 
 var debugWriteToConsoleServerRequestSiteInformation = exports.debugWriteToConsoleServerRequestSiteInformation = false;
+var debugWriteToConsoleLog = exports.debugWriteToConsoleLog = false;
 //# sourceMappingURL=debug.js.map

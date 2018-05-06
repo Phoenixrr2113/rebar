@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash c7fd75ff33115644da85ebb13a479495
+ * @relayHash 56ca3cdc26d1e2a3a0207dbb6cfde57c
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type ViewportDimensionsScreen_Viewer$ref = any;
-              export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryVariables = {| |};
+              export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryVariables = {||};
               export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: ViewportDimensionsScreen_Viewer$ref,
-                |},
+                  +$fragmentRefs: ViewportDimensionsScreen_Viewer$ref
+                |}
               |};
               */
 
@@ -90,6 +90,7 @@ const node /*: ConcreteRequest*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'fd4b596cb5564462f401210ca2e12734';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query.graphql.js.map

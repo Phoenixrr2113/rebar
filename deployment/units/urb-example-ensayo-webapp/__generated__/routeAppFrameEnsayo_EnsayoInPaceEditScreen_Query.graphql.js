@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash e28e4917f7e45f9ff4d069bc0d0bae41
+ * @relayHash 7cf9a20a95501e29e690cef165810367
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type EnsayoInPaceEditScreen_Viewer$ref = any;
-              export type routeAppFrameEnsayo_EnsayoInPaceEditScreen_QueryVariables = {| |};
+              export type routeAppFrameEnsayo_EnsayoInPaceEditScreen_QueryVariables = {||};
               export type routeAppFrameEnsayo_EnsayoInPaceEditScreen_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: EnsayoInPaceEditScreen_Viewer$ref,
-                |},
+                  +$fragmentRefs: EnsayoInPaceEditScreen_Viewer$ref
+                |}
               |};
               */
 
@@ -90,6 +90,7 @@ const node /*: ConcreteRequest*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = '9d245c088169fbdc03599a436614b4f2';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query.graphql.js.map

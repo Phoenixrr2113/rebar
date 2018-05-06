@@ -143,14 +143,12 @@ export default class ObjectManager {
   }
 
   addUserIdAndOrSiteIdToFilterOrFields( entityDefinition: EntityDefinition, filterOrFields: Object ) {
-    if ( entityDefinition.fieldName_artifact_id ) {
-      if ( !filterOrFields.hasOwnProperty( entityDefinition.fieldName_artifact_id ) )
-        filterOrFields[entityDefinition.fieldName_artifact_id] = this.siteInformation.artifact_id
-    }
-
-    if ( entityDefinition.fieldName_user_id ) {
-      if ( !filterOrFields.hasOwnProperty( entityDefinition.fieldName_user_id ) )
-        filterOrFields[entityDefinition.fieldName_user_id] = this.Viewer_User_id
+    for ( let suffix of [ '_artifact_id', '_user_id' ]) {
+      const fieldName = entityDefinition.EntityName + suffix
+      if ( entityDefinition[fieldName]) {
+        if ( !filterOrFields.hasOwnProperty( entityDefinition[fieldName]) )
+          filterOrFields[entityDefinition[fieldName]] = this.siteInformation.artifact_id
+      }
     }
   }
 
@@ -262,10 +260,15 @@ export default class ObjectManager {
       if ( changes ) {
         // $FlowIssue - by convention all entity objects are expected to have an id
         const change = changes[result.id]
+
         if ( change != null ) {
-          if ( change === deletedRecord ) result = null
-          // Object is not found, return null // Add or update
-          else Object.assign( result, change )
+          // Object is not found, return null if deleted
+          if ( change === deletedRecord ) {
+            result = null
+          } else {
+            // Add or update
+            Object.assign( result, change )
+          }
         }
       }
       return result

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 0fe78952f6a5e27082010db669d039c3
+ * @relayHash 223782bbf6c81449981e92021af4ec09
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type TranslaticiarumScreen_Viewer$ref = any;
-              export type routeAppFrameTranslaticiarum_TranslaticiarumScreen_QueryVariables = {| |};
+              export type routeAppFrameTranslaticiarum_TranslaticiarumScreen_QueryVariables = {||};
               export type routeAppFrameTranslaticiarum_TranslaticiarumScreen_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: TranslaticiarumScreen_Viewer$ref,
-                |},
+                  +$fragmentRefs: TranslaticiarumScreen_Viewer$ref
+                |}
               |};
               */
 
@@ -225,6 +225,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'd937e1ad4a993ab33c34f408a8afe6dc';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query.graphql.js.map

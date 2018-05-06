@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 9f4a173ba56a23413bbebb805b545c52
+ * @relayHash e2cbbdb3e99151cecbbee0ba54ed1120
  */
 
 /* eslint-disable */
@@ -9,11 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type ToDoListUpdateMarkAllInput = {
+                ToDo_Complete: boolean,
+                clientMutationId?: ?string,
+              };
               export type ToDoListUpdateMarkAllMutationVariables = {|
-                input: {
-                  ToDo_Complete: boolean,
-                  clientMutationId?: ?string,
-                },
+                input: ToDoListUpdateMarkAllInput,
                 status: string,
               |};
               export type ToDoListUpdateMarkAllMutationResponse = {|
@@ -25,8 +26,8 @@
                           +id: string,
                           +ToDo_Complete: ?boolean,
                           +ToDo_Text: ?string,
-                        |},
-                      |}>,
+                        |}
+                      |}>
                     |},
                     +id: string,
                     +ToDo_CompletedCount: ?number,
@@ -35,7 +36,7 @@
                     +id: string,
                     +ToDo_Complete: ?boolean,
                   |}>,
-                |},
+                |}
               |};
               */
 
@@ -220,6 +221,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '18b2dc6ec26946a22a0803be1ba1d2f2';
 module.exports = node;
 //# sourceMappingURL=ToDoListUpdateMarkAllMutation.graphql.js.map

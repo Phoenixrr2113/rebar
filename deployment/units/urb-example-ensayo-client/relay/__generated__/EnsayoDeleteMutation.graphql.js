@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash d46602b3c312622325e881bc222a7d50
+ * @relayHash 09c392e052888d9cd3e8dd023c71b9e8
  */
 
 /* eslint-disable */
@@ -9,16 +9,17 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type EnsayoDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
               export type EnsayoDeleteMutationVariables = {|
-                input: {
-                  id: string,
-                  clientMutationId?: ?string,
-                },
+                input: EnsayoDeleteInput
               |};
               export type EnsayoDeleteMutationResponse = {|
                 +EnsayoDelete: ?{|
-                  +deletedId: ?string,
-                |},
+                  +deletedId: ?string
+                |}
               |};
               */
 
@@ -92,6 +93,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'd8c8d964d97d923ef7f0e6c1d21ecfcb';
 module.exports = node;
 //# sourceMappingURL=EnsayoDeleteMutation.graphql.js.map

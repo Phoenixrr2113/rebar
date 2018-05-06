@@ -12,9 +12,9 @@ exports.default =
     args: Object.assign({
       status: {
         type: _graphql.GraphQLString,
-        defaultValue: 'any' } }, _graphqlRelay.connectionArgs),
+        defaultValue: 'any' } },
 
-
+    _graphqlRelay.connectionArgs),
 
 
     resolve: async (obj, _ref, context, { rootValue: objectManager }) => {let { status } = _ref,args = _objectWithoutProperties(_ref, ['status']);

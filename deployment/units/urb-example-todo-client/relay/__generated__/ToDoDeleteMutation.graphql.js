@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 42db151f91ab34a81d87c577764de183
+ * @relayHash 8a3c43de7afce10bd7c27ab0304fd74c
  */
 
 /* eslint-disable */
@@ -9,11 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type ToDoDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
               export type ToDoDeleteMutationVariables = {|
-                input: {
-                  id: string,
-                  clientMutationId?: ?string,
-                },
+                input: ToDoDeleteInput
               |};
               export type ToDoDeleteMutationResponse = {|
                 +ToDoDelete: ?{|
@@ -22,7 +23,7 @@
                     +ToDo_CompletedCount: ?number,
                   |},
                   +deletedId: ?string,
-                |},
+                |}
               |};
               */
 
@@ -162,6 +163,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'a581035e0f38d5d8ad86368e6420b22c';
 module.exports = node;
 //# sourceMappingURL=ToDoDeleteMutation.graphql.js.map

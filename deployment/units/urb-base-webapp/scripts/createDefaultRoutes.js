@@ -14,7 +14,7 @@ siteConfiguration => {
       _react2.default.createElement(_Route2.default, {
           path: '/',
           Component: _AppFrame2.default,
-          query: _graphql || (_graphql = function () {return require('./__generated__/createDefaultRoutes_AppFrame_Query.graphql');}) }, _routesAppFrame2.default),
+          query: _graphql || (_graphql = function () {return require('./__generated__/createDefaultRoutes_AppFrame_Query.graphql');}) },
 
 
 
@@ -22,7 +22,7 @@ siteConfiguration => {
 
 
 
-
+        _routesAppFrame2.default),
 
       _routesRoot2.default.length > 0 && _routesRoot2.default));
 

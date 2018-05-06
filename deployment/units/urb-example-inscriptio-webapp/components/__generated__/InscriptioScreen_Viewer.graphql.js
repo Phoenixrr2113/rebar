@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type InscriptioScreen_Viewer$ref: FragmentReference;
               export type InscriptioScreen_Viewer = {|
                 +Inscriptios: ?{|
@@ -17,8 +17,8 @@
                       +id: string,
                       +Inscriptio_LocationLat: ?string,
                       +Inscriptio_LocationLon: ?string,
-                    |},
-                  |}>,
+                    |}
+                  |}>
                 |},
                 +$refType: InscriptioScreen_Viewer$ref,
               |};
@@ -138,6 +138,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = '92c961c1febe672713cf4ec57908046b';
 module.exports = node;
 //# sourceMappingURL=InscriptioScreen_Viewer.graphql.js.map

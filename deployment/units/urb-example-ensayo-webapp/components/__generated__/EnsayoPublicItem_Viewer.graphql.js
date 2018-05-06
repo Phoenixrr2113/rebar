@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoPublicItem_Viewer$ref: FragmentReference;
               export type EnsayoPublicItem_Viewer = {|
                 +Ensayo: ?{|
@@ -75,6 +75,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'c89d0591d3683ab3a528213ea89d139f';
 module.exports = node;
 //# sourceMappingURL=EnsayoPublicItem_Viewer.graphql.js.map

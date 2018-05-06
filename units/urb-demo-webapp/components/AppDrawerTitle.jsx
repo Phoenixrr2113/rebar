@@ -12,21 +12,21 @@ const styles = {
   },
 }
 
-class AppDrawerTitle extends React.Component<{ classes: Object }> {
+class AppDrawerTitle extends React.Component<{ classes: Object, handle_GoTo: Function }> {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   }
 
   _handle_GoToHome = () => {
-    this.context.router.push( '/' )
+    this.props.handle_GoTo( '/' )
   }
   render() {
     const { classes } = this.props
 
     return (
       <div onClick={this._handle_GoToHome}>
-        <Typography className={classes.title} type="title" gutterBottom color="inherit">
-          Rebar
+        <Typography className={classes.title} variant="title" gutterBottom color="inherit">
+          Code Foundries URB
         </Typography>
       </div>
     )

@@ -27,6 +27,8 @@ serverAuth.use( ( req, res, next ) => logServerRequest( req, res, next, requestL
 
 async function login( req, res ) {
   const objectManager = await getObjectManager( req, res )
+
+  // TODO x2000 No error handling is provided for when site information is not found
   if ( objectManager.siteInformation ) {
     const UserAccount_Identifier = req.body.UserAccount_Identifier.toLowerCase()
     const User_Secret = req.body.User_Secret

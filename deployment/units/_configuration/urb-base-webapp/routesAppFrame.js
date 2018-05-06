@@ -9,5 +9,13 @@ var _routeAppFrameTodo = require('../../urb-example-todo-webapp/routeAppFrameTod
 var _routeAppFrameTranslaticiarum = require('../../urb-example-translaticiarum-webapp/routeAppFrameTranslaticiarum');var _routeAppFrameTranslaticiarum2 = _interopRequireDefault(_routeAppFrameTranslaticiarum);
 var _routeAppFrameViewportDimensions = require('../../urb-example-viewport-dimensions-webapp/routeAppFrameViewportDimensions');var _routeAppFrameViewportDimensions2 = _interopRequireDefault(_routeAppFrameViewportDimensions);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
 
-[_routeAppFrameAccountManagement2.default, _routeAppFrameDemo2.default, _routeAppFrameEnsayo2.default, _routeAppFrameForceLogin2.default, _routeAppFrameInscriptio2.default, _routeAppFrameTodo2.default, _routeAppFrameTranslaticiarum2.default, _routeAppFrameViewportDimensions2.default];
+[
+_routeAppFrameAccountManagement2.default,
+_routeAppFrameDemo2.default,
+_routeAppFrameEnsayo2.default,
+_routeAppFrameForceLogin2.default,
+_routeAppFrameInscriptio2.default,
+_routeAppFrameTodo2.default,
+_routeAppFrameTranslaticiarum2.default,
+_routeAppFrameViewportDimensions2.default];
 //# sourceMappingURL=routesAppFrame.js.map
