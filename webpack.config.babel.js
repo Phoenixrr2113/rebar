@@ -14,7 +14,9 @@ const sassets_configuration_version = process.env.CFSB_SASSETS_CONFIGURATION_VER
 
 const publicPath = sassets_configuration_version
   ? `/sassets/${version}.${sassets_configuration_version}/`
-  : node_env === 'production' ? `/assets/${version}/` : `http://${host}:${port_webpack}/${version}/`
+  : node_env === 'production'
+    ? `/assets/${version}/`
+    : `http://${host}:${port_webpack}/${version}/`
 
 console.log(
   'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
@@ -50,6 +52,19 @@ const config = {
       'relay-runtime',
     ],
   },
+
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+
   output: {
     path: path.resolve(
       `deployment/units/_configuration/urb-base-server/public_files/assets/${version}`,
@@ -63,7 +78,6 @@ const config = {
       {
         test: /\.js(x)?$/,
         use: removeEmpty([
-          ifNotProd({ loader: 'react-hot-loader/webpack' }),
           {
             loader: 'babel-loader',
             options: {
@@ -71,6 +85,7 @@ const config = {
               presets: [ 'react-native-stage-0' ],
               plugins: removeEmpty([
                 'dynamic-import-webpack',
+                /*
                 ifNotProd( 'react-hot-loader/babel' ),
                 'transform-class-properties',
                 [
@@ -83,6 +98,7 @@ const config = {
                     ],
                   },
                 ],
+                */
                 ifNotProd( 'flow-react-proptypes' ),
                 'syntax-dynamic-import',
                 [
@@ -114,11 +130,6 @@ const config = {
 
   plugins: removeEmpty([
     new webpack.EnvironmentPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: '[name].js',
-    }),
     new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
     new webpack.DefinePlugin({
       process: {
@@ -128,26 +139,55 @@ const config = {
       },
     }),
     // In development only:
-    ifNotProd( new webpack.HotModuleReplacementPlugin() ),
+    //ifNotProd( new webpack.HotModuleReplacementPlugin() ),
     ifNotProd( new webpack.NamedModulesPlugin() ),
-    // In production only:
-    ifProd(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-          unused: true,
-          dead_code: true,
-        },
-        output: {
-          comments: false,
-        },
-        sourceMap: false,
-      }),
-    ),
   ]),
 }
 
 if ( node_env !== 'production' ) config.devtool = 'source-map'
 
 export default config
+
+/*
+This should be replaced vvvvvvvvv
+// In production only:
+ifProd(
+  new webpack.optimize.UglifyJsPlugin({
+    compress: {
+      screw_ie8: true,
+      warnings: false,
+      unused: true,
+      dead_code: true,
+    },
+    output: {
+      comments: false,
+    },
+    sourceMap: false,
+  }),
+),
+
+-------
+
+Error: webpack.optimize.UglifyJsPlugin has been removed, please use config.optimization.minimize instead.
+
+^^^^^^^^^^^^^^^
+
+
+
+vvvvvvvvvvvv
+
+ifNotProd({ loader: 'react-hot-loader/webpack' }),
+
+^^^^^^^^^^^
+
+vvvvvvvvv
+
+Vendor definition in entry is not producting a vendor.js file
+
+
+
+^^^^^^
+
+
+
+*/

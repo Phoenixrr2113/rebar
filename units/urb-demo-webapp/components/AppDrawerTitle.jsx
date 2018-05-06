@@ -12,13 +12,13 @@ const styles = {
   },
 }
 
-class AppDrawerTitle extends React.Component<{ classes: Object }> {
+class AppDrawerTitle extends React.Component<{ classes: Object, handle_GoTo: Function }> {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   }
 
   _handle_GoToHome = () => {
-    this.context.router.push( '/' )
+    this.props.handle_GoTo( '/' )
   }
   render() {
     const { classes } = this.props

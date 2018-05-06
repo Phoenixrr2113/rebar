@@ -1,11 +1,16 @@
 // @flow
 
+import classNames from 'classnames'
 import AppBar from 'material-ui/AppBar'
 import Drawer from 'material-ui/Drawer'
 import IconButton from 'material-ui/IconButton'
 import { withStyles } from 'material-ui/styles'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
+
+import IconChevronLeft from '@material-ui/icons/ChevronLeft'
+
+import IconKeyboardTab from '@material-ui/icons/KeyboardTab'
 
 import IconMenu from '@material-ui/icons/Menu'
 
@@ -57,10 +62,18 @@ const styles = theme => ({
   },
   appBar: {
     position: 'absolute',
-    transition: theme.transitions.create([ 'margin', 'width' ], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.leavingScreen,
+    // }),
+  },
+  appBarShift: {
+    marginLeft: drawerWidth,
+    width: `calc(100% - ${drawerWidth}px)`,
+    // transition: theme.transitions.create([ 'margin', 'width' ], {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
   },
   grow: {
     flex: '1 1 auto',
@@ -72,6 +85,9 @@ const styles = theme => ({
   menuButtonRoot: {
     color: '#ffffff',
   },
+  hide: {
+    display: 'none',
+  },
   drawerInner: {
     // Make the items inside not wrap when transitioning:
     width: drawerWidth,
@@ -79,7 +95,7 @@ const styles = theme => ({
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'flex-end',
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
@@ -108,9 +124,16 @@ const styles = theme => ({
       },
     },
   },
+  contentShift: {
+    marginLeft: 0,
+    // transition: theme.transitions.create( 'margin', {
+    //   easing: theme.transitions.easing.easeOut,
+    //   duration: theme.transitions.duration.enteringScreen,
+    // }),
+  },
 })
 
-class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
+class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPinned: boolean }> {
   static contextTypes = {
     router: PropTypes.object.isRequired,
   }
@@ -118,11 +141,18 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
-    this.state = { drawerIsOpen: false }
+    this.state = { drawerIsOpen: false, drawerIsPinned: false }
   }
 
   _handle_Drawer_Open = () => {
     this.setState({ drawerIsOpen: true })
+  }
+  _handle_Drawer_Pin = () => {
+    this.setState({ drawerIsPinned: true })
+  }
+
+  _handle_Drawer_UnPin = () => {
+    this.setState({ drawerIsOpen: false, drawerIsPinned: false })
   }
 
   _handle_Drawer_Close = () => {
@@ -130,24 +160,36 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
   }
 
   _handle_GoTo = ( to: string ) => {
-    this.setState({ drawerIsOpen: false })
+    // TODO x0500 For some reason if the drawer is not pinned, the MUI modal root will
+    // not be removed. Annoying AF. This bug was introduced around MIO 1.0 beta 17. Still a problem
+    // with beta 22.
+    //if ( !this.state.drawerIsPinned ) this.setState({ drawerIsOpen: false })
+    if ( !this.state.drawerIsPinned ) this.setState({ drawerIsPinned: true })
 
     this.context.router.push( to )
   }
 
   render() {
     const { children, classes, Viewer } = this.props
-    const { drawerIsOpen } = this.state
+    const { drawerIsOpen, drawerIsPinned } = this.state
+
+    const drawerType = drawerIsPinned ? 'persistent' : 'temporary'
+
+    const drawerClasses = drawerIsPinned
+      ? {
+          paper: classes.drawerPaper,
+        }
+      : {}
 
     return (
       <div className={classes.root}>
         <div className={classes.appFrame}>
-          <AppBar className={classes.appBar}>
-            <Toolbar disableGutters={true}>
+          <AppBar className={classNames( classes.appBar, drawerIsPinned && classes.appBarShift )}>
+            <Toolbar disableGutters={!drawerIsPinned}>
               <IconButton
                 aria-label="open drawer"
                 onClick={this._handle_Drawer_Open}
-                className={classes.menuButton}
+                className={classNames( classes.menuButton, drawerIsPinned && classes.hide )}
                 classes={{ root: classes.menuButtonRoot }}
               >
                 <IconMenu />
@@ -160,15 +202,37 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
               <NavBarLoginButton Viewer={Viewer} />
             </Toolbar>
           </AppBar>
-          <Drawer open={drawerIsOpen} onClose={this._handle_Drawer_Close}>
+          <Drawer
+            classes={drawerClasses}
+            open={drawerIsOpen}
+            onClose={this._handle_Drawer_Close}
+            type={drawerType}
+            transitionDuration={{
+              enter: drawerIsPinned ? 0 : 300,
+              leave: 0,
+            }}
+          >
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
                 <AppDrawerTitle handle_GoTo={this._handle_GoTo} />
+                <div className={classes.grow} />
+                {drawerIsPinned && (
+                  <IconButton onClick={this._handle_Drawer_UnPin}>
+                    <IconChevronLeft />
+                  </IconButton>
+                )}
+                {!drawerIsPinned && (
+                  <IconButton onClick={this._handle_Drawer_Pin}>
+                    <IconKeyboardTab />
+                  </IconButton>
+                )}
               </div>
             </div>
             <AppDrawerNavItems onClick={this._handle_GoTo} />
           </Drawer>
-          <main className={classes.content}>{children}</main>
+          <main className={classNames( classes.content, drawerIsPinned && classes.contentShift )}>
+            {children}
+          </main>
         </div>
       </div>
     )
