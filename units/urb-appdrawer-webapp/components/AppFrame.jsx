@@ -21,6 +21,7 @@ import { createFragmentContainer, graphql } from 'react-relay'
 import AppDrawerNavItems from '../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems'
 import AppDrawerTitle from '../../_configuration/urb-appdrawer-webapp/AppDrawerTitle'
 import NavBarLoginButton from '../../urb-account-management-webapp/components/NavBarLoginButton'
+import NavBarTitle from '../../_configuration/urb-appdrawer-webapp/NavBarTitle'
 
 const drawerWidth = 240
 
@@ -193,8 +194,8 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean, drawerIsPin
               >
                 <IconMenu />
               </IconButton>
-              <Typography className={classes.title} type="title" color="inherit" noWrap>
-                Code Foundries Maker
+              <Typography variant="title" color="inherit" noWrap>
+                {NavBarTitle}
               </Typography>
 
               <div className={classes.grow} />

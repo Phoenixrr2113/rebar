@@ -38,7 +38,15 @@ declare module 'material-ui/Avatar/index' {
   declare module.exports: any
 }
 
+declare module 'material-ui/Avatar' {
+  declare module.exports: any
+}
+
 declare module 'material-ui/Badge/Badge' {
+  declare module.exports: any
+}
+
+declare module 'material-ui/Chip' {
   declare module.exports: any
 }
 

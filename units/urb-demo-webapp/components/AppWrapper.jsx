@@ -14,6 +14,9 @@ export default class AppWrapper extends AppWrapperBase {
         secondary: amber,
         type: 'light',
       },
+      typography: {
+        fontFamily: 'Raleway, Open Sans, Helvetica Neue, Helvetica, sans-serif',
+      },
     })
   }
 

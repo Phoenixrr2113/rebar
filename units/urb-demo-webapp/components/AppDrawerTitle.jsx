@@ -25,8 +25,8 @@ class AppDrawerTitle extends React.Component<{ classes: Object }> {
 
     return (
       <div onClick={this._handle_GoToHome}>
-        <Typography className={classes.title} type="title" gutterBottom color="inherit">
-          Rebar
+        <Typography className={classes.title} variant="title" gutterBottom color="inherit">
+          Code Foundries URB
         </Typography>
       </div>
     )
