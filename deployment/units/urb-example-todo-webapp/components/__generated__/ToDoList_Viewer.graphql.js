@@ -10,7 +10,7 @@
               import type { ConcreteFragment } from 'relay-runtime';
               type ToDoItem_ToDo$ref = any;
               type ToDoItem_Viewer$ref = any;
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type ToDoList_Viewer$ref: FragmentReference;
               export type ToDoList_Viewer = {|
                 +ToDos: ?{|
@@ -19,8 +19,8 @@
                       +id: string,
                       +ToDo_Complete: ?boolean,
                       +$fragmentRefs: ToDoItem_ToDo$ref,
-                    |},
-                  |}>,
+                    |}
+                  |}>
                 |},
                 +id: string,
                 +ToDo_TotalCount: ?number,
@@ -178,6 +178,7 @@ const node /*: ConcreteFragment*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '68b5216db9d5b129661a98b5e2476770';
 module.exports = node;
 //# sourceMappingURL=ToDoList_Viewer.graphql.js.map

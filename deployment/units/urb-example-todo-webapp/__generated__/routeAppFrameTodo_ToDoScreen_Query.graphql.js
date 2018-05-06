@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash d7044d5e01739a6437a22604cacc400f
+ * @relayHash c0adc861a55ada96c51ea83ad7cefa91
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type ToDoScreen_Viewer$ref = any;
-              export type routeAppFrameTodo_ToDoScreen_QueryVariables = {| |};
+              export type routeAppFrameTodo_ToDoScreen_QueryVariables = {||};
               export type routeAppFrameTodo_ToDoScreen_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: ToDoScreen_Viewer$ref,
-                |},
+                  +$fragmentRefs: ToDoScreen_Viewer$ref
+                |}
               |};
               */
 
@@ -90,6 +90,7 @@ const node /*: ConcreteRequest*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'a9ef7a4f1fcf9f2f638608c83eabb62a';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameTodo_ToDoScreen_Query.graphql.js.map

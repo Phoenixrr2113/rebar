@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 93ea0d815ca162ba58c9bff67a788b0e
+ * @relayHash cf8c3bcbc632cdb6783edfa2d6d082e7
  */
 
 /* eslint-disable */
@@ -9,16 +9,17 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type TranslaticiarumDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
               export type TranslaticiarumDeleteMutationVariables = {|
-                input: {
-                  id: string,
-                  clientMutationId?: ?string,
-                },
+                input: TranslaticiarumDeleteInput
               |};
               export type TranslaticiarumDeleteMutationResponse = {|
                 +TranslaticiarumDelete: ?{|
-                  +deletedId: ?string,
-                |},
+                  +deletedId: ?string
+                |}
               |};
               */
 
@@ -92,6 +93,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '70d44d37e888c4c436b6994d54b0692f';
 module.exports = node;
 //# sourceMappingURL=TranslaticiarumDeleteMutation.graphql.js.map

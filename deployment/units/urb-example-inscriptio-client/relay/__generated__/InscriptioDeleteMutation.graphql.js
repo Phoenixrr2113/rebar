@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 72f76bf4bd8784582bfd5564f500e4cb
+ * @relayHash 22c21e10c9b739a636fe822133b06117
  */
 
 /* eslint-disable */
@@ -9,16 +9,17 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type InscriptioDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
               export type InscriptioDeleteMutationVariables = {|
-                input: {
-                  id: string,
-                  clientMutationId?: ?string,
-                },
+                input: InscriptioDeleteInput
               |};
               export type InscriptioDeleteMutationResponse = {|
                 +InscriptioDelete: ?{|
-                  +deletedId: ?string,
-                |},
+                  +deletedId: ?string
+                |}
               |};
               */
 
@@ -92,6 +93,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'b9103a4affbe1338f4d46c7f1b8b6f68';
 module.exports = node;
 //# sourceMappingURL=InscriptioDeleteMutation.graphql.js.map

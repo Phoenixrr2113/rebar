@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type ToDoItem_Viewer$ref: FragmentReference;
               export type ToDoItem_Viewer = {|
                 +id: string,
@@ -33,6 +33,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = '1a7d80a3304bcbe9332edd571759ed60';
 module.exports = node;
 //# sourceMappingURL=ToDoItem_Viewer.graphql.js.map

@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type TranslaticiarumScreen_Viewer$ref: FragmentReference;
               export type TranslaticiarumScreen_Viewer = {|
                 +Translaticiarums: ?{|
@@ -18,8 +18,8 @@
                       +Translaticiarum_Description: ?string,
                       +Translaticiarum_Start: ?any,
                       +Translaticiarum_Stop: ?any,
-                    |},
-                  |}>,
+                    |}
+                  |}>
                 |},
                 +$refType: TranslaticiarumScreen_Viewer$ref,
               |};
@@ -146,6 +146,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'f71272f1673eeb2851bcbd54fe8bc678';
 module.exports = node;
 //# sourceMappingURL=TranslaticiarumScreen_Viewer.graphql.js.map
