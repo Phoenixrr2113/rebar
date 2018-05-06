@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 73e142455e3fe80ed3258e6839c77d72
+ * @relayHash d38495651833d50e1ef5a1b0dc584822
  */
 
 /* eslint-disable */
@@ -9,14 +9,15 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type TranslaticiarumUpdateInput = {
+                id: string,
+                Translaticiarum_Start: string,
+                Translaticiarum_Stop: string,
+                Translaticiarum_Description: string,
+                clientMutationId?: ?string,
+              };
               export type TranslaticiarumUpdateMutationVariables = {|
-                input: {
-                  id: string,
-                  Translaticiarum_Start: string,
-                  Translaticiarum_Stop: string,
-                  Translaticiarum_Description: string,
-                  clientMutationId?: ?string,
-                },
+                input: TranslaticiarumUpdateInput
               |};
               export type TranslaticiarumUpdateMutationResponse = {|
                 +TranslaticiarumUpdate: ?{|
@@ -25,8 +26,8 @@
                     +Translaticiarum_Start: ?any,
                     +Translaticiarum_Stop: ?any,
                     +Translaticiarum_Description: ?string,
-                  |},
-                |},
+                  |}
+                |}
               |};
               */
 
@@ -137,6 +138,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '8384705e4c8229b03bad1377af59f920';
 module.exports = node;
 //# sourceMappingURL=TranslaticiarumUpdateMutation.graphql.js.map

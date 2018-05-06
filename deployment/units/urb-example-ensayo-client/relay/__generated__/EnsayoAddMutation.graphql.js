@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash fdebf6507569c0ba8e2148963be0e6dc
+ * @relayHash a1a3afc9b91812b20d49e5e90f6a09fd
  */
 
 /* eslint-disable */
@@ -9,18 +9,19 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type EnsayoAddInput = {
+                Ensayo_Title: string,
+                Ensayo_Description: string,
+                Ensayo_Content: string,
+                clientMutationId?: ?string,
+              };
               export type EnsayoAddMutationVariables = {|
-                input: {
-                  Ensayo_Title: string,
-                  Ensayo_Description: string,
-                  Ensayo_Content: string,
-                  clientMutationId?: ?string,
-                },
+                input: EnsayoAddInput
               |};
               export type EnsayoAddMutationResponse = {|
                 +EnsayoAdd: ?{|
                   +Viewer: ?{|
-                    +id: string,
+                    +id: string
                   |},
                   +EnsayosEdge: ?{|
                     +cursor: string,
@@ -31,7 +32,7 @@
                       +Ensayo_Content: ?string,
                     |},
                   |},
-                |},
+                |}
               |};
               */
 
@@ -179,6 +180,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'ea5acd7697360f56ea79ddb77f8ad1bc';
 module.exports = node;
 //# sourceMappingURL=EnsayoAddMutation.graphql.js.map

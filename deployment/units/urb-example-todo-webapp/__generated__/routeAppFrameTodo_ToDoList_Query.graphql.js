@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 088a517f3460ca37a7d2acb95097ba0b
+ * @relayHash 7ad9b215700caf2bd4b3d29eb44ed0ce
  */
 
 /* eslint-disable */
@@ -11,12 +11,12 @@
               import type { ConcreteRequest } from 'relay-runtime';
               type ToDoList_Viewer$ref = any;
               export type routeAppFrameTodo_ToDoList_QueryVariables = {|
-                status: string,
+                status: string
               |};
               export type routeAppFrameTodo_ToDoList_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: ToDoList_Viewer$ref,
-                |},
+                  +$fragmentRefs: ToDoList_Viewer$ref
+                |}
               |};
               */
 
@@ -271,6 +271,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = 'b3982d9527957360d56deccda064f888';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameTodo_ToDoList_Query.graphql.js.map

@@ -12,7 +12,10 @@ class AppWrapper extends _AppWrapperBase2.default {
       palette: {
         primary: _blueGrey2.default,
         secondary: _amber2.default,
-        type: 'light' } });
+        type: 'light' },
+
+      typography: {
+        fontFamily: 'Raleway, Open Sans, Helvetica Neue, Helvetica, sans-serif' } });
 
 
   }

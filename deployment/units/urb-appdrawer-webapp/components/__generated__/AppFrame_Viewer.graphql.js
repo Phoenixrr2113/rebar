@@ -9,7 +9,7 @@
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
               type NavBarLoginButton_Viewer$ref = any;
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type AppFrame_Viewer$ref: FragmentReference;
               export type AppFrame_Viewer = {|
                 +UserToken2: ?string,
@@ -40,6 +40,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'd2d21205cf198c3560f270c0ab6040bd';
 module.exports = node;
 //# sourceMappingURL=AppFrame_Viewer.graphql.js.map

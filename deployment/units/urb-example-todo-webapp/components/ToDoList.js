@@ -1,5 +1,6 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
+var _AppBar = require('material-ui/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
 var _Checkbox = require('material-ui/Checkbox');var _Checkbox2 = _interopRequireDefault(_Checkbox);
 var _Form = require('material-ui/Form');
 var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
@@ -48,10 +49,7 @@ class ToDoList extends _react2.default.Component
     }, this.
 
     _handle_onChange = (event, tabsValue) => {
-      const url =
-      tabsValue === 2 ?
-      '/todo/completed' :
-      tabsValue === 1 ? '/todo/active' : '/todo';
+      const url = tabsValue === 2 ? '/todo/completed' : tabsValue === 1 ? '/todo/active' : '/todo';
       this.context.router.push(url);
     }, _temp;}
 
@@ -60,10 +58,12 @@ class ToDoList extends _react2.default.Component
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0;
 
     return (
-      _react2.default.createElement(_Tabs2.default, { value: tabsValue, onChange: this._handle_onChange },
-        _react2.default.createElement(_Tabs.Tab, { label: 'All' }),
-        _react2.default.createElement(_Tabs.Tab, { label: 'Active' }),
-        _react2.default.createElement(_Tabs.Tab, { label: 'Completed' })));
+      _react2.default.createElement(_AppBar2.default, { position: 'static' },
+        _react2.default.createElement(_Tabs2.default, { value: tabsValue, onChange: this._handle_onChange },
+          _react2.default.createElement(_Tabs.Tab, { label: 'All' }),
+          _react2.default.createElement(_Tabs.Tab, { label: 'Active' }),
+          _react2.default.createElement(_Tabs.Tab, { label: 'Completed' }))));
+
 
 
   }
@@ -91,9 +91,7 @@ class ToDoList extends _react2.default.Component
 
 
         _react2.default.createElement(_List2.default, null,
-          ToDos.edges.map(({ node }) =>
-          _react2.default.createElement(_ToDoItem2.default, { key: node.id, Viewer: Viewer, ToDo: node })))));
-
+          ToDos.edges.map(({ node }) => _react2.default.createElement(_ToDoItem2.default, { key: node.id, Viewer: Viewer, ToDo: node })))));
 
 
 

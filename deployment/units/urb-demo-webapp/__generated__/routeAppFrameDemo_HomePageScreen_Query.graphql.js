@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 3e2ab55f02fa45715604da8d4042851f
+ * @relayHash e2666ee365ff078b00ec44d7f1ec88f8
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type HomePageScreen_Viewer$ref = any;
-              export type routeAppFrameDemo_HomePageScreen_QueryVariables = {| |};
+              export type routeAppFrameDemo_HomePageScreen_QueryVariables = {||};
               export type routeAppFrameDemo_HomePageScreen_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: HomePageScreen_Viewer$ref,
-                |},
+                  +$fragmentRefs: HomePageScreen_Viewer$ref
+                |}
               |};
               */
 
@@ -90,6 +90,7 @@ const node /*: ConcreteRequest*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'dd5a657362a3fea622cbb7f0dfde2a72';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameDemo_HomePageScreen_Query.graphql.js.map

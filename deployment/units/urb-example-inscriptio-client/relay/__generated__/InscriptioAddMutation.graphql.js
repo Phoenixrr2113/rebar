@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash cfc82bc3e1832599f174e6b985528b28
+ * @relayHash 1f0f519a7e6baa373ed4ceb408ca6d07
  */
 
 /* eslint-disable */
@@ -9,18 +9,19 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
+              export type InscriptioAddInput = {
+                Inscriptio_LocationLat: string,
+                Inscriptio_LocationLon: string,
+                Inscriptio_Notes: string,
+                clientMutationId?: ?string,
+              };
               export type InscriptioAddMutationVariables = {|
-                input: {
-                  Inscriptio_LocationLat: string,
-                  Inscriptio_LocationLon: string,
-                  Inscriptio_Notes: string,
-                  clientMutationId?: ?string,
-                },
+                input: InscriptioAddInput
               |};
               export type InscriptioAddMutationResponse = {|
                 +InscriptioAdd: ?{|
                   +Viewer: ?{|
-                    +id: string,
+                    +id: string
                   |},
                   +InscriptiosEdge: ?{|
                     +cursor: string,
@@ -31,7 +32,7 @@
                       +Inscriptio_Notes: ?string,
                     |},
                   |},
-                |},
+                |}
               |};
               */
 
@@ -179,6 +180,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 }();
+// prettier-ignore
 node /*: any*/.hash = '3efd95970eb7521d0c6d042eea17ce70';
 module.exports = node;
 //# sourceMappingURL=InscriptioAddMutation.graphql.js.map

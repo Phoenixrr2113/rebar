@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type HomePageScreen_Viewer$ref: FragmentReference;
               export type HomePageScreen_Viewer = {|
                 +id: string,
@@ -33,6 +33,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'a4151d7bf6e5e81b618cd0f4579ed173';
 module.exports = node;
 //# sourceMappingURL=HomePageScreen_Viewer.graphql.js.map

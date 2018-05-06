@@ -86,8 +86,8 @@ serverWebApp.use(async (req, res) => {
 
     const fetcher = new _fetcherServer2.default(
     `http://localhost:${envPort}` + (0, _getGraphQLLocalServerURL2.default)(siteInformation),
-    req.cookies.UserToken1, _UserToken2ServerRendering2.default);
-
+    req.cookies.UserToken1,
+    _UserToken2ServerRendering2.default);
 
 
     const userAgent = req.headers['user-agent'];

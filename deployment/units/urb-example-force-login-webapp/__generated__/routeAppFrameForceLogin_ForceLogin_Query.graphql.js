@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash c81603ccebb7bc2dd3e7553fc1c66fe6
+ * @relayHash fb0647b934a869b6874119ecfe6f9165
  */
 
 /* eslint-disable */
@@ -10,11 +10,11 @@
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
               type ForceLogin_Viewer$ref = any;
-              export type routeAppFrameForceLogin_ForceLogin_QueryVariables = {| |};
+              export type routeAppFrameForceLogin_ForceLogin_QueryVariables = {||};
               export type routeAppFrameForceLogin_ForceLogin_QueryResponse = {|
                 +Viewer: ?{|
-                  +$fragmentRefs: ForceLogin_Viewer$ref,
-                |},
+                  +$fragmentRefs: ForceLogin_Viewer$ref
+                |}
               |};
               */
 
@@ -97,6 +97,7 @@ const node /*: ConcreteRequest*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = 'c6caf31fca5281f05d717603162982b7';
 module.exports = node;
 //# sourceMappingURL=routeAppFrameForceLogin_ForceLogin_Query.graphql.js.map

@@ -8,7 +8,7 @@
 
 /*::
               import type { ConcreteFragment } from 'relay-runtime';
-              import type { FragmentReference } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
               declare export opaque type NavBarLoginButton_Viewer$ref: FragmentReference;
               export type NavBarLoginButton_Viewer = {|
                 +User_IsAnonymous: ?boolean,
@@ -41,6 +41,7 @@ const node /*: ConcreteFragment*/ = {
 
 
 
+// prettier-ignore
 node /*: any*/.hash = '9e6a97a83f5fda2f0442256b799fec32';
 module.exports = node;
 //# sourceMappingURL=NavBarLoginButton_Viewer.graphql.js.map
