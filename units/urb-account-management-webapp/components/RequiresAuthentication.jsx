@@ -1,9 +1,16 @@
 // @flow
 
-import Card, { CardHeader, CardContent } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import React from 'react'
-import Typography from 'material-ui/Typography'
+
+import Typography from '@material-ui/core/Typography'
 
 import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
 

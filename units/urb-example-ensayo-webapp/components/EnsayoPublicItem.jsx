@@ -1,6 +1,11 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
 import Helmet from 'react-helmet'
 import { Parser } from 'html-to-react'
 import React from 'react'
@@ -19,26 +24,11 @@ class EnsayoPublicItem extends React.Component<{ Viewer: any }, {}> {
       <ResponsiveContentArea>
         <Helmet
           title={Viewer.Ensayo.Ensayo_Title}
-          meta={[
-            { name: 'description', content: Viewer.Ensayo.Ensayo_Description },
-          ]}
+          meta={[ { name: 'description', content: Viewer.Ensayo.Ensayo_Description } ]}
         />
         <Card>
-          <CardHeader
-            title={
-              <h1>
-                {contentH1}
-              </h1>
-            }
-            subheader={
-              <h2>
-                {contentH2}
-              </h2>
-            }
-          />
-          <CardContent>
-            {new Parser().parse( Viewer.Ensayo.Ensayo_Content )}
-          </CardContent>
+          <CardHeader title={<h1>{contentH1}</h1>} subheader={<h2>{contentH2}</h2>} />
+          <CardContent>{new Parser().parse( Viewer.Ensayo.Ensayo_Content )}</CardContent>
         </Card>
       </ResponsiveContentArea>
     )
@@ -55,5 +45,5 @@ export default createFragmentContainer(
         Ensayo_Content
       }
     }
-  `
+  `,
 )

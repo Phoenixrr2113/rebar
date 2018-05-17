@@ -1,10 +1,21 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Card, { CardActions, CardContent, CardHeader } from 'material-ui/Card'
-import { LinearProgress } from 'material-ui/Progress'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
+import Button from '@material-ui/core/Button'
+
+import Card from '@material-ui/core/Card'
+
+import CardActions from '@material-ui/core/CardActions'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import LinearProgress from '@material-ui/core/LinearProgress'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
+
 import React from 'react'
 
 import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'

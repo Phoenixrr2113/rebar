@@ -1,7 +1,13 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps'

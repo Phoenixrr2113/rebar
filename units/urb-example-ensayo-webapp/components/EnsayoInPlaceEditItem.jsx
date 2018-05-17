@@ -1,7 +1,9 @@
 // @flow
 
-import { ListItem, ListItemText } from 'material-ui/List'
-import Menu, { MenuItem } from 'material-ui/Menu'
+import { ListItem, ListItemText } from '@material-ui/core/List'
+
+import Menu, { MenuItem } from '@material-ui/core/Menu'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -14,13 +16,13 @@ class EnsayoInPlaceEditItem extends React.Component<
   {
     Viewer: Object,
     Ensayo: Object,
-    relay: Object
+    relay: Object,
   },
   {
     anchorEl: ?Object,
     menuIsOpen: boolean,
-    propertiesIsOpen: boolean
-  }
+    propertiesIsOpen: boolean,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -33,11 +35,7 @@ class EnsayoInPlaceEditItem extends React.Component<
   }
 
   _handle_Update_Properties = EnsayoInPlaceEditProperties => {
-    const {
-      Ensayo_Title,
-      Ensayo_Description,
-      Ensayo_Content,
-    } = EnsayoInPlaceEditProperties
+    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties
     const { relay, Ensayo } = this.props
 
     EnsayoUpdateMutation.commit(
@@ -45,7 +43,7 @@ class EnsayoInPlaceEditItem extends React.Component<
       Ensayo,
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content
+      Ensayo_Content,
     )
   }
 
@@ -74,11 +72,7 @@ class EnsayoInPlaceEditItem extends React.Component<
   }
 
   render() {
-    const {
-      Ensayo_Title,
-      Ensayo_Description,
-      Ensayo_Content,
-    } = this.props.Ensayo
+    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = this.props.Ensayo
     const { propertiesIsOpen } = this.state
 
     return (
@@ -97,16 +91,10 @@ class EnsayoInPlaceEditItem extends React.Component<
           open={this.state.menuIsOpen}
           onRequestClose={this.handleRequestClose}
         >
-          <MenuItem
-            key="edit"
-            onClick={event => this._handle_Menu_onClick_Edit( event )}
-          >
+          <MenuItem key="edit" onClick={event => this._handle_Menu_onClick_Edit( event )}>
             Edit
           </MenuItem>
-          <MenuItem
-            key="delete"
-            onClick={event => this._handle_Menu_onClick_Delete( event )}
-          >
+          <MenuItem key="delete" onClick={event => this._handle_Menu_onClick_Delete( event )}>
             Delete
           </MenuItem>
         </Menu>

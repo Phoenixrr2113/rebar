@@ -1,7 +1,13 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import moment from 'moment'
 import PropTypes from 'prop-types'
 import React from 'react'
@@ -25,8 +31,8 @@ const styles = {
 class TranslaticiarumScreen extends React.Component<
   any,
   {
-    calendarView: 'month' | 'week' | 'day' | 'agenda'
-  }
+    calendarView: 'month' | 'week' | 'day' | 'agenda',
+  },
 > {
   static contextTypes = {
     router: PropTypes.object,
@@ -44,11 +50,7 @@ class TranslaticiarumScreen extends React.Component<
     this.setState({ calendarView: view })
   }
 
-  _handle_onSelectSlot = ( slotInfo: {
-    start: Date,
-    end: Date,
-    slots: Array<Date>
-  }) => {
+  _handle_onSelectSlot = ( slotInfo: { start: Date, end: Date, slots: Array<Date> }) => {
     console.log( slotInfo )
   }
 
@@ -106,5 +108,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
+  `,
 )

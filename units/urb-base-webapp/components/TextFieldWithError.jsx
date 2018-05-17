@@ -1,10 +1,15 @@
 // @flow
 
-import FormControl from 'material-ui/Form/FormControl'
-import FormHelperText from 'material-ui/Form/FormHelperText'
-import Input from 'material-ui/Input'
-import InputLabel from 'material-ui/Input/InputLabel'
-import { withStyles } from 'material-ui/styles'
+import FormControl from '@material-ui/core/FormControl'
+
+import FormHelperText from '@material-ui/core/FormHelperText'
+
+import Input from '@material-ui/core/Input'
+
+import InputLabel from '@material-ui/core/InputLabel'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import React from 'react'
 
 const styles = theme => ({

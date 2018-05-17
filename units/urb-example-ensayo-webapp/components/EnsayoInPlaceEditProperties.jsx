@@ -1,15 +1,15 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Dialog, {
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-} from 'material-ui/Dialog'
-import TextField from 'material-ui/TextField'
+import Button from '@material-ui/core/Button'
+
+import Dialog, { DialogActions, DialogContent, DialogTitle } from '@material-ui/core/Dialog'
+
+import TextField from '@material-ui/core/TextField'
+
 import React from 'react'
 import RichTextEditor from 'react-rte'
-import { withStyles } from 'material-ui/styles'
+
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = theme => ({
   container: {
@@ -31,13 +31,13 @@ class EnsayoInPlaceEditProperties extends React.Component<
     Ensayo_Content: string,
     handlerUpdate: Function,
     handlerClose: Function,
-    classes: Object
+    classes: Object,
   },
   {
     Ensayo_Title: string,
     Ensayo_Description: string,
-    Ensayo_Content_RTE: Object
-  }
+    Ensayo_Content_RTE: Object,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -47,10 +47,7 @@ class EnsayoInPlaceEditProperties extends React.Component<
     this.state = {
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content_RTE: RichTextEditor.createValueFromString(
-        Ensayo_Content,
-        'html'
-      ),
+      Ensayo_Content_RTE: RichTextEditor.createValueFromString( Ensayo_Content, 'html' ),
     }
   }
 
@@ -90,15 +87,13 @@ class EnsayoInPlaceEditProperties extends React.Component<
               label="Title"
               fullWidth={true}
               value={Ensayo_Title}
-              onChange={event =>
-                this.setState({ Ensayo_Title: event.target.value })}
+              onChange={event => this.setState({ Ensayo_Title: event.target.value })}
             />
             <TextField
               label="Description"
               fullWidth={true}
               value={Ensayo_Description}
-              onChange={event =>
-                this.setState({ Ensayo_Description: event.target.value })}
+              onChange={event => this.setState({ Ensayo_Description: event.target.value })}
             />
             <div className={classes.richTextContainer}>
               {RichTextEditor == null ? (

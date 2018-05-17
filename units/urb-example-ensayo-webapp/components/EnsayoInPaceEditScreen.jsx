@@ -2,9 +2,16 @@
 
 import AddIcon from '@material-ui/icons/Add'
 
-import Button from 'material-ui/Button'
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import Button from '@material-ui/core/Button'
+
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 

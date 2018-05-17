@@ -1,9 +1,12 @@
 // @flow
 
-import Checkbox from 'material-ui/Checkbox'
-import IconButton from 'material-ui/IconButton'
-import { ListItem, ListItemSecondaryAction, ListItemText } from 'material-ui/List'
-import Menu, { MenuItem } from 'material-ui/Menu'
+import Checkbox from '@material-ui/core/Checkbox'
+
+import IconButton from '@material-ui/core/IconButton'
+
+import { ListItem, ListItemSecondaryAction, ListItemText } from '@material-ui/core/List'
+
+import Menu, { MenuItem } from '@material-ui/core/Menu'
 
 import { MoreVert } from '@material-ui/icons'
 

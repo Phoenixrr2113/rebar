@@ -41,7 +41,7 @@ const config = {
       'found',
       'found-relay',
       'isomorphic-fetch',
-      'material-ui',
+      '@material-ui/core',
       'prop-types',
       'react',
       'react-code-splitting',
@@ -85,20 +85,6 @@ const config = {
               presets: [ 'react-native-stage-0' ],
               plugins: removeEmpty([
                 'dynamic-import-webpack',
-                /*
-                ifNotProd( 'react-hot-loader/babel' ),
-                'transform-class-properties',
-                [
-                  'transform-react-remove-prop-types',
-                  {
-                    mode: 'wrap',
-                    plugins: [
-                      [ 'babel-plugin-flow-react-proptypes', { omitRuntimeTypeExport: true } ],
-                      'babel-plugin-transform-flow-strip-types',
-                    ],
-                  },
-                ],
-                */
                 ifNotProd( 'flow-react-proptypes' ),
                 'syntax-dynamic-import',
                 [
@@ -138,56 +124,19 @@ const config = {
         },
       },
     }),
-    // In development only:
-    //ifNotProd( new webpack.HotModuleReplacementPlugin() ),
     ifNotProd( new webpack.NamedModulesPlugin() ),
   ]),
+
+  // Introduce relatively large timeout to allow babel-node to restart and avoid
+  // getting an entirely blank screen when hot reloading happens and babel-node
+  // is in the process of restarting
+  watch: true,
+  watchOptions: {
+    aggregateTimeout: 2000,
+    poll: true,
+  },
 }
 
 if ( node_env !== 'production' ) config.devtool = 'source-map'
 
 export default config
-
-/*
-This should be replaced vvvvvvvvv
-// In production only:
-ifProd(
-  new webpack.optimize.UglifyJsPlugin({
-    compress: {
-      screw_ie8: true,
-      warnings: false,
-      unused: true,
-      dead_code: true,
-    },
-    output: {
-      comments: false,
-    },
-    sourceMap: false,
-  }),
-),
-
--------
-
-Error: webpack.optimize.UglifyJsPlugin has been removed, please use config.optimization.minimize instead.
-
-^^^^^^^^^^^^^^^
-
-
-
-vvvvvvvvvvvv
-
-ifNotProd({ loader: 'react-hot-loader/webpack' }),
-
-^^^^^^^^^^^
-
-vvvvvvvvv
-
-Vendor definition in entry is not producting a vendor.js file
-
-
-
-^^^^^^
-
-
-
-*/

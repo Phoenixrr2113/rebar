@@ -1,8 +1,10 @@
 // @flow
 
-import Divider from 'material-ui/Divider'
-import List from 'material-ui/List'
-import { withStyles } from 'material-ui/styles'
+import Divider from '@material-ui/core/Divider'
+
+import List from '@material-ui/core/List'
+
+import { withStyles } from '@material-ui/core/styles'
 
 import IconInbox from '@material-ui/icons/Inbox'
 

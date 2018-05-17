@@ -1,8 +1,13 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Menu, { MenuItem } from 'material-ui/Menu'
-import { withStyles } from 'material-ui/styles'
+import Button from '@material-ui/core/Button'
+
+import Menu from '@material-ui/core/Menu'
+
+import MenuItem from '@material-ui/core/MenuItem'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
@@ -46,7 +51,7 @@ class NavBarLoginButton extends React.Component<
   }
 
   // Handle popping open the login dialog if authentication is required
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     registerAuthenticationRequiredCallback( this._handle_onClick_Login )
   }
 
