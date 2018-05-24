@@ -1,14 +1,14 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
-var _Dialog = require('material-ui/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
+var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
 
-
-
+var _Dialog = require('@material-ui/core/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
 
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _styles = require('material-ui/styles');
-var _TextField = require('material-ui/TextField');var _TextField2 = _interopRequireDefault(_TextField);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+var _styles = require('@material-ui/core/styles');
+
+var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   container: {
@@ -60,8 +60,7 @@ class ToDo_Properties extends _react2.default.Component
               label: 'To Do',
               fullWidth: true,
               value: ToDo_Text,
-              onChange: event =>
-              this.setState({ ToDo_Text: event.target.value }) })),
+              onChange: event => this.setState({ ToDo_Text: event.target.value }) })),
 
 
           _react2.default.createElement(_Dialog.DialogActions, null,
