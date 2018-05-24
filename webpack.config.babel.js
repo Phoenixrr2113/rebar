@@ -126,17 +126,19 @@ const config = {
     }),
     ifNotProd( new webpack.NamedModulesPlugin() ),
   ]),
+}
+
+if ( node_env !== 'production' ) {
+  config.devtool = 'source-map'
 
   // Introduce relatively large timeout to allow babel-node to restart and avoid
   // getting an entirely blank screen when hot reloading happens and babel-node
   // is in the process of restarting
-  watch: true,
-  watchOptions: {
+  config.watch = true
+  config.watchOptions = {
     aggregateTimeout: 2000,
     poll: true,
-  },
+  }
 }
-
-if ( node_env !== 'production' ) config.devtool = 'source-map'
 
 export default config
