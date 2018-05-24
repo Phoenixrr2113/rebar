@@ -9,7 +9,8 @@ const writeFileAsync = (0, _util.promisify)(_fs2.default.writeFile);exports.defa
 async function ensureFileContent(
 fileName,
 currentFileContent,
-newFileContent)
+newFileContent,
+logToConsole)
 {
   // If the current file content is not provided, get it
   if (currentFileContent == null) {
@@ -21,10 +22,10 @@ newFileContent)
   }
 
   if (currentFileContent !== newFileContent) {
-    console.log('✍️  written:  ' + fileName);
+    if (logToConsole) console.log('✍️  written:  ' + fileName);
     await writeFileAsync(fileName, newFileContent, 'utf8');
   } else {
-    console.log('📎  skipped:  ' + fileName);
+    if (logToConsole) console.log('📎  skipped:  ' + fileName);
   }
 };
 //# sourceMappingURL=ensureFileContent.js.map

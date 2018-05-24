@@ -1,10 +1,15 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _FormControl = require('material-ui/Form/FormControl');var _FormControl2 = _interopRequireDefault(_FormControl);
-var _FormHelperText = require('material-ui/Form/FormHelperText');var _FormHelperText2 = _interopRequireDefault(_FormHelperText);
-var _Input = require('material-ui/Input');var _Input2 = _interopRequireDefault(_Input);
-var _InputLabel = require('material-ui/Input/InputLabel');var _InputLabel2 = _interopRequireDefault(_InputLabel);
-var _styles = require('material-ui/styles');
+var _FormControl = require('@material-ui/core/FormControl');var _FormControl2 = _interopRequireDefault(_FormControl);
+
+var _FormHelperText = require('@material-ui/core/FormHelperText');var _FormHelperText2 = _interopRequireDefault(_FormHelperText);
+
+var _Input = require('@material-ui/core/Input');var _Input2 = _interopRequireDefault(_Input);
+
+var _InputLabel = require('@material-ui/core/InputLabel');var _InputLabel2 = _interopRequireDefault(_InputLabel);
+
+var _styles = require('@material-ui/core/styles');
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({

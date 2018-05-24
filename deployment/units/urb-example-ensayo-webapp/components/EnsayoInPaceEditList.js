@@ -1,6 +1,7 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
+var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefault(_List);
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -21,11 +22,7 @@ class EnsayoInPaceEditList extends _react2.default.Component
       _react2.default.createElement('div', null,
         _react2.default.createElement(_List2.default, null,
           Ensayos.edges.map(({ node }) =>
-          _react2.default.createElement(_EnsayoInPlaceEditItem2.default, {
-            key: node.id,
-            Viewer: Viewer,
-            Ensayo: node })))));
-
+          _react2.default.createElement(_EnsayoInPlaceEditItem2.default, { key: node.id, Viewer: Viewer, Ensayo: node })))));
 
 
 

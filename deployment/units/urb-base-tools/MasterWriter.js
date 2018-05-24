@@ -16,16 +16,17 @@ class MasterWriter {
 
 
 
-  constructor(basePath) {
+
+  constructor(basePath, logToConsole) {
     this.basePath = basePath;
+    this.logToConsole = logToConsole;
+
     this.directories = new Map();
     this.arrPromises = [];
   } // $FlowIssue
 
   async ensureRelativePathExistsHelper(filePath) {
     if (!this.directories.has(filePath)) {
-      console.log({ creating: true, filePath });
-
       try {
         await mkdirAsync(_path2.default.resolve(this.basePath, filePath));
       } catch (err) {
@@ -55,7 +56,12 @@ class MasterWriter {
     await this.ensureRelativePathExists(destinationRelative);
 
     this.arrPromises.push(
-    (0, _ensureFileContent2.default)(this.basePath + '/' + destinationRelative, null, fileContent));
+    (0, _ensureFileContent2.default)(
+    this.basePath + '/' + destinationRelative,
+    null,
+    fileContent,
+    this.logToConsole));
+
 
   }
 

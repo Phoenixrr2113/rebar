@@ -1,7 +1,13 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Card = require('material-ui/Card');var _Card2 = _interopRequireDefault(_Card);
-var _styles = require('material-ui/styles');
+var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+
+var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+
+var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+
+var _styles = require('@material-ui/core/styles');
+
 var _moment = require('moment');var _moment2 = _interopRequireDefault(_moment);
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
@@ -44,11 +50,7 @@ class TranslaticiarumScreen extends _react2.default.Component
       this.setState({ calendarView: view });
     };this.
 
-    _handle_onSelectSlot = slotInfo =>
-
-
-
-    {
+    _handle_onSelectSlot = slotInfo => {
       console.log(slotInfo);
     };this.state = { calendarView: 'week' };}
 
@@ -73,9 +75,9 @@ class TranslaticiarumScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_ResponsiveContentArea2.default, null,
         _react2.default.createElement(_Card2.default, { className: classes.card },
-          _react2.default.createElement(_Card.CardHeader, { title: 'Translaticiarum' }),
+          _react2.default.createElement(_CardHeader2.default, { title: 'Translaticiarum' }),
 
-          _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_CardContent2.default, null,
             _react2.default.createElement(_reactBigCalendar2.default, {
               events: calendarEvents,
               view: this.state.calendarView,

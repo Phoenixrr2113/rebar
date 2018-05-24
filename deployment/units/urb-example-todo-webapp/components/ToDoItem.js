@@ -1,9 +1,12 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Checkbox = require('material-ui/Checkbox');var _Checkbox2 = _interopRequireDefault(_Checkbox);
-var _IconButton = require('material-ui/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
-var _List = require('material-ui/List');
-var _Menu = require('material-ui/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+var _Checkbox = require('@material-ui/core/Checkbox');var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+var _IconButton = require('@material-ui/core/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _List = require('@material-ui/core/List');
+
+var _Menu = require('@material-ui/core/Menu');var _Menu2 = _interopRequireDefault(_Menu);
 
 var _icons = require('@material-ui/icons');
 

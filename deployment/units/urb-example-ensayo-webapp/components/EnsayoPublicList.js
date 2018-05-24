@@ -1,7 +1,13 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Card = require('material-ui/Card');var _Card2 = _interopRequireDefault(_Card);
-var _styles = require('material-ui/styles');
+var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+
+var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+
+var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+
+var _styles = require('@material-ui/core/styles');
+
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
@@ -30,9 +36,9 @@ class EnsayoPublicList extends _react2.default.Component {
       _react2.default.createElement(_ResponsiveContentArea2.default, null,
         Viewer.Ensayos.edges.map(edge =>
         _react2.default.createElement(_Card2.default, { key: edge.node.id, className: classes.card },
-          _react2.default.createElement(_Card.CardHeader, { title: edge.node.Ensayo_Title }),
+          _react2.default.createElement(_CardHeader2.default, { title: edge.node.Ensayo_Title }),
 
-          _react2.default.createElement(_Card.CardContent, { onClick: () => this._handle_onClick(edge.node.id) },
+          _react2.default.createElement(_CardContent2.default, { onClick: () => this._handle_onClick(edge.node.id) },
             edge.node.Ensayo_Description)))));
 
 

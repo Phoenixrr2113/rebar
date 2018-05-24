@@ -18,6 +18,7 @@ var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(
 var _package = require('../_configuration/package');
 var _UserToken2ServerRendering = require('../_configuration/urb-base-server/UserToken2ServerRendering');var _UserToken2ServerRendering2 = _interopRequireDefault(_UserToken2ServerRendering);
 var _AppWrapper = require('../_configuration/urb-base-webapp/AppWrapper');var _AppWrapper2 = _interopRequireDefault(_AppWrapper);
+var _htmlHeadAdditions = require('../_configuration/urb-base-webapp/htmlHeadAdditions');var _htmlHeadAdditions2 = _interopRequireDefault(_htmlHeadAdditions);
 
 var _fetcherServer = require('./fetcherServer');var _fetcherServer2 = _interopRequireDefault(_fetcherServer);
 var _router = require('./router');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -130,6 +131,7 @@ serverWebApp.use(async (req, res) => {
       root_html: rootHTML,
       server_side_styles: sheets.toString(),
       helmet,
+      htmlHeadAdditions: _htmlHeadAdditions2.default,
       siteConfiguration: JSON.stringify(siteConfigurationSubset),
       relay_payload: relayPayload });
 

@@ -101,7 +101,8 @@ async function createPackageJson(units) {
   await (0, _ensureFileContent2.default)(
   packageJsonFileName,
   currentPackageAsJSONString,
-  JSON.stringify(packageAsObject, null, 2));
+  JSON.stringify(packageAsObject, null, 2),
+  true);
 
 }
 
@@ -142,7 +143,8 @@ async function createMutations(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_mutations.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: mutations.join('\r\n') }, prettierESLintOptions)));
+  (0, _prettierEslint2.default)(Object.assign({ text: mutations.join('\r\n') }, prettierESLintOptions)),
+  true);
 
 }
 
@@ -173,7 +175,8 @@ async function createSchemas(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_schemas.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: schemas.join('\r\n') }, prettierESLintOptions)));
+  (0, _prettierEslint2.default)(Object.assign({ text: schemas.join('\r\n') }, prettierESLintOptions)),
+  true);
 
 }
 
@@ -210,7 +213,8 @@ async function createViewerFields(units) {
   await (0, _ensureFileContent2.default)(
   _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_ViewerFields.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: viewerFields.join('\r\n') }, prettierESLintOptions)));
+  (0, _prettierEslint2.default)(Object.assign({ text: viewerFields.join('\r\n') }, prettierESLintOptions)),
+  true);
 
 }
 
@@ -269,7 +273,8 @@ async function createRouteFile(fileName, imports, exports) {
   await (0, _ensureFileContent2.default)(
   fileName,
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: routesAppFrame.join('\r\n') }, prettierESLintOptions)));
+  (0, _prettierEslint2.default)(Object.assign({ text: routesAppFrame.join('\r\n') }, prettierESLintOptions)),
+  true);
 
 }
 
