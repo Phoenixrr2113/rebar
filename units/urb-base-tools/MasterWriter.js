@@ -12,20 +12,21 @@ const mkdirAsync = promisify( fs.mkdir )
 
 export default class MasterWriter {
   basePath: string
+  logToConsole: boolean
   directories: Map<string, boolean>
   // $FlowIssue
   arrPromises: Array<Promise>
 
-  constructor( basePath: string ) {
+  constructor( basePath: string, logToConsole: boolean ) {
     this.basePath = basePath
+    this.logToConsole = logToConsole
+
     this.directories = new Map()
     this.arrPromises = []
   }
 
   async ensureRelativePathExistsHelper( filePath: string ) {
     if ( !this.directories.has( filePath ) ) {
-      console.log({ creating: true, filePath })
-
       try {
         await mkdirAsync( path.resolve( this.basePath, filePath ) )
       } catch ( err ) {
@@ -55,7 +56,12 @@ export default class MasterWriter {
     await this.ensureRelativePathExists( destinationRelative )
 
     this.arrPromises.push(
-      ensureFileContent( this.basePath + '/' + destinationRelative, null, fileContent ),
+      ensureFileContent(
+        this.basePath + '/' + destinationRelative,
+        null,
+        fileContent,
+        this.logToConsole,
+      ),
     )
   }
 

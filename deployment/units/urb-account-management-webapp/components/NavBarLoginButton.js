@@ -1,8 +1,13 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
-var _Menu = require('material-ui/Menu');var _Menu2 = _interopRequireDefault(_Menu);
-var _styles = require('material-ui/styles');
+var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+
+var _Menu = require('@material-ui/core/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+
+var _MenuItem = require('@material-ui/core/MenuItem');var _MenuItem2 = _interopRequireDefault(_MenuItem);
+
+var _styles = require('@material-ui/core/styles');
+
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
@@ -84,7 +89,7 @@ class NavBarLoginButton extends _react2.default.Component
 
       this.context.router.push('/user/new');
     };this.state = { anchorEl: undefined, loginDialogIsOpen: false, userMenuIsOpen: false };} // Handle popping open the login dialog if authentication is required
-  componentWillMount() {(0, _RequiresAuthentication.registerAuthenticationRequiredCallback)(this._handle_onClick_Login);}componentWillUnmount() {(0, _RequiresAuthentication.unregisterAuthenticationRequiredCallback)();}
+  UNSAFE_componentWillMount() {(0, _RequiresAuthentication.registerAuthenticationRequiredCallback)(this._handle_onClick_Login);}componentWillUnmount() {(0, _RequiresAuthentication.unregisterAuthenticationRequiredCallback)();}
   render() {
     const { classes } = this.props;
     const { User_IsAnonymous, User_DisplayName } = this.props.Viewer;
@@ -113,13 +118,13 @@ class NavBarLoginButton extends _react2.default.Component
             open: userMenuIsOpen,
             onClose: this._handle_UserMenu_Close },
 
-          _react2.default.createElement(_Menu.MenuItem, { key: 'profile', onClick: this._handle_onClick_Profile }, 'Profile'),
+          _react2.default.createElement(_MenuItem2.default, { key: 'profile', onClick: this._handle_onClick_Profile }, 'Profile'),
 
 
-          _react2.default.createElement(_Menu.MenuItem, { key: 'login', onClick: this._handle_onClick_Login }, 'Login as a different user'),
+          _react2.default.createElement(_MenuItem2.default, { key: 'login', onClick: this._handle_onClick_Login }, 'Login as a different user'),
 
 
-          _react2.default.createElement(_Menu.MenuItem, { key: 'logout', onClick: this._handle_onClick_Logout }, 'Log out'))));
+          _react2.default.createElement(_MenuItem2.default, { key: 'logout', onClick: this._handle_onClick_Logout }, 'Log out'))));
 
 
 

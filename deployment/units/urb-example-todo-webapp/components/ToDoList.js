@@ -1,14 +1,22 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _AppBar = require('material-ui/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
-var _Checkbox = require('material-ui/Checkbox');var _Checkbox2 = _interopRequireDefault(_Checkbox);
-var _Form = require('material-ui/Form');
-var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
-var _styles = require('material-ui/styles');
+var _AppBar = require('@material-ui/core/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _Checkbox = require('@material-ui/core/Checkbox');var _Checkbox2 = _interopRequireDefault(_Checkbox);
+
+var _FormGroup = require('@material-ui/core/FormGroup');var _FormGroup2 = _interopRequireDefault(_FormGroup);
+
+var _FormControlLabel = require('@material-ui/core/FormControlLabel');var _FormControlLabel2 = _interopRequireDefault(_FormControlLabel);
+
+var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefault(_List);
+
+var _styles = require('@material-ui/core/styles');
+
 var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
-var _Tabs = require('material-ui/Tabs');var _Tabs2 = _interopRequireDefault(_Tabs);
+
+var _Tabs = require('@material-ui/core/Tabs');var _Tabs2 = _interopRequireDefault(_Tabs);
 
 var _ToDoListUpdateMarkAllMutation = require('../../urb-example-todo-client/relay/ToDoListUpdateMarkAllMutation');var _ToDoListUpdateMarkAllMutation2 = _interopRequireDefault(_ToDoListUpdateMarkAllMutation);
 
@@ -79,8 +87,8 @@ class ToDoList extends _react2.default.Component
     return (
       _react2.default.createElement('div', null,
         this.renderTabs(),
-        _react2.default.createElement(_Form.FormGroup, { row: true },
-          _react2.default.createElement(_Form.FormControlLabel, {
+        _react2.default.createElement(_FormGroup2.default, { row: true },
+          _react2.default.createElement(_FormControlLabel2.default, {
             control:
             _react2.default.createElement(_Checkbox2.default, {
               checked: ToDo_TotalCount === ToDo_CompletedCount,

@@ -1,7 +1,9 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _List = require('material-ui/List');
-var _Menu = require('material-ui/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+var _List = require('@material-ui/core/List');
+
+var _Menu = require('@material-ui/core/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -33,11 +35,7 @@ class EnsayoInPlaceEditItem extends _react2.default.Component
 
 
     _handle_Update_Properties = EnsayoInPlaceEditProperties => {
-      const {
-        Ensayo_Title,
-        Ensayo_Description,
-        Ensayo_Content } =
-      EnsayoInPlaceEditProperties;
+      const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties;
       const { relay, Ensayo } = this.props;
 
       _EnsayoUpdateMutation2.default.commit(
@@ -74,11 +72,7 @@ class EnsayoInPlaceEditItem extends _react2.default.Component
     };this.state = { anchorEl: undefined, menuIsOpen: false, propertiesIsOpen: false };}
 
   render() {
-    const {
-      Ensayo_Title,
-      Ensayo_Description,
-      Ensayo_Content } =
-    this.props.Ensayo;
+    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = this.props.Ensayo;
     const { propertiesIsOpen } = this.state;
 
     return (
@@ -97,16 +91,10 @@ class EnsayoInPlaceEditItem extends _react2.default.Component
             open: this.state.menuIsOpen,
             onRequestClose: this.handleRequestClose },
 
-          _react2.default.createElement(_Menu.MenuItem, {
-              key: 'edit',
-              onClick: event => this._handle_Menu_onClick_Edit(event) }, 'Edit'),
+          _react2.default.createElement(_Menu.MenuItem, { key: 'edit', onClick: event => this._handle_Menu_onClick_Edit(event) }, 'Edit'),
 
 
-
-          _react2.default.createElement(_Menu.MenuItem, {
-              key: 'delete',
-              onClick: event => this._handle_Menu_onClick_Delete(event) }, 'Delete')),
-
+          _react2.default.createElement(_Menu.MenuItem, { key: 'delete', onClick: event => this._handle_Menu_onClick_Delete(event) }, 'Delete')),
 
 
 

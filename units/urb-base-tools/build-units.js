@@ -102,6 +102,7 @@ async function createPackageJson( units: Array<string> ) {
     packageJsonFileName,
     currentPackageAsJSONString,
     JSON.stringify( packageAsObject, null, 2 ),
+    true,
   )
 }
 
@@ -143,6 +144,7 @@ async function createMutations( units: Array<string> ) {
     path.resolve( './units/_configuration/urb-base-server/graphql/_mutations.js' ),
     null,
     prettierESLint({ text: mutations.join( '\r\n' ), ...prettierESLintOptions }),
+    true,
   )
 }
 
@@ -174,6 +176,7 @@ async function createSchemas( units: Array<string> ) {
     path.resolve( './units/_configuration/urb-base-server/graphql/_schemas.js' ),
     null,
     prettierESLint({ text: schemas.join( '\r\n' ), ...prettierESLintOptions }),
+    true,
   )
 }
 
@@ -211,6 +214,7 @@ async function createViewerFields( units: Array<string> ) {
     path.resolve( './units/_configuration/urb-base-server/graphql/_ViewerFields.js' ),
     null,
     prettierESLint({ text: viewerFields.join( '\r\n' ), ...prettierESLintOptions }),
+    true,
   )
 }
 
@@ -270,6 +274,7 @@ async function createRouteFile( fileName: string, imports: Array<string>, export
     fileName,
     null,
     prettierESLint({ text: routesAppFrame.join( '\r\n' ), ...prettierESLintOptions }),
+    true,
   )
 }
 

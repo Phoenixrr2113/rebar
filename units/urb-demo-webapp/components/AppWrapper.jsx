@@ -1,8 +1,10 @@
 // @flow
 
-import blueGrey from 'material-ui/colors/blueGrey'
-import amber from 'material-ui/colors/amber'
-import createMuiTheme from 'material-ui/styles/createMuiTheme'
+import blueGrey from '@material-ui/core/colors/blueGrey'
+
+import amber from '@material-ui/core/colors/amber'
+
+import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
 import AppWrapperBase from '../../urb-base-webapp/components/AppWrapperBase'
 

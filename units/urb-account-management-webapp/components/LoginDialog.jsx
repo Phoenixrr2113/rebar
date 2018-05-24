@@ -1,12 +1,25 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Dialog, { DialogActions, DialogContent, DialogTitle } from 'material-ui/Dialog'
-import { LinearProgress } from 'material-ui/Progress'
-import Slide from 'material-ui/transitions/Slide'
-import TextField from 'material-ui/TextField'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
+import Button from '@material-ui/core/Button'
+
+import Dialog from '@material-ui/core/Dialog'
+
+import DialogActions from '@material-ui/core/DialogActions'
+
+import DialogContent from '@material-ui/core/DialogContent'
+
+import DialogTitle from '@material-ui/core/DialogTitle'
+
+import LinearProgress from '@material-ui/core/LinearProgress'
+
+import Slide from '@material-ui/core/Slide'
+
+import TextField from '@material-ui/core/TextField'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
+
 import React from 'react'
 
 const styles = theme => ({

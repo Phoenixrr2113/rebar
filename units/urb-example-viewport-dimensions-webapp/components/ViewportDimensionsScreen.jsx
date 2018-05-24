@@ -1,13 +1,23 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from 'material-ui/Table'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import Table from '@material-ui/core/Table'
+
+import TableBody from '@material-ui/core/TableBody'
+
+import TableCell from '@material-ui/core/TableCell'
+
+import TableHead from '@material-ui/core/TableHead'
+
+import TableRow from '@material-ui/core/TableRow'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -24,7 +34,7 @@ class ViewportDimensionsScreen extends React.Component<{
   classes: Object,
   totalWidth: number,
   totalHeight: number,
-  Viewer: Object
+  Viewer: Object,
 }> {
   render() {
     const { classes, totalHeight, totalWidth } = this.props
@@ -65,14 +75,11 @@ class ViewportDimensionsScreen extends React.Component<{
 
 export default createFragmentContainer(
   withStyles( styles )(
-    withViewportDimensions( ViewportDimensionsScreen, [
-      'totalHeight',
-      'totalWidth',
-    ])
+    withViewportDimensions( ViewportDimensionsScreen, [ 'totalHeight', 'totalWidth' ]),
   ),
   graphql`
     fragment ViewportDimensionsScreen_Viewer on Viewer {
       id
     }
-  `
+  `,
 )

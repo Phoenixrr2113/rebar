@@ -18,6 +18,7 @@ import log from '../urb-base-server/log'
 import { version } from '../_configuration/package'
 import UserToken2ServerRendering from '../_configuration/urb-base-server/UserToken2ServerRendering'
 import AppWrapper from '../_configuration/urb-base-webapp/AppWrapper'
+import htmlHeadAdditions from '../_configuration/urb-base-webapp/htmlHeadAdditions'
 
 import FetcherServer from './fetcherServer'
 import { createResolver, historyMiddlewares, routeConfig } from './router'
@@ -130,6 +131,7 @@ serverWebApp.use( async( req, res ) => {
       root_html: rootHTML,
       server_side_styles: sheets.toString(),
       helmet,
+      htmlHeadAdditions,
       siteConfiguration: JSON.stringify( siteConfigurationSubset ),
       relay_payload: relayPayload,
     })

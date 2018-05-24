@@ -65,8 +65,8 @@ For the most up to date setup instructions please go to the [development setup i
 
 The setup is for OS X only. Prerequisites:
 
-* **Install [Node.js](https://nodejs.org)** minimum version: `8.6.0`.  
-* **Install [Git](https://git-scm.com/downloads)** minimum version: `5.0.0`.  
+* **Install [Node.js](https://nodejs.org)** minimum version: `8.9.0`.  
+* **Install [Git](https://git-scm.com/downloads)** minimum version: `5.6.0`.  
 * (currently not available) **Install react-native-cli** run `npm install -g react-native-cli` for app development with React Native only.
 * **Install yarn** run `npm install -g yarn`
 

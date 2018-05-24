@@ -1,8 +1,10 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Divider = require('material-ui/Divider');var _Divider2 = _interopRequireDefault(_Divider);
-var _List = require('material-ui/List');var _List2 = _interopRequireDefault(_List);
-var _styles = require('material-ui/styles');
+var _Divider = require('@material-ui/core/Divider');var _Divider2 = _interopRequireDefault(_Divider);
+
+var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefault(_List);
+
+var _styles = require('@material-ui/core/styles');
 
 var _Inbox = require('@material-ui/icons/Inbox');var _Inbox2 = _interopRequireDefault(_Inbox);
 

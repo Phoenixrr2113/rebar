@@ -1,12 +1,25 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
-var _Dialog = require('material-ui/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
-var _Progress = require('material-ui/Progress');
-var _Slide = require('material-ui/transitions/Slide');var _Slide2 = _interopRequireDefault(_Slide);
-var _TextField = require('material-ui/TextField');var _TextField2 = _interopRequireDefault(_TextField);
-var _styles = require('material-ui/styles');
-var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+
+var _Dialog = require('@material-ui/core/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
+
+var _DialogActions = require('@material-ui/core/DialogActions');var _DialogActions2 = _interopRequireDefault(_DialogActions);
+
+var _DialogContent = require('@material-ui/core/DialogContent');var _DialogContent2 = _interopRequireDefault(_DialogContent);
+
+var _DialogTitle = require('@material-ui/core/DialogTitle');var _DialogTitle2 = _interopRequireDefault(_DialogTitle);
+
+var _LinearProgress = require('@material-ui/core/LinearProgress');var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
+
+var _Slide = require('@material-ui/core/Slide');var _Slide2 = _interopRequireDefault(_Slide);
+
+var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);
+
+var _styles = require('@material-ui/core/styles');
+
+var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
@@ -130,9 +143,9 @@ class LoginDialog extends _react2.default.Component
           transition: _Slide2.default,
           onClose: this._handle_Close },
 
-        _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In'),
+        _react2.default.createElement(_DialogTitle2.default, null, 'Log In'),
 
-        _react2.default.createElement(_Dialog.DialogContent, null,
+        _react2.default.createElement(_DialogContent2.default, null,
           _react2.default.createElement(_TextField2.default, {
             label: 'Account Name',
             fullWidth: true,
@@ -153,7 +166,7 @@ class LoginDialog extends _react2.default.Component
             onChange: event => this.setState({ User_Secret: event.target.value }) })),
 
 
-        _react2.default.createElement(_Dialog.DialogActions, null,
+        _react2.default.createElement(_DialogActions2.default, null,
           _react2.default.createElement(_Button2.default, { color: 'primary', onClick: this._handle_onCLick_NewUser }, 'New User'),
 
 
@@ -173,18 +186,18 @@ class LoginDialog extends _react2.default.Component
 
     return (
       _react2.default.createElement(_Dialog2.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
-        _react2.default.createElement(_Dialog.DialogTitle, null, 'Logging in'),
+        _react2.default.createElement(_DialogTitle2.default, null, 'Logging in'),
 
-        _react2.default.createElement(_Dialog.DialogContent, null,
+        _react2.default.createElement(_DialogContent2.default, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging in as',
 
             _react2.default.createElement('span', { className: classes.userName }, UserAccount_Identifier), ' ...'),
 
           _react2.default.createElement('br', null),
           _react2.default.createElement('br', null),
-          _react2.default.createElement(_Progress.LinearProgress, { mode: 'query' })),
+          _react2.default.createElement(_LinearProgress2.default, { mode: 'query' })),
 
-        _react2.default.createElement(_Dialog.DialogActions, null,
+        _react2.default.createElement(_DialogActions2.default, null,
           _react2.default.createElement(_Button2.default, { color: 'primary', onClick: this._handle_onCLick_CancelLogIn }, 'Cancel'))));
 
 
@@ -199,16 +212,16 @@ class LoginDialog extends _react2.default.Component
 
     return (
       _react2.default.createElement(_Dialog2.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
-        _react2.default.createElement(_Dialog.DialogTitle, null, 'Log In Failed'),
+        _react2.default.createElement(_DialogTitle2.default, null, 'Log In Failed'),
 
-        _react2.default.createElement(_Dialog.DialogContent, null,
+        _react2.default.createElement(_DialogContent2.default, null,
           _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed loggin in as',
 
             _react2.default.createElement('span', { className: classes.userName }, UserAccount_Identifier), ' because:', ' ',
             errorMessage, '!')),
 
 
-        _react2.default.createElement(_Dialog.DialogActions, null,
+        _react2.default.createElement(_DialogActions2.default, null,
           _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_TryAgain }, 'Try Again'))));
 
 

@@ -1,7 +1,13 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
@@ -28,7 +34,7 @@ class EnsayoPublicList extends React.Component<any, any> {
 
     return (
       <ResponsiveContentArea>
-        {Viewer.Ensayos.edges.map( edge =>
+        {Viewer.Ensayos.edges.map( edge => (
           <Card key={edge.node.id} className={classes.card}>
             <CardHeader title={edge.node.Ensayo_Title} />
 
@@ -36,7 +42,7 @@ class EnsayoPublicList extends React.Component<any, any> {
               {edge.node.Ensayo_Description}
             </CardContent>
           </Card>
-        )}
+        ) )}
       </ResponsiveContentArea>
     )
   }
@@ -56,5 +62,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
+  `,
 )

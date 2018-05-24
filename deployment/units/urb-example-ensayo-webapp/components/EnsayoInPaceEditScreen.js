@@ -2,9 +2,16 @@
 
 var _Add = require('@material-ui/icons/Add');var _Add2 = _interopRequireDefault(_Add);
 
-var _Button = require('material-ui/Button');var _Button2 = _interopRequireDefault(_Button);
-var _Card = require('material-ui/Card');var _Card2 = _interopRequireDefault(_Card);
-var _styles = require('material-ui/styles');
+var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+
+var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+
+var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+
+var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+
+var _styles = require('@material-ui/core/styles');
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -65,9 +72,9 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
     return (
       _react2.default.createElement(_ResponsiveContentArea2.default, null,
         _react2.default.createElement(_Card2.default, { className: classes.card },
-          _react2.default.createElement(_Card.CardHeader, { title: 'Ensayo', subheader: 'List of essays' }),
+          _react2.default.createElement(_CardHeader2.default, { title: 'Ensayo', subheader: 'List of essays' }),
 
-          _react2.default.createElement(_Card.CardContent, null,
+          _react2.default.createElement(_CardContent2.default, null,
             _react2.default.createElement('div', { className: classes.addNewButton },
               _react2.default.createElement(_Button2.default, {
                   fab: true,

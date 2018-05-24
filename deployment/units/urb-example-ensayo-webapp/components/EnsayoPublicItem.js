@@ -1,6 +1,11 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Card = require('material-ui/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+
+var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+
+var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+
 var _reactHelmet = require('react-helmet');var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
 var _htmlToReact = require('html-to-react');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
@@ -19,26 +24,11 @@ class EnsayoPublicItem extends _react2.default.Component {
       _react2.default.createElement(_ResponsiveContentArea2.default, null,
         _react2.default.createElement(_reactHelmet2.default, {
           title: Viewer.Ensayo.Ensayo_Title,
-          meta: [
-          { name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
-
+          meta: [{ name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
 
         _react2.default.createElement(_Card2.default, null,
-          _react2.default.createElement(_Card.CardHeader, {
-            title:
-            _react2.default.createElement('h1', null,
-              contentH1),
-
-
-            subheader:
-            _react2.default.createElement('h2', null,
-              contentH2) }),
-
-
-
-          _react2.default.createElement(_Card.CardContent, null,
-            new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
-
+          _react2.default.createElement(_CardHeader2.default, { title: _react2.default.createElement('h1', null, contentH1), subheader: _react2.default.createElement('h2', null, contentH2) }),
+          _react2.default.createElement(_CardContent2.default, null, new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
 
 
 

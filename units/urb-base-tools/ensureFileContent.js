@@ -10,6 +10,7 @@ export default ( async function ensureFileContent(
   fileName: string,
   currentFileContent: ?string,
   newFileContent: string,
+  logToConsole: boolean,
 ) {
   // If the current file content is not provided, get it
   if ( currentFileContent == null ) {
@@ -21,9 +22,9 @@ export default ( async function ensureFileContent(
   }
 
   if ( currentFileContent !== newFileContent ) {
-    console.log( '✍️  written:  ' + fileName )
+    if ( logToConsole ) console.log( '✍️  written:  ' + fileName )
     await writeFileAsync( fileName, newFileContent, 'utf8' )
   } else {
-    console.log( '📎  skipped:  ' + fileName )
+    if ( logToConsole ) console.log( '📎  skipped:  ' + fileName )
   }
 })

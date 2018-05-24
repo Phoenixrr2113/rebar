@@ -1,14 +1,22 @@
 // @flow
 
-import AppBar from 'material-ui/AppBar'
-import Checkbox from 'material-ui/Checkbox'
-import { FormGroup, FormControlLabel } from 'material-ui/Form'
-import List from 'material-ui/List'
-import { withStyles } from 'material-ui/styles'
+import AppBar from '@material-ui/core/AppBar'
+
+import Checkbox from '@material-ui/core/Checkbox'
+
+import FormGroup from '@material-ui/core/FormGroup'
+
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+
+import List from '@material-ui/core/List'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import Tabs, { Tab } from 'material-ui/Tabs'
+
+import Tabs, { Tab } from '@material-ui/core/Tabs'
 
 import ToDoListUpdateMarkAllMutation from '../../urb-example-todo-client/relay/ToDoListUpdateMarkAllMutation'
 

@@ -1,11 +1,16 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _AppBar = require('material-ui/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
-var _Drawer = require('material-ui/Drawer');var _Drawer2 = _interopRequireDefault(_Drawer);
-var _IconButton = require('material-ui/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
-var _styles = require('material-ui/styles');
-var _Toolbar = require('material-ui/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
-var _Typography = require('material-ui/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+var _AppBar = require('@material-ui/core/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
+
+var _Drawer = require('@material-ui/core/Drawer');var _Drawer2 = _interopRequireDefault(_Drawer);
+
+var _IconButton = require('@material-ui/core/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
+
+var _styles = require('@material-ui/core/styles');
+
+var _Toolbar = require('@material-ui/core/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
+
+var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 
 var _Menu = require('@material-ui/icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
 
