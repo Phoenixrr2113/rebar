@@ -18,7 +18,7 @@ if ( googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'stri
 const siteInformation = {
   artifact_id: defaultPersister.uuidNull(),
   inEditingMode: false,
-  isSiteBuilderDisabled: true,
+  isCfMakerDisabled: true,
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },

@@ -1,7 +1,7 @@
 {
   "engines": {
-    "node": ">=8.6.0",
-    "npm": ">=5.0.0"
+    "node": ">=10.5.0",
+    "npm": ">=6.0.0"
   },
   "lint-staged": {
     "units/**/*.js": ["eslint --fix", "prettier-eslint --write", "git add"],
@@ -9,13 +9,13 @@
   },
   "scripts": {
     "build-bump-version":
-      "./node_modules/.bin/babel-node ./units/urb-base-tools/build-bump-version.js",
-    "build-units": "./node_modules/.bin/babel-node ./units/urb-base-tools/build-units.js",
+      "./node_modules/.bin/babel-node ./units/urb-base-tools/buildBumpVersion.js",
+    "build-units": "./node_modules/.bin/babel-node ./units/urb-base-tools/buildUnits.js",
     "precommit": "yarn run flow && lint-staged",
-    "update-ip": "./node_modules/.bin/babel-node ./units/urb-base-tools/update-ip.js",
+    "update-ip": "./node_modules/.bin/babel-node ./units/urb-base-tools/updateIP.js",
     "setup-local":
-      "cp ./units/_configuration/default.env ./.env && cp ./units/_configuration/urb-base-app/default.publicURL.js ./units/_configuration/urb-base-app/publicURL.js && npm run update-ip && react-native link",
+      "cp ./units/_configuration/default.env ./.env",
     "setup-local-cut-version":
-      "cp ./units/_configuration/default.env ./.env && cp ./units/_configuration/urb-base-app/default.publicURL.js ./units/_configuration/urb-base-app/publicURL.js"
+      "cp ./units/_configuration/default.env ./.env"
   }
 }

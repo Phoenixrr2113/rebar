@@ -20,7 +20,7 @@ import Typography from '@material-ui/core/Typography'
 
 import React from 'react'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {
@@ -198,7 +198,7 @@ class NewUserScreen extends React.Component<
         <CardHeader title="Create New User" />
         <CardContent>
           <TextField
-            label="Account Name"
+            label="E-Mail Address"
             fullWidth={true}
             value={UserAccount_Identifier}
             onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}

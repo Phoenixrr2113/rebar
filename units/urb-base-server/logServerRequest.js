@@ -8,12 +8,12 @@ export default function logServerRequest( req, res, next, loggingFunction ) {
   const chunksRes = []
 
   res.write = function( chunk ) {
-    chunksRes.push( new Buffer( chunk ) )
+    chunksRes.push( Buffer.from( chunk ) )
     oldWriteRes.apply( res, arguments )
   }
 
   res.end = function( chunk ) {
-    if ( chunk ) chunksRes.push( new Buffer( chunk ) )
+    if ( chunk ) chunksRes.push( Buffer.from( chunk ) )
 
     var responseBody = Buffer.concat( chunksRes ).toString( 'utf8' )
 

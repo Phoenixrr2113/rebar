@@ -14,7 +14,7 @@ import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
 
 BigCalendar.momentLocalizer( moment )
 

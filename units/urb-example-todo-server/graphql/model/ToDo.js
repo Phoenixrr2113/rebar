@@ -1,6 +1,6 @@
 // @flow
 
-import ObjectManager from '../../../../units/urb-base-server/graphql/ObjectManager'
+import ObjectManager from '../../../../units/urb-base-server/ObjectManager'
 
 export default class ToDo {
   id: string

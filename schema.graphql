@@ -150,6 +150,35 @@ interface Node {
   id: ID!
 }
 
+type ObjectUserPermission implements Node {
+  #
+  id: ID!
+  ObjectUserPermission_Name: String
+  ObjectUserPermission_PermitCreate: Boolean
+  ObjectUserPermission_PermitRead: Boolean
+  ObjectUserPermission_PermitUpdate: Boolean
+  ObjectUserPermission_PermitDelete: Boolean
+  ObjectUserPermission_PermitMiscAsJSON: String
+}
+
+#
+type ObjectUserPermissionsConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [ObjectUserPermissionsEdge]
+}
+
+#
+type ObjectUserPermissionsEdge {
+  #
+  node: ObjectUserPermission
+
+  #
+  cursor: String!
+}
+
 #
 type PageInfo {
   #
@@ -168,6 +197,35 @@ type PageInfo {
 type Query {
   node(id: ID!): Node
   Viewer: Viewer
+}
+
+type ResourceUserAllowance implements Node {
+  #
+  id: ID!
+  ResourceUserAllowance_Name: String
+  ResourceUserAllowance_MinAmount: Int
+  ResourceUserAllowance_MinWarning: Int
+  ResourceUserAllowance_MaxAmount: Int
+  ResourceUserAllowance_MaxWarning: Int
+  ResourceUserAllowance_AllowMiscAsJSON: String
+}
+
+#
+type ResourceUserAllowancesConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [ResourceUserAllowancesEdge]
+}
+
+#
+type ResourceUserAllowancesEdge {
+  #
+  node: ResourceUserAllowance
+
+  #
+  cursor: String!
 }
 
 type ToDo implements Node {
@@ -322,6 +380,10 @@ type Viewer implements Node {
   User_DisplayName: String
   User_Email: String
   User_PhoneNumberMobile: String
+  ObjectUserPermissions(after: String, first: Int, before: String, last: Int, ObjectUserPermission_Name: String!): ObjectUserPermissionsConnection
+  ObjectUserPermission(id: ID): ObjectUserPermission
+  ResourceUserAllowances(after: String, first: Int, before: String, last: Int): ResourceUserAllowancesConnection
+  ResourceUserAllowance(id: ID): ResourceUserAllowance
   Ensayos(after: String, first: Int, before: String, last: Int): EnsayosConnection
   Ensayo(id: ID): Ensayo
   Inscriptios(after: String, first: Int, before: String, last: Int): InscriptiosConnection

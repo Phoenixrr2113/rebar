@@ -147,7 +147,7 @@ class LoginDialog extends React.Component<
 
         <DialogContent>
           <TextField
-            label="Account Name"
+            label="E-Mail Address"
             fullWidth={true}
             value={UserAccount_Identifier}
             onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}

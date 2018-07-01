@@ -37,7 +37,7 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 | [Apache Cassandra](http://cassandra.apache.org/)                | The right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra's support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. |
 | [Data Loader](https://github.com/facebook/dataloader)           | Generic utility to be used as part of your application's data fetching layer to provide a consistent API over various backends and reduce requests to those backends via batching and caching. |
 | [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. URB works well with Elassandra. |
-| [Express GraphQL](https://github.com/units/urb-base-server/graphql/express-graphql) | A Node.js express library that allows the creation of GraphQL servers. |
+| [Express GraphQL](https://github.com/graphql/express-graphql)   | A Node.js express library that allows the creation of GraphQL servers. |
 | [GraphQL](http://graphql.org/docs/getting-started/)             | A query language for describing the capabilities and requirements of data models for client‐server applications. |
 | [JWT](https://jwt.io/)                                          | JSON Web Tokens is an industry standard [RFC 7519](https://tools.ietf.org/html/rfc7519) method for representing claims securely between two parties. |
 | [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
@@ -49,7 +49,6 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 | [Babel](http://babeljs.io)                                      | Transpiles ESX to ESX and performs relay transformations. |
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
-| [GraphiQL](https://github.com/units/urb-base-server/graphql/graphiql) | Graphical interactive in-browser GraphQL IDE. It allows to test the entire schema provided by GraphQL and can be an excellent tool for exploring the boilerplate, as well as a part of applications built on top of it. |
 | [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
 | [Prettier](https://github.com/prettier/prettier/)               | Code formatter for javaScript. |
 | [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Allows tweaking of React components in real time. |

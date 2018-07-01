@@ -34,7 +34,7 @@ const config = {
   },
 
   entry: {
-    client: [ 'whatwg-fetch', path.resolve( 'units/urb-base-webapp/client.js' ) ],
+    client: [ 'whatwg-fetch', path.resolve( 'units/urb-webapp-webapp/client.js' ) ],
     vendor: [
       'babel-polyfill',
       'farce',

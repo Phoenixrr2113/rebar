@@ -13,7 +13,7 @@ import React from 'react'
 import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
 
 const MapComponent = withScriptjs(
   withGoogleMap( props => (

@@ -1,5 +1,5 @@
 // @flow
 
-import createRoutes from '../../urb-base-webapp/scripts/createDefaultRoutes'
+import createRoutes from '../../urb-webapp-webapp/scripts/createDefaultRoutes'
 
 export default createRoutes

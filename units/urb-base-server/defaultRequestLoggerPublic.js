@@ -1,9 +1,8 @@
 // @flow weak
 
 import { debugWriteToLogServerRequestPublic } from '../_configuration/debug'
-
-import log from './log'
-import matchInDepth from './matchInDepth'
+import matchInDepth from '../urb-base-universal/matchInDepth'
+import log from '../urb-base-server/log'
 
 export default function defaultrequestLoggerPublic( requestAndResponse ) {
   let logLevel = null

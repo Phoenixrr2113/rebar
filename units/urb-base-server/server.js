@@ -10,15 +10,13 @@ import compression from 'compression'
 import cookieParser from 'cookie-parser'
 
 import { name, version } from '../_configuration/package'
-import serverWebApp from '../urb-base-webapp/serverWebApp'
-import serverExtensions from '../_configuration/urb-base-server/serverExtensions'
+import servers from '../_configuration/urb-base-server/servers'
 
-import serverAuth from './serverAuth' // Authentication server
 import getLocalIP from './getLocalIP'
-import graphql from './serverGraphQL' // GraphQL server
-import serverHealthz from './serverHealthz' // Health check endpoint server
 import log from './log'
-import ObjectManager from './graphql/ObjectManager'
+import { initializeObjectCache } from './ObjectCache'
+import ObjectManager from './ObjectManager'
+import serverHealthz from './serverHealthz' // Health check endpoint server
 
 //
 
@@ -44,6 +42,9 @@ log.log( 'info', 'Starting application', {
   process_pid: process.pid,
   local_ip: getLocalIP(),
 })
+
+// Get object cache ready
+initializeObjectCache()
 
 // Main router
 const server = express()
@@ -72,8 +73,6 @@ server.set( 'x-powered-by', false )
 server.use( compression() )
 server.use( cookieParser() ) // GraphQL server requires this
 
-server.use( '/graphql', graphql ) // Authentication server
-server.use( '/auth', serverAuth ) // Health check endpoint
 server.use( '/healthz', serverHealthz ) // Static public files server
 server.use(
   express.static( path.resolve( __dirname + '/../_configuration/urb-base-server/public_files/' ), {
@@ -81,9 +80,8 @@ server.use(
   }),
 )
 
-// Add extensions - custom routes
-serverExtensions( server ) // Application with routes
-server.use( serverWebApp ) // Set up all persisters
+// Initialize server extenders
+servers( server )
 
 ObjectManager.initializePersisters( false, () => {
   // Serve - work differently in development and production. In production only the

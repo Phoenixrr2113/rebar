@@ -6,7 +6,7 @@ import amber from '@material-ui/core/colors/amber'
 
 import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 
-import AppWrapperBase from '../../urb-base-webapp/components/AppWrapperBase'
+import AppWrapperBase from '../../urb-webapp-webapp/components/AppWrapperBase'
 
 export default class AppWrapper extends AppWrapperBase {
   createMUITheme() {

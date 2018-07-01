@@ -12,7 +12,7 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {

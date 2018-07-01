@@ -16,7 +16,7 @@ import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import EnsayoAddMutation from '../../urb-example-ensayo-client/relay/EnsayoAddMutation'
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
 
 import EnsayoInPlaceEditProperties from './EnsayoInPlaceEditProperties'
 

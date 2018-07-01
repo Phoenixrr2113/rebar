@@ -21,8 +21,8 @@ import TableRow from '@material-ui/core/TableRow'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
-import withViewportDimensions from '../../urb-base-webapp/scripts/withViewportDimensions'
+import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import withViewportDimensions from '../../urb-webapp-webapp/scripts/withViewportDimensions'
 
 const styles = {
   card: {

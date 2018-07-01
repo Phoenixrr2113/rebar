@@ -33,26 +33,42 @@ export default class PersisterCassandra {
   getOneObject( entityName: string, ObjectType: any, filters: Array<any> ): Promise<any> {
     const resultPromises = []
 
-    for ( let filter of filters )
+    for ( let filter of filters ) {
+      // Configure our default options
+      let options: Object = {
+        raw: true,
+        allow_filtering: true,
+      }
+
+      // In order to use materialized view, we need to pass it to the opions
+      if ( filter.hasOwnProperty( '_materialized_view' ) ) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter )
+        delete filter._materialized_view
+      }
+
       resultPromises.push(
         new Promise( ( resolve, reject ) => {
-          this.updateUuidsInFields( entityName, filter )
-          ExpressCassandraClient.instance[entityName].findOne(
-            filter,
-            {
-              raw: true,
-              allow_filtering: true,
-            },
-            ( err, entity ) => {
-              if ( err ) reject( err )
+          try {
+            this.updateUuidsInFields( entityName, filter )
+
+            ExpressCassandraClient.instance[entityName].findOne( filter, options, ( err, entity ) => {
+              if ( err )
+                reject( 'getOneObject failed: ' + JSON.stringify({ entityName, filters, err }) )
               else {
                 if ( entity != null ) resolve( new ObjectType( entity ) )
                 else resolve( null )
               }
-            },
-          )
+            })
+          } catch ( err ) {
+            reject( 'getOneObject failed: ' + JSON.stringify({ entityName, filters, err }) )
+          }
         }),
       )
+    }
 
     return Promise.all( resultPromises )
   }
@@ -60,35 +76,57 @@ export default class PersisterCassandra {
   getObjectList( entityName: string, ObjectType: any, filters: Array<any> ): Promise<Array<any>> {
     const resultPromises = []
 
-    for ( let filter of filters )
+    for ( let filter of filters ) {
+      // Configure our default options
+      let options: Object = {
+        raw: true,
+        allow_filtering: true,
+      }
+
+      // In order to use materialized view, we need to pass it to the opions
+      if ( filter.hasOwnProperty( '_materialized_view' ) ) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter )
+        delete filter._materialized_view
+      }
+
       resultPromises.push(
         new Promise( ( resolve, reject ) => {
-          this.updateUuidsInFields( entityName, filter )
-          ExpressCassandraClient.instance[entityName].find(
-            filter,
-            {
-              raw: true,
-              allow_filtering: true,
-            },
-            ( err, arrEntities ) => {
-              if ( err ) reject( err )
-              else {
-                const arrRetObj = []
-                for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
-                resolve( arrRetObj )
-              }
-            },
-          )
+          try {
+            this.updateUuidsInFields( entityName, filter )
+
+            ExpressCassandraClient.instance[entityName].find(
+              filter,
+              options,
+              ( err, arrEntities ) => {
+                if ( err )
+                  reject( 'getObjectList failed: ' + JSON.stringify({ entityName, filters, err }) )
+                else {
+                  const arrRetObj = []
+                  for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
+                  resolve( arrRetObj )
+                }
+              },
+            )
+          } catch ( err ) {
+            reject( 'getObjectList failed: ' + JSON.stringify({ entityName, filters, err }) )
+          }
         }),
       )
+    }
 
     return Promise.all( resultPromises )
   }
 
   updateUuidsInFields( entityName: string, fields: any ) {
     const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields
+
     for ( let fieldName in fields ) {
       const fieldType = schemaFields[fieldName]
+
       if ( fieldType === 'uuid' ) {
         const fieldValue = fields[fieldName]
         if ( !( fieldValue instanceof Uuid ) ) {
@@ -203,6 +241,9 @@ export default class PersisterCassandra {
       const tableSchema = arrSchemas[0][1]
       arrSchemas.splice( 0, 1 )
 
+      if ( runAsPartOfSetupDatabase ) {
+        console.log( ' Prepare table ' + tableName + '.' )
+      }
       ExpressCassandraClient.loadSchema( tableName, tableSchema ).syncDB( err => {
         if ( err ) {
           console.log(

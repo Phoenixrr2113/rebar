@@ -4,7 +4,7 @@
     "react",
     ["env", {
       "targets": {
-        "node": "9.8"
+        "node": "10.5"
       }
     }]
   ],
