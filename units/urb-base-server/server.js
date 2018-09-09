@@ -1,7 +1,7 @@
 // @flow
 
 // In order to use ES7 async/await
-import 'babel-polyfill'
+//import 'babel-polyfill'
 
 import path from 'path'
 

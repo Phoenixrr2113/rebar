@@ -81,11 +81,21 @@ const config = {
             loader: 'babel-loader',
             options: {
               babelrc: false,
-              presets: [ 'react-native-stage-0' ],
+              presets: [
+                '@babel/preset-flow',
+                '@babel/preset-react',
+                [
+                  '@babel/preset-env',
+                  {
+                    targets: '> 0.25%, not dead',
+                  },
+                ],
+              ],
               plugins: removeEmpty([
                 'dynamic-import-webpack',
                 ifNotProd( 'flow-react-proptypes' ),
                 'syntax-dynamic-import',
+                'transform-class-properties',
                 [
                   'relay',
                   {
