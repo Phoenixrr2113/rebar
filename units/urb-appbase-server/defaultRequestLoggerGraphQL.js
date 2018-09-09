@@ -13,5 +13,6 @@ export default function defaultRequestLoggerGraphQL( requestAndResponse ) {
     // Otherwise, if it is a trace, log it as info
     logLevel = 'info'
 
-  if ( logLevel ) log.log( logLevel, 'GraphQL request', requestAndResponse )
+  if ( logLevel )
+    log.log({ level: logLevel, message: 'GraphQL request', details: requestAndResponse })
 }

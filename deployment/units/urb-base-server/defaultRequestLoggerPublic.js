@@ -15,6 +15,6 @@ function defaultrequestLoggerPublic(requestAndResponse) {
   //else
   if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestPublic)) logLevel = 'info';
 
-  if (logLevel) _log.default.log(logLevel, 'Public request', requestAndResponse);
+  if (logLevel) _log.default.log({ level: logLevel, message: 'Public request', details: requestAndResponse });
 }
 //# sourceMappingURL=defaultRequestLoggerPublic.js.map

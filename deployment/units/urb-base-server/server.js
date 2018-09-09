@@ -31,16 +31,20 @@ const host = process.env.HOST;
 if (host == null || typeof host !== 'string')
 throw new Error('urb-base-server/server.js requires the environment variable HOST to be set'); // Log startup information
 
-_log.default.log('info', 'Starting application', {
-  name: _package.name,
-  version: _package.version,
-  NODE_ENV: process.env.NODE_ENV,
-  HOST: process.env.HOST,
-  PORT: process.env.PORT,
-  PUBLIC_URL: process.env.PUBLIC_URL,
-  process_title: process.title,
-  process_pid: process.pid,
-  local_ip: (0, _getLocalIP.default)() });
+_log.default.log({
+  level: 'info',
+  message: 'Starting application',
+  details: {
+    name: _package.name,
+    version: _package.version,
+    NODE_ENV: process.env.NODE_ENV,
+    HOST: process.env.HOST,
+    PORT: process.env.PORT,
+    PUBLIC_URL: process.env.PUBLIC_URL,
+    process_title: process.title,
+    process_pid: process.pid,
+    local_ip: (0, _getLocalIP.default)() } });
+
 
 
 // Get object cache ready

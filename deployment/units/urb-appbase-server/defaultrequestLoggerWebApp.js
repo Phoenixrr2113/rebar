@@ -15,6 +15,7 @@ function defaultrequestLoggerWebApp(requestAndResponse) {
   //else
   if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestWebApp)) logLevel = 'info';
 
-  if (logLevel) _log.default.log(logLevel, 'Render on server request', requestAndResponse);
+  if (logLevel)
+  _log.default.log({ level: logLevel, message: 'Render on server request', details: requestAndResponse });
 }
 //# sourceMappingURL=defaultrequestLoggerWebApp.js.map

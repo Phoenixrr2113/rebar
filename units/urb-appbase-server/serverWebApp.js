@@ -72,7 +72,11 @@ const render = createRender({
   renderError( obj: Object ): React$Element<*> {
     const { error } = obj
     if ( error.status !== 404 )
-      log.log( 'error', 'Error: Render on server createRender renderError', obj )
+      log.log({
+        level: 'error',
+        message: 'Error: Render on server createRender renderError',
+        details: obj,
+      })
     return <ErrorComponent httpStatus={error.status} />
   },
 })
@@ -150,7 +154,7 @@ serverWebApp.use( async( req, res ) => {
       res.status( 200 ).send( 'meh' )
     }
   } catch ( err ) {
-    log.log( 'error', 'Error: Render on server request', err )
+    log.log({ level: 'error', message: 'Error: Render on server request', details: err })
     res.status( 500 ).send( ReactDOMServer.renderToString( <ErrorComponent httpStatus={500} /> ) )
   }
 })

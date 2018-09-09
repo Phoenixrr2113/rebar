@@ -72,7 +72,11 @@ const render = (0, _createRender.default)({
   renderError(obj) {
     const { error } = obj;
     if (error.status !== 404)
-    _log.default.log('error', 'Error: Render on server createRender renderError', obj);
+    _log.default.log({
+      level: 'error',
+      message: 'Error: Render on server createRender renderError',
+      details: obj });
+
     return _react.default.createElement(_ErrorComponent.default, { httpStatus: error.status });
   } });
 
@@ -150,7 +154,7 @@ serverWebApp.use(async (req, res) => {
       res.status(200).send('meh');
     }
   } catch (err) {
-    _log.default.log('error', 'Error: Render on server request', err);
+    _log.default.log({ level: 'error', message: 'Error: Render on server request', details: err });
     res.status(500).send(_server2.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 500 })));
   }
 });var _default =

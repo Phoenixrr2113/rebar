@@ -23,7 +23,7 @@ if (defaultPersisterLogger) {
 }
 
 // Create winston
-const log = new _winston.default.Logger({ transports });var _default =
+const log = _winston.default.createLogger({ transports });var _default =
 
 log;exports.default = _default;
 //# sourceMappingURL=log.js.map

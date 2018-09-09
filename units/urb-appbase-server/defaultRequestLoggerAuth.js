@@ -15,5 +15,5 @@ export default function defaultrequestLoggerAuth( requestAndResponse ) {
   //else
   if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestAuth ) ) logLevel = 'info'
 
-  if ( logLevel ) log.log( logLevel, 'Auth request', requestAndResponse )
+  if ( logLevel ) log.log({ level: logLevel, message: 'Auth request', details: requestAndResponse })
 }

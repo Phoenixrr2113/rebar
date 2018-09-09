@@ -15,5 +15,6 @@ export default function defaultrequestLoggerWebApp( requestAndResponse ) {
   //else
   if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestWebApp ) ) logLevel = 'info'
 
-  if ( logLevel ) log.log( logLevel, 'Render on server request', requestAndResponse )
+  if ( logLevel )
+    log.log({ level: logLevel, message: 'Render on server request', details: requestAndResponse })
 }

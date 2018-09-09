@@ -270,10 +270,15 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getObjectList( entityName, entityType, filter )
           } catch ( err ) {
-            log.log( 'error', 'Object Manager: Could not load multiple results ' + entityName, {
-              fieldName,
-              err,
-              stack: err.stack,
+            log.log({
+              level: 'error',
+              message: 'Object Manager: Could not load multiple results',
+              details: {
+                fieldName,
+                entityName,
+                err,
+                stack: err.stack,
+              },
             })
             throw err
           }
@@ -283,10 +288,15 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getOneObject( entityName, entityType, filter )
           } catch ( err ) {
-            log.log( 'error', 'Object Manager: Could not load single result ' + entityName, {
-              fieldName,
-              err,
-              stack: err.stack,
+            log.log({
+              level: 'error',
+              message: 'Object Manager: Could not load single result',
+              details: {
+                fieldName,
+                entityName,
+                err,
+                stack: err.stack,
+              },
             })
             throw err
           }
@@ -414,10 +424,15 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.add( entityName, fields, entityDefinition.EntityType )
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not add ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not add',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -453,10 +468,15 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.update( entityName, fields )
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not update ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not update',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -479,10 +499,15 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.remove( entityName, fields )
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not remove ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not remove',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -519,14 +544,15 @@ export default class ObjectManager {
     }
     let cursor = cursorForObjectInConnection( arr, obj )
     if ( cursor == null )
-      log.log(
-        'error',
-        'Object Manager: Could not create cursor for object in connection for ' + entityName,
-        {
-          obj,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not create cursor for object in connection',
+        details: {
           arr,
+          entityName,
+          obj,
         },
-      )
+      })
     return cursor
   }
 

@@ -13,6 +13,7 @@ function defaultRequestLoggerGraphQL(requestAndResponse) {
     // Otherwise, if it is a trace, log it as info
     logLevel = 'info';
 
-  if (logLevel) _log.default.log(logLevel, 'GraphQL request', requestAndResponse);
+  if (logLevel)
+  _log.default.log({ level: logLevel, message: 'GraphQL request', details: requestAndResponse });
 }
 //# sourceMappingURL=defaultRequestLoggerGraphQL.js.map

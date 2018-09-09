@@ -15,5 +15,5 @@ export default function defaultrequestLoggerPublic( requestAndResponse ) {
   //else
   if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestPublic ) ) logLevel = 'info'
 
-  if ( logLevel ) log.log( logLevel, 'Public request', requestAndResponse )
+  if ( logLevel ) log.log({ level: logLevel, message: 'Public request', details: requestAndResponse })
 }

@@ -90,12 +90,12 @@ function serveAuthenticationFailed(req, res, err, respondWithJSON) {
     query: req.body };
 
 
-  _log.default.log(
-  'warn',
-  'Checking credentials failed',
-  err.message ?
-  { errorMessage: err.message, errorStack: err.stack, requestDetails } :
-  { err, requestDetails });
+  _log.default.log({
+    level: 'warn',
+    message: 'Checking credentials failed',
+    details: err.message ?
+    { errorMessage: err.message, errorStack: err.stack, requestDetails } :
+    { err, requestDetails } });
 
 
   // Expire cookie. This is the only way to 'delete' a cookie
