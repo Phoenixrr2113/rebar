@@ -1,19 +1,19 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
 
-var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
 
-var _reactHelmet = require('react-helmet');var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
-var _htmlToReact = require('html-to-react');
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactRelay = require('react-relay');
+var _reactHelmet = _interopRequireDefault(require("react-helmet"));
+var _htmlToReact = require("html-to-react");
+var _react = _interopRequireDefault(require("react"));
+var _reactRelay = require("react-relay");
 
-var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = _interopRequireDefault(require("../../urb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class EnsayoPublicItem extends _react2.default.Component {
+class EnsayoPublicItem extends _react.default.Component {
   render() {
     const { Viewer } = this.props;
     // In a fairly barbaric way, limit the length of headings so that they are not considered spam
@@ -21,20 +21,20 @@ class EnsayoPublicItem extends _react2.default.Component {
     let contentH2 = Viewer.Ensayo.Ensayo_Description.substring(0, 100);
 
     return (
-      _react2.default.createElement(_ResponsiveContentArea2.default, null,
-        _react2.default.createElement(_reactHelmet2.default, {
-          title: Viewer.Ensayo.Ensayo_Title,
-          meta: [{ name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
+      _react.default.createElement(_ResponsiveContentArea.default, null,
+      _react.default.createElement(_reactHelmet.default, {
+        title: Viewer.Ensayo.Ensayo_Title,
+        meta: [{ name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
 
-        _react2.default.createElement(_Card2.default, null,
-          _react2.default.createElement(_CardHeader2.default, { title: _react2.default.createElement('h1', null, contentH1), subheader: _react2.default.createElement('h2', null, contentH2) }),
-          _react2.default.createElement(_CardContent2.default, null, new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
+      _react.default.createElement(_Card.default, null,
+      _react.default.createElement(_CardHeader.default, { title: _react.default.createElement("h1", null, contentH1), subheader: _react.default.createElement("h2", null, contentH2) }),
+      _react.default.createElement(_CardContent.default, null, new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
 
 
 
-  }}exports.default =
+  }}var _default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-EnsayoPublicItem, { Viewer: function () {return require('./__generated__/EnsayoPublicItem_Viewer.graphql');} });
+EnsayoPublicItem, { Viewer: function () {return require("./__generated__/EnsayoPublicItem_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoPublicItem.js.map

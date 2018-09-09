@@ -1,1 +1,1 @@
-{"version":3,"sources":["../../../../units/_configuration/urb-appbase-webapp/getGraphQLServerURL.js"],"names":[],"mappings":";;AAEe,MAAM,U","file":"getGraphQLServerURL.js","sourcesContent":["// @flow\n\nexport default () => '/graphql'\n"]}
+{"version":3,"sources":["../../../../units/_configuration/urb-appbase-webapp/getGraphQLServerURL.js"],"names":[],"mappings":";;AAEe,MAAM,U","sourcesContent":["// @flow\n\nexport default () => '/graphql'\n"],"file":"getGraphQLServerURL.js"}

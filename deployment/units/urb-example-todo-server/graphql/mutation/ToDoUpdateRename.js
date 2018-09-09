@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _ToDoType = require('../type/ToDoType');var _ToDoType2 = _interopRequireDefault(_ToDoType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
-exports.default =
+var _ToDoType = _interopRequireDefault(require("../type/ToDoType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'ToDoUpdateRename',
 
@@ -15,9 +15,9 @@ exports.default =
 
   outputFields: {
     ToDo: {
-      type: _ToDoType2.default,
-      resolve: ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);return (
-          objectManager.getOneObject('ToDo', { id: local_id }));} } },
+      type: _ToDoType.default,
+      resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
+      objectManager.getOneObject('ToDo', { id: local_id }) } },
 
 
 
@@ -30,5 +30,5 @@ exports.default =
 
 
     return { local_id };
-  } });
+  } });exports.default = _default;
 //# sourceMappingURL=ToDoUpdateRename.js.map

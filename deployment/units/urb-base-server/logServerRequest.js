@@ -1,9 +1,9 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = logServerRequest; //  weak
 
-
-logServerRequest; //  weak
 // Function to log requests
-function logServerRequest(req, res, next, loggingFunction) {const oldWriteRes = res.write;const oldEndRes = res.end;
+function logServerRequest(req, res, next, loggingFunction) {
+  const oldWriteRes = res.write;
+  const oldEndRes = res.end;
 
   const chunksRes = [];
 

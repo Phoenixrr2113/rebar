@@ -1,10 +1,10 @@
-"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;
 
-function (duration) {
+function _default(duration) {
   return new Promise(function (resolve) {
     setTimeout(function () {
       resolve();
     }, duration);
   });
-};
+}
 //# sourceMappingURL=delayPromise.js.map

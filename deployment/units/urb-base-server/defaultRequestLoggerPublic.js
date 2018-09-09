@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = defaultrequestLoggerPublic;
 
+var _debug = require("../_configuration/debug");
+var _matchInDepth = _interopRequireDefault(require("../urb-base-universal/matchInDepth"));
+var _log = _interopRequireDefault(require("../urb-base-server/log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
-
-
-
-defaultrequestLoggerPublic;var _debug = require('../_configuration/debug');var _matchInDepth = require('../urb-base-universal/matchInDepth');var _matchInDepth2 = _interopRequireDefault(_matchInDepth);var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(_log);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function defaultrequestLoggerPublic(requestAndResponse) {
+function defaultrequestLoggerPublic(requestAndResponse) {
   let logLevel = null;
 
   // TODO: What errors for Auth should be logged? definitily not 401.
@@ -13,8 +13,8 @@ defaultrequestLoggerPublic;var _debug = require('../_configuration/debug');var _
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ((0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestPublic)) logLevel = 'info';
+  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestPublic)) logLevel = 'info';
 
-  if (logLevel) _log2.default.log(logLevel, 'Public request', requestAndResponse);
-} //  weak
+  if (logLevel) _log.default.log(logLevel, 'Public request', requestAndResponse);
+}
 //# sourceMappingURL=defaultRequestLoggerPublic.js.map

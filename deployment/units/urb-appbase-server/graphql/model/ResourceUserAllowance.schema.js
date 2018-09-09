@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _defaultPersister = require('../../../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _defaultPersister = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-_defaultPersister2.default.addTableSchema('ResourceUserAllowance', {
+_defaultPersister.default.addTableSchema('ResourceUserAllowance', {
   fields: {
     id: 'uuid',
     ResourceUserAllowance_artifact_id: 'uuid',
@@ -46,11 +46,11 @@ _defaultPersister2.default.addTableSchema('ResourceUserAllowance', {
       key: [
       ['ResourceUserAllowance_artifact_id', 'ResourceUserAllowance_Name'],
       'ResourceUserAllowance_user_id',
-      'id'] } } });exports.default =
+      'id'] } } });var _default =
 
 
 
 
 
-true;
+true;exports.default = _default;
 //# sourceMappingURL=ResourceUserAllowance.schema.js.map

@@ -1,4 +1,4 @@
-"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = `
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;var _default = `
 <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
 <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
 <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
@@ -18,5 +18,5 @@
 <meta name="theme-color" content="#ffffff">
 
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:300,400,500">
-`;
+`;exports.default = _default;
 //# sourceMappingURL=htmlHeadAdditions.js.map

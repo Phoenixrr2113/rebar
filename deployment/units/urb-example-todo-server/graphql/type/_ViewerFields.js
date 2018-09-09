@@ -1,23 +1,23 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
-var _graphqlRelay = require('graphql-relay');
+var _graphql = require("graphql");
+var _graphqlRelay = require("graphql-relay");
 
-var _ToDosConnection = require('./ToDosConnection');var _ToDosConnection2 = _interopRequireDefault(_ToDosConnection);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
-exports.default =
+var _ToDosConnection = _interopRequireDefault(require("./ToDosConnection"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 {
   ToDos: {
-    type: _ToDosConnection2.default.connectionType,
+    type: _ToDosConnection.default.connectionType,
 
-    args: Object.assign({
+    args: {
       status: {
         type: _graphql.GraphQLString,
-        defaultValue: 'any' } },
+        defaultValue: 'any' },
 
-    _graphqlRelay.connectionArgs),
+      ..._graphqlRelay.connectionArgs },
 
 
-    resolve: async (obj, _ref, context, { rootValue: objectManager }) => {let { status } = _ref,args = _objectWithoutProperties(_ref, ['status']);
+    resolve: async (obj, { status, ...args }, context, { rootValue: objectManager }) => {
       const arr = await objectManager.getObjectList('ToDo', {});
 
       return (0, _graphqlRelay.connectionFromArray)(
@@ -30,7 +30,7 @@ exports.default =
   ToDo_TotalCount: {
     type: _graphql.GraphQLInt,
 
-    resolve: async (obj, _ref2, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref2, []);
+    resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
       const arr = await objectManager.getObjectList('ToDo', {});
 
       return arr.length;
@@ -40,9 +40,9 @@ exports.default =
   ToDo_CompletedCount: {
     type: _graphql.GraphQLInt,
 
-    resolve: async (obj, _ref3, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref3, []);
+    resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
       const arr = await objectManager.getObjectList('ToDo', {});
 
       return arr.filter(a_ToDo => a_ToDo.ToDo_Complete).length;
-    } } };
+    } } };exports.default = _default;
 //# sourceMappingURL=_ViewerFields.js.map

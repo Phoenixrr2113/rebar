@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = onCreateUser;
 
 
 
-onCreateUser;function onCreateUser(userId, objectManager) {
+function onCreateUser(userId, objectManager) {
   return [];
 }
 //# sourceMappingURL=onCreateUser.js.map

@@ -1,11 +1,11 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _ToDosConnection = require('../type/ToDosConnection');var _ToDosConnection2 = _interopRequireDefault(_ToDosConnection);
-var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
-exports.default =
+var _ToDosConnection = _interopRequireDefault(require("../type/ToDosConnection"));
+var _ViewerType = _interopRequireDefault(require("../../../../units/urb-appbase-server/graphql/type/ViewerType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'ToDoAdd',
 
@@ -15,8 +15,8 @@ exports.default =
 
   outputFields: {
     ToDosEdge: {
-      type: _ToDosConnection2.default.edgeType,
-      resolve: async ({ local_id }, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
+      type: _ToDosConnection.default.edgeType,
+      resolve: async ({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
         const an_Object = await objectManager.getOneObject('ToDo', {
           id: local_id });
 
@@ -31,7 +31,7 @@ exports.default =
 
 
     Viewer: {
-      type: _ViewerType2.default,
+      type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
       objectManager.getOneObject('User', {
         id: objectManager.getViewerUserId() }) } },
@@ -45,5 +45,5 @@ exports.default =
       ToDo_Complete: false });
 
     return { local_id };
-  } });
+  } });exports.default = _default;
 //# sourceMappingURL=ToDoAdd.js.map

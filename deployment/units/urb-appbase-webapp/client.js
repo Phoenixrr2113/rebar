@@ -1,46 +1,46 @@
-'use strict';
+"use strict";
 
 
-require('babel-polyfill');
+require("babel-polyfill");
 
-var _BrowserProtocol = require('farce/lib/BrowserProtocol');var _BrowserProtocol2 = _interopRequireDefault(_BrowserProtocol);
-var _createInitialFarceRouter = require('found/lib/createInitialFarceRouter');var _createInitialFarceRouter2 = _interopRequireDefault(_createInitialFarceRouter);
-var _createRender = require('found/lib/createRender');var _createRender2 = _interopRequireDefault(_createRender);
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactDom = require('react-dom');var _reactDom2 = _interopRequireDefault(_reactDom);
+var _BrowserProtocol = _interopRequireDefault(require("farce/lib/BrowserProtocol"));
+var _createInitialFarceRouter = _interopRequireDefault(require("found/lib/createInitialFarceRouter"));
+var _createRender = _interopRequireDefault(require("found/lib/createRender"));
+var _react = _interopRequireDefault(require("react"));
+var _reactDom = _interopRequireDefault(require("react-dom"));
 
-var _getGraphQLServerURL = require('../_configuration/urb-appbase-webapp/getGraphQLServerURL');var _getGraphQLServerURL2 = _interopRequireDefault(_getGraphQLServerURL);
-var _AppWrapper = require('../_configuration/urb-appbase-webapp/AppWrapper');var _AppWrapper2 = _interopRequireDefault(_AppWrapper);
+var _getGraphQLServerURL = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/getGraphQLServerURL"));
+var _AppWrapper = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/AppWrapper"));
 
-var _fetcherClient = require('./fetcherClient');var _fetcherClient2 = _interopRequireDefault(_fetcherClient);
-var _router = require('./router');
+var _fetcherClient = _interopRequireDefault(require("./fetcherClient"));
+var _router = require("./router");
 
 
-require('../_configuration/urb-appbase-webapp/global.css');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
-
-const render = (0, _createRender2.default)({})
+require("../_configuration/urb-appbase-webapp/global.css");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // In order to use ES7 async/await
+// Include global CSS used in all units. Will not be chunked
+const render = (0, _createRender.default)({})
 
 //
-; // Include global CSS used in all units. Will not be chunked
-// In order to use ES7 async/await
-(async () => {// eslint-disable-next-line no-underscore-dangle
-  const fetcher = new _fetcherClient2.default((0, _getGraphQLServerURL2.default)(),
+;(async () => {
+  // eslint-disable-next-line no-underscore-dangle
+  const fetcher = new _fetcherClient.default(
+  (0, _getGraphQLServerURL.default)(),
   window.__RELAY_PAYLOADS__,
   window.__RELAY_PAYLOADS__[0].data.Viewer.UserToken2);
 
   const resolver = (0, _router.createResolver)(fetcher);
 
-  const Router = await (0, _createInitialFarceRouter2.default)({
-    historyProtocol: new _BrowserProtocol2.default(),
+  const Router = await (0, _createInitialFarceRouter.default)({
+    historyProtocol: new _BrowserProtocol.default(),
     historyMiddlewares: _router.historyMiddlewares,
     routeConfig: (0, _router.routeConfig)(window.__siteConfiguration__),
     resolver,
     render });
 
 
-  _reactDom2.default.hydrate(
-  _react2.default.createElement(_AppWrapper2.default, { siteConfiguration: window.__siteConfiguration__, url: document.location.href },
-    _react2.default.createElement(Router, { resolver: resolver })),
+  _reactDom.default.hydrate(
+  _react.default.createElement(_AppWrapper.default, { siteConfiguration: window.__siteConfiguration__, url: document.location.href },
+  _react.default.createElement(Router, { resolver: resolver })),
 
 
   // $AssureFlow

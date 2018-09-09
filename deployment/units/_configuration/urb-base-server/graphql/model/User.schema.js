@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _defaultPersister = require('../defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _defaultPersister = _interopRequireDefault(require("../defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-_defaultPersister2.default.addTableSchema('User', {
+_defaultPersister.default.addTableSchema('User', {
   fields: {
     id: 'uuid',
     User_artifact_id: 'uuid',
@@ -14,8 +14,8 @@ _defaultPersister2.default.addTableSchema('User', {
     User_Latitude: 'double',
     User_Longitude: 'double' },
 
-  key: ['id'] });exports.default =
+  key: ['id'] });var _default =
 
 
-true;
+true;exports.default = _default;
 //# sourceMappingURL=User.schema.js.map

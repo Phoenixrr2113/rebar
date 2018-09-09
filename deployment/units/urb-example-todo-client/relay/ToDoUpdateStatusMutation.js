@@ -1,9 +1,9 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _reactRelay = require('react-relay');
-var _relayRuntime = require('relay-runtime'); //  weak
+var _reactRelay = require("react-relay");
+var _relayRuntime = require("relay-runtime"); //  weak
 
-const mutation = function () {return require('./__generated__/ToDoUpdateStatusMutation.graphql');};
+const mutation = function () {return require("./__generated__/ToDoUpdateStatusMutation.graphql");};
 
 
 
@@ -53,7 +53,7 @@ function commit(environment, user, aToDo, ToDo_Complete) {
       }
     } });
 
-}exports.default =
+}var _default =
 
-{ commit };
+{ commit };exports.default = _default;
 //# sourceMappingURL=ToDoUpdateStatusMutation.js.map

@@ -1,26 +1,26 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
-var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
 
-var _CardActions = require('@material-ui/core/CardActions');var _CardActions2 = _interopRequireDefault(_CardActions);
+var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions"));
 
-var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
 
-var _LinearProgress = require('@material-ui/core/LinearProgress');var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
+var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);
+var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
 
-var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = _interopRequireDefault(require("../../urb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {
@@ -35,7 +35,7 @@ const styles = theme => ({
 
 
 
-class NewUserScreen extends _react2.default.Component
+class NewUserScreen extends _react.default.Component
 
 
 
@@ -130,19 +130,19 @@ class NewUserScreen extends _react2.default.Component
     const { UserAccount_Identifier } = this.state;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Creating user' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Creating user',
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Creating user" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "Creating user",
 
-            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), ', please wait.'),
+      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), ", please wait."),
 
-          _react2.default.createElement('br', null),
-          _react2.default.createElement('br', null),
-          _react2.default.createElement(_LinearProgress2.default, { mode: 'query' })),
+      _react.default.createElement("br", null),
+      _react.default.createElement("br", null),
+      _react.default.createElement(_LinearProgress.default, { mode: "query" })),
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_CancelCreation }, 'Cancel'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelCreation }, "Cancel"))));
 
 
 
@@ -153,16 +153,16 @@ class NewUserScreen extends _react2.default.Component
     const { UserAccount_Identifier } = this.state;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Creating user' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Created user',
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Creating user" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "Created user",
 
-            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), '.')),
+      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), ".")),
 
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Continue }, 'Continue'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));
 
 
 
@@ -173,17 +173,17 @@ class NewUserScreen extends _react2.default.Component
     const { UserAccount_Identifier, errorMessage } = this.state;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Creating user' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed creating user',
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Creating user" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "Failed creating user",
 
-            _react2.default.createElement('span', { 'class': classes.userName }, UserAccount_Identifier), 'because ',
-            errorMessage, '.')),
+      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), "because ",
+      errorMessage, ".")),
 
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_TryAgain }, 'Try Again'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));
 
 
 
@@ -194,25 +194,25 @@ class NewUserScreen extends _react2.default.Component
     const { UserAccount_Identifier, User_Secret } = this.state;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Create New User' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_TextField2.default, {
-            label: 'E-Mail Address',
-            fullWidth: true,
-            value: UserAccount_Identifier,
-            onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Create New User" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_TextField.default, {
+        label: "E-Mail Address",
+        fullWidth: true,
+        value: UserAccount_Identifier,
+        onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
 
-          _react2.default.createElement(_TextField2.default, {
-            label: 'Password',
-            type: 'password',
-            fullWidth: true,
-            value: User_Secret,
-            onChange: event => this.setState({ User_Secret: event.target.value }) })),
+      _react.default.createElement(_TextField.default, {
+        label: "Password",
+        type: "password",
+        fullWidth: true,
+        value: User_Secret,
+        onChange: event => this.setState({ User_Secret: event.target.value }) })),
 
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Create }, 'Create'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Create }, "Create"))));
 
 
 
@@ -222,15 +222,15 @@ class NewUserScreen extends _react2.default.Component
     const { currentOperation } = this.state;
 
     return (
-      _react2.default.createElement(_ResponsiveContentArea2.default, null,
-        currentOperation === 'prompt' && this.renderPrompt(),
-        currentOperation === 'creating' && this.renderCreating(),
-        currentOperation === 'success' && this.renderSuccess(),
-        currentOperation === 'failure' && this.renderFailure()));
+      _react.default.createElement(_ResponsiveContentArea.default, null,
+      currentOperation === 'prompt' && this.renderPrompt(),
+      currentOperation === 'creating' && this.renderCreating(),
+      currentOperation === 'success' && this.renderSuccess(),
+      currentOperation === 'failure' && this.renderFailure()));
 
 
-  }}exports.default =
+  }}var _default =
 
 
-(0, _styles.withStyles)(styles)(NewUserScreen);
+(0, _styles.withStyles)(styles)(NewUserScreen);exports.default = _default;
 //# sourceMappingURL=NewUserScreen.js.map

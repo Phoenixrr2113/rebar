@@ -1,22 +1,22 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
-var _Menu = require('@material-ui/core/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+var _Menu = _interopRequireDefault(require("@material-ui/core/Menu"));
 
-var _MenuItem = require('@material-ui/core/MenuItem');var _MenuItem2 = _interopRequireDefault(_MenuItem);
+var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _found = require('found');
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactRelay = require('react-relay');
+var _found = require("found");
+var _react = _interopRequireDefault(require("react"));
+var _reactRelay = require("react-relay");
 
-var _RequiresAuthentication = require('./RequiresAuthentication');
+var _RequiresAuthentication = require("./RequiresAuthentication");
 
 
 
-var _LoginDialog = require('./LoginDialog');var _LoginDialog2 = _interopRequireDefault(_LoginDialog);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _LoginDialog = _interopRequireDefault(require("./LoginDialog"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   buttonRoot: {
@@ -24,7 +24,7 @@ const styles = theme => ({
 
 
 
-class NavBarLoginButton extends _react2.default.Component
+class NavBarLoginButton extends _react.default.Component
 
 
 
@@ -93,43 +93,43 @@ class NavBarLoginButton extends _react2.default.Component
     const { loginDialogIsOpen, userMenuIsOpen } = this.state;
 
     return (
-      _react2.default.createElement('div', null,
-        User_IsAnonymous &&
-        _react2.default.createElement(_Button2.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_Login }, 'Login'),
+      _react.default.createElement("div", null,
+      User_IsAnonymous &&
+      _react.default.createElement(_Button.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_Login }, "Login"),
 
 
 
-        !User_IsAnonymous &&
-        _react2.default.createElement(_Button2.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_UserMenu },
-          User_DisplayName),
+      !User_IsAnonymous &&
+      _react.default.createElement(_Button.default, { classes: { root: classes.buttonRoot }, onClick: this._handle_onClick_UserMenu },
+      User_DisplayName),
 
 
-        _react2.default.createElement(_LoginDialog2.default, {
-          open: loginDialogIsOpen,
-          handlerClose: this._handle_Login_Close,
-          handlerNewUser: this._handle_Login_NewUser }),
+      _react.default.createElement(_LoginDialog.default, {
+        open: loginDialogIsOpen,
+        handlerClose: this._handle_Login_Close,
+        handlerNewUser: this._handle_Login_NewUser }),
 
-        _react2.default.createElement(_Menu2.default, {
-            id: 'lock-menu',
-            anchorEl: this.state.anchorEl,
-            open: userMenuIsOpen,
-            onClose: this._handle_UserMenu_Close },
+      _react.default.createElement(_Menu.default, {
+        id: "lock-menu",
+        anchorEl: this.state.anchorEl,
+        open: userMenuIsOpen,
+        onClose: this._handle_UserMenu_Close },
 
-          _react2.default.createElement(_MenuItem2.default, { key: 'profile', onClick: this._handle_onClick_Profile }, 'Profile'),
-
-
-          _react2.default.createElement(_MenuItem2.default, { key: 'login', onClick: this._handle_onClick_Login }, 'Login as a different user'),
+      _react.default.createElement(_MenuItem.default, { key: "profile", onClick: this._handle_onClick_Profile }, "Profile"),
 
 
-          _react2.default.createElement(_MenuItem2.default, { key: 'logout', onClick: this._handle_onClick_Logout }, 'Log out'))));
+      _react.default.createElement(_MenuItem.default, { key: "login", onClick: this._handle_onClick_Login }, "Login as a different user"),
 
 
+      _react.default.createElement(_MenuItem.default, { key: "logout", onClick: this._handle_onClick_Logout }, "Log out"))));
 
 
 
-  }}exports.default =
+
+
+  }}var _default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(NavBarLoginButton)), { Viewer: function () {return require('./__generated__/NavBarLoginButton_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(NavBarLoginButton)), { Viewer: function () {return require("./__generated__/NavBarLoginButton_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=NavBarLoginButton.js.map

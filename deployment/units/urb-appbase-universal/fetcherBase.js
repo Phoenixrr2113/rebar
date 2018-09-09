@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-require('isomorphic-fetch');
+require("isomorphic-fetch");
 
 class FetcherBase {
 

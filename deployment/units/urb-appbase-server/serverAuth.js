@@ -1,28 +1,28 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _bcryptjs = require('bcryptjs');var _bcryptjs2 = _interopRequireDefault(_bcryptjs);
-var _bodyParser = require('body-parser');var _bodyParser2 = _interopRequireDefault(_bodyParser);
-var _express = require('express');var _express2 = _interopRequireDefault(_express);
-var _jwtSimple = require('jwt-simple');var _jwtSimple2 = _interopRequireDefault(_jwtSimple);
+var _bcryptjs = _interopRequireDefault(require("bcryptjs"));
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _express = _interopRequireDefault(require("express"));
+var _jwtSimple = _interopRequireDefault(require("jwt-simple"));
 
-var _authExtensions = require('../_configuration/urb-base-server/authExtensions');var _authExtensions2 = _interopRequireDefault(_authExtensions);
-var _delayPromise = require('../urb-base-universal/delayPromise');var _delayPromise2 = _interopRequireDefault(_delayPromise);
-var _getNewUser = require('../_configuration/urb-base-server/graphql/model/getNewUser');var _getNewUser2 = _interopRequireDefault(_getNewUser);
-var _onCreateUser = require('../_configuration/urb-appbase-server/onCreateUser');var _onCreateUser2 = _interopRequireDefault(_onCreateUser);
-var _validation = require('../urb-base-universal/validation');
-var _requestLoggers = require('../_configuration/urb-base-server/requestLoggers');
-var _logServerRequest = require('../urb-base-server/logServerRequest');var _logServerRequest2 = _interopRequireDefault(_logServerRequest);
-var _ObjectManager = require('../urb-base-server/ObjectManager');
+var _authExtensions = _interopRequireDefault(require("../_configuration/urb-base-server/authExtensions"));
+var _delayPromise = _interopRequireDefault(require("../urb-base-universal/delayPromise"));
+var _getNewUser = _interopRequireDefault(require("../_configuration/urb-base-server/graphql/model/getNewUser"));
+var _onCreateUser = _interopRequireDefault(require("../_configuration/urb-appbase-server/onCreateUser"));
+var _validation = require("../urb-base-universal/validation");
+var _requestLoggers = require("../_configuration/urb-base-server/requestLoggers");
+var _logServerRequest = _interopRequireDefault(require("../urb-base-server/logServerRequest"));
+var _ObjectManager = require("../urb-base-server/ObjectManager");
 
-var _checkCredentials = require('./checkCredentials');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _checkCredentials = require("./checkCredentials");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
 
-const serverAuth = (0, _express2.default)();
+const serverAuth = (0, _express.default)();
 
-serverAuth.use(_bodyParser2.default.json());
-serverAuth.use((req, res, next) => (0, _logServerRequest2.default)(req, res, next, _requestLoggers.requestLoggerAuth));
+serverAuth.use(_bodyParser.default.json());
+serverAuth.use((req, res, next) => (0, _logServerRequest.default)(req, res, next, _requestLoggers.requestLoggerAuth));
 
 //
 
@@ -34,7 +34,7 @@ async function login(req, res) {
     const UserAccount_Identifier = req.body.UserAccount_Identifier.toLowerCase();
     const User_Secret = req.body.User_Secret;
 
-    await (0, _delayPromise2.default)(1000); // Wait for a second to hamper a possible potential brute force attack
+    await (0, _delayPromise.default)(1000); // Wait for a second to hamper a possible potential brute force attack
 
     try {
       const arr_UserAccount = await objectManager.getObjectList('UserAccount', {
@@ -50,7 +50,7 @@ async function login(req, res) {
 
         if (
         await new Promise(resolve =>
-        _bcryptjs2.default.compare(User_Secret, a_User.User_Secret, (err, passwordMatch) =>
+        _bcryptjs.default.compare(User_Secret, a_User.User_Secret, (err, passwordMatch) =>
         resolve(passwordMatch))))
 
 
@@ -68,7 +68,7 @@ async function login(req, res) {
           res.codeFoundriesInjected = { user: a_User
 
             // User has authenticated correctly thus we create a JWT token ith the session.
-          };const UserToken1 = _jwtSimple2.default.encode(
+          };const UserToken1 = _jwtSimple.default.encode(
           // $AssureFlow - id will be filled in by ObjectManager.add
           { session_id: a_UserSession.id },
           process.env.JWT_SECRET);
@@ -103,7 +103,7 @@ async function createuser(req, res) {
 
       if (arr_UserAccount.length > 0) throw new Error('User account already exists');
       const User_PasswordHash = await new Promise(resolve =>
-      _bcryptjs2.default.hash(User_Secret, 8, (err, hash) => resolve(hash)));
+      _bcryptjs.default.hash(User_Secret, 8, (err, hash) => resolve(hash)));
 
 
       // If account name looks like email address, use it as email
@@ -111,7 +111,7 @@ async function createuser(req, res) {
       const User_Email = accountNameIsValidEmail ? UserAccount_Identifier : '';
 
       // Create the user object
-      const a_User = Object.assign((0, _getNewUser2.default)(objectManager.siteInformation.artifact_id), {
+      const a_User = Object.assign((0, _getNewUser.default)(objectManager.siteInformation.artifact_id), {
         User_artifact_id: objectManager.siteInformation.artifact_id,
         UserToken2:
         Math.random().
@@ -149,13 +149,13 @@ async function createuser(req, res) {
       objectManager.add('User', a_User),
       objectManager.add('UserSession', a_UserSession),
       objectManager.add('UserAccount', a_UserAccount),
-      ...(0, _onCreateUser2.default)(a_User.id, objectManager)]);
+      ...(0, _onCreateUser.default)(a_User.id, objectManager)]);
 
 
       res.codeFoundriesInjected = { user: a_User
 
         // User has been created thus we create a JWT token.
-      };const UserToken1 = _jwtSimple2.default.encode(
+      };const UserToken1 = _jwtSimple.default.encode(
       // $AssureFlow - id will be filled in by ObjectManager.add
       { session_id: a_UserSession.id },
       process.env.JWT_SECRET);
@@ -183,6 +183,6 @@ serverAuth.post('/logout', async (req, res) => {
 });
 
 // Add extensions - custom configurations
-(0, _authExtensions2.default)(serverAuth);exports.default =
-serverAuth;
+(0, _authExtensions.default)(serverAuth);var _default =
+serverAuth;exports.default = _default;
 //# sourceMappingURL=serverAuth.js.map

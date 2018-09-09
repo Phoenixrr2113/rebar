@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _NavBarTitle = require('../../urb-demo-webapp/NavBarTitle');var _NavBarTitle2 = _interopRequireDefault(_NavBarTitle);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _NavBarTitle = _interopRequireDefault(require("../../urb-demo-webapp/NavBarTitle"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
-_NavBarTitle2.default;
+_NavBarTitle.default;exports.default = _default;
 //# sourceMappingURL=NavBarTitle.js.map

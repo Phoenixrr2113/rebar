@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _ObjectManager = require('../../../../units/urb-base-server/ObjectManager');var _ObjectManager2 = _interopRequireDefault(_ObjectManager);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ObjectManager = _interopRequireDefault(require("../../../../units/urb-base-server/ObjectManager"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Class used by GraphQL Server
 class Inscriptio {
@@ -28,5 +28,5 @@ class Inscriptio {
   }}exports.default = Inscriptio;
 
 
-_ObjectManager2.default.registerEntity('Inscriptio', Inscriptio);
+_ObjectManager.default.registerEntity('Inscriptio', Inscriptio);
 //# sourceMappingURL=Inscriptio.js.map

@@ -1,17 +1,17 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _cassandraDriver = require('cassandra-driver');var _cassandraDriver2 = _interopRequireDefault(_cassandraDriver);
-var _expressCassandra = require('express-cassandra');var _expressCassandra2 = _interopRequireDefault(_expressCassandra);
+var _cassandraDriver = _interopRequireDefault(require("cassandra-driver"));
+var _expressCassandra = _interopRequireDefault(require("express-cassandra"));
 
-var _CassandraOptions = require('./CassandraOptions');var _CassandraOptions2 = _interopRequireDefault(_CassandraOptions);
-var _WinstonCassandra = require('./WinstonCassandra');var _WinstonCassandra2 = _interopRequireDefault(_WinstonCassandra);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _CassandraOptions = _interopRequireDefault(require("./CassandraOptions"));
+var _WinstonCassandra = _interopRequireDefault(require("./WinstonCassandra"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const Uuid = _cassandraDriver2.default.types.Uuid;
+const Uuid = _cassandraDriver.default.types.Uuid;
 const Uuid_Null_String = '00000000-0000-0000-0000-000000000000';
 const Uuid_Null = Uuid.fromString(Uuid_Null_String);
 
-const ExpressCassandraClient = _expressCassandra2.default.createClient({
-  clientOptions: _CassandraOptions2.default, // Options are pre-set in a separate part of the application, they are correct
+const ExpressCassandraClient = _expressCassandra.default.createClient({
+  clientOptions: _CassandraOptions.default, // Options are pre-set in a separate part of the application, they are correct
   ormOptions: {
     defaultReplicationStrategy: {
       class: 'SimpleStrategy',
@@ -177,7 +177,7 @@ class PersisterCassandra {
   }
 
   createLogger() {
-    return new _WinstonCassandra2.default(_CassandraOptions2.default);
+    return new _WinstonCassandra.default(_CassandraOptions.default);
   }
 
   uuidFromString(str) {

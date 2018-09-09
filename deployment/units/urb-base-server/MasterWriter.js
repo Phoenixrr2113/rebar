@@ -1,17 +1,17 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
-var _path = require('path');var _path2 = _interopRequireDefault(_path);
+var _fs = _interopRequireDefault(require("fs"));
+var _path = _interopRequireDefault(require("path"));
 
-var _ensureFileContent = require('./ensureFileContent');var _ensureFileContent2 = _interopRequireDefault(_ensureFileContent);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ensureFileContent = _interopRequireDefault(require("./ensureFileContent"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs2.default.promises;
+const fs = _fs.default.promises;
 
 class MasterWriter {
 
 
 
-
+  // $AssureFlow
 
 
   constructor(basePath, logToConsole) {
@@ -20,12 +20,12 @@ class MasterWriter {
 
     this.directories = new Map();
     this.arrPromises = [];
-  } // $AssureFlow
+  }
 
   async ensureRelativePathExistsHelper(filePath) {
     if (!this.directories.has(filePath)) {
       try {
-        await fs.mkdir(_path2.default.resolve(this.basePath, filePath));
+        await fs.mkdir(_path.default.resolve(this.basePath, filePath));
       } catch (err) {
         if (err.code !== 'EEXIST') throw err;
       }
@@ -53,7 +53,7 @@ class MasterWriter {
     await this.ensureRelativePathExists(destinationRelative);
 
     this.arrPromises.push(
-    (0, _ensureFileContent2.default)(
+    (0, _ensureFileContent.default)(
     this.basePath + '/' + destinationRelative,
     null,
     fileContent,

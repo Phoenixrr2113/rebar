@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
-
+var _ViewerType = _interopRequireDefault(require("../../../../units/urb-appbase-server/graphql/type/ViewerType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'EnsayoDelete',
 
@@ -19,7 +19,7 @@ var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/Vie
 
 
     Viewer: {
-      type: _ViewerType2.default,
+      type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
       objectManager.getOneObject('User', {
         id: objectManager.getViewerUserId() }) } },
@@ -33,5 +33,5 @@ var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/Vie
     await objectManager.remove('Ensayo', { id: local_id });
 
     return { id };
-  } }); //  weak
+  } });exports.default = _default;
 //# sourceMappingURL=EnsayoDelete.js.map

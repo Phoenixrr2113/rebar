@@ -1,9 +1,9 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = _default;
 
+var _os = _interopRequireDefault(require("os"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-
-function () {
-  const interfaces = _os2.default.networkInterfaces();
+function _default() {
+  const interfaces = _os.default.networkInterfaces();
 
   for (let k in interfaces) {
     // $AssureFlow it will be there
@@ -13,5 +13,5 @@ function () {
       if (address.family === 'IPv4' && !address.internal) return address.address;
     }
   }
-};var _os = require('os');var _os2 = _interopRequireDefault(_os);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+}
 //# sourceMappingURL=getLocalIP.js.map

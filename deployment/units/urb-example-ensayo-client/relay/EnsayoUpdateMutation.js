@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _reactRelay = require('react-relay');
+var _reactRelay = require("react-relay"); //  weak
 
-const mutation = function () {return require('./__generated__/EnsayoUpdateMutation.graphql');}; //  weak
+const mutation = function () {return require("./__generated__/EnsayoUpdateMutation.graphql");};
 
 
 
@@ -46,7 +46,7 @@ Ensayo_Content)
 
     } });
 
-}exports.default =
+}var _default =
 
-{ commit };
+{ commit };exports.default = _default;
 //# sourceMappingURL=EnsayoUpdateMutation.js.map

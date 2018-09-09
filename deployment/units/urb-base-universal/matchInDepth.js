@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = matchInDepth;
 
+var _matchInDepthMarkers = require("./matchInDepthMarkers");
 
-
-matchInDepth;var _matchInDepthMarkers = require('./matchInDepthMarkers');function matchInDepth(payload, condition) {
+function matchInDepth(payload, condition) {
   for (let ix in condition) {
     const payloadValue = payload[ix];
     const conditionValue = condition[ix];

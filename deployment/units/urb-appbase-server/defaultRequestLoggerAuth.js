@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = defaultrequestLoggerAuth;
 
+var _debug = require("../_configuration/debug");
+var _log = _interopRequireDefault(require("../urb-base-server/log"));
+var _matchInDepth = _interopRequireDefault(require("../urb-base-universal/matchInDepth"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
-
-
-
-defaultrequestLoggerAuth;var _debug = require('../_configuration/debug');var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(_log);var _matchInDepth = require('../urb-base-universal/matchInDepth');var _matchInDepth2 = _interopRequireDefault(_matchInDepth);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function defaultrequestLoggerAuth(requestAndResponse) {
+function defaultrequestLoggerAuth(requestAndResponse) {
   let logLevel = null;
 
   // TODO: What errors for Auth should be logged? definitily not 401.
@@ -13,8 +13,8 @@ defaultrequestLoggerAuth;var _debug = require('../_configuration/debug');var _lo
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ((0, _matchInDepth2.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth)) logLevel = 'info';
+  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth)) logLevel = 'info';
 
-  if (logLevel) _log2.default.log(logLevel, 'Auth request', requestAndResponse);
-} //  weak
+  if (logLevel) _log.default.log(logLevel, 'Auth request', requestAndResponse);
+}
 //# sourceMappingURL=defaultRequestLoggerAuth.js.map

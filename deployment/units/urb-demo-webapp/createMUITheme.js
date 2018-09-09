@@ -1,16 +1,16 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default =
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = createMUITheme;
 
+var _blue = _interopRequireDefault(require("@material-ui/core/colors/blue"));
 
+var _pink = _interopRequireDefault(require("@material-ui/core/colors/pink"));
 
+var _createMuiTheme = _interopRequireDefault(require("@material-ui/core/styles/createMuiTheme"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-
-
-
-createMUITheme;var _blue = require('@material-ui/core/colors/blue');var _blue2 = _interopRequireDefault(_blue);var _pink = require('@material-ui/core/colors/pink');var _pink2 = _interopRequireDefault(_pink);var _createMuiTheme = require('@material-ui/core/styles/createMuiTheme');var _createMuiTheme2 = _interopRequireDefault(_createMuiTheme);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function createMUITheme(wrapperRbCtx) {
-  return (0, _createMuiTheme2.default)({
+function createMUITheme(wrapperRbCtx) {
+  return (0, _createMuiTheme.default)({
     palette: {
-      primary: _blue2.default,
-      secondary: _pink2.default,
+      primary: _blue.default,
+      secondary: _pink.default,
       type: 'light' } });
 
 

@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.Directory = exports.File = undefined;
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = exports.Directory = exports.File = void 0;
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fs = _interopRequireDefault(require("fs"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs2.default.promises;
+const fs = _fs.default.promises;
 
 class FileBase {
 

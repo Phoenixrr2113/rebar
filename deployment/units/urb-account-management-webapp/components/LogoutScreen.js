@@ -1,24 +1,24 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
-var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
 
-var _CardActions = require('@material-ui/core/CardActions');var _CardActions2 = _interopRequireDefault(_CardActions);
+var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions"));
 
-var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
 
-var _LinearProgress = require('@material-ui/core/LinearProgress');var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
+var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
+var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = _interopRequireDefault(require("../../urb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {
@@ -26,7 +26,7 @@ const styles = theme => ({
 
 
 
-class LogoutScreen extends _react2.default.Component
+class LogoutScreen extends _react.default.Component
 
 
 
@@ -108,15 +108,15 @@ class LogoutScreen extends _react2.default.Component
     const { classes } = this.props;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Creating user' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Logging out. Please wait ...'),
-          _react2.default.createElement('br', null), ' ', _react2.default.createElement('br', null),
-          _react2.default.createElement(_LinearProgress2.default, { mode: 'query' })),
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Creating user" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "Logging out. Please wait ..."),
+      _react.default.createElement("br", null), " ", _react.default.createElement("br", null),
+      _react.default.createElement(_LinearProgress.default, { mode: "query" })),
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_CancelLogout }, 'Cancel'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelLogout }, "Cancel"))));
 
 
 
@@ -126,13 +126,13 @@ class LogoutScreen extends _react2.default.Component
     const { classes } = this.props;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Logout' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You have been logged out.')),
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Logout" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "You have been logged out.")),
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Continue }, 'Continue'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));
 
 
 
@@ -143,13 +143,13 @@ class LogoutScreen extends _react2.default.Component
     const { errorMessage } = this.state;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Creating user' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'Failed logging out because: ', errorMessage, '!')),
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Creating user" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "Failed logging out because: ", errorMessage, "!")),
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_TryAgain }, 'Try Again'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));
 
 
 
@@ -159,15 +159,15 @@ class LogoutScreen extends _react2.default.Component
     const { classes } = this.props;
 
     return (
-      _react2.default.createElement(_Card2.default, { className: classes.card },
-        _react2.default.createElement(_CardHeader2.default, { title: 'Log Out' }),
-        _react2.default.createElement(_CardContent2.default, null,
-          _react2.default.createElement(_Typography2.default, { component: 'p' }, 'You are currently logged in. Are you sure you want to log out?')),
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Log Out" }),
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement(_Typography.default, { component: "p" }, "You are currently logged in. Are you sure you want to log out?")),
 
 
 
-        _react2.default.createElement(_CardActions2.default, null,
-          _react2.default.createElement(_Button2.default, { onClick: this._handle_onClick_Logout }, 'Yes, Log Out'))));
+      _react.default.createElement(_CardActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Logout }, "Yes, Log Out"))));
 
 
 
@@ -177,15 +177,15 @@ class LogoutScreen extends _react2.default.Component
     const { currentOperation } = this.state;
 
     return (
-      _react2.default.createElement(_ResponsiveContentArea2.default, null,
-        currentOperation === 'confirm' && this.renderPrompt(),
-        currentOperation === 'logging out' && this.renderCreating(),
-        currentOperation === 'success' && this.renderSuccess(),
-        currentOperation === 'failure' && this.renderFailure()));
+      _react.default.createElement(_ResponsiveContentArea.default, null,
+      currentOperation === 'confirm' && this.renderPrompt(),
+      currentOperation === 'logging out' && this.renderCreating(),
+      currentOperation === 'success' && this.renderSuccess(),
+      currentOperation === 'failure' && this.renderFailure()));
 
 
-  }}exports.default =
+  }}var _default =
 
 
-(0, _styles.withStyles)(styles)(LogoutScreen);
+(0, _styles.withStyles)(styles)(LogoutScreen);exports.default = _default;
 //# sourceMappingURL=LogoutScreen.js.map

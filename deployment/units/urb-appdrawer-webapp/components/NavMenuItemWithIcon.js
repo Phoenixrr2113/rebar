@@ -1,27 +1,27 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _ListItem = require('@material-ui/core/ListItem');var _ListItem2 = _interopRequireDefault(_ListItem);
+var _ListItem = _interopRequireDefault(require("@material-ui/core/ListItem"));
 
-var _ListItemIcon = require('@material-ui/core/ListItemIcon');var _ListItemIcon2 = _interopRequireDefault(_ListItemIcon);
+var _ListItemIcon = _interopRequireDefault(require("@material-ui/core/ListItemIcon"));
 
-var _ListItemText = require('@material-ui/core/ListItemText');var _ListItemText2 = _interopRequireDefault(_ListItemText);
+var _ListItemText = _interopRequireDefault(require("@material-ui/core/ListItemText"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class NavMenuItemWithIcon extends _react2.default.Component
+class NavMenuItemWithIcon extends _react.default.Component
 
 
 
 {
   render() {
     return (
-      _react2.default.createElement(_ListItem2.default, { button: true, onClick: this.props.onClick },
-        _react2.default.createElement(_ListItemIcon2.default, null, this.props.icon),
-        _react2.default.createElement(_ListItemText2.default, { primary: this.props.label })));
+      _react.default.createElement(_ListItem.default, { button: true, onClick: this.props.onClick },
+      _react.default.createElement(_ListItemIcon.default, null, this.props.icon),
+      _react.default.createElement(_ListItemText.default, { primary: this.props.label })));
 
 
-  }}exports.default =
+  }}var _default =
 
 
-NavMenuItemWithIcon;
+NavMenuItemWithIcon;exports.default = _default;
 //# sourceMappingURL=NavMenuItemWithIcon.js.map

@@ -1,20 +1,20 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
-var _Dialog = require('@material-ui/core/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
+var _Dialog = _interopRequireDefault(require("@material-ui/core/Dialog"));
 
-var _DialogActions = require('@material-ui/core/DialogActions');var _DialogActions2 = _interopRequireDefault(_DialogActions);
+var _DialogActions = _interopRequireDefault(require("@material-ui/core/DialogActions"));
 
-var _DialogContent = require('@material-ui/core/DialogContent');var _DialogContent2 = _interopRequireDefault(_DialogContent);
+var _DialogContent = _interopRequireDefault(require("@material-ui/core/DialogContent"));
 
-var _DialogTitle = require('@material-ui/core/DialogTitle');var _DialogTitle2 = _interopRequireDefault(_DialogTitle);
+var _DialogTitle = _interopRequireDefault(require("@material-ui/core/DialogTitle"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _react = _interopRequireDefault(require("react"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   container: {
@@ -23,7 +23,7 @@ const styles = theme => ({
 
 
 
-class ToDo_Properties extends _react2.default.Component
+class ToDo_Properties extends _react.default.Component
 
 
 
@@ -58,28 +58,28 @@ class ToDo_Properties extends _react2.default.Component
     const { ToDo_Text } = this.state;
 
     return (
-      _react2.default.createElement('div', null,
-        _react2.default.createElement(_Dialog2.default, { open: this.props.open, onClose: this._handle_Close },
-          _react2.default.createElement(_DialogTitle2.default, null, 'ToDo'),
-          _react2.default.createElement(_DialogContent2.default, null,
-            _react2.default.createElement(_TextField2.default, {
-              label: 'To Do',
-              fullWidth: true,
-              value: ToDo_Text,
-              onChange: event => this.setState({ ToDo_Text: event.target.value }) })),
+      _react.default.createElement("div", null,
+      _react.default.createElement(_Dialog.default, { open: this.props.open, onClose: this._handle_Close },
+      _react.default.createElement(_DialogTitle.default, null, "ToDo"),
+      _react.default.createElement(_DialogContent.default, null,
+      _react.default.createElement(_TextField.default, {
+        label: "To Do",
+        fullWidth: true,
+        value: ToDo_Text,
+        onChange: event => this.setState({ ToDo_Text: event.target.value }) })),
 
 
-          _react2.default.createElement(_DialogActions2.default, null,
-            _react2.default.createElement(_Button2.default, { onClick: this._handle_Close }, 'Cancel'),
-            _react2.default.createElement(_Button2.default, { onClick: this._handle_OK, color: 'primary' }, 'OK')))));
-
-
-
+      _react.default.createElement(_DialogActions.default, null,
+      _react.default.createElement(_Button.default, { onClick: this._handle_Close }, "Cancel"),
+      _react.default.createElement(_Button.default, { onClick: this._handle_OK, color: "primary" }, "OK")))));
 
 
 
-  }}exports.default =
 
 
-(0, _styles.withStyles)(styles)(ToDo_Properties);
+
+  }}var _default =
+
+
+(0, _styles.withStyles)(styles)(ToDo_Properties);exports.default = _default;
 //# sourceMappingURL=ToDoProperties.js.map

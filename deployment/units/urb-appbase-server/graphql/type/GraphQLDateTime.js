@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
-var _error = require('graphql/error');
-var _language = require('graphql/language');
+var _graphql = require("graphql");
+var _error = require("graphql/error");
+var _language = require("graphql/language");
 
 // The code in this file is largely modified version of:
 // https://github.com/soundtrackyourbrand/graphql-custom-datetype/blob/master/datetype.js
@@ -36,12 +36,12 @@ function parseLiteral(ast) {
 
 
   return result;
-}exports.default =
+}var _default =
 
 new _graphql.GraphQLScalarType({
   name: 'DateTime',
   description: 'Scalar type for storing date-time information',
   serialize: coerceDate,
   parseValue: coerceDate,
-  parseLiteral: parseLiteral });
+  parseLiteral: parseLiteral });exports.default = _default;
 //# sourceMappingURL=GraphQLDateTime.js.map

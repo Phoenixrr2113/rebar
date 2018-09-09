@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-const AppRegistryName = 'UniversalRelayBoilerplate';exports.default =
+const AppRegistryName = 'UniversalRelayBoilerplate';var _default =
 
-AppRegistryName;
+AppRegistryName;exports.default = _default;
 //# sourceMappingURL=AppRegistryName.js.map

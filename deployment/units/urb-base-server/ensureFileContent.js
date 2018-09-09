@@ -1,12 +1,12 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
+var _fs = _interopRequireDefault(require("fs"));
 
-var _chalk = require('chalk');var _chalk2 = _interopRequireDefault(_chalk);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _chalk = _interopRequireDefault(require("chalk"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs2.default.promises;exports.default =
+const fs = _fs.default.promises;var
 
-async function ensureFileContent(
+ensureFileContent = async function ensureFileContent(
 fileName,
 currentFileContent,
 newFileContent,
@@ -22,10 +22,10 @@ logToConsole)
   }
 
   if (currentFileContent !== newFileContent) {
-    if (logToConsole) console.log(_chalk2.default.white.bgGreen('[written]') + ' ' + fileName);
+    if (logToConsole) console.log(_chalk.default.white.bgGreen('[written]') + ' ' + fileName);
     await fs.writeFile(fileName, newFileContent, 'utf8');
   } else {
-    if (logToConsole) console.log(_chalk2.default.white.bgBlackBright('[skipped]') + ' ' + fileName);
+    if (logToConsole) console.log(_chalk.default.white.bgBlackBright('[skipped]') + ' ' + fileName);
   }
-};
+};exports.default = ensureFileContent;
 //# sourceMappingURL=ensureFileContent.js.map

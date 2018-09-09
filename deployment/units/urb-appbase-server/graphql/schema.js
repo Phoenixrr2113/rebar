@@ -1,19 +1,19 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
+var _graphql = require("graphql");
 
-var _QueryType = require('./type/QueryType');var _QueryType2 = _interopRequireDefault(_QueryType);
-var _graphQLError = require('./graphQLError');
-var _MutationType = require('./type/MutationType');var _MutationType2 = _interopRequireDefault(_MutationType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _QueryType = _interopRequireDefault(require("./type/QueryType"));
+var _graphQLError = require("./graphQLError");
+var _MutationType = _interopRequireDefault(require("./type/MutationType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // export the entire compiled schema which specifies
 // how to query and mutate all of our types
 const schema = new _graphql.GraphQLSchema({
-  query: _QueryType2.default,
-  mutation: _MutationType2.default });
+  query: _QueryType.default,
+  mutation: _MutationType.default });
 
 
-(0, _graphQLError.maskErrors)(schema);exports.default =
+(0, _graphQLError.maskErrors)(schema);var _default =
 
-schema;
+schema;exports.default = _default;
 //# sourceMappingURL=schema.js.map

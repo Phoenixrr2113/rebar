@@ -1,14 +1,14 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fs = _interopRequireDefault(require("fs"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs2.default.promises;exports.default =
+const fs = _fs.default.promises;var
 
-async function ensurePathExists(filePath) {
+ensurePathExists = async function ensurePathExists(filePath) {
   try {
     await fs.mkdir(filePath);
   } catch (err) {
     if (err.code !== 'EEXIST') throw err;
   }
-};
+};exports.default = ensurePathExists;
 //# sourceMappingURL=ensurePathExists.js.map

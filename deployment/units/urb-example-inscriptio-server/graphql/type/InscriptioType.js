@@ -1,17 +1,17 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _Inscriptio = require('../model/Inscriptio');var _Inscriptio2 = _interopRequireDefault(_Inscriptio);
-var _NodeInterface = require('../../../../units/urb-appbase-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _Inscriptio = _interopRequireDefault(require("../model/Inscriptio"));
+var _NodeInterface = _interopRequireDefault(require("../../../../units/urb-appbase-server/graphql/NodeInterface"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 new _graphql.GraphQLObjectType({
   name: 'Inscriptio',
 
-  interfaces: [_NodeInterface2.default],
+  interfaces: [_NodeInterface.default],
 
-  isTypeOf: object => object instanceof _Inscriptio2.default,
+  isTypeOf: object => object instanceof _Inscriptio.default,
 
   fields: {
     id: (0, _graphqlRelay.globalIdField)('Inscriptio'),
@@ -25,5 +25,5 @@ new _graphql.GraphQLObjectType({
 
     Inscriptio_Notes: {
       type: _graphql.GraphQLString,
-      resolve: obj => obj.Inscriptio_Notes } } });
+      resolve: obj => obj.Inscriptio_Notes } } });exports.default = _default;
 //# sourceMappingURL=InscriptioType.js.map

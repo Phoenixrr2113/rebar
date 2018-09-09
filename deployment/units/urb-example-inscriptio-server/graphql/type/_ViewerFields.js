@@ -1,18 +1,18 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
-var _graphqlRelay = require('graphql-relay');
+var _graphql = require("graphql");
+var _graphqlRelay = require("graphql-relay");
 
-var _InscriptiosConnection = require('./InscriptiosConnection');var _InscriptiosConnection2 = _interopRequireDefault(_InscriptiosConnection);
-var _InscriptioType = require('./InscriptioType');var _InscriptioType2 = _interopRequireDefault(_InscriptioType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
-exports.default =
+var _InscriptiosConnection = _interopRequireDefault(require("./InscriptiosConnection"));
+var _InscriptioType = _interopRequireDefault(require("./InscriptioType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 {
   Inscriptios: {
-    type: _InscriptiosConnection2.default.connectionType,
+    type: _InscriptiosConnection.default.connectionType,
 
-    args: Object.assign({}, _graphqlRelay.connectionArgs),
+    args: { ..._graphqlRelay.connectionArgs },
 
-    resolve: async (obj, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
+    resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
       const arr = await objectManager.getObjectList('Inscriptio', {});
 
       return (0, _graphqlRelay.connectionFromArray)(arr, args);
@@ -20,10 +20,10 @@ exports.default =
 
 
   Inscriptio: {
-    type: _InscriptioType2.default,
+    type: _InscriptioType.default,
 
-    args: Object.assign({ id: { type: _graphql.GraphQLID } }),
+    args: { ...{ id: { type: _graphql.GraphQLID } } },
 
     resolve: (parent, { id }, context, { rootValue: objectManager }) =>
-    objectManager.getOneObject('Inscriptio', { id: (0, _graphqlRelay.fromGlobalId)(id).id }) } };
+    objectManager.getOneObject('Inscriptio', { id: (0, _graphqlRelay.fromGlobalId)(id).id }) } };exports.default = _default;
 //# sourceMappingURL=_ViewerFields.js.map

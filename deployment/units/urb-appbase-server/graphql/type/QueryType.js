@@ -1,11 +1,11 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _NodeInterface = require('../NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);
+var _NodeInterface = _interopRequireDefault(require("../NodeInterface"));
 
-var _ViewerType = require('./ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _ViewerType = _interopRequireDefault(require("./ViewerType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
 function resolveNodeField(source, args, context, { rootValue: objectManager }) {
   // the node field will receive a globally
@@ -17,20 +17,20 @@ function resolveNodeField(source, args, context, { rootValue: objectManager }) {
   // actual data for the record
   if (type === 'Viewer') return objectManager.getOneObject('User', { id: id });else
   return objectManager.getOneObject(type, { id: id });
-}exports.default =
+}var _default =
 
 new _graphql.GraphQLObjectType({
   name: 'Query',
   fields: () => ({
     node: {
-      type: _NodeInterface2.default,
+      type: _NodeInterface.default,
       args: {
         id: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLID) } },
 
       resolve: resolveNodeField },
 
     Viewer: {
-      type: _ViewerType2.default,
+      type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', { id: objectManager.getViewerUserId() }) } }) });
+      objectManager.getOneObject('User', { id: objectManager.getViewerUserId() }) } }) });exports.default = _default;
 //# sourceMappingURL=QueryType.js.map

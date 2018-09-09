@@ -1,28 +1,28 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _path = require('path');var _path2 = _interopRequireDefault(_path);
+var _path = _interopRequireDefault(require("path"));
 
-var _createRender = require('found/lib/createRender');var _createRender2 = _interopRequireDefault(_createRender);
-var _server = require('found/lib/server');
-var _express = require('express');var _express2 = _interopRequireDefault(_express);
-var _reactHelmet = require('react-helmet');var _reactHelmet2 = _interopRequireDefault(_reactHelmet);
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactJss = require('react-jss');
-var _server2 = require('react-dom/server');var _server3 = _interopRequireDefault(_server2);
-var _serializeJavascript = require('serialize-javascript');var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
+var _createRender = _interopRequireDefault(require("found/lib/createRender"));
+var _server = require("found/lib/server");
+var _express = _interopRequireDefault(require("express"));
+var _reactHelmet = _interopRequireDefault(require("react-helmet"));
+var _react = _interopRequireDefault(require("react"));
+var _reactJss = require("react-jss");
+var _server2 = _interopRequireDefault(require("react-dom/server"));
+var _serializeJavascript = _interopRequireDefault(require("serialize-javascript"));
 
-var _AppWrapper = require('../_configuration/urb-appbase-webapp/AppWrapper');var _AppWrapper2 = _interopRequireDefault(_AppWrapper);
-var _ErrorComponent = require('../_configuration/urb-appbase-webapp/ErrorComponent');var _ErrorComponent2 = _interopRequireDefault(_ErrorComponent);
-var _getGraphQLLocalServerURL = require('../_configuration/urb-base-server/getGraphQLLocalServerURL');var _getGraphQLLocalServerURL2 = _interopRequireDefault(_getGraphQLLocalServerURL);
-var _siteSettings = require('../_configuration/urb-base-server/siteSettings');
-var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(_log);
-var _package = require('../_configuration/package');
-var _UserToken2ServerRendering = require('../_configuration/urb-base-server/UserToken2ServerRendering');var _UserToken2ServerRendering2 = _interopRequireDefault(_UserToken2ServerRendering);
-var _htmlHeadAdditions = require('../_configuration/urb-appbase-webapp/htmlHeadAdditions');var _htmlHeadAdditions2 = _interopRequireDefault(_htmlHeadAdditions);
+var _AppWrapper = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/AppWrapper"));
+var _ErrorComponent = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/ErrorComponent"));
+var _getGraphQLLocalServerURL = _interopRequireDefault(require("../_configuration/urb-base-server/getGraphQLLocalServerURL"));
+var _siteSettings = require("../_configuration/urb-base-server/siteSettings");
+var _log = _interopRequireDefault(require("../urb-base-server/log"));
+var _package = require("../_configuration/package");
+var _UserToken2ServerRendering = _interopRequireDefault(require("../_configuration/urb-base-server/UserToken2ServerRendering"));
+var _htmlHeadAdditions = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/htmlHeadAdditions"));
 
-var _router = require('../urb-appbase-webapp/router');
+var _router = require("../urb-appbase-webapp/router");
 
-var _fetcherServer = require('./fetcherServer');var _fetcherServer2 = _interopRequireDefault(_fetcherServer);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fetcherServer = _interopRequireDefault(require("./fetcherServer"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
@@ -36,7 +36,7 @@ if (envPort == null || typeof envPort !== 'string')
 throw new Error('Error: urb-appbase-webapp requires the environment variable PORT to be set');
 
 // Create express router for the web app
-const serverWebApp = (0, _express2.default)();
+const serverWebApp = (0, _express.default)();
 
 async function gatherLocationAndSiteInformation(
 req,
@@ -68,12 +68,12 @@ res)
   } else return null;
 }
 
-const render = (0, _createRender2.default)({
+const render = (0, _createRender.default)({
   renderError(obj) {
     const { error } = obj;
     if (error.status !== 404)
-    _log2.default.log('error', 'Error: Render on server createRender renderError', obj);
-    return _react2.default.createElement(_ErrorComponent2.default, { httpStatus: error.status });
+    _log.default.log('error', 'Error: Render on server createRender renderError', obj);
+    return _react.default.createElement(_ErrorComponent.default, { httpStatus: error.status });
   } });
 
 
@@ -92,10 +92,10 @@ serverWebApp.use(async (req, res) => {
         return;
       }
 
-      const fetcher = new _fetcherServer2.default(
-      `http://${envHost}:${envPort}` + (0, _getGraphQLLocalServerURL2.default)(siteInformation),
+      const fetcher = new _fetcherServer.default(
+      `http://${envHost}:${envPort}` + (0, _getGraphQLLocalServerURL.default)(siteInformation),
       req.cookies.UserToken1,
-      _UserToken2ServerRendering2.default);
+      _UserToken2ServerRendering.default);
 
 
       const userAgent = req.headers['user-agent'];
@@ -120,29 +120,29 @@ serverWebApp.use(async (req, res) => {
         return;
       }
 
-      const relayPayload = (0, _serializeJavascript2.default)(fetcher, { isJSON: true });
+      const relayPayload = (0, _serializeJavascript.default)(fetcher, { isJSON: true });
 
       const sheets = new _reactJss.SheetsRegistry();
-      const helmet = _reactHelmet2.default.rewind();
+      const helmet = _reactHelmet.default.rewind();
 
-      const rootHTML = _server3.default.renderToString(
-      _react2.default.createElement(_reactJss.JssProvider, { registry: sheets },
-        _react2.default.createElement(_AppWrapper2.default, {
-            userAgent: userAgent,
-            siteConfiguration: siteConfigurationSubset,
-            url: req.url },
+      const rootHTML = _server2.default.renderToString(
+      _react.default.createElement(_reactJss.JssProvider, { registry: sheets },
+      _react.default.createElement(_AppWrapper.default, {
+        userAgent: userAgent,
+        siteConfiguration: siteConfigurationSubset,
+        url: req.url },
 
-          element)));
-
-
+      element)));
 
 
-      res.render(_path2.default.resolve(__dirname, 'html.ejs'), {
+
+
+      res.render(_path.default.resolve(__dirname, 'html.ejs'), {
         assets_path: assetsPath,
         root_html: rootHTML,
         server_side_styles: sheets.toString(),
         helmet,
-        htmlHeadAdditions: _htmlHeadAdditions2.default,
+        htmlHeadAdditions: _htmlHeadAdditions.default,
         siteConfiguration: JSON.stringify(siteConfigurationSubset),
         relay_payload: relayPayload });
 
@@ -150,9 +150,9 @@ serverWebApp.use(async (req, res) => {
       res.status(200).send('meh');
     }
   } catch (err) {
-    _log2.default.log('error', 'Error: Render on server request', err);
-    res.status(500).send(_server3.default.renderToString(_react2.default.createElement(_ErrorComponent2.default, { httpStatus: 500 })));
+    _log.default.log('error', 'Error: Render on server request', err);
+    res.status(500).send(_server2.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 500 })));
   }
-});exports.default =
-serverWebApp;
+});var _default =
+serverWebApp;exports.default = _default;
 //# sourceMappingURL=serverWebApp.js.map

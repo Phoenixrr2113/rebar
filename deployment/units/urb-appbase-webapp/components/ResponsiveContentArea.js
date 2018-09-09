@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   content: theme.mixins.gutters({
@@ -25,13 +25,13 @@ const styles = theme => ({
 
 
 
-class ResponsiveContentArea extends _react2.default.Component {
+class ResponsiveContentArea extends _react.default.Component {
   render() {
     const { classes } = this.props;
 
-    return _react2.default.createElement('div', { className: classes.content }, this.props.children);
-  }}exports.default =
+    return _react.default.createElement("div", { className: classes.content }, this.props.children);
+  }}var _default =
 
 
-(0, _styles.withStyles)(styles)(ResponsiveContentArea);
+(0, _styles.withStyles)(styles)(ResponsiveContentArea);exports.default = _default;
 //# sourceMappingURL=ResponsiveContentArea.js.map

@@ -1,12 +1,12 @@
-'use strict';
+"use strict";
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
+var _fs = _interopRequireDefault(require("fs"));
 
 
-var _getLocalIP = require('../urb-base-server/getLocalIP');var _getLocalIP2 = _interopRequireDefault(_getLocalIP);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _getLocalIP = _interopRequireDefault(require("../urb-base-server/getLocalIP"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //import AppRegistryName from '../_configuration/urb-base-app/AppRegistryName'
 
 // Read environment
-require('dotenv').load(); //import AppRegistryName from '../_configuration/urb-base-app/AppRegistryName'
+require('dotenv').load();
 
 const port = process.env.PORT;
 if (port == null || typeof port !== 'string')
@@ -14,7 +14,7 @@ throw new Error('Error: update-ip requires the environment variable PORT to be s
 
 let IPAddress = process.argv[2];
 
-if (IPAddress === undefined) IPAddress = (0, _getLocalIP2.default)();
+if (IPAddress === undefined) IPAddress = (0, _getLocalIP.default)();
 
 if (IPAddress !== undefined) {
   console.log('IP Address:' + IPAddress);
@@ -40,7 +40,7 @@ if (IPAddress !== undefined) {
 
 function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
   try {
-    let fileLines = _fs2.default.readFileSync(fileName, 'utf8').split('\n');
+    let fileLines = _fs.default.readFileSync(fileName, 'utf8').split('\n');
     let index = 0;
 
     while (index < fileLines.length) {
@@ -49,7 +49,7 @@ function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
         console.log('[' + fileName + '] is already up to date');else
         {
           fileLines[index] = newContentOfLine;
-          _fs2.default.writeFileSync(fileName, fileLines.join('\n'));
+          _fs.default.writeFileSync(fileName, fileLines.join('\n'));
 
           console.log('[' + fileName + '] has been updated with local IP ' + IPAddress);
         }

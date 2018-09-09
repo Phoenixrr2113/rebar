@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _AppFrame = require('../../urb-appdrawer-webapp/components/AppFrame');var _AppFrame2 = _interopRequireDefault(_AppFrame);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _AppFrame = _interopRequireDefault(require("../../urb-appdrawer-webapp/components/AppFrame"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
-_AppFrame2.default;
+_AppFrame.default;exports.default = _default;
 //# sourceMappingURL=AppFrame.js.map

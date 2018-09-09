@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
+var _graphqlRelay = require("graphql-relay");
 
-var _InscriptioType = require('./InscriptioType');var _InscriptioType2 = _interopRequireDefault(_InscriptioType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _InscriptioType = _interopRequireDefault(require("./InscriptioType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 (0, _graphqlRelay.connectionDefinitions)({
   name: 'Inscriptios',
-  nodeType: _InscriptioType2.default });
+  nodeType: _InscriptioType.default });exports.default = _default;
 //# sourceMappingURL=InscriptiosConnection.js.map

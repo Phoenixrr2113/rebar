@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _cassandraDriver = require('cassandra-driver');var _cassandraDriver2 = _interopRequireDefault(_cassandraDriver);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _cassandraDriver = _interopRequireDefault(require("cassandra-driver"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
@@ -16,11 +16,11 @@ const CassandraOptions = {
 
 
 if (process.env.CASSANDRA_USER) {
-  CassandraOptions.authProvider = new _cassandraDriver2.default.auth.PlainTextAuthProvider(
+  CassandraOptions.authProvider = new _cassandraDriver.default.auth.PlainTextAuthProvider(
   process.env.CASSANDRA_USER,
   process.env.CASSANDRA_PASSWORD);
 
-}exports.default =
+}var _default =
 
-CassandraOptions;
+CassandraOptions;exports.default = _default;
 //# sourceMappingURL=CassandraOptions.js.map

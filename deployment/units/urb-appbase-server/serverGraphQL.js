@@ -1,32 +1,32 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _bodyParser = require('body-parser');var _bodyParser2 = _interopRequireDefault(_bodyParser);
-var _express = require('express');var _express2 = _interopRequireDefault(_express);
-var _expressGraphql = require('express-graphql');var _expressGraphql2 = _interopRequireDefault(_expressGraphql);
+var _bodyParser = _interopRequireDefault(require("body-parser"));
+var _express = _interopRequireDefault(require("express"));
+var _expressGraphql = _interopRequireDefault(require("express-graphql"));
 
-var _log = require('../urb-base-server/log');var _log2 = _interopRequireDefault(_log);
-var _requestLoggers = require('../_configuration/urb-base-server/requestLoggers');
-var _logServerRequest = require('../urb-base-server/logServerRequest');var _logServerRequest2 = _interopRequireDefault(_logServerRequest);
-var _ObjectManager = require('../urb-base-server/ObjectManager');
+var _log = _interopRequireDefault(require("../urb-base-server/log"));
+var _requestLoggers = require("../_configuration/urb-base-server/requestLoggers");
+var _logServerRequest = _interopRequireDefault(require("../urb-base-server/logServerRequest"));
+var _ObjectManager = require("../urb-base-server/ObjectManager");
 
-var _checkCredentials = require('./checkCredentials');
-
-
+var _checkCredentials = require("./checkCredentials");
 
 
-var _schema = require('./graphql/schema');var _schema2 = _interopRequireDefault(_schema);
 
 
-require('../_configuration/urb-base-server/graphql/_schemas');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _schema = _interopRequireDefault(require("./graphql/schema"));
 
+
+require("../_configuration/urb-base-server/graphql/_schemas");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Schema for GraphQL server
+// Guarantee that all object registrations and schema definitions are executed
 // Create router for GraphQL
-const serverGraphQL = (0, _express2.default)();
+const serverGraphQL = (0, _express.default)();
 
 // Set up parser
-// Schema for GraphQL server
-// Guarantee that all object registrations and schema definitions are executed
-serverGraphQL.use(_bodyParser2.default.json()); // Set up logging
-serverGraphQL.use((req, res, next) => (0, _logServerRequest2.default)(req, res, next, _requestLoggers.requestLoggerGraphQL));
+serverGraphQL.use(_bodyParser.default.json());
+
+// Set up logging
+serverGraphQL.use((req, res, next) => (0, _logServerRequest.default)(req, res, next, _requestLoggers.requestLoggerGraphQL));
 
 async function root(req, res, next) {
   try {
@@ -38,9 +38,9 @@ async function root(req, res, next) {
         res.codeFoundriesInjected = { user: a_User };
         await (0, _checkCredentials.verifyUserAuthToken)(a_User, req);
 
-        (0, _expressGraphql2.default)(() => {
+        (0, _expressGraphql.default)(() => {
           return {
-            schema: _schema2.default,
+            schema: _schema.default,
             rootValue: objectManager,
             pretty: true,
             graphiql: true };
@@ -51,7 +51,7 @@ async function root(req, res, next) {
       }
     }
   } catch (err) {
-    _log2.default.log('error', 'Error: GraphQL', err);
+    _log.default.log('error', 'Error: GraphQL', err);
     res.status(500).send(
     JSON.stringify({
       error: 'An error has occurred while running GraphQL query' }));
@@ -59,7 +59,7 @@ async function root(req, res, next) {
 
   }
 }
-serverGraphQL.use('/', root);exports.default =
+serverGraphQL.use('/', root);var _default =
 
-serverGraphQL;
+serverGraphQL;exports.default = _default;
 //# sourceMappingURL=serverGraphQL.js.map

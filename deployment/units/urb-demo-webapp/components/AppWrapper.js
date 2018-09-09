@@ -1,19 +1,19 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _blueGrey = require('@material-ui/core/colors/blueGrey');var _blueGrey2 = _interopRequireDefault(_blueGrey);
+var _blueGrey = _interopRequireDefault(require("@material-ui/core/colors/blueGrey"));
 
-var _amber = require('@material-ui/core/colors/amber');var _amber2 = _interopRequireDefault(_amber);
+var _amber = _interopRequireDefault(require("@material-ui/core/colors/amber"));
 
-var _createMuiTheme = require('@material-ui/core/styles/createMuiTheme');var _createMuiTheme2 = _interopRequireDefault(_createMuiTheme);
+var _createMuiTheme = _interopRequireDefault(require("@material-ui/core/styles/createMuiTheme"));
 
-var _AppWrapperBase = require('../../urb-appbase-webapp/components/AppWrapperBase');var _AppWrapperBase2 = _interopRequireDefault(_AppWrapperBase);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _AppWrapperBase = _interopRequireDefault(require("../../urb-appbase-webapp/components/AppWrapperBase"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class AppWrapper extends _AppWrapperBase2.default {
+class AppWrapper extends _AppWrapperBase.default {
   createMUITheme() {
-    return (0, _createMuiTheme2.default)({
+    return (0, _createMuiTheme.default)({
       palette: {
-        primary: _blueGrey2.default,
-        secondary: _amber2.default,
+        primary: _blueGrey.default,
+        secondary: _amber.default,
         type: 'light' },
 
       typography: {

@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _fetcherBase = require('../urb-appbase-universal/fetcherBase');var _fetcherBase2 = _interopRequireDefault(_fetcherBase);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fetcherBase = _interopRequireDefault(require("../urb-appbase-universal/fetcherBase"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class FetcherServer extends _fetcherBase2.default {
+class FetcherServer extends _fetcherBase.default {
 
 
   constructor(url, UserToken1, UserToken2) {

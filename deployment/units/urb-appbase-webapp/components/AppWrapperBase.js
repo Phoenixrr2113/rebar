@@ -1,14 +1,14 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _MuiThemeProvider = require('@material-ui/core/styles/MuiThemeProvider');var _MuiThemeProvider2 = _interopRequireDefault(_MuiThemeProvider);
+var _MuiThemeProvider = _interopRequireDefault(require("@material-ui/core/styles/MuiThemeProvider"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactEventListener = require('react-event-listener');var _reactEventListener2 = _interopRequireDefault(_reactEventListener);
+var _react = _interopRequireDefault(require("react"));
+var _reactEventListener = _interopRequireDefault(require("react-event-listener"));
 
-var _SiteConfigurationContext = require('./SiteConfigurationContext');var _SiteConfigurationContext2 = _interopRequireDefault(_SiteConfigurationContext);
-var _ViewportContext = require('./ViewportContext');var _ViewportContext2 = _interopRequireDefault(_ViewportContext);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _SiteConfigurationContext = _interopRequireDefault(require("./SiteConfigurationContext"));
+var _ViewportContext = _interopRequireDefault(require("./ViewportContext"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class AppWrapperBase extends _react2.default.Component
+class AppWrapperBase extends _react.default.Component
 
 
 
@@ -42,11 +42,11 @@ class AppWrapperBase extends _react2.default.Component
     const { totalWidth, totalHeight } = this.state;
 
     return (
-      _react2.default.createElement(_reactEventListener2.default, { target: 'window', onResize: this.handle_onResize },
-        _react2.default.createElement(_MuiThemeProvider2.default, { theme: this.createMUITheme() },
-          _react2.default.createElement(_ViewportContext2.default.Provider, { value: { totalWidth, totalHeight } },
-            _react2.default.createElement(_SiteConfigurationContext2.default.Provider, { value: this.props.siteConfiguration },
-              this.props.children)))));
+      _react.default.createElement(_reactEventListener.default, { target: "window", onResize: this.handle_onResize },
+      _react.default.createElement(_MuiThemeProvider.default, { theme: this.createMUITheme() },
+      _react.default.createElement(_ViewportContext.default.Provider, { value: { totalWidth, totalHeight } },
+      _react.default.createElement(_SiteConfigurationContext.default.Provider, { value: this.props.siteConfiguration },
+      this.props.children)))));
 
 
 

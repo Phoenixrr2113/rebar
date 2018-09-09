@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphqlRelay = require('graphql-relay');
-var _graphql = require('graphql');
+var _graphqlRelay = require("graphql-relay");
+var _graphql = require("graphql");
 
-var _InscriptioType = require('../type/InscriptioType');var _InscriptioType2 = _interopRequireDefault(_InscriptioType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
-exports.default =
+var _InscriptioType = _interopRequireDefault(require("../type/InscriptioType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _default =
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'InscriptioUpdate',
 
@@ -17,13 +17,13 @@ exports.default =
 
   outputFields: {
     Inscriptio: {
-      type: _InscriptioType2.default,
+      type: _InscriptioType.default,
       resolve: (
-      { local_id }, _ref,
-
+      { local_id },
+      { ...args },
       context,
-      { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);return (
-          objectManager.getOneObject('Inscriptio', { id: local_id }));} } },
+      { rootValue: objectManager }) =>
+      objectManager.getOneObject('Inscriptio', { id: local_id }) } },
 
 
 
@@ -42,5 +42,5 @@ exports.default =
 
 
     return { local_id };
-  } });
+  } });exports.default = _default;
 //# sourceMappingURL=InscriptioUpdate.js.map

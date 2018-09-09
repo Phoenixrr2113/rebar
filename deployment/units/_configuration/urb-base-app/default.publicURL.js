@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-const publicURL = 'http://universal-relay-boilerplate.herokuapp.com';exports.default =
+const publicURL = 'http://universal-relay-boilerplate.herokuapp.com';var _default =
 
-publicURL;
+publicURL;exports.default = _default;
 //# sourceMappingURL=default.publicURL.js.map

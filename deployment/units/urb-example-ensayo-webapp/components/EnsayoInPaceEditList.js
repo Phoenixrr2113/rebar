@@ -1,13 +1,13 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefault(_List);
+var _List = _interopRequireDefault(require("@material-ui/core/List"));
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactRelay = require('react-relay');
+var _react = _interopRequireDefault(require("react"));
+var _reactRelay = require("react-relay");
 
-var _EnsayoInPlaceEditItem = require('./EnsayoInPlaceEditItem');var _EnsayoInPlaceEditItem2 = _interopRequireDefault(_EnsayoInPlaceEditItem);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _EnsayoInPlaceEditItem = _interopRequireDefault(require("./EnsayoInPlaceEditItem"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-class EnsayoInPaceEditList extends _react2.default.Component
+class EnsayoInPaceEditList extends _react.default.Component
 
 
 
@@ -19,17 +19,17 @@ class EnsayoInPaceEditList extends _react2.default.Component
     const { Ensayos } = Viewer;
 
     return (
-      _react2.default.createElement('div', null,
-        _react2.default.createElement(_List2.default, null,
-          Ensayos.edges.map(({ node }) =>
-          _react2.default.createElement(_EnsayoInPlaceEditItem2.default, { key: node.id, Viewer: Viewer, Ensayo: node })))));
+      _react.default.createElement("div", null,
+      _react.default.createElement(_List.default, null,
+      Ensayos.edges.map(({ node }) =>
+      _react.default.createElement(_EnsayoInPlaceEditItem.default, { key: node.id, Viewer: Viewer, Ensayo: node })))));
 
 
 
 
-  }}exports.default =
+  }}var _default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-EnsayoInPaceEditList, { Viewer: function () {return require('./__generated__/EnsayoInPaceEditList_Viewer.graphql');} });
+EnsayoInPaceEditList, { Viewer: function () {return require("./__generated__/EnsayoInPaceEditList_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoInPaceEditList.js.map

@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _AppDrawerNavItems = require('../../urb-demo-webapp/components/AppDrawerNavItems');var _AppDrawerNavItems2 = _interopRequireDefault(_AppDrawerNavItems);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _AppDrawerNavItems = _interopRequireDefault(require("../../urb-demo-webapp/components/AppDrawerNavItems"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
-_AppDrawerNavItems2.default;
+_AppDrawerNavItems.default;exports.default = _default;
 //# sourceMappingURL=AppDrawerNavItems.js.map

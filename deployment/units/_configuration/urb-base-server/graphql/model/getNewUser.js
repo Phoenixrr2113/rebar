@@ -1,4 +1,4 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });exports.default = getNewUser;function getNewUser(User_artifact_id) {
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = getNewUser;function getNewUser(User_artifact_id) {
   return {
     User_artifact_id,
     UserToken2: '',

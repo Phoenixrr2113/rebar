@@ -1,6 +1,6 @@
-'use strict';var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
+"use strict";var _fs = _interopRequireDefault(require("fs"));
 
-var _package = require('../_configuration/package.js');function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _package = require("../_configuration/package.js");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
@@ -25,7 +25,7 @@ const fileName = './units/_configuration/package.js';
 const searchString = 'export const version = ';
 const newContentOfLine = 'export const version = \'' + newVersion + '\'';
 
-let fileLines = _fs2.default.readFileSync(fileName, 'utf8').split('\n');
+let fileLines = _fs.default.readFileSync(fileName, 'utf8').split('\n');
 let index = 0;
 
 while (index < fileLines.length) {
@@ -34,7 +34,7 @@ while (index < fileLines.length) {
     console.log('[' + fileName + '] is already up to date');else
     {
       fileLines[index] = newContentOfLine;
-      _fs2.default.writeFileSync(fileName, fileLines.join('\n'));
+      _fs.default.writeFileSync(fileName, fileLines.join('\n'));
 
       console.log('New version in package.js:       ' + newVersion);
     }

@@ -1,8 +1,8 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _defaultPersister = require('../../../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _defaultPersister = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-_defaultPersister2.default.addTableSchema('UserAccount', {
+_defaultPersister.default.addTableSchema('UserAccount', {
   fields: {
     id: 'uuid',
     UserAccount_artifact_id: 'uuid',
@@ -17,10 +17,10 @@ _defaultPersister2.default.addTableSchema('UserAccount', {
   {
     on: 'UserAccount_Identifier',
     using: 'org.apache.cassandra.index.sasi.SASIIndex',
-    options: {} }] });exports.default =
+    options: {} }] });var _default =
 
 
 
 
-true;
+true;exports.default = _default;
 //# sourceMappingURL=UserAccount.schema.js.map

@@ -1,33 +1,33 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
-
-
+var _graphql = require("graphql");
 
 
 
 
-var _graphqlRelay = require('graphql-relay');
 
-var _defaultPersister = require('../../../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);
-var _NodeInterface = require('../NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);
-var _ViewerFields2 = require('../../../_configuration/urb-base-server/graphql/_ViewerFields');var _ViewerFields3 = _interopRequireDefault(_ViewerFields2);
-var _User = require('../../../_configuration/urb-base-server/graphql/model/User');var _User2 = _interopRequireDefault(_User);
 
-var _ObjectUserPermissionsConnection = require('./ObjectUserPermissionsConnection');var _ObjectUserPermissionsConnection2 = _interopRequireDefault(_ObjectUserPermissionsConnection);
-var _ObjectUserPermissionType = require('./ObjectUserPermissionType');var _ObjectUserPermissionType2 = _interopRequireDefault(_ObjectUserPermissionType);
-var _ResourceUserAllowancesConnection = require('./ResourceUserAllowancesConnection');var _ResourceUserAllowancesConnection2 = _interopRequireDefault(_ResourceUserAllowancesConnection);
-var _ResourceUserAllowanceType = require('./ResourceUserAllowanceType');var _ResourceUserAllowanceType2 = _interopRequireDefault(_ResourceUserAllowanceType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;}exports.default =
+var _graphqlRelay = require("graphql-relay");
+
+var _defaultPersister = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/defaultPersister"));
+var _NodeInterface = _interopRequireDefault(require("../NodeInterface"));
+var _ViewerFields2 = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/_ViewerFields"));
+var _User = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/model/User"));
+
+var _ObjectUserPermissionsConnection = _interopRequireDefault(require("./ObjectUserPermissionsConnection"));
+var _ObjectUserPermissionType = _interopRequireDefault(require("./ObjectUserPermissionType"));
+var _ResourceUserAllowancesConnection = _interopRequireDefault(require("./ResourceUserAllowancesConnection"));
+var _ResourceUserAllowanceType = _interopRequireDefault(require("./ResourceUserAllowanceType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 new _graphql.GraphQLObjectType({
   name: 'Viewer',
-  interfaces: [_NodeInterface2.default],
-  isTypeOf: object => object instanceof _User2.default,
-  fields: Object.assign({
+  interfaces: [_NodeInterface.default],
+  isTypeOf: object => object instanceof _User.default,
+  fields: {
     id: (0, _graphqlRelay.globalIdField)('Viewer'),
     User_IsAnonymous: {
       type: _graphql.GraphQLBoolean,
-      resolve: obj => _defaultPersister2.default.uuidEquals(obj.id, _defaultPersister2.default.uuidNull()) },
+      resolve: obj => _defaultPersister.default.uuidEquals(obj.id, _defaultPersister.default.uuidNull()) },
 
     UserToken2: { type: _graphql.GraphQLString, resolve: obj => obj.UserToken2 },
     User_DisplayName: {
@@ -41,14 +41,14 @@ new _graphql.GraphQLObjectType({
 
 
     ObjectUserPermissions: {
-      type: _ObjectUserPermissionsConnection2.default.connectionType,
+      type: _ObjectUserPermissionsConnection.default.connectionType,
 
-      args: Object.assign({},
-      _graphqlRelay.connectionArgs, {
-        ObjectUserPermission_Name: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) } }),
+      args: {
+        ..._graphqlRelay.connectionArgs,
+        ObjectUserPermission_Name: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) } },
 
 
-      resolve: async (obj, _ref, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref, []);
+      resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
         const { ObjectUserPermission_Name } = args;
         const arr = await objectManager.getObjectList('ObjectUserPermission', {
           ObjectUserPermission_Name });
@@ -58,9 +58,9 @@ new _graphql.GraphQLObjectType({
 
 
     ObjectUserPermission: {
-      type: _ObjectUserPermissionType2.default,
+      type: _ObjectUserPermissionType.default,
 
-      args: Object.assign({ id: { type: _graphql.GraphQLID } }),
+      args: { ...{ id: { type: _graphql.GraphQLID } } },
 
       resolve: async (parent, { id }, context, { rootValue: objectManager }) => {
         const local_id = objectManager.uuidFromString('ObjectUserPermission', (0, _graphqlRelay.fromGlobalId)(id).id);
@@ -73,20 +73,20 @@ new _graphql.GraphQLObjectType({
 
 
     ResourceUserAllowances: {
-      type: _ResourceUserAllowancesConnection2.default.connectionType,
+      type: _ResourceUserAllowancesConnection.default.connectionType,
 
-      args: Object.assign({}, _graphqlRelay.connectionArgs),
+      args: { ..._graphqlRelay.connectionArgs },
 
-      resolve: async (obj, _ref2, context, { rootValue: objectManager }) => {let args = _objectWithoutProperties(_ref2, []);
+      resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
         const arr = await objectManager.getObjectList('ResourceUserAllowance', {});
         return (0, _graphqlRelay.connectionFromArray)(arr, args);
       } },
 
 
     ResourceUserAllowance: {
-      type: _ResourceUserAllowanceType2.default,
+      type: _ResourceUserAllowanceType.default,
 
-      args: Object.assign({ id: { type: _graphql.GraphQLID } }),
+      args: { ...{ id: { type: _graphql.GraphQLID } } },
 
       resolve: async (parent, { id }, context, { rootValue: objectManager }) => {
         const local_id = objectManager.uuidFromString('ResourceUserAllowance', (0, _graphqlRelay.fromGlobalId)(id).id);
@@ -96,8 +96,8 @@ new _graphql.GraphQLObjectType({
 
           _materialized_view: 'ResourceUserAllowance_by_ID' });
 
-      } } },
+      } },
 
 
-  _ViewerFields3.default) });
+    ..._ViewerFields2.default } });exports.default = _default;
 //# sourceMappingURL=ViewerType.js.map

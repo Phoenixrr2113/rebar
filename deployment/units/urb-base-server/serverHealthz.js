@@ -1,18 +1,18 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _express = require('express');var _express2 = _interopRequireDefault(_express);
+var _express = _interopRequireDefault(require("express"));
 
-var _defaultPersister = require('../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _defaultPersister = _interopRequireDefault(require("../_configuration/urb-base-server/graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const serverHealthz = (0, _express2.default)();
+const serverHealthz = (0, _express.default)();
 
 serverHealthz.get('/', async (req, res, next) => {
   try {
-    await _defaultPersister2.default.confirmHealth();
+    await _defaultPersister.default.confirmHealth();
     res.sendStatus(200);
   } catch (err) {
     next(new Error('DB is unreachable'));
   }
-});exports.default =
-serverHealthz;
+});var _default =
+serverHealthz;exports.default = _default;
 //# sourceMappingURL=serverHealthz.js.map

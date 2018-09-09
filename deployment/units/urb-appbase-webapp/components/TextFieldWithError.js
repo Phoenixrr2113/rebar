@@ -1,16 +1,16 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _FormControl = require('@material-ui/core/FormControl');var _FormControl2 = _interopRequireDefault(_FormControl);
+var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
 
-var _FormHelperText = require('@material-ui/core/FormHelperText');var _FormHelperText2 = _interopRequireDefault(_FormHelperText);
+var _FormHelperText = _interopRequireDefault(require("@material-ui/core/FormHelperText"));
 
-var _Input = require('@material-ui/core/Input');var _Input2 = _interopRequireDefault(_Input);
+var _Input = _interopRequireDefault(require("@material-ui/core/Input"));
 
-var _InputLabel = require('@material-ui/core/InputLabel');var _InputLabel2 = _interopRequireDefault(_InputLabel);
+var _InputLabel = _interopRequireDefault(require("@material-ui/core/InputLabel"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   formControl: {
@@ -18,7 +18,7 @@ const styles = theme => ({
 
 
 
-class TextFieldWithError extends _react2.default.Component
+class TextFieldWithError extends _react.default.Component
 
 
 
@@ -32,14 +32,14 @@ class TextFieldWithError extends _react2.default.Component
     const isError = errorText !== '';
 
     return (
-      _react2.default.createElement(_FormControl2.default, { className: classes.formControl, error: isError, id: id, fullWidth: true },
-        _react2.default.createElement(_InputLabel2.default, { htmlFor: isError ? 'name-simple' : 'name-error' }, label),
-        _react2.default.createElement(_Input2.default, { id: 'value', value: value, onChange: onChange }),
-        _react2.default.createElement(_FormHelperText2.default, null, isError ? errorText : '')));
+      _react.default.createElement(_FormControl.default, { className: classes.formControl, error: isError, id: id, fullWidth: true },
+      _react.default.createElement(_InputLabel.default, { htmlFor: isError ? 'name-simple' : 'name-error' }, label),
+      _react.default.createElement(_Input.default, { id: "value", value: value, onChange: onChange }),
+      _react.default.createElement(_FormHelperText.default, null, isError ? errorText : '')));
 
 
-  }}exports.default =
+  }}var _default =
 
 
-(0, _styles.withStyles)(styles)(TextFieldWithError);
+(0, _styles.withStyles)(styles)(TextFieldWithError);exports.default = _default;
 //# sourceMappingURL=TextFieldWithError.js.map

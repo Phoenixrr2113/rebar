@@ -1,9 +1,9 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _winston = require('winston');var _winston2 = _interopRequireDefault(_winston);
+var _winston = _interopRequireDefault(require("winston"));
 
-var _debug = require('../_configuration/debug');
-var _defaultPersister = require('../_configuration/urb-base-server/graphql/defaultPersister');var _defaultPersister2 = _interopRequireDefault(_defaultPersister);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _debug = require("../_configuration/debug");
+var _defaultPersister = _interopRequireDefault(require("../_configuration/urb-base-server/graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
 require('dotenv').load();
@@ -13,17 +13,17 @@ const transports = [];
 
 // If set, show all log messages on console
 if (_debug.debugWriteToConsoleLog) {
-  transports.push(new _winston2.default.transports.Console());
+  transports.push(new _winston.default.transports.Console());
 }
 
 // If persister specified logger, use it
-const defaultPersisterLogger = _defaultPersister2.default.createLogger();
+const defaultPersisterLogger = _defaultPersister.default.createLogger();
 if (defaultPersisterLogger) {
   transports.push(defaultPersisterLogger);
 }
 
 // Create winston
-const log = new _winston2.default.Logger({ transports });exports.default =
+const log = new _winston.default.Logger({ transports });var _default =
 
-log;
+log;exports.default = _default;
 //# sourceMappingURL=log.js.map

@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _fs = _interopRequireDefault(require("fs"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs2.default.promises;exports.default =
+const fs = _fs.default.promises;var
 
-async function fsExists(path) {
+fsExists = async function fsExists(path) {
   try {
     await fs.access(path);
     return true;
@@ -12,5 +12,5 @@ async function fsExists(path) {
     if (err.code === 'ENOENT') return false;else
     throw err;
   }
-};
+};exports.default = fsExists;
 //# sourceMappingURL=fsExists.js.map

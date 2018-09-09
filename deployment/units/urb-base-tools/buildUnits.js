@@ -1,21 +1,21 @@
-'use strict';
+"use strict";
 
-var _fs = require('fs');var _fs2 = _interopRequireDefault(_fs);
-var _path = require('path');var _path2 = _interopRequireDefault(_path);
+var _fs = _interopRequireDefault(require("fs"));
+var _path = _interopRequireDefault(require("path"));
 
-var _prettierEslint = require('prettier-eslint');var _prettierEslint2 = _interopRequireDefault(_prettierEslint);
-var _sortedJsonStringify = require('sorted-json-stringify');var _sortedJsonStringify2 = _interopRequireDefault(_sortedJsonStringify);
+var _prettierEslint = _interopRequireDefault(require("prettier-eslint"));
+var _sortedJsonStringify = _interopRequireDefault(require("sorted-json-stringify"));
 
 
-var _eslintrc = require('../../.eslintrc.json');var _eslintrc2 = _interopRequireDefault(_eslintrc);
-var _fsExists = require('../urb-base-server/fsExists');var _fsExists2 = _interopRequireDefault(_fsExists);
-var _package = require('../../package.json');var _package2 = _interopRequireDefault(_package);
-var _buildUnits = require('../_configuration/urb-base-tools/buildUnits');var _buildUnits2 = _interopRequireDefault(_buildUnits);
-var _ensureFileContent = require('../urb-base-server/ensureFileContent');var _ensureFileContent2 = _interopRequireDefault(_ensureFileContent);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _eslintrc = _interopRequireDefault(require("../../.eslintrc.json"));
+var _fsExists = _interopRequireDefault(require("../urb-base-server/fsExists"));
+var _package = _interopRequireDefault(require("../../package.json"));
+var _buildUnits = _interopRequireDefault(require("../_configuration/urb-base-tools/buildUnits"));
+var _ensureFileContent = _interopRequireDefault(require("../urb-base-server/ensureFileContent"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // $AssureFlow Not sure why it gives an error. The file does exist
 
-const fs = _fs2.default.promises; // $AssureFlow Not sure why it gives an error. The file does exist
+const fs = _fs.default.promises;
 
-const prettierESLintOptions = { eslintConfig: _eslintrc2.default, prettierOptions: _package2.default.prettier };
+const prettierESLintOptions = { eslintConfig: _eslintrc.default, prettierOptions: _package.default.prettier };
 
 function mergeScripts(scripts1, scripts2) {
   const scripts = Object.assign({}, scripts1);
@@ -35,7 +35,7 @@ function mergeScripts(scripts1, scripts2) {
 }
 
 async function createPackageJson(units) {
-  const packageJsonFileName = _path2.default.resolve('./package.json');
+  const packageJsonFileName = _path.default.resolve('./package.json');
   const currentPackageAsJSONString = (await fs.readFile(packageJsonFileName)).toString();
   const currentPackageAsObject = JSON.parse(currentPackageAsJSONString);
   const packageAsObject = {
@@ -55,8 +55,8 @@ async function createPackageJson(units) {
 
   // Add packages to object
   for (let unitName of units) {
-    const packageAsObjectName = _path2.default.resolve('./units', unitName, 'package.part.json');
-    if (await (0, _fsExists2.default)(packageAsObjectName)) {
+    const packageAsObjectName = _path.default.resolve('./units', unitName, 'package.part.json');
+    if (await (0, _fsExists.default)(packageAsObjectName)) {
       const packageToAddAsObject = JSON.parse((await fs.readFile(packageAsObjectName)).toString());
 
       if (packageToAddAsObject.dependencies)
@@ -77,10 +77,10 @@ async function createPackageJson(units) {
     }
   }
 
-  await (0, _ensureFileContent2.default)(
+  await (0, _ensureFileContent.default)(
   packageJsonFileName,
   currentPackageAsJSONString,
-  (0, _sortedJsonStringify2.default)(packageAsObject, null, 2),
+  (0, _sortedJsonStringify.default)(packageAsObject, null, 2),
   true);
 
 }
@@ -91,8 +91,8 @@ async function createMutations(units) {
 
   for (let unitName of units)
   if (unitName.endsWith('-server')) {
-    const mutationsDir = _path2.default.resolve('./units', unitName, 'graphql/mutation');
-    if (await (0, _fsExists2.default)(mutationsDir)) {
+    const mutationsDir = _path.default.resolve('./units', unitName, 'graphql/mutation');
+    if (await (0, _fsExists.default)(mutationsDir)) {
       const mutationFileNames = await fs.readdir(mutationsDir);
 
       for (let mutationFileName of mutationFileNames) {
@@ -119,10 +119,10 @@ async function createMutations(units) {
   mutations = mutations.concat(mutationsExports);
   mutations = mutations.concat(['}']);
 
-  await (0, _ensureFileContent2.default)(
-  _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_mutations.js'),
+  await (0, _ensureFileContent.default)(
+  _path.default.resolve('./units/_configuration/urb-base-server/graphql/_mutations.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: mutations.join('\r\n') }, prettierESLintOptions)),
+  (0, _prettierEslint.default)({ text: mutations.join('\r\n'), ...prettierESLintOptions }),
   true);
 
 }
@@ -132,8 +132,8 @@ async function createSchemas(units) {
 
   for (let unitName of units)
   if (unitName.endsWith('-server')) {
-    const schemasDir = _path2.default.resolve('./units', unitName, 'graphql/model');
-    if (await (0, _fsExists2.default)(schemasDir)) {
+    const schemasDir = _path.default.resolve('./units', unitName, 'graphql/model');
+    if (await (0, _fsExists.default)(schemasDir)) {
       const objectTypeFileNames = await fs.readdir(schemasDir);
 
       for (let objectTypeFileName of objectTypeFileNames) {
@@ -151,10 +151,10 @@ async function createSchemas(units) {
   schemas = schemas.concat(schemasImports);
   schemas = schemas.concat(['', 'export default true']);
 
-  await (0, _ensureFileContent2.default)(
-  _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_schemas.js'),
+  await (0, _ensureFileContent.default)(
+  _path.default.resolve('./units/_configuration/urb-base-server/graphql/_schemas.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: schemas.join('\r\n') }, prettierESLintOptions)),
+  (0, _prettierEslint.default)({ text: schemas.join('\r\n'), ...prettierESLintOptions }),
   true);
 
 }
@@ -165,12 +165,12 @@ async function createViewerFields(units) {
 
   for (let unitName of units)
   if (unitName.endsWith('-server')) {
-    const viewerFieldsFileName = _path2.default.resolve(
+    const viewerFieldsFileName = _path.default.resolve(
     './units',
     unitName,
     'graphql/type/_ViewerFields.js');
 
-    if (await (0, _fsExists2.default)(viewerFieldsFileName)) {
+    if (await (0, _fsExists.default)(viewerFieldsFileName)) {
       const viewerFieldsImportName = unitName.replace(/-/g, '_');
       viewerFieldsImports.push(
       'import ' +
@@ -189,10 +189,10 @@ async function createViewerFields(units) {
   viewerFields = viewerFields.concat(viewerFieldsExports);
   viewerFields = viewerFields.concat(['}']);
 
-  await (0, _ensureFileContent2.default)(
-  _path2.default.resolve('./units/_configuration/urb-base-server/graphql/_ViewerFields.js'),
+  await (0, _ensureFileContent.default)(
+  _path.default.resolve('./units/_configuration/urb-base-server/graphql/_ViewerFields.js'),
   null,
-  (0, _prettierEslint2.default)(Object.assign({ text: viewerFields.join('\r\n') }, prettierESLintOptions)),
+  (0, _prettierEslint.default)({ text: viewerFields.join('\r\n'), ...prettierESLintOptions }),
   true);
 
 }
@@ -212,7 +212,7 @@ async function main() {
   createViewerFields(units),
   createSchemas(units),
   createMutations(units),
-  (0, _buildUnits2.default)(units)];
+  (0, _buildUnits.default)(units)];
 
 
   await Promise.all(taskPromises);

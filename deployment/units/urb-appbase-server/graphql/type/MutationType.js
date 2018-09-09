@@ -1,10 +1,10 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _graphql = require('graphql');
+var _graphql = require("graphql");
 
-var _mutations2 = require('../../../_configuration/urb-base-server/graphql/_mutations');var _mutations3 = _interopRequireDefault(_mutations2);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _mutations2 = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/_mutations"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 new _graphql.GraphQLObjectType({
   name: 'Mutation',
-  fields: Object.assign({}, _mutations3.default) });
+  fields: { ..._mutations2.default } });exports.default = _default;
 //# sourceMappingURL=MutationType.js.map

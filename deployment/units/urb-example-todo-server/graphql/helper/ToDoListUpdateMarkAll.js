@@ -1,6 +1,6 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true }); //  weak
-exports.default =
-async function ToDoListUpdateMarkAll(objectManager, ToDo_CompleteNew) {
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0; //  weak
+var
+ToDoListUpdateMarkAll = async function ToDoListUpdateMarkAll(objectManager, ToDo_CompleteNew) {
   const arr = await objectManager.getObjectList('ToDo', {});
 
   const arr_filtered = arr.filter(a_ToDo => a_ToDo.ToDo_Complete !== ToDo_CompleteNew);
@@ -17,5 +17,5 @@ async function ToDoListUpdateMarkAll(objectManager, ToDo_CompleteNew) {
   await Promise.all(arrPromiseToUpdate);
 
   return arr_local_ids_Changed_ToDos;
-};
+};exports.default = ToDoListUpdateMarkAll;
 //# sourceMappingURL=ToDoListUpdateMarkAll.js.map

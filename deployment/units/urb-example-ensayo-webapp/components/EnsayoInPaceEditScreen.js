@@ -1,24 +1,24 @@
-'use strict';Object.defineProperty(exports, "__esModule", { value: true });
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Add = require('@material-ui/icons/Add');var _Add2 = _interopRequireDefault(_Add);
+var _Add = _interopRequireDefault(require("@material-ui/icons/Add"));
 
-var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequireDefault(_Button);
+var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
 
-var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
+var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
 
-var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
+var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
+var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
 
-var _styles = require('@material-ui/core/styles');
+var _styles = require("@material-ui/core/styles");
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);
-var _reactRelay = require('react-relay');
+var _react = _interopRequireDefault(require("react"));
+var _reactRelay = require("react-relay");
 
-var _EnsayoAddMutation = require('../../urb-example-ensayo-client/relay/EnsayoAddMutation');var _EnsayoAddMutation2 = _interopRequireDefault(_EnsayoAddMutation);
-var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
+var _EnsayoAddMutation = _interopRequireDefault(require("../../urb-example-ensayo-client/relay/EnsayoAddMutation"));
+var _ResponsiveContentArea = _interopRequireDefault(require("../../urb-appbase-webapp/components/ResponsiveContentArea"));
 
-var _EnsayoInPlaceEditProperties = require('./EnsayoInPlaceEditProperties');var _EnsayoInPlaceEditProperties2 = _interopRequireDefault(_EnsayoInPlaceEditProperties);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _EnsayoInPlaceEditProperties = _interopRequireDefault(require("./EnsayoInPlaceEditProperties"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {
@@ -27,7 +27,7 @@ const styles = theme => ({
   addNewButton: { float: 'right', marginTop: -58, marginRight: 20 } });
 
 
-class EnsayoInPaceEditScreen extends _react2.default.Component
+class EnsayoInPaceEditScreen extends _react.default.Component
 
 
 
@@ -48,7 +48,7 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
       const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties;
       const { relay, Viewer } = this.props;
 
-      _EnsayoAddMutation2.default.commit(
+      _EnsayoAddMutation.default.commit(
       relay.environment,
       Viewer,
       Ensayo_Title,
@@ -70,40 +70,40 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
     const { propertiesIsOpen } = this.state;
 
     return (
-      _react2.default.createElement(_ResponsiveContentArea2.default, null,
-        _react2.default.createElement(_Card2.default, { className: classes.card },
-          _react2.default.createElement(_CardHeader2.default, { title: 'Ensayo', subheader: 'List of essays' }),
+      _react.default.createElement(_ResponsiveContentArea.default, null,
+      _react.default.createElement(_Card.default, { className: classes.card },
+      _react.default.createElement(_CardHeader.default, { title: "Ensayo", subheader: "List of essays" }),
 
-          _react2.default.createElement(_CardContent2.default, null,
-            _react2.default.createElement('div', { className: classes.addNewButton },
-              _react2.default.createElement(_Button2.default, {
-                  variant: 'fab',
-                  color: 'primary',
-                  className: classes.button,
-                  onClick: this._handle_onClick_Add },
+      _react.default.createElement(_CardContent.default, null,
+      _react.default.createElement("div", { className: classes.addNewButton },
+      _react.default.createElement(_Button.default, {
+        variant: "fab",
+        color: "primary",
+        className: classes.button,
+        onClick: this._handle_onClick_Add },
 
-                _react2.default.createElement(_Add2.default, null))),
-
-
-
-            this.props.children),
-
-
-          propertiesIsOpen &&
-          _react2.default.createElement(_EnsayoInPlaceEditProperties2.default, {
-            Ensayo_Title: '',
-            Ensayo_Content: '',
-            Ensayo_Description: '',
-            handlerUpdate: this._handle_updateHandler_Ensayo,
-            handlerClose: this._handle_Close_Properties }))));
+      _react.default.createElement(_Add.default, null))),
 
 
 
+      this.props.children),
 
 
-  }}exports.default =
+      propertiesIsOpen &&
+      _react.default.createElement(_EnsayoInPlaceEditProperties.default, {
+        Ensayo_Title: "",
+        Ensayo_Content: "",
+        Ensayo_Description: "",
+        handlerUpdate: this._handle_updateHandler_Ensayo,
+        handlerClose: this._handle_Close_Properties }))));
+
+
+
+
+
+  }}var _default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(EnsayoInPaceEditScreen), { Viewer: function () {return require('./__generated__/EnsayoInPaceEditScreen_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)(EnsayoInPaceEditScreen), { Viewer: function () {return require("./__generated__/EnsayoInPaceEditScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoInPaceEditScreen.js.map
