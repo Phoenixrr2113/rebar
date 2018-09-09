@@ -95,7 +95,9 @@ class ToDoList extends _react2.default.Component
 
 
         _react2.default.createElement(_List2.default, null,
-          ToDos.edges.map(({ node }) => _react2.default.createElement(_ToDoItem2.default, { key: node.id, Viewer: Viewer, ToDo: node })))));
+          ToDos.edges.map(({ node }) =>
+          _react2.default.createElement(_ToDoItem2.default, { key: node.id, Viewer: Viewer, ToDo: node })))));
+
 
 
 

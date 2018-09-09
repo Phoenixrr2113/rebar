@@ -18,7 +18,9 @@ var _SiteConfigurationContext = require('../../urb-appbase-webapp/components/Sit
 const MapComponent = (0, _reactGoogleMaps.withScriptjs)(
 (0, _reactGoogleMaps.withGoogleMap)(props =>
 _react2.default.createElement(_reactGoogleMaps.GoogleMap, { defaultZoom: props.defaultZoom, center: props.center },
-  props.markers.map((marker, index) => _react2.default.createElement(_reactGoogleMaps.Marker, { key: index, position: marker.position })))));
+  props.markers.map((marker, index) =>
+  _react2.default.createElement(_reactGoogleMaps.Marker, { key: index, position: marker.position })))));
+
 
 
 
