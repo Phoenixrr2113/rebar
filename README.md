@@ -7,7 +7,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 * [Project Details](http://codefoundries.com/developer/rebar/).
 
-* [Live demo I](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister.
+* [Live demo I](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister, old verison.
 
 * Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
 
