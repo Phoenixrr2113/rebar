@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 31cde52152fce909b28696d15ac69afb
+ * @relayHash 47a9a6b37e24989bb83876981c4bd805
  */
 
 /* eslint-disable */
@@ -28,6 +28,10 @@
                     +Inscriptio_Notes: ?string,
                   |}
                 |}
+              |};
+              export type InscriptioUpdateMutation = {|
+                variables: InscriptioUpdateMutationVariables,
+                response: InscriptioUpdateMutationResponse,
               |};
               */
 

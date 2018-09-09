@@ -4,7 +4,7 @@ import { mutationWithClientMutationId } from 'graphql-relay'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
 
 import InscriptiosConnection from '../type/InscriptiosConnection'
-import ViewerType from '../../../../units/urb-webapp-server/graphql/type/ViewerType'
+import ViewerType from '../../../../units/urb-appbase-server/graphql/type/ViewerType'
 
 export default mutationWithClientMutationId({
   name: 'InscriptioAdd',

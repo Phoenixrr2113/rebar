@@ -1,7 +1,7 @@
 // @flow
 
-import buildUnits_urb_webapp_tools from '../../urb-webapp-tools/extenders/urb-base-tools/buildUnits.js'
+import buildUnits_urb_appbase_tools from '../../urb-appbase-tools/extenders/urb-base-tools/buildUnits.js'
 
 export default ( async function buldUnits( units: Array<string> ) {
-  await buildUnits_urb_webapp_tools( units )
+  await buildUnits_urb_appbase_tools( units )
 })

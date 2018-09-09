@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 56ca3cdc26d1e2a3a0207dbb6cfde57c
+ * @relayHash bdab26f641b9c02970e2e282ffddf484
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: ViewportDimensionsScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query = {|
+                variables: routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryVariables,
+                response: routeAppFrameViewportDimensions_ViewportDimensionsScreen_QueryResponse,
               |};
               */
 

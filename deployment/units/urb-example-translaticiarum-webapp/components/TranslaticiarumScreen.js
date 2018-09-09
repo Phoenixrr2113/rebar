@@ -9,12 +9,11 @@ var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _in
 var _styles = require('@material-ui/core/styles');
 
 var _moment = require('moment');var _moment2 = _interopRequireDefault(_moment);
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactBigCalendar = require('react-big-calendar');var _reactBigCalendar2 = _interopRequireDefault(_reactBigCalendar);
 var _reactRelay = require('react-relay');
 
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 _reactBigCalendar2.default.momentLocalizer(_moment2.default);
 
@@ -34,10 +33,6 @@ class TranslaticiarumScreen extends _react2.default.Component
 
 
 {
-
-
-
-
   constructor(props, context) {
     super(props, context);this.
 
@@ -89,7 +84,7 @@ class TranslaticiarumScreen extends _react2.default.Component
 
 
 
-  }}TranslaticiarumScreen.contextTypes = { router: _propTypes2.default.object };exports.default =
+  }}exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(

@@ -57,14 +57,20 @@ export default class PersisterCassandra {
 
             ExpressCassandraClient.instance[entityName].findOne( filter, options, ( err, entity ) => {
               if ( err )
-                reject( 'getOneObject failed: ' + JSON.stringify({ entityName, filters, err }) )
+                reject(
+                  'getOneObject findOne failed: ' +
+                    JSON.stringify({ entityName, filters, message: err.message }),
+                )
               else {
                 if ( entity != null ) resolve( new ObjectType( entity ) )
                 else resolve( null )
               }
             })
           } catch ( err ) {
-            reject( 'getOneObject failed: ' + JSON.stringify({ entityName, filters, err }) )
+            reject(
+              'getOneObject failed: ' +
+                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+            )
           }
         }),
       )
@@ -103,7 +109,10 @@ export default class PersisterCassandra {
               options,
               ( err, arrEntities ) => {
                 if ( err )
-                  reject( 'getObjectList failed: ' + JSON.stringify({ entityName, filters, err }) )
+                  reject(
+                    'getObjectList find failed: ' +
+                      JSON.stringify({ entityName, filters, message: err.message }),
+                  )
                 else {
                   const arrRetObj = []
                   for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
@@ -112,7 +121,10 @@ export default class PersisterCassandra {
               },
             )
           } catch ( err ) {
-            reject( 'getObjectList failed: ' + JSON.stringify({ entityName, filters, err }) )
+            reject(
+              'getObjectList failed: ' +
+                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+            )
           }
         }),
       )
@@ -223,9 +235,9 @@ export default class PersisterCassandra {
     this.tableSchemas = null // Free up the memory that is not needed any more and indicate that we can not add any more
 
     const arrSchemas = []
-    // $FlowIssue enrolledTables should be populated here
+    // $AssureFlow enrolledTables should be populated here
     for ( let tableName of enrolledTables.keys() ) {
-      // $FlowIssue enrolledTables should be populated here
+      // $AssureFlow enrolledTables should be populated here
       arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
     }
     this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )

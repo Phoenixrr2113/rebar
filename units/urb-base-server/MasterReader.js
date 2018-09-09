@@ -2,7 +2,6 @@
 
 import fsWithCallbacks from 'fs'
 
-// $FlowIssue
 const fs = fsWithCallbacks.promises
 
 class FileBase {
@@ -106,7 +105,9 @@ export default class MasterReader {
 
     if ( currentContent ) return currentContent
 
-    const newContent = ( await fs.readFile( this.basePath + '/' + fileName, 'utf8' ) ).toString()
+    const newContent = ( await fs.readFile( this.basePath + '/' + fileName, {
+      encoding: 'utf8',
+    }) ).toString()
     this.fileContentsByRelativePath.set( fileName, newContent )
 
     return newContent

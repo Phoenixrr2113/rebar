@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 8a3c43de7afce10bd7c27ab0304fd74c
+ * @relayHash 69cce729b8f0ee6bd80b1011c01cb4e8
  */
 
 /* eslint-disable */
@@ -24,6 +24,10 @@
                   |},
                   +deletedId: ?string,
                 |}
+              |};
+              export type ToDoDeleteMutation = {|
+                variables: ToDoDeleteMutationVariables,
+                response: ToDoDeleteMutationResponse,
               |};
               */
 

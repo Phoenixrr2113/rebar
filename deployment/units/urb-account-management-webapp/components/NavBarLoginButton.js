@@ -8,7 +8,7 @@ var _MenuItem = require('@material-ui/core/MenuItem');var _MenuItem2 = _interopR
 
 var _styles = require('@material-ui/core/styles');
 
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _found = require('found');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -35,11 +35,8 @@ class NavBarLoginButton extends _react2.default.Component
 
 
 
+
 {
-
-
-
-
   constructor(props, context) {
     super(props, context);this.
 
@@ -81,13 +78,13 @@ class NavBarLoginButton extends _react2.default.Component
 
     _handle_onClick_Logout = () => {
       this.setState({ userMenuIsOpen: false });
-      this.context.router.push('/user/logout');
+      this.props.router.push('/user/logout');
     };this.
 
     _handle_Login_NewUser = () => {
       this.setState({ loginDialogIsOpen: false });
 
-      this.context.router.push('/user/new');
+      this.props.router.push('/user/new');
     };this.state = { anchorEl: undefined, loginDialogIsOpen: false, userMenuIsOpen: false };} // Handle popping open the login dialog if authentication is required
   UNSAFE_componentWillMount() {(0, _RequiresAuthentication.registerAuthenticationRequiredCallback)(this._handle_onClick_Login);}componentWillUnmount() {(0, _RequiresAuthentication.unregisterAuthenticationRequiredCallback)();}
   render() {
@@ -130,9 +127,9 @@ class NavBarLoginButton extends _react2.default.Component
 
 
 
-  }}NavBarLoginButton.contextTypes = { router: _propTypes2.default.object };exports.default =
+  }}exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(NavBarLoginButton), { Viewer: function () {return require('./__generated__/NavBarLoginButton_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(NavBarLoginButton)), { Viewer: function () {return require('./__generated__/NavBarLoginButton_Viewer.graphql');} });
 //# sourceMappingURL=NavBarLoginButton.js.map

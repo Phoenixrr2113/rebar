@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 22c21e10c9b739a636fe822133b06117
+ * @relayHash 8cb0580b983998f37b87999cc96ffbad
  */
 
 /* eslint-disable */
@@ -20,6 +20,10 @@
                 +InscriptioDelete: ?{|
                   +deletedId: ?string
                 |}
+              |};
+              export type InscriptioDeleteMutation = {|
+                variables: InscriptioDeleteMutationVariables,
+                response: InscriptioDeleteMutationResponse,
               |};
               */
 

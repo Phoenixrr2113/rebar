@@ -12,7 +12,7 @@ var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefaul
 
 var _styles = require('@material-ui/core/styles');
 
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _found = require('found');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -36,12 +36,8 @@ class ToDoList extends _react2.default.Component
 
 
 
+
 {constructor(...args) {var _temp;return _temp = super(...args), this.
-
-
-
-
-
     _handle_onClick_MarkAll = (event, checked) => {
       const { relay, Viewer } = this.props;
       const { variables } = this.context.relay;
@@ -103,9 +99,9 @@ class ToDoList extends _react2.default.Component
 
 
 
-  }}ToDoList.contextTypes = { relay: _propTypes2.default.object, router: _propTypes2.default.object };exports.default =
+  }}exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(ToDoList), { Viewer: function () {return require('./__generated__/ToDoList_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(ToDoList)), { Viewer: function () {return require('./__generated__/ToDoList_Viewer.graphql');} });
 //# sourceMappingURL=ToDoList.js.map

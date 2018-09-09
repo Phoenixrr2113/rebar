@@ -2,7 +2,6 @@
 
 import fsWithCallbacks from 'fs'
 
-// $FlowIssue
 const fs = fsWithCallbacks.promises
 
 export default ( async function fsExists( path: string ) {

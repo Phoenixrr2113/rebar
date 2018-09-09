@@ -8,11 +8,11 @@ import CardHeader from '@material-ui/core/CardHeader'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import PropTypes from 'prop-types'
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {
@@ -20,11 +20,11 @@ const styles = theme => ({
   },
 })
 
-class EnsayoPublicList extends React.Component<any, any> {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
+class EnsayoPublicList extends React.Component<{
+  classes: Object,
+  router: Object,
+  Viewer: Object,
+}> {
   _handle_onClick( id ) {
     this.context.router.push( '/ensayo/item/' + id )
   }
@@ -49,7 +49,7 @@ class EnsayoPublicList extends React.Component<any, any> {
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( EnsayoPublicList ),
+  withStyles( styles )( withRouter( EnsayoPublicList ) ),
   graphql`
     fragment EnsayoPublicList_Viewer on Viewer {
       Ensayos(first: 2147483647) @connection(key: "EnsayoPublicList_Ensayos") {

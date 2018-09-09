@@ -13,4 +13,7 @@ export var debugWriteToLogServerRequestWebApp = { trace: 'none' }
 export var debugWriteToLogServerRequestPublic = { trace: 'none' }
 
 export var debugWriteToConsoleServerRequestSiteInformation = false
+
+export var debugWriteToConsoleObjectCacheActivity = false
+
 export var debugWriteToConsoleLog = false

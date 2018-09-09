@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash d38495651833d50e1ef5a1b0dc584822
+ * @relayHash f3a251dcef20ac9e52e64aa28c751eb4
  */
 
 /* eslint-disable */
@@ -28,6 +28,10 @@
                     +Translaticiarum_Description: ?string,
                   |}
                 |}
+              |};
+              export type TranslaticiarumUpdateMutation = {|
+                variables: TranslaticiarumUpdateMutationVariables,
+                response: TranslaticiarumUpdateMutationResponse,
               |};
               */
 

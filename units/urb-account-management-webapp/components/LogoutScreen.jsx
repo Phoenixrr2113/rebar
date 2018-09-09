@@ -18,7 +18,7 @@ import Typography from '@material-ui/core/Typography'
 
 import React from 'react'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {

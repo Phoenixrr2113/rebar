@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash fb0647b934a869b6874119ecfe6f9165
+ * @relayHash d40750ba76f96ab92a67ef094f34c02a
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: ForceLogin_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameForceLogin_ForceLogin_Query = {|
+                variables: routeAppFrameForceLogin_ForceLogin_QueryVariables,
+                response: routeAppFrameForceLogin_ForceLogin_QueryResponse,
               |};
               */
 

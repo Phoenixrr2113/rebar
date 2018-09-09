@@ -4,7 +4,6 @@ import fsWithCallbacks from 'fs'
 
 import chalk from 'chalk'
 
-// $FlowIssue
 const fs = fsWithCallbacks.promises
 
 export default ( async function ensureFileContent(
@@ -23,9 +22,9 @@ export default ( async function ensureFileContent(
   }
 
   if ( currentFileContent !== newFileContent ) {
-    if ( logToConsole ) console.log( chalk.white.bgRed( '[written]' ) + ' ' + fileName )
+    if ( logToConsole ) console.log( chalk.white.bgGreen( '[written]' ) + ' ' + fileName )
     await fs.writeFile( fileName, newFileContent, 'utf8' )
   } else {
-    if ( logToConsole ) console.log( chalk.black.bgWhite( '[skipped]' ) + ' ' + fileName )
+    if ( logToConsole ) console.log( chalk.white.bgBlackBright( '[skipped]' ) + ' ' + fileName )
   }
 })

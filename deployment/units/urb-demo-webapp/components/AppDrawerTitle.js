@@ -4,7 +4,6 @@ var _styles = require('@material-ui/core/styles');
 
 var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
 var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = {
@@ -14,11 +13,10 @@ const styles = {
 
 
 
-class AppDrawerTitle extends _react2.default.Component {constructor(...args) {var _temp;return _temp = super(...args), this.
+class AppDrawerTitle extends _react2.default.Component
 
 
-
-
+{constructor(...args) {var _temp;return _temp = super(...args), this.
     _handle_GoToHome = () => {
       this.props.handle_GoTo('/');
     }, _temp;}
@@ -32,7 +30,7 @@ class AppDrawerTitle extends _react2.default.Component {constructor(...args) {va
 
 
 
-  }}AppDrawerTitle.contextTypes = { router: _propTypes2.default.object.isRequired };exports.default =
+  }}exports.default =
 
 
 (0, _styles.withStyles)(styles)(AppDrawerTitle);

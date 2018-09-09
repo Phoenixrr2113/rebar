@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash bc4d56f88e4e152a4734cb56d400df4e
+ * @relayHash 3ddccacc81913fd1cbfffffc00042006
  */
 
 /* eslint-disable */
@@ -28,6 +28,10 @@
                     +ToDo_Complete: ?boolean,
                   |},
                 |}
+              |};
+              export type ToDoUpdateStatusMutation = {|
+                variables: ToDoUpdateStatusMutationVariables,
+                response: ToDoUpdateStatusMutationResponse,
               |};
               */
 

@@ -11,7 +11,7 @@ serverHealthz.get('/', async (req, res, next) => {
     await _defaultPersister2.default.confirmHealth();
     res.sendStatus(200);
   } catch (err) {
-    next(new Error('💔 DB is unreachable'));
+    next(new Error('DB is unreachable'));
   }
 });exports.default =
 serverHealthz;

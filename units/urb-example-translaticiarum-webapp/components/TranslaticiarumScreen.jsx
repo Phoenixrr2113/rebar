@@ -9,12 +9,11 @@ import CardHeader from '@material-ui/core/CardHeader'
 import { withStyles } from '@material-ui/core/styles'
 
 import moment from 'moment'
-import PropTypes from 'prop-types'
 import React from 'react'
 import BigCalendar from 'react-big-calendar'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 BigCalendar.momentLocalizer( moment )
 
@@ -34,10 +33,6 @@ class TranslaticiarumScreen extends React.Component<
     calendarView: 'month' | 'week' | 'day' | 'agenda',
   },
 > {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   constructor( props: Object, context: Object ) {
     super( props, context )
 

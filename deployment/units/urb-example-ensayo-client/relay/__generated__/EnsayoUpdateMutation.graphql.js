@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash b6081e6decfde20f3ffdfa967033f659
+ * @relayHash 44901c06ee1444e74d5aa413256611cb
  */
 
 /* eslint-disable */
@@ -28,6 +28,10 @@
                     +Ensayo_Content: ?string,
                   |}
                 |}
+              |};
+              export type EnsayoUpdateMutation = {|
+                variables: EnsayoUpdateMutationVariables,
+                response: EnsayoUpdateMutationResponse,
               |};
               */
 

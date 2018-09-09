@@ -33,26 +33,48 @@ class PersisterCassandra {
   getOneObject(entityName, ObjectType, filters) {
     const resultPromises = [];
 
-    for (let filter of filters)
-    resultPromises.push(
-    new Promise((resolve, reject) => {
-      this.updateUuidsInFields(entityName, filter);
-      ExpressCassandraClient.instance[entityName].findOne(
-      filter,
-      {
+    for (let filter of filters) {
+      // Configure our default options
+      let options = {
         raw: true,
-        allow_filtering: true },
+        allow_filtering: true
 
-      (err, entity) => {
-        if (err) reject(err);else
-        {
-          if (entity != null) resolve(new ObjectType(entity));else
-          resolve(null);
+
+        // In order to use materialized view, we need to pass it to the opions
+      };if (filter.hasOwnProperty('_materialized_view')) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view;
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter);
+        delete filter._materialized_view;
+      }
+
+      resultPromises.push(
+      new Promise((resolve, reject) => {
+        try {
+          this.updateUuidsInFields(entityName, filter);
+
+          ExpressCassandraClient.instance[entityName].findOne(filter, options, (err, entity) => {
+            if (err)
+            reject(
+            'getOneObject findOne failed: ' +
+            JSON.stringify({ entityName, filters, message: err.message }));else
+
+            {
+              if (entity != null) resolve(new ObjectType(entity));else
+              resolve(null);
+            }
+          });
+        } catch (err) {
+          reject(
+          'getOneObject failed: ' +
+          JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }));
+
         }
-      });
+      }));
 
-    }));
-
+    }
 
     return Promise.all(resultPromises);
   }
@@ -60,35 +82,63 @@ class PersisterCassandra {
   getObjectList(entityName, ObjectType, filters) {
     const resultPromises = [];
 
-    for (let filter of filters)
-    resultPromises.push(
-    new Promise((resolve, reject) => {
-      this.updateUuidsInFields(entityName, filter);
-      ExpressCassandraClient.instance[entityName].find(
-      filter,
-      {
+    for (let filter of filters) {
+      // Configure our default options
+      let options = {
         raw: true,
-        allow_filtering: true },
+        allow_filtering: true
 
-      (err, arrEntities) => {
-        if (err) reject(err);else
-        {
-          const arrRetObj = [];
-          for (let entity of arrEntities) arrRetObj.push(new ObjectType(entity));
-          resolve(arrRetObj);
+
+        // In order to use materialized view, we need to pass it to the opions
+      };if (filter.hasOwnProperty('_materialized_view')) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view;
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter);
+        delete filter._materialized_view;
+      }
+
+      resultPromises.push(
+      new Promise((resolve, reject) => {
+        try {
+          this.updateUuidsInFields(entityName, filter);
+
+          ExpressCassandraClient.instance[entityName].find(
+          filter,
+          options,
+          (err, arrEntities) => {
+            if (err)
+            reject(
+            'getObjectList find failed: ' +
+            JSON.stringify({ entityName, filters, message: err.message }));else
+
+            {
+              const arrRetObj = [];
+              for (let entity of arrEntities) arrRetObj.push(new ObjectType(entity));
+              resolve(arrRetObj);
+            }
+          });
+
+        } catch (err) {
+          reject(
+          'getObjectList failed: ' +
+          JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }));
+
         }
-      });
+      }));
 
-    }));
-
+    }
 
     return Promise.all(resultPromises);
   }
 
   updateUuidsInFields(entityName, fields) {
     const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields;
+
     for (let fieldName in fields) {
       const fieldType = schemaFields[fieldName];
+
       if (fieldType === 'uuid') {
         const fieldValue = fields[fieldName];
         if (!(fieldValue instanceof Uuid)) {
@@ -185,9 +235,9 @@ class PersisterCassandra {
     this.tableSchemas = null; // Free up the memory that is not needed any more and indicate that we can not add any more
 
     const arrSchemas = [];
-    // $FlowIssue enrolledTables should be populated here
+    // $AssureFlow enrolledTables should be populated here
     for (let tableName of enrolledTables.keys()) {
-      // $FlowIssue enrolledTables should be populated here
+      // $AssureFlow enrolledTables should be populated here
       arrSchemas.push([tableName, enrolledTables.get(tableName)]);
     }
     this.loadOneTableSchemaFromArray(arrSchemas, runAsPartOfSetupDatabase, cb);
@@ -203,6 +253,9 @@ class PersisterCassandra {
       const tableSchema = arrSchemas[0][1];
       arrSchemas.splice(0, 1);
 
+      if (runAsPartOfSetupDatabase) {
+        console.log(' Prepare table ' + tableName + '.');
+      }
       ExpressCassandraClient.loadSchema(tableName, tableSchema).syncDB(err => {
         if (err) {
           console.log(

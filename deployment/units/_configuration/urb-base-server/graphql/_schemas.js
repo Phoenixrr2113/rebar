@@ -1,10 +1,14 @@
 'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-require('../../../urb-base-server/graphql/model/User.schemas');
-require('../../../urb-base-server/graphql/model/UserAccount');
-require('../../../urb-base-server/graphql/model/UserAccount.schema');
-require('../../../urb-base-server/graphql/model/UserSession');
-require('../../../urb-base-server/graphql/model/UserSession.schema');
+require('../../../urb-appbase-server/graphql/model/ObjectUserPermission');
+require('../../../urb-appbase-server/graphql/model/ObjectUserPermission.schema');
+require('../../../urb-appbase-server/graphql/model/ResourceUserAllowance');
+require('../../../urb-appbase-server/graphql/model/ResourceUserAllowance.schema');
+require('../../../urb-appbase-server/graphql/model/User.schemas');
+require('../../../urb-appbase-server/graphql/model/UserAccount');
+require('../../../urb-appbase-server/graphql/model/UserAccount.schema');
+require('../../../urb-appbase-server/graphql/model/UserSession');
+require('../../../urb-appbase-server/graphql/model/UserSession.schema');
 require('../../../urb-base-server/graphql/model/logs.schema');
 require('../../../urb-example-ensayo-server/graphql/model/Ensayo');
 require('../../../urb-example-ensayo-server/graphql/model/Ensayo.schema');

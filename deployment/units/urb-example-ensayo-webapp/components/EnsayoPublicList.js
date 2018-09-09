@@ -8,11 +8,11 @@ var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _in
 
 var _styles = require('@material-ui/core/styles');
 
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _found = require('found');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {
@@ -20,11 +20,11 @@ const styles = theme => ({
 
 
 
-class EnsayoPublicList extends _react2.default.Component {
+class EnsayoPublicList extends _react2.default.Component
 
 
 
-
+{
   _handle_onClick(id) {
     this.context.router.push('/ensayo/item/' + id);
   }
@@ -45,9 +45,9 @@ class EnsayoPublicList extends _react2.default.Component {
 
 
 
-  }}EnsayoPublicList.contextTypes = { router: _propTypes2.default.object };exports.default =
+  }}exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(EnsayoPublicList), { Viewer: function () {return require('./__generated__/EnsayoPublicList_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(EnsayoPublicList)), { Viewer: function () {return require('./__generated__/EnsayoPublicList_Viewer.graphql');} });
 //# sourceMappingURL=EnsayoPublicList.js.map

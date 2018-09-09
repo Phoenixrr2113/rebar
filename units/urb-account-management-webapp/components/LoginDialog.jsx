@@ -12,8 +12,6 @@ import DialogTitle from '@material-ui/core/DialogTitle'
 
 import LinearProgress from '@material-ui/core/LinearProgress'
 
-import Slide from '@material-ui/core/Slide'
-
 import TextField from '@material-ui/core/TextField'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -21,6 +19,8 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 import React from 'react'
+
+import routeAfterLogin from '../../_configuration/urb-account-management-webapp/routeAfterLogin'
 
 const styles = theme => ({
   dialogPaper: {
@@ -95,7 +95,9 @@ class LoginDialog extends React.Component<
 
       if ( responseData.success ) {
         // In case of success, realod the application from server
-        window.location.replace( window.location.href, '' )
+        window.location.replace(
+          window.location.pathname === '/' ? routeAfterLogin : window.location.pathname,
+        )
       } else {
         // In case of error, tell user what the error is
         this.setState({
@@ -109,7 +111,8 @@ class LoginDialog extends React.Component<
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' + err.message,
+          'Did not receive proper response from server. Please try again later. Error:' +
+          err.message,
       })
     }
   }
@@ -137,12 +140,7 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, User_Secret } = this.state
 
     return (
-      <Dialog
-        classes={{ paper: classes.dialogPaper }}
-        open={open}
-        transition={Slide}
-        onClose={this._handle_Close}
-      >
+      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
         <DialogTitle>Log In</DialogTitle>
 
         <DialogContent>

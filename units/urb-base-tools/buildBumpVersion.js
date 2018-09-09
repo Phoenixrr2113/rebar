@@ -13,8 +13,9 @@ let versionBuildNumber = arrVersion[3]
 
 if ( versionBuildNumber == null ) versionBuildNumber = -1
 
-if ( process.env.npm_package_version != arrVersion[0] + '.' + arrVersion[1] + '.' + arrVersion[2])
-  versionBuildNumber = -1
+// Reset build for new version - commented out. Makes sense not to reset.
+// if ( process.env.npm_package_version != arrVersion[0] + '.' + arrVersion[1] + '.' + arrVersion[2])
+//   versionBuildNumber = -1
 
 // Increment build
 versionBuildNumber++

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash eb040c1585a0f7fc8bc640798af279f5
+ * @relayHash b77f2a0a45271111502a0fd1aaec21ad
  */
 
 /* eslint-disable */
@@ -24,6 +24,10 @@
                     +ToDo_Text: ?string,
                   |}
                 |}
+              |};
+              export type ToDoUpdateRenameMutation = {|
+                variables: ToDoUpdateRenameMutationVariables,
+                response: ToDoUpdateRenameMutationResponse,
               |};
               */
 

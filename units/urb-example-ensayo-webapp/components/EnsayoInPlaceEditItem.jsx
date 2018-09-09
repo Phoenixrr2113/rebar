@@ -1,8 +1,12 @@
 // @flow
 
-import { ListItem, ListItemText } from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
-import Menu, { MenuItem } from '@material-ui/core/Menu'
+import ListItemText from '@material-ui/core/ListItemText'
+
+import Menu from '@material-ui/core/Menu'
+
+import MenuItem from '@material-ui/core/MenuItem'
 
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
@@ -89,7 +93,7 @@ class EnsayoInPlaceEditItem extends React.Component<
           id="lock-menu"
           anchorEl={this.state.anchorEl}
           open={this.state.menuIsOpen}
-          onRequestClose={this.handleRequestClose}
+          onClose={this.handleRequestClose}
         >
           <MenuItem key="edit" onClick={event => this._handle_Menu_onClick_Edit( event )}>
             Edit

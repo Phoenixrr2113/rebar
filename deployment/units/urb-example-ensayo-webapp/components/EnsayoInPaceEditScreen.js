@@ -16,7 +16,7 @@ var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
 var _EnsayoAddMutation = require('../../urb-example-ensayo-client/relay/EnsayoAddMutation');var _EnsayoAddMutation2 = _interopRequireDefault(_EnsayoAddMutation);
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
 
 var _EnsayoInPlaceEditProperties = require('./EnsayoInPlaceEditProperties');var _EnsayoInPlaceEditProperties2 = _interopRequireDefault(_EnsayoInPlaceEditProperties);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
@@ -77,7 +77,7 @@ class EnsayoInPaceEditScreen extends _react2.default.Component
           _react2.default.createElement(_CardContent2.default, null,
             _react2.default.createElement('div', { className: classes.addNewButton },
               _react2.default.createElement(_Button2.default, {
-                  fab: true,
+                  variant: 'fab',
                   color: 'primary',
                   className: classes.button,
                   onClick: this._handle_onClick_Add },

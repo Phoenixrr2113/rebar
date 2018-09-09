@@ -4,34 +4,18 @@ import fsWithCallbacks from 'fs'
 import path from 'path'
 
 import prettierESLint from 'prettier-eslint'
+import sortedJSONStringify from 'sorted-json-stringify'
 
-// $FlowIssue Not sure why it gives an error. The file does exist
+// $AssureFlow Not sure why it gives an error. The file does exist
 import eslintRC from '../../.eslintrc.json'
 import fsExists from '../urb-base-server/fsExists'
 import packageJSON from '../../package.json'
 import buildUnits from '../_configuration/urb-base-tools/buildUnits'
 import ensureFileContent from '../urb-base-server/ensureFileContent'
 
-// $FlowIssue
 const fs = fsWithCallbacks.promises
 
 const prettierESLintOptions = { eslintConfig: eslintRC, prettierOptions: packageJSON.prettier }
-
-function sortObject( object: Object ) {
-  var t = {}
-  Object.keys( object )
-    .sort()
-    .forEach( function( k ) {
-      t[k] = object[k]
-    })
-  return t
-}
-
-function orderPackages( packageAsObject ) {
-  packageAsObject.scripts = sortObject( packageAsObject.scripts )
-  packageAsObject.dependencies = sortObject( packageAsObject.dependencies )
-  packageAsObject.devDependencies = sortObject( packageAsObject.devDependencies )
-}
 
 function mergeScripts( scripts1, scripts2 ) {
   const scripts = Object.assign({}, scripts1 )
@@ -93,13 +77,10 @@ async function createPackageJson( units: Array<string> ) {
     }
   }
 
-  // Make them pretty
-  orderPackages( packageAsObject )
-
   await ensureFileContent(
     packageJsonFileName,
     currentPackageAsJSONString,
-    JSON.stringify( packageAsObject, null, 2 ),
+    sortedJSONStringify( packageAsObject, null, 2 ),
     true,
   )
 }
@@ -216,66 +197,6 @@ async function createViewerFields( units: Array<string> ) {
   )
 }
 
-async function createRoutes( units: Array<string> ) {
-  const routesAppFrameImports = []
-  const routesRootImports = []
-  const routesAppFrameExports = []
-  const routesRootExports = []
-
-  for ( let unitName of units )
-    if ( unitName.endsWith( '-webapp' ) ) {
-      const routesDir = path.resolve( './units', unitName )
-      if ( await fsExists( routesDir ) ) {
-        const routeFileNames = await fs.readdir( routesDir )
-
-        for ( let routeFileName of routeFileNames ) {
-          if ( routeFileName.endsWith( '.jsx' ) )
-            if ( routeFileName.startsWith( 'routeAppFrame' ) ) {
-              const route = routeFileName.substring( 0, routeFileName.length - 4 )
-              routesAppFrameImports.push(
-                'import ' + route + ' from \'../../' + unitName + '/' + route + '\'',
-              )
-              routesAppFrameExports.push( '  ' + route + ',' )
-            } else if ( routeFileName.startsWith( 'routeRoot' ) ) {
-              const route = routeFileName.substring( 0, routeFileName.length - 4 )
-              routesRootImports.push(
-                'import ' + route + ' from \'../../' + unitName + '/' + route + '\'',
-              )
-              routesRootExports.push( '  ' + route + ',' )
-            }
-        }
-      }
-    }
-
-  await Promise.all([
-    createRouteFile(
-      path.resolve( './units/_configuration/urb-base-webapp/routesAppFrame.js' ),
-      routesAppFrameImports,
-      routesAppFrameExports,
-    ),
-    createRouteFile(
-      path.resolve( './units/_configuration/urb-base-webapp/routesRoot.js' ),
-      routesRootImports,
-      routesRootExports,
-    ),
-  ])
-}
-
-async function createRouteFile( fileName: string, imports: Array<string>, exports: Array<string> ) {
-  let routesAppFrame = [ '// @flow', '' ]
-  routesAppFrame = routesAppFrame.concat( imports )
-  routesAppFrame = routesAppFrame.concat([ '', 'export default [' ])
-  routesAppFrame = routesAppFrame.concat( exports )
-  routesAppFrame = routesAppFrame.concat([ ']' ])
-
-  await ensureFileContent(
-    fileName,
-    null,
-    prettierESLint({ text: routesAppFrame.join( '\r\n' ), ...prettierESLintOptions }),
-    true,
-  )
-}
-
 async function getUnits() {
   const units = ( await fs.readdir( './units/' ) ).filter(
     fileName => fileName !== '.DS_Store' && fileName !== '_configuration',
@@ -291,7 +212,6 @@ async function main() {
     createViewerFields( units ),
     createSchemas( units ),
     createMutations( units ),
-    createRoutes( units ),
     buildUnits( units ),
   ]
 

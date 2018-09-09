@@ -3,7 +3,7 @@
 var _graphqlRelay = require('graphql-relay');
 var _graphql = require('graphql');
 
-var _NodeInterface = require('../../../../units/urb-base-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);
+var _NodeInterface = require('../../../../units/urb-appbase-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);
 var _ToDo = require('../model/ToDo');var _ToDo2 = _interopRequireDefault(_ToDo);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
 
 new _graphql.GraphQLObjectType({

@@ -10,7 +10,7 @@ import IconInbox from '@material-ui/icons/Inbox'
 
 import IconToday from '@material-ui/icons/Today'
 
-import IconModeEdit from '@material-ui/icons/ModeEdit'
+import IconEdit from '@material-ui/icons/Edit'
 
 import IconImportContacts from '@material-ui/icons/ImportContacts'
 
@@ -18,7 +18,7 @@ import IconMyLocation from '@material-ui/icons/MyLocation'
 
 import IconOpenWith from '@material-ui/icons/OpenWith'
 
-import IconLockOutline from '@material-ui/icons/LockOutline'
+import IconLock from '@material-ui/icons/Lock'
 
 import React from 'react'
 
@@ -45,7 +45,7 @@ class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Func
             onClick={() => onClick( '/todo/' )}
           />
           <NavMenuItemWithIcon
-            icon={<IconModeEdit />}
+            icon={<IconEdit />}
             label="Ensayo Edit"
             onClick={() => onClick( '/ensayo/in-place-edit/' )}
           />
@@ -71,7 +71,7 @@ class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Func
             onClick={() => onClick( '/viewport-dimensions/' )}
           />
           <NavMenuItemWithIcon
-            icon={<IconLockOutline />}
+            icon={<IconLock />}
             label="Force Login"
             onClick={() => onClick( '/force-login/' )}
           />

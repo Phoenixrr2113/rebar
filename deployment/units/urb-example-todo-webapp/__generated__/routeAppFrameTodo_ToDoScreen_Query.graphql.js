@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash c0adc861a55ada96c51ea83ad7cefa91
+ * @relayHash e9abef4c162db078a20aae4e4f2fe3ee
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: ToDoScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameTodo_ToDoScreen_Query = {|
+                variables: routeAppFrameTodo_ToDoScreen_QueryVariables,
+                response: routeAppFrameTodo_ToDoScreen_QueryResponse,
               |};
               */
 

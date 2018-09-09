@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 09c392e052888d9cd3e8dd023c71b9e8
+ * @relayHash dcac591f53efb2d09a4b3ad7aea6a64f
  */
 
 /* eslint-disable */
@@ -20,6 +20,10 @@
                 +EnsayoDelete: ?{|
                   +deletedId: ?string
                 |}
+              |};
+              export type EnsayoDeleteMutation = {|
+                variables: EnsayoDeleteMutationVariables,
+                response: EnsayoDeleteMutationResponse,
               |};
               */
 

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash e2666ee365ff078b00ec44d7f1ec88f8
+ * @relayHash 44b1f5574f552409d37ec3285bad81e6
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: HomePageScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameDemo_HomePageScreen_Query = {|
+                variables: routeAppFrameDemo_HomePageScreen_QueryVariables,
+                response: routeAppFrameDemo_HomePageScreen_QueryResponse,
               |};
               */
 

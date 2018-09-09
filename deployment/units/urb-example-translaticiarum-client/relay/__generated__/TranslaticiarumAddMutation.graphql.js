@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash c18368807484d5a8d52c1534116145b4
+ * @relayHash f07a74c1babdced3e82d15abaf30cf7c
  */
 
 /* eslint-disable */
@@ -33,6 +33,10 @@
                     |},
                   |},
                 |}
+              |};
+              export type TranslaticiarumAddMutation = {|
+                variables: TranslaticiarumAddMutationVariables,
+                response: TranslaticiarumAddMutationResponse,
               |};
               */
 

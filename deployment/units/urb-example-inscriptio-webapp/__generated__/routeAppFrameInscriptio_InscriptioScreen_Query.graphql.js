@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 44c4ae42ae79c49d045ec8493dd812d5
+ * @relayHash 51fe18bdc48253116a059a6778667037
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: InscriptioScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameInscriptio_InscriptioScreen_Query = {|
+                variables: routeAppFrameInscriptio_InscriptioScreen_QueryVariables,
+                response: routeAppFrameInscriptio_InscriptioScreen_QueryResponse,
               |};
               */
 
@@ -47,7 +51,15 @@
                  */
 
 const node /*: ConcreteRequest*/ = function () {
-  var v0 = {
+  var v0 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 2147483647,
+    "type": "Int" }],
+
+
+  v1 = {
     "kind": "ScalarField",
     "alias": null,
     "name": "id",
@@ -105,14 +117,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Inscriptios",
           "storageKey": "Inscriptios(first:2147483647)",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "concreteType": "InscriptiosConnection",
           "plural": false,
           "selections": [
@@ -134,7 +139,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Inscriptio",
               "plural": false,
               "selections": [
-              v0,
+              v1,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -198,19 +203,12 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Inscriptios",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "handle": "connection",
           "key": "InscriptioScreen_Inscriptios",
           "filters": null },
 
-        v0] }] } };
+        v1] }] } };
 
 
 

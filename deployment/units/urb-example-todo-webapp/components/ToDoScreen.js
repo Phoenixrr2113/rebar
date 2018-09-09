@@ -9,7 +9,7 @@ var _reactRelay = require('react-relay');
 
 var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);
 
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
 var _ToDoAddMutation = require('../../urb-example-todo-client/relay/ToDoAddMutation');var _ToDoAddMutation2 = _interopRequireDefault(_ToDoAddMutation);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({

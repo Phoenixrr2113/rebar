@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 7ad9b215700caf2bd4b3d29eb44ed0ce
+ * @relayHash 35174307d67cf4001e6c8a91f7f0eea8
  */
 
 /* eslint-disable */
@@ -17,6 +17,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: ToDoList_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameTodo_ToDoList_Query = {|
+                variables: routeAppFrameTodo_ToDoList_QueryVariables,
+                response: routeAppFrameTodo_ToDoList_QueryResponse,
               |};
               */
 
@@ -73,7 +77,21 @@ const node /*: ConcreteRequest*/ = function () {
     "defaultValue": null }],
 
 
-  v1 = {
+  v1 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 2147483647,
+    "type": "Int" },
+
+  {
+    "kind": "Variable",
+    "name": "status",
+    "variableName": "status",
+    "type": "String" }],
+
+
+  v2 = {
     "kind": "ScalarField",
     "alias": null,
     "name": "id",
@@ -131,20 +149,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "ToDos",
           "storageKey": null,
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" },
-
-          {
-            "kind": "Variable",
-            "name": "status",
-            "variableName": "status",
-            "type": "String" }],
-
-
+          "args": v1,
           "concreteType": "ToDosConnection",
           "plural": false,
           "selections": [
@@ -166,7 +171,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "ToDo",
               "plural": false,
               "selections": [
-              v1,
+              v2,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -230,27 +235,14 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "ToDos",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" },
-
-          {
-            "kind": "Variable",
-            "name": "status",
-            "variableName": "status",
-            "type": "String" }],
-
-
+          "args": v1,
           "handle": "connection",
           "key": "ToDoList_ToDos",
           "filters": [
           "status"] },
 
 
-        v1,
+        v2,
         {
           "kind": "ScalarField",
           "alias": null,

@@ -5,7 +5,7 @@ var _graphql = require('graphql');
 var _graphqlIsoDate = require('graphql-iso-date');
 
 var _Translaticiarum = require('../model/Translaticiarum');var _Translaticiarum2 = _interopRequireDefault(_Translaticiarum);
-var _NodeInterface = require('../../../../units/urb-base-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _NodeInterface = require('../../../../units/urb-appbase-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
 
 new _graphql.GraphQLObjectType({
   name: 'Translaticiarum',

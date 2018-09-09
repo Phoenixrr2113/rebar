@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash cf8c3bcbc632cdb6783edfa2d6d082e7
+ * @relayHash 03148fce6e313f20524807e2acac5b40
  */
 
 /* eslint-disable */
@@ -20,6 +20,10 @@
                 +TranslaticiarumDelete: ?{|
                   +deletedId: ?string
                 |}
+              |};
+              export type TranslaticiarumDeleteMutation = {|
+                variables: TranslaticiarumDeleteMutationVariables,
+                response: TranslaticiarumDeleteMutationResponse,
               |};
               */
 

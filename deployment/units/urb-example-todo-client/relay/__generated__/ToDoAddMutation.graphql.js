@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 4d6d0965a69c2261301d635a031ee4d8
+ * @relayHash 4b3044ae3b2201fdfd4eee86a617394d
  */
 
 /* eslint-disable */
@@ -31,6 +31,10 @@
                     |},
                   |},
                 |}
+              |};
+              export type ToDoAddMutation = {|
+                variables: ToDoAddMutationVariables,
+                response: ToDoAddMutationResponse,
               |};
               */
 

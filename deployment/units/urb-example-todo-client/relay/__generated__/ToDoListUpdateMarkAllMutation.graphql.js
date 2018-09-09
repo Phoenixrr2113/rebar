@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash e2cbbdb3e99151cecbbee0ba54ed1120
+ * @relayHash 16d26f2d2acf147c24e029ea6489399f
  */
 
 /* eslint-disable */
@@ -37,6 +37,10 @@
                     +ToDo_Complete: ?boolean,
                   |}>,
                 |}
+              |};
+              export type ToDoListUpdateMarkAllMutation = {|
+                variables: ToDoListUpdateMarkAllMutationVariables,
+                response: ToDoListUpdateMarkAllMutationResponse,
               |};
               */
 

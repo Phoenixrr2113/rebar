@@ -5,14 +5,13 @@ import path from 'path'
 
 import ensureFileContent from './ensureFileContent'
 
-// $FlowIssue
 const fs = fsWithCallbacks.promises
 
 export default class MasterWriter {
   basePath: string
   logToConsole: boolean
   directories: Map<string, boolean>
-  // $FlowIssue
+  // $AssureFlow
   arrPromises: Array<Promise>
 
   constructor( basePath: string, logToConsole: boolean ) {

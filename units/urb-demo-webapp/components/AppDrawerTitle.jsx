@@ -4,7 +4,6 @@ import { withStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 
-import PropTypes from 'prop-types'
 import React from 'react'
 
 const styles = {
@@ -14,11 +13,10 @@ const styles = {
   },
 }
 
-class AppDrawerTitle extends React.Component<{ classes: Object, handle_GoTo: Function }> {
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-  }
-
+class AppDrawerTitle extends React.Component<{
+  classes: Object,
+  handle_GoTo: Function,
+}> {
   _handle_GoToHome = () => {
     this.props.handle_GoTo( '/' )
   }

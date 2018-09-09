@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 1f0f519a7e6baa373ed4ceb408ca6d07
+ * @relayHash a960838317f409df29a52ee717e9e8df
  */
 
 /* eslint-disable */
@@ -33,6 +33,10 @@
                     |},
                   |},
                 |}
+              |};
+              export type InscriptioAddMutation = {|
+                variables: InscriptioAddMutationVariables,
+                response: InscriptioAddMutationResponse,
               |};
               */
 

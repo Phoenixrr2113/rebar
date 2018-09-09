@@ -3,7 +3,7 @@
 var _graphqlRelay = require('graphql-relay');
 var _graphql = require('graphql');
 
-var _ViewerType = require('../../../../units/urb-base-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
 
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'TranslaticiarumDelete',
@@ -27,11 +27,7 @@ var _ViewerType = require('../../../../units/urb-base-server/graphql/type/Viewer
 
 
 
-  mutateAndGetPayload: async (
-  { id },
-  context,
-  { rootValue: objectManager }) =>
-  {
+  mutateAndGetPayload: async ({ id }, context, { rootValue: objectManager }) => {
     const local_id = (0, _graphqlRelay.fromGlobalId)(id).id;
 
     await objectManager.remove('Translaticiarum', { id: local_id });

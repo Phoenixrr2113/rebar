@@ -6,7 +6,7 @@ var _amber = require('@material-ui/core/colors/amber');var _amber2 = _interopReq
 
 var _createMuiTheme = require('@material-ui/core/styles/createMuiTheme');var _createMuiTheme2 = _interopRequireDefault(_createMuiTheme);
 
-var _AppWrapperBase = require('../../urb-base-webapp/components/AppWrapperBase');var _AppWrapperBase2 = _interopRequireDefault(_AppWrapperBase);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _AppWrapperBase = require('../../urb-appbase-webapp/components/AppWrapperBase');var _AppWrapperBase2 = _interopRequireDefault(_AppWrapperBase);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 class AppWrapper extends _AppWrapperBase2.default {
   createMUITheme() {

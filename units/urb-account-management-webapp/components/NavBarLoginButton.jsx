@@ -8,7 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import PropTypes from 'prop-types'
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -29,6 +29,7 @@ class NavBarLoginButton extends React.Component<
     classes: Object,
     Viewer: Object,
     relay: Object,
+    router: Object,
   },
   {
     anchorEl: ?Object,
@@ -36,10 +37,6 @@ class NavBarLoginButton extends React.Component<
     userMenuIsOpen: boolean,
   },
 > {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   constructor( props: Object, context: Object ) {
     super( props, context )
 
@@ -81,13 +78,13 @@ class NavBarLoginButton extends React.Component<
 
   _handle_onClick_Logout = () => {
     this.setState({ userMenuIsOpen: false })
-    this.context.router.push( '/user/logout' )
+    this.props.router.push( '/user/logout' )
   }
 
   _handle_Login_NewUser = () => {
     this.setState({ loginDialogIsOpen: false })
 
-    this.context.router.push( '/user/new' )
+    this.props.router.push( '/user/new' )
   }
 
   render() {
@@ -134,7 +131,7 @@ class NavBarLoginButton extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( NavBarLoginButton ),
+  withStyles( styles )( withRouter( NavBarLoginButton ) ),
   graphql`
     fragment NavBarLoginButton_Viewer on Viewer {
       User_IsAnonymous

@@ -12,7 +12,7 @@ import List from '@material-ui/core/List'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import PropTypes from 'prop-types'
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -34,14 +34,10 @@ class ToDoList extends React.Component<
   {
     Viewer: Object,
     relay: Object,
+    router: Object,
   },
   null,
 > {
-  static contextTypes = {
-    relay: PropTypes.object,
-    router: PropTypes.object,
-  }
-
   _handle_onClick_MarkAll = ( event, checked ) => {
     const { relay, Viewer } = this.props
     const { variables } = this.context.relay
@@ -99,7 +95,9 @@ class ToDoList extends React.Component<
           />
         </FormGroup>
         <List>
-          {ToDos.edges.map( ({ node }) => <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} /> )}
+          {ToDos.edges.map( ({ node }) => (
+            <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} />
+          ) )}
         </List>
       </div>
     )
@@ -107,7 +105,7 @@ class ToDoList extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( ToDoList ),
+  withStyles( styles )( withRouter( ToDoList ) ),
   graphql`
     fragment ToDoList_Viewer on Viewer {
       ToDos(status: $status, first: 2147483647) @connection(key: "ToDoList_ToDos") {

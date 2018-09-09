@@ -3,7 +3,7 @@
 import { fromGlobalId, mutationWithClientMutationId } from 'graphql-relay'
 import { GraphQLID, GraphQLNonNull } from 'graphql'
 
-import ViewerType from '../../../../units/urb-webapp-server/graphql/type/ViewerType'
+import ViewerType from '../../../../units/urb-appbase-server/graphql/type/ViewerType'
 
 export default mutationWithClientMutationId({
   name: 'TranslaticiarumDelete',

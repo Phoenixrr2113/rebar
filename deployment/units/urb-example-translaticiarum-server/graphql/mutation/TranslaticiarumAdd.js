@@ -4,7 +4,7 @@ var _graphqlRelay = require('graphql-relay');
 var _graphql = require('graphql');
 
 var _TranslaticiarumsConnection = require('../type/TranslaticiarumsConnection');var _TranslaticiarumsConnection2 = _interopRequireDefault(_TranslaticiarumsConnection);
-var _ViewerType = require('../../../../units/urb-base-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
+var _ViewerType = require('../../../../units/urb-appbase-server/graphql/type/ViewerType');var _ViewerType2 = _interopRequireDefault(_ViewerType);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}function _objectWithoutProperties(obj, keys) {var target = {};for (var i in obj) {if (keys.indexOf(i) >= 0) continue;if (!Object.prototype.hasOwnProperty.call(obj, i)) continue;target[i] = obj[i];}return target;} //  weak
 exports.default =
 (0, _graphqlRelay.mutationWithClientMutationId)({
   name: 'TranslaticiarumAdd',

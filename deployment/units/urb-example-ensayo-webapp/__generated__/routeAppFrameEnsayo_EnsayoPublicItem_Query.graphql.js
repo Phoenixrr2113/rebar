@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash bd30f864dff2060d6b0bfb7d4716d0b1
+ * @relayHash 25f1cbdaf1cd7d3957ec530ee8d9e2ee
  */
 
 /* eslint-disable */
@@ -17,6 +17,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: EnsayoPublicItem_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameEnsayo_EnsayoPublicItem_Query = {|
+                variables: routeAppFrameEnsayo_EnsayoPublicItem_QueryVariables,
+                response: routeAppFrameEnsayo_EnsayoPublicItem_QueryResponse,
               |};
               */
 

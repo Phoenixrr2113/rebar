@@ -14,7 +14,7 @@ var _Typography = require('@material-ui/core/Typography');var _Typography2 = _in
 
 var _Menu = require('@material-ui/icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
 
-var _propTypes = require('prop-types');var _propTypes2 = _interopRequireDefault(_propTypes);
+var _found = require('found');
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 var _reactRelay = require('react-relay');
 
@@ -115,11 +115,12 @@ const styles = theme => ({
 
 
 
-class AppFrame extends _react2.default.Component {
+class AppFrame extends _react2.default.Component
 
 
 
 
+{
   constructor(props, context) {
     super(props, context);this.
 
@@ -137,7 +138,7 @@ class AppFrame extends _react2.default.Component {
     _handle_GoTo = to => {
       this.setState({ drawerIsOpen: false });
 
-      this.context.router.push(to);
+      this.props.router.push(to);
     };this.state = { drawerIsOpen: false };}
 
   render() {
@@ -177,9 +178,9 @@ class AppFrame extends _react2.default.Component {
 
 
 
-  }}AppFrame.contextTypes = { router: _propTypes2.default.object.isRequired };exports.default =
+  }}exports.default =
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(AppFrame), { Viewer: function () {return require('./__generated__/AppFrame_Viewer.graphql');} });
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(AppFrame)), { Viewer: function () {return require('./__generated__/AppFrame_Viewer.graphql');} });
 //# sourceMappingURL=AppFrame.js.map

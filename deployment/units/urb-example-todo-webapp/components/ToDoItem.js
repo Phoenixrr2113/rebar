@@ -4,9 +4,15 @@ var _Checkbox = require('@material-ui/core/Checkbox');var _Checkbox2 = _interopR
 
 var _IconButton = require('@material-ui/core/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var _List = require('@material-ui/core/List');
+var _ListItem = require('@material-ui/core/ListItem');var _ListItem2 = _interopRequireDefault(_ListItem);
+
+var _ListItemSecondaryAction = require('@material-ui/core/ListItemSecondaryAction');var _ListItemSecondaryAction2 = _interopRequireDefault(_ListItemSecondaryAction);
+
+var _ListItemText = require('@material-ui/core/ListItemText');var _ListItemText2 = _interopRequireDefault(_ListItemText);
 
 var _Menu = require('@material-ui/core/Menu');var _Menu2 = _interopRequireDefault(_Menu);
+
+var _MenuItem = require('@material-ui/core/MenuItem');var _MenuItem2 = _interopRequireDefault(_MenuItem);
 
 var _icons = require('@material-ui/icons');
 
@@ -82,15 +88,15 @@ class ToDoItem extends _react2.default.Component
 
     return (
       _react2.default.createElement('div', null,
-        _react2.default.createElement(_List.ListItem, {
+        _react2.default.createElement(_ListItem2.default, {
             button: true,
             'aria-haspopup': 'true',
             'aria-controls': 'lock-menu',
             onClick: event => this._handle_onClickCheckbox(event, !ToDo_Complete) },
 
           _react2.default.createElement(_Checkbox2.default, { checked: ToDo_Complete }),
-          _react2.default.createElement(_List.ListItemText, { primary: ToDo_Text }),
-          _react2.default.createElement(_List.ListItemSecondaryAction, null,
+          _react2.default.createElement(_ListItemText2.default, { primary: ToDo_Text }),
+          _react2.default.createElement(_ListItemSecondaryAction2.default, null,
             _react2.default.createElement(_IconButton2.default, { onClick: this.handleClickListItem },
               _react2.default.createElement(_icons.MoreVert, null)))),
 
@@ -100,12 +106,12 @@ class ToDoItem extends _react2.default.Component
             id: 'lock-menu',
             anchorEl: this.state.anchorEl,
             open: this.state.menuIsOpen,
-            onRequestClose: this.handleRequestClose },
+            onClose: this.handleRequestClose },
 
-          _react2.default.createElement(_Menu.MenuItem, { key: 'edit', onClick: event => this._handle_Menu_onClick_Edit(event) }, 'Edit'),
+          _react2.default.createElement(_MenuItem2.default, { key: 'edit', onClick: event => this._handle_Menu_onClick_Edit(event) }, 'Edit'),
 
 
-          _react2.default.createElement(_Menu.MenuItem, { key: 'delete', onClick: event => this._handle_Menu_onClick_Delete(event) }, 'Delete')),
+          _react2.default.createElement(_MenuItem2.default, { key: 'delete', onClick: event => this._handle_Menu_onClick_Delete(event) }, 'Delete')),
 
 
 

@@ -2,7 +2,13 @@
 
 import Button from '@material-ui/core/Button'
 
-import Dialog, { DialogActions, DialogContent, DialogTitle } from '@material-ui/core/Dialog'
+import Dialog from '@material-ui/core/Dialog'
+
+import DialogActions from '@material-ui/core/DialogActions'
+
+import DialogContent from '@material-ui/core/DialogContent'
+
+import DialogTitle from '@material-ui/core/DialogTitle'
 
 import React from 'react'
 
@@ -53,7 +59,7 @@ class ToDo_Properties extends React.Component<
 
     return (
       <div>
-        <Dialog open={this.props.open} onRequestClose={this._handle_Close}>
+        <Dialog open={this.props.open} onClose={this._handle_Close}>
           <DialogTitle>ToDo</DialogTitle>
           <DialogContent>
             <TextField

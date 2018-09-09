@@ -22,7 +22,6 @@ console.log(
   'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
 )
 
-const ifProd = plugin => ( node_env === 'production' ? plugin : undefined )
 const ifNotProd = plugin => ( node_env !== 'production' ? plugin : undefined )
 const removeEmpty = array => array.filter( p => !!p )
 
@@ -34,7 +33,7 @@ const config = {
   },
 
   entry: {
-    client: [ 'whatwg-fetch', path.resolve( 'units/urb-webapp-webapp/client.js' ) ],
+    client: [ 'whatwg-fetch', path.resolve( 'units/urb-appbase-webapp/client.js' ) ],
     vendor: [
       'babel-polyfill',
       'farce',

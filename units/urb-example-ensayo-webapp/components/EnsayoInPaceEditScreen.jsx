@@ -16,7 +16,7 @@ import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import EnsayoAddMutation from '../../urb-example-ensayo-client/relay/EnsayoAddMutation'
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 import EnsayoInPlaceEditProperties from './EnsayoInPlaceEditProperties'
 
@@ -77,7 +77,7 @@ class EnsayoInPaceEditScreen extends React.Component<
           <CardContent>
             <div className={classes.addNewButton}>
               <Button
-                fab
+                variant="fab"
                 color="primary"
                 className={classes.button}
                 onClick={this._handle_onClick_Add}

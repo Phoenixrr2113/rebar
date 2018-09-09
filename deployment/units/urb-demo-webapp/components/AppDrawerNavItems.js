@@ -10,7 +10,7 @@ var _Inbox = require('@material-ui/icons/Inbox');var _Inbox2 = _interopRequireDe
 
 var _Today = require('@material-ui/icons/Today');var _Today2 = _interopRequireDefault(_Today);
 
-var _ModeEdit = require('@material-ui/icons/ModeEdit');var _ModeEdit2 = _interopRequireDefault(_ModeEdit);
+var _Edit = require('@material-ui/icons/Edit');var _Edit2 = _interopRequireDefault(_Edit);
 
 var _ImportContacts = require('@material-ui/icons/ImportContacts');var _ImportContacts2 = _interopRequireDefault(_ImportContacts);
 
@@ -18,7 +18,7 @@ var _MyLocation = require('@material-ui/icons/MyLocation');var _MyLocation2 = _i
 
 var _OpenWith = require('@material-ui/icons/OpenWith');var _OpenWith2 = _interopRequireDefault(_OpenWith);
 
-var _LockOutline = require('@material-ui/icons/LockOutline');var _LockOutline2 = _interopRequireDefault(_LockOutline);
+var _Lock = require('@material-ui/icons/Lock');var _Lock2 = _interopRequireDefault(_Lock);
 
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 
@@ -45,7 +45,7 @@ class AppDrawerNavItems extends _react2.default.Component {
             onClick: () => onClick('/todo/') }),
 
           _react2.default.createElement(_NavMenuItemWithIcon2.default, {
-            icon: _react2.default.createElement(_ModeEdit2.default, null),
+            icon: _react2.default.createElement(_Edit2.default, null),
             label: 'Ensayo Edit',
             onClick: () => onClick('/ensayo/in-place-edit/') }),
 
@@ -71,7 +71,7 @@ class AppDrawerNavItems extends _react2.default.Component {
             onClick: () => onClick('/viewport-dimensions/') }),
 
           _react2.default.createElement(_NavMenuItemWithIcon2.default, {
-            icon: _react2.default.createElement(_LockOutline2.default, null),
+            icon: _react2.default.createElement(_Lock2.default, null),
             label: 'Force Login',
             onClick: () => onClick('/force-login/') }))));
 

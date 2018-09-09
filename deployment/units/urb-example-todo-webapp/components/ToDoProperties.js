@@ -4,6 +4,12 @@ var _Button = require('@material-ui/core/Button');var _Button2 = _interopRequire
 
 var _Dialog = require('@material-ui/core/Dialog');var _Dialog2 = _interopRequireDefault(_Dialog);
 
+var _DialogActions = require('@material-ui/core/DialogActions');var _DialogActions2 = _interopRequireDefault(_DialogActions);
+
+var _DialogContent = require('@material-ui/core/DialogContent');var _DialogContent2 = _interopRequireDefault(_DialogContent);
+
+var _DialogTitle = require('@material-ui/core/DialogTitle');var _DialogTitle2 = _interopRequireDefault(_DialogTitle);
+
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 
 var _styles = require('@material-ui/core/styles');
@@ -53,9 +59,9 @@ class ToDo_Properties extends _react2.default.Component
 
     return (
       _react2.default.createElement('div', null,
-        _react2.default.createElement(_Dialog2.default, { open: this.props.open, onRequestClose: this._handle_Close },
-          _react2.default.createElement(_Dialog.DialogTitle, null, 'ToDo'),
-          _react2.default.createElement(_Dialog.DialogContent, null,
+        _react2.default.createElement(_Dialog2.default, { open: this.props.open, onClose: this._handle_Close },
+          _react2.default.createElement(_DialogTitle2.default, null, 'ToDo'),
+          _react2.default.createElement(_DialogContent2.default, null,
             _react2.default.createElement(_TextField2.default, {
               label: 'To Do',
               fullWidth: true,
@@ -63,7 +69,7 @@ class ToDo_Properties extends _react2.default.Component
               onChange: event => this.setState({ ToDo_Text: event.target.value }) })),
 
 
-          _react2.default.createElement(_Dialog.DialogActions, null,
+          _react2.default.createElement(_DialogActions2.default, null,
             _react2.default.createElement(_Button2.default, { onClick: this._handle_Close }, 'Cancel'),
             _react2.default.createElement(_Button2.default, { onClick: this._handle_OK, color: 'primary' }, 'OK')))));
 

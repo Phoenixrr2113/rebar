@@ -11,7 +11,7 @@ import { Parser } from 'html-to-react'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 class EnsayoPublicItem extends React.Component<{ Viewer: any }, {}> {
   render() {

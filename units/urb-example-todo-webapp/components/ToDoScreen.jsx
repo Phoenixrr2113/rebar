@@ -9,7 +9,7 @@ import { createFragmentContainer, graphql } from 'react-relay'
 
 import TextField from '@material-ui/core/TextField'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 import ToDoAddMutation from '../../urb-example-todo-client/relay/ToDoAddMutation'
 
 const styles = theme => ({

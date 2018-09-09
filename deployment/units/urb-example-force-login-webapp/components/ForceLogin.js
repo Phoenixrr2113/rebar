@@ -10,7 +10,7 @@ var _reactRelay = require('react-relay');
 var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 
 var _RequiresAuthentication = require('../../urb-account-management-webapp/components/RequiresAuthentication');var _RequiresAuthentication2 = _interopRequireDefault(_RequiresAuthentication);
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {

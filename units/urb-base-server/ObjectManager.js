@@ -316,7 +316,7 @@ export default class ObjectManager {
     return loader.load( query ).then( result => {
       const changes = this.changes[entityName]
       if ( changes ) {
-        // $FlowIssue - by convention all entity objects are expected to have an id
+        // $AssureFlow - by convention all entity objects are expected to have an id
         const change = changes[result.id]
 
         if ( change != null ) {
@@ -494,6 +494,12 @@ export default class ObjectManager {
     const entityDefinition = entityDefinitions[entityName]
 
     return entityDefinition.Persister.uuidFromString( id )
+  }
+
+  uuidToString( entityName: string, id: Object ) {
+    const entityDefinition = entityDefinitions[entityName]
+
+    return entityDefinition.Persister.uuidToString( id )
   }
 
   cursorForObjectInConnection( entityName: string, arr: Array<Object>, obj: Object ) {

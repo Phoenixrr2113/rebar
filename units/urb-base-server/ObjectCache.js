@@ -1,9 +1,13 @@
 // @flow
 
 import CacheableCategoryDefinitions from '../_configuration/urb-base-server/CacheableCategoryDefinitions'
+import { debugWriteToConsoleObjectCacheActivity } from '../_configuration/debug'
 
 import log from './log'
 import type { CachedEntriesForCategory, CachedEntry } from './types/ObjectCache.types'
+
+const expirationCheckInterval = 5000
+let expirationIntervalTimer = null
 
 const MapCachesByCategory: Map<string, CachedEntriesForCategory> = new Map()
 
@@ -16,9 +20,24 @@ export function initializeObjectCache() {
   }
 }
 
-function cleanupCategory( cachedEntriesForCategory: CachedEntriesForCategory ) {
-  console.log({ XXX: 'cleanupCategory', cachedEntriesForCategory })
+async function executeDiscard(
+  cacheKey: string,
+  discardFunction: Function,
+  objectPromise: Promise<Object>,
+) {
+  try {
+    await discardFunction( objectPromise )
+  } catch ( err ) {
+    // Record the problem and throw exception further
+    log.log( 'error', {
+      source: 'executeDiscard failed',
+      cacheKey,
+      err,
+    })
+  }
+}
 
+async function cleanupCategory( cachedEntriesForCategory: CachedEntriesForCategory ) {
   const { definition, entries } = cachedEntriesForCategory
 
   // If the number if cached elements does not exceed max, no cleanup is necessary
@@ -33,24 +52,69 @@ function cleanupCategory( cachedEntriesForCategory: CachedEntriesForCategory ) {
   // Descending sort - newest entries come first
   arrCreatedTime.sort( ( a, b ) => b - a )
 
-  console.log({ XXX: 1, arrCreatedTime }) // Show what the entries are ....
-
   // Remove all entries that are older than cutoff time
   const cutOffTimeMs = arrCreatedTime[definition.countMax - 1]
   for ( let [ cacheKey, cachedEntry ] of entries.entries() ) {
     if ( cachedEntry.createdTimeMs < cutOffTimeMs ) {
+      // Discard if necessary. Do not wait.
+      const discardFunction = definition.onDiscard
+      if ( discardFunction ) {
+        const objectPromise = cachedEntry.objectPromise
+        executeDiscard( cacheKey, discardFunction, await objectPromise )
+      }
+
+      // Remove from map of cached objects
       entries.delete( cacheKey )
     }
   }
 }
 
-export function addObjectToCache(
+async function removeExpired() {
+  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'removeExpired - before' )
+
+  let bPerishableItemsLeft = false
+
+  const timeMsNow = new Date().getTime()
+
+  for ( let cachedEntriesForCategory of MapCachesByCategory.values() ) {
+    const { definition, entries } = cachedEntriesForCategory
+
+    // If there is no expiration for the category, skip
+    if ( !definition.expirationDurationMs ) continue
+
+    const discardFunction = definition.onDiscard
+
+    // Delete expired entries
+    for ( let [ cacheKey, cachedEntry ] of entries.entries() ) {
+      // $AssureFlow expiresAtMs will be present
+      if ( cachedEntry.expiresAtMs < timeMsNow ) {
+        // Discard if necessary. Do not wait.
+        if ( discardFunction ) {
+          const objectPromise = cachedEntry.objectPromise
+          executeDiscard( cacheKey, discardFunction, await objectPromise )
+        }
+
+        // Remove from map of cached objects
+        entries.delete( cacheKey )
+      } else bPerishableItemsLeft = true
+    }
+  }
+
+  // If there are no more perishable items, simply remove the timer
+  if ( !bPerishableItemsLeft ) {
+    // $AssureFlow expirationIntervalTimer is guaranteed to be set
+    clearInterval( expirationIntervalTimer )
+    expirationIntervalTimer = null
+  }
+
+  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'removeExpired - after' )
+}
+
+export async function addObjectToCache(
   categoryName: string,
   cacheKey: string,
   objectPromise: Promise<Object>,
 ) {
-  console.log({ XXX: 'addObjectToCache', categoryName, cacheKey })
-
   const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
   if ( cachedEntriesForCategory == null )
     throw new Error( 'addObjectToCache: can not find cacheable category ' + categoryName )
@@ -58,15 +122,30 @@ export function addObjectToCache(
   const { definition, entries } = cachedEntriesForCategory
 
   const timeMsNow = new Date().getTime()
-  entries.set( cacheKey, {
+
+  const cachedEntry: CachedEntry = {
     createdTimeMs: timeMsNow,
     validByTimeMs: timeMsNow + definition.validityDurationMs,
     objectPromise,
     validityVerificationPromise: null,
     creationPromise: null,
-  })
+  }
 
-  cleanupCategory( cachedEntriesForCategory )
+  if ( definition.expirationDurationMs ) {
+    // Only start timer when first object with expiration is added. No reason to run it before
+    // that.
+    if ( expirationIntervalTimer == null ) {
+      expirationIntervalTimer = setInterval( removeExpired, expirationCheckInterval )
+    }
+
+    cachedEntry.expiresAtMs = timeMsNow + definition.expirationDurationMs
+  }
+
+  entries.set( cacheKey, cachedEntry )
+
+  await cleanupCategory( cachedEntriesForCategory )
+
+  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'addObjectToCache key=' + cacheKey )
 }
 
 export async function getObjectFromCache( categoryName: string, cacheKey: string ): ?Object {
@@ -83,11 +162,9 @@ async function getCachedEntryFromCache(
   categoryName: string,
   cacheKey: string,
 ): Promise<?CachedEntry> {
-  console.log({ XXX: 'getCachedEntryFromCache', categoryName, cacheKey })
-
   const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
   if ( cachedEntriesForCategory == null )
-    throw new Error( 'getObjectFromCache: can not find cacheable category ' + categoryName )
+    throw new Error( 'getCachedEntryFromCache: can not find cacheable category ' + categoryName )
 
   const { definition, entries } = cachedEntriesForCategory
   const cachedEntry = entries.get( cacheKey )
@@ -96,16 +173,34 @@ async function getCachedEntryFromCache(
   if ( cachedEntry == null ) return null
 
   const timeMsNow = new Date().getTime()
+
+  // Entry is in the cache
+  // If the entry already has expiration, increase it since it is used
+  if ( cachedEntry.expiresAtMs ) {
+    const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
+
+    // $AssureFlow our code is written in a way that definition would be present
+    const { definition } = cachedEntriesForCategory
+
+    cachedEntry.expiresAtMs = timeMsNow + definition.expirationDurationMs
+  }
+
   if ( cachedEntry.validByTimeMs >= timeMsNow ) {
     return cachedEntry
   }
 
   // Run the function to verify the validity of the cached entry, or wait for
   // a validity verification function that's already running
+  let isValid: boolean = false
   if ( cachedEntry.validityVerificationPromise == null ) {
     try {
       cachedEntry.validityVerificationPromise = definition.validityVerifier( cacheKey, cachedEntry )
+      isValid = await cachedEntry.validityVerificationPromise
     } catch ( err ) {
+      // Indicate that the entry is invalid
+      cachedEntry.validityVerificationPromise = Promise.resolve( false )
+
+      // Record the problem and throw exception further
       log.log( 'error', {
         source: 'getCachedEntryFromCache: validityVerificationPromise failed',
         categoryName,
@@ -115,10 +210,8 @@ async function getCachedEntryFromCache(
       throw err
     }
   }
-  // TODO: Error handling with error logging!
-  const isValid = await cachedEntry.validityVerificationPromise
-  cachedEntry.validityVerificationPromise = null
 
+  cachedEntry.validityVerificationPromise = null
   if ( isValid ) {
     cachedEntry.validByTimeMs = timeMsNow + definition.validityDurationMs
     return cachedEntry
@@ -134,8 +227,6 @@ export async function getOrCreateObjectFromCahce(
   cacheKey: string,
   creationFunction: Function,
 ): Object {
-  console.log({ XXX: 'getOrCreateObjectFromCahce', categoryName, cacheKey })
-
   const currentCachedEntry = await getCachedEntryFromCache( categoryName, cacheKey )
 
   // If it is already present in cache, return
@@ -162,5 +253,55 @@ export async function getOrCreateObjectFromCahce(
   // creation function
   addObjectToCache( categoryName, cacheKey, newObjectPromise )
 
-  return newObjectPromise
+  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'getOrCreateObjectFromCahce' )
+
+  try {
+    return await newObjectPromise
+  } catch ( err ) {
+    log.log( 'error', {
+      source: 'getOrCreateObjectFromCahce: await creationFunction failed',
+      categoryName,
+      cacheKey,
+      err,
+    })
+
+    const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
+
+    // $AssureFlow it is guaranteed that the category exists
+    const { entries } = cachedEntriesForCategory
+    entries.delete( cacheKey )
+
+    throw err
+  }
+}
+
+function logEntries( title: string ) {
+  const timeMsNow = new Date().getTime()
+  const values: Array<Object> = []
+
+  for ( let cachedEntriesForCategory of MapCachesByCategory.values() ) {
+    const { definition, entries } = cachedEntriesForCategory
+
+    // Delete expired entries
+    for ( let [ cacheKey, cachedEntry ] of entries.entries() ) {
+      const display = {
+        name: definition.name,
+        key: cacheKey,
+        validBy: cachedEntry.validByTimeMs,
+        validByLeft: cachedEntry.validByTimeMs - timeMsNow,
+        expires: 0,
+        expiresLeft: 0,
+      }
+
+      if ( cachedEntry.expiresAtMs ) {
+        display.expires = cachedEntry.expiresAtMs
+        display.expiresLeft = cachedEntry.expiresAtMs - timeMsNow
+      }
+
+      values.push( display )
+    }
+  }
+
+  console.log( title + ' @ ' + timeMsNow )
+  console.table( values )
 }

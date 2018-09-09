@@ -4,7 +4,7 @@ var _graphqlRelay = require('graphql-relay');
 var _graphql = require('graphql');
 
 var _Inscriptio = require('../model/Inscriptio');var _Inscriptio2 = _interopRequireDefault(_Inscriptio);
-var _NodeInterface = require('../../../../units/urb-base-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
+var _NodeInterface = require('../../../../units/urb-appbase-server/graphql/NodeInterface');var _NodeInterface2 = _interopRequireDefault(_NodeInterface);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}exports.default =
 
 new _graphql.GraphQLObjectType({
   name: 'Inscriptio',

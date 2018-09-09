@@ -20,7 +20,7 @@ var _Typography = require('@material-ui/core/Typography');var _Typography2 = _in
 
 var _react = require('react');var _react2 = _interopRequireDefault(_react);
 
-var _ResponsiveContentArea = require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   card: {
@@ -198,7 +198,7 @@ class NewUserScreen extends _react2.default.Component
         _react2.default.createElement(_CardHeader2.default, { title: 'Create New User' }),
         _react2.default.createElement(_CardContent2.default, null,
           _react2.default.createElement(_TextField2.default, {
-            label: 'Account Name',
+            label: 'E-Mail Address',
             fullWidth: true,
             value: UserAccount_Identifier,
             onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),

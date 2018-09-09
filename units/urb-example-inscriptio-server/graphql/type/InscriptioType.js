@@ -4,7 +4,7 @@ import { globalIdField } from 'graphql-relay'
 import { GraphQLString, GraphQLObjectType } from 'graphql'
 
 import Inscriptio from '../model/Inscriptio'
-import NodeInterface from '../../../../units/urb-webapp-server/graphql/NodeInterface'
+import NodeInterface from '../../../../units/urb-appbase-server/graphql/NodeInterface'
 
 export default new GraphQLObjectType({
   name: 'Inscriptio',

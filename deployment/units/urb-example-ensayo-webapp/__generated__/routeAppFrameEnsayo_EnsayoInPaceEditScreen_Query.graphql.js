@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 7cf9a20a95501e29e690cef165810367
+ * @relayHash 20343115606e30d61edd6ee22fc91964
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: EnsayoInPaceEditScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query = {|
+                variables: routeAppFrameEnsayo_EnsayoInPaceEditScreen_QueryVariables,
+                response: routeAppFrameEnsayo_EnsayoInPaceEditScreen_QueryResponse,
               |};
               */
 

@@ -14,7 +14,7 @@ import Typography from '@material-ui/core/Typography'
 
 import IconMenu from '@material-ui/icons/Menu'
 
-import PropTypes from 'prop-types'
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -115,11 +115,12 @@ const styles = theme => ({
   },
 })
 
-class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
-  static contextTypes = {
-    router: PropTypes.object.isRequired,
-  }
-
+class AppFrame extends React.Component<
+  { children?: any, classes: Object, router: Object, Viewer: Object },
+  {
+    drawerIsOpen: boolean,
+  },
+> {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
@@ -137,7 +138,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
   _handle_GoTo = ( to: string ) => {
     this.setState({ drawerIsOpen: false })
 
-    this.context.router.push( to )
+    this.props.router.push( to )
   }
 
   render() {
@@ -181,7 +182,7 @@ class AppFrame extends React.Component<any, { drawerIsOpen: boolean }> {
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( AppFrame ),
+  withStyles( styles )( withRouter( AppFrame ) ),
   graphql`
     fragment AppFrame_Viewer on Viewer {
       UserToken2

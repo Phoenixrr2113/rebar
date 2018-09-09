@@ -12,7 +12,7 @@ import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
-import ResponsiveContentArea from '../../urb-webapp-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const doNothing = () => {}
 

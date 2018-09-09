@@ -12,15 +12,15 @@ var _DialogTitle = require('@material-ui/core/DialogTitle');var _DialogTitle2 = 
 
 var _LinearProgress = require('@material-ui/core/LinearProgress');var _LinearProgress2 = _interopRequireDefault(_LinearProgress);
 
-var _Slide = require('@material-ui/core/Slide');var _Slide2 = _interopRequireDefault(_Slide);
-
 var _TextField = require('@material-ui/core/TextField');var _TextField2 = _interopRequireDefault(_TextField);
 
 var _styles = require('@material-ui/core/styles');
 
 var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 
-var _react = require('react');var _react2 = _interopRequireDefault(_react);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _react = require('react');var _react2 = _interopRequireDefault(_react);
+
+var _routeAfterLogin = require('../../_configuration/urb-account-management-webapp/routeAfterLogin');var _routeAfterLogin2 = _interopRequireDefault(_routeAfterLogin);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   dialogPaper: {
@@ -95,7 +95,9 @@ class LoginDialog extends _react2.default.Component
 
         if (responseData.success) {
           // In case of success, realod the application from server
-          window.location.replace(window.location.href, '');
+          window.location.replace(
+          window.location.pathname === '/' ? _routeAfterLogin2.default : window.location.pathname);
+
         } else {
           // In case of error, tell user what the error is
           this.setState({
@@ -109,7 +111,8 @@ class LoginDialog extends _react2.default.Component
         this.setState({
           currentOperation: 'failure',
           errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' + err.message });
+          'Did not receive proper response from server. Please try again later. Error:' +
+          err.message });
 
       }
     };this.
@@ -137,17 +140,12 @@ class LoginDialog extends _react2.default.Component
     const { UserAccount_Identifier, User_Secret } = this.state;
 
     return (
-      _react2.default.createElement(_Dialog2.default, {
-          classes: { paper: classes.dialogPaper },
-          open: open,
-          transition: _Slide2.default,
-          onClose: this._handle_Close },
-
+      _react2.default.createElement(_Dialog2.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
         _react2.default.createElement(_DialogTitle2.default, null, 'Log In'),
 
         _react2.default.createElement(_DialogContent2.default, null,
           _react2.default.createElement(_TextField2.default, {
-            label: 'Account Name',
+            label: 'E-Mail Address',
             fullWidth: true,
             value: UserAccount_Identifier,
             onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 223782bbf6c81449981e92021af4ec09
+ * @relayHash 97d753e2e73d5f850d7068fbbbe43206
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: TranslaticiarumScreen_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query = {|
+                variables: routeAppFrameTranslaticiarum_TranslaticiarumScreen_QueryVariables,
+                response: routeAppFrameTranslaticiarum_TranslaticiarumScreen_QueryResponse,
               |};
               */
 
@@ -48,7 +52,15 @@
                  */
 
 const node /*: ConcreteRequest*/ = function () {
-  var v0 = {
+  var v0 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 2147483647,
+    "type": "Int" }],
+
+
+  v1 = {
     "kind": "ScalarField",
     "alias": null,
     "name": "id",
@@ -106,14 +118,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Translaticiarums",
           "storageKey": "Translaticiarums(first:2147483647)",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "concreteType": "TranslaticiarumsConnection",
           "plural": false,
           "selections": [
@@ -135,7 +140,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Translaticiarum",
               "plural": false,
               "selections": [
-              v0,
+              v1,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -206,19 +211,12 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Translaticiarums",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "handle": "connection",
           "key": "TranslaticiarumScreen_Translaticiarums",
           "filters": null },
 
-        v0] }] } };
+        v1] }] } };
 
 
 

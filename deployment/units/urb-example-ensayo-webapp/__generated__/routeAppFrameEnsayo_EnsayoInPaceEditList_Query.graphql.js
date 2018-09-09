@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash f2c6452e248c15bbbd821a37d8b35b2f
+ * @relayHash b1a8f519bd1713b84955283d45294b9b
  */
 
 /* eslint-disable */
@@ -15,6 +15,10 @@
                 +Viewer: ?{|
                   +$fragmentRefs: EnsayoInPaceEditList_Viewer$ref
                 |}
+              |};
+              export type routeAppFrameEnsayo_EnsayoInPaceEditList_Query = {|
+                variables: routeAppFrameEnsayo_EnsayoInPaceEditList_QueryVariables,
+                response: routeAppFrameEnsayo_EnsayoInPaceEditList_QueryResponse,
               |};
               */
 
@@ -59,7 +63,15 @@
                  */
 
 const node /*: ConcreteRequest*/ = function () {
-  var v0 = {
+  var v0 = [
+  {
+    "kind": "Literal",
+    "name": "first",
+    "value": 2147483647,
+    "type": "Int" }],
+
+
+  v1 = {
     "kind": "ScalarField",
     "alias": null,
     "name": "id",
@@ -117,14 +129,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Ensayos",
           "storageKey": "Ensayos(first:2147483647)",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "concreteType": "EnsayosConnection",
           "plural": false,
           "selections": [
@@ -146,7 +151,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Ensayo",
               "plural": false,
               "selections": [
-              v0,
+              v1,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -217,19 +222,12 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Ensayos",
-          "args": [
-          {
-            "kind": "Literal",
-            "name": "first",
-            "value": 2147483647,
-            "type": "Int" }],
-
-
+          "args": v0,
           "handle": "connection",
           "key": "EnsayoList_Ensayos",
           "filters": null },
 
-        v0] }] } };
+        v1] }] } };
 
 
 

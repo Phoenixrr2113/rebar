@@ -13,5 +13,8 @@ var debugWriteToLogServerRequestWebApp = exports.debugWriteToLogServerRequestWeb
 var debugWriteToLogServerRequestPublic = exports.debugWriteToLogServerRequestPublic = { trace: 'none' };
 
 var debugWriteToConsoleServerRequestSiteInformation = exports.debugWriteToConsoleServerRequestSiteInformation = false;
+
+var debugWriteToConsoleObjectCacheActivity = exports.debugWriteToConsoleObjectCacheActivity = false;
+
 var debugWriteToConsoleLog = exports.debugWriteToConsoleLog = false;
 //# sourceMappingURL=debug.js.map
