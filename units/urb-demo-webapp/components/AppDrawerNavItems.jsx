@@ -1,63 +1,84 @@
 // @flow
 
-import List from 'material-ui/List'
+import Divider from '@material-ui/core/Divider'
+
+import List from '@material-ui/core/List'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import IconInbox from '@material-ui/icons/Inbox'
+
+import IconToday from '@material-ui/icons/Today'
+
+import IconEdit from '@material-ui/icons/Edit'
+
+import IconImportContacts from '@material-ui/icons/ImportContacts'
+
+import IconMyLocation from '@material-ui/icons/MyLocation'
+
+import IconOpenWith from '@material-ui/icons/OpenWith'
+
+import IconLock from '@material-ui/icons/Lock'
+
 import React from 'react'
 
-import AppDrawerNavItem from '../../urb-appdrawer-webapp/components/AppDrawerNavItem'
+import NavMenuItemWithIcon from '../../urb-appdrawer-webapp/components/NavMenuItemWithIcon'
 
-export default class AppDrawernavItems extends React.Component<{}> {
+const styles = {
+  list: {
+    width: 250,
+    flex: 'initial',
+  },
+}
+
+class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Function }> {
   render() {
+    const { classes, onClick } = this.props
+
     return (
-      <List>
-        <AppDrawerNavItem
-          key="/force-login"
-          openImmediately={true}
-          title="Force Login"
-          to="/force-login"
-        />
-        <AppDrawerNavItem
-          key="/todo"
-          openImmediately={true}
-          title="To Dos"
-          to="/todo"
-        />
-        <AppDrawerNavItem
-          key="/Ensayo/edit"
-          openImmediately={true}
-          title="Ensayo edit"
-          to="/Ensayo/edit"
-        />
-        <AppDrawerNavItem
-          key="/ensayo/in-place-edit"
-          openImmediately={true}
-          title="Ensayo in place"
-          to="/ensayo/in-place-edit"
-        />
-        <AppDrawerNavItem
-          key="/ensayo"
-          openImmediately={true}
-          title="Ensayo public"
-          to="/ensayo"
-        />
-        <AppDrawerNavItem
-          key="/inscriptio"
-          openImmediately={true}
-          title="Inscriptio"
-          to="/inscriptio"
-        />
-        <AppDrawerNavItem
-          key="/translaticiarum"
-          openImmediately={true}
-          title="Translaticiarum"
-          to="/translaticiarum"
-        />
-        <AppDrawerNavItem
-          key="/viewport-dimensions"
-          openImmediately={true}
-          title="Viewport Dimensions"
-          to="/viewport-dimensions"
-        />
-      </List>
+      <div>
+        <Divider />
+        <List className={classes.list}>
+          <NavMenuItemWithIcon
+            icon={<IconInbox />}
+            label="To Dos"
+            onClick={() => onClick( '/todo/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<IconEdit />}
+            label="Ensayo Edit"
+            onClick={() => onClick( '/ensayo/in-place-edit/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<IconImportContacts />}
+            label="Ensayo Public"
+            onClick={() => onClick( '/ensayo/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<IconMyLocation />}
+            label="Inscriptio"
+            onClick={() => onClick( '/inscriptio/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<IconToday />}
+            label="Translaticiarum"
+            onClick={() => onClick( '/translaticiarum/' )}
+          />
+          <Divider />
+          <NavMenuItemWithIcon
+            icon={<IconOpenWith />}
+            label="Viewport Dimensions"
+            onClick={() => onClick( '/viewport-dimensions/' )}
+          />
+          <NavMenuItemWithIcon
+            icon={<IconLock />}
+            label="Force Login"
+            onClick={() => onClick( '/force-login/' )}
+          />
+        </List>
+      </div>
     )
   }
 }
+
+export default withStyles( styles )( AppDrawerNavItems )

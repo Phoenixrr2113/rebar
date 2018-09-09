@@ -25,11 +25,7 @@ const mutation = graphql`
 function sharedUpdater( store, user, ToDosEdge ) {
   const userProxy = store.get( user.id )
   ;[ 'any', 'active' ].forEach( status => {
-    const connection = ConnectionHandler.getConnection(
-      userProxy,
-      'ToDoList_ToDos',
-      { status }
-    )
+    const connection = ConnectionHandler.getConnection( userProxy, 'ToDoList_ToDos', { status })
     if ( connection ) {
       ConnectionHandler.insertEdgeAfter( connection, ToDosEdge )
     }
@@ -58,10 +54,7 @@ function commit( environment, user, ToDo_Text ) {
       aToDo.setValue( ToDo_Text, 'ToDo_Text' )
       aToDo.setValue( id, 'id' )
 
-      const ToDosEdge = store.create(
-        `client:ToDoAdd:ToDosEdge:${clientMutationId}`,
-        'ToDosEdge'
-      )
+      const ToDosEdge = store.create( `client:ToDoAdd:ToDosEdge:${clientMutationId}`, 'ToDosEdge' )
       ToDosEdge.setLinkedRecord( aToDo, 'node' )
 
       sharedUpdater( store, user, ToDosEdge )

@@ -4,7 +4,7 @@ import { mutationWithClientMutationId } from 'graphql-relay'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
 
 import InscriptiosConnection from '../type/InscriptiosConnection'
-import ViewerType from '../../../../units/urb-base-server/graphql/type/ViewerType'
+import ViewerType from '../../../../units/urb-appbase-server/graphql/type/ViewerType'
 
 export default mutationWithClientMutationId({
   name: 'InscriptioAdd',
@@ -18,26 +18,15 @@ export default mutationWithClientMutationId({
   outputFields: {
     InscriptiosEdge: {
       type: InscriptiosConnection.edgeType,
-      resolve: async(
-        { local_id },
-        { ...args },
-        context,
-        { rootValue: objectManager }
-      ) => {
+      resolve: async({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
         const an_Object = await objectManager.getOneObject( 'Inscriptio', {
           id: local_id,
         })
 
-        const arr = await objectManager.getObjectList( 'Inscriptio', {
-          Inscriptio_User_id: objectManager.getViewerUserId(),
-        })
+        const arr = await objectManager.getObjectList( 'Inscriptio', {})
 
         return {
-          cursor: objectManager.cursorForObjectInConnection(
-            'Inscriptio',
-            arr,
-            an_Object
-          ),
+          cursor: objectManager.cursorForObjectInConnection( 'Inscriptio', arr, an_Object ),
           node: an_Object,
         }
       },
@@ -55,10 +44,9 @@ export default mutationWithClientMutationId({
   mutateAndGetPayload: async(
     { Inscriptio_LocationLat, Inscriptio_LocationLon, Inscriptio_Notes },
     context,
-    { rootValue: objectManager }
+    { rootValue: objectManager },
   ) => {
     const local_id = await objectManager.add( 'Inscriptio', {
-      Inscriptio_User_id: objectManager.getViewerUserId(),
       Inscriptio_LocationLat,
       Inscriptio_LocationLon,
       Inscriptio_Notes,

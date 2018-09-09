@@ -3,7 +3,7 @@
 import { globalIdField } from 'graphql-relay'
 import { GraphQLBoolean, GraphQLString, GraphQLObjectType } from 'graphql'
 
-import NodeInterface from '../../../../units/urb-base-server/graphql/NodeInterface'
+import NodeInterface from '../../../../units/urb-appbase-server/graphql/NodeInterface'
 import ToDo from '../model/ToDo'
 
 export default new GraphQLObjectType({

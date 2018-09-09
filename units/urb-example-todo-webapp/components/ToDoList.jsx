@@ -1,13 +1,22 @@
 // @flow
 
-import Checkbox from 'material-ui/Checkbox'
-import { FormGroup, FormControlLabel } from 'material-ui/Form'
-import List from 'material-ui/List'
-import { withStyles } from 'material-ui/styles'
-import PropTypes from 'prop-types'
+import AppBar from '@material-ui/core/AppBar'
+
+import Checkbox from '@material-ui/core/Checkbox'
+
+import FormGroup from '@material-ui/core/FormGroup'
+
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+
+import List from '@material-ui/core/List'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-import Tabs, { Tab } from 'material-ui/Tabs'
+
+import Tabs, { Tab } from '@material-ui/core/Tabs'
 
 import ToDoListUpdateMarkAllMutation from '../../urb-example-todo-client/relay/ToDoListUpdateMarkAllMutation'
 
@@ -24,15 +33,11 @@ const styles = theme => ({
 class ToDoList extends React.Component<
   {
     Viewer: Object,
-    relay: Object
+    relay: Object,
+    router: Object,
   },
-  null
+  null,
 > {
-  static contextTypes = {
-    relay: PropTypes.object,
-    router: PropTypes.object,
-  }
-
   _handle_onClick_MarkAll = ( event, checked ) => {
     const { relay, Viewer } = this.props
     const { variables } = this.context.relay
@@ -43,15 +48,12 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status
+      variables.status,
     )
   }
 
   _handle_onChange = ( event, tabsValue ) => {
-    const url =
-      tabsValue === 2
-        ? '/todo/completed'
-        : tabsValue === 1 ? '/todo/active' : '/todo'
+    const url = tabsValue === 2 ? '/todo/completed' : tabsValue === 1 ? '/todo/active' : '/todo'
     this.context.router.push( url )
   }
 
@@ -60,11 +62,13 @@ class ToDoList extends React.Component<
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0
 
     return (
-      <Tabs value={tabsValue} onChange={this._handle_onChange}>
-        <Tab label="All" />
-        <Tab label="Active" />
-        <Tab label="Completed" />
-      </Tabs>
+      <AppBar position="static">
+        <Tabs value={tabsValue} onChange={this._handle_onChange}>
+          <Tab label="All" />
+          <Tab label="Active" />
+          <Tab label="Completed" />
+        </Tabs>
+      </AppBar>
     )
   }
 
@@ -91,9 +95,9 @@ class ToDoList extends React.Component<
           />
         </FormGroup>
         <List>
-          {ToDos.edges.map( ({ node }) =>
+          {ToDos.edges.map( ({ node }) => (
             <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} />
-          )}
+          ) )}
         </List>
       </div>
     )
@@ -101,11 +105,10 @@ class ToDoList extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( ToDoList ),
+  withStyles( styles )( withRouter( ToDoList ) ),
   graphql`
     fragment ToDoList_Viewer on Viewer {
-      ToDos(status: $status, first: 2147483647)
-        @connection(key: "ToDoList_ToDos") {
+      ToDos(status: $status, first: 2147483647) @connection(key: "ToDoList_ToDos") {
         edges {
           node {
             id
@@ -119,5 +122,5 @@ export default createFragmentContainer(
       ToDo_CompletedCount
       ...ToDoItem_Viewer
     }
-  `
+  `,
 )

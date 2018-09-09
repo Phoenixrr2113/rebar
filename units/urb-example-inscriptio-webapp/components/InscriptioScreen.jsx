@@ -1,19 +1,26 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
-import PropTypes from 'prop-types'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import React from 'react'
-import { withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
-import withScriptjs from 'react-google-maps/lib/async/withScriptjs'
+import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
+import SiteConfigurationContext from '../../urb-appbase-webapp/components/SiteConfigurationContext'
 
 const MapComponent = withScriptjs(
   withGoogleMap( props => (
     <GoogleMap defaultZoom={props.defaultZoom} center={props.center}>
-      {props.markers.map( ( marker, index ) => <Marker key={index} position={marker.position} /> )}
+      {props.markers.map( ( marker, index ) => (
+        <Marker key={index} position={marker.position} />
+      ) )}
     </GoogleMap>
   ) ),
 )
@@ -26,10 +33,6 @@ const styles = {
 }
 
 class InscriptioScreen extends React.Component<{ classes: Object, Viewer: Object }, Object> {
-  static contextTypes = {
-    rbCtx: PropTypes.object,
-  }
-
   constructor( props: Object, context: Object ) {
     super( props, context )
 
@@ -47,27 +50,29 @@ class InscriptioScreen extends React.Component<{ classes: Object, Viewer: Object
   render() {
     const { classes } = this.props
 
-    const googleMapURL =
-      'https://maps.googleapis.com/maps/api/js?v=3.28&libraries=places,geometry&key=' +
-      this.context.rbCtx.siteConfiguration.webapp.api.googleMapsJavascriptAPI
-
-    console.log( googleMapURL )
-
     return (
       <ResponsiveContentArea>
         <Card className={classes.card}>
           <CardHeader title="Inscriptio" />
           <CardContent>
-            <MapComponent
-              defaultZoom={16}
-              center={this.state.center}
-              content="Content here"
-              googleMapURL={googleMapURL}
-              markers={this.state.markers}
-              loadingElement={<div>Loading...</div>}
-              containerElement={<div style={{ height: 400 }} />}
-              mapElement={<div style={{ height: 400 }} />}
-            />
+            <SiteConfigurationContext.Consumer>
+              {siteConfiguration => {
+                // $AssureFlow
+                const googleMapURL = siteConfiguration.webapp.api.googleMapsJavascriptAPI
+                return (
+                  <MapComponent
+                    defaultZoom={16}
+                    center={this.state.center}
+                    content="Content here"
+                    googleMapURL={googleMapURL}
+                    markers={this.state.markers}
+                    loadingElement={<div>Loading...</div>}
+                    containerElement={<div style={{ height: 400 }} />}
+                    mapElement={<div style={{ height: 400 }} />}
+                  />
+                )
+              }}
+            </SiteConfigurationContext.Consumer>
           </CardContent>
         </Card>
       </ResponsiveContentArea>

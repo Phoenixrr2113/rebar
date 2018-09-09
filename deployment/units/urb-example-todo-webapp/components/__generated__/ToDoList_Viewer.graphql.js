@@ -1,178 +1,184 @@
-/**
- * @flow
- */
+
+
+
 
 /* eslint-disable */
 
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
-export type ToDoList_Viewer = {|
-  +ToDos: ?{|
-    +edges: ?$ReadOnlyArray<?{|
-      +node: ?{|
-        +id: string;
-        +ToDo_Complete: ?boolean;
-      |};
-    |}>;
-  |};
-  +id: string;
-  +ToDo_TotalCount: ?number;
-  +ToDo_CompletedCount: ?number;
-|};
-*/
+              import type { ConcreteFragment } from 'relay-runtime';
+              type ToDoItem_ToDo$ref = any;
+              type ToDoItem_Viewer$ref = any;
+              import type { FragmentReference } from "relay-runtime";
+              declare export opaque type ToDoList_Viewer$ref: FragmentReference;
+              export type ToDoList_Viewer = {|
+                +ToDos: ?{|
+                  +edges: ?$ReadOnlyArray<?{|
+                    +node: ?{|
+                      +id: string,
+                      +ToDo_Complete: ?boolean,
+                      +$fragmentRefs: ToDoItem_ToDo$ref,
+                    |}
+                  |}>
+                |},
+                +id: string,
+                +ToDo_TotalCount: ?number,
+                +ToDo_CompletedCount: ?number,
+                +$fragmentRefs: ToDoItem_Viewer$ref,
+                +$refType: ToDoList_Viewer$ref,
+              |};
+              */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [
-    {
-      "kind": "RootArgument",
-      "name": "status",
-      "type": "String"
-    }
-  ],
-  "kind": "Fragment",
-  "metadata": {
-    "connection": [
+const node /*: ConcreteFragment*/ = function () {
+  var v0 = {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null };
+
+  return {
+    "kind": "Fragment",
+    "name": "ToDoList_Viewer",
+    "type": "Viewer",
+    "metadata": {
+      "connection": [
       {
         "count": null,
         "cursor": null,
         "direction": "forward",
         "path": [
-          "ToDos"
-        ]
-      }
-    ]
-  },
-  "name": "ToDoList_Viewer",
-  "selections": [
+        "ToDos"] }] },
+
+
+
+
+    "argumentDefinitions": [
+    {
+      "kind": "RootArgument",
+      "name": "status",
+      "type": "String" }],
+
+
+    "selections": [
     {
       "kind": "LinkedField",
       "alias": "ToDos",
-      "args": [
-        {
-          "kind": "Variable",
-          "name": "status",
-          "variableName": "status",
-          "type": "String"
-        }
-      ],
-      "concreteType": "ToDosConnection",
       "name": "__ToDoList_ToDos_connection",
+      "storageKey": null,
+      "args": [
+      {
+        "kind": "Variable",
+        "name": "status",
+        "variableName": "status",
+        "type": "String" }],
+
+
+      "concreteType": "ToDosConnection",
       "plural": false,
       "selections": [
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "edges",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "ToDosEdge",
+        "plural": true,
+        "selections": [
         {
           "kind": "LinkedField",
           "alias": null,
+          "name": "node",
+          "storageKey": null,
           "args": null,
-          "concreteType": "ToDosEdge",
-          "name": "edges",
-          "plural": true,
-          "selections": [
-            {
-              "kind": "LinkedField",
-              "alias": null,
-              "args": null,
-              "concreteType": "ToDo",
-              "name": "node",
-              "plural": false,
-              "selections": [
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "id",
-                  "storageKey": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "ToDo_Complete",
-                  "storageKey": null
-                },
-                {
-                  "kind": "FragmentSpread",
-                  "name": "ToDoItem_ToDo",
-                  "args": null
-                },
-                {
-                  "kind": "ScalarField",
-                  "alias": null,
-                  "args": null,
-                  "name": "__typename",
-                  "storageKey": null
-                }
-              ],
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "cursor",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        },
-        {
-          "kind": "LinkedField",
-          "alias": null,
-          "args": null,
-          "concreteType": "PageInfo",
-          "name": "pageInfo",
+          "concreteType": "ToDo",
           "plural": false,
           "selections": [
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "endCursor",
-              "storageKey": null
-            },
-            {
-              "kind": "ScalarField",
-              "alias": null,
-              "args": null,
-              "name": "hasNextPage",
-              "storageKey": null
-            }
-          ],
-          "storageKey": null
-        }
-      ],
-      "storageKey": null
-    },
+          v0,
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "ToDo_Complete",
+            "args": null,
+            "storageKey": null },
+
+          {
+            "kind": "FragmentSpread",
+            "name": "ToDoItem_ToDo",
+            "args": null },
+
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "name": "__typename",
+            "args": null,
+            "storageKey": null }] },
+
+
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "cursor",
+          "args": null,
+          "storageKey": null }] },
+
+
+
+      {
+        "kind": "LinkedField",
+        "alias": null,
+        "name": "pageInfo",
+        "storageKey": null,
+        "args": null,
+        "concreteType": "PageInfo",
+        "plural": false,
+        "selections": [
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "endCursor",
+          "args": null,
+          "storageKey": null },
+
+        {
+          "kind": "ScalarField",
+          "alias": null,
+          "name": "hasNextPage",
+          "args": null,
+          "storageKey": null }] }] },
+
+
+
+
+
+    v0,
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    },
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
       "name": "ToDo_TotalCount",
-      "storageKey": null
-    },
+      "args": null,
+      "storageKey": null },
+
     {
       "kind": "ScalarField",
       "alias": null,
-      "args": null,
       "name": "ToDo_CompletedCount",
-      "storageKey": null
-    },
+      "args": null,
+      "storageKey": null },
+
     {
       "kind": "FragmentSpread",
       "name": "ToDoItem_Viewer",
-      "args": null
-    }
-  ],
-  "type": "Viewer"
-};
+      "args": null }] };
 
-module.exports = fragment;
+
+
+}();
+// prettier-ignore
+node /*: any*/.hash = '68b5216db9d5b129661a98b5e2476770';
+module.exports = node;
+//# sourceMappingURL=ToDoList_Viewer.graphql.js.map

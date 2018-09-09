@@ -1,12 +1,18 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
-import PropTypes from 'prop-types'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {
@@ -14,11 +20,11 @@ const styles = theme => ({
   },
 })
 
-class EnsayoPublicList extends React.Component<any, any> {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
+class EnsayoPublicList extends React.Component<{
+  classes: Object,
+  router: Object,
+  Viewer: Object,
+}> {
   _handle_onClick( id ) {
     this.context.router.push( '/ensayo/item/' + id )
   }
@@ -28,7 +34,7 @@ class EnsayoPublicList extends React.Component<any, any> {
 
     return (
       <ResponsiveContentArea>
-        {Viewer.Ensayos.edges.map( edge =>
+        {Viewer.Ensayos.edges.map( edge => (
           <Card key={edge.node.id} className={classes.card}>
             <CardHeader title={edge.node.Ensayo_Title} />
 
@@ -36,14 +42,14 @@ class EnsayoPublicList extends React.Component<any, any> {
               {edge.node.Ensayo_Description}
             </CardContent>
           </Card>
-        )}
+        ) )}
       </ResponsiveContentArea>
     )
   }
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( EnsayoPublicList ),
+  withStyles( styles )( withRouter( EnsayoPublicList ) ),
   graphql`
     fragment EnsayoPublicList_Viewer on Viewer {
       Ensayos(first: 2147483647) @connection(key: "EnsayoPublicList_Ensayos") {
@@ -56,5 +62,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `
+  `,
 )

@@ -5,7 +5,7 @@ import { GraphQLString, GraphQLObjectType } from 'graphql'
 import { GraphQLDateTime } from 'graphql-iso-date'
 
 import Translaticiarum from '../model/Translaticiarum'
-import NodeInterface from '../../../../units/urb-base-server/graphql/NodeInterface'
+import NodeInterface from '../../../../units/urb-appbase-server/graphql/NodeInterface'
 
 export default new GraphQLObjectType({
   name: 'Translaticiarum',

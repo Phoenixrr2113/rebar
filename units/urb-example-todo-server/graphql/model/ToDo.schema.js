@@ -5,20 +5,23 @@ import defaultPersister from '../../../_configuration/urb-base-server/graphql/de
 defaultPersister.addTableSchema( 'ToDo', {
   fields: {
     id: 'uuid',
+    ToDo_artifact_id: 'uuid',
     ToDo_User_id: 'uuid',
     ToDo_Text: 'text',
     ToDo_Complete: 'boolean',
   },
 
+  indexes: [ 'ToDo_User_id' ],
+
   key: [ 'id' ],
 
-  custom_indexes: [
-    {
-      on: 'ToDo_User_id',
-      using: 'org.apache.cassandra.index.sasi.SASIIndex',
-      options: {},
-    },
-  ],
+  // custom_indexes: [
+  //   {
+  //     on: 'ToDo_User_id',
+  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
+  //     options: {},
+  //   },
+  // ],
 })
 
 export default true

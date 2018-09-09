@@ -1,6 +1,7 @@
 // @flow
 
-import List from 'material-ui/List'
+import List from '@material-ui/core/List'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -9,9 +10,9 @@ import EnsayoInPlaceEditItem from './EnsayoInPlaceEditItem'
 class EnsayoInPaceEditList extends React.Component<
   {
     Viewer: Object,
-    relay: Object
+    relay: Object,
   },
-  null
+  null,
 > {
   render() {
     const { Viewer } = this.props
@@ -20,13 +21,9 @@ class EnsayoInPaceEditList extends React.Component<
     return (
       <div>
         <List>
-          {Ensayos.edges.map( ({ node }) =>
-            <EnsayoInPlaceEditItem
-              key={node.id}
-              Viewer={Viewer}
-              Ensayo={node}
-            />
-          )}
+          {Ensayos.edges.map( ({ node }) => (
+            <EnsayoInPlaceEditItem key={node.id} Viewer={Viewer} Ensayo={node} />
+          ) )}
         </List>
       </div>
     )
@@ -48,5 +45,5 @@ export default createFragmentContainer(
       id
       ...EnsayoInPlaceEditItem_Viewer
     }
-  `
+  `,
 )

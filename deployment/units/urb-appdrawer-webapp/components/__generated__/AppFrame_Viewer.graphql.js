@@ -1,39 +1,46 @@
-/**
- * @flow
- */
+
+
+
 
 /* eslint-disable */
 
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
-export type AppFrame_Viewer = {|
-  +UserToken2: ?string;
-|};
-*/
+              import type { ConcreteFragment } from 'relay-runtime';
+              type NavBarLoginButton_Viewer$ref = any;
+              import type { FragmentReference } from "relay-runtime";
+              declare export opaque type AppFrame_Viewer$ref: FragmentReference;
+              export type AppFrame_Viewer = {|
+                +UserToken2: ?string,
+                +$fragmentRefs: NavBarLoginButton_Viewer$ref,
+                +$refType: AppFrame_Viewer$ref,
+              |};
+              */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node /*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "AppFrame_Viewer",
+  "type": "Viewer",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "UserToken2",
-      "storageKey": null
-    },
-    {
-      "kind": "FragmentSpread",
-      "name": "NavBarLoginButton_Viewer",
-      "args": null
-    }
-  ],
-  "type": "Viewer"
-};
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "UserToken2",
+    "args": null,
+    "storageKey": null },
 
-module.exports = fragment;
+  {
+    "kind": "FragmentSpread",
+    "name": "NavBarLoginButton_Viewer",
+    "args": null }] };
+
+
+
+// prettier-ignore
+node /*: any*/.hash = 'd2d21205cf198c3560f270c0ab6040bd';
+module.exports = node;
+//# sourceMappingURL=AppFrame_Viewer.graphql.js.map

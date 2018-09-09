@@ -1,14 +1,22 @@
 // @flow
 
-import AddIcon from 'material-ui-icons/Add'
-import Button from 'material-ui/Button'
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
+import AddIcon from '@material-ui/icons/Add'
+
+import Button from '@material-ui/core/Button'
+
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import EnsayoAddMutation from '../../urb-example-ensayo-client/relay/EnsayoAddMutation'
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 import EnsayoInPlaceEditProperties from './EnsayoInPlaceEditProperties'
 
@@ -24,11 +32,11 @@ class EnsayoInPaceEditScreen extends React.Component<
     classes: Object,
     Viewer: Object,
     children: Object,
-    relay: Object
+    relay: Object,
   },
   {
-    propertiesIsOpen: boolean
-  }
+    propertiesIsOpen: boolean,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -37,11 +45,7 @@ class EnsayoInPaceEditScreen extends React.Component<
   }
 
   _handle_updateHandler_Ensayo = EnsayoInPlaceEditProperties => {
-    const {
-      Ensayo_Title,
-      Ensayo_Description,
-      Ensayo_Content,
-    } = EnsayoInPlaceEditProperties
+    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties
     const { relay, Viewer } = this.props
 
     EnsayoAddMutation.commit(
@@ -49,7 +53,7 @@ class EnsayoInPaceEditScreen extends React.Component<
       Viewer,
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content
+      Ensayo_Content,
     )
   }
 
@@ -73,7 +77,7 @@ class EnsayoInPaceEditScreen extends React.Component<
           <CardContent>
             <div className={classes.addNewButton}>
               <Button
-                fab
+                variant="fab"
                 color="primary"
                 className={classes.button}
                 onClick={this._handle_onClick_Add}
@@ -85,14 +89,15 @@ class EnsayoInPaceEditScreen extends React.Component<
             {this.props.children}
           </CardContent>
 
-          {propertiesIsOpen &&
+          {propertiesIsOpen && (
             <EnsayoInPlaceEditProperties
               Ensayo_Title=""
               Ensayo_Content=""
               Ensayo_Description=""
               handlerUpdate={this._handle_updateHandler_Ensayo}
               handlerClose={this._handle_Close_Properties}
-            />}
+            />
+          )}
         </Card>
       </ResponsiveContentArea>
     )
@@ -105,5 +110,5 @@ export default createFragmentContainer(
     fragment EnsayoInPaceEditScreen_Viewer on Viewer {
       id
     }
-  `
+  `,
 )

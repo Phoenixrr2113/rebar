@@ -1,0 +1,396 @@
+#
+scalar DateTime
+
+type Ensayo implements Node {
+  #
+  id: ID!
+  Ensayo_Title: String
+  Ensayo_Description: String
+  Ensayo_Content: String
+}
+
+input EnsayoAddInput {
+  Ensayo_Title: String!
+  Ensayo_Description: String!
+  Ensayo_Content: String!
+  clientMutationId: String
+}
+
+type EnsayoAddPayload {
+  EnsayosEdge: EnsayosEdge
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+input EnsayoDeleteInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type EnsayoDeletePayload {
+  deletedId: ID
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+#
+type EnsayosConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [EnsayosEdge]
+}
+
+#
+type EnsayosEdge {
+  #
+  node: Ensayo
+
+  #
+  cursor: String!
+}
+
+input EnsayoUpdateInput {
+  id: ID!
+  Ensayo_Title: String!
+  Ensayo_Description: String!
+  Ensayo_Content: String!
+  clientMutationId: String
+}
+
+type EnsayoUpdatePayload {
+  Ensayo: Ensayo
+  clientMutationId: String
+}
+
+type Inscriptio implements Node {
+  #
+  id: ID!
+  Inscriptio_LocationLat: String
+  Inscriptio_LocationLon: String
+  Inscriptio_Notes: String
+}
+
+input InscriptioAddInput {
+  Inscriptio_LocationLat: String!
+  Inscriptio_LocationLon: String!
+  Inscriptio_Notes: String!
+  clientMutationId: String
+}
+
+type InscriptioAddPayload {
+  InscriptiosEdge: InscriptiosEdge
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+input InscriptioDeleteInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type InscriptioDeletePayload {
+  deletedId: ID
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+#
+type InscriptiosConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [InscriptiosEdge]
+}
+
+#
+type InscriptiosEdge {
+  #
+  node: Inscriptio
+
+  #
+  cursor: String!
+}
+
+input InscriptioUpdateInput {
+  id: ID!
+  Inscriptio_LocationLat: String!
+  Inscriptio_LocationLon: String!
+  Inscriptio_Notes: String!
+  clientMutationId: String
+}
+
+type InscriptioUpdatePayload {
+  Inscriptio: Inscriptio
+  clientMutationId: String
+}
+
+type Mutation {
+  EnsayoAdd(input: EnsayoAddInput!): EnsayoAddPayload
+  EnsayoDelete(input: EnsayoDeleteInput!): EnsayoDeletePayload
+  EnsayoUpdate(input: EnsayoUpdateInput!): EnsayoUpdatePayload
+  InscriptioAdd(input: InscriptioAddInput!): InscriptioAddPayload
+  InscriptioDelete(input: InscriptioDeleteInput!): InscriptioDeletePayload
+  InscriptioUpdate(input: InscriptioUpdateInput!): InscriptioUpdatePayload
+  ToDoAdd(input: ToDoAddInput!): ToDoAddPayload
+  ToDoDelete(input: ToDoDeleteInput!): ToDoDeletePayload
+  ToDoListUpdateMarkAll(input: ToDoListUpdateMarkAllInput!): ToDoListUpdateMarkAllPayload
+  ToDoUpdateRename(input: ToDoUpdateRenameInput!): ToDoUpdateRenamePayload
+  ToDoUpdateStatus(input: ToDoUpdateStatusInput!): ToDoUpdateStatusPayload
+  TranslaticiarumAdd(input: TranslaticiarumAddInput!): TranslaticiarumAddPayload
+  TranslaticiarumDelete(input: TranslaticiarumDeleteInput!): TranslaticiarumDeletePayload
+  TranslaticiarumUpdate(input: TranslaticiarumUpdateInput!): TranslaticiarumUpdatePayload
+}
+
+#
+interface Node {
+  #
+  id: ID!
+}
+
+type ObjectUserPermission implements Node {
+  #
+  id: ID!
+  ObjectUserPermission_Name: String
+  ObjectUserPermission_PermitCreate: Boolean
+  ObjectUserPermission_PermitRead: Boolean
+  ObjectUserPermission_PermitUpdate: Boolean
+  ObjectUserPermission_PermitDelete: Boolean
+  ObjectUserPermission_PermitMiscAsJSON: String
+}
+
+#
+type ObjectUserPermissionsConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [ObjectUserPermissionsEdge]
+}
+
+#
+type ObjectUserPermissionsEdge {
+  #
+  node: ObjectUserPermission
+
+  #
+  cursor: String!
+}
+
+#
+type PageInfo {
+  #
+  hasNextPage: Boolean!
+
+  #
+  hasPreviousPage: Boolean!
+
+  #
+  startCursor: String
+
+  #
+  endCursor: String
+}
+
+type Query {
+  node(id: ID!): Node
+  Viewer: Viewer
+}
+
+type ResourceUserAllowance implements Node {
+  #
+  id: ID!
+  ResourceUserAllowance_Name: String
+  ResourceUserAllowance_MinAmount: Int
+  ResourceUserAllowance_MinWarning: Int
+  ResourceUserAllowance_MaxAmount: Int
+  ResourceUserAllowance_MaxWarning: Int
+  ResourceUserAllowance_AllowMiscAsJSON: String
+}
+
+#
+type ResourceUserAllowancesConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [ResourceUserAllowancesEdge]
+}
+
+#
+type ResourceUserAllowancesEdge {
+  #
+  node: ResourceUserAllowance
+
+  #
+  cursor: String!
+}
+
+type ToDo implements Node {
+  #
+  id: ID!
+  ToDo_Text: String
+  ToDo_Complete: Boolean
+}
+
+input ToDoAddInput {
+  ToDo_Text: String!
+  clientMutationId: String
+}
+
+type ToDoAddPayload {
+  ToDosEdge: ToDosEdge
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+input ToDoDeleteInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type ToDoDeletePayload {
+  deletedId: ID
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+input ToDoListUpdateMarkAllInput {
+  ToDo_Complete: Boolean!
+  clientMutationId: String
+}
+
+type ToDoListUpdateMarkAllPayload {
+  changedToDos: [ToDo]
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+#
+type ToDosConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [ToDosEdge]
+}
+
+#
+type ToDosEdge {
+  #
+  node: ToDo
+
+  #
+  cursor: String!
+}
+
+input ToDoUpdateRenameInput {
+  id: ID!
+  ToDo_Text: String!
+  clientMutationId: String
+}
+
+type ToDoUpdateRenamePayload {
+  ToDo: ToDo
+  clientMutationId: String
+}
+
+input ToDoUpdateStatusInput {
+  id: ID!
+  ToDo_Complete: Boolean!
+  clientMutationId: String
+}
+
+type ToDoUpdateStatusPayload {
+  ToDo: ToDo
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+type Translaticiarum implements Node {
+  #
+  id: ID!
+  Translaticiarum_Start: DateTime
+  Translaticiarum_Stop: DateTime
+  Translaticiarum_Description: String
+}
+
+input TranslaticiarumAddInput {
+  Translaticiarum_Start: String!
+  Translaticiarum_Stop: String!
+  Translaticiarum_Description: String!
+  clientMutationId: String
+}
+
+type TranslaticiarumAddPayload {
+  TranslaticiarumsEdge: TranslaticiarumsEdge
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+input TranslaticiarumDeleteInput {
+  id: ID!
+  clientMutationId: String
+}
+
+type TranslaticiarumDeletePayload {
+  deletedId: ID
+  Viewer: Viewer
+  clientMutationId: String
+}
+
+#
+type TranslaticiarumsConnection {
+  #
+  pageInfo: PageInfo!
+
+  #
+  edges: [TranslaticiarumsEdge]
+}
+
+#
+type TranslaticiarumsEdge {
+  #
+  node: Translaticiarum
+
+  #
+  cursor: String!
+}
+
+input TranslaticiarumUpdateInput {
+  id: ID!
+  Translaticiarum_Start: String!
+  Translaticiarum_Stop: String!
+  Translaticiarum_Description: String!
+  clientMutationId: String
+}
+
+type TranslaticiarumUpdatePayload {
+  Translaticiarum: Translaticiarum
+  clientMutationId: String
+}
+
+type Viewer implements Node {
+  #
+  id: ID!
+  User_IsAnonymous: Boolean
+  UserToken2: String
+  User_DisplayName: String
+  User_Email: String
+  User_PhoneNumberMobile: String
+  ObjectUserPermissions(after: String, first: Int, before: String, last: Int, ObjectUserPermission_Name: String!): ObjectUserPermissionsConnection
+  ObjectUserPermission(id: ID): ObjectUserPermission
+  ResourceUserAllowances(after: String, first: Int, before: String, last: Int): ResourceUserAllowancesConnection
+  ResourceUserAllowance(id: ID): ResourceUserAllowance
+  Ensayos(after: String, first: Int, before: String, last: Int): EnsayosConnection
+  Ensayo(id: ID): Ensayo
+  Inscriptios(after: String, first: Int, before: String, last: Int): InscriptiosConnection
+  Inscriptio(id: ID): Inscriptio
+  ToDos(status: String = "any", after: String, first: Int, before: String, last: Int): ToDosConnection
+  ToDo_TotalCount: Int
+  ToDo_CompletedCount: Int
+  Translaticiarums(after: String, first: Int, before: String, last: Int): TranslaticiarumsConnection
+  Translaticiarum(id: ID): Translaticiarum
+}

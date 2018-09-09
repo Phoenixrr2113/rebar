@@ -4,7 +4,7 @@ import { mutationWithClientMutationId } from 'graphql-relay'
 import { GraphQLString, GraphQLNonNull } from 'graphql'
 
 import EnsayosConnection from '../type/EnsayosConnection'
-import ViewerType from '../../../../units/urb-base-server/graphql/type/ViewerType'
+import ViewerType from '../../../../units/urb-appbase-server/graphql/type/ViewerType'
 
 export default mutationWithClientMutationId({
   name: 'EnsayoAdd',
@@ -18,26 +18,15 @@ export default mutationWithClientMutationId({
   outputFields: {
     EnsayosEdge: {
       type: EnsayosConnection.edgeType,
-      resolve: async(
-        { local_id },
-        { ...args },
-        context,
-        { rootValue: objectManager }
-      ) => {
+      resolve: async({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
         const an_Object = await objectManager.getOneObject( 'Ensayo', {
           id: local_id,
         })
 
-        const arr = await objectManager.getObjectList( 'Ensayo', {
-          Ensayo_User_id: objectManager.getViewerUserId(),
-        })
+        const arr = await objectManager.getObjectList( 'Ensayo', {})
 
         return {
-          cursor: objectManager.cursorForObjectInConnection(
-            'Ensayo',
-            arr,
-            an_Object
-          ),
+          cursor: objectManager.cursorForObjectInConnection( 'Ensayo', arr, an_Object ),
           node: an_Object,
         }
       },
@@ -55,10 +44,9 @@ export default mutationWithClientMutationId({
   mutateAndGetPayload: async(
     { Ensayo_Title, Ensayo_Description, Ensayo_Content },
     context,
-    { rootValue: objectManager }
+    { rootValue: objectManager },
   ) => {
     const local_id = await objectManager.add( 'Ensayo', {
-      Ensayo_User_id: objectManager.getViewerUserId(),
       Ensayo_Title,
       Ensayo_Description,
       Ensayo_Content,

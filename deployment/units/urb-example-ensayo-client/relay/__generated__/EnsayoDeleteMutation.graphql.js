@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash 207ff163e6c40506f03e6db5b08dc87c
+ * 
+ * @relayHash dcac591f53efb2d09a4b3ad7aea6a64f
  */
 
 /* eslint-disable */
@@ -8,119 +8,96 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type EnsayoDeleteMutationVariables = {|
-  input: {
-    id: string;
-    clientMutationId?: ?string;
-  };
-|};
-
-export type EnsayoDeleteMutationResponse = {|
-  +EnsayoDelete: ?{|
-    +deletedId: ?string;
-  |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              export type EnsayoDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
+              export type EnsayoDeleteMutationVariables = {|
+                input: EnsayoDeleteInput
+              |};
+              export type EnsayoDeleteMutationResponse = {|
+                +EnsayoDelete: ?{|
+                  +deletedId: ?string
+                |}
+              |};
+              export type EnsayoDeleteMutation = {|
+                variables: EnsayoDeleteMutationVariables,
+                response: EnsayoDeleteMutationResponse,
+              |};
+              */
 
 
 /*
-mutation EnsayoDeleteMutation(
-  $input: EnsayoDeleteInput!
-) {
-  EnsayoDelete(input: $input) {
-    deletedId
-  }
-}
-*/
+                 mutation EnsayoDeleteMutation(
+                   $input: EnsayoDeleteInput!
+                 ) {
+                   EnsayoDelete(input: $input) {
+                     deletedId
+                   }
+                 }
+                 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "EnsayoDeleteInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "EnsayoDeleteMutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "EnsayoDeleteInput!"
-          }
-        ],
-        "concreteType": "EnsayoDeletePayload",
-        "name": "EnsayoDelete",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "deletedId",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Mutation"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "EnsayoDeleteMutation",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "EnsayoDeleteInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
-    "name": "EnsayoDeleteMutation",
-    "operation": "mutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "EnsayoDeleteInput!"
-          }
-        ],
-        "concreteType": "EnsayoDeletePayload",
-        "name": "EnsayoDelete",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "deletedId",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "mutation EnsayoDeleteMutation(\n  $input: EnsayoDeleteInput!\n) {\n  EnsayoDelete(input: $input) {\n    deletedId\n  }\n}\n"
-};
+const node /*: ConcreteRequest*/ = function () {
+  var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "input",
+    "type": "EnsayoDeleteInput!",
+    "defaultValue": null }],
 
-module.exports = batch;
+
+  v1 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "EnsayoDelete",
+    "storageKey": null,
+    "args": [
+    {
+      "kind": "Variable",
+      "name": "input",
+      "variableName": "input",
+      "type": "EnsayoDeleteInput!" }],
+
+
+    "concreteType": "EnsayoDeletePayload",
+    "plural": false,
+    "selections": [
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "name": "deletedId",
+      "args": null,
+      "storageKey": null }] }];
+
+
+
+
+  return {
+    "kind": "Request",
+    "operationKind": "mutation",
+    "name": "EnsayoDeleteMutation",
+    "id": null,
+    "text": "mutation EnsayoDeleteMutation(\n  $input: EnsayoDeleteInput!\n) {\n  EnsayoDelete(input: $input) {\n    deletedId\n  }\n}\n",
+    "metadata": {},
+    "fragment": {
+      "kind": "Fragment",
+      "name": "EnsayoDeleteMutation",
+      "type": "Mutation",
+      "metadata": null,
+      "argumentDefinitions": v0,
+      "selections": v1 },
+
+    "operation": {
+      "kind": "Operation",
+      "name": "EnsayoDeleteMutation",
+      "argumentDefinitions": v0,
+      "selections": v1 } };
+
+
+}();
+// prettier-ignore
+node /*: any*/.hash = 'd8c8d964d97d923ef7f0e6c1d21ecfcb';
+module.exports = node;
+//# sourceMappingURL=EnsayoDeleteMutation.graphql.js.map

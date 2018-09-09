@@ -1,9 +1,14 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Menu, { MenuItem } from 'material-ui/Menu'
-import { withStyles } from 'material-ui/styles'
-import PropTypes from 'prop-types'
+import Button from '@material-ui/core/Button'
+
+import Menu from '@material-ui/core/Menu'
+
+import MenuItem from '@material-ui/core/MenuItem'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -13,23 +18,25 @@ import {
 } from './RequiresAuthentication'
 import LoginDialog from './LoginDialog'
 
-const styles = theme => ({})
+const styles = theme => ({
+  buttonRoot: {
+    color: '#ffffff',
+  },
+})
 
 class NavBarLoginButton extends React.Component<
   {
+    classes: Object,
     Viewer: Object,
-    relay: Object
+    relay: Object,
+    router: Object,
   },
   {
     anchorEl: ?Object,
     loginDialogIsOpen: boolean,
-    userMenuIsOpen: boolean
-  }
+    userMenuIsOpen: boolean,
+  },
 > {
-  static contextTypes = {
-    router: PropTypes.object,
-  }
-
   constructor( props: Object, context: Object ) {
     super( props, context )
 
@@ -41,7 +48,7 @@ class NavBarLoginButton extends React.Component<
   }
 
   // Handle popping open the login dialog if authentication is required
-  componentWillMount() {
+  UNSAFE_componentWillMount() {
     registerAuthenticationRequiredCallback( this._handle_onClick_Login )
   }
 
@@ -71,28 +78,29 @@ class NavBarLoginButton extends React.Component<
 
   _handle_onClick_Logout = () => {
     this.setState({ userMenuIsOpen: false })
-    this.context.router.push( '/user/logout' )
+    this.props.router.push( '/user/logout' )
   }
 
   _handle_Login_NewUser = () => {
     this.setState({ loginDialogIsOpen: false })
 
-    this.context.router.push( '/user/new' )
+    this.props.router.push( '/user/new' )
   }
 
   render() {
+    const { classes } = this.props
     const { User_IsAnonymous, User_DisplayName } = this.props.Viewer
     const { loginDialogIsOpen, userMenuIsOpen } = this.state
 
     return (
       <div>
         {User_IsAnonymous && (
-          <Button color="contrast" onClick={this._handle_onClick_Login}>
+          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_Login}>
             Login
           </Button>
         )}
         {!User_IsAnonymous && (
-          <Button color="contrast" onClick={this._handle_onClick_UserMenu}>
+          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_UserMenu}>
             {User_DisplayName}
           </Button>
         )}
@@ -105,7 +113,7 @@ class NavBarLoginButton extends React.Component<
           id="lock-menu"
           anchorEl={this.state.anchorEl}
           open={userMenuIsOpen}
-          onRequestClose={this._handle_UserMenu_Close}
+          onClose={this._handle_UserMenu_Close}
         >
           <MenuItem key="profile" onClick={this._handle_onClick_Profile}>
             Profile
@@ -123,11 +131,11 @@ class NavBarLoginButton extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( NavBarLoginButton ),
+  withStyles( styles )( withRouter( NavBarLoginButton ) ),
   graphql`
     fragment NavBarLoginButton_Viewer on Viewer {
       User_IsAnonymous
       User_DisplayName
     }
-  `
+  `,
 )

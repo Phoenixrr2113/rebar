@@ -1,2 +1,0 @@
-
-//# sourceMappingURL=ViewportDimensionType.js.map

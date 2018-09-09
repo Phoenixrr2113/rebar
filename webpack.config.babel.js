@@ -10,12 +10,18 @@ const version = require( './units/_configuration/package.js' ).version
 const host = process.env.HOST
 const port_webpack = process.env.PORT_WEBPACK
 const node_env = process.env.NODE_ENV
+const sassets_configuration_version = process.env.CFSB_SASSETS_CONFIGURATION_VERSION
 
-console.log( '📦  Running Webpack, process.env.NODE_ENV=' + node_env + ', version=' + version )
+const publicPath = sassets_configuration_version
+  ? `/sassets/${version}.${sassets_configuration_version}/`
+  : node_env === 'production'
+    ? `/assets/${version}/`
+    : `http://${host}:${port_webpack}/${version}/`
 
-const publicPath =
-  node_env === 'production' ? `/assets/${version}/` : `http://${host}:${port_webpack}/${version}/`
-const ifProd = plugin => ( node_env === 'production' ? plugin : undefined )
+console.log(
+  'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
+)
+
 const ifNotProd = plugin => ( node_env !== 'production' ? plugin : undefined )
 const removeEmpty = array => array.filter( p => !!p )
 
@@ -27,14 +33,14 @@ const config = {
   },
 
   entry: {
-    client: [ 'whatwg-fetch', path.resolve( 'units/urb-base-webapp/client.js' ) ],
+    client: [ 'whatwg-fetch', path.resolve( 'units/urb-appbase-webapp/client.js' ) ],
     vendor: [
       'babel-polyfill',
       'farce',
       'found',
       'found-relay',
       'isomorphic-fetch',
-      'material-ui',
+      '@material-ui/core',
       'prop-types',
       'react',
       'react-code-splitting',
@@ -46,9 +52,21 @@ const config = {
     ],
   },
 
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendor',
+          chunks: 'all',
+        },
+      },
+    },
+  },
+
   output: {
     path: path.resolve(
-      `deployment/units/_configuration/urb-base-server/public_files/assets/${version}`
+      `deployment/units/_configuration/urb-base-server/public_files/assets/${version}`,
     ),
     filename: '[name].js',
     publicPath,
@@ -59,7 +77,6 @@ const config = {
       {
         test: /\.js(x)?$/,
         use: removeEmpty([
-          ifNotProd({ loader: 'react-hot-loader/webpack' }),
           {
             loader: 'babel-loader',
             options: {
@@ -67,24 +84,12 @@ const config = {
               presets: [ 'react-native-stage-0' ],
               plugins: removeEmpty([
                 'dynamic-import-webpack',
-                ifNotProd( 'react-hot-loader/babel' ),
-                'transform-class-properties',
-                [
-                  'transform-react-remove-prop-types',
-                  {
-                    mode: 'wrap',
-                    plugins: [
-                      [ 'babel-plugin-flow-react-proptypes', { omitRuntimeTypeExport: true } ],
-                      'babel-plugin-transform-flow-strip-types',
-                    ],
-                  },
-                ],
                 ifNotProd( 'flow-react-proptypes' ),
                 'syntax-dynamic-import',
                 [
                   'relay',
                   {
-                    schema: 'units/_configuration/urb-base-server/graphql/schema.graphql',
+                    schema: 'schema.graphql',
                   },
                 ],
               ]),
@@ -110,11 +115,6 @@ const config = {
 
   plugins: removeEmpty([
     new webpack.EnvironmentPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: Infinity,
-      filename: '[name].js',
-    }),
     new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
     new webpack.DefinePlugin({
       process: {
@@ -123,29 +123,21 @@ const config = {
         },
       },
     }),
-
-    // In development only:
-    ifNotProd( new webpack.HotModuleReplacementPlugin() ),
     ifNotProd( new webpack.NamedModulesPlugin() ),
-
-    // In production only:
-    ifProd(
-      new webpack.optimize.UglifyJsPlugin({
-        compress: {
-          screw_ie8: true,
-          warnings: false,
-          unused: true,
-          dead_code: true,
-        },
-        output: {
-          comments: false,
-        },
-        sourceMap: false,
-      })
-    ),
   ]),
 }
 
-if ( node_env !== 'production' ) config.devtool = 'source-map'
+if ( node_env !== 'production' ) {
+  config.devtool = 'source-map'
+
+  // Introduce relatively large timeout to allow babel-node to restart and avoid
+  // getting an entirely blank screen when hot reloading happens and babel-node
+  // is in the process of restarting
+  config.watch = true
+  config.watchOptions = {
+    aggregateTimeout: 2000,
+    poll: true,
+  }
+}
 
 export default config

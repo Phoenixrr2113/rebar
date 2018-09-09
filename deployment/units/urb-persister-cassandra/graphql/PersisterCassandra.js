@@ -1,261 +1,282 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _cassandraDriver=require('cassandra-driver');var _cassandraDriver2=_interopRequireDefault(_cassandraDriver);
-var _expressCassandra=require('express-cassandra');var _expressCassandra2=_interopRequireDefault(_expressCassandra);
+var _cassandraDriver = require('cassandra-driver');var _cassandraDriver2 = _interopRequireDefault(_cassandraDriver);
+var _expressCassandra = require('express-cassandra');var _expressCassandra2 = _interopRequireDefault(_expressCassandra);
 
-var _CassandraOptions=require('./CassandraOptions');var _CassandraOptions2=_interopRequireDefault(_CassandraOptions);
-var _WinstonCassandra=require('./WinstonCassandra');var _WinstonCassandra2=_interopRequireDefault(_WinstonCassandra);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}
+var _CassandraOptions = require('./CassandraOptions');var _CassandraOptions2 = _interopRequireDefault(_CassandraOptions);
+var _WinstonCassandra = require('./WinstonCassandra');var _WinstonCassandra2 = _interopRequireDefault(_WinstonCassandra);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-var Uuid=_cassandraDriver2.default.types.Uuid;
-var Uuid_Null_String='00000000-0000-0000-0000-000000000000';
-var Uuid_Null=Uuid.fromString(Uuid_Null_String);
+const Uuid = _cassandraDriver2.default.types.Uuid;
+const Uuid_Null_String = '00000000-0000-0000-0000-000000000000';
+const Uuid_Null = Uuid.fromString(Uuid_Null_String);
 
-var ExpressCassandraClient=_expressCassandra2.default.createClient({
-clientOptions:_CassandraOptions2.default,
-ormOptions:{
-defaultReplicationStrategy:{
-class:'SimpleStrategy',
-replication_factor:1},
+const ExpressCassandraClient = _expressCassandra2.default.createClient({
+  clientOptions: _CassandraOptions2.default, // Options are pre-set in a separate part of the application, they are correct
+  ormOptions: {
+    defaultReplicationStrategy: {
+      class: 'SimpleStrategy',
+      replication_factor: 1 },
 
-migration:'alter',
-disableTTYConfirmation:true,
-createKeyspace:true}});var
-
-
-
-PersisterCassandra=function(){
+    migration: 'alter',
+    disableTTYConfirmation: true,
+    createKeyspace: true } });
 
 
-function PersisterCassandra(){_classCallCheck(this,PersisterCassandra);
-this.tableSchemas=new Map();
-}_createClass(PersisterCassandra,[{key:'getOneObject',value:function getOneObject(
+
+class PersisterCassandra {
 
 
-entityName,
-ObjectType,
-filters)
-{var _this=this;
-var resultPromises=[];var _loop=function _loop(
+  constructor() {
+    this.tableSchemas = new Map();
+  }
 
-filter){
-resultPromises.push(
-new Promise(function(resolve,reject){
-_this.updateUuidsInFields(entityName,filter);
-ExpressCassandraClient.instance[entityName].findOne(
-filter,
-{
-raw:true,
-allow_filtering:true},
+  getOneObject(entityName, ObjectType, filters) {
+    const resultPromises = [];
 
-function(err,entity){
-if(err)reject(err);else
-{
-if(entity!=null)resolve(new ObjectType(entity));else
-resolve(null);
-}
-});
-
-}));};for(var _iterator=filters,_isArray=Array.isArray(_iterator),_i=0,_iterator=_isArray?_iterator:_iterator[typeof Symbol==='function'?Symbol.iterator:'@@iterator']();;){var _ref;if(_isArray){if(_i>=_iterator.length)break;_ref=_iterator[_i++];}else{_i=_iterator.next();if(_i.done)break;_ref=_i.value;}var filter=_ref;_loop(filter);}
+    for (let filter of filters) {
+      // Configure our default options
+      let options = {
+        raw: true,
+        allow_filtering: true
 
 
-return Promise.all(resultPromises);
-}},{key:'getObjectList',value:function getObjectList(
+        // In order to use materialized view, we need to pass it to the opions
+      };if (filter.hasOwnProperty('_materialized_view')) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view;
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter);
+        delete filter._materialized_view;
+      }
+
+      resultPromises.push(
+      new Promise((resolve, reject) => {
+        try {
+          this.updateUuidsInFields(entityName, filter);
+
+          ExpressCassandraClient.instance[entityName].findOne(filter, options, (err, entity) => {
+            if (err)
+            reject(
+            'getOneObject findOne failed: ' +
+            JSON.stringify({ entityName, filters, message: err.message }));else
+
+            {
+              if (entity != null) resolve(new ObjectType(entity));else
+              resolve(null);
+            }
+          });
+        } catch (err) {
+          reject(
+          'getOneObject failed: ' +
+          JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }));
+
+        }
+      }));
+
+    }
+
+    return Promise.all(resultPromises);
+  }
+
+  getObjectList(entityName, ObjectType, filters) {
+    const resultPromises = [];
+
+    for (let filter of filters) {
+      // Configure our default options
+      let options = {
+        raw: true,
+        allow_filtering: true
 
 
-entityName,
-ObjectType,
-filters)
-{var _this2=this;
-var resultPromises=[];var _loop2=function _loop2(
+        // In order to use materialized view, we need to pass it to the opions
+      };if (filter.hasOwnProperty('_materialized_view')) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view;
 
-filter){
-resultPromises.push(
-new Promise(function(resolve,reject){
-_this2.updateUuidsInFields(entityName,filter);
-ExpressCassandraClient.instance[entityName].find(
-filter,
-{
-raw:true,
-allow_filtering:true},
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter);
+        delete filter._materialized_view;
+      }
 
-function(err,arrEntities){
-if(err)reject(err);else
-{
-var arrRetObj=[];
-for(var _iterator3=arrEntities,_isArray3=Array.isArray(_iterator3),_i3=0,_iterator3=_isArray3?_iterator3:_iterator3[typeof Symbol==='function'?Symbol.iterator:'@@iterator']();;){var _ref3;if(_isArray3){if(_i3>=_iterator3.length)break;_ref3=_iterator3[_i3++];}else{_i3=_iterator3.next();if(_i3.done)break;_ref3=_i3.value;}var entity=_ref3;
-arrRetObj.push(new ObjectType(entity));}
-resolve(arrRetObj);
-}
-});
+      resultPromises.push(
+      new Promise((resolve, reject) => {
+        try {
+          this.updateUuidsInFields(entityName, filter);
 
-}));};for(var _iterator2=filters,_isArray2=Array.isArray(_iterator2),_i2=0,_iterator2=_isArray2?_iterator2:_iterator2[typeof Symbol==='function'?Symbol.iterator:'@@iterator']();;){var _ref2;if(_isArray2){if(_i2>=_iterator2.length)break;_ref2=_iterator2[_i2++];}else{_i2=_iterator2.next();if(_i2.done)break;_ref2=_i2.value;}var filter=_ref2;_loop2(filter);}
+          ExpressCassandraClient.instance[entityName].find(
+          filter,
+          options,
+          (err, arrEntities) => {
+            if (err)
+            reject(
+            'getObjectList find failed: ' +
+            JSON.stringify({ entityName, filters, message: err.message }));else
 
+            {
+              const arrRetObj = [];
+              for (let entity of arrEntities) arrRetObj.push(new ObjectType(entity));
+              resolve(arrRetObj);
+            }
+          });
 
-return Promise.all(resultPromises);
-}},{key:'updateUuidsInFields',value:function updateUuidsInFields(
+        } catch (err) {
+          reject(
+          'getObjectList failed: ' +
+          JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }));
 
-entityName,fields){
-var schemaFields=
-ExpressCassandraClient.instance[entityName]._properties.schema.fields;
-for(var fieldName in fields){
-var fieldType=schemaFields[fieldName];
-if(fieldType==='uuid'){
-var fieldValue=fields[fieldName];
-if(!(fieldValue instanceof Uuid))
-fields[fieldName]=Uuid.fromString(fieldValue);
-}
-}
-}},{key:'add',value:function add(
+        }
+      }));
 
-entityName,fields){
-this.updateUuidsInFields(entityName,fields);
+    }
 
-return new Promise(function(resolve,reject){
-var entity=new ExpressCassandraClient.instance[entityName](fields);
-entity.save(function(err){
-if(err)reject(err);else
-resolve();
-});
-});
-}},{key:'update',value:function update(
+    return Promise.all(resultPromises);
+  }
 
-entityName,fields){
+  updateUuidsInFields(entityName, fields) {
+    const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields;
 
-return this.add(entityName,fields);
-}},{key:'remove',value:function remove(
+    for (let fieldName in fields) {
+      const fieldType = schemaFields[fieldName];
 
-entityName,fields){
-this.updateUuidsInFields(entityName,fields);
+      if (fieldType === 'uuid') {
+        const fieldValue = fields[fieldName];
+        if (!(fieldValue instanceof Uuid)) {
+          fields[fieldName] = Uuid.fromString(fieldValue);
+        }
+      }
+    }
+  }
 
-return new Promise(function(resolve,reject){
-ExpressCassandraClient.instance[entityName].delete(fields,function(err){
-if(err)reject(err);else
-resolve();
-});
-});
-}},{key:'createLogger',value:function createLogger()
+  add(entityName, fields) {
+    this.updateUuidsInFields(entityName, fields);
 
-{
-return new _WinstonCassandra2.default(_CassandraOptions2.default);
-}},{key:'uuidFromString',value:function uuidFromString(
+    return new Promise((resolve, reject) => {
+      const entity = new ExpressCassandraClient.instance[entityName](fields);
+      entity.save(err => {
+        if (err) reject(err);else
+        resolve();
+      });
+    });
+  }
 
-str){
-return Uuid.fromString(str);
-}},{key:'uuidRandom',value:function uuidRandom()
+  update(entityName, fields) {
+    // TODO x2000 Optimize this with update, possibly. Maybe it's not so bad to read first after all
+    return this.add(entityName, fields);
+  }
 
-{
-return Uuid.random();
-}},{key:'uuidNull',value:function uuidNull()
+  remove(entityName, fields) {
+    this.updateUuidsInFields(entityName, fields);
 
-{
-return Uuid_Null;
-}},{key:'uuidNullAsString',value:function uuidNullAsString()
+    return new Promise((resolve, reject) => {
+      ExpressCassandraClient.instance[entityName].delete(fields, err => {
+        if (err) reject(err);else
+        resolve();
+      });
+    });
+  }
 
-{
-return Uuid_Null_String;
-}},{key:'uuidToString',value:function uuidToString(
+  createLogger() {
+    return new _WinstonCassandra2.default(_CassandraOptions2.default);
+  }
 
-id){
-if(id instanceof Uuid)id=id.toString();
+  uuidFromString(str) {
+    return Uuid.fromString(str);
+  }
 
-return id;
-}},{key:'uuidEquals',value:function uuidEquals(
+  uuidRandom() {
+    return Uuid.random();
+  }
 
-id1,id2){
-return id1.equals(id2);
-}},{key:'addTableSchema',value:function addTableSchema(
+  uuidNull() {
+    return Uuid_Null;
+  }
 
-tableName,tableSchema){
-if(this.tableSchemas)this.tableSchemas.set(tableName,tableSchema);else
-{
-console.error(
-'💔 Attempting to add table schemas after express-cassandra client connect.');
+  uuidNullAsString() {
+    return Uuid_Null_String;
+  }
 
-process.exit(1);
-}
-}},{key:'confirmHealth',value:function confirmHealth()
+  uuidToString(id) {
+    if (id instanceof Uuid) id = id.toString();
 
-{
-return new Promise(function(resolve,reject){
-ExpressCassandraClient.modelInstance.User.get_cql_client(
-function(err,client){
-if(err)reject(err);else
+    return id;
+  }
 
-client.execute(
-'select release_version from system.local;',
-function(err,result){
-if(err)reject(err);else
-resolve();
-});
+  uuidEquals(id1, id2) {
+    return id1.equals(id2);
+  }
 
-});
+  addTableSchema(tableName, tableSchema) {
+    if (this.tableSchemas) this.tableSchemas.set(tableName, tableSchema);else
+    {
+      console.error(
+      'Error: Attempting to add table schemas after express-cassandra client connect.');
 
-});
-}},{key:'initialize',value:function initialize(
+      process.exit(1);
+    }
+  }
 
-runAsPartOfSetupDatabase,cb){var _this3=this;
+  confirmHealth() {
+    return new Promise((resolve, reject) => {
+      ExpressCassandraClient.modelInstance.User.get_cql_client((err, client) => {
+        if (err) reject(err);else
 
-var enrolledTables=this.tableSchemas;
-this.tableSchemas=null;
+        client.execute('select release_version from system.local;', (err, result) => {
+          if (err) reject(err);else
+          resolve();
+        });
+      });
+    });
+  }
 
-ExpressCassandraClient.connect(function(err){
-if(err){
-console.log('💔 Could not connect to Cassandra: '+err.message);
-setTimeout(function(){return process.exit(1);},5000);
-}else if(!enrolledTables)console.log('💔 Table schemas missing!');else
-{
-var arrSchemas=[];
-for(var _iterator4=enrolledTables.keys(),_isArray4=Array.isArray(_iterator4),_i4=0,_iterator4=_isArray4?_iterator4:_iterator4[typeof Symbol==='function'?Symbol.iterator:'@@iterator']();;){var _ref4;if(_isArray4){if(_i4>=_iterator4.length)break;_ref4=_iterator4[_i4++];}else{_i4=_iterator4.next();if(_i4.done)break;_ref4=_i4.value;}var tableName=_ref4;
-arrSchemas.push([tableName,enrolledTables.get(tableName)]);}
+  initialize(runAsPartOfSetupDatabase, cb) {
+    // All table schemas should have been added by now.
+    const enrolledTables = this.tableSchemas;
+    this.tableSchemas = null; // Free up the memory that is not needed any more and indicate that we can not add any more
 
-_this3.loadOneTableSchemaFromArray(
-arrSchemas,
-runAsPartOfSetupDatabase,
-cb);
+    const arrSchemas = [];
+    // $AssureFlow enrolledTables should be populated here
+    for (let tableName of enrolledTables.keys()) {
+      // $AssureFlow enrolledTables should be populated here
+      arrSchemas.push([tableName, enrolledTables.get(tableName)]);
+    }
+    this.loadOneTableSchemaFromArray(arrSchemas, runAsPartOfSetupDatabase, cb);
+  }
 
-}
-});
-}},{key:'loadOneTableSchemaFromArray',value:function loadOneTableSchemaFromArray(
+  loadOneTableSchemaFromArray(
+  arrSchemas,
+  runAsPartOfSetupDatabase,
+  cb)
+  {
+    if (arrSchemas.length > 0) {
+      const tableName = arrSchemas[0][0];
+      const tableSchema = arrSchemas[0][1];
+      arrSchemas.splice(0, 1);
 
+      if (runAsPartOfSetupDatabase) {
+        console.log(' Prepare table ' + tableName + '.');
+      }
+      ExpressCassandraClient.loadSchema(tableName, tableSchema).syncDB(err => {
+        if (err) {
+          console.log(
+          'Error:  Initializing Cassandra persister - error while creating ' + tableName + '!');
 
-arrSchemas,
-runAsPartOfSetupDatabase,
-cb)
-{var _this4=this;
-if(arrSchemas.length>0){
-var tableName=arrSchemas[0][0];
-var tableSchema=arrSchemas[0][1];
+          console.error(err.message);
+          process.exit(1);
+        } else {
+          if (runAsPartOfSetupDatabase)
+          console.log(
+          ' Table ' +
+          ExpressCassandraClient.modelInstance[tableName]._properties.name +
+          ' ready.');
 
-arrSchemas.splice(0,1);
-
-ExpressCassandraClient.loadSchema(tableName,tableSchema,function(err){
-if(err){
-console.log(
-'💔 Initializing Cassandra persister - error while creating '+
-tableName+
-'!');
-
-console.error(err.message);
-process.exit(1);
-}else{
-if(runAsPartOfSetupDatabase)
-console.log(
-'🛢 Table '+
-ExpressCassandraClient.modelInstance[tableName]._properties.
-name+
-' ready.');
-
-
-_this4.loadOneTableSchemaFromArray(
-arrSchemas,
-runAsPartOfSetupDatabase,
-cb);
-
-return;
-}
-});
-}else{
-cb();
-}
-}}]);return PersisterCassandra;}();exports.default=PersisterCassandra;
+          this.loadOneTableSchemaFromArray(arrSchemas, runAsPartOfSetupDatabase, cb);
+          // Load the next table
+          return;
+        }
+      });
+    } else {
+      cb();
+    }
+  }}exports.default = PersisterCassandra;
 //# sourceMappingURL=PersisterCassandra.js.map

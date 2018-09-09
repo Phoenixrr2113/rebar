@@ -1,28 +1,39 @@
 // @flow
 
-import Button from 'material-ui/Button'
-import Card, { CardActions, CardHeader } from 'material-ui/Card'
-import { LinearProgress } from 'material-ui/Progress'
-import { withStyles } from 'material-ui/styles'
-import Typography from 'material-ui/Typography'
+import Button from '@material-ui/core/Button'
+
+import Card from '@material-ui/core/Card'
+
+import CardActions from '@material-ui/core/CardActions'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import LinearProgress from '@material-ui/core/LinearProgress'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import Typography from '@material-ui/core/Typography'
+
 import React from 'react'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
+    minWidth: 400,
   },
 })
 
 class LogoutScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'confirm' | 'logging out' | 'success' | 'failure',
-    errorMessage: string
-  }
+    errorMessage: string,
+  },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -70,8 +81,7 @@ class LogoutScreen extends React.Component<
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          'Did not receive proper response from server. Please try again. Message:' + err.message,
       })
     }
   }
@@ -100,8 +110,11 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">Logging out. Please wait.</Typography>
-        <LinearProgress mode="query" />
+        <CardContent>
+          <Typography component="p">Logging out. Please wait ...</Typography>
+          <br /> <br />
+          <LinearProgress mode="query" />
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_CancelLogout}>Cancel</Button>
         </CardActions>
@@ -115,7 +128,9 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Logout" />
-        <Typography component="p">You have been logged out</Typography>
+        <CardContent>
+          <Typography component="p">You have been logged out.</Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Continue}>Continue</Button>
         </CardActions>
@@ -130,11 +145,9 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Creating user" />
-        <Typography component="p">
-          Failed logging out.
-          <br />
-          Reason: {errorMessage}
-        </Typography>
+        <CardContent>
+          <Typography component="p">Failed logging out because: {errorMessage}!</Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
         </CardActions>
@@ -148,9 +161,11 @@ class LogoutScreen extends React.Component<
     return (
       <Card className={classes.card}>
         <CardHeader title="Log Out" />
-        <Typography component="p">
-          You are currently logged in. Are you sure you want to log out?
-        </Typography>
+        <CardContent>
+          <Typography component="p">
+            You are currently logged in. Are you sure you want to log out?
+          </Typography>
+        </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Logout}>Yes, Log Out</Button>
         </CardActions>

@@ -1,18 +1,28 @@
 // @flow
 
-import Card, { CardContent, CardHeader } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
-import Table, {
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from 'material-ui/Table'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import Table from '@material-ui/core/Table'
+
+import TableBody from '@material-ui/core/TableBody'
+
+import TableCell from '@material-ui/core/TableCell'
+
+import TableHead from '@material-ui/core/TableHead'
+
+import TableRow from '@material-ui/core/TableRow'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
-import withViewportDimensions from '../../urb-base-webapp/scripts/withViewportDimensions'
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
+import ViewportContext from '../../urb-appbase-webapp/components/ViewportContext'
 
 const styles = {
   card: {
@@ -22,57 +32,56 @@ const styles = {
 
 class ViewportDimensionsScreen extends React.Component<{
   classes: Object,
-  totalWidth: number,
-  totalHeight: number,
-  Viewer: Object
+  Viewer: Object,
 }> {
   render() {
-    const { classes, totalHeight, totalWidth } = this.props
-
-    const data = [
-      { name: 'totalWidth', value: totalWidth },
-      { name: 'totalHeight', value: totalHeight },
-    ]
+    const { classes } = this.props
 
     return (
       <ResponsiveContentArea>
-        <Card className={classes.card}>
-          <CardHeader title="Viewport Dimensions" />
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Property</TableCell>
-                <TableCell numeric>Value</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map( n => {
-                return (
-                  <TableRow key={n.name}>
-                    <TableCell>{n.name}</TableCell>
-                    <TableCell numeric>{n.value}</TableCell>
-                  </TableRow>
-                )
-              })}
-            </TableBody>
-          </Table>
-          <CardContent />
-        </Card>
+        <ViewportContext.Consumer>
+          {({ totalWidth, totalHeight }) => {
+            const data = [
+              { name: 'totalWidth', value: totalWidth },
+              { name: 'totalHeight', value: totalHeight },
+            ]
+
+            return (
+              <Card className={classes.card}>
+                <CardHeader title="Viewport Dimensions" />
+                <Table>
+                  <TableHead>
+                    <TableRow>
+                      <TableCell>Property</TableCell>
+                      <TableCell numeric>Value</TableCell>
+                    </TableRow>
+                  </TableHead>
+                  <TableBody>
+                    {data.map( n => {
+                      return (
+                        <TableRow key={n.name}>
+                          <TableCell>{n.name}</TableCell>
+                          <TableCell numeric>{n.value}</TableCell>
+                        </TableRow>
+                      )
+                    })}
+                  </TableBody>
+                </Table>
+                <CardContent />
+              </Card>
+            )
+          }}
+        </ViewportContext.Consumer>
       </ResponsiveContentArea>
     )
   }
 }
 
 export default createFragmentContainer(
-  withStyles( styles )(
-    withViewportDimensions( ViewportDimensionsScreen, [
-      'totalHeight',
-      'totalWidth',
-    ])
-  ),
+  withStyles( styles )( ViewportDimensionsScreen ),
   graphql`
     fragment ViewportDimensionsScreen_Viewer on Viewer {
       id
     }
-  `
+  `,
 )

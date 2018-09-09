@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash bf98d350069dcbe6ed1092f490662820
+ * 
+ * @relayHash 69cce729b8f0ee6bd80b1011c01cb4e8
  */
 
 /* eslint-disable */
@@ -8,185 +8,166 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type ToDoDeleteMutationVariables = {|
-  input: {
-    id: string;
-    clientMutationId?: ?string;
-  };
-|};
-
-export type ToDoDeleteMutationResponse = {|
-  +ToDoDelete: ?{|
-    +Viewer: ?{|
-      +ToDo_TotalCount: ?number;
-      +ToDo_CompletedCount: ?number;
-    |};
-    +deletedId: ?string;
-  |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              export type ToDoDeleteInput = {
+                id: string,
+                clientMutationId?: ?string,
+              };
+              export type ToDoDeleteMutationVariables = {|
+                input: ToDoDeleteInput
+              |};
+              export type ToDoDeleteMutationResponse = {|
+                +ToDoDelete: ?{|
+                  +Viewer: ?{|
+                    +ToDo_TotalCount: ?number,
+                    +ToDo_CompletedCount: ?number,
+                  |},
+                  +deletedId: ?string,
+                |}
+              |};
+              export type ToDoDeleteMutation = {|
+                variables: ToDoDeleteMutationVariables,
+                response: ToDoDeleteMutationResponse,
+              |};
+              */
 
 
 /*
-mutation ToDoDeleteMutation(
-  $input: ToDoDeleteInput!
-) {
-  ToDoDelete(input: $input) {
-    Viewer {
-      ToDo_TotalCount
-      ToDo_CompletedCount
-      id
-    }
-    deletedId
-  }
-}
-*/
+                 mutation ToDoDeleteMutation(
+                   $input: ToDoDeleteInput!
+                 ) {
+                   ToDoDelete(input: $input) {
+                     Viewer {
+                       ToDo_TotalCount
+                       ToDo_CompletedCount
+                       id
+                     }
+                     deletedId
+                   }
+                 }
+                 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "ToDoDeleteInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
+const node /*: ConcreteRequest*/ = function () {
+  var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "input",
+    "type": "ToDoDeleteInput!",
+    "defaultValue": null }],
+
+
+  v1 = [
+  {
+    "kind": "Variable",
+    "name": "input",
+    "variableName": "input",
+    "type": "ToDoDeleteInput!" }],
+
+
+  v2 = {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "ToDo_TotalCount",
+    "args": null,
+    "storageKey": null },
+
+  v3 = {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "ToDo_CompletedCount",
+    "args": null,
+    "storageKey": null },
+
+  v4 = {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "deletedId",
+    "args": null,
+    "storageKey": null };
+
+  return {
+    "kind": "Request",
+    "operationKind": "mutation",
     "name": "ToDoDeleteMutation",
-    "selections": [
+    "id": null,
+    "text": "mutation ToDoDeleteMutation(\n  $input: ToDoDeleteInput!\n) {\n  ToDoDelete(input: $input) {\n    Viewer {\n      ToDo_TotalCount\n      ToDo_CompletedCount\n      id\n    }\n    deletedId\n  }\n}\n",
+    "metadata": {},
+    "fragment": {
+      "kind": "Fragment",
+      "name": "ToDoDeleteMutation",
+      "type": "Mutation",
+      "metadata": null,
+      "argumentDefinitions": v0,
+      "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "ToDoDeleteInput!"
-          }
-        ],
-        "concreteType": "ToDoDeletePayload",
         "name": "ToDoDelete",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "ToDoDeletePayload",
         "plural": false,
         "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "Viewer",
-            "name": "Viewer",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_TotalCount",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_CompletedCount",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "deletedId",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Mutation"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "ToDoDeleteMutation",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "ToDoDeleteInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
-    "name": "ToDoDeleteMutation",
-    "operation": "mutation",
-    "selections": [
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "Viewer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Viewer",
+          "plural": false,
+          "selections": [
+          v2,
+          v3] },
+
+
+        v4] }] },
+
+
+
+
+    "operation": {
+      "kind": "Operation",
+      "name": "ToDoDeleteMutation",
+      "argumentDefinitions": v0,
+      "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "ToDoDeleteInput!"
-          }
-        ],
-        "concreteType": "ToDoDeletePayload",
         "name": "ToDoDelete",
+        "storageKey": null,
+        "args": v1,
+        "concreteType": "ToDoDeletePayload",
         "plural": false,
         "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "Viewer",
-            "name": "Viewer",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_TotalCount",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_CompletedCount",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          },
+        {
+          "kind": "LinkedField",
+          "alias": null,
+          "name": "Viewer",
+          "storageKey": null,
+          "args": null,
+          "concreteType": "Viewer",
+          "plural": false,
+          "selections": [
+          v2,
+          v3,
           {
             "kind": "ScalarField",
             "alias": null,
+            "name": "id",
             "args": null,
-            "name": "deletedId",
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "mutation ToDoDeleteMutation(\n  $input: ToDoDeleteInput!\n) {\n  ToDoDelete(input: $input) {\n    Viewer {\n      ToDo_TotalCount\n      ToDo_CompletedCount\n      id\n    }\n    deletedId\n  }\n}\n"
-};
+            "storageKey": null }] },
 
-module.exports = batch;
+
+
+        v4] }] } };
+
+
+
+
+
+}();
+// prettier-ignore
+node /*: any*/.hash = 'a581035e0f38d5d8ad86368e6420b22c';
+module.exports = node;
+//# sourceMappingURL=ToDoDeleteMutation.graphql.js.map

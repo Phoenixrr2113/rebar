@@ -30,79 +30,120 @@ export default class PersisterCassandra {
     this.tableSchemas = new Map()
   }
 
-  getOneObject(
-    entityName: string,
-    ObjectType: any,
-    filters: Array<any>
-  ): Promise<any> {
+  getOneObject( entityName: string, ObjectType: any, filters: Array<any> ): Promise<any> {
     const resultPromises = []
 
-    for ( let filter of filters )
+    for ( let filter of filters ) {
+      // Configure our default options
+      let options: Object = {
+        raw: true,
+        allow_filtering: true,
+      }
+
+      // In order to use materialized view, we need to pass it to the opions
+      if ( filter.hasOwnProperty( '_materialized_view' ) ) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter )
+        delete filter._materialized_view
+      }
+
       resultPromises.push(
         new Promise( ( resolve, reject ) => {
-          this.updateUuidsInFields( entityName, filter )
-          ExpressCassandraClient.instance[entityName].findOne(
-            filter,
-            {
-              raw: true,
-              allow_filtering: true,
-            },
-            ( err, entity ) => {
-              if ( err ) reject( err )
+          try {
+            this.updateUuidsInFields( entityName, filter )
+
+            ExpressCassandraClient.instance[entityName].findOne( filter, options, ( err, entity ) => {
+              if ( err )
+                reject(
+                  'getOneObject findOne failed: ' +
+                    JSON.stringify({ entityName, filters, message: err.message }),
+                )
               else {
                 if ( entity != null ) resolve( new ObjectType( entity ) )
                 else resolve( null )
               }
-            }
-          )
-        })
+            })
+          } catch ( err ) {
+            reject(
+              'getOneObject failed: ' +
+                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+            )
+          }
+        }),
       )
+    }
 
     return Promise.all( resultPromises )
   }
 
-  getObjectList(
-    entityName: string,
-    ObjectType: any,
-    filters: Array<any>
-  ): Promise<Array<any>> {
+  getObjectList( entityName: string, ObjectType: any, filters: Array<any> ): Promise<Array<any>> {
     const resultPromises = []
 
-    for ( let filter of filters )
+    for ( let filter of filters ) {
+      // Configure our default options
+      let options: Object = {
+        raw: true,
+        allow_filtering: true,
+      }
+
+      // In order to use materialized view, we need to pass it to the opions
+      if ( filter.hasOwnProperty( '_materialized_view' ) ) {
+        // Set option to use materialized view
+        options.materialized_view = filter._materialized_view
+
+        // Remove _materialized_view from filter
+        filter = Object.assign({}, filter )
+        delete filter._materialized_view
+      }
+
       resultPromises.push(
         new Promise( ( resolve, reject ) => {
-          this.updateUuidsInFields( entityName, filter )
-          ExpressCassandraClient.instance[entityName].find(
-            filter,
-            {
-              raw: true,
-              allow_filtering: true,
-            },
-            ( err, arrEntities ) => {
-              if ( err ) reject( err )
-              else {
-                const arrRetObj = []
-                for ( let entity of arrEntities )
-                  arrRetObj.push( new ObjectType( entity ) )
-                resolve( arrRetObj )
-              }
-            }
-          )
-        })
+          try {
+            this.updateUuidsInFields( entityName, filter )
+
+            ExpressCassandraClient.instance[entityName].find(
+              filter,
+              options,
+              ( err, arrEntities ) => {
+                if ( err )
+                  reject(
+                    'getObjectList find failed: ' +
+                      JSON.stringify({ entityName, filters, message: err.message }),
+                  )
+                else {
+                  const arrRetObj = []
+                  for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
+                  resolve( arrRetObj )
+                }
+              },
+            )
+          } catch ( err ) {
+            reject(
+              'getObjectList failed: ' +
+                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+            )
+          }
+        }),
       )
+    }
 
     return Promise.all( resultPromises )
   }
 
   updateUuidsInFields( entityName: string, fields: any ) {
-    const schemaFields =
-      ExpressCassandraClient.instance[entityName]._properties.schema.fields
+    const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields
+
     for ( let fieldName in fields ) {
       const fieldType = schemaFields[fieldName]
+
       if ( fieldType === 'uuid' ) {
         const fieldValue = fields[fieldName]
-        if ( !( fieldValue instanceof Uuid ) )
+        if ( !( fieldValue instanceof Uuid ) ) {
           fields[fieldName] = Uuid.fromString( fieldValue )
+        }
       }
     }
   }
@@ -169,7 +210,7 @@ export default class PersisterCassandra {
     if ( this.tableSchemas ) this.tableSchemas.set( tableName, tableSchema )
     else {
       console.error(
-        '💔 Attempting to add table schemas after express-cassandra client connect.'
+        'Error: Attempting to add table schemas after express-cassandra client connect.',
       )
       process.exit( 1 )
     }
@@ -177,19 +218,14 @@ export default class PersisterCassandra {
 
   confirmHealth(): Promise<any> {
     return new Promise( ( resolve, reject ) => {
-      ExpressCassandraClient.modelInstance.User.get_cql_client(
-        ( err, client ) => {
-          if ( err ) reject( err )
-          else
-            client.execute(
-              'select release_version from system.local;',
-              ( err, result ) => {
-                if ( err ) reject( err )
-                else resolve()
-              }
-            )
-        }
-      )
+      ExpressCassandraClient.modelInstance.User.get_cql_client( ( err, client ) => {
+        if ( err ) reject( err )
+        else
+          client.execute( 'select release_version from system.local;', ( err, result ) => {
+            if ( err ) reject( err )
+            else resolve()
+          })
+      })
     })
   }
 
@@ -198,59 +234,44 @@ export default class PersisterCassandra {
     const enrolledTables = this.tableSchemas
     this.tableSchemas = null // Free up the memory that is not needed any more and indicate that we can not add any more
 
-    ExpressCassandraClient.connect( err => {
-      if ( err ) {
-        console.log( '💔 Could not connect to Cassandra: ' + err.message )
-        setTimeout( () => process.exit( 1 ), 5000 ) // Exit the process. A process manager like pm2 would re-start
-      } else if ( !enrolledTables ) console.log( '💔 Table schemas missing!' )
-      else {
-        const arrSchemas = []
-        for ( let tableName of enrolledTables.keys() )
-          arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
-
-        this.loadOneTableSchemaFromArray(
-          arrSchemas,
-          runAsPartOfSetupDatabase,
-          cb
-        )
-      }
-    })
+    const arrSchemas = []
+    // $AssureFlow enrolledTables should be populated here
+    for ( let tableName of enrolledTables.keys() ) {
+      // $AssureFlow enrolledTables should be populated here
+      arrSchemas.push([ tableName, enrolledTables.get( tableName ) ])
+    }
+    this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
   }
 
   loadOneTableSchemaFromArray(
     arrSchemas: Array<any>,
     runAsPartOfSetupDatabase: boolean,
-    cb: Function
+    cb: Function,
   ): void {
     if ( arrSchemas.length > 0 ) {
       const tableName = arrSchemas[0][0]
       const tableSchema = arrSchemas[0][1]
-
       arrSchemas.splice( 0, 1 )
 
-      ExpressCassandraClient.loadSchema( tableName, tableSchema, err => {
+      if ( runAsPartOfSetupDatabase ) {
+        console.log( ' Prepare table ' + tableName + '.' )
+      }
+      ExpressCassandraClient.loadSchema( tableName, tableSchema ).syncDB( err => {
         if ( err ) {
           console.log(
-            '💔 Initializing Cassandra persister - error while creating ' +
-              tableName +
-              '!'
+            'Error:  Initializing Cassandra persister - error while creating ' + tableName + '!',
           )
           console.error( err.message )
           process.exit( 1 )
         } else {
           if ( runAsPartOfSetupDatabase )
             console.log(
-              '🛢 Table ' +
-                ExpressCassandraClient.modelInstance[tableName]._properties
-                  .name +
-                ' ready.'
+              ' Table ' +
+                ExpressCassandraClient.modelInstance[tableName]._properties.name +
+                ' ready.',
             )
-
-          this.loadOneTableSchemaFromArray(
-            arrSchemas,
-            runAsPartOfSetupDatabase,
-            cb
-          ) // Load the next table
+          this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
+          // Load the next table
           return
         }
       })

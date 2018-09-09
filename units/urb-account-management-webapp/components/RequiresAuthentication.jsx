@@ -1,11 +1,18 @@
 // @flow
 
-import Card, { CardHeader, CardContent } from 'material-ui/Card'
-import { withStyles } from 'material-ui/styles'
-import React from 'react'
-import Typography from 'material-ui/Typography'
+import Card from '@material-ui/core/Card'
 
-import ResponsiveContentArea from '../../urb-base-webapp/components/ResponsiveContentArea'
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
+
+import { withStyles } from '@material-ui/core/styles'
+
+import React from 'react'
+
+import Typography from '@material-ui/core/Typography'
+
+import ResponsiveContentArea from '../../urb-appbase-webapp/components/ResponsiveContentArea'
 
 const doNothing = () => {}
 
@@ -26,7 +33,7 @@ const styles = theme => ({
 })
 
 class RequiresAuthenticationNotice extends React.Component<{
-  classes: Object
+  classes: Object,
 }> {
   componentDidMount() {
     authenticationRequiredCallback()
@@ -41,8 +48,7 @@ class RequiresAuthenticationNotice extends React.Component<{
           <CardHeader title="Please log in" />
           <CardContent>
             <Typography paragraph>
-              Accessing this area of the application requires you to be logged
-              in.
+              Accessing this area of the application requires you to be logged in.
             </Typography>
           </CardContent>
         </Card>

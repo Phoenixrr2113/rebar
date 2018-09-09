@@ -1,63 +1,85 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _List=require('material-ui/List');var _List2=_interopRequireDefault(_List);
-var _react=require('react');var _react2=_interopRequireDefault(_react);
+var _Divider = require('@material-ui/core/Divider');var _Divider2 = _interopRequireDefault(_Divider);
 
-var _AppDrawerNavItem=require('../../urb-appdrawer-webapp/components/AppDrawerNavItem');var _AppDrawerNavItem2=_interopRequireDefault(_AppDrawerNavItem);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}var
+var _List = require('@material-ui/core/List');var _List2 = _interopRequireDefault(_List);
 
-AppDrawernavItems=function(_React$Component){_inherits(AppDrawernavItems,_React$Component);function AppDrawernavItems(){_classCallCheck(this,AppDrawernavItems);return _possibleConstructorReturn(this,(AppDrawernavItems.__proto__||Object.getPrototypeOf(AppDrawernavItems)).apply(this,arguments));}_createClass(AppDrawernavItems,[{key:'render',value:function render()
-{
-return(
-_react2.default.createElement(_List2.default,null,
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/force-login',
-openImmediately:true,
-title:'Force Login',
-to:'/force-login'}),
+var _styles = require('@material-ui/core/styles');
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/todo',
-openImmediately:true,
-title:'To Dos',
-to:'/todo'}),
+var _Inbox = require('@material-ui/icons/Inbox');var _Inbox2 = _interopRequireDefault(_Inbox);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/Ensayo/edit',
-openImmediately:true,
-title:'Ensayo edit',
-to:'/Ensayo/edit'}),
+var _Today = require('@material-ui/icons/Today');var _Today2 = _interopRequireDefault(_Today);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/ensayo/in-place-edit',
-openImmediately:true,
-title:'Ensayo in place',
-to:'/ensayo/in-place-edit'}),
+var _Edit = require('@material-ui/icons/Edit');var _Edit2 = _interopRequireDefault(_Edit);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/ensayo',
-openImmediately:true,
-title:'Ensayo public',
-to:'/ensayo'}),
+var _ImportContacts = require('@material-ui/icons/ImportContacts');var _ImportContacts2 = _interopRequireDefault(_ImportContacts);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/inscriptio',
-openImmediately:true,
-title:'Inscriptio',
-to:'/inscriptio'}),
+var _MyLocation = require('@material-ui/icons/MyLocation');var _MyLocation2 = _interopRequireDefault(_MyLocation);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/translaticiarum',
-openImmediately:true,
-title:'Translaticiarum',
-to:'/translaticiarum'}),
+var _OpenWith = require('@material-ui/icons/OpenWith');var _OpenWith2 = _interopRequireDefault(_OpenWith);
 
-_react2.default.createElement(_AppDrawerNavItem2.default,{
-key:'/viewport-dimensions',
-openImmediately:true,
-title:'Viewport Dimensions',
-to:'/viewport-dimensions'})));
+var _Lock = require('@material-ui/icons/Lock');var _Lock2 = _interopRequireDefault(_Lock);
+
+var _react = require('react');var _react2 = _interopRequireDefault(_react);
+
+var _NavMenuItemWithIcon = require('../../urb-appdrawer-webapp/components/NavMenuItemWithIcon');var _NavMenuItemWithIcon2 = _interopRequireDefault(_NavMenuItemWithIcon);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+const styles = {
+  list: {
+    width: 250,
+    flex: 'initial' } };
 
 
 
-}}]);return AppDrawernavItems;}(_react2.default.Component);exports.default=AppDrawernavItems;
+class AppDrawerNavItems extends _react2.default.Component {
+  render() {
+    const { classes, onClick } = this.props;
+
+    return (
+      _react2.default.createElement('div', null,
+        _react2.default.createElement(_Divider2.default, null),
+        _react2.default.createElement(_List2.default, { className: classes.list },
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Inbox2.default, null),
+            label: 'To Dos',
+            onClick: () => onClick('/todo/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Edit2.default, null),
+            label: 'Ensayo Edit',
+            onClick: () => onClick('/ensayo/in-place-edit/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_ImportContacts2.default, null),
+            label: 'Ensayo Public',
+            onClick: () => onClick('/ensayo/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_MyLocation2.default, null),
+            label: 'Inscriptio',
+            onClick: () => onClick('/inscriptio/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Today2.default, null),
+            label: 'Translaticiarum',
+            onClick: () => onClick('/translaticiarum/') }),
+
+          _react2.default.createElement(_Divider2.default, null),
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_OpenWith2.default, null),
+            label: 'Viewport Dimensions',
+            onClick: () => onClick('/viewport-dimensions/') }),
+
+          _react2.default.createElement(_NavMenuItemWithIcon2.default, {
+            icon: _react2.default.createElement(_Lock2.default, null),
+            label: 'Force Login',
+            onClick: () => onClick('/force-login/') }))));
+
+
+
+
+  }}exports.default =
+
+
+(0, _styles.withStyles)(styles)(AppDrawerNavItems);
 //# sourceMappingURL=AppDrawerNavItems.js.map

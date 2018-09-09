@@ -1,71 +1,82 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _Card=require('material-ui/Card');var _Card2=_interopRequireDefault(_Card);
-var _styles=require('material-ui/styles');
-var _Table=require('material-ui/Table');var _Table2=_interopRequireDefault(_Table);
+var _Card = require('@material-ui/core/Card');var _Card2 = _interopRequireDefault(_Card);
 
+var _CardContent = require('@material-ui/core/CardContent');var _CardContent2 = _interopRequireDefault(_CardContent);
 
+var _CardHeader = require('@material-ui/core/CardHeader');var _CardHeader2 = _interopRequireDefault(_CardHeader);
 
+var _styles = require('@material-ui/core/styles');
 
+var _Table = require('@material-ui/core/Table');var _Table2 = _interopRequireDefault(_Table);
 
-var _react=require('react');var _react2=_interopRequireDefault(_react);
-var _reactRelay=require('react-relay');
+var _TableBody = require('@material-ui/core/TableBody');var _TableBody2 = _interopRequireDefault(_TableBody);
 
-var _ResponsiveContentArea=require('../../urb-base-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2=_interopRequireDefault(_ResponsiveContentArea);
-var _withViewportDimensions=require('../../urb-base-webapp/scripts/withViewportDimensions');var _withViewportDimensions2=_interopRequireDefault(_withViewportDimensions);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}
+var _TableCell = require('@material-ui/core/TableCell');var _TableCell2 = _interopRequireDefault(_TableCell);
 
-var styles={
-card:{
-minWidth:275}};var
+var _TableHead = require('@material-ui/core/TableHead');var _TableHead2 = _interopRequireDefault(_TableHead);
 
+var _TableRow = require('@material-ui/core/TableRow');var _TableRow2 = _interopRequireDefault(_TableRow);
 
+var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _reactRelay = require('react-relay');
 
-ViewportDimensionsScreen=function(_React$Component){_inherits(ViewportDimensionsScreen,_React$Component);function ViewportDimensionsScreen(){_classCallCheck(this,ViewportDimensionsScreen);return _possibleConstructorReturn(this,(ViewportDimensionsScreen.__proto__||Object.getPrototypeOf(ViewportDimensionsScreen)).apply(this,arguments));}_createClass(ViewportDimensionsScreen,[{key:'render',value:function render()
+var _ResponsiveContentArea = require('../../urb-appbase-webapp/components/ResponsiveContentArea');var _ResponsiveContentArea2 = _interopRequireDefault(_ResponsiveContentArea);
+var _ViewportContext = require('../../urb-appbase-webapp/components/ViewportContext');var _ViewportContext2 = _interopRequireDefault(_ViewportContext);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-
-
-
-
-{var _props=
-this.props,classes=_props.classes,totalHeight=_props.totalHeight,totalWidth=_props.totalWidth;
-
-var data=[
-{name:'totalWidth',value:totalWidth},
-{name:'totalHeight',value:totalHeight}];
-
-
-return(
-_react2.default.createElement(_ResponsiveContentArea2.default,null,
-_react2.default.createElement(_Card2.default,{className:classes.card},
-_react2.default.createElement(_Card.CardHeader,{title:'Viewport Dimensions'}),
-_react2.default.createElement(_Table2.default,null,
-_react2.default.createElement(_Table.TableHead,null,
-_react2.default.createElement(_Table.TableRow,null,
-_react2.default.createElement(_Table.TableCell,null,'Property'),
-_react2.default.createElement(_Table.TableCell,{numeric:true},'Value'))),
-
-
-_react2.default.createElement(_Table.TableBody,null,
-data.map(function(n){
-return(
-_react2.default.createElement(_Table.TableRow,{key:n.name},
-_react2.default.createElement(_Table.TableCell,null,n.name),
-_react2.default.createElement(_Table.TableCell,{numeric:true},n.value)));
-
-
-}))),
-
-
-_react2.default.createElement(_Card.CardContent,null))));
+const styles = {
+  card: {
+    minWidth: 275 } };
 
 
 
-}}]);return ViewportDimensionsScreen;}(_react2.default.Component);exports.default=
+class ViewportDimensionsScreen extends _react2.default.Component
 
 
-(0,_reactRelay.createFragmentContainer)(
-(0,_styles.withStyles)(styles)(
-(0,_withViewportDimensions2.default)(ViewportDimensionsScreen,[
-'totalHeight',
-'totalWidth'])),{Viewer:function Viewer(){return require('./__generated__/ViewportDimensionsScreen_Viewer.graphql');}});
+{
+  render() {
+    const { classes } = this.props;
+
+    return (
+      _react2.default.createElement(_ResponsiveContentArea2.default, null,
+        _react2.default.createElement(_ViewportContext2.default.Consumer, null,
+          ({ totalWidth, totalHeight }) => {
+            const data = [
+            { name: 'totalWidth', value: totalWidth },
+            { name: 'totalHeight', value: totalHeight }];
+
+
+            return (
+              _react2.default.createElement(_Card2.default, { className: classes.card },
+                _react2.default.createElement(_CardHeader2.default, { title: 'Viewport Dimensions' }),
+                _react2.default.createElement(_Table2.default, null,
+                  _react2.default.createElement(_TableHead2.default, null,
+                    _react2.default.createElement(_TableRow2.default, null,
+                      _react2.default.createElement(_TableCell2.default, null, 'Property'),
+                      _react2.default.createElement(_TableCell2.default, { numeric: true }, 'Value'))),
+
+
+                  _react2.default.createElement(_TableBody2.default, null,
+                    data.map(n => {
+                      return (
+                        _react2.default.createElement(_TableRow2.default, { key: n.name },
+                          _react2.default.createElement(_TableCell2.default, null, n.name),
+                          _react2.default.createElement(_TableCell2.default, { numeric: true }, n.value)));
+
+
+                    }))),
+
+
+                _react2.default.createElement(_CardContent2.default, null)));
+
+
+          })));
+
+
+
+  }}exports.default =
+
+
+(0, _reactRelay.createFragmentContainer)(
+(0, _styles.withStyles)(styles)(ViewportDimensionsScreen), { Viewer: function () {return require('./__generated__/ViewportDimensionsScreen_Viewer.graphql');} });
 //# sourceMappingURL=ViewportDimensionsScreen.js.map

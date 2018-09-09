@@ -1,34 +1,39 @@
-/**
- * @flow
- */
+
+
+
 
 /* eslint-disable */
 
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
-export type ViewportDimensionsScreen_Viewer = {|
-  +id: string;
-|};
-*/
+              import type { ConcreteFragment } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
+              declare export opaque type ViewportDimensionsScreen_Viewer$ref: FragmentReference;
+              export type ViewportDimensionsScreen_Viewer = {|
+                +id: string,
+                +$refType: ViewportDimensionsScreen_Viewer$ref,
+              |};
+              */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node /*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "ViewportDimensionsScreen_Viewer",
+  "type": "Viewer",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    }
-  ],
-  "type": "Viewer"
-};
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null }] };
 
-module.exports = fragment;
+
+
+// prettier-ignore
+node /*: any*/.hash = '7878c8ec560d7ac66fbc83829a760f43';
+module.exports = node;
+//# sourceMappingURL=ViewportDimensionsScreen_Viewer.graphql.js.map

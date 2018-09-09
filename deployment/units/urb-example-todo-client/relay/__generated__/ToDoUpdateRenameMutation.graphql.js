@@ -1,6 +1,6 @@
 /**
- * @flow
- * @relayHash c97661c8fb343d5d23475253ab315ff1
+ * 
+ * @relayHash b77f2a0a45271111502a0fd1aaec21ad
  */
 
 /* eslint-disable */
@@ -8,162 +8,121 @@
 'use strict';
 
 /*::
-import type {ConcreteBatch} from 'relay-runtime';
-export type ToDoUpdateRenameMutationVariables = {|
-  input: {
-    id: string;
-    ToDo_Text: string;
-    clientMutationId?: ?string;
-  };
-|};
-
-export type ToDoUpdateRenameMutationResponse = {|
-  +ToDoUpdateRename: ?{|
-    +ToDo: ?{|
-      +id: string;
-      +ToDo_Text: ?string;
-    |};
-  |};
-|};
-*/
+              import type { ConcreteRequest } from 'relay-runtime';
+              export type ToDoUpdateRenameInput = {
+                id: string,
+                ToDo_Text: string,
+                clientMutationId?: ?string,
+              };
+              export type ToDoUpdateRenameMutationVariables = {|
+                input: ToDoUpdateRenameInput
+              |};
+              export type ToDoUpdateRenameMutationResponse = {|
+                +ToDoUpdateRename: ?{|
+                  +ToDo: ?{|
+                    +id: string,
+                    +ToDo_Text: ?string,
+                  |}
+                |}
+              |};
+              export type ToDoUpdateRenameMutation = {|
+                variables: ToDoUpdateRenameMutationVariables,
+                response: ToDoUpdateRenameMutationResponse,
+              |};
+              */
 
 
 /*
-mutation ToDoUpdateRenameMutation(
-  $input: ToDoUpdateRenameInput!
-) {
-  ToDoUpdateRename(input: $input) {
-    ToDo {
-      id
-      ToDo_Text
-    }
-  }
-}
-*/
+                 mutation ToDoUpdateRenameMutation(
+                   $input: ToDoUpdateRenameInput!
+                 ) {
+                   ToDoUpdateRename(input: $input) {
+                     ToDo {
+                       id
+                       ToDo_Text
+                     }
+                   }
+                 }
+                 */
 
-const batch /*: ConcreteBatch*/ = {
-  "fragment": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "ToDoUpdateRenameInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Fragment",
-    "metadata": null,
-    "name": "ToDoUpdateRenameMutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "ToDoUpdateRenameInput!"
-          }
-        ],
-        "concreteType": "ToDoUpdateRenamePayload",
-        "name": "ToDoUpdateRename",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "ToDo",
-            "name": "ToDo",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_Text",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ],
-    "type": "Mutation"
-  },
-  "id": null,
-  "kind": "Batch",
-  "metadata": {},
-  "name": "ToDoUpdateRenameMutation",
-  "query": {
-    "argumentDefinitions": [
-      {
-        "kind": "LocalArgument",
-        "name": "input",
-        "type": "ToDoUpdateRenameInput!",
-        "defaultValue": null
-      }
-    ],
-    "kind": "Root",
-    "name": "ToDoUpdateRenameMutation",
-    "operation": "mutation",
-    "selections": [
-      {
-        "kind": "LinkedField",
-        "alias": null,
-        "args": [
-          {
-            "kind": "Variable",
-            "name": "input",
-            "variableName": "input",
-            "type": "ToDoUpdateRenameInput!"
-          }
-        ],
-        "concreteType": "ToDoUpdateRenamePayload",
-        "name": "ToDoUpdateRename",
-        "plural": false,
-        "selections": [
-          {
-            "kind": "LinkedField",
-            "alias": null,
-            "args": null,
-            "concreteType": "ToDo",
-            "name": "ToDo",
-            "plural": false,
-            "selections": [
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "id",
-                "storageKey": null
-              },
-              {
-                "kind": "ScalarField",
-                "alias": null,
-                "args": null,
-                "name": "ToDo_Text",
-                "storageKey": null
-              }
-            ],
-            "storageKey": null
-          }
-        ],
-        "storageKey": null
-      }
-    ]
-  },
-  "text": "mutation ToDoUpdateRenameMutation(\n  $input: ToDoUpdateRenameInput!\n) {\n  ToDoUpdateRename(input: $input) {\n    ToDo {\n      id\n      ToDo_Text\n    }\n  }\n}\n"
-};
+const node /*: ConcreteRequest*/ = function () {
+  var v0 = [
+  {
+    "kind": "LocalArgument",
+    "name": "input",
+    "type": "ToDoUpdateRenameInput!",
+    "defaultValue": null }],
 
-module.exports = batch;
+
+  v1 = [
+  {
+    "kind": "LinkedField",
+    "alias": null,
+    "name": "ToDoUpdateRename",
+    "storageKey": null,
+    "args": [
+    {
+      "kind": "Variable",
+      "name": "input",
+      "variableName": "input",
+      "type": "ToDoUpdateRenameInput!" }],
+
+
+    "concreteType": "ToDoUpdateRenamePayload",
+    "plural": false,
+    "selections": [
+    {
+      "kind": "LinkedField",
+      "alias": null,
+      "name": "ToDo",
+      "storageKey": null,
+      "args": null,
+      "concreteType": "ToDo",
+      "plural": false,
+      "selections": [
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "id",
+        "args": null,
+        "storageKey": null },
+
+      {
+        "kind": "ScalarField",
+        "alias": null,
+        "name": "ToDo_Text",
+        "args": null,
+        "storageKey": null }] }] }];
+
+
+
+
+
+
+  return {
+    "kind": "Request",
+    "operationKind": "mutation",
+    "name": "ToDoUpdateRenameMutation",
+    "id": null,
+    "text": "mutation ToDoUpdateRenameMutation(\n  $input: ToDoUpdateRenameInput!\n) {\n  ToDoUpdateRename(input: $input) {\n    ToDo {\n      id\n      ToDo_Text\n    }\n  }\n}\n",
+    "metadata": {},
+    "fragment": {
+      "kind": "Fragment",
+      "name": "ToDoUpdateRenameMutation",
+      "type": "Mutation",
+      "metadata": null,
+      "argumentDefinitions": v0,
+      "selections": v1 },
+
+    "operation": {
+      "kind": "Operation",
+      "name": "ToDoUpdateRenameMutation",
+      "argumentDefinitions": v0,
+      "selections": v1 } };
+
+
+}();
+// prettier-ignore
+node /*: any*/.hash = '5ca316bc08f370bba86945985652a644';
+module.exports = node;
+//# sourceMappingURL=ToDoUpdateRenameMutation.graphql.js.map

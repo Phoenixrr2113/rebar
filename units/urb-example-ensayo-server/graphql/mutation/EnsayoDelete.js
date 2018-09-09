@@ -3,7 +3,7 @@
 import { fromGlobalId, mutationWithClientMutationId } from 'graphql-relay'
 import { GraphQLID, GraphQLNonNull } from 'graphql'
 
-import ViewerType from '../../../../units/urb-base-server/graphql/type/ViewerType'
+import ViewerType from '../../../../units/urb-appbase-server/graphql/type/ViewerType'
 
 export default mutationWithClientMutationId({
   name: 'EnsayoDelete',
@@ -27,11 +27,7 @@ export default mutationWithClientMutationId({
     },
   },
 
-  mutateAndGetPayload: async(
-    { id },
-    context,
-    { rootValue: objectManager }
-  ) => {
+  mutateAndGetPayload: async({ id }, context, { rootValue: objectManager }) => {
     const local_id = fromGlobalId( id ).id
 
     await objectManager.remove( 'Ensayo', { id: local_id })

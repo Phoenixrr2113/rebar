@@ -1,34 +1,39 @@
-/**
- * @flow
- */
+
+
+
 
 /* eslint-disable */
 
 'use strict';
 
 /*::
-import type {ConcreteFragment} from 'relay-runtime';
-export type ToDoItem_Viewer = {|
-  +id: string;
-|};
-*/
+              import type { ConcreteFragment } from 'relay-runtime';
+              import type { FragmentReference } from "relay-runtime";
+              declare export opaque type ToDoItem_Viewer$ref: FragmentReference;
+              export type ToDoItem_Viewer = {|
+                +id: string,
+                +$refType: ToDoItem_Viewer$ref,
+              |};
+              */
 
 
-const fragment /*: ConcreteFragment*/ = {
-  "argumentDefinitions": [],
+const node /*: ConcreteFragment*/ = {
   "kind": "Fragment",
-  "metadata": null,
   "name": "ToDoItem_Viewer",
+  "type": "Viewer",
+  "metadata": null,
+  "argumentDefinitions": [],
   "selections": [
-    {
-      "kind": "ScalarField",
-      "alias": null,
-      "args": null,
-      "name": "id",
-      "storageKey": null
-    }
-  ],
-  "type": "Viewer"
-};
+  {
+    "kind": "ScalarField",
+    "alias": null,
+    "name": "id",
+    "args": null,
+    "storageKey": null }] };
 
-module.exports = fragment;
+
+
+// prettier-ignore
+node /*: any*/.hash = '1a7d80a3304bcbe9332edd571759ed60';
+module.exports = node;
+//# sourceMappingURL=ToDoItem_Viewer.graphql.js.map

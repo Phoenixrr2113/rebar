@@ -1,143 +1,186 @@
-Object.defineProperty(exports,"__esModule",{value:true});var _createClass=function(){function defineProperties(target,props){for(var i=0;i<props.length;i++){var descriptor=props[i];descriptor.enumerable=descriptor.enumerable||false;descriptor.configurable=true;if("value"in descriptor)descriptor.writable=true;Object.defineProperty(target,descriptor.key,descriptor);}}return function(Constructor,protoProps,staticProps){if(protoProps)defineProperties(Constructor.prototype,protoProps);if(staticProps)defineProperties(Constructor,staticProps);return Constructor;};}();
+'use strict';Object.defineProperty(exports, "__esModule", { value: true });
 
-var _AppBar=require('material-ui/AppBar');var _AppBar2=_interopRequireDefault(_AppBar);
-var _IconButton=require('material-ui/IconButton');var _IconButton2=_interopRequireDefault(_IconButton);
-var _Menu=require('material-ui-icons/Menu');var _Menu2=_interopRequireDefault(_Menu);
-var _react=require('react');var _react2=_interopRequireDefault(_react);
-var _reactRelay=require('react-relay');
-var _styles=require('material-ui/styles');
-var _Toolbar=require('material-ui/Toolbar');var _Toolbar2=_interopRequireDefault(_Toolbar);
-var _Typography=require('material-ui/Typography');var _Typography2=_interopRequireDefault(_Typography);
+var _AppBar = require('@material-ui/core/AppBar');var _AppBar2 = _interopRequireDefault(_AppBar);
 
-var _NavBarLoginButton=require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2=_interopRequireDefault(_NavBarLoginButton);
+var _Drawer = require('@material-ui/core/Drawer');var _Drawer2 = _interopRequireDefault(_Drawer);
 
-var _AppDrawer=require('./AppDrawer');var _AppDrawer2=_interopRequireDefault(_AppDrawer);function _interopRequireDefault(obj){return obj&&obj.__esModule?obj:{default:obj};}function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function");}}function _possibleConstructorReturn(self,call){if(!self){throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}return call&&(typeof call==="object"||typeof call==="function")?call:self;}function _inherits(subClass,superClass){if(typeof superClass!=="function"&&superClass!==null){throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}subClass.prototype=Object.create(superClass&&superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});if(superClass)Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}function _defineProperty(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true});}else{obj[key]=value;}return obj;}
+var _IconButton = require('@material-ui/core/IconButton');var _IconButton2 = _interopRequireDefault(_IconButton);
 
-var styles=function styles(theme){return _defineProperty({
-'@global':{
-html:{
-boxSizing:'border-box'},
+var _styles = require('@material-ui/core/styles');
 
-'*, *:before, *:after':{
-boxSizing:'inherit'},
+var _Toolbar = require('@material-ui/core/Toolbar');var _Toolbar2 = _interopRequireDefault(_Toolbar);
 
-body:{
-margin:0,
-background:theme.palette.background.default,
-color:theme.palette.text.primary,
-lineHeight:'1.2',
-overflowX:'hidden',
-WebkitFontSmoothing:'antialiased',
-MozOsxFontSmoothing:'grayscale'},
+var _Typography = require('@material-ui/core/Typography');var _Typography2 = _interopRequireDefault(_Typography);
 
-img:{
-maxWidth:'100%',
-height:'auto',
-width:'auto'}},
+var _Menu = require('@material-ui/icons/Menu');var _Menu2 = _interopRequireDefault(_Menu);
 
+var _found = require('found');
+var _react = require('react');var _react2 = _interopRequireDefault(_react);
+var _reactRelay = require('react-relay');
 
-appFrame:{
-display:'flex',
-alignItems:'stretch',
-minHeight:'100vh',
-width:'100%'},
+var _AppDrawerNavItems = require('../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems');var _AppDrawerNavItems2 = _interopRequireDefault(_AppDrawerNavItems);
+var _AppDrawerTitle = require('../../_configuration/urb-appdrawer-webapp/AppDrawerTitle');var _AppDrawerTitle2 = _interopRequireDefault(_AppDrawerTitle);
+var _NavBarLoginButton = require('../../urb-account-management-webapp/components/NavBarLoginButton');var _NavBarLoginButton2 = _interopRequireDefault(_NavBarLoginButton);
+var _NavBarTitle = require('../../_configuration/urb-appdrawer-webapp/NavBarTitle');var _NavBarTitle2 = _interopRequireDefault(_NavBarTitle);function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-grow:{
-flex:'1 1 auto'},
+const drawerWidth = 240;
 
-title:{
-marginLeft:24,
-flex:'0 1 auto'},
+const styles = theme => ({
+  '@global': {
+    html: {
+      boxSizing: 'border-box' },
 
-appBar:{
-transition:theme.transitions.create('width')}},
+    '*, *:before, *:after': {
+      boxSizing: 'inherit' },
+
+    body: {
+      margin: 0,
+      background: theme.palette.background.default,
+      color: theme.palette.text.primary,
+      lineHeight: '1.2',
+      overflowX: 'hidden',
+      WebkitFontSmoothing: 'antialiased', // Antialiasing.
+      MozOsxFontSmoothing: 'grayscale' // Antialiasing.
+    },
+    img: {
+      maxWidth: '100%',
+      height: 'auto',
+      width: 'auto' } },
 
 
+  root: {
+    width: '100%',
+    height: '100vh',
+    zIndex: 1,
+    overflow: 'hidden' },
+
+  appFrame: {
+    position: 'relative',
+    display: 'flex',
+    width: '100%',
+    height: '100%' },
+
+  appBar: {
+    position: 'absolute',
+    transition: theme.transitions.create(['margin', 'width'], {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }) },
+
+
+  grow: {
+    flex: '1 1 auto' },
+
+  menuButton: {
+    marginLeft: 12,
+    marginRight: 20 },
+
+  menuButtonRoot: {
+    color: '#ffffff' },
+
+  drawerInner: {
+    // Make the items inside not wrap when transitioning:
+    width: drawerWidth },
+
+  drawerHeader: Object.assign({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    padding: '0 8px' },
+  theme.mixins.toolbar),
+
+  drawerPaper: {
+    position: 'relative',
+    height: '100%',
+    width: drawerWidth },
+
+  content: {
+    width: '100%',
+    //marginLeft: -drawerWidth,
+    flexGrow: 1,
+    backgroundColor: theme.palette.background.default,
+    padding: theme.spacing.unit * 3,
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }),
+
+    overflow: 'scroll',
+    height: 'calc(100% - 56px)',
+    marginTop: 56,
+    [theme.breakpoints.up('sm')]: {
+      content: {
+        height: 'calc(100% - 64px)',
+        marginTop: 64 } } } });
 
 
 
-theme.breakpoints.up('lg'),{
-drawer:{
-width:'250px'},
 
-appBarShift:{
-width:'calc(100% - 250px)'},
 
-navIconHide:{
-display:'none'}});};var
+class AppFrame extends _react2.default.Component
 
 
 
 
-AppFrame=function(_Component){_inherits(AppFrame,_Component);
-function AppFrame(props,context){_classCallCheck(this,AppFrame);var _this=_possibleConstructorReturn(this,(AppFrame.__proto__||Object.getPrototypeOf(AppFrame)).call(this,
-props,context));_this.
+{
+  constructor(props, context) {
+    super(props, context);this.
 
 
 
 
-handleDrawerClose=function(){
-_this.setState({drawerOpen:false});
-};_this.
+    _handle_Drawer_Open = () => {
+      this.setState({ drawerIsOpen: true });
+    };this.
 
-handleDrawerToggle=function(){
-_this.setState({drawerOpen:!_this.state.drawerOpen});
-};_this.state={drawerOpen:false};return _this;}_createClass(AppFrame,[{key:'render',value:function render()
+    _handle_Drawer_Close = () => {
+      this.setState({ drawerIsOpen: false });
+    };this.
 
-{var _props=
-this.props,children=_props.children,classes=_props.classes,Viewer=_props.Viewer;
+    _handle_GoTo = to => {
+      this.setState({ drawerIsOpen: false });
 
-var drawerDocked=false;
+      this.props.router.push(to);
+    };this.state = { drawerIsOpen: false };}
 
-var appBarClassName=classes.appBar;
-var navIconClassName=classes.icon;
+  render() {
+    const { children, classes, Viewer } = this.props;
+    const { drawerIsOpen } = this.state;
 
-if(drawerDocked){
-navIconClassName+=' '+classes.navIconHide;
-appBarClassName+=' '+classes.appBarShift;
-}else{
-appBarClassName+=' '+classes.appBarHome;
-}
+    return (
+      _react2.default.createElement('div', { className: classes.root },
+        _react2.default.createElement('div', { className: classes.appFrame },
+          _react2.default.createElement(_AppBar2.default, { className: classes.appBar },
+            _react2.default.createElement(_Toolbar2.default, { disableGutters: true },
+              _react2.default.createElement(_IconButton2.default, {
+                  'aria-label': 'open drawer',
+                  onClick: this._handle_Drawer_Open,
+                  className: classes.menuButton,
+                  classes: { root: classes.menuButtonRoot } },
 
-var title='Hello World';
+                _react2.default.createElement(_Menu2.default, null)),
 
-return(
-_react2.default.createElement('div',{className:classes.appFrame},
-_react2.default.createElement(_AppBar2.default,{className:appBarClassName},
-_react2.default.createElement(_Toolbar2.default,null,
-_react2.default.createElement(_IconButton2.default,{
-color:'contrast',
-onClick:this.handleDrawerToggle,
-className:navIconClassName},
-
-_react2.default.createElement(_Menu2.default,null)),
-
-title!==null&&
-_react2.default.createElement(_Typography2.default,{
-className:classes.title,
-type:'title',
-color:'inherit',
-noWrap:true},
-
-title),
+              _react2.default.createElement(_Typography2.default, { variant: 'title', color: 'inherit', noWrap: true },
+                _NavBarTitle2.default),
 
 
-_react2.default.createElement('div',{className:classes.grow}),
-_react2.default.createElement(_NavBarLoginButton2.default,{Viewer:Viewer}))),
+              _react2.default.createElement('div', { className: classes.grow }),
+              _react2.default.createElement(_NavBarLoginButton2.default, { Viewer: Viewer }))),
 
 
-_react2.default.createElement(_AppDrawer2.default,{
-className:classes.drawer,
-docked:drawerDocked,
-onRequestClose:this.handleDrawerClose,
-open:drawerDocked||this.state.drawerOpen}),
-
-children));
+          _react2.default.createElement(_Drawer2.default, { open: drawerIsOpen, onClose: this._handle_Drawer_Close },
+            _react2.default.createElement('div', { className: classes.drawerInner },
+              _react2.default.createElement('div', { className: classes.drawerHeader },
+                _react2.default.createElement(_AppDrawerTitle2.default, { handle_GoTo: this._handle_GoTo }))),
 
 
-}}]);return AppFrame;}(_react.Component);exports.default=
+            _react2.default.createElement(_AppDrawerNavItems2.default, { onClick: this._handle_GoTo })),
+
+          _react2.default.createElement('main', { className: classes.content }, children))));
 
 
-(0,_reactRelay.createFragmentContainer)(
-(0,_styles.withStyles)(styles)(AppFrame),{Viewer:function Viewer(){return require('./__generated__/AppFrame_Viewer.graphql');}});
+
+  }}exports.default =
+
+
+(0, _reactRelay.createFragmentContainer)(
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(AppFrame)), { Viewer: function () {return require('./__generated__/AppFrame_Viewer.graphql');} });
 //# sourceMappingURL=AppFrame.js.map
