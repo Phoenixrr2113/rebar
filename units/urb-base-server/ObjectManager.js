@@ -32,6 +32,15 @@ type EntityDefinition = {
   TriggersForUpdate: Array<Function>,
   TriggersForRemove: Array<Function>,
   TriggersForUpdateShouldRetrieveCurrentRecord: boolean,
+  UserPermissionsForObject: {
+    use: boolean,
+    defaultOnAdd?: {
+      read: boolean,
+      update: boolean,
+      delete: boolean,
+      miscAsJSON: string,
+    },
+  },
 }
 
 // Static set of entity definitions
@@ -81,13 +90,29 @@ export default class ObjectManager {
     }
   }
 
-  static registerEntity( entityName: string, EntityType: Function, persister: any ): void {
+  static registerEntity(
+    entityName: string,
+    EntityType: Function,
+    options: {
+      persister?: Object,
+      UserPermissionsForObject?: {
+        use: boolean,
+        defaultOnAdd?: {
+          read: boolean,
+          update: boolean,
+          delete: boolean,
+          miscAsJSON: string,
+        },
+      },
+    },
+  ): void {
     if ( entityName in entityDefinitions ) throw new Error( 'Entity already registered: ' + entityName )
 
     // In order to be able to access the name as a static property of the type
     EntityType.entityName = entityName
 
     // Determine persister - default, or otherwise
+    let { persister } = options
     if ( persister == null ) persister = defaultPersister
 
     // A set would retain only one copy of a persister
@@ -102,6 +127,10 @@ export default class ObjectManager {
       TriggersForUpdate: [],
       TriggersForRemove: [],
       TriggersForUpdateShouldRetrieveCurrentRecord: false,
+      UserPermissionsForObject:
+        options.UserPermissionsForObject != null
+          ? options.UserPermissionsForObject
+          : { use: false },
     }
 
     // Determine fields by fields with suffix
@@ -270,10 +299,15 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getObjectList( entityName, entityType, filter )
           } catch ( err ) {
-            log.log( 'error', 'Object Manager: Could not load multiple results ' + entityName, {
-              fieldName,
-              err,
-              stack: err.stack,
+            log.log({
+              level: 'error',
+              message: 'Object Manager: Could not load multiple results',
+              details: {
+                fieldName,
+                entityName,
+                err,
+                stack: err.stack,
+              },
             })
             throw err
           }
@@ -283,10 +317,15 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getOneObject( entityName, entityType, filter )
           } catch ( err ) {
-            log.log( 'error', 'Object Manager: Could not load single result ' + entityName, {
-              fieldName,
-              err,
-              stack: err.stack,
+            log.log({
+              level: 'error',
+              message: 'Object Manager: Could not load single result',
+              details: {
+                fieldName,
+                entityName,
+                err,
+                stack: err.stack,
+              },
             })
             throw err
           }
@@ -298,14 +337,28 @@ export default class ObjectManager {
     return loader
   }
 
-  getOneObject( entityName: string, query: Object ): Promise<User> {
+  async getOneObject_async( entityName: string, query: Object ): Object | null {
+    const entityDefinition = entityDefinitions[entityName]
+    if ( entityDefinition == null )
+      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+
     // Special hack for anonymous users
     if ( entityName === 'User' )
-      if ( defaultPersister.uuidEquals( defaultPersister.uuidNull(), query.id ) )
-        return Promise.resolve( User_0 )
+      if ( defaultPersister.uuidEquals( defaultPersister.uuidNull(), query.id ) ) return User_0
 
     // Apply artifact_id, User_id security
-    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinitions[entityName], query )
+    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, query )
+
+    // Verify user object permission, if applies
+    if ( entityDefinition.UserPermissionsForObject.use ) {
+      const permission = await this.getOneObject_async( 'UserPermissionForObject', {
+        UserPermissionForObject_ObjectType: entityName,
+        UserPermissionForObject_object_id: query.id,
+      })
+
+      // If object is not found, or read permission not found, bail out
+      if ( permission == null || !permission.UserPermissionForObject_PermitRead ) return null
+    }
 
     // For all non-user, non 0 ids, load from data loader per protocol
     const loaderIdentifier = Object.keys( query )
@@ -313,51 +366,78 @@ export default class ObjectManager {
       .join( ',' )
     const loader = this.getLoader( entityName, loaderIdentifier, false )
 
-    return loader.load( query ).then( result => {
-      const changes = this.changes[entityName]
-      if ( changes ) {
-        // $AssureFlow - by convention all entity objects are expected to have an id
-        const change = changes[result.id]
+    let result = await loader.load( query )
 
-        if ( change != null ) {
-          // Object is not found, return null if deleted
-          if ( change === deletedRecord ) {
-            result = null
-          } else {
-            // Add or update
-            Object.assign( result, change )
-          }
+    const changes = this.changes[entityName]
+    if ( changes ) {
+      const change = changes[result.id]
+
+      if ( change != null ) {
+        // Object is not found, return null if deleted
+        if ( change === deletedRecord ) {
+          result = null
+        } else {
+          // Add or update
+          Object.assign( result, change )
         }
       }
-      return result
-    })
+    }
+
+    return result
   }
 
-  getObjectList( entityName: string, query: Object ) {
+  async getObjectList_async( entityName: string, query: Object ) {
+    const entityDefinition = entityDefinitions[entityName]
+    if ( entityDefinition == null )
+      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+
     // Apply artifact_id, User_id security
-    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinitions[entityName], query )
+    this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, query )
+
+    // Add user object permissions to query, if they apply
+    if ( entityDefinition.UserPermissionsForObject.use ) {
+      const arrPermissions = await this.getObjectList_async( 'UserPermissionForObject', {
+        UserPermissionForObject_ObjectType: entityName,
+      })
+
+      // Determine ID values that are permitted for user
+      const arrIDValues = []
+      for ( let permission of arrPermissions )
+        if ( permission.UserPermissionForObject_PermitRead ) {
+          arrIDValues.push( permission.UserPermissionForObject_object_id )
+        }
+
+      // If there are no permissions, there is no reason to query further
+      if ( arrIDValues.length === 0 ) return []
+
+      // Set an in condition - detrimental to performance yet quick and dirty way to ensure
+      // that only permitted IDs can be accessed
+      query.id = { $in: arrIDValues }
+    }
 
     const loaderIdentifier = Object.keys( query )
       .sort()
       .join( ',' )
     const loader = this.getLoader( entityName, loaderIdentifier, true )
 
-    return loader.load( query ).then( arrResults => {
-      const changes = this.changes[entityName]
-      if ( changes ) {
-        for ( let ix = 0; ix < arrResults.length; ix++ ) {
-          const change = changes[arrResults[ix].id]
-          if ( change != null ) {
-            if ( change === deletedRecord )
-              // Reduce ix in order not to skip over a record
-              arrResults.splice( ix--, 1 )
-            // Add or update
-            else Object.assign( arrResults[ix], change )
-          }
+    const arrResults = await loader.load( query )
+
+    const changes = this.changes[entityName]
+
+    if ( changes ) {
+      for ( let ix = 0; ix < arrResults.length; ix++ ) {
+        const change = changes[arrResults[ix].id]
+        if ( change != null ) {
+          if ( change === deletedRecord )
+            // Reduce ix in order not to skip over a record
+            arrResults.splice( ix--, 1 )
+          // Add or update
+          else Object.assign( arrResults[ix], change )
         }
       }
-      return arrResults
-    })
+    }
+
+    return arrResults
   }
 
   invalidateLoaderCache( entityName: string, fields: any ) {
@@ -413,11 +493,38 @@ export default class ObjectManager {
       await this.executeTriggers( entityDefinition.TriggersForAdd, fields )
 
       await entityDefinition.Persister.add( entityName, fields, entityDefinition.EntityType )
+
+      if ( entityDefinition.UserPermissionsForObject.use ) {
+        const permissions = entityDefinition.UserPermissionsForObject.defaultOnAdd
+          ? entityDefinition.UserPermissionsForObject.defaultOnAdd
+          : {
+              read: true,
+              update: true,
+              delete: true,
+              miscAsJSON: '{}',
+            }
+
+        const a_UserPermissionForObject = {
+          UserPermissionForObject_ObjectType: entityName,
+          UserPermissionForObject_object_id: fields.id,
+          UserPermissionForObject_PermitRead: permissions.read,
+          UserPermissionForObject_PermitUpdate: permissions.update,
+          UserPermissionForObject_PermitDelete: permissions.delete,
+          UserPermissionForObject_PermitMiscAsJSON: permissions.miscAsJSON,
+        }
+
+        await this.add( 'UserPermissionForObject', a_UserPermissionForObject )
+      }
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not add ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not add',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -436,13 +543,24 @@ export default class ObjectManager {
       // Apply artifact_id, User_id security
       this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
 
+      // Verify user object permission, if applies
+      if ( entityDefinition.UserPermissionsForObject.use ) {
+        const permission = await this.getOneObject_async( 'UserPermissionForObject', {
+          UserPermissionForObject_ObjectType: entityName,
+          UserPermissionForObject_object_id: fields.id,
+        })
+
+        // If object is not found, or read permission not found, bail out
+        if ( permission == null || !permission.UserPermissionForObject_PermitUpdate ) return
+      }
+
       // Update created and modified fields
       this.updatedCreatedAndModifiedFields( entityDefinition, fields, false )
 
       // Retrieve the current values, if triggers will be used
       let oldFields = null
       if ( entityDefinition.TriggersForUpdateShouldRetrieveCurrentRecord ) {
-        oldFields = this.getOneObject( entityName, {
+        oldFields = await this.getOneObject_async( entityName, {
           id: fields.id,
         })
       }
@@ -453,10 +571,15 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.update( entityName, fields )
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not update ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not update',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -464,7 +587,7 @@ export default class ObjectManager {
     this.invalidateLoaderCache( entityName, fields )
   }
 
-  async remove( entityName: string, fields: Object ): Promise<void> {
+  async remove( entityName: string, fields: Object ) {
     const entityDefinition = entityDefinitions[entityName]
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )
@@ -473,16 +596,32 @@ export default class ObjectManager {
       // Apply artifact_id, User_id security
       this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
 
+      // Verify user object permission, if applies
+      if ( entityDefinition.UserPermissionsForObject.use ) {
+        const permission = await this.getOneObject_async( 'UserPermissionForObject', {
+          UserPermissionForObject_ObjectType: entityName,
+          UserPermissionForObject_object_id: fields.id,
+        })
+
+        // If object is not found, or read permission not found, bail out
+        if ( permission == null || !permission.UserPermissionForObject_PermitDelete ) return
+      }
+
       this.recordChange( entityName, fields, true )
 
       await this.executeTriggers( entityDefinition.TriggersForRemove, fields )
 
       await entityDefinition.Persister.remove( entityName, fields )
     } catch ( err ) {
-      log.log( 'error', 'Object Manager: Could not remove ' + entityName, {
-        fields,
-        err,
-        stack: err.stack,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not remove',
+        details: {
+          fields,
+          entityName,
+          err,
+          stack: err.stack,
+        },
       })
       throw err
     }
@@ -519,14 +658,15 @@ export default class ObjectManager {
     }
     let cursor = cursorForObjectInConnection( arr, obj )
     if ( cursor == null )
-      log.log(
-        'error',
-        'Object Manager: Could not create cursor for object in connection for ' + entityName,
-        {
-          obj,
+      log.log({
+        level: 'error',
+        message: 'Object Manager: Could not create cursor for object in connection',
+        details: {
           arr,
+          entityName,
+          obj,
         },
-      )
+      })
     return cursor
   }
 
@@ -539,7 +679,7 @@ export default class ObjectManager {
 }
 
 // Register the user
-ObjectManager.registerEntity( 'User', User )
+ObjectManager.registerEntity( 'User', User, {})
 
 // Get an Object Manager with site information
 export async function getObjectManager( req: Object, res: Object ): Promise<ObjectManager> {

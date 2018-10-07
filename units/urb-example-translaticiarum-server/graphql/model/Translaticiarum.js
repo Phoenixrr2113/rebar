@@ -28,4 +28,4 @@ export default class Translaticiarum {
   }
 }
 
-ObjectManager.registerEntity( 'Translaticiarum', Translaticiarum )
+ObjectManager.registerEntity( 'Translaticiarum', Translaticiarum, {})

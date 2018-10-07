@@ -4,7 +4,7 @@ import CassandraDriver from 'cassandra-driver'
 import ExpressCassandra from 'express-cassandra'
 
 import CassandraOptions from './CassandraOptions'
-import WinstonCassandra from './WinstonCassandra'
+import WinstonTransportCassandra from './WinstonTransportCassandra'
 
 const Uuid = CassandraDriver.types.Uuid
 const Uuid_Null_String = '00000000-0000-0000-0000-000000000000'
@@ -137,10 +137,14 @@ export default class PersisterCassandra {
     const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields
 
     for ( let fieldName in fields ) {
+      const fieldValue = fields[fieldName]
+
+      // $in should only be used with UUID, no strings will be allowed
+      if ( fieldValue.$in ) continue
+
       const fieldType = schemaFields[fieldName]
 
       if ( fieldType === 'uuid' ) {
-        const fieldValue = fields[fieldName]
         if ( !( fieldValue instanceof Uuid ) ) {
           fields[fieldName] = Uuid.fromString( fieldValue )
         }
@@ -177,7 +181,7 @@ export default class PersisterCassandra {
   }
 
   createLogger() {
-    return new WinstonCassandra( CassandraOptions )
+    return new WinstonTransportCassandra( CassandraOptions )
   }
 
   uuidFromString( str: string ) {

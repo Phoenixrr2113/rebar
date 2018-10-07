@@ -4,7 +4,7 @@ var _cassandraDriver = _interopRequireDefault(require("cassandra-driver"));
 var _expressCassandra = _interopRequireDefault(require("express-cassandra"));
 
 var _CassandraOptions = _interopRequireDefault(require("./CassandraOptions"));
-var _WinstonCassandra = _interopRequireDefault(require("./WinstonCassandra"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _WinstonTransportCassandra = _interopRequireDefault(require("./WinstonTransportCassandra"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const Uuid = _cassandraDriver.default.types.Uuid;
 const Uuid_Null_String = '00000000-0000-0000-0000-000000000000';
@@ -137,10 +137,14 @@ class PersisterCassandra {
     const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields;
 
     for (let fieldName in fields) {
+      const fieldValue = fields[fieldName];
+
+      // $in should only be used with UUID, no strings will be allowed
+      if (fieldValue.$in) continue;
+
       const fieldType = schemaFields[fieldName];
 
       if (fieldType === 'uuid') {
-        const fieldValue = fields[fieldName];
         if (!(fieldValue instanceof Uuid)) {
           fields[fieldName] = Uuid.fromString(fieldValue);
         }
@@ -177,7 +181,7 @@ class PersisterCassandra {
   }
 
   createLogger() {
-    return new _WinstonCassandra.default(_CassandraOptions.default);
+    return new _WinstonTransportCassandra.default(_CassandraOptions.default);
   }
 
   uuidFromString(str) {

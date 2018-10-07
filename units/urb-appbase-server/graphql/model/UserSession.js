@@ -25,4 +25,4 @@ export default class UserSession {
   }
 }
 
-ObjectManager.registerEntity( 'UserSession', UserSession )
+ObjectManager.registerEntity( 'UserSession', UserSession, {})

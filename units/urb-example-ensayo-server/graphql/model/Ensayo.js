@@ -28,4 +28,4 @@ export default class Ensayo {
   }
 }
 
-ObjectManager.registerEntity( 'Ensayo', Ensayo )
+ObjectManager.registerEntity( 'Ensayo', Ensayo, {})

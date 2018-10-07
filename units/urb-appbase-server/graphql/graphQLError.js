@@ -36,8 +36,12 @@ export let defaultHandler = function( err: any ) {
   // TODO: x1000 Consider having a unique ID for the errors, most probably move it to the log though, so that all modules can use it
   // const errId = uuid.v4();
   // err.message = `${err.message}: ${errId}`;
-  log.log( 'error', 'Resolve function failed', {
-    error: ( err && err.stack ) || err,
+  log.log({
+    level: 'error',
+    message: 'Resolve function failed',
+    details: {
+      error: ( err && err.stack ) || err,
+    },
   })
   err.message = 'Internal Error'
   return err

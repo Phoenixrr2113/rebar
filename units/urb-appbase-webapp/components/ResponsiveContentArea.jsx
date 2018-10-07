@@ -11,21 +11,9 @@ const styles = theme => ({
     maxWidth: '100%',
     paddingTop: theme.mixins.toolbar.minHeight + 16,
   }),
-  [theme.breakpoints.up( 1000 )]: {
-    content: {
-      paddingTop: theme.mixins.toolbar.minHeight + 32,
-      margin: '0 auto',
-      maxWidth: 952,
-    },
-  },
-  [theme.breakpoints.up( 'sm' )]: {
-    content: {
-      paddingTop: theme.mixins.toolbar.minHeight + 24,
-    },
-  },
 })
 
-class ResponsiveContentArea extends React.Component<any, any> {
+class ResponsiveContentArea extends React.Component<{ classes: Object, children: any }> {
   render() {
     const { classes } = this.props
 

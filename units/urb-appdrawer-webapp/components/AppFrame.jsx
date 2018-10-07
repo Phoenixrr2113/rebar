@@ -16,12 +16,15 @@ import IconMenu from '@material-ui/icons/Menu'
 
 import { withRouter } from 'found'
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import AppDrawerNavItems from '../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems'
 import AppDrawerTitle from '../../_configuration/urb-appdrawer-webapp/AppDrawerTitle'
 import NavBarLoginButton from '../../urb-account-management-webapp/components/NavBarLoginButton'
-import NavBarTitle from '../../_configuration/urb-appdrawer-webapp/NavBarTitle'
+import NavBarDefaultTitle from '../../_configuration/urb-appdrawer-webapp/NavBarDefaultTitle'
+
+import AppFrameContext from './AppFrameContext'
 
 const drawerWidth = 240
 
@@ -95,7 +98,6 @@ const styles = theme => ({
   },
   content: {
     width: '100%',
-    //marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
@@ -106,25 +108,22 @@ const styles = theme => ({
     overflow: 'scroll',
     height: 'calc(100% - 56px)',
     marginTop: 56,
-    [theme.breakpoints.up( 'sm' )]: {
-      content: {
-        height: 'calc(100% - 64px)',
-        marginTop: 64,
-      },
-    },
   },
 })
+
+const titlePrefix = process.env.NODE_ENV === 'production' ? '' : '<DEV> '
 
 class AppFrame extends React.Component<
   { children?: any, classes: Object, router: Object, Viewer: Object },
   {
     drawerIsOpen: boolean,
+    title: string,
   },
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
-    this.state = { drawerIsOpen: false }
+    this.state = { drawerIsOpen: false, title: titlePrefix + NavBarDefaultTitle }
   }
 
   _handle_Drawer_Open = () => {
@@ -141,15 +140,28 @@ class AppFrame extends React.Component<
     this.props.router.push( to )
   }
 
+  setTitle = ( title: string ) => {
+    this.setState({ title: titlePrefix + title })
+  }
+
+  clearTitle = () => {
+    this.setState({ title: titlePrefix + NavBarDefaultTitle })
+  }
+
   render() {
+    const { setTitle, clearTitle } = this
     const { children, classes, Viewer } = this.props
-    const { drawerIsOpen } = this.state
+    const { drawerIsOpen, title } = this.state
 
     return (
       <div className={classes.root}>
+        <Helmet>
+          <title>{title}</title>
+        </Helmet>
+
         <div className={classes.appFrame}>
           <AppBar className={classes.appBar}>
-            <Toolbar disableGutters={true}>
+            <Toolbar disableGutters={true} variant="dense">
               <IconButton
                 aria-label="open drawer"
                 onClick={this._handle_Drawer_Open}
@@ -158,14 +170,17 @@ class AppFrame extends React.Component<
               >
                 <IconMenu />
               </IconButton>
+
               <Typography variant="title" color="inherit" noWrap>
-                {NavBarTitle}
+                {title}
               </Typography>
 
               <div className={classes.grow} />
+
               <NavBarLoginButton Viewer={Viewer} />
             </Toolbar>
           </AppBar>
+
           <Drawer open={drawerIsOpen} onClose={this._handle_Drawer_Close}>
             <div className={classes.drawerInner}>
               <div className={classes.drawerHeader}>
@@ -174,7 +189,10 @@ class AppFrame extends React.Component<
             </div>
             <AppDrawerNavItems onClick={this._handle_GoTo} />
           </Drawer>
-          <main className={classes.content}>{children}</main>
+
+          <AppFrameContext.Provider value={{ setTitle, clearTitle }}>
+            <main className={classes.content}>{children}</main>
+          </AppFrameContext.Provider>
         </div>
       </div>
     )

@@ -16,7 +16,7 @@ import ErrorComponent from '../_configuration/urb-appbase-webapp/ErrorComponent'
 import getGraphQLLocalServerURL from '../_configuration/urb-base-server/getGraphQLLocalServerURL'
 import { getSiteInformation } from '../_configuration/urb-base-server/siteSettings'
 import log from '../urb-base-server/log'
-import { version } from '../_configuration/package'
+import { version } from '../../package.json'
 import UserToken2ServerRendering from '../_configuration/urb-base-server/UserToken2ServerRendering'
 import htmlHeadAdditions from '../_configuration/urb-appbase-webapp/htmlHeadAdditions'
 import type { SiteInformation } from '../urb-appbase-server/types/SiteInformation.types'
@@ -72,7 +72,11 @@ const render = createRender({
   renderError( obj: Object ): React$Element<*> {
     const { error } = obj
     if ( error.status !== 404 )
-      log.log( 'error', 'Error: Render on server createRender renderError', obj )
+      log.log({
+        level: 'error',
+        message: 'Error: Render on server createRender renderError',
+        details: obj,
+      })
     return <ErrorComponent httpStatus={error.status} />
   },
 })
@@ -150,7 +154,7 @@ serverWebApp.use( async( req, res ) => {
       res.status( 200 ).send( 'meh' )
     }
   } catch ( err ) {
-    log.log( 'error', 'Error: Render on server request', err )
+    log.log({ level: 'error', message: 'Error: Render on server request', details: err })
     res.status( 500 ).send( ReactDOMServer.renderToString( <ErrorComponent httpStatus={500} /> ) )
   }
 })

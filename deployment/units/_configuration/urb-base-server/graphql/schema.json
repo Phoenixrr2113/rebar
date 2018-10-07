@@ -102,12 +102,12 @@
             },
             {
               "kind": "OBJECT",
-              "name": "ObjectUserPermission",
+              "name": "UserPermissionForObject",
               "ofType": null
             },
             {
               "kind": "OBJECT",
-              "name": "ResourceUserAllowance",
+              "name": "UserQuotaForObject",
               "ofType": null
             },
             {
@@ -214,7 +214,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermissions",
+              "name": "UserPermissionForObjects",
               "description": null,
               "args": [
                 {
@@ -258,7 +258,7 @@
                   "defaultValue": null
                 },
                 {
-                  "name": "ObjectUserPermission_Name",
+                  "name": "UserPermissionForObject_ObjectType",
                   "description": null,
                   "type": {
                     "kind": "NON_NULL",
@@ -274,14 +274,14 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ObjectUserPermissionsConnection",
+                "name": "UserPermissionForObjectsConnection",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission",
+              "name": "UserPermissionForObject",
               "description": null,
               "args": [
                 {
@@ -297,14 +297,14 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ObjectUserPermission",
+                "name": "UserPermissionForObject",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowances",
+              "name": "UserQuotaForObjects",
               "description": null,
               "args": [
                 {
@@ -350,14 +350,14 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ResourceUserAllowancesConnection",
+                "name": "UserQuotaForObjectsConnection",
                 "ofType": null
               },
               "isDeprecated": false,
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance",
+              "name": "UserQuotaForObject",
               "description": null,
               "args": [
                 {
@@ -373,7 +373,7 @@
               ],
               "type": {
                 "kind": "OBJECT",
-                "name": "ResourceUserAllowance",
+                "name": "UserQuotaForObject",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -738,7 +738,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ObjectUserPermissionsConnection",
+          "name": "UserPermissionForObjectsConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -766,7 +766,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ObjectUserPermissionsEdge",
+                  "name": "UserPermissionForObjectsEdge",
                   "ofType": null
                 }
               },
@@ -848,7 +848,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ObjectUserPermissionsEdge",
+          "name": "UserPermissionForObjectsEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -857,7 +857,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "ObjectUserPermission",
+                "name": "UserPermissionForObject",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -887,7 +887,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ObjectUserPermission",
+          "name": "UserPermissionForObject",
           "description": null,
           "fields": [
             {
@@ -907,7 +907,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission_Name",
+              "name": "UserPermissionForObject_ObjectType",
               "description": null,
               "args": [],
               "type": {
@@ -919,7 +919,19 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission_PermitCreate",
+              "name": "UserPermissionForObject_object_id",
+              "description": null,
+              "args": [],
+              "type": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              },
+              "isDeprecated": false,
+              "deprecationReason": null
+            },
+            {
+              "name": "UserPermissionForObject_PermitRead",
               "description": null,
               "args": [],
               "type": {
@@ -931,7 +943,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission_PermitRead",
+              "name": "UserPermissionForObject_PermitUpdate",
               "description": null,
               "args": [],
               "type": {
@@ -943,7 +955,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission_PermitUpdate",
+              "name": "UserPermissionForObject_PermitDelete",
               "description": null,
               "args": [],
               "type": {
@@ -955,19 +967,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ObjectUserPermission_PermitDelete",
-              "description": null,
-              "args": [],
-              "type": {
-                "kind": "SCALAR",
-                "name": "Boolean",
-                "ofType": null
-              },
-              "isDeprecated": false,
-              "deprecationReason": null
-            },
-            {
-              "name": "ObjectUserPermission_PermitMiscAsJSON",
+              "name": "UserPermissionForObject_PermitMiscAsJSON",
               "description": null,
               "args": [],
               "type": {
@@ -992,7 +992,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ResourceUserAllowancesConnection",
+          "name": "UserQuotaForObjectsConnection",
           "description": "A connection to a list of items.",
           "fields": [
             {
@@ -1020,7 +1020,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "ResourceUserAllowancesEdge",
+                  "name": "UserQuotaForObjectsEdge",
                   "ofType": null
                 }
               },
@@ -1035,7 +1035,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ResourceUserAllowancesEdge",
+          "name": "UserQuotaForObjectsEdge",
           "description": "An edge in a connection.",
           "fields": [
             {
@@ -1044,7 +1044,7 @@
               "args": [],
               "type": {
                 "kind": "OBJECT",
-                "name": "ResourceUserAllowance",
+                "name": "UserQuotaForObject",
                 "ofType": null
               },
               "isDeprecated": false,
@@ -1074,7 +1074,7 @@
         },
         {
           "kind": "OBJECT",
-          "name": "ResourceUserAllowance",
+          "name": "UserQuotaForObject",
           "description": null,
           "fields": [
             {
@@ -1094,7 +1094,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_Name",
+              "name": "UserQuotaForObject_Name",
               "description": null,
               "args": [],
               "type": {
@@ -1106,7 +1106,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_MinAmount",
+              "name": "UserQuotaForObject_MinAmount",
               "description": null,
               "args": [],
               "type": {
@@ -1118,7 +1118,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_MinWarning",
+              "name": "UserQuotaForObject_MinWarning",
               "description": null,
               "args": [],
               "type": {
@@ -1130,7 +1130,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_MaxAmount",
+              "name": "UserQuotaForObject_MaxAmount",
               "description": null,
               "args": [],
               "type": {
@@ -1142,7 +1142,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_MaxWarning",
+              "name": "UserQuotaForObject_MaxWarning",
               "description": null,
               "args": [],
               "type": {
@@ -1154,7 +1154,7 @@
               "deprecationReason": null
             },
             {
-              "name": "ResourceUserAllowance_AllowMiscAsJSON",
+              "name": "UserQuotaForObject_AllowMiscAsJSON",
               "description": null,
               "args": [],
               "type": {

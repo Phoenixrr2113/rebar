@@ -8,11 +8,15 @@ function defaultRequestLoggerGraphQL(requestAndResponse) {
   let logLevel = null;
 
   // If there is an error, log it as an error
-  if (requestAndResponse.response.indexOf('"errors": [') > 0) logLevel = 'error';else
-  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestGraphQL))
-    // Otherwise, if it is a trace, log it as info
-    logLevel = 'info';
+  if (requestAndResponse.response.indexOf('"errors": [') > 0) {
+    logLevel = 'error';
+  } else {
+    if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestGraphQL))
+      // Otherwise, if it is a trace, log it as info
+      logLevel = 'info';
+  }
 
-  if (logLevel) _log.default.log(logLevel, 'GraphQL request', requestAndResponse);
+  if (logLevel)
+  _log.default.log({ level: logLevel, message: 'GraphQL request', details: requestAndResponse });
 }
 //# sourceMappingURL=defaultRequestLoggerGraphQL.js.map

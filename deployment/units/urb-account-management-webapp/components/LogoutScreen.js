@@ -62,9 +62,6 @@ class LogoutScreen extends _react.default.Component
 
         const responseData = await response.json();
 
-        console.log('LOGOUT USER RESPONSE');
-        console.log(responseData);
-
         if (responseData.success) {
           // In case of success, notify user
           this.setState({ currentOperation: 'success' });

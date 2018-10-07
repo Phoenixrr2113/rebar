@@ -2,7 +2,7 @@
 
 import os from 'os' // Import to demonstrate server-based site settings
 
-import { version } from '../package'
+import { version } from '../../../package.json'
 
 import defaultPersister from './graphql/defaultPersister'
 

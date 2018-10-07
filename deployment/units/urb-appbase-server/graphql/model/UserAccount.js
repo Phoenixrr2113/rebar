@@ -25,5 +25,5 @@ class UserAccount {
   }}exports.default = UserAccount;
 
 
-_ObjectManager.default.registerEntity('UserAccount', UserAccount);
+_ObjectManager.default.registerEntity('UserAccount', UserAccount, {});
 //# sourceMappingURL=UserAccount.js.map

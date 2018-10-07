@@ -28,5 +28,5 @@ class Translaticiarum {
   }}exports.default = Translaticiarum;
 
 
-_ObjectManager.default.registerEntity('Translaticiarum', Translaticiarum);
+_ObjectManager.default.registerEntity('Translaticiarum', Translaticiarum, {});
 //# sourceMappingURL=Translaticiarum.js.map

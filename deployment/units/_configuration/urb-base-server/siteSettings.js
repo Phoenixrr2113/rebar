@@ -2,7 +2,7 @@
 
 var _os = _interopRequireDefault(require("os"));
 
-var _package = require("../package");
+var _package = require("../../../package.json");
 
 var _defaultPersister = _interopRequireDefault(require("./graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Import to demonstrate server-based site settings
 

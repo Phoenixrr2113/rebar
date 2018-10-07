@@ -15,8 +15,8 @@ function resolveNodeField(source, args, context, { rootValue: objectManager }) {
 
   // map the local type and id into the
   // actual data for the record
-  if (type === 'Viewer') return objectManager.getOneObject('User', { id: id });else
-  return objectManager.getOneObject(type, { id: id });
+  if (type === 'Viewer') return objectManager.getOneObject_async('User', { id: id });else
+  return objectManager.getOneObject_async(type, { id: id });
 }var _default =
 
 new _graphql.GraphQLObjectType({
@@ -32,5 +32,5 @@ new _graphql.GraphQLObjectType({
     Viewer: {
       type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', { id: objectManager.getViewerUserId() }) } }) });exports.default = _default;
+      objectManager.getOneObject_async('User', { id: objectManager.getViewerUserId() }) } }) });exports.default = _default;
 //# sourceMappingURL=QueryType.js.map

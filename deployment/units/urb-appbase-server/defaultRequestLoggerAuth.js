@@ -13,8 +13,10 @@ function defaultrequestLoggerAuth(requestAndResponse) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth)) logLevel = 'info';
+  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestAuth)) {
+    logLevel = 'info';
+  }
 
-  if (logLevel) _log.default.log(logLevel, 'Auth request', requestAndResponse);
+  if (logLevel) _log.default.log({ level: logLevel, message: 'Auth request', details: requestAndResponse });
 }
 //# sourceMappingURL=defaultRequestLoggerAuth.js.map

@@ -24,4 +24,4 @@ export default class ToDo {
   }
 }
 
-ObjectManager.registerEntity( 'ToDo', ToDo )
+ObjectManager.registerEntity( 'ToDo', ToDo, {})

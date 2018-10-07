@@ -27,6 +27,7 @@ serverAuth.use( ( req, res, next ) => logServerRequest( req, res, next, requestL
 //
 
 async function login( req, res ) {
+  // $AssureFlow yes, the Object Manager will have all the fields
   const objectManager = await getObjectManager( req, res )
 
   // TODO x2000 No error handling is provided for when site information is not found
@@ -37,7 +38,7 @@ async function login( req, res ) {
     await delayPromise( 1000 ) // Wait for a second to hamper a possible potential brute force attack
 
     try {
-      const arr_UserAccount = await objectManager.getObjectList( 'UserAccount', {
+      const arr_UserAccount = await objectManager.getObjectList_async( 'UserAccount', {
         UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
         UserAccount_Identifier: UserAccount_Identifier,
       })
@@ -45,7 +46,7 @@ async function login( req, res ) {
       if ( arr_UserAccount.length === 0 ) {
         res.status( 401 ).json({ error: 'User account not found' })
       } else {
-        const a_User = await objectManager.getOneObject( 'User', {
+        const a_User = await objectManager.getOneObject_async( 'User', {
           id: arr_UserAccount[0].UserAccount_User_id,
         })
         if (
@@ -64,7 +65,7 @@ async function login( req, res ) {
           }
 
           // Addsession to database
-          objectManager.add( 'UserSession', a_UserSession )
+          await objectManager.add( 'UserSession', a_UserSession )
           res.codeFoundriesInjected = { user: a_User }
 
           // User has authenticated correctly thus we create a JWT token ith the session.
@@ -96,7 +97,7 @@ async function createuser( req, res ) {
     const User_Secret = req.body.User_Secret
 
     try {
-      const arr_UserAccount = await objectManager.getObjectList( 'UserAccount', {
+      const arr_UserAccount = await objectManager.getObjectList_async( 'UserAccount', {
         UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
         UserAccount_Identifier: UserAccount_Identifier,
       })

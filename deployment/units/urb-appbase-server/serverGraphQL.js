@@ -51,7 +51,7 @@ async function root(req, res, next) {
       }
     }
   } catch (err) {
-    _log.default.log('error', 'Error: GraphQL', err);
+    _log.default.log({ level: 'error', message: 'Error: GraphQL', details: err });
     res.status(500).send(
     JSON.stringify({
       error: 'An error has occurred while running GraphQL query' }));

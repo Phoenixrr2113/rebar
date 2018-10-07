@@ -29,10 +29,13 @@ objectPromise)
     await discardFunction(objectPromise);
   } catch (err) {
     // Record the problem and throw exception further
-    _log.default.log('error', {
-      source: 'executeDiscard failed',
-      cacheKey,
-      err });
+    _log.default.log({
+      level: 'error',
+      message: 'executeDiscard failed',
+      details: {
+        cacheKey,
+        err } });
+
 
   }
 }
@@ -201,11 +204,14 @@ cacheKey)
       cachedEntry.validityVerificationPromise = Promise.resolve(false);
 
       // Record the problem and throw exception further
-      _log.default.log('error', {
-        source: 'getCachedEntryFromCache: validityVerificationPromise failed',
-        categoryName,
-        cacheKey,
-        err });
+      _log.default.log({
+        level: 'error',
+        message: 'getCachedEntryFromCache: validityVerificationPromise failed',
+        details: {
+          categoryName,
+          cacheKey,
+          err } });
+
 
       throw err;
     }
@@ -239,11 +245,14 @@ creationFunction)
   try {
     newObjectPromise = creationFunction();
   } catch (err) {
-    _log.default.log('error', {
-      source: 'getOrCreateObjectFromCahce: creationFunction failed',
-      categoryName,
-      cacheKey,
-      err });
+    _log.default.log({
+      level: 'error',
+      message: 'getOrCreateObjectFromCahce: creationFunction failed',
+      details: {
+        categoryName,
+        cacheKey,
+        err } });
+
 
     throw err;
   }
@@ -258,11 +267,14 @@ creationFunction)
   try {
     return await newObjectPromise;
   } catch (err) {
-    _log.default.log('error', {
-      source: 'getOrCreateObjectFromCahce: await creationFunction failed',
-      categoryName,
-      cacheKey,
-      err });
+    _log.default.log({
+      level: 'error',
+      message: 'getOrCreateObjectFromCahce: await creationFunction failed',
+      details: {
+        categoryName,
+        cacheKey,
+        err } });
+
 
 
     const cachedEntriesForCategory = MapCachesByCategory.get(categoryName);

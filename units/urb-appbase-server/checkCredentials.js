@@ -9,7 +9,7 @@ import UserToken2ServerRendering from '../_configuration/urb-base-server/UserTok
 import log from '../urb-base-server/log'
 
 // Read environment
-// XXX ZZZ seems unnecessary? require( 'dotenv' ).load()
+require( 'dotenv' ).load()
 
 const envHost = process.env.HOST
 if ( envHost == null || typeof envHost !== 'string' )
@@ -35,14 +35,14 @@ export async function getUserAndSessionIDByUserToken1( objectManager, req ) {
   const session_id = getSessionIdFromRequest( req )
   let a_UserSession = null
   if ( session_id )
-    a_UserSession = await objectManager.getOneObject( 'UserSession', {
+    a_UserSession = await objectManager.getOneObject_async( 'UserSession', {
       id: session_id,
       UserSession_artifact_id: objectManager.siteInformation.artifact_id,
     })
 
   const user_id = a_UserSession ? a_UserSession.UserSession_User_id : defaultPersister.uuidNull()
 
-  const a_User = await objectManager.getOneObject( 'User', {
+  const a_User = await objectManager.getOneObject_async( 'User', {
     id: user_id,
     User_artifact_id: objectManager.siteInformation.artifact_id,
   })
@@ -90,13 +90,13 @@ export function serveAuthenticationFailed( req, res, err, respondWithJSON ) {
     query: req.body,
   }
 
-  log.log(
-    'warn',
-    'Checking credentials failed',
-    err.message
+  log.log({
+    level: 'warn',
+    message: 'Checking credentials failed',
+    details: err.message
       ? { errorMessage: err.message, errorStack: err.stack, requestDetails }
       : { err, requestDetails },
-  )
+  })
 
   // Expire cookie. This is the only way to 'delete' a cookie
   res.cookie( 'UserToken1', '', { httpOnly: true, expires: new Date( 1 ) })

@@ -42,6 +42,7 @@ async function createPackageJson( units: Array<string> ) {
     dependencies: {},
     devDependencies: {},
     engines: {},
+    husky: {},
     'lint-staged': {},
     name: null,
     prettier: {},
@@ -65,6 +66,8 @@ async function createPackageJson( units: Array<string> ) {
         Object.assign( packageAsObject.devDependencies, packageToAddAsObject.devDependencies )
       if ( packageToAddAsObject.engines )
         Object.assign( packageAsObject.engines, packageToAddAsObject.engines )
+      if ( packageToAddAsObject.husky )
+        Object.assign( packageAsObject.husky, packageToAddAsObject.husky )
       if ( packageToAddAsObject['lint-staged'])
         Object.assign( packageAsObject['lint-staged'], packageToAddAsObject['lint-staged'])
       if ( packageToAddAsObject.prettier )

@@ -23,6 +23,6 @@ if ( defaultPersisterLogger ) {
 }
 
 // Create winston
-const log = new winston.Logger({ transports })
+const log = winston.createLogger({ transports })
 
 export default log
