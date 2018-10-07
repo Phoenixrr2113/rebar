@@ -28,5 +28,5 @@ class Ensayo {
   }}exports.default = Ensayo;
 
 
-_ObjectManager.default.registerEntity('Ensayo', Ensayo);
+_ObjectManager.default.registerEntity('Ensayo', Ensayo, {});
 //# sourceMappingURL=Ensayo.js.map

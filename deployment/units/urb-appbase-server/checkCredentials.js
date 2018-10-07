@@ -9,7 +9,7 @@ var _UserToken2ServerRendering = _interopRequireDefault(require("../_configurati
 var _log = _interopRequireDefault(require("../urb-base-server/log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
 // Read environment
-// XXX ZZZ seems unnecessary? require( 'dotenv' ).load()
+require('dotenv').load();
 
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')
@@ -35,14 +35,14 @@ async function getUserAndSessionIDByUserToken1(objectManager, req) {
   const session_id = getSessionIdFromRequest(req);
   let a_UserSession = null;
   if (session_id)
-  a_UserSession = await objectManager.getOneObject('UserSession', {
+  a_UserSession = await objectManager.getOneObject_async('UserSession', {
     id: session_id,
     UserSession_artifact_id: objectManager.siteInformation.artifact_id });
 
 
   const user_id = a_UserSession ? a_UserSession.UserSession_User_id : _defaultPersister.default.uuidNull();
 
-  const a_User = await objectManager.getOneObject('User', {
+  const a_User = await objectManager.getOneObject_async('User', {
     id: user_id,
     User_artifact_id: objectManager.siteInformation.artifact_id });
 

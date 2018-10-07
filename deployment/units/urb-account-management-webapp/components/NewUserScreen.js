@@ -83,9 +83,6 @@ class NewUserScreen extends _react.default.Component
 
         const responseData = await response.json();
 
-        console.log('CREATE USER RESPONSE');
-        console.log(responseData);
-
         if (responseData.success) {
           // In case of success, notify user
           this.setState({ currentOperation: 'success' });
@@ -135,7 +132,7 @@ class NewUserScreen extends _react.default.Component
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Creating user",
 
-      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), ", please wait."),
+      _react.default.createElement("span", { className: classes.userName }, UserAccount_Identifier), ", please wait."),
 
       _react.default.createElement("br", null),
       _react.default.createElement("br", null),
@@ -158,7 +155,7 @@ class NewUserScreen extends _react.default.Component
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Created user",
 
-      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), ".")),
+      _react.default.createElement("span", { className: classes.userName }, UserAccount_Identifier), ".")),
 
 
       _react.default.createElement(_CardActions.default, null,
@@ -178,7 +175,7 @@ class NewUserScreen extends _react.default.Component
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Failed creating user",
 
-      _react.default.createElement("span", { class: classes.userName }, UserAccount_Identifier), "because ",
+      _react.default.createElement("span", { className: classes.userName }, UserAccount_Identifier), "because ",
       errorMessage, ".")),
 
 

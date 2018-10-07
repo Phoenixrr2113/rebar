@@ -25,5 +25,5 @@ class UserSession {
   }}exports.default = UserSession;
 
 
-_ObjectManager.default.registerEntity('UserSession', UserSession);
+_ObjectManager.default.registerEntity('UserSession', UserSession, {});
 //# sourceMappingURL=UserSession.js.map

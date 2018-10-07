@@ -14,10 +14,10 @@ var _NodeInterface = _interopRequireDefault(require("../NodeInterface"));
 var _ViewerFields2 = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/_ViewerFields"));
 var _User = _interopRequireDefault(require("../../../_configuration/urb-base-server/graphql/model/User"));
 
-var _ObjectUserPermissionsConnection = _interopRequireDefault(require("./ObjectUserPermissionsConnection"));
-var _ObjectUserPermissionType = _interopRequireDefault(require("./ObjectUserPermissionType"));
-var _ResourceUserAllowancesConnection = _interopRequireDefault(require("./ResourceUserAllowancesConnection"));
-var _ResourceUserAllowanceType = _interopRequireDefault(require("./ResourceUserAllowanceType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
+var _UserPermissionForObjectsConnection = _interopRequireDefault(require("./UserPermissionForObjectsConnection"));
+var _UserPermissionForObjectType = _interopRequireDefault(require("./UserPermissionForObjectType"));
+var _UserQuotaForObjectsConnection = _interopRequireDefault(require("./UserQuotaForObjectsConnection"));
+var _UserQuotaForObjectType = _interopRequireDefault(require("./UserQuotaForObjectType"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 new _graphql.GraphQLObjectType({
   name: 'Viewer',
@@ -40,61 +40,64 @@ new _graphql.GraphQLObjectType({
       resolve: obj => obj.User_PhoneNumberMobile },
 
 
-    ObjectUserPermissions: {
-      type: _ObjectUserPermissionsConnection.default.connectionType,
+    UserPermissionForObjects: {
+      type: _UserPermissionForObjectsConnection.default.connectionType,
 
       args: {
         ..._graphqlRelay.connectionArgs,
-        ObjectUserPermission_Name: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) } },
+        UserPermissionForObject_ObjectType: { type: new _graphql.GraphQLNonNull(_graphql.GraphQLString) } },
 
 
       resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
-        const { ObjectUserPermission_Name } = args;
-        const arr = await objectManager.getObjectList('ObjectUserPermission', {
-          ObjectUserPermission_Name });
+        const { UserPermissionForObject_ObjectType } = args;
+        const arr = await objectManager.getObjectList_async('UserPermissionForObject', {
+          UserPermissionForObject_ObjectType });
 
         return (0, _graphqlRelay.connectionFromArray)(arr, args);
       } },
 
 
-    ObjectUserPermission: {
-      type: _ObjectUserPermissionType.default,
+    UserPermissionForObject: {
+      type: _UserPermissionForObjectType.default,
 
       args: { ...{ id: { type: _graphql.GraphQLID } } },
 
       resolve: async (parent, { id }, context, { rootValue: objectManager }) => {
-        const local_id = objectManager.uuidFromString('ObjectUserPermission', (0, _graphqlRelay.fromGlobalId)(id).id);
+        const local_id = objectManager.uuidFromString(
+        'UserPermissionForObject',
+        (0, _graphqlRelay.fromGlobalId)(id).id);
 
-        return await objectManager.getOneObject('ObjectUserPermission', {
+
+        return await objectManager.getOneObject_async('UserPermissionForObject', {
           id: local_id,
-          _materialized_view: 'ObjectUserPermission_by_ID' });
+          _materialized_view: 'UserPermissionForObject_by_ID' });
 
       } },
 
 
-    ResourceUserAllowances: {
-      type: _ResourceUserAllowancesConnection.default.connectionType,
+    UserQuotaForObjects: {
+      type: _UserQuotaForObjectsConnection.default.connectionType,
 
       args: { ..._graphqlRelay.connectionArgs },
 
       resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
-        const arr = await objectManager.getObjectList('ResourceUserAllowance', {});
+        const arr = await objectManager.getObjectList_async('UserQuotaForObject', {});
         return (0, _graphqlRelay.connectionFromArray)(arr, args);
       } },
 
 
-    ResourceUserAllowance: {
-      type: _ResourceUserAllowanceType.default,
+    UserQuotaForObject: {
+      type: _UserQuotaForObjectType.default,
 
       args: { ...{ id: { type: _graphql.GraphQLID } } },
 
       resolve: async (parent, { id }, context, { rootValue: objectManager }) => {
-        const local_id = objectManager.uuidFromString('ResourceUserAllowance', (0, _graphqlRelay.fromGlobalId)(id).id);
+        const local_id = objectManager.uuidFromString('UserQuotaForObject', (0, _graphqlRelay.fromGlobalId)(id).id);
 
-        return await objectManager.getOneObject('ResourceUserAllowance', {
+        return await objectManager.getOneObject_async('UserQuotaForObject', {
           id: local_id,
 
-          _materialized_view: 'ResourceUserAllowance_by_ID' });
+          _materialized_view: 'UserQuotaForObject_by_ID' });
 
       } },
 

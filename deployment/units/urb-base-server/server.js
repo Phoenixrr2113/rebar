@@ -9,7 +9,7 @@ var _express = _interopRequireDefault(require("express"));
 var _compression = _interopRequireDefault(require("compression"));
 var _cookieParser = _interopRequireDefault(require("cookie-parser"));
 
-var _package = require("../_configuration/package");
+var _package = require("../../package.json");
 var _servers = _interopRequireDefault(require("../_configuration/urb-base-server/servers"));
 
 var _getLocalIP = _interopRequireDefault(require("./getLocalIP"));
