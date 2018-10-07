@@ -6,7 +6,7 @@ import ExtractTextPlugin from 'extract-text-webpack-plugin'
 // Read environment
 require( 'dotenv' ).load()
 
-const version = require( './units/_configuration/package.js' ).version
+const version = require( './package.json' ).version
 const host = process.env.HOST
 const port_webpack = process.env.PORT_WEBPACK
 const node_env = process.env.NODE_ENV
@@ -109,6 +109,7 @@ const config = {
         ]),
         exclude: /node_modules/,
       },
+
       {
         test: /\.css$/,
         use: ExtractTextPlugin.extract({

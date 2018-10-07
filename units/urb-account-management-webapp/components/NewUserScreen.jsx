@@ -83,9 +83,6 @@ class NewUserScreen extends React.Component<
 
       const responseData = await response.json()
 
-      console.log( 'CREATE USER RESPONSE' )
-      console.log( responseData )
-
       if ( responseData.success ) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
@@ -135,7 +132,7 @@ class NewUserScreen extends React.Component<
         <CardContent>
           <Typography component="p">
             Creating user
-            <span class={classes.userName}>{UserAccount_Identifier}</span>, please wait.
+            <span className={classes.userName}>{UserAccount_Identifier}</span>, please wait.
           </Typography>
           <br />
           <br />
@@ -158,7 +155,7 @@ class NewUserScreen extends React.Component<
         <CardContent>
           <Typography component="p">
             Created user
-            <span class={classes.userName}>{UserAccount_Identifier}</span>.
+            <span className={classes.userName}>{UserAccount_Identifier}</span>.
           </Typography>
         </CardContent>
         <CardActions>
@@ -178,7 +175,7 @@ class NewUserScreen extends React.Component<
         <CardContent>
           <Typography component="p">
             Failed creating user
-            <span class={classes.userName}>{UserAccount_Identifier}</span>
+            <span className={classes.userName}>{UserAccount_Identifier}</span>
             because {errorMessage}.
           </Typography>
         </CardContent>

@@ -13,7 +13,9 @@ export default function defaultrequestLoggerAuth( requestAndResponse ) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestAuth ) ) logLevel = 'info'
+  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestAuth ) ) {
+    logLevel = 'info'
+  }
 
   if ( logLevel ) log.log({ level: logLevel, message: 'Auth request', details: requestAndResponse })
 }

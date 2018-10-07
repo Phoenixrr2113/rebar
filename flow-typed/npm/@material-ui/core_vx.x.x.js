@@ -14,7 +14,7 @@
  */
 
 declare module '@material-ui/core' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 /**
@@ -23,5721 +23,5763 @@ declare module '@material-ui/core' {
  * needed.
  */
 declare module '@material-ui/core/AppBar/AppBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/AppBar/AppBar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/AppBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Avatar/Avatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Avatar/Avatar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Avatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Backdrop/Backdrop' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Backdrop/Backdrop.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Backdrop' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Badge/Badge' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Badge/Badge.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Badge' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigation/BottomNavigation' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigation/BottomNavigation.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigation' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigationAction/BottomNavigationAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigationAction/BottomNavigationAction.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/BottomNavigationAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Button/Button' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Button/Button.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Button' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/ButtonBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/ButtonBase.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/createRippleHandler' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/focusVisible' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/Ripple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/Ripple.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/TouchRipple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ButtonBase/TouchRipple.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Card/Card' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Card/Card.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Card' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardActions/CardActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardActions/CardActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardActions' {
-  declare module.exports: any;
+  declare module.exports: any
+}
+
+declare module '@material-ui/core/CardActionArea' {
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardContent/CardContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardContent/CardContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardHeader/CardHeader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardHeader/CardHeader.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardHeader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardMedia/CardMedia' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardMedia/CardMedia.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CardMedia' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Checkbox/Checkbox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Checkbox/Checkbox.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Checkbox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Chip/Chip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Chip/Chip.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Chip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CircularProgress/CircularProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CircularProgress/CircularProgress.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CircularProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ClickAwayListener/ClickAwayListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ClickAwayListener/ClickAwayListener.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ClickAwayListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Collapse/Collapse' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Collapse/Collapse.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Collapse' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/amber' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/blue' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/blueGrey' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/brown' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/common' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/cyan' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/deepOrange' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/deepPurple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/green' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/grey' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/indigo' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/lightBlue' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/lightGreen' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/lime' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/orange' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/pink' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/purple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/red' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/teal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/colors/yellow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CssBaseline/CssBaseline' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CssBaseline/CssBaseline.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/CssBaseline' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Dialog/Dialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Dialog/Dialog.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Dialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogActions/DialogActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogActions/DialogActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContent/DialogContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContent/DialogContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContentText/DialogContentText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContentText/DialogContentText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogContentText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogTitle/DialogTitle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogTitle/DialogTitle.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/DialogTitle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Divider/Divider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Divider/Divider.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Divider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Drawer/Drawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Drawer/Drawer.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Drawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/AppBar/AppBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/AppBar/AppBar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/AppBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Avatar/Avatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Avatar/Avatar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Avatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Backdrop/Backdrop' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Backdrop/Backdrop.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Backdrop' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Badge/Badge' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Badge/Badge.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Badge' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigation/BottomNavigation' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigation/BottomNavigation.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigation' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/BottomNavigationAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Button/Button' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Button/Button.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Button' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/ButtonBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/ButtonBase.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/createRippleHandler' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/focusVisible' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/Ripple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/Ripple.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/TouchRipple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ButtonBase/TouchRipple.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Card/Card' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Card/Card.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Card' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardActions/CardActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardActions/CardActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardContent/CardContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardContent/CardContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardHeader/CardHeader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardHeader/CardHeader.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardHeader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardMedia/CardMedia' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardMedia/CardMedia.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CardMedia' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Checkbox/Checkbox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Checkbox/Checkbox.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Checkbox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Chip/Chip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Chip/Chip.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Chip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CircularProgress/CircularProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CircularProgress/CircularProgress.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CircularProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ClickAwayListener/ClickAwayListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ClickAwayListener/ClickAwayListener.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ClickAwayListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Collapse/Collapse' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Collapse/Collapse.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Collapse' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/amber' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/blue' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/blueGrey' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/brown' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/common' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/cyan' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/deepOrange' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/deepPurple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/green' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/grey' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/indigo' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/lightBlue' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/lightGreen' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/lime' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/orange' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/pink' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/purple' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/red' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/teal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/colors/yellow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CssBaseline/CssBaseline' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CssBaseline/CssBaseline.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/CssBaseline' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Dialog/Dialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Dialog/Dialog.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Dialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogActions/DialogActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogActions/DialogActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContent/DialogContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContent/DialogContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContentText/DialogContentText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContentText/DialogContentText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogContentText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogTitle/DialogTitle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogTitle/DialogTitle.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/DialogTitle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Divider/Divider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Divider/Divider.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Divider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Drawer/Drawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Drawer/Drawer.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Drawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanel/ExpansionPanel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanel/ExpansionPanel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelDetails' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ExpansionPanelSummary' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Fade/Fade' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Fade/Fade.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Fade' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControl/FormControl' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControl/FormControl.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControl' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControlLabel/FormControlLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControlLabel/FormControlLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormControlLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormGroup/FormGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormGroup/FormGroup.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormHelperText/FormHelperText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormHelperText/FormHelperText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormHelperText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormLabel/FormLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormLabel/FormLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/FormLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grid/Grid' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grid/Grid.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grid' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridList/GridList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridList/GridList.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTile/GridListTile' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTile/GridListTile.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTile' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTileBar/GridListTileBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTileBar/GridListTileBar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/GridListTileBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grow/Grow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grow/Grow.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Grow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/Hidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/Hidden.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/HiddenCss' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/HiddenCss.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/HiddenJs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden/HiddenJs.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Hidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Icon/Icon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Icon/Icon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Icon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/IconButton/IconButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/IconButton/IconButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/IconButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/index.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Input' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Input/Input' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Input/Input.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Input/Textarea' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Input/Textarea.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputAdornment' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputAdornment/InputAdornment' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputAdornment/InputAdornment.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputLabel/InputLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/InputLabel/InputLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/ArrowDownward' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/ArrowDropDown' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/Cancel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/CheckBox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/CheckBoxOutlineBlank' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/CheckCircle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/IndeterminateCheckBox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/index.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/KeyboardArrowLeft' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/KeyboardArrowRight' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/RadioButtonChecked' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/RadioButtonUnchecked' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/svg-icons/Warning' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/SwitchBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/internal/SwitchBase.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/LinearProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/LinearProgress/LinearProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/LinearProgress/LinearProgress.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/List' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/List/List' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/List/List.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItem/ListItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItem/ListItem.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemAvatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemAvatar/ListItemAvatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemAvatar/ListItemAvatar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemIcon/ListItemIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemIcon/ListItemIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemSecondaryAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemText/ListItemText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListItemText/ListItemText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListSubheader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListSubheader/ListSubheader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/ListSubheader/ListSubheader.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Menu' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Menu/Menu' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Menu/Menu.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuItem/MenuItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuItem/MenuItem.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuList/MenuList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MenuList/MenuList.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MobileStepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MobileStepper/MobileStepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/MobileStepper/MobileStepper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/isOverflowing' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/isOverflowing.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/manageAriaHidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/Modal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/Modal.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/ModalManager' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Modal/ModalManager.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Paper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Paper/Paper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Paper/Paper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Popover' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Popover/Popover' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Popover/Popover.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Portal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Portal/Portal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Portal/Portal.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Radio' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Radio/Radio' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Radio/Radio.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/RadioGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/RadioGroup/RadioGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/RadioGroup/RadioGroup.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/RootRef' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/RootRef/RootRef' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Select' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Select/Select' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Select/Select.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Select/SelectInput' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Select/SelectInput.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Slide' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Slide/Slide' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Slide/Slide.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Snackbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Snackbar/Snackbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Snackbar/Snackbar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SnackbarContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SnackbarContent/SnackbarContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SnackbarContent/SnackbarContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Step' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Step/Step' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Step/Step.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepButton/StepButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepButton/StepButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepConnector' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepConnector/StepConnector' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepConnector/StepConnector.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepContent/StepContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepContent/StepContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepIcon/StepIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepIcon/StepIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepIcon/StepPositionIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepIcon/StepPositionIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepLabel/StepLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/StepLabel/StepLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Stepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Stepper/Stepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Stepper/Stepper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/colorManipulator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/colorManipulator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createBreakpoints' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createBreakpoints.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createGenerateClassName' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createGenerateClassName.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createMixins' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createMixins.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createMuiTheme' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createMuiTheme.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createPalette' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createPalette.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createTypography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/createTypography.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/getStylesCreator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/getStylesCreator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/getThemeProps' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/getThemeProps.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/jssPreset' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/MuiThemeProvider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/MuiThemeProvider.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/shadows' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/spacing' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/themeListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/themeListener.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/transitions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/transitions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/withStyles' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/withStyles.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/withTheme' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/withTheme.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/styles/zIndex' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SvgIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SvgIcon/SvgIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SvgIcon/SvgIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SwipeableDrawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeableDrawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeableDrawer.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeArea' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Switch' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Switch/Switch' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Switch/Switch.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tab' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tab/Tab' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tab/Tab.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Table' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Table/Table' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Table/Table.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableBody' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableBody/TableBody' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableBody/TableBody.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableCell' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableCell/TableCell' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableCell/TableCell.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableFooter' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableFooter/TableFooter' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableFooter/TableFooter.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableHead' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableHead/TableHead' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableHead/TableHead.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TablePagination' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TablePagination/TablePagination' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TablePagination/TablePagination.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TablePaginationActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TablePaginationActions/TablePaginationActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableRow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableRow/TableRow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableRow/TableRow.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableSortLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableSortLabel/TableSortLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TableSortLabel/TableSortLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/TabIndicator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/TabIndicator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/Tabs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/Tabs.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/TabScrollButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tabs/TabScrollButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/createMount' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/createRender' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/createShallow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/getClasses' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/until' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/until.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/test-utils/unwrap' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TextField' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TextField/TextField' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/TextField/TextField.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Toolbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Toolbar/Toolbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Toolbar/Toolbar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tooltip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tooltip/Tooltip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Tooltip/Tooltip.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/transitions/utils' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Typography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Typography/Typography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Typography/Typography.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/exactProp' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/exactProp.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/helpers' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/helpers.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/ownerWindow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/reactHelpers' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/reactHelpers.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/requirePropFactory' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/utils/requirePropFactory.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withMobileDialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withMobileDialog/withMobileDialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withMobileDialog/withMobileDialog.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withWidth' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withWidth/withWidth' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/withWidth/withWidth.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Zoom' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Zoom/Zoom' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/es/Zoom/Zoom.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanel/ExpansionPanel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanel/ExpansionPanel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelActions/ExpansionPanelActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelActions/ExpansionPanelActions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelDetails' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ExpansionPanelSummary' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Fade/Fade' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Fade/Fade.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Fade' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControl/FormControl' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControl/FormControl.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControl' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControlLabel/FormControlLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControlLabel/FormControlLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormControlLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormGroup/FormGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormGroup/FormGroup.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormHelperText/FormHelperText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormHelperText/FormHelperText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormHelperText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormLabel/FormLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormLabel/FormLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/FormLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grid/Grid' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grid/Grid.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grid' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridList/GridList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridList/GridList.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTile/GridListTile' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTile/GridListTile.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTile' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTileBar/GridListTileBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTileBar/GridListTileBar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/GridListTileBar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grow/Grow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grow/Grow.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Grow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/Hidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/Hidden.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/HiddenCss' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/HiddenCss.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/HiddenJs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden/HiddenJs.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Hidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Icon/Icon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Icon/Icon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Icon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/IconButton/IconButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/IconButton/IconButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/IconButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/index.es' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/index.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Input' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Input/Input' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Input/Input.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Input/Textarea' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Input/Textarea.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputAdornment' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputAdornment/InputAdornment' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputAdornment/InputAdornment.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputLabel/InputLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/InputLabel/InputLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/ArrowDownward' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/ArrowDropDown' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/Cancel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/CheckBox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/CheckBoxOutlineBlank' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/CheckCircle' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/IndeterminateCheckBox' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/index.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/KeyboardArrowLeft' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/KeyboardArrowRight' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/RadioButtonChecked' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/RadioButtonUnchecked' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/svg-icons/Warning' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/SwitchBase' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/internal/SwitchBase.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/LinearProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/LinearProgress/LinearProgress' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/LinearProgress/LinearProgress.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/List' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/List/List' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/List/List.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItem/ListItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItem/ListItem.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemAvatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemAvatar/ListItemAvatar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemAvatar/ListItemAvatar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemIcon/ListItemIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemIcon/ListItemIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemSecondaryAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemText/ListItemText' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListItemText/ListItemText.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListSubheader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListSubheader/ListSubheader' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/ListSubheader/ListSubheader.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Menu' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Menu/Menu' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Menu/Menu.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuItem/MenuItem' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuItem/MenuItem.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuList/MenuList' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MenuList/MenuList.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MobileStepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MobileStepper/MobileStepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/MobileStepper/MobileStepper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/isOverflowing' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/isOverflowing.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/manageAriaHidden' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/Modal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/Modal.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/ModalManager' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Modal/ModalManager.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Paper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Paper/Paper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Paper/Paper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Popover' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Popover/Popover' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Popover/Popover.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Portal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Portal/Portal' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Portal/Portal.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Radio' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Radio/Radio' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Radio/Radio.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/RadioGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/RadioGroup/RadioGroup' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/RadioGroup/RadioGroup.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/RootRef' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/RootRef/RootRef' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Select' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Select/Select' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Select/Select.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Select/SelectInput' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Select/SelectInput.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Slide' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Slide/Slide' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Slide/Slide.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Snackbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Snackbar/Snackbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Snackbar/Snackbar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SnackbarContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SnackbarContent/SnackbarContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SnackbarContent/SnackbarContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Step' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Step/Step' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Step/Step.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepButton/StepButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepButton/StepButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepConnector' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepConnector/StepConnector' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepConnector/StepConnector.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepContent/StepContent' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepContent/StepContent.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepIcon/StepIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepIcon/StepIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepIcon/StepPositionIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepIcon/StepPositionIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepLabel/StepLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/StepLabel/StepLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Stepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Stepper/Stepper' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Stepper/Stepper.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/colorManipulator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/colorManipulator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createBreakpoints' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createBreakpoints.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createGenerateClassName' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createGenerateClassName.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createMixins' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createMixins.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createMuiTheme' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createMuiTheme.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createPalette' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createPalette.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createTypography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/createTypography.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/getStylesCreator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/getStylesCreator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/getThemeProps' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/getThemeProps.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/jssPreset' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/MuiThemeProvider' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/MuiThemeProvider.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/shadows' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/spacing' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/themeListener' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/themeListener.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/transitions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/transitions.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/withStyles' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/withStyles.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/withTheme' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/withTheme.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/styles/zIndex' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SvgIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SvgIcon/SvgIcon' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SvgIcon/SvgIcon.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SwipeableDrawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SwipeableDrawer/SwipeableDrawer' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SwipeableDrawer/SwipeableDrawer.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/SwipeableDrawer/SwipeArea' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Switch' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Switch/Switch' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Switch/Switch.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tab' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tab/Tab' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tab/Tab.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Table' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Table/Table' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Table/Table.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableBody' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableBody/TableBody' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableBody/TableBody.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableCell' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableCell/TableCell' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableCell/TableCell.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableFooter' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableFooter/TableFooter' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableFooter/TableFooter.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableHead' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableHead/TableHead' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableHead/TableHead.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TablePagination' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TablePagination/TablePagination' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TablePagination/TablePagination.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TablePaginationActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TablePaginationActions/TablePaginationActions' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableRow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableRow/TableRow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableRow/TableRow.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableSortLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableSortLabel/TableSortLabel' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TableSortLabel/TableSortLabel.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/TabIndicator' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/TabIndicator.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/Tabs' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/Tabs.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/TabScrollButton' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tabs/TabScrollButton.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/createMount' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/createRender' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/createShallow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/getClasses' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/until' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/until.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/test-utils/unwrap' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TextField' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TextField/TextField' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/TextField/TextField.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Toolbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Toolbar/Toolbar' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Toolbar/Toolbar.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tooltip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tooltip/Tooltip' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Tooltip/Tooltip.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/transitions/utils' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Typography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Typography/Typography' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Typography/Typography.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/umd/material-ui.development' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/umd/material-ui.production.min' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/exactProp' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/exactProp.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/helpers' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/helpers.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/ownerWindow' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/reactHelpers' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/reactHelpers.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/requirePropFactory' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/utils/requirePropFactory.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withMobileDialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withMobileDialog/withMobileDialog' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withMobileDialog/withMobileDialog.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withWidth' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withWidth/withWidth' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/withWidth/withWidth.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Zoom' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Zoom/Zoom' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 declare module '@material-ui/core/Zoom/Zoom.test' {
-  declare module.exports: any;
+  declare module.exports: any
 }
 
 // Filename aliases
 declare module '@material-ui/core/AppBar/AppBar.js' {
-  declare module.exports: $Exports<'@material-ui/core/AppBar/AppBar'>;
+  declare module.exports: $Exports<'@material-ui/core/AppBar/AppBar'>
 }
 declare module '@material-ui/core/AppBar/AppBar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/AppBar/AppBar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/AppBar/AppBar.test'>
 }
 declare module '@material-ui/core/AppBar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/AppBar'>;
+  declare module.exports: $Exports<'@material-ui/core/AppBar'>
 }
 declare module '@material-ui/core/Avatar/Avatar.js' {
-  declare module.exports: $Exports<'@material-ui/core/Avatar/Avatar'>;
+  declare module.exports: $Exports<'@material-ui/core/Avatar/Avatar'>
 }
 declare module '@material-ui/core/Avatar/Avatar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Avatar/Avatar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Avatar/Avatar.test'>
 }
 declare module '@material-ui/core/Avatar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Avatar'>;
+  declare module.exports: $Exports<'@material-ui/core/Avatar'>
 }
 declare module '@material-ui/core/Backdrop/Backdrop.js' {
-  declare module.exports: $Exports<'@material-ui/core/Backdrop/Backdrop'>;
+  declare module.exports: $Exports<'@material-ui/core/Backdrop/Backdrop'>
 }
 declare module '@material-ui/core/Backdrop/Backdrop.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Backdrop/Backdrop.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Backdrop/Backdrop.test'>
 }
 declare module '@material-ui/core/Backdrop/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Backdrop'>;
+  declare module.exports: $Exports<'@material-ui/core/Backdrop'>
 }
 declare module '@material-ui/core/Badge/Badge.js' {
-  declare module.exports: $Exports<'@material-ui/core/Badge/Badge'>;
+  declare module.exports: $Exports<'@material-ui/core/Badge/Badge'>
 }
 declare module '@material-ui/core/Badge/Badge.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Badge/Badge.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Badge/Badge.test'>
 }
 declare module '@material-ui/core/Badge/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Badge'>;
+  declare module.exports: $Exports<'@material-ui/core/Badge'>
 }
 declare module '@material-ui/core/BottomNavigation/BottomNavigation.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigation/BottomNavigation'>;
+  declare module.exports: $Exports<'@material-ui/core/BottomNavigation/BottomNavigation'>
 }
 declare module '@material-ui/core/BottomNavigation/BottomNavigation.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigation/BottomNavigation.test'>;
+  declare module.exports: $Exports<'@material-ui/core/BottomNavigation/BottomNavigation.test'>
 }
 declare module '@material-ui/core/BottomNavigation/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigation'>;
+  declare module.exports: $Exports<'@material-ui/core/BottomNavigation'>
 }
 declare module '@material-ui/core/BottomNavigationAction/BottomNavigationAction.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigationAction/BottomNavigationAction'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/BottomNavigationAction/BottomNavigationAction',
+  >
 }
 declare module '@material-ui/core/BottomNavigationAction/BottomNavigationAction.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigationAction/BottomNavigationAction.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/BottomNavigationAction/BottomNavigationAction.test',
+  >
 }
 declare module '@material-ui/core/BottomNavigationAction/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/BottomNavigationAction'>;
+  declare module.exports: $Exports<'@material-ui/core/BottomNavigationAction'>
 }
 declare module '@material-ui/core/Button/Button.js' {
-  declare module.exports: $Exports<'@material-ui/core/Button/Button'>;
+  declare module.exports: $Exports<'@material-ui/core/Button/Button'>
 }
 declare module '@material-ui/core/Button/Button.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Button/Button.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Button/Button.test'>
 }
 declare module '@material-ui/core/Button/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Button'>;
+  declare module.exports: $Exports<'@material-ui/core/Button'>
 }
 declare module '@material-ui/core/ButtonBase/ButtonBase.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/ButtonBase'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/ButtonBase'>
 }
 declare module '@material-ui/core/ButtonBase/ButtonBase.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/ButtonBase.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/ButtonBase.test'>
 }
 declare module '@material-ui/core/ButtonBase/createRippleHandler.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/createRippleHandler'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/createRippleHandler'>
 }
 declare module '@material-ui/core/ButtonBase/focusVisible.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/focusVisible'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/focusVisible'>
 }
 declare module '@material-ui/core/ButtonBase/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase'>
 }
 declare module '@material-ui/core/ButtonBase/Ripple.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/Ripple'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/Ripple'>
 }
 declare module '@material-ui/core/ButtonBase/Ripple.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/Ripple.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/Ripple.test'>
 }
 declare module '@material-ui/core/ButtonBase/TouchRipple.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/TouchRipple'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/TouchRipple'>
 }
 declare module '@material-ui/core/ButtonBase/TouchRipple.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ButtonBase/TouchRipple.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ButtonBase/TouchRipple.test'>
 }
 declare module '@material-ui/core/Card/Card.js' {
-  declare module.exports: $Exports<'@material-ui/core/Card/Card'>;
+  declare module.exports: $Exports<'@material-ui/core/Card/Card'>
 }
 declare module '@material-ui/core/Card/Card.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Card/Card.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Card/Card.test'>
 }
 declare module '@material-ui/core/Card/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Card'>;
+  declare module.exports: $Exports<'@material-ui/core/Card'>
 }
 declare module '@material-ui/core/CardActions/CardActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardActions/CardActions'>;
+  declare module.exports: $Exports<'@material-ui/core/CardActions/CardActions'>
 }
 declare module '@material-ui/core/CardActions/CardActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardActions/CardActions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CardActions/CardActions.test'>
 }
 declare module '@material-ui/core/CardActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardActions'>;
+  declare module.exports: $Exports<'@material-ui/core/CardActions'>
 }
 declare module '@material-ui/core/CardContent/CardContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardContent/CardContent'>;
+  declare module.exports: $Exports<'@material-ui/core/CardContent/CardContent'>
 }
 declare module '@material-ui/core/CardContent/CardContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardContent/CardContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CardContent/CardContent.test'>
 }
 declare module '@material-ui/core/CardContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardContent'>;
+  declare module.exports: $Exports<'@material-ui/core/CardContent'>
 }
 declare module '@material-ui/core/CardHeader/CardHeader.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardHeader/CardHeader'>;
+  declare module.exports: $Exports<'@material-ui/core/CardHeader/CardHeader'>
 }
 declare module '@material-ui/core/CardHeader/CardHeader.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardHeader/CardHeader.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CardHeader/CardHeader.test'>
 }
 declare module '@material-ui/core/CardHeader/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardHeader'>;
+  declare module.exports: $Exports<'@material-ui/core/CardHeader'>
 }
 declare module '@material-ui/core/CardMedia/CardMedia.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardMedia/CardMedia'>;
+  declare module.exports: $Exports<'@material-ui/core/CardMedia/CardMedia'>
 }
 declare module '@material-ui/core/CardMedia/CardMedia.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardMedia/CardMedia.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CardMedia/CardMedia.test'>
 }
 declare module '@material-ui/core/CardMedia/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CardMedia'>;
+  declare module.exports: $Exports<'@material-ui/core/CardMedia'>
 }
 declare module '@material-ui/core/Checkbox/Checkbox.js' {
-  declare module.exports: $Exports<'@material-ui/core/Checkbox/Checkbox'>;
+  declare module.exports: $Exports<'@material-ui/core/Checkbox/Checkbox'>
 }
 declare module '@material-ui/core/Checkbox/Checkbox.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Checkbox/Checkbox.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Checkbox/Checkbox.test'>
 }
 declare module '@material-ui/core/Checkbox/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Checkbox'>;
+  declare module.exports: $Exports<'@material-ui/core/Checkbox'>
 }
 declare module '@material-ui/core/Chip/Chip.js' {
-  declare module.exports: $Exports<'@material-ui/core/Chip/Chip'>;
+  declare module.exports: $Exports<'@material-ui/core/Chip/Chip'>
 }
 declare module '@material-ui/core/Chip/Chip.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Chip/Chip.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Chip/Chip.test'>
 }
 declare module '@material-ui/core/Chip/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Chip'>;
+  declare module.exports: $Exports<'@material-ui/core/Chip'>
 }
 declare module '@material-ui/core/CircularProgress/CircularProgress.js' {
-  declare module.exports: $Exports<'@material-ui/core/CircularProgress/CircularProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/CircularProgress/CircularProgress'>
 }
 declare module '@material-ui/core/CircularProgress/CircularProgress.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CircularProgress/CircularProgress.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CircularProgress/CircularProgress.test'>
 }
 declare module '@material-ui/core/CircularProgress/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CircularProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/CircularProgress'>
 }
 declare module '@material-ui/core/ClickAwayListener/ClickAwayListener.js' {
-  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener/ClickAwayListener'>;
+  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener/ClickAwayListener'>
 }
 declare module '@material-ui/core/ClickAwayListener/ClickAwayListener.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener/ClickAwayListener.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener/ClickAwayListener.test'>
 }
 declare module '@material-ui/core/ClickAwayListener/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener'>;
+  declare module.exports: $Exports<'@material-ui/core/ClickAwayListener'>
 }
 declare module '@material-ui/core/Collapse/Collapse.js' {
-  declare module.exports: $Exports<'@material-ui/core/Collapse/Collapse'>;
+  declare module.exports: $Exports<'@material-ui/core/Collapse/Collapse'>
 }
 declare module '@material-ui/core/Collapse/Collapse.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Collapse/Collapse.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Collapse/Collapse.test'>
 }
 declare module '@material-ui/core/Collapse/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Collapse'>;
+  declare module.exports: $Exports<'@material-ui/core/Collapse'>
 }
 declare module '@material-ui/core/colors/amber.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/amber'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/amber'>
 }
 declare module '@material-ui/core/colors/blue.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/blue'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/blue'>
 }
 declare module '@material-ui/core/colors/blueGrey.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/blueGrey'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/blueGrey'>
 }
 declare module '@material-ui/core/colors/brown.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/brown'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/brown'>
 }
 declare module '@material-ui/core/colors/common.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/common'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/common'>
 }
 declare module '@material-ui/core/colors/cyan.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/cyan'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/cyan'>
 }
 declare module '@material-ui/core/colors/deepOrange.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/deepOrange'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/deepOrange'>
 }
 declare module '@material-ui/core/colors/deepPurple.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/deepPurple'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/deepPurple'>
 }
 declare module '@material-ui/core/colors/green.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/green'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/green'>
 }
 declare module '@material-ui/core/colors/grey.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/grey'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/grey'>
 }
 declare module '@material-ui/core/colors/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors'>;
+  declare module.exports: $Exports<'@material-ui/core/colors'>
 }
 declare module '@material-ui/core/colors/indigo.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/indigo'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/indigo'>
 }
 declare module '@material-ui/core/colors/lightBlue.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/lightBlue'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/lightBlue'>
 }
 declare module '@material-ui/core/colors/lightGreen.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/lightGreen'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/lightGreen'>
 }
 declare module '@material-ui/core/colors/lime.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/lime'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/lime'>
 }
 declare module '@material-ui/core/colors/orange.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/orange'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/orange'>
 }
 declare module '@material-ui/core/colors/pink.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/pink'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/pink'>
 }
 declare module '@material-ui/core/colors/purple.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/purple'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/purple'>
 }
 declare module '@material-ui/core/colors/red.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/red'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/red'>
 }
 declare module '@material-ui/core/colors/teal.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/teal'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/teal'>
 }
 declare module '@material-ui/core/colors/yellow.js' {
-  declare module.exports: $Exports<'@material-ui/core/colors/yellow'>;
+  declare module.exports: $Exports<'@material-ui/core/colors/yellow'>
 }
 declare module '@material-ui/core/CssBaseline/CssBaseline.js' {
-  declare module.exports: $Exports<'@material-ui/core/CssBaseline/CssBaseline'>;
+  declare module.exports: $Exports<'@material-ui/core/CssBaseline/CssBaseline'>
 }
 declare module '@material-ui/core/CssBaseline/CssBaseline.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/CssBaseline/CssBaseline.test'>;
+  declare module.exports: $Exports<'@material-ui/core/CssBaseline/CssBaseline.test'>
 }
 declare module '@material-ui/core/CssBaseline/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/CssBaseline'>;
+  declare module.exports: $Exports<'@material-ui/core/CssBaseline'>
 }
 declare module '@material-ui/core/Dialog/Dialog.js' {
-  declare module.exports: $Exports<'@material-ui/core/Dialog/Dialog'>;
+  declare module.exports: $Exports<'@material-ui/core/Dialog/Dialog'>
 }
 declare module '@material-ui/core/Dialog/Dialog.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Dialog/Dialog.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Dialog/Dialog.test'>
 }
 declare module '@material-ui/core/Dialog/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Dialog'>;
+  declare module.exports: $Exports<'@material-ui/core/Dialog'>
 }
 declare module '@material-ui/core/DialogActions/DialogActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogActions/DialogActions'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogActions/DialogActions'>
 }
 declare module '@material-ui/core/DialogActions/DialogActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogActions/DialogActions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogActions/DialogActions.test'>
 }
 declare module '@material-ui/core/DialogActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogActions'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogActions'>
 }
 declare module '@material-ui/core/DialogContent/DialogContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContent/DialogContent'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContent/DialogContent'>
 }
 declare module '@material-ui/core/DialogContent/DialogContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContent/DialogContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContent/DialogContent.test'>
 }
 declare module '@material-ui/core/DialogContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContent'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContent'>
 }
 declare module '@material-ui/core/DialogContentText/DialogContentText.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContentText/DialogContentText'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContentText/DialogContentText'>
 }
 declare module '@material-ui/core/DialogContentText/DialogContentText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContentText/DialogContentText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContentText/DialogContentText.test'>
 }
 declare module '@material-ui/core/DialogContentText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogContentText'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogContentText'>
 }
 declare module '@material-ui/core/DialogTitle/DialogTitle.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogTitle/DialogTitle'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogTitle/DialogTitle'>
 }
 declare module '@material-ui/core/DialogTitle/DialogTitle.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogTitle/DialogTitle.test'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogTitle/DialogTitle.test'>
 }
 declare module '@material-ui/core/DialogTitle/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/DialogTitle'>;
+  declare module.exports: $Exports<'@material-ui/core/DialogTitle'>
 }
 declare module '@material-ui/core/Divider/Divider.js' {
-  declare module.exports: $Exports<'@material-ui/core/Divider/Divider'>;
+  declare module.exports: $Exports<'@material-ui/core/Divider/Divider'>
 }
 declare module '@material-ui/core/Divider/Divider.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Divider/Divider.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Divider/Divider.test'>
 }
 declare module '@material-ui/core/Divider/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Divider'>;
+  declare module.exports: $Exports<'@material-ui/core/Divider'>
 }
 declare module '@material-ui/core/Drawer/Drawer.js' {
-  declare module.exports: $Exports<'@material-ui/core/Drawer/Drawer'>;
+  declare module.exports: $Exports<'@material-ui/core/Drawer/Drawer'>
 }
 declare module '@material-ui/core/Drawer/Drawer.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Drawer/Drawer.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Drawer/Drawer.test'>
 }
 declare module '@material-ui/core/Drawer/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Drawer'>;
+  declare module.exports: $Exports<'@material-ui/core/Drawer'>
 }
 declare module '@material-ui/core/es/AppBar/AppBar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/AppBar/AppBar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/AppBar/AppBar'>
 }
 declare module '@material-ui/core/es/AppBar/AppBar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/AppBar/AppBar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/AppBar/AppBar.test'>
 }
 declare module '@material-ui/core/es/AppBar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/AppBar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/AppBar'>
 }
 declare module '@material-ui/core/es/Avatar/Avatar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Avatar/Avatar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Avatar/Avatar'>
 }
 declare module '@material-ui/core/es/Avatar/Avatar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Avatar/Avatar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Avatar/Avatar.test'>
 }
 declare module '@material-ui/core/es/Avatar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Avatar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Avatar'>
 }
 declare module '@material-ui/core/es/Backdrop/Backdrop.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Backdrop/Backdrop'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Backdrop/Backdrop'>
 }
 declare module '@material-ui/core/es/Backdrop/Backdrop.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Backdrop/Backdrop.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Backdrop/Backdrop.test'>
 }
 declare module '@material-ui/core/es/Backdrop/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Backdrop'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Backdrop'>
 }
 declare module '@material-ui/core/es/Badge/Badge.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Badge/Badge'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Badge/Badge'>
 }
 declare module '@material-ui/core/es/Badge/Badge.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Badge/Badge.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Badge/Badge.test'>
 }
 declare module '@material-ui/core/es/Badge/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Badge'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Badge'>
 }
 declare module '@material-ui/core/es/BottomNavigation/BottomNavigation.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation/BottomNavigation'>;
+  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation/BottomNavigation'>
 }
 declare module '@material-ui/core/es/BottomNavigation/BottomNavigation.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation/BottomNavigation.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation/BottomNavigation.test'>
 }
 declare module '@material-ui/core/es/BottomNavigation/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation'>;
+  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigation'>
 }
 declare module '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigationAction/BottomNavigationAction'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction',
+  >
 }
 declare module '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigationAction/BottomNavigationAction.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/BottomNavigationAction/BottomNavigationAction.test',
+  >
 }
 declare module '@material-ui/core/es/BottomNavigationAction/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigationAction'>;
+  declare module.exports: $Exports<'@material-ui/core/es/BottomNavigationAction'>
 }
 declare module '@material-ui/core/es/Button/Button.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Button/Button'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Button/Button'>
 }
 declare module '@material-ui/core/es/Button/Button.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Button/Button.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Button/Button.test'>
 }
 declare module '@material-ui/core/es/Button/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Button'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Button'>
 }
 declare module '@material-ui/core/es/ButtonBase/ButtonBase.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/ButtonBase'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/ButtonBase'>
 }
 declare module '@material-ui/core/es/ButtonBase/ButtonBase.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/ButtonBase.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/ButtonBase.test'>
 }
 declare module '@material-ui/core/es/ButtonBase/createRippleHandler.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/createRippleHandler'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/createRippleHandler'>
 }
 declare module '@material-ui/core/es/ButtonBase/focusVisible.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/focusVisible'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/focusVisible'>
 }
 declare module '@material-ui/core/es/ButtonBase/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase'>
 }
 declare module '@material-ui/core/es/ButtonBase/Ripple.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/Ripple'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/Ripple'>
 }
 declare module '@material-ui/core/es/ButtonBase/Ripple.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/Ripple.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/Ripple.test'>
 }
 declare module '@material-ui/core/es/ButtonBase/TouchRipple.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/TouchRipple'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/TouchRipple'>
 }
 declare module '@material-ui/core/es/ButtonBase/TouchRipple.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/TouchRipple.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ButtonBase/TouchRipple.test'>
 }
 declare module '@material-ui/core/es/Card/Card.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Card/Card'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Card/Card'>
 }
 declare module '@material-ui/core/es/Card/Card.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Card/Card.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Card/Card.test'>
 }
 declare module '@material-ui/core/es/Card/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Card'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Card'>
 }
 declare module '@material-ui/core/es/CardActions/CardActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardActions/CardActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardActions/CardActions'>
 }
 declare module '@material-ui/core/es/CardActions/CardActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardActions/CardActions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardActions/CardActions.test'>
 }
 declare module '@material-ui/core/es/CardActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardActions'>
 }
 declare module '@material-ui/core/es/CardContent/CardContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardContent/CardContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardContent/CardContent'>
 }
 declare module '@material-ui/core/es/CardContent/CardContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardContent/CardContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardContent/CardContent.test'>
 }
 declare module '@material-ui/core/es/CardContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardContent'>
 }
 declare module '@material-ui/core/es/CardHeader/CardHeader.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardHeader/CardHeader'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardHeader/CardHeader'>
 }
 declare module '@material-ui/core/es/CardHeader/CardHeader.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardHeader/CardHeader.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardHeader/CardHeader.test'>
 }
 declare module '@material-ui/core/es/CardHeader/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardHeader'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardHeader'>
 }
 declare module '@material-ui/core/es/CardMedia/CardMedia.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardMedia/CardMedia'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardMedia/CardMedia'>
 }
 declare module '@material-ui/core/es/CardMedia/CardMedia.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardMedia/CardMedia.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardMedia/CardMedia.test'>
 }
 declare module '@material-ui/core/es/CardMedia/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CardMedia'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CardMedia'>
 }
 declare module '@material-ui/core/es/Checkbox/Checkbox.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Checkbox/Checkbox'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Checkbox/Checkbox'>
 }
 declare module '@material-ui/core/es/Checkbox/Checkbox.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Checkbox/Checkbox.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Checkbox/Checkbox.test'>
 }
 declare module '@material-ui/core/es/Checkbox/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Checkbox'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Checkbox'>
 }
 declare module '@material-ui/core/es/Chip/Chip.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Chip/Chip'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Chip/Chip'>
 }
 declare module '@material-ui/core/es/Chip/Chip.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Chip/Chip.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Chip/Chip.test'>
 }
 declare module '@material-ui/core/es/Chip/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Chip'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Chip'>
 }
 declare module '@material-ui/core/es/CircularProgress/CircularProgress.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress/CircularProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress/CircularProgress'>
 }
 declare module '@material-ui/core/es/CircularProgress/CircularProgress.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress/CircularProgress.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress/CircularProgress.test'>
 }
 declare module '@material-ui/core/es/CircularProgress/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CircularProgress'>
 }
 declare module '@material-ui/core/es/ClickAwayListener/ClickAwayListener.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener/ClickAwayListener'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener/ClickAwayListener'>
 }
 declare module '@material-ui/core/es/ClickAwayListener/ClickAwayListener.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener/ClickAwayListener.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener/ClickAwayListener.test'>
 }
 declare module '@material-ui/core/es/ClickAwayListener/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ClickAwayListener'>
 }
 declare module '@material-ui/core/es/Collapse/Collapse.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Collapse/Collapse'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Collapse/Collapse'>
 }
 declare module '@material-ui/core/es/Collapse/Collapse.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Collapse/Collapse.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Collapse/Collapse.test'>
 }
 declare module '@material-ui/core/es/Collapse/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Collapse'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Collapse'>
 }
 declare module '@material-ui/core/es/colors/amber.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/amber'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/amber'>
 }
 declare module '@material-ui/core/es/colors/blue.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/blue'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/blue'>
 }
 declare module '@material-ui/core/es/colors/blueGrey.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/blueGrey'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/blueGrey'>
 }
 declare module '@material-ui/core/es/colors/brown.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/brown'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/brown'>
 }
 declare module '@material-ui/core/es/colors/common.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/common'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/common'>
 }
 declare module '@material-ui/core/es/colors/cyan.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/cyan'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/cyan'>
 }
 declare module '@material-ui/core/es/colors/deepOrange.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/deepOrange'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/deepOrange'>
 }
 declare module '@material-ui/core/es/colors/deepPurple.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/deepPurple'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/deepPurple'>
 }
 declare module '@material-ui/core/es/colors/green.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/green'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/green'>
 }
 declare module '@material-ui/core/es/colors/grey.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/grey'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/grey'>
 }
 declare module '@material-ui/core/es/colors/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors'>
 }
 declare module '@material-ui/core/es/colors/indigo.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/indigo'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/indigo'>
 }
 declare module '@material-ui/core/es/colors/lightBlue.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/lightBlue'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/lightBlue'>
 }
 declare module '@material-ui/core/es/colors/lightGreen.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/lightGreen'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/lightGreen'>
 }
 declare module '@material-ui/core/es/colors/lime.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/lime'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/lime'>
 }
 declare module '@material-ui/core/es/colors/orange.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/orange'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/orange'>
 }
 declare module '@material-ui/core/es/colors/pink.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/pink'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/pink'>
 }
 declare module '@material-ui/core/es/colors/purple.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/purple'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/purple'>
 }
 declare module '@material-ui/core/es/colors/red.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/red'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/red'>
 }
 declare module '@material-ui/core/es/colors/teal.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/teal'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/teal'>
 }
 declare module '@material-ui/core/es/colors/yellow.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/colors/yellow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/colors/yellow'>
 }
 declare module '@material-ui/core/es/CssBaseline/CssBaseline.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline/CssBaseline'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline/CssBaseline'>
 }
 declare module '@material-ui/core/es/CssBaseline/CssBaseline.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline/CssBaseline.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline/CssBaseline.test'>
 }
 declare module '@material-ui/core/es/CssBaseline/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline'>;
+  declare module.exports: $Exports<'@material-ui/core/es/CssBaseline'>
 }
 declare module '@material-ui/core/es/Dialog/Dialog.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Dialog/Dialog'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Dialog/Dialog'>
 }
 declare module '@material-ui/core/es/Dialog/Dialog.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Dialog/Dialog.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Dialog/Dialog.test'>
 }
 declare module '@material-ui/core/es/Dialog/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Dialog'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Dialog'>
 }
 declare module '@material-ui/core/es/DialogActions/DialogActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogActions/DialogActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogActions/DialogActions'>
 }
 declare module '@material-ui/core/es/DialogActions/DialogActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogActions/DialogActions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogActions/DialogActions.test'>
 }
 declare module '@material-ui/core/es/DialogActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogActions'>
 }
 declare module '@material-ui/core/es/DialogContent/DialogContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContent/DialogContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContent/DialogContent'>
 }
 declare module '@material-ui/core/es/DialogContent/DialogContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContent/DialogContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContent/DialogContent.test'>
 }
 declare module '@material-ui/core/es/DialogContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContent'>
 }
 declare module '@material-ui/core/es/DialogContentText/DialogContentText.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText/DialogContentText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText/DialogContentText'>
 }
 declare module '@material-ui/core/es/DialogContentText/DialogContentText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText/DialogContentText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText/DialogContentText.test'>
 }
 declare module '@material-ui/core/es/DialogContentText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogContentText'>
 }
 declare module '@material-ui/core/es/DialogTitle/DialogTitle.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle/DialogTitle'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle/DialogTitle'>
 }
 declare module '@material-ui/core/es/DialogTitle/DialogTitle.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle/DialogTitle.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle/DialogTitle.test'>
 }
 declare module '@material-ui/core/es/DialogTitle/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle'>;
+  declare module.exports: $Exports<'@material-ui/core/es/DialogTitle'>
 }
 declare module '@material-ui/core/es/Divider/Divider.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Divider/Divider'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Divider/Divider'>
 }
 declare module '@material-ui/core/es/Divider/Divider.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Divider/Divider.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Divider/Divider.test'>
 }
 declare module '@material-ui/core/es/Divider/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Divider'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Divider'>
 }
 declare module '@material-ui/core/es/Drawer/Drawer.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Drawer/Drawer'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Drawer/Drawer'>
 }
 declare module '@material-ui/core/es/Drawer/Drawer.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Drawer/Drawer.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Drawer/Drawer.test'>
 }
 declare module '@material-ui/core/es/Drawer/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Drawer'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Drawer'>
 }
 declare module '@material-ui/core/es/ExpansionPanel/ExpansionPanel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel/ExpansionPanel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel/ExpansionPanel'>
 }
 declare module '@material-ui/core/es/ExpansionPanel/ExpansionPanel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel/ExpansionPanel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel/ExpansionPanel.test'>
 }
 declare module '@material-ui/core/es/ExpansionPanel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanel'>
 }
 declare module '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelActions/ExpansionPanelActions.test',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelActions'>
 }
 declare module '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelDetails/ExpansionPanelDetails.test',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelDetails/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelDetails'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelDetails'>
 }
 declare module '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ExpansionPanelSummary/ExpansionPanelSummary.test',
+  >
 }
 declare module '@material-ui/core/es/ExpansionPanelSummary/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelSummary'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ExpansionPanelSummary'>
 }
 declare module '@material-ui/core/es/Fade/Fade.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Fade/Fade'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Fade/Fade'>
 }
 declare module '@material-ui/core/es/Fade/Fade.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Fade/Fade.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Fade/Fade.test'>
 }
 declare module '@material-ui/core/es/Fade/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Fade'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Fade'>
 }
 declare module '@material-ui/core/es/FormControl/FormControl.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControl/FormControl'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControl/FormControl'>
 }
 declare module '@material-ui/core/es/FormControl/FormControl.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControl/FormControl.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControl/FormControl.test'>
 }
 declare module '@material-ui/core/es/FormControl/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControl'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControl'>
 }
 declare module '@material-ui/core/es/FormControlLabel/FormControlLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel/FormControlLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel/FormControlLabel'>
 }
 declare module '@material-ui/core/es/FormControlLabel/FormControlLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel/FormControlLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel/FormControlLabel.test'>
 }
 declare module '@material-ui/core/es/FormControlLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormControlLabel'>
 }
 declare module '@material-ui/core/es/FormGroup/FormGroup.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormGroup/FormGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormGroup/FormGroup'>
 }
 declare module '@material-ui/core/es/FormGroup/FormGroup.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormGroup/FormGroup.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormGroup/FormGroup.test'>
 }
 declare module '@material-ui/core/es/FormGroup/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormGroup'>
 }
 declare module '@material-ui/core/es/FormHelperText/FormHelperText.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText/FormHelperText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText/FormHelperText'>
 }
 declare module '@material-ui/core/es/FormHelperText/FormHelperText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText/FormHelperText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText/FormHelperText.test'>
 }
 declare module '@material-ui/core/es/FormHelperText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormHelperText'>
 }
 declare module '@material-ui/core/es/FormLabel/FormLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormLabel/FormLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormLabel/FormLabel'>
 }
 declare module '@material-ui/core/es/FormLabel/FormLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormLabel/FormLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormLabel/FormLabel.test'>
 }
 declare module '@material-ui/core/es/FormLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/FormLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/FormLabel'>
 }
 declare module '@material-ui/core/es/Grid/Grid.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grid/Grid'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grid/Grid'>
 }
 declare module '@material-ui/core/es/Grid/Grid.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grid/Grid.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grid/Grid.test'>
 }
 declare module '@material-ui/core/es/Grid/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grid'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grid'>
 }
 declare module '@material-ui/core/es/GridList/GridList.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridList/GridList'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridList/GridList'>
 }
 declare module '@material-ui/core/es/GridList/GridList.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridList/GridList.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridList/GridList.test'>
 }
 declare module '@material-ui/core/es/GridList/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridList'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridList'>
 }
 declare module '@material-ui/core/es/GridListTile/GridListTile.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTile/GridListTile'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTile/GridListTile'>
 }
 declare module '@material-ui/core/es/GridListTile/GridListTile.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTile/GridListTile.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTile/GridListTile.test'>
 }
 declare module '@material-ui/core/es/GridListTile/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTile'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTile'>
 }
 declare module '@material-ui/core/es/GridListTileBar/GridListTileBar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar/GridListTileBar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar/GridListTileBar'>
 }
 declare module '@material-ui/core/es/GridListTileBar/GridListTileBar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar/GridListTileBar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar/GridListTileBar.test'>
 }
 declare module '@material-ui/core/es/GridListTileBar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/GridListTileBar'>
 }
 declare module '@material-ui/core/es/Grow/Grow.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grow/Grow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grow/Grow'>
 }
 declare module '@material-ui/core/es/Grow/Grow.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grow/Grow.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grow/Grow.test'>
 }
 declare module '@material-ui/core/es/Grow/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Grow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Grow'>
 }
 declare module '@material-ui/core/es/Hidden/Hidden.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/Hidden'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/Hidden'>
 }
 declare module '@material-ui/core/es/Hidden/Hidden.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/Hidden.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/Hidden.test'>
 }
 declare module '@material-ui/core/es/Hidden/HiddenCss.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenCss'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenCss'>
 }
 declare module '@material-ui/core/es/Hidden/HiddenCss.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenCss.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenCss.test'>
 }
 declare module '@material-ui/core/es/Hidden/HiddenJs.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenJs'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenJs'>
 }
 declare module '@material-ui/core/es/Hidden/HiddenJs.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenJs.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden/HiddenJs.test'>
 }
 declare module '@material-ui/core/es/Hidden/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Hidden'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Hidden'>
 }
 declare module '@material-ui/core/es/Icon/Icon.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Icon/Icon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Icon/Icon'>
 }
 declare module '@material-ui/core/es/Icon/Icon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Icon/Icon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Icon/Icon.test'>
 }
 declare module '@material-ui/core/es/Icon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Icon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Icon'>
 }
 declare module '@material-ui/core/es/IconButton/IconButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/IconButton/IconButton'>;
+  declare module.exports: $Exports<'@material-ui/core/es/IconButton/IconButton'>
 }
 declare module '@material-ui/core/es/IconButton/IconButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/IconButton/IconButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/IconButton/IconButton.test'>
 }
 declare module '@material-ui/core/es/IconButton/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/IconButton'>;
+  declare module.exports: $Exports<'@material-ui/core/es/IconButton'>
 }
 declare module '@material-ui/core/es/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es'>;
+  declare module.exports: $Exports<'@material-ui/core/es'>
 }
 declare module '@material-ui/core/es/index.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/index.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/index.test'>
 }
 declare module '@material-ui/core/es/Input/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Input'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Input'>
 }
 declare module '@material-ui/core/es/Input/Input.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Input/Input'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Input/Input'>
 }
 declare module '@material-ui/core/es/Input/Input.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Input/Input.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Input/Input.test'>
 }
 declare module '@material-ui/core/es/Input/Textarea.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Input/Textarea'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Input/Textarea'>
 }
 declare module '@material-ui/core/es/Input/Textarea.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Input/Textarea.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Input/Textarea.test'>
 }
 declare module '@material-ui/core/es/InputAdornment/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment'>
 }
 declare module '@material-ui/core/es/InputAdornment/InputAdornment.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment/InputAdornment'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment/InputAdornment'>
 }
 declare module '@material-ui/core/es/InputAdornment/InputAdornment.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment/InputAdornment.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputAdornment/InputAdornment.test'>
 }
 declare module '@material-ui/core/es/InputLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputLabel'>
 }
 declare module '@material-ui/core/es/InputLabel/InputLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputLabel/InputLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputLabel/InputLabel'>
 }
 declare module '@material-ui/core/es/InputLabel/InputLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/InputLabel/InputLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/InputLabel/InputLabel.test'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/ArrowDownward.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/ArrowDownward'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/ArrowDownward'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/ArrowDropDown.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/ArrowDropDown'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/ArrowDropDown'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/Cancel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/Cancel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/Cancel'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/CheckBox.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckBox'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckBox'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/CheckBoxOutlineBlank.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckBoxOutlineBlank'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckBoxOutlineBlank'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/CheckCircle.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckCircle'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/CheckCircle'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/IndeterminateCheckBox.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/IndeterminateCheckBox'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/IndeterminateCheckBox'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/index.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/index.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/index.test'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/KeyboardArrowLeft.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/KeyboardArrowLeft'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/KeyboardArrowLeft'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/KeyboardArrowRight.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/KeyboardArrowRight'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/KeyboardArrowRight'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/RadioButtonChecked.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/RadioButtonChecked'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/RadioButtonChecked'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/RadioButtonUnchecked.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/RadioButtonUnchecked'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/RadioButtonUnchecked'>
 }
 declare module '@material-ui/core/es/internal/svg-icons/Warning.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/Warning'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/svg-icons/Warning'>
 }
 declare module '@material-ui/core/es/internal/SwitchBase.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/SwitchBase'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/SwitchBase'>
 }
 declare module '@material-ui/core/es/internal/SwitchBase.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/internal/SwitchBase.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/internal/SwitchBase.test'>
 }
 declare module '@material-ui/core/es/LinearProgress/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress'>
 }
 declare module '@material-ui/core/es/LinearProgress/LinearProgress.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress/LinearProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress/LinearProgress'>
 }
 declare module '@material-ui/core/es/LinearProgress/LinearProgress.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress/LinearProgress.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/LinearProgress/LinearProgress.test'>
 }
 declare module '@material-ui/core/es/List/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/List'>;
+  declare module.exports: $Exports<'@material-ui/core/es/List'>
 }
 declare module '@material-ui/core/es/List/List.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/List/List'>;
+  declare module.exports: $Exports<'@material-ui/core/es/List/List'>
 }
 declare module '@material-ui/core/es/List/List.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/List/List.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/List/List.test'>
 }
 declare module '@material-ui/core/es/ListItem/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItem'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItem'>
 }
 declare module '@material-ui/core/es/ListItem/ListItem.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItem/ListItem'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItem/ListItem'>
 }
 declare module '@material-ui/core/es/ListItem/ListItem.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItem/ListItem.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItem/ListItem.test'>
 }
 declare module '@material-ui/core/es/ListItemAvatar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar'>
 }
 declare module '@material-ui/core/es/ListItemAvatar/ListItemAvatar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar/ListItemAvatar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar/ListItemAvatar'>
 }
 declare module '@material-ui/core/es/ListItemAvatar/ListItemAvatar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar/ListItemAvatar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemAvatar/ListItemAvatar.test'>
 }
 declare module '@material-ui/core/es/ListItemIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon'>
 }
 declare module '@material-ui/core/es/ListItemIcon/ListItemIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon/ListItemIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon/ListItemIcon'>
 }
 declare module '@material-ui/core/es/ListItemIcon/ListItemIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon/ListItemIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemIcon/ListItemIcon.test'>
 }
 declare module '@material-ui/core/es/ListItemSecondaryAction/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemSecondaryAction'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemSecondaryAction'>
 }
 declare module '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction',
+  >
 }
 declare module '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/ListItemSecondaryAction/ListItemSecondaryAction.test',
+  >
 }
 declare module '@material-ui/core/es/ListItemText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemText'>
 }
 declare module '@material-ui/core/es/ListItemText/ListItemText.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemText/ListItemText'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemText/ListItemText'>
 }
 declare module '@material-ui/core/es/ListItemText/ListItemText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListItemText/ListItemText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListItemText/ListItemText.test'>
 }
 declare module '@material-ui/core/es/ListSubheader/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader'>
 }
 declare module '@material-ui/core/es/ListSubheader/ListSubheader.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader/ListSubheader'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader/ListSubheader'>
 }
 declare module '@material-ui/core/es/ListSubheader/ListSubheader.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader/ListSubheader.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/ListSubheader/ListSubheader.test'>
 }
 declare module '@material-ui/core/es/Menu/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Menu'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Menu'>
 }
 declare module '@material-ui/core/es/Menu/Menu.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Menu/Menu'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Menu/Menu'>
 }
 declare module '@material-ui/core/es/Menu/Menu.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Menu/Menu.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Menu/Menu.test'>
 }
 declare module '@material-ui/core/es/MenuItem/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuItem'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuItem'>
 }
 declare module '@material-ui/core/es/MenuItem/MenuItem.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuItem/MenuItem'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuItem/MenuItem'>
 }
 declare module '@material-ui/core/es/MenuItem/MenuItem.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuItem/MenuItem.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuItem/MenuItem.test'>
 }
 declare module '@material-ui/core/es/MenuList/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuList'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuList'>
 }
 declare module '@material-ui/core/es/MenuList/MenuList.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuList/MenuList'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuList/MenuList'>
 }
 declare module '@material-ui/core/es/MenuList/MenuList.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MenuList/MenuList.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MenuList/MenuList.test'>
 }
 declare module '@material-ui/core/es/MobileStepper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper'>
 }
 declare module '@material-ui/core/es/MobileStepper/MobileStepper.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper/MobileStepper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper/MobileStepper'>
 }
 declare module '@material-ui/core/es/MobileStepper/MobileStepper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper/MobileStepper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/MobileStepper/MobileStepper.test'>
 }
 declare module '@material-ui/core/es/Modal/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal'>
 }
 declare module '@material-ui/core/es/Modal/isOverflowing.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/isOverflowing'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/isOverflowing'>
 }
 declare module '@material-ui/core/es/Modal/isOverflowing.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/isOverflowing.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/isOverflowing.test'>
 }
 declare module '@material-ui/core/es/Modal/manageAriaHidden.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/manageAriaHidden'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/manageAriaHidden'>
 }
 declare module '@material-ui/core/es/Modal/Modal.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/Modal'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/Modal'>
 }
 declare module '@material-ui/core/es/Modal/Modal.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/Modal.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/Modal.test'>
 }
 declare module '@material-ui/core/es/Modal/ModalManager.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/ModalManager'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/ModalManager'>
 }
 declare module '@material-ui/core/es/Modal/ModalManager.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Modal/ModalManager.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Modal/ModalManager.test'>
 }
 declare module '@material-ui/core/es/Paper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Paper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Paper'>
 }
 declare module '@material-ui/core/es/Paper/Paper.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Paper/Paper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Paper/Paper'>
 }
 declare module '@material-ui/core/es/Paper/Paper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Paper/Paper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Paper/Paper.test'>
 }
 declare module '@material-ui/core/es/Popover/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Popover'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Popover'>
 }
 declare module '@material-ui/core/es/Popover/Popover.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Popover/Popover'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Popover/Popover'>
 }
 declare module '@material-ui/core/es/Popover/Popover.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Popover/Popover.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Popover/Popover.test'>
 }
 declare module '@material-ui/core/es/Portal/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Portal'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Portal'>
 }
 declare module '@material-ui/core/es/Portal/Portal.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Portal/Portal'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Portal/Portal'>
 }
 declare module '@material-ui/core/es/Portal/Portal.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Portal/Portal.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Portal/Portal.test'>
 }
 declare module '@material-ui/core/es/Radio/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Radio'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Radio'>
 }
 declare module '@material-ui/core/es/Radio/Radio.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Radio/Radio'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Radio/Radio'>
 }
 declare module '@material-ui/core/es/Radio/Radio.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Radio/Radio.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Radio/Radio.test'>
 }
 declare module '@material-ui/core/es/RadioGroup/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup'>
 }
 declare module '@material-ui/core/es/RadioGroup/RadioGroup.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup/RadioGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup/RadioGroup'>
 }
 declare module '@material-ui/core/es/RadioGroup/RadioGroup.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup/RadioGroup.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/RadioGroup/RadioGroup.test'>
 }
 declare module '@material-ui/core/es/RootRef/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/RootRef'>;
+  declare module.exports: $Exports<'@material-ui/core/es/RootRef'>
 }
 declare module '@material-ui/core/es/RootRef/RootRef.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/RootRef/RootRef'>;
+  declare module.exports: $Exports<'@material-ui/core/es/RootRef/RootRef'>
 }
 declare module '@material-ui/core/es/Select/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Select'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Select'>
 }
 declare module '@material-ui/core/es/Select/Select.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Select/Select'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Select/Select'>
 }
 declare module '@material-ui/core/es/Select/Select.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Select/Select.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Select/Select.test'>
 }
 declare module '@material-ui/core/es/Select/SelectInput.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Select/SelectInput'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Select/SelectInput'>
 }
 declare module '@material-ui/core/es/Select/SelectInput.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Select/SelectInput.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Select/SelectInput.test'>
 }
 declare module '@material-ui/core/es/Slide/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Slide'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Slide'>
 }
 declare module '@material-ui/core/es/Slide/Slide.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Slide/Slide'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Slide/Slide'>
 }
 declare module '@material-ui/core/es/Slide/Slide.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Slide/Slide.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Slide/Slide.test'>
 }
 declare module '@material-ui/core/es/Snackbar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Snackbar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Snackbar'>
 }
 declare module '@material-ui/core/es/Snackbar/Snackbar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Snackbar/Snackbar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Snackbar/Snackbar'>
 }
 declare module '@material-ui/core/es/Snackbar/Snackbar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Snackbar/Snackbar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Snackbar/Snackbar.test'>
 }
 declare module '@material-ui/core/es/SnackbarContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent'>
 }
 declare module '@material-ui/core/es/SnackbarContent/SnackbarContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent/SnackbarContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent/SnackbarContent'>
 }
 declare module '@material-ui/core/es/SnackbarContent/SnackbarContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent/SnackbarContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SnackbarContent/SnackbarContent.test'>
 }
 declare module '@material-ui/core/es/Step/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Step'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Step'>
 }
 declare module '@material-ui/core/es/Step/Step.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Step/Step'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Step/Step'>
 }
 declare module '@material-ui/core/es/Step/Step.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Step/Step.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Step/Step.test'>
 }
 declare module '@material-ui/core/es/StepButton/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepButton'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepButton'>
 }
 declare module '@material-ui/core/es/StepButton/StepButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepButton/StepButton'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepButton/StepButton'>
 }
 declare module '@material-ui/core/es/StepButton/StepButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepButton/StepButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepButton/StepButton.test'>
 }
 declare module '@material-ui/core/es/StepConnector/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepConnector'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepConnector'>
 }
 declare module '@material-ui/core/es/StepConnector/StepConnector.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepConnector/StepConnector'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepConnector/StepConnector'>
 }
 declare module '@material-ui/core/es/StepConnector/StepConnector.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepConnector/StepConnector.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepConnector/StepConnector.test'>
 }
 declare module '@material-ui/core/es/StepContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepContent'>
 }
 declare module '@material-ui/core/es/StepContent/StepContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepContent/StepContent'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepContent/StepContent'>
 }
 declare module '@material-ui/core/es/StepContent/StepContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepContent/StepContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepContent/StepContent.test'>
 }
 declare module '@material-ui/core/es/StepIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepIcon'>
 }
 declare module '@material-ui/core/es/StepIcon/StepIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepIcon'>
 }
 declare module '@material-ui/core/es/StepIcon/StepIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepIcon.test'>
 }
 declare module '@material-ui/core/es/StepIcon/StepPositionIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepPositionIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepPositionIcon'>
 }
 declare module '@material-ui/core/es/StepIcon/StepPositionIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepPositionIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepIcon/StepPositionIcon.test'>
 }
 declare module '@material-ui/core/es/StepLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepLabel'>
 }
 declare module '@material-ui/core/es/StepLabel/StepLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepLabel/StepLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepLabel/StepLabel'>
 }
 declare module '@material-ui/core/es/StepLabel/StepLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/StepLabel/StepLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/StepLabel/StepLabel.test'>
 }
 declare module '@material-ui/core/es/Stepper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Stepper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Stepper'>
 }
 declare module '@material-ui/core/es/Stepper/Stepper.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Stepper/Stepper'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Stepper/Stepper'>
 }
 declare module '@material-ui/core/es/Stepper/Stepper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Stepper/Stepper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Stepper/Stepper.test'>
 }
 declare module '@material-ui/core/es/styles/colorManipulator.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/colorManipulator'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/colorManipulator'>
 }
 declare module '@material-ui/core/es/styles/colorManipulator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/colorManipulator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/colorManipulator.test'>
 }
 declare module '@material-ui/core/es/styles/createBreakpoints.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createBreakpoints'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createBreakpoints'>
 }
 declare module '@material-ui/core/es/styles/createBreakpoints.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createBreakpoints.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createBreakpoints.test'>
 }
 declare module '@material-ui/core/es/styles/createGenerateClassName.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createGenerateClassName'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createGenerateClassName'>
 }
 declare module '@material-ui/core/es/styles/createGenerateClassName.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createGenerateClassName.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createGenerateClassName.test'>
 }
 declare module '@material-ui/core/es/styles/createMixins.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createMixins'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createMixins'>
 }
 declare module '@material-ui/core/es/styles/createMixins.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createMixins.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createMixins.test'>
 }
 declare module '@material-ui/core/es/styles/createMuiTheme.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createMuiTheme'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createMuiTheme'>
 }
 declare module '@material-ui/core/es/styles/createMuiTheme.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createMuiTheme.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createMuiTheme.test'>
 }
 declare module '@material-ui/core/es/styles/createPalette.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createPalette'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createPalette'>
 }
 declare module '@material-ui/core/es/styles/createPalette.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createPalette.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createPalette.test'>
 }
 declare module '@material-ui/core/es/styles/createTypography.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createTypography'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createTypography'>
 }
 declare module '@material-ui/core/es/styles/createTypography.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/createTypography.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/createTypography.test'>
 }
 declare module '@material-ui/core/es/styles/getStylesCreator.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/getStylesCreator'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/getStylesCreator'>
 }
 declare module '@material-ui/core/es/styles/getStylesCreator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/getStylesCreator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/getStylesCreator.test'>
 }
 declare module '@material-ui/core/es/styles/getThemeProps.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/getThemeProps'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/getThemeProps'>
 }
 declare module '@material-ui/core/es/styles/getThemeProps.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/getThemeProps.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/getThemeProps.test'>
 }
 declare module '@material-ui/core/es/styles/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles'>
 }
 declare module '@material-ui/core/es/styles/jssPreset.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/jssPreset'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/jssPreset'>
 }
 declare module '@material-ui/core/es/styles/MuiThemeProvider.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/MuiThemeProvider'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/MuiThemeProvider'>
 }
 declare module '@material-ui/core/es/styles/MuiThemeProvider.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/MuiThemeProvider.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/MuiThemeProvider.test'>
 }
 declare module '@material-ui/core/es/styles/shadows.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/shadows'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/shadows'>
 }
 declare module '@material-ui/core/es/styles/spacing.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/spacing'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/spacing'>
 }
 declare module '@material-ui/core/es/styles/themeListener.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/themeListener'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/themeListener'>
 }
 declare module '@material-ui/core/es/styles/themeListener.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/themeListener.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/themeListener.test'>
 }
 declare module '@material-ui/core/es/styles/transitions.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/transitions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/transitions'>
 }
 declare module '@material-ui/core/es/styles/transitions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/transitions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/transitions.test'>
 }
 declare module '@material-ui/core/es/styles/withStyles.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/withStyles'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/withStyles'>
 }
 declare module '@material-ui/core/es/styles/withStyles.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/withStyles.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/withStyles.test'>
 }
 declare module '@material-ui/core/es/styles/withTheme.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/withTheme'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/withTheme'>
 }
 declare module '@material-ui/core/es/styles/withTheme.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/withTheme.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/withTheme.test'>
 }
 declare module '@material-ui/core/es/styles/zIndex.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/styles/zIndex'>;
+  declare module.exports: $Exports<'@material-ui/core/es/styles/zIndex'>
 }
 declare module '@material-ui/core/es/SvgIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon'>
 }
 declare module '@material-ui/core/es/SvgIcon/SvgIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon/SvgIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon/SvgIcon'>
 }
 declare module '@material-ui/core/es/SvgIcon/SvgIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon/SvgIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SvgIcon/SvgIcon.test'>
 }
 declare module '@material-ui/core/es/SwipeableDrawer/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer'>
 }
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeableDrawer.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeableDrawer'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeableDrawer'>
 }
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeableDrawer.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeableDrawer.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeableDrawer.test'>
 }
 declare module '@material-ui/core/es/SwipeableDrawer/SwipeArea.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeArea'>;
+  declare module.exports: $Exports<'@material-ui/core/es/SwipeableDrawer/SwipeArea'>
 }
 declare module '@material-ui/core/es/Switch/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Switch'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Switch'>
 }
 declare module '@material-ui/core/es/Switch/Switch.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Switch/Switch'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Switch/Switch'>
 }
 declare module '@material-ui/core/es/Switch/Switch.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Switch/Switch.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Switch/Switch.test'>
 }
 declare module '@material-ui/core/es/Tab/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tab'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tab'>
 }
 declare module '@material-ui/core/es/Tab/Tab.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tab/Tab'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tab/Tab'>
 }
 declare module '@material-ui/core/es/Tab/Tab.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tab/Tab.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tab/Tab.test'>
 }
 declare module '@material-ui/core/es/Table/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Table'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Table'>
 }
 declare module '@material-ui/core/es/Table/Table.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Table/Table'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Table/Table'>
 }
 declare module '@material-ui/core/es/Table/Table.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Table/Table.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Table/Table.test'>
 }
 declare module '@material-ui/core/es/TableBody/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableBody'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableBody'>
 }
 declare module '@material-ui/core/es/TableBody/TableBody.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableBody/TableBody'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableBody/TableBody'>
 }
 declare module '@material-ui/core/es/TableBody/TableBody.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableBody/TableBody.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableBody/TableBody.test'>
 }
 declare module '@material-ui/core/es/TableCell/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableCell'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableCell'>
 }
 declare module '@material-ui/core/es/TableCell/TableCell.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableCell/TableCell'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableCell/TableCell'>
 }
 declare module '@material-ui/core/es/TableCell/TableCell.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableCell/TableCell.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableCell/TableCell.test'>
 }
 declare module '@material-ui/core/es/TableFooter/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableFooter'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableFooter'>
 }
 declare module '@material-ui/core/es/TableFooter/TableFooter.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableFooter/TableFooter'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableFooter/TableFooter'>
 }
 declare module '@material-ui/core/es/TableFooter/TableFooter.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableFooter/TableFooter.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableFooter/TableFooter.test'>
 }
 declare module '@material-ui/core/es/TableHead/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableHead'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableHead'>
 }
 declare module '@material-ui/core/es/TableHead/TableHead.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableHead/TableHead'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableHead/TableHead'>
 }
 declare module '@material-ui/core/es/TableHead/TableHead.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableHead/TableHead.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableHead/TableHead.test'>
 }
 declare module '@material-ui/core/es/TablePagination/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TablePagination'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TablePagination'>
 }
 declare module '@material-ui/core/es/TablePagination/TablePagination.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TablePagination/TablePagination'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TablePagination/TablePagination'>
 }
 declare module '@material-ui/core/es/TablePagination/TablePagination.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TablePagination/TablePagination.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TablePagination/TablePagination.test'>
 }
 declare module '@material-ui/core/es/TablePaginationActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TablePaginationActions'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TablePaginationActions'>
 }
 declare module '@material-ui/core/es/TablePaginationActions/TablePaginationActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TablePaginationActions/TablePaginationActions'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/es/TablePaginationActions/TablePaginationActions',
+  >
 }
 declare module '@material-ui/core/es/TableRow/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableRow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableRow'>
 }
 declare module '@material-ui/core/es/TableRow/TableRow.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableRow/TableRow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableRow/TableRow'>
 }
 declare module '@material-ui/core/es/TableRow/TableRow.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableRow/TableRow.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableRow/TableRow.test'>
 }
 declare module '@material-ui/core/es/TableSortLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel'>
 }
 declare module '@material-ui/core/es/TableSortLabel/TableSortLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel/TableSortLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel/TableSortLabel'>
 }
 declare module '@material-ui/core/es/TableSortLabel/TableSortLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel/TableSortLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TableSortLabel/TableSortLabel.test'>
 }
 declare module '@material-ui/core/es/Tabs/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs'>
 }
 declare module '@material-ui/core/es/Tabs/TabIndicator.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabIndicator'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabIndicator'>
 }
 declare module '@material-ui/core/es/Tabs/TabIndicator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabIndicator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabIndicator.test'>
 }
 declare module '@material-ui/core/es/Tabs/Tabs.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/Tabs'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/Tabs'>
 }
 declare module '@material-ui/core/es/Tabs/Tabs.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/Tabs.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/Tabs.test'>
 }
 declare module '@material-ui/core/es/Tabs/TabScrollButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabScrollButton'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabScrollButton'>
 }
 declare module '@material-ui/core/es/Tabs/TabScrollButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabScrollButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tabs/TabScrollButton.test'>
 }
 declare module '@material-ui/core/es/test-utils/createMount.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createMount'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createMount'>
 }
 declare module '@material-ui/core/es/test-utils/createRender.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createRender'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createRender'>
 }
 declare module '@material-ui/core/es/test-utils/createShallow.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createShallow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/createShallow'>
 }
 declare module '@material-ui/core/es/test-utils/getClasses.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/getClasses'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/getClasses'>
 }
 declare module '@material-ui/core/es/test-utils/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils'>
 }
 declare module '@material-ui/core/es/test-utils/until.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/until'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/until'>
 }
 declare module '@material-ui/core/es/test-utils/until.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/until.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/until.test'>
 }
 declare module '@material-ui/core/es/test-utils/unwrap.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/test-utils/unwrap'>;
+  declare module.exports: $Exports<'@material-ui/core/es/test-utils/unwrap'>
 }
 declare module '@material-ui/core/es/TextField/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TextField'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TextField'>
 }
 declare module '@material-ui/core/es/TextField/TextField.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TextField/TextField'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TextField/TextField'>
 }
 declare module '@material-ui/core/es/TextField/TextField.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/TextField/TextField.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/TextField/TextField.test'>
 }
 declare module '@material-ui/core/es/Toolbar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Toolbar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Toolbar'>
 }
 declare module '@material-ui/core/es/Toolbar/Toolbar.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Toolbar/Toolbar'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Toolbar/Toolbar'>
 }
 declare module '@material-ui/core/es/Toolbar/Toolbar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Toolbar/Toolbar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Toolbar/Toolbar.test'>
 }
 declare module '@material-ui/core/es/Tooltip/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tooltip'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tooltip'>
 }
 declare module '@material-ui/core/es/Tooltip/Tooltip.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tooltip/Tooltip'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tooltip/Tooltip'>
 }
 declare module '@material-ui/core/es/Tooltip/Tooltip.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Tooltip/Tooltip.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Tooltip/Tooltip.test'>
 }
 declare module '@material-ui/core/es/transitions/utils.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/transitions/utils'>;
+  declare module.exports: $Exports<'@material-ui/core/es/transitions/utils'>
 }
 declare module '@material-ui/core/es/Typography/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Typography'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Typography'>
 }
 declare module '@material-ui/core/es/Typography/Typography.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Typography/Typography'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Typography/Typography'>
 }
 declare module '@material-ui/core/es/Typography/Typography.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Typography/Typography.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Typography/Typography.test'>
 }
 declare module '@material-ui/core/es/utils/exactProp.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/exactProp'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/exactProp'>
 }
 declare module '@material-ui/core/es/utils/exactProp.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/exactProp.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/exactProp.test'>
 }
 declare module '@material-ui/core/es/utils/helpers.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/helpers'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/helpers'>
 }
 declare module '@material-ui/core/es/utils/helpers.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/helpers.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/helpers.test'>
 }
 declare module '@material-ui/core/es/utils/ownerWindow.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/ownerWindow'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/ownerWindow'>
 }
 declare module '@material-ui/core/es/utils/reactHelpers.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/reactHelpers'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/reactHelpers'>
 }
 declare module '@material-ui/core/es/utils/reactHelpers.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/reactHelpers.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/reactHelpers.test'>
 }
 declare module '@material-ui/core/es/utils/requirePropFactory.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/requirePropFactory'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/requirePropFactory'>
 }
 declare module '@material-ui/core/es/utils/requirePropFactory.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/utils/requirePropFactory.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/utils/requirePropFactory.test'>
 }
 declare module '@material-ui/core/es/withMobileDialog/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog'>
 }
 declare module '@material-ui/core/es/withMobileDialog/withMobileDialog.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog/withMobileDialog'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog/withMobileDialog'>
 }
 declare module '@material-ui/core/es/withMobileDialog/withMobileDialog.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog/withMobileDialog.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withMobileDialog/withMobileDialog.test'>
 }
 declare module '@material-ui/core/es/withWidth/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withWidth'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withWidth'>
 }
 declare module '@material-ui/core/es/withWidth/withWidth.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withWidth/withWidth'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withWidth/withWidth'>
 }
 declare module '@material-ui/core/es/withWidth/withWidth.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/withWidth/withWidth.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/withWidth/withWidth.test'>
 }
 declare module '@material-ui/core/es/Zoom/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Zoom'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Zoom'>
 }
 declare module '@material-ui/core/es/Zoom/Zoom.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Zoom/Zoom'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Zoom/Zoom'>
 }
 declare module '@material-ui/core/es/Zoom/Zoom.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/es/Zoom/Zoom.test'>;
+  declare module.exports: $Exports<'@material-ui/core/es/Zoom/Zoom.test'>
 }
 declare module '@material-ui/core/ExpansionPanel/ExpansionPanel.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel/ExpansionPanel'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel/ExpansionPanel'>
 }
 declare module '@material-ui/core/ExpansionPanel/ExpansionPanel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel/ExpansionPanel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel/ExpansionPanel.test'>
 }
 declare module '@material-ui/core/ExpansionPanel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanel'>
 }
 declare module '@material-ui/core/ExpansionPanelActions/ExpansionPanelActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelActions/ExpansionPanelActions'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelActions/ExpansionPanelActions'>
 }
 declare module '@material-ui/core/ExpansionPanelActions/ExpansionPanelActions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelActions/ExpansionPanelActions.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/ExpansionPanelActions/ExpansionPanelActions.test',
+  >
 }
 declare module '@material-ui/core/ExpansionPanelActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelActions'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelActions'>
 }
 declare module '@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails'>
 }
 declare module '@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/ExpansionPanelDetails/ExpansionPanelDetails.test',
+  >
 }
 declare module '@material-ui/core/ExpansionPanelDetails/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelDetails'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelDetails'>
 }
 declare module '@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary'>
 }
 declare module '@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/ExpansionPanelSummary/ExpansionPanelSummary.test',
+  >
 }
 declare module '@material-ui/core/ExpansionPanelSummary/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelSummary'>;
+  declare module.exports: $Exports<'@material-ui/core/ExpansionPanelSummary'>
 }
 declare module '@material-ui/core/Fade/Fade.js' {
-  declare module.exports: $Exports<'@material-ui/core/Fade/Fade'>;
+  declare module.exports: $Exports<'@material-ui/core/Fade/Fade'>
 }
 declare module '@material-ui/core/Fade/Fade.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Fade/Fade.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Fade/Fade.test'>
 }
 declare module '@material-ui/core/Fade/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Fade'>;
+  declare module.exports: $Exports<'@material-ui/core/Fade'>
 }
 declare module '@material-ui/core/FormControl/FormControl.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControl/FormControl'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControl/FormControl'>
 }
 declare module '@material-ui/core/FormControl/FormControl.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControl/FormControl.test'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControl/FormControl.test'>
 }
 declare module '@material-ui/core/FormControl/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControl'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControl'>
 }
 declare module '@material-ui/core/FormControlLabel/FormControlLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControlLabel/FormControlLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControlLabel/FormControlLabel'>
 }
 declare module '@material-ui/core/FormControlLabel/FormControlLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControlLabel/FormControlLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControlLabel/FormControlLabel.test'>
 }
 declare module '@material-ui/core/FormControlLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormControlLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/FormControlLabel'>
 }
 declare module '@material-ui/core/FormGroup/FormGroup.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormGroup/FormGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/FormGroup/FormGroup'>
 }
 declare module '@material-ui/core/FormGroup/FormGroup.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormGroup/FormGroup.test'>;
+  declare module.exports: $Exports<'@material-ui/core/FormGroup/FormGroup.test'>
 }
 declare module '@material-ui/core/FormGroup/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/FormGroup'>
 }
 declare module '@material-ui/core/FormHelperText/FormHelperText.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormHelperText/FormHelperText'>;
+  declare module.exports: $Exports<'@material-ui/core/FormHelperText/FormHelperText'>
 }
 declare module '@material-ui/core/FormHelperText/FormHelperText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormHelperText/FormHelperText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/FormHelperText/FormHelperText.test'>
 }
 declare module '@material-ui/core/FormHelperText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormHelperText'>;
+  declare module.exports: $Exports<'@material-ui/core/FormHelperText'>
 }
 declare module '@material-ui/core/FormLabel/FormLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormLabel/FormLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/FormLabel/FormLabel'>
 }
 declare module '@material-ui/core/FormLabel/FormLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormLabel/FormLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/FormLabel/FormLabel.test'>
 }
 declare module '@material-ui/core/FormLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/FormLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/FormLabel'>
 }
 declare module '@material-ui/core/Grid/Grid.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grid/Grid'>;
+  declare module.exports: $Exports<'@material-ui/core/Grid/Grid'>
 }
 declare module '@material-ui/core/Grid/Grid.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grid/Grid.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Grid/Grid.test'>
 }
 declare module '@material-ui/core/Grid/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grid'>;
+  declare module.exports: $Exports<'@material-ui/core/Grid'>
 }
 declare module '@material-ui/core/GridList/GridList.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridList/GridList'>;
+  declare module.exports: $Exports<'@material-ui/core/GridList/GridList'>
 }
 declare module '@material-ui/core/GridList/GridList.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridList/GridList.test'>;
+  declare module.exports: $Exports<'@material-ui/core/GridList/GridList.test'>
 }
 declare module '@material-ui/core/GridList/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridList'>;
+  declare module.exports: $Exports<'@material-ui/core/GridList'>
 }
 declare module '@material-ui/core/GridListTile/GridListTile.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTile/GridListTile'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTile/GridListTile'>
 }
 declare module '@material-ui/core/GridListTile/GridListTile.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTile/GridListTile.test'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTile/GridListTile.test'>
 }
 declare module '@material-ui/core/GridListTile/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTile'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTile'>
 }
 declare module '@material-ui/core/GridListTileBar/GridListTileBar.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTileBar/GridListTileBar'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTileBar/GridListTileBar'>
 }
 declare module '@material-ui/core/GridListTileBar/GridListTileBar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTileBar/GridListTileBar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTileBar/GridListTileBar.test'>
 }
 declare module '@material-ui/core/GridListTileBar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/GridListTileBar'>;
+  declare module.exports: $Exports<'@material-ui/core/GridListTileBar'>
 }
 declare module '@material-ui/core/Grow/Grow.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grow/Grow'>;
+  declare module.exports: $Exports<'@material-ui/core/Grow/Grow'>
 }
 declare module '@material-ui/core/Grow/Grow.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grow/Grow.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Grow/Grow.test'>
 }
 declare module '@material-ui/core/Grow/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Grow'>;
+  declare module.exports: $Exports<'@material-ui/core/Grow'>
 }
 declare module '@material-ui/core/Hidden/Hidden.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/Hidden'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/Hidden'>
 }
 declare module '@material-ui/core/Hidden/Hidden.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/Hidden.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/Hidden.test'>
 }
 declare module '@material-ui/core/Hidden/HiddenCss.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenCss'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenCss'>
 }
 declare module '@material-ui/core/Hidden/HiddenCss.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenCss.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenCss.test'>
 }
 declare module '@material-ui/core/Hidden/HiddenJs.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenJs'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenJs'>
 }
 declare module '@material-ui/core/Hidden/HiddenJs.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenJs.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden/HiddenJs.test'>
 }
 declare module '@material-ui/core/Hidden/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Hidden'>;
+  declare module.exports: $Exports<'@material-ui/core/Hidden'>
 }
 declare module '@material-ui/core/Icon/Icon.js' {
-  declare module.exports: $Exports<'@material-ui/core/Icon/Icon'>;
+  declare module.exports: $Exports<'@material-ui/core/Icon/Icon'>
 }
 declare module '@material-ui/core/Icon/Icon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Icon/Icon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Icon/Icon.test'>
 }
 declare module '@material-ui/core/Icon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Icon'>;
+  declare module.exports: $Exports<'@material-ui/core/Icon'>
 }
 declare module '@material-ui/core/IconButton/IconButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/IconButton/IconButton'>;
+  declare module.exports: $Exports<'@material-ui/core/IconButton/IconButton'>
 }
 declare module '@material-ui/core/IconButton/IconButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/IconButton/IconButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/IconButton/IconButton.test'>
 }
 declare module '@material-ui/core/IconButton/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/IconButton'>;
+  declare module.exports: $Exports<'@material-ui/core/IconButton'>
 }
 declare module '@material-ui/core/index.es.js' {
-  declare module.exports: $Exports<'@material-ui/core/index.es'>;
+  declare module.exports: $Exports<'@material-ui/core/index.es'>
 }
 declare module '@material-ui/core' {
-  declare module.exports: $Exports<'@material-ui/core'>;
+  declare module.exports: $Exports<'@material-ui/core'>
 }
 declare module '@material-ui/core/index.js' {
-  declare module.exports: $Exports<'@material-ui/core'>;
+  declare module.exports: $Exports<'@material-ui/core'>
 }
 declare module '@material-ui/core/index.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/index.test'>;
+  declare module.exports: $Exports<'@material-ui/core/index.test'>
 }
 declare module '@material-ui/core/Input/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Input'>;
+  declare module.exports: $Exports<'@material-ui/core/Input'>
 }
 declare module '@material-ui/core/Input/Input.js' {
-  declare module.exports: $Exports<'@material-ui/core/Input/Input'>;
+  declare module.exports: $Exports<'@material-ui/core/Input/Input'>
 }
 declare module '@material-ui/core/Input/Input.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Input/Input.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Input/Input.test'>
 }
 declare module '@material-ui/core/Input/Textarea.js' {
-  declare module.exports: $Exports<'@material-ui/core/Input/Textarea'>;
+  declare module.exports: $Exports<'@material-ui/core/Input/Textarea'>
 }
 declare module '@material-ui/core/Input/Textarea.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Input/Textarea.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Input/Textarea.test'>
 }
 declare module '@material-ui/core/InputAdornment/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputAdornment'>;
+  declare module.exports: $Exports<'@material-ui/core/InputAdornment'>
 }
 declare module '@material-ui/core/InputAdornment/InputAdornment.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputAdornment/InputAdornment'>;
+  declare module.exports: $Exports<'@material-ui/core/InputAdornment/InputAdornment'>
 }
 declare module '@material-ui/core/InputAdornment/InputAdornment.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputAdornment/InputAdornment.test'>;
+  declare module.exports: $Exports<'@material-ui/core/InputAdornment/InputAdornment.test'>
 }
 declare module '@material-ui/core/InputLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/InputLabel'>
 }
 declare module '@material-ui/core/InputLabel/InputLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputLabel/InputLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/InputLabel/InputLabel'>
 }
 declare module '@material-ui/core/InputLabel/InputLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/InputLabel/InputLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/InputLabel/InputLabel.test'>
 }
 declare module '@material-ui/core/internal/svg-icons/ArrowDownward.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/ArrowDownward'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/ArrowDownward'>
 }
 declare module '@material-ui/core/internal/svg-icons/ArrowDropDown.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/ArrowDropDown'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/ArrowDropDown'>
 }
 declare module '@material-ui/core/internal/svg-icons/Cancel.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/Cancel'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/Cancel'>
 }
 declare module '@material-ui/core/internal/svg-icons/CheckBox.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckBox'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckBox'>
 }
 declare module '@material-ui/core/internal/svg-icons/CheckBoxOutlineBlank.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckBoxOutlineBlank'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckBoxOutlineBlank'>
 }
 declare module '@material-ui/core/internal/svg-icons/CheckCircle.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckCircle'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/CheckCircle'>
 }
 declare module '@material-ui/core/internal/svg-icons/IndeterminateCheckBox.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/IndeterminateCheckBox'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/IndeterminateCheckBox'>
 }
 declare module '@material-ui/core/internal/svg-icons/index.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/index.test'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/index.test'>
 }
 declare module '@material-ui/core/internal/svg-icons/KeyboardArrowLeft.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/KeyboardArrowLeft'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/KeyboardArrowLeft'>
 }
 declare module '@material-ui/core/internal/svg-icons/KeyboardArrowRight.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/KeyboardArrowRight'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/KeyboardArrowRight'>
 }
 declare module '@material-ui/core/internal/svg-icons/RadioButtonChecked.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/RadioButtonChecked'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/RadioButtonChecked'>
 }
 declare module '@material-ui/core/internal/svg-icons/RadioButtonUnchecked.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/RadioButtonUnchecked'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/RadioButtonUnchecked'>
 }
 declare module '@material-ui/core/internal/svg-icons/Warning.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/Warning'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/svg-icons/Warning'>
 }
 declare module '@material-ui/core/internal/SwitchBase.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/SwitchBase'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/SwitchBase'>
 }
 declare module '@material-ui/core/internal/SwitchBase.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/internal/SwitchBase.test'>;
+  declare module.exports: $Exports<'@material-ui/core/internal/SwitchBase.test'>
 }
 declare module '@material-ui/core/LinearProgress/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/LinearProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/LinearProgress'>
 }
 declare module '@material-ui/core/LinearProgress/LinearProgress.js' {
-  declare module.exports: $Exports<'@material-ui/core/LinearProgress/LinearProgress'>;
+  declare module.exports: $Exports<'@material-ui/core/LinearProgress/LinearProgress'>
 }
 declare module '@material-ui/core/LinearProgress/LinearProgress.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/LinearProgress/LinearProgress.test'>;
+  declare module.exports: $Exports<'@material-ui/core/LinearProgress/LinearProgress.test'>
 }
 declare module '@material-ui/core/List/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/List'>;
+  declare module.exports: $Exports<'@material-ui/core/List'>
 }
 declare module '@material-ui/core/List/List.js' {
-  declare module.exports: $Exports<'@material-ui/core/List/List'>;
+  declare module.exports: $Exports<'@material-ui/core/List/List'>
 }
 declare module '@material-ui/core/List/List.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/List/List.test'>;
+  declare module.exports: $Exports<'@material-ui/core/List/List.test'>
 }
 declare module '@material-ui/core/ListItem/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItem'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItem'>
 }
 declare module '@material-ui/core/ListItem/ListItem.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItem/ListItem'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItem/ListItem'>
 }
 declare module '@material-ui/core/ListItem/ListItem.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItem/ListItem.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItem/ListItem.test'>
 }
 declare module '@material-ui/core/ListItemAvatar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar'>
 }
 declare module '@material-ui/core/ListItemAvatar/ListItemAvatar.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar/ListItemAvatar'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar/ListItemAvatar'>
 }
 declare module '@material-ui/core/ListItemAvatar/ListItemAvatar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar/ListItemAvatar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemAvatar/ListItemAvatar.test'>
 }
 declare module '@material-ui/core/ListItemIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemIcon'>
 }
 declare module '@material-ui/core/ListItemIcon/ListItemIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemIcon/ListItemIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemIcon/ListItemIcon'>
 }
 declare module '@material-ui/core/ListItemIcon/ListItemIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemIcon/ListItemIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemIcon/ListItemIcon.test'>
 }
 declare module '@material-ui/core/ListItemSecondaryAction/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemSecondaryAction'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemSecondaryAction'>
 }
 declare module '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction',
+  >
 }
 declare module '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction.test'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/ListItemSecondaryAction/ListItemSecondaryAction.test',
+  >
 }
 declare module '@material-ui/core/ListItemText/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemText'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemText'>
 }
 declare module '@material-ui/core/ListItemText/ListItemText.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemText/ListItemText'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemText/ListItemText'>
 }
 declare module '@material-ui/core/ListItemText/ListItemText.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListItemText/ListItemText.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ListItemText/ListItemText.test'>
 }
 declare module '@material-ui/core/ListSubheader/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListSubheader'>;
+  declare module.exports: $Exports<'@material-ui/core/ListSubheader'>
 }
 declare module '@material-ui/core/ListSubheader/ListSubheader.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListSubheader/ListSubheader'>;
+  declare module.exports: $Exports<'@material-ui/core/ListSubheader/ListSubheader'>
 }
 declare module '@material-ui/core/ListSubheader/ListSubheader.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/ListSubheader/ListSubheader.test'>;
+  declare module.exports: $Exports<'@material-ui/core/ListSubheader/ListSubheader.test'>
 }
 declare module '@material-ui/core/Menu/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Menu'>;
+  declare module.exports: $Exports<'@material-ui/core/Menu'>
 }
 declare module '@material-ui/core/Menu/Menu.js' {
-  declare module.exports: $Exports<'@material-ui/core/Menu/Menu'>;
+  declare module.exports: $Exports<'@material-ui/core/Menu/Menu'>
 }
 declare module '@material-ui/core/Menu/Menu.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Menu/Menu.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Menu/Menu.test'>
 }
 declare module '@material-ui/core/MenuItem/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuItem'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuItem'>
 }
 declare module '@material-ui/core/MenuItem/MenuItem.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuItem/MenuItem'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuItem/MenuItem'>
 }
 declare module '@material-ui/core/MenuItem/MenuItem.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuItem/MenuItem.test'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuItem/MenuItem.test'>
 }
 declare module '@material-ui/core/MenuList/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuList'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuList'>
 }
 declare module '@material-ui/core/MenuList/MenuList.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuList/MenuList'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuList/MenuList'>
 }
 declare module '@material-ui/core/MenuList/MenuList.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/MenuList/MenuList.test'>;
+  declare module.exports: $Exports<'@material-ui/core/MenuList/MenuList.test'>
 }
 declare module '@material-ui/core/MobileStepper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/MobileStepper'>;
+  declare module.exports: $Exports<'@material-ui/core/MobileStepper'>
 }
 declare module '@material-ui/core/MobileStepper/MobileStepper.js' {
-  declare module.exports: $Exports<'@material-ui/core/MobileStepper/MobileStepper'>;
+  declare module.exports: $Exports<'@material-ui/core/MobileStepper/MobileStepper'>
 }
 declare module '@material-ui/core/MobileStepper/MobileStepper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/MobileStepper/MobileStepper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/MobileStepper/MobileStepper.test'>
 }
 declare module '@material-ui/core/Modal/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal'>
 }
 declare module '@material-ui/core/Modal/isOverflowing.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/isOverflowing'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/isOverflowing'>
 }
 declare module '@material-ui/core/Modal/isOverflowing.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/isOverflowing.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/isOverflowing.test'>
 }
 declare module '@material-ui/core/Modal/manageAriaHidden.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/manageAriaHidden'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/manageAriaHidden'>
 }
 declare module '@material-ui/core/Modal/Modal.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/Modal'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/Modal'>
 }
 declare module '@material-ui/core/Modal/Modal.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/Modal.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/Modal.test'>
 }
 declare module '@material-ui/core/Modal/ModalManager.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/ModalManager'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/ModalManager'>
 }
 declare module '@material-ui/core/Modal/ModalManager.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Modal/ModalManager.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Modal/ModalManager.test'>
 }
 declare module '@material-ui/core/Paper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Paper'>;
+  declare module.exports: $Exports<'@material-ui/core/Paper'>
 }
 declare module '@material-ui/core/Paper/Paper.js' {
-  declare module.exports: $Exports<'@material-ui/core/Paper/Paper'>;
+  declare module.exports: $Exports<'@material-ui/core/Paper/Paper'>
 }
 declare module '@material-ui/core/Paper/Paper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Paper/Paper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Paper/Paper.test'>
 }
 declare module '@material-ui/core/Popover/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Popover'>;
+  declare module.exports: $Exports<'@material-ui/core/Popover'>
 }
 declare module '@material-ui/core/Popover/Popover.js' {
-  declare module.exports: $Exports<'@material-ui/core/Popover/Popover'>;
+  declare module.exports: $Exports<'@material-ui/core/Popover/Popover'>
 }
 declare module '@material-ui/core/Popover/Popover.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Popover/Popover.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Popover/Popover.test'>
 }
 declare module '@material-ui/core/Portal/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Portal'>;
+  declare module.exports: $Exports<'@material-ui/core/Portal'>
 }
 declare module '@material-ui/core/Portal/Portal.js' {
-  declare module.exports: $Exports<'@material-ui/core/Portal/Portal'>;
+  declare module.exports: $Exports<'@material-ui/core/Portal/Portal'>
 }
 declare module '@material-ui/core/Portal/Portal.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Portal/Portal.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Portal/Portal.test'>
 }
 declare module '@material-ui/core/Radio/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Radio'>;
+  declare module.exports: $Exports<'@material-ui/core/Radio'>
 }
 declare module '@material-ui/core/Radio/Radio.js' {
-  declare module.exports: $Exports<'@material-ui/core/Radio/Radio'>;
+  declare module.exports: $Exports<'@material-ui/core/Radio/Radio'>
 }
 declare module '@material-ui/core/Radio/Radio.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Radio/Radio.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Radio/Radio.test'>
 }
 declare module '@material-ui/core/RadioGroup/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/RadioGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/RadioGroup'>
 }
 declare module '@material-ui/core/RadioGroup/RadioGroup.js' {
-  declare module.exports: $Exports<'@material-ui/core/RadioGroup/RadioGroup'>;
+  declare module.exports: $Exports<'@material-ui/core/RadioGroup/RadioGroup'>
 }
 declare module '@material-ui/core/RadioGroup/RadioGroup.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/RadioGroup/RadioGroup.test'>;
+  declare module.exports: $Exports<'@material-ui/core/RadioGroup/RadioGroup.test'>
 }
 declare module '@material-ui/core/RootRef/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/RootRef'>;
+  declare module.exports: $Exports<'@material-ui/core/RootRef'>
 }
 declare module '@material-ui/core/RootRef/RootRef.js' {
-  declare module.exports: $Exports<'@material-ui/core/RootRef/RootRef'>;
+  declare module.exports: $Exports<'@material-ui/core/RootRef/RootRef'>
 }
 declare module '@material-ui/core/Select/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Select'>;
+  declare module.exports: $Exports<'@material-ui/core/Select'>
 }
 declare module '@material-ui/core/Select/Select.js' {
-  declare module.exports: $Exports<'@material-ui/core/Select/Select'>;
+  declare module.exports: $Exports<'@material-ui/core/Select/Select'>
 }
 declare module '@material-ui/core/Select/Select.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Select/Select.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Select/Select.test'>
 }
 declare module '@material-ui/core/Select/SelectInput.js' {
-  declare module.exports: $Exports<'@material-ui/core/Select/SelectInput'>;
+  declare module.exports: $Exports<'@material-ui/core/Select/SelectInput'>
 }
 declare module '@material-ui/core/Select/SelectInput.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Select/SelectInput.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Select/SelectInput.test'>
 }
 declare module '@material-ui/core/Slide/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Slide'>;
+  declare module.exports: $Exports<'@material-ui/core/Slide'>
 }
 declare module '@material-ui/core/Slide/Slide.js' {
-  declare module.exports: $Exports<'@material-ui/core/Slide/Slide'>;
+  declare module.exports: $Exports<'@material-ui/core/Slide/Slide'>
 }
 declare module '@material-ui/core/Slide/Slide.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Slide/Slide.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Slide/Slide.test'>
 }
 declare module '@material-ui/core/Snackbar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Snackbar'>;
+  declare module.exports: $Exports<'@material-ui/core/Snackbar'>
 }
 declare module '@material-ui/core/Snackbar/Snackbar.js' {
-  declare module.exports: $Exports<'@material-ui/core/Snackbar/Snackbar'>;
+  declare module.exports: $Exports<'@material-ui/core/Snackbar/Snackbar'>
 }
 declare module '@material-ui/core/Snackbar/Snackbar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Snackbar/Snackbar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Snackbar/Snackbar.test'>
 }
 declare module '@material-ui/core/SnackbarContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/SnackbarContent'>;
+  declare module.exports: $Exports<'@material-ui/core/SnackbarContent'>
 }
 declare module '@material-ui/core/SnackbarContent/SnackbarContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/SnackbarContent/SnackbarContent'>;
+  declare module.exports: $Exports<'@material-ui/core/SnackbarContent/SnackbarContent'>
 }
 declare module '@material-ui/core/SnackbarContent/SnackbarContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/SnackbarContent/SnackbarContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/SnackbarContent/SnackbarContent.test'>
 }
 declare module '@material-ui/core/Step/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Step'>;
+  declare module.exports: $Exports<'@material-ui/core/Step'>
 }
 declare module '@material-ui/core/Step/Step.js' {
-  declare module.exports: $Exports<'@material-ui/core/Step/Step'>;
+  declare module.exports: $Exports<'@material-ui/core/Step/Step'>
 }
 declare module '@material-ui/core/Step/Step.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Step/Step.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Step/Step.test'>
 }
 declare module '@material-ui/core/StepButton/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepButton'>;
+  declare module.exports: $Exports<'@material-ui/core/StepButton'>
 }
 declare module '@material-ui/core/StepButton/StepButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepButton/StepButton'>;
+  declare module.exports: $Exports<'@material-ui/core/StepButton/StepButton'>
 }
 declare module '@material-ui/core/StepButton/StepButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepButton/StepButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepButton/StepButton.test'>
 }
 declare module '@material-ui/core/StepConnector/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepConnector'>;
+  declare module.exports: $Exports<'@material-ui/core/StepConnector'>
 }
 declare module '@material-ui/core/StepConnector/StepConnector.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepConnector/StepConnector'>;
+  declare module.exports: $Exports<'@material-ui/core/StepConnector/StepConnector'>
 }
 declare module '@material-ui/core/StepConnector/StepConnector.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepConnector/StepConnector.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepConnector/StepConnector.test'>
 }
 declare module '@material-ui/core/StepContent/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepContent'>;
+  declare module.exports: $Exports<'@material-ui/core/StepContent'>
 }
 declare module '@material-ui/core/StepContent/StepContent.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepContent/StepContent'>;
+  declare module.exports: $Exports<'@material-ui/core/StepContent/StepContent'>
 }
 declare module '@material-ui/core/StepContent/StepContent.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepContent/StepContent.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepContent/StepContent.test'>
 }
 declare module '@material-ui/core/StepIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/StepIcon'>
 }
 declare module '@material-ui/core/StepIcon/StepIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepIcon'>
 }
 declare module '@material-ui/core/StepIcon/StepIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepIcon.test'>
 }
 declare module '@material-ui/core/StepIcon/StepPositionIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepPositionIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepPositionIcon'>
 }
 declare module '@material-ui/core/StepIcon/StepPositionIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepPositionIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepIcon/StepPositionIcon.test'>
 }
 declare module '@material-ui/core/StepLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/StepLabel'>
 }
 declare module '@material-ui/core/StepLabel/StepLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepLabel/StepLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/StepLabel/StepLabel'>
 }
 declare module '@material-ui/core/StepLabel/StepLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/StepLabel/StepLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/StepLabel/StepLabel.test'>
 }
 declare module '@material-ui/core/Stepper/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Stepper'>;
+  declare module.exports: $Exports<'@material-ui/core/Stepper'>
 }
 declare module '@material-ui/core/Stepper/Stepper.js' {
-  declare module.exports: $Exports<'@material-ui/core/Stepper/Stepper'>;
+  declare module.exports: $Exports<'@material-ui/core/Stepper/Stepper'>
 }
 declare module '@material-ui/core/Stepper/Stepper.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Stepper/Stepper.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Stepper/Stepper.test'>
 }
 declare module '@material-ui/core/styles/colorManipulator.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/colorManipulator'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/colorManipulator'>
 }
 declare module '@material-ui/core/styles/colorManipulator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/colorManipulator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/colorManipulator.test'>
 }
 declare module '@material-ui/core/styles/createBreakpoints.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createBreakpoints'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createBreakpoints'>
 }
 declare module '@material-ui/core/styles/createBreakpoints.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createBreakpoints.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createBreakpoints.test'>
 }
 declare module '@material-ui/core/styles/createGenerateClassName.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createGenerateClassName'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createGenerateClassName'>
 }
 declare module '@material-ui/core/styles/createGenerateClassName.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createGenerateClassName.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createGenerateClassName.test'>
 }
 declare module '@material-ui/core/styles/createMixins.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createMixins'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createMixins'>
 }
 declare module '@material-ui/core/styles/createMixins.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createMixins.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createMixins.test'>
 }
 declare module '@material-ui/core/styles/createMuiTheme.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createMuiTheme'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createMuiTheme'>
 }
 declare module '@material-ui/core/styles/createMuiTheme.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createMuiTheme.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createMuiTheme.test'>
 }
 declare module '@material-ui/core/styles/createPalette.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createPalette'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createPalette'>
 }
 declare module '@material-ui/core/styles/createPalette.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createPalette.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createPalette.test'>
 }
 declare module '@material-ui/core/styles/createTypography.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createTypography'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createTypography'>
 }
 declare module '@material-ui/core/styles/createTypography.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/createTypography.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/createTypography.test'>
 }
 declare module '@material-ui/core/styles/getStylesCreator.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/getStylesCreator'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/getStylesCreator'>
 }
 declare module '@material-ui/core/styles/getStylesCreator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/getStylesCreator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/getStylesCreator.test'>
 }
 declare module '@material-ui/core/styles/getThemeProps.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/getThemeProps'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/getThemeProps'>
 }
 declare module '@material-ui/core/styles/getThemeProps.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/getThemeProps.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/getThemeProps.test'>
 }
 declare module '@material-ui/core/styles/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles'>;
+  declare module.exports: $Exports<'@material-ui/core/styles'>
 }
 declare module '@material-ui/core/styles/jssPreset.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/jssPreset'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/jssPreset'>
 }
 declare module '@material-ui/core/styles/MuiThemeProvider.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/MuiThemeProvider'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/MuiThemeProvider'>
 }
 declare module '@material-ui/core/styles/MuiThemeProvider.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/MuiThemeProvider.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/MuiThemeProvider.test'>
 }
 declare module '@material-ui/core/styles/shadows.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/shadows'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/shadows'>
 }
 declare module '@material-ui/core/styles/spacing.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/spacing'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/spacing'>
 }
 declare module '@material-ui/core/styles/themeListener.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/themeListener'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/themeListener'>
 }
 declare module '@material-ui/core/styles/themeListener.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/themeListener.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/themeListener.test'>
 }
 declare module '@material-ui/core/styles/transitions.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/transitions'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/transitions'>
 }
 declare module '@material-ui/core/styles/transitions.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/transitions.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/transitions.test'>
 }
 declare module '@material-ui/core/styles/withStyles.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/withStyles'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/withStyles'>
 }
 declare module '@material-ui/core/styles/withStyles.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/withStyles.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/withStyles.test'>
 }
 declare module '@material-ui/core/styles/withTheme.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/withTheme'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/withTheme'>
 }
 declare module '@material-ui/core/styles/withTheme.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/withTheme.test'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/withTheme.test'>
 }
 declare module '@material-ui/core/styles/zIndex.js' {
-  declare module.exports: $Exports<'@material-ui/core/styles/zIndex'>;
+  declare module.exports: $Exports<'@material-ui/core/styles/zIndex'>
 }
 declare module '@material-ui/core/SvgIcon/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/SvgIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/SvgIcon'>
 }
 declare module '@material-ui/core/SvgIcon/SvgIcon.js' {
-  declare module.exports: $Exports<'@material-ui/core/SvgIcon/SvgIcon'>;
+  declare module.exports: $Exports<'@material-ui/core/SvgIcon/SvgIcon'>
 }
 declare module '@material-ui/core/SvgIcon/SvgIcon.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/SvgIcon/SvgIcon.test'>;
+  declare module.exports: $Exports<'@material-ui/core/SvgIcon/SvgIcon.test'>
 }
 declare module '@material-ui/core/SwipeableDrawer/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer'>;
+  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer'>
 }
 declare module '@material-ui/core/SwipeableDrawer/SwipeableDrawer.js' {
-  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeableDrawer'>;
+  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeableDrawer'>
 }
 declare module '@material-ui/core/SwipeableDrawer/SwipeableDrawer.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeableDrawer.test'>;
+  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeableDrawer.test'>
 }
 declare module '@material-ui/core/SwipeableDrawer/SwipeArea.js' {
-  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeArea'>;
+  declare module.exports: $Exports<'@material-ui/core/SwipeableDrawer/SwipeArea'>
 }
 declare module '@material-ui/core/Switch/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Switch'>;
+  declare module.exports: $Exports<'@material-ui/core/Switch'>
 }
 declare module '@material-ui/core/Switch/Switch.js' {
-  declare module.exports: $Exports<'@material-ui/core/Switch/Switch'>;
+  declare module.exports: $Exports<'@material-ui/core/Switch/Switch'>
 }
 declare module '@material-ui/core/Switch/Switch.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Switch/Switch.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Switch/Switch.test'>
 }
 declare module '@material-ui/core/Tab/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tab'>;
+  declare module.exports: $Exports<'@material-ui/core/Tab'>
 }
 declare module '@material-ui/core/Tab/Tab.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tab/Tab'>;
+  declare module.exports: $Exports<'@material-ui/core/Tab/Tab'>
 }
 declare module '@material-ui/core/Tab/Tab.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tab/Tab.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Tab/Tab.test'>
 }
 declare module '@material-ui/core/Table/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Table'>;
+  declare module.exports: $Exports<'@material-ui/core/Table'>
 }
 declare module '@material-ui/core/Table/Table.js' {
-  declare module.exports: $Exports<'@material-ui/core/Table/Table'>;
+  declare module.exports: $Exports<'@material-ui/core/Table/Table'>
 }
 declare module '@material-ui/core/Table/Table.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Table/Table.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Table/Table.test'>
 }
 declare module '@material-ui/core/TableBody/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableBody'>;
+  declare module.exports: $Exports<'@material-ui/core/TableBody'>
 }
 declare module '@material-ui/core/TableBody/TableBody.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableBody/TableBody'>;
+  declare module.exports: $Exports<'@material-ui/core/TableBody/TableBody'>
 }
 declare module '@material-ui/core/TableBody/TableBody.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableBody/TableBody.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableBody/TableBody.test'>
 }
 declare module '@material-ui/core/TableCell/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableCell'>;
+  declare module.exports: $Exports<'@material-ui/core/TableCell'>
 }
 declare module '@material-ui/core/TableCell/TableCell.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableCell/TableCell'>;
+  declare module.exports: $Exports<'@material-ui/core/TableCell/TableCell'>
 }
 declare module '@material-ui/core/TableCell/TableCell.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableCell/TableCell.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableCell/TableCell.test'>
 }
 declare module '@material-ui/core/TableFooter/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableFooter'>;
+  declare module.exports: $Exports<'@material-ui/core/TableFooter'>
 }
 declare module '@material-ui/core/TableFooter/TableFooter.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableFooter/TableFooter'>;
+  declare module.exports: $Exports<'@material-ui/core/TableFooter/TableFooter'>
 }
 declare module '@material-ui/core/TableFooter/TableFooter.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableFooter/TableFooter.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableFooter/TableFooter.test'>
 }
 declare module '@material-ui/core/TableHead/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableHead'>;
+  declare module.exports: $Exports<'@material-ui/core/TableHead'>
 }
 declare module '@material-ui/core/TableHead/TableHead.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableHead/TableHead'>;
+  declare module.exports: $Exports<'@material-ui/core/TableHead/TableHead'>
 }
 declare module '@material-ui/core/TableHead/TableHead.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableHead/TableHead.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableHead/TableHead.test'>
 }
 declare module '@material-ui/core/TablePagination/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TablePagination'>;
+  declare module.exports: $Exports<'@material-ui/core/TablePagination'>
 }
 declare module '@material-ui/core/TablePagination/TablePagination.js' {
-  declare module.exports: $Exports<'@material-ui/core/TablePagination/TablePagination'>;
+  declare module.exports: $Exports<'@material-ui/core/TablePagination/TablePagination'>
 }
 declare module '@material-ui/core/TablePagination/TablePagination.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TablePagination/TablePagination.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TablePagination/TablePagination.test'>
 }
 declare module '@material-ui/core/TablePaginationActions/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TablePaginationActions'>;
+  declare module.exports: $Exports<'@material-ui/core/TablePaginationActions'>
 }
 declare module '@material-ui/core/TablePaginationActions/TablePaginationActions.js' {
-  declare module.exports: $Exports<'@material-ui/core/TablePaginationActions/TablePaginationActions'>;
+  declare module.exports: $Exports<
+    '@material-ui/core/TablePaginationActions/TablePaginationActions',
+  >
 }
 declare module '@material-ui/core/TableRow/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableRow'>;
+  declare module.exports: $Exports<'@material-ui/core/TableRow'>
 }
 declare module '@material-ui/core/TableRow/TableRow.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableRow/TableRow'>;
+  declare module.exports: $Exports<'@material-ui/core/TableRow/TableRow'>
 }
 declare module '@material-ui/core/TableRow/TableRow.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableRow/TableRow.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableRow/TableRow.test'>
 }
 declare module '@material-ui/core/TableSortLabel/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableSortLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/TableSortLabel'>
 }
 declare module '@material-ui/core/TableSortLabel/TableSortLabel.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableSortLabel/TableSortLabel'>;
+  declare module.exports: $Exports<'@material-ui/core/TableSortLabel/TableSortLabel'>
 }
 declare module '@material-ui/core/TableSortLabel/TableSortLabel.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TableSortLabel/TableSortLabel.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TableSortLabel/TableSortLabel.test'>
 }
 declare module '@material-ui/core/Tabs/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs'>
 }
 declare module '@material-ui/core/Tabs/TabIndicator.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/TabIndicator'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/TabIndicator'>
 }
 declare module '@material-ui/core/Tabs/TabIndicator.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/TabIndicator.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/TabIndicator.test'>
 }
 declare module '@material-ui/core/Tabs/Tabs.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/Tabs'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/Tabs'>
 }
 declare module '@material-ui/core/Tabs/Tabs.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/Tabs.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/Tabs.test'>
 }
 declare module '@material-ui/core/Tabs/TabScrollButton.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/TabScrollButton'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/TabScrollButton'>
 }
 declare module '@material-ui/core/Tabs/TabScrollButton.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tabs/TabScrollButton.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Tabs/TabScrollButton.test'>
 }
 declare module '@material-ui/core/test-utils/createMount.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/createMount'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/createMount'>
 }
 declare module '@material-ui/core/test-utils/createRender.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/createRender'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/createRender'>
 }
 declare module '@material-ui/core/test-utils/createShallow.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/createShallow'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/createShallow'>
 }
 declare module '@material-ui/core/test-utils/getClasses.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/getClasses'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/getClasses'>
 }
 declare module '@material-ui/core/test-utils/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils'>
 }
 declare module '@material-ui/core/test-utils/until.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/until'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/until'>
 }
 declare module '@material-ui/core/test-utils/until.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/until.test'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/until.test'>
 }
 declare module '@material-ui/core/test-utils/unwrap.js' {
-  declare module.exports: $Exports<'@material-ui/core/test-utils/unwrap'>;
+  declare module.exports: $Exports<'@material-ui/core/test-utils/unwrap'>
 }
 declare module '@material-ui/core/TextField/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/TextField'>;
+  declare module.exports: $Exports<'@material-ui/core/TextField'>
 }
 declare module '@material-ui/core/TextField/TextField.js' {
-  declare module.exports: $Exports<'@material-ui/core/TextField/TextField'>;
+  declare module.exports: $Exports<'@material-ui/core/TextField/TextField'>
 }
 declare module '@material-ui/core/TextField/TextField.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/TextField/TextField.test'>;
+  declare module.exports: $Exports<'@material-ui/core/TextField/TextField.test'>
 }
 declare module '@material-ui/core/Toolbar/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Toolbar'>;
+  declare module.exports: $Exports<'@material-ui/core/Toolbar'>
 }
 declare module '@material-ui/core/Toolbar/Toolbar.js' {
-  declare module.exports: $Exports<'@material-ui/core/Toolbar/Toolbar'>;
+  declare module.exports: $Exports<'@material-ui/core/Toolbar/Toolbar'>
 }
 declare module '@material-ui/core/Toolbar/Toolbar.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Toolbar/Toolbar.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Toolbar/Toolbar.test'>
 }
 declare module '@material-ui/core/Tooltip/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tooltip'>;
+  declare module.exports: $Exports<'@material-ui/core/Tooltip'>
 }
 declare module '@material-ui/core/Tooltip/Tooltip.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tooltip/Tooltip'>;
+  declare module.exports: $Exports<'@material-ui/core/Tooltip/Tooltip'>
 }
 declare module '@material-ui/core/Tooltip/Tooltip.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Tooltip/Tooltip.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Tooltip/Tooltip.test'>
 }
 declare module '@material-ui/core/transitions/utils.js' {
-  declare module.exports: $Exports<'@material-ui/core/transitions/utils'>;
+  declare module.exports: $Exports<'@material-ui/core/transitions/utils'>
 }
 declare module '@material-ui/core/Typography/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Typography'>;
+  declare module.exports: $Exports<'@material-ui/core/Typography'>
 }
 declare module '@material-ui/core/Typography/Typography.js' {
-  declare module.exports: $Exports<'@material-ui/core/Typography/Typography'>;
+  declare module.exports: $Exports<'@material-ui/core/Typography/Typography'>
 }
 declare module '@material-ui/core/Typography/Typography.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Typography/Typography.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Typography/Typography.test'>
 }
 declare module '@material-ui/core/umd/material-ui.development.js' {
-  declare module.exports: $Exports<'@material-ui/core/umd/material-ui.development'>;
+  declare module.exports: $Exports<'@material-ui/core/umd/material-ui.development'>
 }
 declare module '@material-ui/core/umd/material-ui.production.min.js' {
-  declare module.exports: $Exports<'@material-ui/core/umd/material-ui.production.min'>;
+  declare module.exports: $Exports<'@material-ui/core/umd/material-ui.production.min'>
 }
 declare module '@material-ui/core/utils/exactProp.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/exactProp'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/exactProp'>
 }
 declare module '@material-ui/core/utils/exactProp.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/exactProp.test'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/exactProp.test'>
 }
 declare module '@material-ui/core/utils/helpers.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/helpers'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/helpers'>
 }
 declare module '@material-ui/core/utils/helpers.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/helpers.test'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/helpers.test'>
 }
 declare module '@material-ui/core/utils/ownerWindow.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/ownerWindow'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/ownerWindow'>
 }
 declare module '@material-ui/core/utils/reactHelpers.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/reactHelpers'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/reactHelpers'>
 }
 declare module '@material-ui/core/utils/reactHelpers.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/reactHelpers.test'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/reactHelpers.test'>
 }
 declare module '@material-ui/core/utils/requirePropFactory.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/requirePropFactory'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/requirePropFactory'>
 }
 declare module '@material-ui/core/utils/requirePropFactory.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/utils/requirePropFactory.test'>;
+  declare module.exports: $Exports<'@material-ui/core/utils/requirePropFactory.test'>
 }
 declare module '@material-ui/core/withMobileDialog/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/withMobileDialog'>;
+  declare module.exports: $Exports<'@material-ui/core/withMobileDialog'>
 }
 declare module '@material-ui/core/withMobileDialog/withMobileDialog.js' {
-  declare module.exports: $Exports<'@material-ui/core/withMobileDialog/withMobileDialog'>;
+  declare module.exports: $Exports<'@material-ui/core/withMobileDialog/withMobileDialog'>
 }
 declare module '@material-ui/core/withMobileDialog/withMobileDialog.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/withMobileDialog/withMobileDialog.test'>;
+  declare module.exports: $Exports<'@material-ui/core/withMobileDialog/withMobileDialog.test'>
 }
 declare module '@material-ui/core/withWidth/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/withWidth'>;
+  declare module.exports: $Exports<'@material-ui/core/withWidth'>
 }
 declare module '@material-ui/core/withWidth/withWidth.js' {
-  declare module.exports: $Exports<'@material-ui/core/withWidth/withWidth'>;
+  declare module.exports: $Exports<'@material-ui/core/withWidth/withWidth'>
 }
 declare module '@material-ui/core/withWidth/withWidth.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/withWidth/withWidth.test'>;
+  declare module.exports: $Exports<'@material-ui/core/withWidth/withWidth.test'>
 }
 declare module '@material-ui/core/Zoom/index.js' {
-  declare module.exports: $Exports<'@material-ui/core/Zoom'>;
+  declare module.exports: $Exports<'@material-ui/core/Zoom'>
 }
 declare module '@material-ui/core/Zoom/Zoom.js' {
-  declare module.exports: $Exports<'@material-ui/core/Zoom/Zoom'>;
+  declare module.exports: $Exports<'@material-ui/core/Zoom/Zoom'>
 }
 declare module '@material-ui/core/Zoom/Zoom.test.js' {
-  declare module.exports: $Exports<'@material-ui/core/Zoom/Zoom.test'>;
+  declare module.exports: $Exports<'@material-ui/core/Zoom/Zoom.test'>
 }

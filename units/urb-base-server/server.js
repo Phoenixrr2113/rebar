@@ -9,7 +9,7 @@ import express from 'express'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 
-import { name, version } from '../_configuration/package'
+import { name, version } from '../../package.json'
 import servers from '../_configuration/urb-base-server/servers'
 
 import getLocalIP from './getLocalIP'

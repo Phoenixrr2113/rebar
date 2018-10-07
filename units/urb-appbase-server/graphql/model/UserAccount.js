@@ -25,4 +25,4 @@ export default class UserAccount {
   }
 }
 
-ObjectManager.registerEntity( 'UserAccount', UserAccount )
+ObjectManager.registerEntity( 'UserAccount', UserAccount, {})

@@ -14,10 +14,10 @@ import NodeInterface from '../NodeInterface'
 import _ViewerFields from '../../../_configuration/urb-base-server/graphql/_ViewerFields'
 import User from '../../../_configuration/urb-base-server/graphql/model/User'
 
-import ObjectUserPermissionsConnection from './ObjectUserPermissionsConnection'
-import ObjectUserPermissionType from './ObjectUserPermissionType'
-import ResourceUserAllowancesConnection from './ResourceUserAllowancesConnection'
-import ResourceUserAllowanceType from './ResourceUserAllowanceType'
+import UserPermissionForObjectsConnection from './UserPermissionForObjectsConnection'
+import UserPermissionForObjectType from './UserPermissionForObjectType'
+import UserQuotaForObjectsConnection from './UserQuotaForObjectsConnection'
+import UserQuotaForObjectType from './UserQuotaForObjectType'
 
 export default new GraphQLObjectType({
   name: 'Viewer',
@@ -40,61 +40,64 @@ export default new GraphQLObjectType({
       resolve: obj => obj.User_PhoneNumberMobile,
     },
 
-    ObjectUserPermissions: {
-      type: ObjectUserPermissionsConnection.connectionType,
+    UserPermissionForObjects: {
+      type: UserPermissionForObjectsConnection.connectionType,
 
       args: {
         ...connectionArgs,
-        ObjectUserPermission_Name: { type: new GraphQLNonNull( GraphQLString ) },
+        UserPermissionForObject_ObjectType: { type: new GraphQLNonNull( GraphQLString ) },
       },
 
       resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-        const { ObjectUserPermission_Name } = args
-        const arr = await objectManager.getObjectList( 'ObjectUserPermission', {
-          ObjectUserPermission_Name,
+        const { UserPermissionForObject_ObjectType } = args
+        const arr = await objectManager.getObjectList_async( 'UserPermissionForObject', {
+          UserPermissionForObject_ObjectType,
         })
         return connectionFromArray( arr, args )
       },
     },
 
-    ObjectUserPermission: {
-      type: ObjectUserPermissionType,
+    UserPermissionForObject: {
+      type: UserPermissionForObjectType,
 
       args: { ...{ id: { type: GraphQLID } } },
 
       resolve: async( parent, { id }, context, { rootValue: objectManager }) => {
-        const local_id = objectManager.uuidFromString( 'ObjectUserPermission', fromGlobalId( id ).id )
+        const local_id = objectManager.uuidFromString(
+          'UserPermissionForObject',
+          fromGlobalId( id ).id,
+        )
 
-        return await objectManager.getOneObject( 'ObjectUserPermission', {
+        return await objectManager.getOneObject_async( 'UserPermissionForObject', {
           id: local_id,
-          _materialized_view: 'ObjectUserPermission_by_ID',
+          _materialized_view: 'UserPermissionForObject_by_ID',
         })
       },
     },
 
-    ResourceUserAllowances: {
-      type: ResourceUserAllowancesConnection.connectionType,
+    UserQuotaForObjects: {
+      type: UserQuotaForObjectsConnection.connectionType,
 
       args: { ...connectionArgs },
 
       resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-        const arr = await objectManager.getObjectList( 'ResourceUserAllowance', {})
+        const arr = await objectManager.getObjectList_async( 'UserQuotaForObject', {})
         return connectionFromArray( arr, args )
       },
     },
 
-    ResourceUserAllowance: {
-      type: ResourceUserAllowanceType,
+    UserQuotaForObject: {
+      type: UserQuotaForObjectType,
 
       args: { ...{ id: { type: GraphQLID } } },
 
       resolve: async( parent, { id }, context, { rootValue: objectManager }) => {
-        const local_id = objectManager.uuidFromString( 'ResourceUserAllowance', fromGlobalId( id ).id )
+        const local_id = objectManager.uuidFromString( 'UserQuotaForObject', fromGlobalId( id ).id )
 
-        return await objectManager.getOneObject( 'ResourceUserAllowance', {
+        return await objectManager.getOneObject_async( 'UserQuotaForObject', {
           id: local_id,
 
-          _materialized_view: 'ResourceUserAllowance_by_ID',
+          _materialized_view: 'UserQuotaForObject_by_ID',
         })
       },
     },

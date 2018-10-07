@@ -28,4 +28,4 @@ export default class Inscriptio {
   }
 }
 
-ObjectManager.registerEntity( 'Inscriptio', Inscriptio )
+ObjectManager.registerEntity( 'Inscriptio', Inscriptio, {})
