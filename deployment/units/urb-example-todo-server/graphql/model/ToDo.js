@@ -24,5 +24,5 @@ class ToDo {
   }}exports.default = ToDo;
 
 
-_ObjectManager.default.registerEntity('ToDo', ToDo);
+_ObjectManager.default.registerEntity('ToDo', ToDo, {});
 //# sourceMappingURL=ToDo.js.map

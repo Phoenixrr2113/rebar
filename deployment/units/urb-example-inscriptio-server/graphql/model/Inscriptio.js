@@ -28,5 +28,5 @@ class Inscriptio {
   }}exports.default = Inscriptio;
 
 
-_ObjectManager.default.registerEntity('Inscriptio', Inscriptio);
+_ObjectManager.default.registerEntity('Inscriptio', Inscriptio, {});
 //# sourceMappingURL=Inscriptio.js.map

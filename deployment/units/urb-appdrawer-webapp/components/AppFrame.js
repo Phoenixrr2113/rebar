@@ -16,12 +16,15 @@ var _Menu = _interopRequireDefault(require("@material-ui/icons/Menu"));
 
 var _found = require("found");
 var _react = _interopRequireDefault(require("react"));
+var _reactHelmet = require("react-helmet");
 var _reactRelay = require("react-relay");
 
 var _AppDrawerNavItems = _interopRequireDefault(require("../../_configuration/urb-appdrawer-webapp/AppDrawerNavItems"));
 var _AppDrawerTitle = _interopRequireDefault(require("../../_configuration/urb-appdrawer-webapp/AppDrawerTitle"));
 var _NavBarLoginButton = _interopRequireDefault(require("../../urb-account-management-webapp/components/NavBarLoginButton"));
-var _NavBarTitle = _interopRequireDefault(require("../../_configuration/urb-appdrawer-webapp/NavBarTitle"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _NavBarDefaultTitle = _interopRequireDefault(require("../../_configuration/urb-appdrawer-webapp/NavBarDefaultTitle"));
+
+var _AppFrameContext = _interopRequireDefault(require("./AppFrameContext"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const drawerWidth = 240;
 
@@ -95,7 +98,6 @@ const styles = theme => ({
 
   content: {
     width: '100%',
-    //marginLeft: -drawerWidth,
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
     padding: theme.spacing.unit * 3,
@@ -105,17 +107,14 @@ const styles = theme => ({
 
     overflow: 'scroll',
     height: 'calc(100% - 56px)',
-    marginTop: 56,
-    [theme.breakpoints.up('sm')]: {
-      content: {
-        height: 'calc(100% - 64px)',
-        marginTop: 64 } } } });
+    marginTop: 56 } });
 
 
 
-
+const titlePrefix = process.env.NODE_ENV === 'production' ? '' : '<DEV> ';
 
 class AppFrame extends _react.default.Component
+
 
 
 
@@ -139,17 +138,30 @@ class AppFrame extends _react.default.Component
       this.setState({ drawerIsOpen: false });
 
       this.props.router.push(to);
-    };this.state = { drawerIsOpen: false };}
+    };this.
+
+    setTitle = title => {
+      this.setState({ title: titlePrefix + title });
+    };this.
+
+    clearTitle = () => {
+      this.setState({ title: titlePrefix + _NavBarDefaultTitle.default });
+    };this.state = { drawerIsOpen: false, title: titlePrefix + _NavBarDefaultTitle.default };}
 
   render() {
+    const { setTitle, clearTitle } = this;
     const { children, classes, Viewer } = this.props;
-    const { drawerIsOpen } = this.state;
+    const { drawerIsOpen, title } = this.state;
 
     return (
       _react.default.createElement("div", { className: classes.root },
+      _react.default.createElement(_reactHelmet.Helmet, null,
+      _react.default.createElement("title", null, title)),
+
+
       _react.default.createElement("div", { className: classes.appFrame },
       _react.default.createElement(_AppBar.default, { className: classes.appBar },
-      _react.default.createElement(_Toolbar.default, { disableGutters: true },
+      _react.default.createElement(_Toolbar.default, { disableGutters: true, variant: "dense" },
       _react.default.createElement(_IconButton.default, {
         "aria-label": "open drawer",
         onClick: this._handle_Drawer_Open,
@@ -158,12 +170,15 @@ class AppFrame extends _react.default.Component
 
       _react.default.createElement(_Menu.default, null)),
 
+
       _react.default.createElement(_Typography.default, { variant: "title", color: "inherit", noWrap: true },
-      _NavBarTitle.default),
+      title),
 
 
       _react.default.createElement("div", { className: classes.grow }),
+
       _react.default.createElement(_NavBarLoginButton.default, { Viewer: Viewer }))),
+
 
 
       _react.default.createElement(_Drawer.default, { open: drawerIsOpen, onClose: this._handle_Drawer_Close },
@@ -174,7 +189,10 @@ class AppFrame extends _react.default.Component
 
       _react.default.createElement(_AppDrawerNavItems.default, { onClick: this._handle_GoTo })),
 
-      _react.default.createElement("main", { className: classes.content }, children))));
+
+      _react.default.createElement(_AppFrameContext.default.Provider, { value: { setTitle, clearTitle } },
+      _react.default.createElement("main", { className: classes.content }, children)))));
+
 
 
 

@@ -16,7 +16,7 @@ var _ErrorComponent = _interopRequireDefault(require("../_configuration/urb-appb
 var _getGraphQLLocalServerURL = _interopRequireDefault(require("../_configuration/urb-base-server/getGraphQLLocalServerURL"));
 var _siteSettings = require("../_configuration/urb-base-server/siteSettings");
 var _log = _interopRequireDefault(require("../urb-base-server/log"));
-var _package = require("../_configuration/package");
+var _package = require("../../package.json");
 var _UserToken2ServerRendering = _interopRequireDefault(require("../_configuration/urb-base-server/UserToken2ServerRendering"));
 var _htmlHeadAdditions = _interopRequireDefault(require("../_configuration/urb-appbase-webapp/htmlHeadAdditions"));
 
