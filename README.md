@@ -7,9 +7,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 * [Project Details](http://codefoundries.com/developer/rebar/).
 
-* [Live demo I](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister, old verison.
-
-* Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
+* [Live demo](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister, old verison.
 
 
 
@@ -27,7 +25,6 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 | [Material UI](http://www.material-ui.com/)                      | Library for implementing [Material Design](https://www.google.com/design/spec/material-design/introduction.html) in React. All user interface in this kit is built exclusively with Material UI components. |
 | [React](https://facebook.github.io/react/)                      | The best library for building modern browser-based and mobile UIs. |
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
-| [React Native](https://facebook.github.io/react-native/)        | React Native (currently not available) enables you to build world-class application experiences on native platforms using a consistent developer experience based on JavaScript and React. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
 ## Server side
@@ -64,9 +61,8 @@ For the most up to date setup instructions please go to the [development setup i
 
 The setup is for OS X only. Prerequisites:
 
-* **Install [Node.js](https://nodejs.org)** minimum version: `8.9.0`.  
-* **Install [Git](https://git-scm.com/downloads)** minimum version: `5.6.0`.  
-* (currently not available) **Install react-native-cli** run `npm install -g react-native-cli` for app development with React Native only.
+* **Install [Node.js](https://nodejs.org)** minimum version as specified in `package.json`.  
+* **Install [Git](https://git-scm.com/downloads)** minimum version as specified in `package.json`.  
 * **Install yarn** run `npm install -g yarn`
 
 ## Initial Project setup on local machine
@@ -87,7 +83,6 @@ In order to develop, three servers need to be started:
 
 * Web server.
 * Webpack server.
-* (currently not available) React Native packager.
 
 This can be done with one command:
 
@@ -100,7 +95,6 @@ To open the app:
 (currently not available) To run the iOS app in the emulator:
 
 * If the IP of your development machine has changed, run `yarn update-ip`.
-* Run `react-native run-ios`.
 
 ## Configuring Cassandra locally
 
@@ -112,7 +106,6 @@ CASSANDRA_CONNECTION_POINTS=localhost
 CASSANDRA_KEYSPACE=urb
 ```
 
-* Configure to use Cassandra as default persister: `yarn update-default-persister -- cassandra`.
 * Create the database with `yarn setup-database`.
 
 
@@ -134,25 +127,3 @@ The following documents explain in detail certain aspects of the architecture in
 * [Isomorphic React Relay](http://codefoundries.com/developer/single-page-application/isomorphic-react-relay.html). Explains the approach to isomorphism taken in implementing the starter kit.
 * [Isomorphic Server Variables](http://codefoundries.com/developer/single-page-application/isomorphic-server-variables.html). Using variables and settings in an isomorphic application - client rendering, server rendering.
 * [SEO Using Isomorphic Application With Relay and Helmet](http://codefoundries.com/developer/single-page-application/seo-isomorphic-react-helmet.html). How to make SEO-friendly pages with React, Relay and Helmet.
-
-## Additional resources
-
-The following documents, while not explicitly related to the boilerplate, can be useful while running and modifying the kit:
-
-* [Cassandra Cheatsheet](http://codefoundries.com/developer/cassandra/cassandra-cheatsheet.html). List of common commands in CQL.
-* [Cassandra Installation on Mac](http://codefoundries.com/developer/cassandra/cassandra-installation-mac.html). Simple steps for setting up an instance of Cassandra for development.
-* [Git Cheatsheet](http://codefoundries.com/developer/git/git-cheatsheet.html). Some useful git commands.
-* [React Cheatsheet](http://codefoundries.com/developer/react/react-cheatsheet.html). Techniques for working with React used in the starter kit.
-* [Where to Store Your JWTs - Cookies vs HTML5 Web Storage](https://stormpath.com/blog/where-to-store-your-jwts-cookies-vs-html5-web-storage/). Explains the advantages of using HTTP only cookies.
-
-## Universal Relay Boilerplate (URB) Classic
-
-The previous version of this repository with Material-UI `0.18.x` and Relay `0.10` is available at [Universal Relay Boilerplate Classic](https://github.com/codefoundries/UniversalRelayBoilerplateClassic). The current version is unfinished and under heavy development. Additional units with Windows support and DynamoDB support can be found at [Universal Relay Boilerplate Extra](https://github.com/codefoundries/UniversalRelayBoilerplateExtra).
-The following mostly apply to URB classic. Will be removed once updated versions are created.
-
-* [Environment Variables Configuration](http://codefoundries.com/developer/rebar/configuration-environment-variables.html).
-* [Customizing Material-UI Look and Feel](http://codefoundries.com/developer/rebar/configuration-material-ui.html).
-* [Configuration Folder](http://codefoundries.com/developer/rebar/configuration-folder.html).
-* [NPM Tasks](http://codefoundries.com/developer/rebar/npm-tasks.html).
-* [Project Structure](http://codefoundries.com/developer/rebar/project-structure.html).
-* [Troubleshooting](http://codefoundries.com/developer/rebar/troubleshooting.html).
