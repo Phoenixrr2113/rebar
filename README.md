@@ -3,17 +3,9 @@
 Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
 
 
-<<<<<<< HEAD
-* [Project Overview](http://codefoundries.com/products/UniversalRelayBoilerplate.html).
-
-* [Project Details](http://codefoundries.com/developer/rebar/).
-
-* [Live demo](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister, old verison.
-=======
 * [Live demo](http://rebar-demo.MachineAcuity.com/) - uses in-memory persister.
 
 * Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
->>>>>>> revision-4.0.2
 
 
 
@@ -67,13 +59,8 @@ For the most up to date setup instructions please go to the [development setup i
 
 The setup is for OS X only. Prerequisites:
 
-<<<<<<< HEAD
 * **Install [Node.js](https://nodejs.org)** minimum version as specified in `package.json`.  
 * **Install [Git](https://git-scm.com/downloads)** minimum version as specified in `package.json`.  
-=======
-* **Install [Node.js](https://nodejs.org)** minimum version: `10.6.0`.  
-* **Install [Git](https://git-scm.com/downloads)** minimum version: `6.1.0`.  
->>>>>>> revision-4.0.2
 * **Install yarn** run `npm install -g yarn`
 
 ## Initial Project setup on local machine
@@ -96,57 +83,7 @@ In order to develop, three servers need to be started:
 
 * Web server.
 * Webpack server.
-<<<<<<< HEAD
-=======
 * Relay compiler (watching).
->>>>>>> revision-4.0.2
 
-This can be done with one command:
-
-* Start application HTTP and Webpack server: `yarn dev`.
-
-<<<<<<< HEAD
-To open the app:
-
-* Navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip` or after installation.
-
-(currently not available) To run the iOS app in the emulator:
-
-* If the IP of your development machine has changed, run `yarn update-ip`.
-
-## Configuring Cassandra locally
-
-* Install and configure Cassandra following the steps in [Cassandra Installation on Mac](/developer/cassandra/cassandra-installation-mac.html).
-* Update the name of the database and the database server in `/.env`, or use the defaults. The defaults are:
-
-```javascript
-CASSANDRA_CONNECTION_POINTS=localhost
-CASSANDRA_KEYSPACE=urb
-```
-
-* Create the database with `yarn setup-database`.
-
-
-
-# Further Details
-
-We keep the information about the Universal Relay Boilerplate and Rebar updated on our website:
-
-## Architecture and Developer Resources
-
-* [Unit Structure](http://codefoundries.com/developer/rebar-architecture/unit-structure.html).
-
-
-## Architecture Details
-
-The following documents explain in detail certain aspects of the architecture in depth:
-
-* [Cassandra, meet Relay. Relay, meet Cassandra](http://codefoundries.com/developer/cassandra/cassandra-meet-relay.html). Explanation of how Cassandra and Express GraphQL work together.
-* [Isomorphic React Relay](http://codefoundries.com/developer/single-page-application/isomorphic-react-relay.html). Explains the approach to isomorphism taken in implementing the starter kit.
-* [Isomorphic Server Variables](http://codefoundries.com/developer/single-page-application/isomorphic-server-variables.html). Using variables and settings in an isomorphic application - client rendering, server rendering.
-* [SEO Using Isomorphic Application With Relay and Helmet](http://codefoundries.com/developer/single-page-application/seo-isomorphic-react-helmet.html). How to make SEO-friendly pages with React, Relay and Helmet.
-=======
-To open the web app:
-
-* Navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
->>>>>>> revision-4.0.2
+This can be done with one command: `yarn dev`.
+To open the web app: navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
