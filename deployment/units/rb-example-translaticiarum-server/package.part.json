@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "graphql-iso-date": "3.5.0"
+  }
+}
