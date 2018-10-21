@@ -3,7 +3,7 @@
 Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
 
 
-* [Live demo](http://rebar-demo.MachineAcuity.com/) - uses in-memory persister.
+* [Live demo](http://rebar-demo.MachineAcuity.com/)..
 
 * Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
 
