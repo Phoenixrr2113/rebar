@@ -2,14 +2,22 @@
   "presets": [
     "@babel/preset-flow",
     "@babel/preset-react",
-    ["@babel/preset-env", {
-      "targets": {
-        "node": "10.6"
+    [
+      "@babel/preset-env",
+      {
+        "targets": {
+          "node": "10.6"
+        }
       }
-    }]
+    ]
   ],
   "plugins": [
-    ["relay", { "schema": "schema.graphql" }],
+    [
+      "relay",
+      {
+        "schema": "schema.graphql"
+      }
+    ],
     "dynamic-import-node",
     "react-hot-loader/babel",
     "transform-class-properties",

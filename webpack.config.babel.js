@@ -33,7 +33,7 @@ const config = {
   },
 
   entry: {
-    client: [ 'whatwg-fetch', path.resolve( 'units/urb-appbase-webapp/client.js' ) ],
+    client: [ 'whatwg-fetch', path.resolve( 'units/rb-appbase-webapp/client.js' ) ],
     vendor: [
       'babel-polyfill',
       'farce',
@@ -66,7 +66,7 @@ const config = {
 
   output: {
     path: path.resolve(
-      `deployment/units/_configuration/urb-base-server/public_files/assets/${version}`,
+      `deployment/units/_configuration/rb-base-server/public_files/assets/${version}`,
     ),
     filename: '[name].js',
     publicPath,
@@ -110,12 +110,10 @@ const config = {
         exclude: /node_modules/,
       },
 
+      // Code for CSS loader tested with react-table
       {
         test: /\.css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: 'css-loader',
-        }),
+        use: [ { loader: 'style-loader' }, { loader: 'css-loader' } ],
       },
     ],
   },

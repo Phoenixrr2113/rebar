@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/urb-appbase-webapp/AppFrame.jsx"],"names":["AppFrame"],"mappings":";;AAEA,kG;;AAEeA,iB","sourcesContent":["// @flow\n\nimport AppFrame from '../../urb-appdrawer-webapp/components/AppFrame'\n\nexport default AppFrame\n"],"file":"AppFrame.js"}

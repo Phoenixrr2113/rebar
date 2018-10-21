@@ -1,17 +1,23 @@
-# Universal Relay Boilerplate (URB)
+# Rebar
 
 Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
 
 
+<<<<<<< HEAD
 * [Project Overview](http://codefoundries.com/products/UniversalRelayBoilerplate.html).
 
 * [Project Details](http://codefoundries.com/developer/rebar/).
 
 * [Live demo](http://universal-relay-boilerplate.herokuapp.com/) - uses in-memory persister, old verison.
+=======
+* [Live demo](http://rebar-demo.MachineAcuity.com/) - uses in-memory persister.
+
+* Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
+>>>>>>> revision-4.0.2
 
 
 
-# Technologies used in Rebar and Universal Relay Boilerplate
+# Technologies used in Rebar
 
 For the most up to date list of technologies used please go to [CodeFoundries.com](http://codefoundries.com/developer/rebar/technologies-used.html).
 
@@ -61,8 +67,13 @@ For the most up to date setup instructions please go to the [development setup i
 
 The setup is for OS X only. Prerequisites:
 
+<<<<<<< HEAD
 * **Install [Node.js](https://nodejs.org)** minimum version as specified in `package.json`.  
 * **Install [Git](https://git-scm.com/downloads)** minimum version as specified in `package.json`.  
+=======
+* **Install [Node.js](https://nodejs.org)** minimum version: `10.6.0`.  
+* **Install [Git](https://git-scm.com/downloads)** minimum version: `6.1.0`.  
+>>>>>>> revision-4.0.2
 * **Install yarn** run `npm install -g yarn`
 
 ## Initial Project setup on local machine
@@ -74,6 +85,8 @@ In order to set up the project locally, perform the following steps:
 | `git clone https://github.com/codefoundries/UniversalRelayBoilerplate` | Clone from github. Alternatively, you can download the source and update in some different way. |
 | `yarn` | Install node packages. |
 | `yarn setup-local` | Set up default configuration for running the boilerplate. |
+| Edit `.env` | Set database server / name, secrets, API keys. etc. |
+| `yarn setup-database` | Creates Cassandra schema. |
 
 In addition to the above, you might want to specify `JWT_SECRET` by modifying the `.env` file. This step can be skipped if you do not care about the actual security and simply want to get the project running.
 
@@ -83,11 +96,16 @@ In order to develop, three servers need to be started:
 
 * Web server.
 * Webpack server.
+<<<<<<< HEAD
+=======
+* Relay compiler (watching).
+>>>>>>> revision-4.0.2
 
 This can be done with one command:
 
 * Start application HTTP and Webpack server: `yarn dev`.
 
+<<<<<<< HEAD
 To open the app:
 
 * Navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip` or after installation.
@@ -127,3 +145,8 @@ The following documents explain in detail certain aspects of the architecture in
 * [Isomorphic React Relay](http://codefoundries.com/developer/single-page-application/isomorphic-react-relay.html). Explains the approach to isomorphism taken in implementing the starter kit.
 * [Isomorphic Server Variables](http://codefoundries.com/developer/single-page-application/isomorphic-server-variables.html). Using variables and settings in an isomorphic application - client rendering, server rendering.
 * [SEO Using Isomorphic Application With Relay and Helmet](http://codefoundries.com/developer/single-page-application/seo-isomorphic-react-helmet.html). How to make SEO-friendly pages with React, Relay and Helmet.
+=======
+To open the web app:
+
+* Navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
+>>>>>>> revision-4.0.2
