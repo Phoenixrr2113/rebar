@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/urb-account-management-webapp/routeAfterLogin.js"],"names":["routeAfterLogin"],"mappings":";;AAEA,MAAMA,eAAe,GAAG,EAAxB,C;AACeA,e","sourcesContent":["// @flow\n\nconst routeAfterLogin = ''\nexport default routeAfterLogin\n"],"file":"routeAfterLogin.js"}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/urb-appdrawer-webapp/NavBarTitle.js"],"names":["NavbarTitle"],"mappings":";;AAEA,wF;;AAEeA,oB","sourcesContent":["// @flow\n\nimport NavbarTitle from '../../urb-demo-webapp/NavBarTitle'\n\nexport default NavbarTitle\n"],"file":"NavBarTitle.js"}

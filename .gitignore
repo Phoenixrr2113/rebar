@@ -55,7 +55,6 @@ fastlane/screenshots
 # Server
 #
 .env
-units/_configuration/urb-base-app/publicURL.js
 ios/main.jsbundle
 
 # Mobile bundles

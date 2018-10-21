@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/urb-base-app/AppRegistryName.js"],"names":["AppRegistryName"],"mappings":";;AAEA,MAAMA,eAAe,GAAG,2BAAxB,C;;AAEeA,e","sourcesContent":["// @flow\n\nconst AppRegistryName = 'UniversalRelayBoilerplate'\n\nexport default AppRegistryName\n"],"file":"AppRegistryName.js"}
