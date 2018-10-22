@@ -46,22 +46,22 @@ class HomePageScreen extends _react.default.Component
         {
           name: 'Rebar Version',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.version },
+          value: siteConfiguration.webapp.rebarDemo.version },
 
         {
           name: 'Server OS',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSType },
+          value: siteConfiguration.webapp.rebarDemo.OSType },
 
         {
           name: 'Server Host Name',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSHostName },
+          value: siteConfiguration.webapp.rebarDemo.OSHostName },
 
         {
           name: 'Server Free Memory',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSFreeMem },
+          value: siteConfiguration.webapp.rebarDemo.OSFreeMem },
 
         {
           name: 'Google Maps API Key',

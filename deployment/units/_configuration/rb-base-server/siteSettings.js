@@ -22,7 +22,7 @@ const siteInformation = {
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
-      urbDemo: { version: _package.version, OSType: _os.default.type(), OSHostName: _os.default.hostname(), OSFreeMem: _os.default.freemem() } },
+      rebarDemo: { version: _package.version, OSType: _os.default.type(), OSHostName: _os.default.hostname(), OSFreeMem: _os.default.freemem() } },
 
     server: {},
     builderClient: {} } };

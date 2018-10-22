@@ -5,13 +5,9 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 * [Live demo](http://rebar-demo.MachineAcuity.com/)..
 
-* Updates and Announcements [@CodeFoundries](https://twitter.com/CodeFoundries) and [our blog](http://codefoundries.com/blog/).
-
 
 
 # Technologies used in Rebar
-
-For the most up to date list of technologies used please go to [CodeFoundries.com](http://codefoundries.com/developer/rebar/technologies-used.html).
 
 ## Client side
 
@@ -53,8 +49,6 @@ For the most up to date list of technologies used please go to [CodeFoundries.co
 
 # Development Setup
 
-For the most up to date setup instructions please go to the [development setup instructions](http://codefoundries.com/developer/rebar/development-setup.html).
-
 ## Initial Development Machine Setup
 
 The setup is for OS X only. Prerequisites:
@@ -69,7 +63,7 @@ In order to set up the project locally, perform the following steps:
 
 | Action                    | Notes                               |
 | ------------------------- | ----------------------------------- |
-| `git clone https://github.com/codefoundries/UniversalRelayBoilerplate` | Clone from github. Alternatively, you can download the source and update in some different way. |
+| `git clone https://github.com/MachineAcuity/rebar.git` | Clone from github. Alternatively, you can download the source and update in some different way. |
 | `yarn` | Install node packages. |
 | `yarn setup-local` | Set up default configuration for running the boilerplate. |
 | Edit `.env` | Set database server / name, secrets, API keys. etc. |

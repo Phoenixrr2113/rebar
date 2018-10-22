@@ -18,11 +18,11 @@ if ( googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'stri
 const siteInformation = {
   artifact_id: defaultPersister.uuidNull(),
   inEditingMode: false,
-  isCfMakerDisabled: true,
+  isMaDesignerDisabled: true,
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
-      urbDemo: { version, OSType: os.type(), OSHostName: os.hostname(), OSFreeMem: os.freemem() },
+      rebarDemo: { version, OSType: os.type(), OSHostName: os.hostname(), OSFreeMem: os.freemem() },
     },
     server: {},
     builderClient: {},
