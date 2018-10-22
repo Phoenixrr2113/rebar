@@ -18,11 +18,11 @@ throw new Error(
 const siteInformation = {
   artifact_id: _defaultPersister.default.uuidNull(),
   inEditingMode: false,
-  isCfMakerDisabled: true,
+  isMaDesignerDisabled: true,
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
-      urbDemo: { version: _package.version, OSType: _os.default.type(), OSHostName: _os.default.hostname(), OSFreeMem: _os.default.freemem() } },
+      rebarDemo: { version: _package.version, OSType: _os.default.type(), OSHostName: _os.default.hostname(), OSFreeMem: _os.default.freemem() } },
 
     server: {},
     builderClient: {} } };

@@ -46,22 +46,22 @@ class HomePageScreen extends _react.default.Component
         {
           name: 'Rebar Version',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.version },
+          value: siteConfiguration.webapp.rebarDemo.version },
 
         {
           name: 'Server OS',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSType },
+          value: siteConfiguration.webapp.rebarDemo.OSType },
 
         {
           name: 'Server Host Name',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSHostName },
+          value: siteConfiguration.webapp.rebarDemo.OSHostName },
 
         {
           name: 'Server Free Memory',
           // $AssureFlow
-          value: siteConfiguration.webapp.urbDemo.OSFreeMem },
+          value: siteConfiguration.webapp.rebarDemo.OSFreeMem },
 
         {
           name: 'Google Maps API Key',
@@ -75,11 +75,8 @@ class HomePageScreen extends _react.default.Component
           _react.default.createElement(_Card.default, { className: classes.card },
           _react.default.createElement(_CardHeader.default, { title: "Rebar Demo" }),
           _react.default.createElement(_CardContent.default, null,
-          _react.default.createElement(_Typography.default, { component: "p" }, "The",
-          ' ',
-          _react.default.createElement("a", { href: "http://codefoundries.com/products/UniversalRelayBoilerplate.html" }, "Rebar"),
-
-          ' ', "is and open source project representing basic foundation of the solutions we provide. It fully utilizes the react stack, and Node.js and Cassandra on the back end. It can be used both as boilerplate, as well as an educational tool with multiple examples available. Basic user account management including account creation, password strength indicator and user profile is also included. The boilerplate is optimized for supportability and update-ability. It allows us to update the multiple projects based on the boilerplate with minimum effort, providing new features, improvements and bug fixes. This is achieved through the following two approaches:",
+          _react.default.createElement(_Typography.default, { component: "p" }, "The ",
+          _react.default.createElement("a", { href: "https://github.com/MachineAcuity/rebar" }, "Rebar"), " is and open source project representing basic foundation of the solutions we provide. It fully utilizes the react stack, and Node.js and Cassandra on the back end. It can be used both as boilerplate, as well as an educational tool with multiple examples available. Basic user account management including account creation, password strength indicator and user profile is also included. The boilerplate is optimized for supportability and update-ability. It allows us to update the multiple projects based on the boilerplate with minimum effort, providing new features, improvements and bug fixes. This is achieved through the following two approaches:",
 
 
 

@@ -35,7 +35,7 @@ async function root( req, res, next ) {
       try {
         const a_User = ( await getUserAndSessionIDByUserToken1( objectManager, req ) ).User
 
-        res.codeFoundriesInjected = { user: a_User }
+        res.injectedByRebarFrameworks = { user: a_User }
         await verifyUserAuthToken( a_User, req )
 
         graphQLHTTP( () => {

@@ -66,7 +66,7 @@ async function login( req, res ) {
 
           // Addsession to database
           await objectManager.add( 'UserSession', a_UserSession )
-          res.codeFoundriesInjected = { user: a_User }
+          res.injectedByRebarFrameworks = { user: a_User }
 
           // User has authenticated correctly thus we create a JWT token ith the session.
           const UserToken1 = jwt.encode(
@@ -155,7 +155,7 @@ async function createuser( req, res ) {
         ...onCreateUser( a_User.id, objectManager ),
       ])
 
-      res.codeFoundriesInjected = { user: a_User }
+      res.injectedByRebarFrameworks = { user: a_User }
 
       // User has been created thus we create a JWT token.
       const UserToken1 = jwt.encode(

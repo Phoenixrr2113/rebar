@@ -21,8 +21,8 @@ function logServerRequest(req, res, next, loggingFunction) {
     const clientIP = req.headers['x-real-ip'] || req.connection.remoteAddress;
 
     let user;
-    if (res.codeFoundriesInjected && res.codeFoundriesInjected.user)
-    user = res.codeFoundriesInjected.user;else
+    if (res.injectedByRebarFrameworks && res.injectedByRebarFrameworks.user)
+    user = res.injectedByRebarFrameworks.user;else
     user = 'not determined';
 
     const requestAndResponse = {
