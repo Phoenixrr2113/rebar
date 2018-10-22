@@ -3,8 +3,7 @@
 Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
 
 
-* [Live demo](http://rebar-demo.MachineAcuity.com/)..
-
+[*Live demo*](http://rebar-demo.MachineAcuity.com/)
 
 
 # Technologies used in Rebar
@@ -32,12 +31,14 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [GraphQL](http://graphql.org/docs/getting-started/)             | A query language for describing the capabilities and requirements of data models for client‐server applications. |
 | [JWT](https://jwt.io/)                                          | JSON Web Tokens is an industry standard [RFC 7519](https://tools.ietf.org/html/rfc7519) method for representing claims securely between two parties. |
 | [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
+| [Winston](https://github.com/winstonjs/winston)                 | A logger for just about everything. |
 
 ## Development tools
 
 | **Technology** | **Description**|
 |----------------|----------------|
 | [Babel](http://babeljs.io)                                      | Transpiles ESX to ESX and performs relay transformations. |
+| [concurrently](https://www.npmjs.com/package/concurrently)      | Run multiple commands concurrently. |
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
 | [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
