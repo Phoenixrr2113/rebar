@@ -35,7 +35,7 @@ async function root(req, res, next) {
       try {
         const a_User = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1)(objectManager, req)).User;
 
-        res.codeFoundriesInjected = { user: a_User };
+        res.injectedByRebarFrameworks = { user: a_User };
         await (0, _checkCredentials.verifyUserAuthToken)(a_User, req);
 
         (0, _expressGraphql.default)(() => {

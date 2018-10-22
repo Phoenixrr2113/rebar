@@ -18,7 +18,7 @@ throw new Error(
 const siteInformation = {
   artifact_id: _defaultPersister.default.uuidNull(),
   inEditingMode: false,
-  isCfMakerDisabled: true,
+  isMaDesignerDisabled: true,
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
