@@ -6,6 +6,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 [*Live demo*](http://rebar-demo.MachineAcuity.com/)
 
 
+
 # Technologies used in Rebar
 
 ## Client side
@@ -49,7 +50,8 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 
 
-# Development Setup
+
+# Setup
 
 ## Initial Development Machine Setup
 
@@ -73,6 +75,10 @@ In order to set up the project locally, perform the following steps:
 
 In addition to the above, you might want to specify `JWT_SECRET` by modifying the `.env` file. This step can be skipped if you do not care about the actual security and simply want to get the project running.
 
+
+
+# Development
+
 ## Running in development mode
 
 In order to develop, three servers need to be started:
@@ -86,7 +92,7 @@ To open the web app: navigate to `http://localhost:26005`, or whatever IP was as
 
 ## Running through Local Tunnel
 
-In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/master/units/_configuration/rb-devtunnel/tunnels.json). Replace the value of
+In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/0750afbfd6320f814131ae86d909384d9a153f1b/units/_configuration/rb-devtunnel/tunnels.json#L10). Replace the value of
 
 ```
 "subdomain": "replace-with-your-own-domain"
