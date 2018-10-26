@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "localtunnel": "1.9.1",
+    "http-proxy": "1.17.0"
+  },
+  "scripts": {
+    "dev-tunnel": "node ./units/rb-devtunnel/tunnel",
+    "dev-t": "./node_modules/.bin/concurrently --names \"RELAY,WEB,NODE,TUNNEL\" -c \"bgYellow.black,bgBlue.black,bgGreen.black,bgRed.yellow\" --kill-others \"npm run dev-relay\" \"npm run dev-webpack\" \"npm run dev-server\" \"npm run dev-tunnel\" ",
+    "dev-m": "./node_modules/.bin/concurrently --names \"NODE,TUNNEL\" -c \"bgGreen.black,bgRed.yellow\" --kill-others \"npm run dev-server\" \"npm run dev-tunnel\" "
+  }
+}
