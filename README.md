@@ -15,7 +15,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [found](https://github.com/4Catalyzer/found)                    | Extensible route-based routing for React applications. |
 | [GraphQL](http://graphql.org/docs/getting-started/)             | A query language for describing the capabilities and requirements of data models for client‐server applications. |
 | [JSS](http://cssinjs.org/)                                      | JSS is a more powerful abstraction over CSS. It uses JavaScript as a language to describe styles in a declarative and maintainable way. |
-| [Material UI](http://www.material-ui.com/)                      | Library for implementing [Material Design](https://www.google.com/design/spec/material-design/introduction.html) in React. All user interface in this kit is built exclusively with Material UI components. |
+| [Material UI](http://www.material-ui.com/)                      | Library for implementing [Material Design](https://www.google.com/design/spec/material-design/introduction.html) in React. All user interface in this kit is built predominantly using Material UI components. |
 | [React](https://facebook.github.io/react/)                      | The best library for building modern browser-based and mobile UIs. |
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |

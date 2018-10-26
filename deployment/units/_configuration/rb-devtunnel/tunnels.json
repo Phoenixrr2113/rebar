@@ -1,0 +1,18 @@
+{
+  "proxyPortsStartAt": 27000,
+  "applications": [
+    {
+      "local": {
+        "applicationPort": 26005
+      },
+      "public": [
+        {
+          "subdomain": "replace-with-your-own-domain",
+          "headers": {
+            "host": "You can specify headers if you like"
+          }
+        }
+      ]
+    }
+  ]
+}
