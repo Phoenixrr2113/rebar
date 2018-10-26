@@ -42,6 +42,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
 | [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
+| [LocalTunnel](https://localtunnel.github.io/www/)               | Expose yourself to the world. |
 | [Prettier](https://github.com/prettier/prettier/)               | Code formatter for javaScript. |
 | [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Allows tweaking of React components in real time. |
 | [Webpack](http://webpack.github.io)                             | Bundles npm packages, application Java Script, CSS, images, etc. into bundles. |
@@ -82,3 +83,17 @@ In order to develop, three servers need to be started:
 
 This can be done with one command: `yarn dev`.
 To open the web app: navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
+
+## Running through Local Tunnel
+
+In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/master/units/_configuration/rb-devtunnel/tunnels.json). Replace the value of
+
+```
+"subdomain": "replace-with-your-own-domain"
+```
+
+with your preferred value. Please notice that LocalTunnel allocates subdomain names on a first come first serve basis, for the duration of using the service. You can also add headers that will be passed to your Rebar server. In order to run LocalTunnel with the rest of the development environment, use
+
+```
+yarn dev-t
+```

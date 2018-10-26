@@ -149,5 +149,5 @@
     "setup-local-cut-version": "cp ./units/_configuration/default.env ./.env",
     "update-ip": "./node_modules/.bin/babel-node ./units/rb-base-tools/updateIP.js"
   },
-  "version": "4.0.4"
+  "version": "4.0.5"
 }
