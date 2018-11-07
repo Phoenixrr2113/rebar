@@ -7265,7 +7265,7 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-big-calendar@0.120.2:
+react-big-calendar@0.20.2:
   version "0.20.2"
   resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.20.2.tgz#7608577d160cdf5a96be572d6e9632c348fd065e"
   integrity sha512-g4vow5TDCI85/7YYJ1g4QD150rPHpoTz7RkpU5goQ/vCcXO4P1N2IUK/V9uVV73NeGBcnE7r81UqQTi47hmfHw==

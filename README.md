@@ -135,3 +135,15 @@ yarn dev-t
 ```
 
 Then you can navigate to `https://replace-with-your-own-domain.localtunnel.me`.
+
+
+
+# Production
+
+In order to run rebar in production-like mode you can:
+
+```
+$ yarn build-deployment
+...
+
+```
