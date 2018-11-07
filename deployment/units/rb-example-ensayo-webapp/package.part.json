@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "html-to-react": "1.3.3",
+    "react-rte": "0.16.1"
+  },
+  "scripts": {
+    "postinstall": "node ./units/rb-example-ensayo-webapp/fix-react-rte.js"
+  }
+}

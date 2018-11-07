@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../units/_configuration/rb-appbase-webapp/createRoutes.js"],"names":["createRoutes"],"mappings":";;AAEA,kH;;AAEeA,4B","sourcesContent":["// @flow\n\nimport createRoutes from '../../rb-appbase-webapp/scripts/createDefaultRoutes'\n\nexport default createRoutes\n"],"file":"createRoutes.js"}
