@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/rb-appbase-webapp/AppFrame.jsx"],"names":["AppFrame"],"mappings":";;AAEA,iG;;AAEeA,iB","sourcesContent":["// @flow\n\nimport AppFrame from '../../rb-appdrawer-webapp/components/AppFrame'\n\nexport default AppFrame\n"],"file":"AppFrame.js"}

@@ -16,4 +16,4 @@ export var debugWriteToConsoleServerRequestSiteInformation = false
 
 export var debugWriteToConsoleObjectCacheActivity = false
 
-export var debugWriteToConsoleLog = false
+export var debugWriteToConsoleLog = true

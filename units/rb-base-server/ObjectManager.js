@@ -337,7 +337,7 @@ export default class ObjectManager {
     return loader
   }
 
-  async getOneObject_async( entityName: string, query: Object ): Object | null {
+  async getOneObject_async( entityName: string, query: Object ): Promise<Object | null> {
     const entityDefinition = entityDefinitions[entityName]
     if ( entityDefinition == null )
       throw new Error( 'Object Manager: Cound not find entity ' + entityName )

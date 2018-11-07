@@ -18,9 +18,16 @@ if ( IPAddress === undefined ) IPAddress = getLocalIP()
 
 if ( IPAddress !== undefined ) {
   console.log( 'IP Address:' + IPAddress )
-  updateIPInFile( './.env', 'PUBLIC_URL=', 'PUBLIC_URL=http://' + IPAddress + ':' + port, IPAddress )
+  updateIPInFile(
+    './.env',
+    'ACCESS_CONTROL_ALLOWED_ORIGINS=',
+    'ACCESS_CONTROL_ALLOWED_ORIGINS=["http://' + IPAddress + ':' + port + '"]',
+    IPAddress,
+  )
   updateIPInFile( './.env', 'HOST=', 'HOST=' + IPAddress, IPAddress )
-} else console.log( 'IP Address not specified and could not be found' )
+} else {
+  console.log( 'IP Address not specified and could not be found' )
+}
 
 function updateIPInFile( fileName, searchString, newContentOfLine, IPAddress ) {
   try {

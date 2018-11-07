@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/rb-base-server/getGraphQLLocalServerURL.js"],"names":["siteInformation"],"mappings":";;AAEiBA,eAAF,IAA+B,U","sourcesContent":["// @flow\n\nexport default ( siteInformation: Object ) => '/graphql'\n"],"file":"getGraphQLLocalServerURL.js"}

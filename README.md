@@ -1,6 +1,6 @@
 # Rebar
 
-Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
+Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra. Heavy focus on multi-tenancy support.
 
 
 [*Live demo*](http://rebar-demo.MachineAcuity.com/)
@@ -88,7 +88,7 @@ In order to develop, three servers need to be started:
 * Relay compiler (watching).
 
 This can be done with one command: `yarn dev`.
-To open the web app: navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
+To open the web app: navigate to `http://localhost:28605`, or whatever IP was assigned when running `yarn update-ip`.
 
 ## Running through Local Tunnel
 

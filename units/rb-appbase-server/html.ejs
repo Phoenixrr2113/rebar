@@ -13,8 +13,10 @@
   <%- server_side_styles %>
 </style>
 <script>
-  window.__siteConfiguration__ = <%- siteConfiguration %>
-  window.__RELAY_PAYLOADS__ = <%- relay_payload %>
+  window.__rebar_properties__ = {
+    relayPayloads: <%- relayPayloads %>,
+    siteConfiguration: <%- siteConfiguration %>
+  }
 </script>
 
 </head><body>
