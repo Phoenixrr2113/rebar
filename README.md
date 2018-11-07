@@ -6,10 +6,9 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 [*Live demo*](http://rebar-demo.MachineAcuity.com/)
 
 
+# Technology stack
 
-# Technologies used in Rebar
-
-## Client side
+## Client stack
 
 | **Technology** | **Description**|
 |----------------|----------------|
@@ -21,7 +20,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
-## Server side
+## Server stack
 
 | **Technology** | **Description**|
 |----------------|----------------|
@@ -29,6 +28,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [Data Loader](https://github.com/facebook/dataloader)           | Generic utility to be used as part of your application's data fetching layer to provide a consistent API over various backends and reduce requests to those backends via batching and caching. |
 | [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. URB works well with Elassandra. |
 | [Express](https://expressjs.com)                                | Fast, unopinionated, minimalist web framework for Node.js |
+| [express-cassandra](https://express-cassandra.readthedocs.io)   | Cassandra ORM/ODM/OGM for Node.js with optional support for Elassandra & JanusGraph |
 | [Express GraphQL](https://github.com/graphql/express-graphql)   | A Node.js express library that allows the creation of GraphQL servers. |
 | [JWT](https://jwt.io/)                                          | JSON Web Tokens is an industry standard [RFC 7519](https://tools.ietf.org/html/rfc7519) method for representing claims securely between two parties. |
 | [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
@@ -53,7 +53,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 # Setup
 
-## Initial Development Machine Setup
+## Development Environment Setup
 
 The setup is for OS X only. Prerequisites:
 
@@ -61,17 +61,47 @@ The setup is for OS X only. Prerequisites:
 * **Install [Git](https://git-scm.com/downloads)** minimum version as specified in `package.json`.  
 * **Install yarn** run `npm install -g yarn`
 
-## Initial Project setup on local machine
+## Setting up Elassandra in docker
+
+### Setup
+
+```
+docker pull strapdata/elassandra:6.2.3.4
+docker run -d -p 9042:9042 --name=elassie strapdata/elassandra:6.2.3.4
+```
+
+### Start/Stop
+
+```
+docker start elassie
+docker stop elassie
+```
+
+### Troubleshooting
+
+```
+docker run --privileged -it --link elassie --rm strapdata/elassandra cqlsh elassie
+docker logs elassie
+```
+
+### Cleanup
+
+```
+docker stop elassie
+docker rm elassie
+```
+
+## Setup on local development machine
 
 In order to set up the project locally, perform the following steps:
 
 | Action                    | Notes                               |
 | ------------------------- | ----------------------------------- |
 | `git clone https://github.com/MachineAcuity/rebar.git` | Clone from github. Alternatively, you can download the source and update in some different way. |
-| `yarn` | Install node packages. |
-| `yarn setup-local` | Set up default configuration for running the boilerplate. |
-| Edit `.env` | Set database server / name, secrets, API keys. etc. |
-| `yarn setup-database` | Creates Cassandra schema. |
+| `yarn`                    | Install node packages. |
+| `yarn setup-local`        | Set up default configuration for running the boilerplate. |
+| Edit `.env`               | Set database server / name, secrets, API keys. etc. |
+| `yarn setup-database`     | Creates Cassandra schema. |
 
 In addition to the above, you might want to specify `JWT_SECRET` by modifying the `.env` file. This step can be skipped if you do not care about the actual security and simply want to get the project running.
 
@@ -103,3 +133,5 @@ with your preferred value. Please notice that LocalTunnel allocates subdomain na
 ```
 yarn dev-t
 ```
+
+Then you can navigate to `https://replace-with-your-own-domain.localtunnel.me`.
