@@ -128,3 +128,5 @@ with your preferred value. Please notice that LocalTunnel allocates subdomain na
 ```
 yarn dev-t
 ```
+
+Then you can navigate to `https://replace-with-your-own-domain.localtunnel.me`.
