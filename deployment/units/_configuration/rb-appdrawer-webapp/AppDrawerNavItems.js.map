@@ -1,0 +1,1 @@
+{"version":3,"sources":["../../../../units/_configuration/rb-appdrawer-webapp/AppDrawerNavItems.jsx"],"names":["AppDrawerNavItems"],"mappings":";;AAEA,8G;;AAEeA,0B","sourcesContent":["// @flow\n\nimport AppDrawerNavItems from '../../rb-demo-webapp/components/AppDrawerNavItems'\n\nexport default AppDrawerNavItems\n"],"file":"AppDrawerNavItems.js"}
