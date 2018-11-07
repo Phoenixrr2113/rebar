@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/rb-appbase-webapp/AppWrapper.jsx"],"names":["AppWrapper"],"mappings":";;AAEA,gG;;AAEeA,mB","sourcesContent":["// @flow\n\nimport AppWrapper from '../../rb-demo-webapp/components/AppWrapper'\n\nexport default AppWrapper\n"],"file":"AppWrapper.js"}

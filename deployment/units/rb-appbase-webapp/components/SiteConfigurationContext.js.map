@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/rb-appbase-webapp/components/SiteConfigurationContext.jsx"],"names":["React","createContext"],"mappings":";;AAEA,sD;;AAEeA,eAAMC,aAAN,CAA4B,EAA5B,C","sourcesContent":["// @flow\n\nimport React from 'react'\n\nexport default React.createContext<Object>({})\n"],"file":"SiteConfigurationContext.js"}

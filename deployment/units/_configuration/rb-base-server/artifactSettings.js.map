@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../../../units/_configuration/rb-base-server/artifactSettings.js"],"names":["firstPathElementIsArtifactName"],"mappings":";;AAEO,MAAMA,8BAA8B,GAAG,KAAvC,C","sourcesContent":["// @flow\n\nexport const firstPathElementIsArtifactName = false\n"],"file":"artifactSettings.js"}
