@@ -34,7 +34,7 @@ class EnsayoPublicList extends _react.default.Component
 
     return (
       _react.default.createElement(_ResponsiveContentArea.default, null,
-      Viewer.Ensayos.edges.map(edge =>
+      Viewer.Ensayos.edges.map((edge) =>
       _react.default.createElement(_Card.default, { key: edge.node.id, className: classes.card },
       _react.default.createElement(_CardHeader.default, { title: edge.node.Ensayo_Title }),
 

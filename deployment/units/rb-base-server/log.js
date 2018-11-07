@@ -22,7 +22,7 @@ if (defaultPersisterLogger) {
   transports.push(defaultPersisterLogger);
 }
 
-// Create winston
+// Create winston. Not sure why Flow does not like it. $AssureFlow
 const log = _winston.default.createLogger({ transports });var _default =
 
 log;exports.default = _default;

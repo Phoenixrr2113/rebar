@@ -9,8 +9,12 @@ var _routesAppFrame = _interopRequireDefault(require("../../_configuration/rb-ap
 var _routesRoot = _interopRequireDefault(require("../../_configuration/rb-appbase-webapp/routesRoot"));var _graphql;function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 siteConfiguration => {
+  let artifactNamePrefix = '';
+  if (siteConfiguration.webapp && siteConfiguration.webapp.artifactNamePrefix)
+  artifactNamePrefix = siteConfiguration.webapp.artifactNamePrefix;
+
   return (
-    _react.default.createElement(_Route.default, { path: "/" },
+    _react.default.createElement(_Route.default, { path: artifactNamePrefix + '/' },
     _react.default.createElement(_Route.default, {
       path: "/",
       Component: _AppFrame.default,

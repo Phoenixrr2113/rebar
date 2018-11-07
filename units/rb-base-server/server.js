@@ -1,14 +1,12 @@
 // @flow
 
-// In order to use ES7 async/await
-//import 'babel-polyfill'
-
 import path from 'path'
 
 import express from 'express'
 import compression from 'compression'
 import cookieParser from 'cookie-parser'
 
+import { firstPathElementIsArtifactName } from '../_configuration/rb-base-server/artifactSettings'
 import { name, version } from '../../package.json'
 import servers from '../_configuration/rb-base-server/servers'
 
@@ -29,18 +27,38 @@ if ( port == null || typeof port !== 'string' )
 
 const host = process.env.HOST
 if ( host == null || typeof host !== 'string' )
-  throw new Error( 'rb-base-server/server.js requires the environment variable HOST to be set' ) // Log startup information
+  throw new Error( 'rb-base-server/server.js requires the environment variable HOST to be set' )
 
+const accessControlAllowedOriginsAsString = process.env.ACCESS_CONTROL_ALLOWED_ORIGINS
+if (
+  accessControlAllowedOriginsAsString == null ||
+  typeof accessControlAllowedOriginsAsString !== 'string'
+)
+  throw new Error(
+    'rb-base-server/server.js requires the environment variable ACCESS_CONTROL_ALLOWED_ORIGINS to be set',
+  )
+let accessControlAllowedOrigins = []
+try {
+  accessControlAllowedOrigins = JSON.parse( accessControlAllowedOriginsAsString )
+  if ( !Array.isArray( accessControlAllowedOrigins ) ) throw new Error()
+} catch ( ex ) {
+  throw new Error(
+    'rb-base-server/server.js requires the environment variable ACCESS_CONTROL_ALLOWED_ORIGINS to be array of strings',
+  )
+}
+
+//
+
+// Log startup information
 log.log({
   level: 'info',
-  message: 'Starting application',
+  message: 'Start ' + name,
   details: {
-    name: name,
-    version: version,
+    version,
     NODE_ENV: process.env.NODE_ENV,
-    HOST: process.env.HOST,
-    PORT: process.env.PORT,
-    PUBLIC_URL: process.env.PUBLIC_URL,
+    host,
+    port,
+    accessControlAllowedOrigins,
     process_title: process.title,
     process_pid: process.pid,
     local_ip: getLocalIP(),
@@ -53,20 +71,26 @@ initializeObjectCache()
 // Main router
 const server = express()
 
-// Add headers
+// Set up access control
 server.use( function( req, res, next ) {
-  // Website you wish to allow to connect
-  res.setHeader( 'Access-Control-Allow-Origin', process.env.PUBLIC_URL )
+  // Find out what the origin is, could be string or undefined
+  const origin = req.get( 'origin' )
 
-  // Request methods you wish to allow
-  res.setHeader( 'Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE' )
+  // Allow requests with no origin (like mobile apps or curl requests)
+  // For requests with origin, verify that is is allowed
+  if ( origin && accessControlAllowedOrigins.indexOf( origin ) > -1 ) {
+    res.setHeader( 'Access-Control-Allow-Origin', origin )
 
-  // Request headers you wish to allow
-  res.setHeader( 'Access-Control-Allow-Headers', 'X-Requested-With,content-type' )
+    // Request methods you wish to allow
+    res.setHeader( 'Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE' )
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
-  res.setHeader( 'Access-Control-Allow-Credentials', true )
+    // Request headers you wish to allow
+    res.setHeader( 'Access-Control-Allow-Headers', 'X-Requested-With,content-type' )
+
+    // Set to true if you need the website to include cookies in the requests sent
+    // to the API (e.g. in case you use sessions)
+    res.setHeader( 'Access-Control-Allow-Credentials', true )
+  }
 
   // Pass to next layer of middleware
   next()
@@ -77,15 +101,30 @@ server.set( 'x-powered-by', false )
 server.use( compression() )
 server.use( cookieParser() ) // GraphQL server requires this
 
-server.use( '/healthz', serverHealthz ) // Static public files server
-server.use(
-  express.static( path.resolve( __dirname + '/../_configuration/rb-base-server/public_files/' ), {
-    maxAge: 365 * 86400, // one year
-  }),
+const firstPathElement = firstPathElementIsArtifactName ? '/:artifact_name' : ''
+
+// Health server
+server.use( firstPathElement + '/healthz', serverHealthz )
+
+// Static public files server. Serve both using first path elements, and as in root. The reason
+// is that between gantry, and actual deployment, assets requested by client.js and loaded by
+// webpack, both paths could be used
+const staticServer = express.static(
+  path.resolve( __dirname + '/../_configuration/rb-base-server/public_files/' ),
+  {
+    maxAge:
+      1 *
+      // day
+      86400,
+  },
 )
+server.use( '/', staticServer )
+if ( firstPathElement !== '' ) {
+  server.use( firstPathElement + '/', staticServer )
+}
 
 // Initialize server extenders
-servers( server )
+servers( server, firstPathElementIsArtifactName )
 
 ObjectManager.initializePersisters( false, () => {
   // Serve - work differently in development and production. In production only the

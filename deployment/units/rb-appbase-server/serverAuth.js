@@ -50,7 +50,7 @@ async function login(req, res) {
           id: arr_UserAccount[0].UserAccount_User_id });
 
         if (
-        await new Promise(resolve =>
+        await new Promise((resolve) =>
         _bcryptjs.default.compare(User_Secret, a_User.User_Secret, (err, passwordMatch) =>
         resolve(passwordMatch))))
 
@@ -103,7 +103,7 @@ async function createuser(req, res) {
 
 
       if (arr_UserAccount.length > 0) throw new Error('User account already exists');
-      const User_PasswordHash = await new Promise(resolve =>
+      const User_PasswordHash = await new Promise((resolve) =>
       _bcryptjs.default.hash(User_Secret, 8, (err, hash) => resolve(hash)));
 
 

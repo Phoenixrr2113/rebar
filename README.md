@@ -1,6 +1,6 @@
 # Rebar
 
-Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra.
+Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra. Heavy focus on multi-tenancy support.
 
 
 [*Live demo*](http://rebar-demo.MachineAcuity.com/)
@@ -50,7 +50,8 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 
 
-# Development Setup
+
+# Setup
 
 ## Development Environment Setup
 
@@ -104,6 +105,10 @@ In order to set up the project locally, perform the following steps:
 
 In addition to the above, you might want to specify `JWT_SECRET` by modifying the `.env` file. This step can be skipped if you do not care about the actual security and simply want to get the project running.
 
+
+
+# Development
+
 ## Running in development mode
 
 In order to develop, three servers need to be started:
@@ -113,11 +118,11 @@ In order to develop, three servers need to be started:
 * Relay compiler (watching).
 
 This can be done with one command: `yarn dev`.
-To open the web app: navigate to `http://localhost:26005`, or whatever IP was assigned when running `yarn update-ip`.
+To open the web app: navigate to `http://localhost:28605`, or whatever IP was assigned when running `yarn update-ip`.
 
 ## Running through Local Tunnel
 
-In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/master/units/_configuration/rb-devtunnel/tunnels.json). Replace the value of
+In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/0750afbfd6320f814131ae86d909384d9a153f1b/units/_configuration/rb-devtunnel/tunnels.json#L10). Replace the value of
 
 ```
 "subdomain": "replace-with-your-own-domain"
@@ -130,3 +135,18 @@ yarn dev-t
 ```
 
 Then you can navigate to `https://replace-with-your-own-domain.localtunnel.me`.
+
+
+
+# Production
+
+In order to run rebar in production-like mode you can:
+
+```
+$ yarn build-deployment
+...
+$ export NODE_ENV=production
+$ node ./deployment/units/rb-base-server/server
+```
+
+A production  setup would include the `deployment` directory, with appropriate `.env` file, and running `units/rb-base-server/server` in some sort or fashion.

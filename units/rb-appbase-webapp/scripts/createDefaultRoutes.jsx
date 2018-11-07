@@ -9,8 +9,12 @@ import routesAppFrame from '../../_configuration/rb-appbase-webapp/routesAppFram
 import routesRoot from '../../_configuration/rb-appbase-webapp/routesRoot'
 
 export default ( siteConfiguration: Object ) => {
+  let artifactNamePrefix = ''
+  if ( siteConfiguration.webapp && siteConfiguration.webapp.artifactNamePrefix )
+    artifactNamePrefix = siteConfiguration.webapp.artifactNamePrefix
+
   return (
-    <Route path="/">
+    <Route path={artifactNamePrefix + '/'}>
       <Route
         path="/"
         Component={AppFrame}

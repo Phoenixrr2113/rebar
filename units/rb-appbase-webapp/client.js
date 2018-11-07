@@ -20,29 +20,34 @@ import '../_configuration/rb-appbase-webapp/global.css'
 
 const render = createRender({})
 
-//
+  //
 ;( async() => {
+  const { relayPayloads, siteConfiguration } = window.__rebar_properties__
+
   // eslint-disable-next-line no-underscore-dangle
   const fetcher = new FetcherClient(
     getGraphQLServerURL(),
-    window.__RELAY_PAYLOADS__,
-    window.__RELAY_PAYLOADS__[0].data.Viewer.UserToken2, // It is critical that the app frame has UserToken2 retrieved
+    relayPayloads,
+    relayPayloads[0].data.Viewer.UserToken2, // It is critical that the app frame has UserToken2 retrieved
   )
   const resolver = createResolver( fetcher )
 
   const Router = await createInitialFarceRouter({
     historyProtocol: new BrowserProtocol(),
     historyMiddlewares,
-    routeConfig: routeConfig( window.__siteConfiguration__ ),
+    routeConfig: routeConfig( siteConfiguration ),
     resolver,
     render,
   })
 
-  ReactDOM.hydrate(
-    <AppWrapper siteConfiguration={window.__siteConfiguration__} url={document.location.href}>
+  const contentComponent = (
+    <AppWrapper siteConfiguration={siteConfiguration} url={document.location.href}>
       <Router resolver={resolver} />
-    </AppWrapper>,
+    </AppWrapper>
+  )
 
+  ReactDOM.hydrate(
+    contentComponent,
     // $AssureFlow
     document.getElementById( 'root' ),
     () => {

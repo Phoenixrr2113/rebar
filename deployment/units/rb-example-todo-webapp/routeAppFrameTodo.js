@@ -7,7 +7,7 @@ var _Route = _interopRequireDefault(require("found/lib/Route"));function _intero
 
 const ToDoList = props => _react.default.createElement(_reactCodeSplitting.default, { load: Promise.resolve().then(() => _interopRequireWildcard(require('./components/ToDoList'))), componentProps: props });
 
-const ToDoScreen = props =>
+const ToDoScreen = (props) =>
 _react.default.createElement(_reactCodeSplitting.default, { load: Promise.resolve().then(() => _interopRequireWildcard(require('./components/ToDoScreen'))), componentProps: props });
 
 

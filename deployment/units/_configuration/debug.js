@@ -16,5 +16,5 @@ var debugWriteToConsoleServerRequestSiteInformation = false;exports.debugWriteTo
 
 var debugWriteToConsoleObjectCacheActivity = false;exports.debugWriteToConsoleObjectCacheActivity = debugWriteToConsoleObjectCacheActivity;
 
-var debugWriteToConsoleLog = false;exports.debugWriteToConsoleLog = debugWriteToConsoleLog;
+var debugWriteToConsoleLog = true;exports.debugWriteToConsoleLog = debugWriteToConsoleLog;
 //# sourceMappingURL=debug.js.map

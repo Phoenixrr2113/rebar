@@ -18,7 +18,7 @@ var _default =
     changedToDos: {
       type: new _graphql.GraphQLList(_ToDoType.default),
       resolve: ({ arr_local_ids_Changed_ToDos }, args, context, { rootValue: objectManager }) =>
-      arr_local_ids_Changed_ToDos.map(local_id =>
+      arr_local_ids_Changed_ToDos.map((local_id) =>
       objectManager.getOneObject('ToDo', { id: local_id })) },
 
 

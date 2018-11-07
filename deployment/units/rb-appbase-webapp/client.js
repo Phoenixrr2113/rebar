@@ -22,27 +22,32 @@ const render = (0, _createRender.default)({})
 
 //
 ;(async () => {
+  const { relayPayloads, siteConfiguration } = window.__rebar_properties__;
+
   // eslint-disable-next-line no-underscore-dangle
   const fetcher = new _fetcherClient.default(
   (0, _getGraphQLServerURL.default)(),
-  window.__RELAY_PAYLOADS__,
-  window.__RELAY_PAYLOADS__[0].data.Viewer.UserToken2);
+  relayPayloads,
+  relayPayloads[0].data.Viewer.UserToken2);
 
   const resolver = (0, _router.createResolver)(fetcher);
 
   const Router = await (0, _createInitialFarceRouter.default)({
     historyProtocol: new _BrowserProtocol.default(),
     historyMiddlewares: _router.historyMiddlewares,
-    routeConfig: (0, _router.routeConfig)(window.__siteConfiguration__),
+    routeConfig: (0, _router.routeConfig)(siteConfiguration),
     resolver,
     render });
 
 
+  const contentComponent =
+  _react.default.createElement(_AppWrapper.default, { siteConfiguration: siteConfiguration, url: document.location.href },
+  _react.default.createElement(Router, { resolver: resolver }));
+
+
+
   _reactDom.default.hydrate(
-  _react.default.createElement(_AppWrapper.default, { siteConfiguration: window.__siteConfiguration__, url: document.location.href },
-  _react.default.createElement(Router, { resolver: resolver })),
-
-
+  contentComponent,
   // $AssureFlow
   document.getElementById('root'),
   () => {

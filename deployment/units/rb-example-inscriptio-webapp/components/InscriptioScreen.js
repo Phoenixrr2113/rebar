@@ -16,7 +16,7 @@ var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-we
 var _SiteConfigurationContext = _interopRequireDefault(require("../../rb-appbase-webapp/components/SiteConfigurationContext"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const MapComponent = (0, _reactGoogleMaps.withScriptjs)(
-(0, _reactGoogleMaps.withGoogleMap)(props =>
+(0, _reactGoogleMaps.withGoogleMap)((props) =>
 _react.default.createElement(_reactGoogleMaps.GoogleMap, { defaultZoom: props.defaultZoom, center: props.center },
 props.markers.map((marker, index) =>
 _react.default.createElement(_reactGoogleMaps.Marker, { key: index, position: marker.position })))));

@@ -5,7 +5,7 @@ ToDoListUpdateMarkAll = async function ToDoListUpdateMarkAll(objectManager, ToDo
 
   const arr_filtered = arr.filter(a_ToDo => a_ToDo.ToDo_Complete !== ToDo_CompleteNew);
 
-  const arrPromiseToUpdate = arr_filtered.map(a_ToDo =>
+  const arrPromiseToUpdate = arr_filtered.map((a_ToDo) =>
   objectManager.update('ToDo', {
     id: a_ToDo.id,
     ToDo_Complete: ToDo_CompleteNew }));
