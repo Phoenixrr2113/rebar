@@ -1,6 +1,6 @@
 # Rebar
 
-Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra. Heavy focus on multi-tenancy support.
+Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra. Heavy focus on SaaS and multi-tenancy support.
 
 
 [*Live demo*](http://rebar-demo.MachineAcuity.com/)
@@ -57,9 +57,8 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 
 The setup is for OS X only. Prerequisites:
 
-* **Install [Node.js](https://nodejs.org)** minimum version as specified in `package.json`.  
-* **Install [Git](https://git-scm.com/downloads)** minimum version as specified in `package.json`.  
-* **Install yarn** run `npm install -g yarn`
+* **[Node.js](https://nodejs.org)** minimum version as specified in [`package.json`](package.json#L101).  
+* **yarn** run `npm install -g yarn`
 
 ## Setting up Elassandra in docker
 
