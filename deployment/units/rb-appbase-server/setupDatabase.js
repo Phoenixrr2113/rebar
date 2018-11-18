@@ -2,13 +2,16 @@
 
 var _process = _interopRequireDefault(require("process"));
 
-require("../../units/rb-appbase-server/graphql/schema");
+var _log = _interopRequireDefault(require("../rb-base-server/log"));
 var _ObjectManager = _interopRequireDefault(require("../rb-base-server/ObjectManager"));
 
 
-require("../_configuration/rb-base-server/graphql/_schemas");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Schema for GraphQL server
-// Guarantee that all object registrations and schema definitions are executed
+require("../_configuration/rb-base-server/graphql/_schemas");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Guarantee that all object registrations and schema definitions are executed
+
+(0, _log.default)('info', 'rb-appbase-server setupDatabase', { step: 'starting' });
+
 _ObjectManager.default.initializePersisters(true, () => {
+  (0, _log.default)('info', 'rb-appbase-server setupDatabase', { step: 'finished' });
   _process.default.exit();
 });
 //# sourceMappingURL=setupDatabase.js.map
