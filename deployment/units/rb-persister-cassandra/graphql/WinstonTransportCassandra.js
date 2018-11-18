@@ -12,14 +12,6 @@ var _getLocalIP = _interopRequireDefault(require("../../rb-base-server/getLocalI
 // Read environment
 require('dotenv').load();
 
-const port = process.env.PORT;
-if (port == null || typeof port !== 'string')
-throw new Error('rb-base-server/server.js requires the environment variable PORT to be set');
-
-const host = process.env.HOST;
-if (host == null || typeof host !== 'string')
-throw new Error('rb-base-server/server.js requires the environment variable HOST to be set');
-
 //
 
 const process_pid = process.pid;
@@ -28,7 +20,6 @@ const local_ip = (0, _getLocalIP.default)();
 //
 
 const Uuid = _cassandraDriver.default.types.Uuid;
-//const Uuid_Null = Uuid.fromString( '00000000-0000-0000-0000-000000000000' )
 
 //
 
@@ -197,8 +188,8 @@ class WinstonTransportCassandra extends _winstonTransport.default {
       details,
       issue_id,
       local_ip,
-      port,
-      host,
+      port: process.env.PORT,
+      host: process.env.HOST,
       process_pid,
       err_message,
       err_stack,
