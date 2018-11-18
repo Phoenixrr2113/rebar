@@ -3,8 +3,11 @@
 import fsWithCallbacks from 'fs'
 
 import chalk from 'chalk'
+import NestedError from 'nested-error-stacks'
 
 const fs = fsWithCallbacks.promises
+
+//
 
 export default ( async function ensureFileContent(
   fileName: string,
@@ -17,7 +20,9 @@ export default ( async function ensureFileContent(
     try {
       currentFileContent = ( await fs.readFile( fileName ) ).toString()
     } catch ( err ) {
-      if ( err.code !== 'ENOENT' ) throw err
+      if ( err.code !== 'ENOENT' ) {
+        throw new NestedError( 'XXX', err )
+      }
     }
   }
 

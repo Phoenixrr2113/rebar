@@ -15,26 +15,15 @@ export default function logServerRequest( req, res, next, loggingFunction ) {
   res.end = function( chunk ) {
     if ( chunk ) chunksRes.push( Buffer.from( chunk ) )
 
-    var responseBody = Buffer.concat( chunksRes ).toString( 'utf8' )
-
     // Determine client ID - either placed in the headers by Nginx, or the IP the request is coming from
     const clientIP = req.headers['x-real-ip'] || req.connection.remoteAddress
 
-    let user
-    if ( res.injectedByRebarFrameworks && res.injectedByRebarFrameworks.user )
-      user = res.injectedByRebarFrameworks.user
-    else user = 'not determined'
+    let userSession
+    if ( res.injectedByRebarFrameworks && res.injectedByRebarFrameworks.userSession )
+      userSession = res.injectedByRebarFrameworks.userSession
+    else userSession = 'not determined'
 
-    const requestAndResponse = {
-      headers: req.headers,
-      cookies: req.cookies,
-      user: user,
-      query: req.body,
-      response: responseBody,
-      clientIP,
-    }
-
-    loggingFunction( requestAndResponse )
+    loggingFunction({ req, clientIP, userSession })
 
     oldEndRes.apply( res, arguments )
   }

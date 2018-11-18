@@ -1,5 +1,7 @@
 // @flow
 
+import NestedError from 'nested-error-stacks'
+
 import CacheableCategoryDefinitions from '../_configuration/rb-base-server/CacheableCategoryDefinitions'
 import { debugWriteToConsoleObjectCacheActivity } from '../_configuration/debug'
 
@@ -28,15 +30,9 @@ async function executeDiscard(
   try {
     await discardFunction( objectPromise )
   } catch ( err ) {
-    // Record the problem and throw exception further
-    log.log({
-      level: 'error',
-      message: 'executeDiscard failed',
-      details: {
-        cacheKey,
-        err,
-      },
-    })
+    const message = 'rb-base-server ObjectCache executeDiscard: failed'
+    log( 'error', message, { cacheKey, err })
+    throw new NestedError( message, err )
   }
 }
 
@@ -204,16 +200,12 @@ async function getCachedEntryFromCache(
       cachedEntry.validityVerificationPromise = Promise.resolve( false )
 
       // Record the problem and throw exception further
-      log.log({
-        level: 'error',
-        message: 'getCachedEntryFromCache: validityVerificationPromise failed',
-        details: {
-          categoryName,
-          cacheKey,
-          err,
-        },
-      })
-      throw err
+      log(
+        'error',
+        'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed',
+        { categoryName, cacheKey, err },
+      )
+      throw new NestedError( 'XXX', err )
     }
   }
 
@@ -245,16 +237,12 @@ export async function getOrCreateObjectFromCahce(
   try {
     newObjectPromise = creationFunction()
   } catch ( err ) {
-    log.log({
-      level: 'error',
-      message: 'getOrCreateObjectFromCahce: creationFunction failed',
-      details: {
-        categoryName,
-        cacheKey,
-        err,
-      },
+    log( 'error', 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed', {
+      categoryName,
+      cacheKey,
+      err,
     })
-    throw err
+    throw new NestedError( 'XXX', err )
   }
 
   // Add the promise to the cache now, so that other requests to the cache
@@ -267,15 +255,15 @@ export async function getOrCreateObjectFromCahce(
   try {
     return await newObjectPromise
   } catch ( err ) {
-    log.log({
-      level: 'error',
-      message: 'getOrCreateObjectFromCahce: await creationFunction failed',
-      details: {
+    log(
+      'error',
+      'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed',
+      {
         categoryName,
         cacheKey,
         err,
       },
-    })
+    )
 
     const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
 
@@ -283,7 +271,7 @@ export async function getOrCreateObjectFromCahce(
     const { entries } = cachedEntriesForCategory
     entries.delete( cacheKey )
 
-    throw err
+    throw new NestedError( 'XXX', err )
   }
 }
 

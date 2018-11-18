@@ -59,7 +59,7 @@ export default class PersisterCassandra {
               if ( err )
                 reject(
                   'getOneObject findOne failed: ' +
-                    JSON.stringify({ entityName, filters, message: err.message }),
+                    JSON.stringify({ entityName, filter, message: err.message }),
                 )
               else {
                 if ( entity != null ) resolve( new ObjectType( entity ) )
@@ -69,7 +69,7 @@ export default class PersisterCassandra {
           } catch ( err ) {
             reject(
               'getOneObject failed: ' +
-                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+                JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }),
             )
           }
         }),
@@ -111,7 +111,7 @@ export default class PersisterCassandra {
                 if ( err )
                   reject(
                     'getObjectList find failed: ' +
-                      JSON.stringify({ entityName, filters, message: err.message }),
+                      JSON.stringify({ entityName, filter, message: err.message }),
                   )
                 else {
                   const arrRetObj = []
@@ -123,7 +123,7 @@ export default class PersisterCassandra {
           } catch ( err ) {
             reject(
               'getObjectList failed: ' +
-                JSON.stringify({ entityName, filters, message: err.message, stack: err.stack }),
+                JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }),
             )
           }
         }),
@@ -155,9 +155,21 @@ export default class PersisterCassandra {
   add( entityName: string, fields: any ): Promise<any> {
     this.updateUuidsInFields( entityName, fields )
 
+    const options = {}
+
+    // In order to set TTL, we need to pass it to the opions
+    if ( fields.hasOwnProperty( '_ttl' ) ) {
+      // Set option to use ttl
+      options.ttl = fields._ttl
+
+      // Remove ttl from filter
+      fields = Object.assign({}, fields )
+      delete fields._ttl
+    }
+
     return new Promise( ( resolve, reject ) => {
       const entity = new ExpressCassandraClient.instance[entityName]( fields )
-      entity.save( err => {
+      entity.save( options, err => {
         if ( err ) reject( err )
         else resolve()
       })

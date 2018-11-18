@@ -12,7 +12,7 @@ import { connectionArgs, connectionFromArray, fromGlobalId, globalIdField } from
 import defaultPersister from '../../../_configuration/rb-base-server/graphql/defaultPersister'
 import NodeInterface from '../NodeInterface'
 import _ViewerFields from '../../../_configuration/rb-base-server/graphql/_ViewerFields'
-import User from '../../../_configuration/rb-base-server/graphql/model/User'
+import User from '../model/User'
 
 import UserPermissionForObjectsConnection from './UserPermissionForObjectsConnection'
 import UserPermissionForObjectType from './UserPermissionForObjectType'
@@ -34,10 +34,10 @@ export default new GraphQLObjectType({
       type: GraphQLString,
       resolve: obj => obj.User_DisplayName,
     },
-    User_Email: { type: GraphQLString, resolve: obj => obj.User_Email },
-    User_PhoneNumberMobile: {
+    User_PrimaryEmail: { type: GraphQLString, resolve: obj => obj.User_PrimaryEmail },
+    User_PrimaryPhone: {
       type: GraphQLString,
-      resolve: obj => obj.User_PhoneNumberMobile,
+      resolve: obj => obj.User_PrimaryPhone,
     },
 
     UserPermissionForObjects: {

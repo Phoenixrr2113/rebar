@@ -1,6 +1,7 @@
 // @flow
 
 import 'isomorphic-fetch'
+import NestedError from 'nested-error-stacks'
 
 export default class FetcherBase {
   url: string
@@ -25,11 +26,27 @@ export default class FetcherBase {
       body: JSON.stringify({ query: operation.text, variables }),
     }
 
-    // $AssureFlow we can add the cookie, will be used on server
-    if ( this.UserToken1 ) request.headers.UserToken1 = this.UserToken1
+    try {
+      if ( this.UserToken1 ) {
+        // $AssureFlow we can add the cookie, will be used on server
+        request.headers.UserToken1 = this.UserToken1
+      }
 
-    const response = await fetch( this.url, request )
+      const response = await fetch( this.url, request )
 
-    return response.json()
+      return response.json()
+    } catch ( err ) {
+      throw new NestedError(
+        'FetcherBase failed UserToken1=' +
+          ( this.UserToken1 ? this.UserToken1 : '<null>' ) +
+          ' UserToken2=' +
+          this.UserToken2 +
+          ' request=' +
+          JSON.stringify( request ) +
+          ' with' +
+          err.message,
+        err,
+      )
+    }
   }
 }

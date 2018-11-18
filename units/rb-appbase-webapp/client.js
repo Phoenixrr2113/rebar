@@ -18,18 +18,64 @@ import { createResolver, historyMiddlewares, routeConfig } from './router'
 // Include global CSS used in all units. Will not be chunked
 import '../_configuration/rb-appbase-webapp/global.css'
 
-const render = createRender({})
+// User token will be recorded upon startup and used when passing on client errors
+let UserToken2 = 'unknown'
 
-  //
+// Handler for error reporting
+async function rebarErrorHandler( err, err_info ) {
+  try {
+    if (
+      typeof err.message === 'string' &&
+      err.message.startsWith(
+        'An error was thrown inside one of your components, but React doesn\'t know what it was.',
+      )
+    )
+      return
+
+    const loc = window.location
+    const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
+
+    const body = JSON.stringify({
+      UserToken2,
+      err: { message: err.message, stack: err.stack },
+      err_info,
+    })
+
+    const response = await fetch( host + '/client-error/report', {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body,
+    })
+
+    const responseAsObject = await response.json()
+
+    if ( responseAsObject.success ) {
+      alert(
+        'An error has occurred. Use the following identifier when reporting to support:\n' +
+          responseAsObject.issueId,
+      )
+    } else {
+      alert( 'An error has occurred. Attempt to assign an identifier has failed.' )
+    }
+  } catch ( err ) {
+    alert( 'An error has occurred. We were not able to assign an identifier to it.\nReason:' + err )
+  }
+}
+
+// Load up react, relay and set up error handling
+
+const render = createRender({})
 ;( async() => {
   const { relayPayloads, siteConfiguration } = window.__rebar_properties__
 
+  // It is critical that the app frame has UserToken2 retrieved
+  UserToken2 = relayPayloads[0].data.Viewer.UserToken2
+
   // eslint-disable-next-line no-underscore-dangle
-  const fetcher = new FetcherClient(
-    getGraphQLServerURL(),
-    relayPayloads,
-    relayPayloads[0].data.Viewer.UserToken2, // It is critical that the app frame has UserToken2 retrieved
-  )
+  const fetcher = new FetcherClient( getGraphQLServerURL(), relayPayloads, UserToken2 )
   const resolver = createResolver( fetcher )
 
   const Router = await createInitialFarceRouter({
@@ -59,4 +105,6 @@ const render = createRender({})
       // ssStyles.parentNode.removeChild( ssStyles )
     },
   )
+
+  window.__rebar_error_handler__ = rebarErrorHandler
 })()

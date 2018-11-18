@@ -4,7 +4,7 @@ import { debugWriteToLogServerRequestWebApp } from '../_configuration/debug'
 import log from '../rb-base-server/log'
 import matchInDepth from '../rb-base-universal/matchInDepth'
 
-export default function defaultrequestLoggerWebApp( requestAndResponse ) {
+export default function defaultrequestLoggerWebApp({ req, clientIP, userSession }) {
   let logLevel = null
 
   // TODO: [2 Crossroads][server] Audit errors for WebApp and decide which ones to log. For instasnce, 401 is a bad idea.
@@ -13,10 +13,11 @@ export default function defaultrequestLoggerWebApp( requestAndResponse ) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestWebApp ) ) {
+  if ( matchInDepth({ req, clientIP, userSession }, debugWriteToLogServerRequestWebApp ) ) {
     logLevel = 'info'
   }
 
-  if ( logLevel )
-    log.log({ level: logLevel, message: 'Render on server request', details: requestAndResponse })
+  if ( logLevel ) {
+    log( logLevel, 'rb-appbase-server render on server request', { req, clientIP, userSession })
+  }
 }

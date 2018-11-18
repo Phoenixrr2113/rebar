@@ -3,6 +3,8 @@
 import fsWithCallbacks from 'fs'
 import path from 'path'
 
+import NestedError from 'nested-error-stacks'
+
 import ensureFileContent from './ensureFileContent'
 
 const fs = fsWithCallbacks.promises
@@ -27,7 +29,9 @@ export default class MasterWriter {
       try {
         await fs.mkdir( path.resolve( this.basePath, filePath ) )
       } catch ( err ) {
-        if ( err.code !== 'EEXIST' ) throw err
+        if ( err.code !== 'EEXIST' ) {
+          throw new NestedError( 'XXX', err )
+        }
       }
 
       this.directories.set( filePath, true )
