@@ -18,13 +18,13 @@ export default mutationWithClientMutationId({
     ToDo: {
       type: ToDoType,
       resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'ToDo', { id: local_id }),
+        objectManager.getOneObject_async( 'ToDo', { id: local_id }),
     },
 
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {
+        objectManager.getOneObject_async( 'User', {
           id: objectManager.getViewerUserId(),
         }),
     },

@@ -1,7 +1,7 @@
 // @flow weak
 
 export default ( async function ToDoListUpdateMarkAll( objectManager, ToDo_CompleteNew ) {
-  const arr = await objectManager.getObjectList( 'ToDo', {})
+  const arr = await objectManager.getObjectList_async( 'ToDo', {})
 
   const arr_filtered = arr.filter( a_ToDo => a_ToDo.ToDo_Complete !== ToDo_CompleteNew )
 

@@ -13,7 +13,7 @@ export default {
     args: { ...connectionArgs },
 
     resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList( 'Inscriptio', {})
+      const arr = await objectManager.getObjectList_async( 'Inscriptio', {})
 
       return connectionFromArray( arr, args )
     },
@@ -25,6 +25,6 @@ export default {
     args: { ...{ id: { type: GraphQLID } } },
 
     resolve: ( parent, { id }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject( 'Inscriptio', { id: fromGlobalId( id ).id }),
+      objectManager.getOneObject_async( 'Inscriptio', { id: fromGlobalId( id ).id }),
   },
 }

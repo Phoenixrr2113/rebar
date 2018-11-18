@@ -19,11 +19,11 @@ export default mutationWithClientMutationId({
     InscriptiosEdge: {
       type: InscriptiosConnection.edgeType,
       resolve: async({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
-        const an_Object = await objectManager.getOneObject( 'Inscriptio', {
+        const an_Object = await objectManager.getOneObject_async( 'Inscriptio', {
           id: local_id,
         })
 
-        const arr = await objectManager.getObjectList( 'Inscriptio', {})
+        const arr = await objectManager.getObjectList_async( 'Inscriptio', {})
 
         return {
           cursor: objectManager.cursorForObjectInConnection( 'Inscriptio', arr, an_Object ),
@@ -35,7 +35,7 @@ export default mutationWithClientMutationId({
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {
+        objectManager.getOneObject_async( 'User', {
           id: objectManager.getViewerUserId(),
         }),
     },

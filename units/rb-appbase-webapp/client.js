@@ -61,7 +61,7 @@ async function rebarErrorHandler( err, err_info ) {
     if ( responseAsObject.success ) {
       alert(
         'An error has occurred. Use the following identifier when reporting to support:\n' +
-          responseAsObject.issueId,
+          responseAsObject.issue_id,
       )
     } else {
       alert( 'An error has occurred. Attempt to assign an identifier has failed.' )

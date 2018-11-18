@@ -84,6 +84,7 @@ export default class WinstonTransportCassandra extends transport {
     // Create shallow copy of details
     const detailsPrep = Object.assign({}, detailsSupplied )
 
+    let issue_id = null
     let err_message = null
     let err_stack = null
     let err_info = null
@@ -93,6 +94,12 @@ export default class WinstonTransportCassandra extends transport {
     let req_body = null
     let user_id = null
     let site_id = null
+
+    // Retrieve issue_id
+    if ( detailsPrep.issue_id ) {
+      issue_id = stringifyIfRequired( detailsPrep.issue_id )
+      delete detailsPrep.issue_id
+    }
 
     // Retrieve error message, if available
     try {
@@ -188,6 +195,7 @@ export default class WinstonTransportCassandra extends transport {
       level,
       message,
       details,
+      issue_id,
       local_ip,
       port,
       host,
@@ -223,6 +231,7 @@ export default class WinstonTransportCassandra extends transport {
           level,
           message,
           details,
+          issue_id,
           local_ip,
           port,
           host,
@@ -237,7 +246,7 @@ export default class WinstonTransportCassandra extends transport {
           user_id,
           site_id
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       USING TTL 7776000`, // 90 * 86400 = 90 days
         [
           event.date,
@@ -245,6 +254,7 @@ export default class WinstonTransportCassandra extends transport {
           event.level,
           event.message,
           event.details,
+          event.issue_id,
           event.local_ip,
           event.port,
           event.host,

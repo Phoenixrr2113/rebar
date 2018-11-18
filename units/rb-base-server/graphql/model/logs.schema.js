@@ -9,6 +9,7 @@ defaultPersister.addTableSchema( 'logs', {
     level: 'text',
     message: 'text',
     details: 'text',
+    issue_id: 'text',
     local_ip: 'text',
     port: 'text',
     host: 'text',

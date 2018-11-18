@@ -19,11 +19,11 @@ export default mutationWithClientMutationId({
     TranslaticiarumsEdge: {
       type: TranslaticiarumsConnection.edgeType,
       resolve: async({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
-        const an_Object = await objectManager.getOneObject( 'Translaticiarum', {
+        const an_Object = await objectManager.getOneObject_async( 'Translaticiarum', {
           id: local_id,
         })
 
-        const arr = await objectManager.getObjectList( 'Translaticiarum', {})
+        const arr = await objectManager.getObjectList_async( 'Translaticiarum', {})
 
         return {
           cursor: objectManager.cursorForObjectInConnection( 'Translaticiarum', arr, an_Object ),
@@ -35,7 +35,7 @@ export default mutationWithClientMutationId({
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {
+        objectManager.getOneObject_async( 'User', {
           id: objectManager.getViewerUserId(),
         }),
     },

@@ -17,11 +17,11 @@ export default mutationWithClientMutationId({
     ToDosEdge: {
       type: ToDosConnection.edgeType,
       resolve: async({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
-        const an_Object = await objectManager.getOneObject( 'ToDo', {
+        const an_Object = await objectManager.getOneObject_async( 'ToDo', {
           id: local_id,
         })
 
-        const arr = await objectManager.getObjectList( 'ToDo', {})
+        const arr = await objectManager.getObjectList_async( 'ToDo', {})
 
         return {
           cursor: objectManager.cursorForObjectInConnection( 'ToDo', arr, an_Object ),
@@ -33,7 +33,7 @@ export default mutationWithClientMutationId({
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {
+        objectManager.getOneObject_async( 'User', {
           id: objectManager.getViewerUserId(),
         }),
     },

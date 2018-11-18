@@ -13,7 +13,7 @@ export default {
     args: { ...connectionArgs },
 
     resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList( 'Translaticiarum', {})
+      const arr = await objectManager.getObjectList_async( 'Translaticiarum', {})
 
       return connectionFromArray( arr, args )
     },
@@ -25,6 +25,6 @@ export default {
     args: { ...{ id: { type: GraphQLID } } },
 
     resolve: ( parent, { id }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject( 'Translaticiarum', { id: fromGlobalId( id ).id }),
+      objectManager.getOneObject_async( 'Translaticiarum', { id: fromGlobalId( id ).id }),
   },
 }
