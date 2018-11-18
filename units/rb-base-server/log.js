@@ -2,7 +2,6 @@
 
 import winston from 'winston'
 
-import { debugWriteToConsoleLog } from '../_configuration/debug'
 import defaultPersister from '../_configuration/rb-base-server/graphql/defaultPersister'
 
 //
@@ -14,11 +13,6 @@ require( 'dotenv' ).load()
 
 // Set up transports
 const transports = []
-
-// If set, show all log messages on console
-if ( debugWriteToConsoleLog ) {
-  transports.push( new winston.transports.Console() )
-}
 
 // If persister specified logger, use it
 const defaultPersisterLogger = defaultPersister.createLogger()

@@ -4,6 +4,7 @@ import cql from 'cassandra-driver'
 import jsonStringifySafe from 'json-stringify-safe'
 import transport from 'winston-transport'
 
+import { debugWriteToConsoleLog } from '../../_configuration/debug'
 import getLocalIP from '../../rb-base-server/getLocalIP'
 
 //
@@ -34,6 +35,18 @@ const Uuid = cql.types.Uuid
 function stringifyIfRequired( obj ) {
   if ( typeof obj === 'string' ) return obj
   else return jsonStringifySafe( obj )
+}
+
+function createCopyWithNonNull( obj ) {
+  const res = {}
+
+  for ( let key in obj ) {
+    const value = obj[key]
+
+    if ( value ) res[key] = value
+  }
+
+  return res
 }
 
 //
@@ -69,7 +82,7 @@ export default class WinstonTransportCassandra extends transport {
 
   _insertLog( level, message, detailsSupplied, callback ) {
     // Create shallow copy of details
-    const details = Object.assign({}, detailsSupplied )
+    const detailsPrep = Object.assign({}, detailsSupplied )
 
     let err_message = null
     let err_stack = null
@@ -83,50 +96,56 @@ export default class WinstonTransportCassandra extends transport {
 
     // Retrieve error message, if available
     try {
-      if ( details.err ) {
-        const { message, stack } = details.err
+      if ( detailsPrep.err ) {
+        const { message, stack } = detailsPrep.err
 
         if ( message && stack ) {
-          err_message = message
-          err_stack = stack
+          err_message = stringifyIfRequired( message )
+          err_stack = stringifyIfRequired( stack )
         } else {
-          err_message = details.err
+          err_message = stringifyIfRequired( detailsPrep.err )
         }
 
-        delete details.err
+        delete detailsPrep.err
       }
     } catch ( ignoreErr ) {
       console.error( ignoreErr )
     }
 
     // Retrieve err_info
-    if ( details.err_info ) {
-      err_info = details.err_info
-      delete details.err_info
+    if ( detailsPrep.err_info ) {
+      err_info = stringifyIfRequired( detailsPrep.err_info )
+      delete detailsPrep.err_info
     }
 
     // Retrieve request
     try {
-      if ( details.req ) {
-        const req = details.req
-        delete details.req
+      if ( detailsPrep.req ) {
+        const req = detailsPrep.req
+        delete detailsPrep.req
 
         req_headers = stringifyIfRequired( req.headers )
         req_cookies = stringifyIfRequired( req.cookies )
-        req_body = stringifyIfRequired( req.body )
+        if ( req.body && req.body.__DO_NOT_INCLUDE__ !== true ) {
+          req_body = stringifyIfRequired( req.body )
+        }
         req_ip = stringifyIfRequired( req.headers['x-real-ip'] || req.connection.remoteAddress )
       }
     } catch ( ignoreErr ) {
       console.error( ignoreErr )
     }
 
+    // Remove res. At a later point it might be interesting to retrieve data from res but at this
+    // point it is not used
+    delete detailsPrep.res
+
     // Retrieve details from ObjectManager
     try {
       // Retrieve user_id, site_id
-      if ( details.objectManager ) {
-        const objectManager: Object = { details }
+      if ( detailsPrep.objectManager ) {
+        const objectManager: Object = { detailsPrep }
         // Delete object first so that we do not fail json.stringify later
-        delete details.objectManager
+        delete detailsPrep.objectManager
 
         // Get user_id
         try {
@@ -146,11 +165,11 @@ export default class WinstonTransportCassandra extends transport {
       }
 
       // If artifact_id is provided, and site_id is not determined, use it
-      if ( !site_id && details.artifact_id ) {
+      if ( !site_id && detailsPrep.artifact_id ) {
         try {
-          site_id = details.artifact_id
+          site_id = detailsPrep.artifact_id
           if ( !site_id instanceof Uuid ) site_id = Uuid.fromString( site_id )
-          delete details.artifact_id
+          delete detailsPrep.artifact_id
         } catch ( ignoreErr ) {
           site_id = null
         }
@@ -159,12 +178,48 @@ export default class WinstonTransportCassandra extends transport {
       console.error( ignoreErr )
     }
 
+    // Stringify trimmed down details
+    const detailsRemaining = stringifyIfRequired( detailsPrep )
+    const details = detailsRemaining === '{}' ? null : detailsRemaining
+
+    const event = {
+      date: new Date().toISOString().slice( 0, 10 ),
+      datetime: new Date(),
+      level,
+      message,
+      details,
+      local_ip,
+      port,
+      host,
+      process_pid,
+      err_message,
+      err_stack,
+      err_info,
+      req_headers,
+      req_cookies,
+      req_ip,
+      req_body,
+      user_id,
+      site_id,
+    }
+
+    // Print to console, if so specified
+    if ( debugWriteToConsoleLog ) {
+      const eventForConsole = createCopyWithNonNull( event )
+
+      if ( level === 'erorr' ) {
+        console.error( eventForConsole )
+      } else {
+        console.log( eventForConsole )
+      }
+    }
+
     try {
       // Execute as a prepared query as it would be executed multiple times
       return this.client.execute(
         `INSERT INTO logs (
-          key,
           date,
+          datetime,
           level,
           message,
           details,
@@ -185,24 +240,24 @@ export default class WinstonTransportCassandra extends transport {
       VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
       USING TTL 7776000`, // 90 * 86400 = 90 days
         [
-          new Date().toISOString().slice( 0, 10 ),
-          new Date(),
-          level,
-          message,
-          stringifyIfRequired( details ),
-          local_ip,
-          port,
-          host,
-          process_pid,
-          err_message,
-          err_stack,
-          err_info,
-          req_headers,
-          req_cookies,
-          req_ip,
-          req_body,
-          user_id,
-          site_id,
+          event.date,
+          event.datetime,
+          event.level,
+          event.message,
+          event.details,
+          event.local_ip,
+          event.port,
+          event.host,
+          event.process_pid,
+          event.err_message,
+          event.err_stack,
+          event.err_info,
+          event.req_headers,
+          event.req_cookies,
+          event.req_ip,
+          event.req_body,
+          event.user_id,
+          event.site_id,
         ],
         { prepare: true, consistency: cql.types.consistencies.one },
         callback,

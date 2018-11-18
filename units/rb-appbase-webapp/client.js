@@ -24,6 +24,9 @@ let UserToken2 = 'unknown'
 // Handler for error reporting
 async function rebarErrorHandler( err, err_info ) {
   try {
+    // Do not report errors that do not carry meaningful information
+    if ( typeof err === 'string' && err.trimLeft() === '' ) return
+    if ( typeof err.message === 'string' && err.message.trimLeft() === '' ) return
     if (
       typeof err.message === 'string' &&
       err.message.startsWith(
@@ -32,15 +35,18 @@ async function rebarErrorHandler( err, err_info ) {
     )
       return
 
+    // Determine the host server
     const loc = window.location
     const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
+    // Pakcage up error details
     const body = JSON.stringify({
       UserToken2,
       err: { message: err.message, stack: err.stack },
       err_info,
     })
 
+    // Send away
     const response = await fetch( host + '/client-error/report', {
       method: 'POST',
       credentials: 'same-origin',
@@ -50,8 +56,8 @@ async function rebarErrorHandler( err, err_info ) {
       body,
     })
 
+    // Inform user of the result
     const responseAsObject = await response.json()
-
     if ( responseAsObject.success ) {
       alert(
         'An error has occurred. Use the following identifier when reporting to support:\n' +

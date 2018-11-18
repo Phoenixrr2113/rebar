@@ -31,7 +31,15 @@ async function report( req, res ) {
 
     await getUserAndSessionIDByUserToken1_async( objectManager, req, true )
 
-    log( 'error', 'Web client', { objectManager, req, err: req.body.err })
+    // Indicate to not include body, since it is meaningless for www errors
+    req.body.__DO_NOT_INCLUDE__ = true
+
+    log( 'error', 'WWW', {
+      objectManager,
+      req,
+      err: req.body.err,
+      err_info: req.body.err_info,
+    })
 
     res.json({ success: true, issueId: 'XXX aBcDeFg' })
   } catch ( err ) {
