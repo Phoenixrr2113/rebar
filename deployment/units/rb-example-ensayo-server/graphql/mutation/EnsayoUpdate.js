@@ -19,7 +19,7 @@ var _default =
     Ensayo: {
       type: _EnsayoType.default,
       resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('Ensayo', { id: local_id }) } },
+      objectManager.getOneObject_async('Ensayo', { id: local_id }) } },
 
 
 

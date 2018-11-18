@@ -19,11 +19,11 @@ var _default =
     EnsayosEdge: {
       type: _EnsayosConnection.default.edgeType,
       resolve: async ({ local_id }, { ...args }, context, { rootValue: objectManager }) => {
-        const an_Object = await objectManager.getOneObject('Ensayo', {
+        const an_Object = await objectManager.getOneObject_async('Ensayo', {
           id: local_id });
 
 
-        const arr = await objectManager.getObjectList('Ensayo', {});
+        const arr = await objectManager.getObjectList_async('Ensayo', {});
 
         return {
           cursor: objectManager.cursorForObjectInConnection('Ensayo', arr, an_Object),
@@ -35,7 +35,7 @@ var _default =
     Viewer: {
       type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', {
+      objectManager.getOneObject_async('User', {
         id: objectManager.getViewerUserId() }) } },
 
 

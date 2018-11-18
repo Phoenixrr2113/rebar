@@ -19,6 +19,33 @@
   }
 </script>
 
+<script>
+  function wrap(func) {
+    // Ensure we only wrap the function once.
+    if (!func._wrapped_by_rebar) {
+      func._wrapped_by_rebar = function () {
+        try{
+          func.apply(this, arguments);
+        } catch(err) {
+          window.__rebar_error_handler__(err);
+        }
+      }
+    }
+
+    return func._wrapped_by_rebar;
+  };
+
+  var addEventListener = window.EventTarget.prototype.addEventListener;
+  window.EventTarget.prototype.addEventListener = function (event, callback, bubble) {
+      addEventListener.call(this, event, wrap(callback), bubble);
+  }
+
+  var removeEventListener = window.EventTarget.prototype.removeEventListener;
+  window.EventTarget.prototype.removeEventListener = function (event, callback, bubble) {
+      removeEventListener.call(this, event, callback._wrapped_by_rebar || callback, bubble);
+  }
+</script>
+
 </head><body>
 
 <div id="root"><%- root_html %></div>
