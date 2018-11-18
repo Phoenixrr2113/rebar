@@ -12,14 +12,6 @@ import getLocalIP from '../../rb-base-server/getLocalIP'
 // Read environment
 require( 'dotenv' ).load()
 
-const port = process.env.PORT
-if ( port == null || typeof port !== 'string' )
-  throw new Error( 'rb-base-server/server.js requires the environment variable PORT to be set' )
-
-const host = process.env.HOST
-if ( host == null || typeof host !== 'string' )
-  throw new Error( 'rb-base-server/server.js requires the environment variable HOST to be set' )
-
 //
 
 const process_pid = process.pid
@@ -28,7 +20,6 @@ const local_ip = getLocalIP()
 //
 
 const Uuid = cql.types.Uuid
-//const Uuid_Null = Uuid.fromString( '00000000-0000-0000-0000-000000000000' )
 
 //
 
@@ -197,8 +188,8 @@ export default class WinstonTransportCassandra extends transport {
       details,
       issue_id,
       local_ip,
-      port,
-      host,
+      port: process.env.PORT,
+      host: process.env.HOST,
       process_pid,
       err_message,
       err_stack,
