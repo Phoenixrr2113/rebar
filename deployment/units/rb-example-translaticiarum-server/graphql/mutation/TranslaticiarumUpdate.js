@@ -19,7 +19,7 @@ var _default =
     Translaticiarum: {
       type: _TranslaticiarumType.default,
       resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('Translaticiarum', { id: local_id }) } },
+      objectManager.getOneObject_async('Translaticiarum', { id: local_id }) } },
 
 
 

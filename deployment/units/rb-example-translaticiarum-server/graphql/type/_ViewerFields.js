@@ -13,7 +13,7 @@ var _default =
     args: { ..._graphqlRelay.connectionArgs },
 
     resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList('Translaticiarum', {});
+      const arr = await objectManager.getObjectList_async('Translaticiarum', {});
 
       return (0, _graphqlRelay.connectionFromArray)(arr, args);
     } },
@@ -25,5 +25,5 @@ var _default =
     args: { ...{ id: { type: _graphql.GraphQLID } } },
 
     resolve: (parent, { id }, context, { rootValue: objectManager }) =>
-    objectManager.getOneObject('Translaticiarum', { id: (0, _graphqlRelay.fromGlobalId)(id).id }) } };exports.default = _default;
+    objectManager.getOneObject_async('Translaticiarum', { id: (0, _graphqlRelay.fromGlobalId)(id).id }) } };exports.default = _default;
 //# sourceMappingURL=_ViewerFields.js.map

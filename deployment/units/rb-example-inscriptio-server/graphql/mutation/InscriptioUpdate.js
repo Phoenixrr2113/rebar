@@ -19,7 +19,7 @@ var _default =
     Inscriptio: {
       type: _InscriptioType.default,
       resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('Inscriptio', { id: local_id }) } },
+      objectManager.getOneObject_async('Inscriptio', { id: local_id }) } },
 
 
 

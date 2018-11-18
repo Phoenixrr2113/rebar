@@ -2,7 +2,11 @@
 
 import fsWithCallbacks from 'fs'
 
+import NestedError from 'nested-error-stacks'
+
 const fs = fsWithCallbacks.promises
+
+//
 
 export default ( async function fsExists( path: string ) {
   try {
@@ -10,6 +14,8 @@ export default ( async function fsExists( path: string ) {
     return true
   } catch ( err ) {
     if ( err.code === 'ENOENT' ) return false
-    else throw err
+    else {
+      throw new NestedError( 'XXX', err )
+    }
   }
 })

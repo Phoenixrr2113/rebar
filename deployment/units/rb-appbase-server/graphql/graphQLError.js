@@ -33,12 +33,8 @@ exports.UserError = UserError;let defaultHandler = function (err) {
   if (err[IsUserError]) {
     return err;
   }
-  _log.default.log({
-    level: 'error',
-    message: 'Resolve function failed',
-    details: {
-      error: err && err.stack || err } });
 
+  (0, _log.default)('error', 'rb-appbase-server graphQLError', { err });
 
   err.message = 'Internal Error';
   return err;

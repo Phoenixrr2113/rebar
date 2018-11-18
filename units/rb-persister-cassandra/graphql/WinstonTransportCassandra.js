@@ -1,9 +1,55 @@
 // @flow
 
-import util from 'util'
-
-import transport from 'winston-transport'
 import cql from 'cassandra-driver'
+import jsonStringifySafe from 'json-stringify-safe'
+import transport from 'winston-transport'
+
+import { debugWriteToConsoleLog } from '../../_configuration/debug'
+import getLocalIP from '../../rb-base-server/getLocalIP'
+
+//
+
+// Read environment
+require( 'dotenv' ).load()
+
+const port = process.env.PORT
+if ( port == null || typeof port !== 'string' )
+  throw new Error( 'rb-base-server/server.js requires the environment variable PORT to be set' )
+
+const host = process.env.HOST
+if ( host == null || typeof host !== 'string' )
+  throw new Error( 'rb-base-server/server.js requires the environment variable HOST to be set' )
+
+//
+
+const process_pid = process.pid
+const local_ip = getLocalIP()
+
+//
+
+const Uuid = cql.types.Uuid
+//const Uuid_Null = Uuid.fromString( '00000000-0000-0000-0000-000000000000' )
+
+//
+
+function stringifyIfRequired( obj ) {
+  if ( typeof obj === 'string' ) return obj
+  else return jsonStringifySafe( obj )
+}
+
+function createCopyWithNonNull( obj ) {
+  const res = {}
+
+  for ( let key in obj ) {
+    const value = obj[key]
+
+    if ( value ) res[key] = value
+  }
+
+  return res
+}
+
+//
 
 export default class WinstonTransportCassandra extends transport {
   client: Object
@@ -13,7 +59,9 @@ export default class WinstonTransportCassandra extends transport {
     super( options )
 
     if ( !options.keyspace ) {
-      throw new Error( 'You must specify the options.keyspace' )
+      throw new Error(
+        'rb-persister-cassandra WinstonTransportCassandra: options.keyspace is missing',
+      )
     }
 
     this.client = new cql.Client( options )
@@ -32,13 +80,200 @@ export default class WinstonTransportCassandra extends transport {
     })
   }
 
-  _insertLog( level, message, details, callback ) {
-    // Execute as a prepared query as it would be executed multiple times
-    return this.client.execute(
-      'INSERT INTO logs (key, date, level, message, meta) VALUES (?, ?, ?, ?, ?)',
-      [ new Date().toISOString().slice( 0, 10 ), new Date(), level, message, util.inspect( details ) ],
-      { prepare: true, consistency: cql.types.consistencies.quorum },
-      callback,
-    )
+  _insertLog( level, message, detailsSupplied, callback ) {
+    // Create shallow copy of details
+    const detailsPrep = Object.assign({}, detailsSupplied )
+
+    let issue_id = null
+    let err_message = null
+    let err_stack = null
+    let err_info = null
+    let req_headers = null
+    let req_cookies = null
+    let req_ip = null
+    let req_body = null
+    let user_id = null
+    let site_id = null
+
+    // Retrieve issue_id
+    if ( detailsPrep.issue_id ) {
+      issue_id = stringifyIfRequired( detailsPrep.issue_id )
+      delete detailsPrep.issue_id
+    }
+
+    // Retrieve error message, if available
+    try {
+      if ( detailsPrep.err ) {
+        const { message, stack } = detailsPrep.err
+
+        if ( message && stack ) {
+          err_message = stringifyIfRequired( message )
+          err_stack = stringifyIfRequired( stack )
+        } else {
+          err_message = stringifyIfRequired( detailsPrep.err )
+        }
+
+        delete detailsPrep.err
+      }
+    } catch ( ignoreErr ) {
+      console.error( ignoreErr )
+    }
+
+    // Retrieve err_info
+    if ( detailsPrep.err_info ) {
+      err_info = stringifyIfRequired( detailsPrep.err_info )
+      delete detailsPrep.err_info
+    }
+
+    // Retrieve request
+    try {
+      if ( detailsPrep.req ) {
+        const req = detailsPrep.req
+        delete detailsPrep.req
+
+        req_headers = stringifyIfRequired( req.headers )
+        req_cookies = stringifyIfRequired( req.cookies )
+        if ( req.body && req.body.__DO_NOT_INCLUDE__ !== true ) {
+          req_body = stringifyIfRequired( req.body )
+        }
+        req_ip = stringifyIfRequired( req.headers['x-real-ip'] || req.connection.remoteAddress )
+      }
+    } catch ( ignoreErr ) {
+      console.error( ignoreErr )
+    }
+
+    // Remove res. At a later point it might be interesting to retrieve data from res but at this
+    // point it is not used
+    delete detailsPrep.res
+
+    // Retrieve details from ObjectManager
+    try {
+      // Retrieve user_id, site_id
+      if ( detailsPrep.objectManager ) {
+        const objectManager: Object = { detailsPrep }
+        // Delete object first so that we do not fail json.stringify later
+        delete detailsPrep.objectManager
+
+        // Get user_id
+        try {
+          user_id = objectManager.Viewer_User_id
+          if ( !user_id instanceof Uuid ) user_id = Uuid.fromString( user_id )
+        } catch ( ignoreErr ) {
+          user_id = null
+        }
+
+        // Get site_id
+        try {
+          site_id = objectManager.siteInformation.artifact_id
+          if ( !site_id instanceof Uuid ) site_id = Uuid.fromString( site_id )
+        } catch ( ignoreErr ) {
+          site_id = null
+        }
+      }
+
+      // If artifact_id is provided, and site_id is not determined, use it
+      if ( !site_id && detailsPrep.artifact_id ) {
+        try {
+          site_id = detailsPrep.artifact_id
+          if ( !site_id instanceof Uuid ) site_id = Uuid.fromString( site_id )
+          delete detailsPrep.artifact_id
+        } catch ( ignoreErr ) {
+          site_id = null
+        }
+      }
+    } catch ( ignoreErr ) {
+      console.error( ignoreErr )
+    }
+
+    // Stringify trimmed down details
+    const detailsRemaining = stringifyIfRequired( detailsPrep )
+    const details = detailsRemaining === '{}' ? null : detailsRemaining
+
+    const event = {
+      date: new Date().toISOString().slice( 0, 10 ),
+      datetime: new Date(),
+      level,
+      message,
+      details,
+      issue_id,
+      local_ip,
+      port,
+      host,
+      process_pid,
+      err_message,
+      err_stack,
+      err_info,
+      req_headers,
+      req_cookies,
+      req_ip,
+      req_body,
+      user_id,
+      site_id,
+    }
+
+    // Print to console, if so specified
+    if ( debugWriteToConsoleLog ) {
+      const eventForConsole = createCopyWithNonNull( event )
+
+      if ( level === 'erorr' ) {
+        console.error( eventForConsole )
+      } else {
+        console.log( eventForConsole )
+      }
+    }
+
+    try {
+      // Execute as a prepared query as it would be executed multiple times
+      return this.client.execute(
+        `INSERT INTO logs (
+          date,
+          datetime,
+          level,
+          message,
+          details,
+          issue_id,
+          local_ip,
+          port,
+          host,
+          process_pid,
+          err_message,
+          err_stack,
+          err_info,
+          req_headers,
+          req_cookies,
+          req_ip,
+          req_body,
+          user_id,
+          site_id
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      USING TTL 7776000`, // 90 * 86400 = 90 days
+        [
+          event.date,
+          event.datetime,
+          event.level,
+          event.message,
+          event.details,
+          event.issue_id,
+          event.local_ip,
+          event.port,
+          event.host,
+          event.process_pid,
+          event.err_message,
+          event.err_stack,
+          event.err_info,
+          event.req_headers,
+          event.req_cookies,
+          event.req_ip,
+          event.req_body,
+          event.user_id,
+          event.site_id,
+        ],
+        { prepare: true, consistency: cql.types.consistencies.one },
+        callback,
+      )
+    } catch ( writeErr ) {
+      console.error( 'Failed to write to log because ' + writeErr.message + '\n' + writeErr.stack )
+    }
   }
 }

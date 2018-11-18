@@ -22,6 +22,12 @@ export default class AppWrapperBase extends React.Component<
     this.state = { totalWidth: 100, totalHeight: 100 }
   }
 
+  componentDidCatch( err: any, err_info: any ) {
+    if ( window && window.__rebar_error_handler__ ) {
+      window.__rebar_error_handler__({ err, err_info })
+    }
+  }
+
   componentDidMount() {
     this.handle_onResize() // Will populate the data structures for dimensions with current values
   }

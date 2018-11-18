@@ -378,8 +378,8 @@ type Viewer implements Node {
   User_IsAnonymous: Boolean
   UserToken2: String
   User_DisplayName: String
-  User_Email: String
-  User_PhoneNumberMobile: String
+  User_PrimaryEmail: String
+  User_PrimaryPhone: String
   UserPermissionForObjects(after: String, first: Int, before: String, last: Int, UserPermissionForObject_ObjectType: String!): UserPermissionForObjectsConnection
   UserPermissionForObject(id: ID): UserPermissionForObject
   UserQuotaForObjects(after: String, first: Int, before: String, last: Int): UserQuotaForObjectsConnection

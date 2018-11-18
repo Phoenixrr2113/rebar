@@ -1,6 +1,7 @@
 // @flow
 
-import '../../../rb-appbase-server/graphql/model/User.schemas'
+import '../../../rb-appbase-server/graphql/model/User'
+import '../../../rb-appbase-server/graphql/model/User.schema'
 import '../../../rb-appbase-server/graphql/model/UserAccount'
 import '../../../rb-appbase-server/graphql/model/UserAccount.schema'
 import '../../../rb-appbase-server/graphql/model/UserPermissionForObject'

@@ -12,10 +12,12 @@ class FetcherServer extends _fetcherBase.default {
   }
 
   async fetch(...args) {
-    const i = this.payloads.length;
+    const ix = this.payloads.length;
     this.payloads.push(null);
+
     const payload = await super.fetch(...args);
-    this.payloads[i] = payload;
+
+    this.payloads[ix] = payload;
     return payload;
   }
 

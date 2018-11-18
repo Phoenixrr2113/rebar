@@ -2,12 +2,14 @@
 
 import DataLoader from 'dataloader'
 import { cursorForObjectInConnection } from 'graphql-relay'
+import NestedError from 'nested-error-stacks'
 
 import UserToken2Anonymous from '../_configuration/rb-base-server/UserToken2Anonymous'
 import defaultPersister from '../_configuration/rb-base-server/graphql/defaultPersister'
 import getNewUser from '../_configuration/rb-base-server/graphql/model/getNewUser'
 import { getSiteInformation } from '../_configuration/rb-base-server/siteSettings'
-import User from '../_configuration/rb-base-server/graphql/model/User'
+import type { SiteInformation } from '../rb-appbase-server/types/SiteInformation.types'
+import User from '../rb-appbase-server/graphql/model/User'
 
 import log from './log'
 
@@ -63,7 +65,7 @@ export default class ObjectManager {
   changes: Object
   request: ?Object
   response: ?Object
-  siteInformation: { artifact_id: string, siteConfiguration: Object }
+  siteInformation: SiteInformation
 
   constructor() {
     // Loaders for a single record, by entity name
@@ -86,7 +88,12 @@ export default class ObjectManager {
     // also, in order to be able to better detect errors when not set
     this.siteInformation = {
       artifact_id: 'Object Manager: artifact_id has not been set',
+      filesDirectory: '',
+      latestPublishedDirectory: '',
+      inEditingMode: false,
+      isMaDesignerDisabled: false,
       siteConfiguration: {},
+      siteDirectory: '',
     }
   }
 
@@ -133,25 +140,22 @@ export default class ObjectManager {
           : { use: false },
     }
 
-    // Determine fields by fields with suffix
+    // Determine supported fields by fields with suffix
     // For the User-related tables, there is no automatic support:
     // User_id and artifact_id have to be explicitly specified
-    if ( entityName !== 'User' && entityName !== 'UserAccount' && entityName !== 'UserSession' ) {
-      const example = new EntityType({})
-      for ( let suffix of [
-        '_artifact_id',
-        '_user_id',
-        '_created_by',
-        '_created_on',
-        '_modified_on',
-        '_modified_by',
-      ]) {
-        const fieldName = entityDefinition.EntityName + suffix
+    const supportedSuffixes =
+      entityName === 'User' || entityName === 'UserAccount' || entityName === 'UserSession'
+        ? [ '_created_by', '_created_on', '_modified_on', '_modified_by' ]
+        : [ '_artifact_id', '_user_id', '_created_by', '_created_on', '_modified_on', '_modified_by' ]
 
-        // Does the object type have it?
-        if ( example.hasOwnProperty( fieldName ) ) {
-          entityDefinition.fieldsWithSuffix[suffix] = true
-        }
+    // Create sample entity and go through the fields looking for special fields
+    const example = new EntityType({})
+    for ( let suffix of supportedSuffixes ) {
+      const fieldName = entityDefinition.EntityName + suffix
+
+      // Does the object type have it?
+      if ( example.hasOwnProperty( fieldName ) ) {
+        entityDefinition.fieldsWithSuffix[suffix] = true
       }
     }
 
@@ -212,10 +216,9 @@ export default class ObjectManager {
       if ( entityDefinition.fieldsWithSuffix[suffix]) {
         const fieldName = entityDefinition.EntityName + suffix
 
-        // Is the filter/fields collection missing it?
-        if ( !fields.hasOwnProperty( fieldName ) )
-          fields[fieldName] =
-            suffix === '_modified_by' || suffix === '_created_by' ? this.Viewer_User_id : dtNow
+        // Assign the modified/created field
+        fields[fieldName] =
+          suffix === '_modified_by' || suffix === '_created_by' ? this.Viewer_User_id : dtNow
       }
     }
   }
@@ -299,17 +302,16 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getObjectList( entityName, entityType, filter )
           } catch ( err ) {
-            log.log({
-              level: 'error',
-              message: 'Object Manager: Could not load multiple results',
-              details: {
+            log(
+              'error',
+              'rb-base-server ObjectManager getLoader: Could not load multiple results',
+              {
                 fieldName,
                 entityName,
                 err,
-                stack: err.stack,
               },
-            })
-            throw err
+            )
+            throw new NestedError( 'getLoader failed', err )
           }
         })
       else
@@ -317,17 +319,12 @@ export default class ObjectManager {
           try {
             return entityDefinition.Persister.getOneObject( entityName, entityType, filter )
           } catch ( err ) {
-            log.log({
-              level: 'error',
-              message: 'Object Manager: Could not load single result',
-              details: {
-                fieldName,
-                entityName,
-                err,
-                stack: err.stack,
-              },
+            log( 'error', 'rb-base-server ObjectManager getLoader: Could not load single result', {
+              fieldName,
+              entityName,
+              err,
             })
-            throw err
+            throw new NestedError( 'getLoader failed', err )
           }
         })
 
@@ -339,8 +336,7 @@ export default class ObjectManager {
 
   async getOneObject_async( entityName: string, query: Object ): Promise<Object | null> {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     // Special hack for anonymous users
     if ( entityName === 'User' )
@@ -369,7 +365,7 @@ export default class ObjectManager {
     let result = await loader.load( query )
 
     const changes = this.changes[entityName]
-    if ( changes ) {
+    if ( changes && result ) {
       const change = changes[result.id]
 
       if ( change != null ) {
@@ -388,8 +384,7 @@ export default class ObjectManager {
 
   async getObjectList_async( entityName: string, query: Object ) {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, query )
@@ -463,8 +458,7 @@ export default class ObjectManager {
   assignPrimaryKey( entityName: string, fields: any ) {
     const entityDefinition = entityDefinitions[entityName]
 
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     // Generate primary key, overwrite if already present
     fields.id = entityDefinition.Persister.uuidRandom()
@@ -472,8 +466,7 @@ export default class ObjectManager {
 
   async add( entityName: string, fields: Object ): any {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
@@ -516,17 +509,12 @@ export default class ObjectManager {
         await this.add( 'UserPermissionForObject', a_UserPermissionForObject )
       }
     } catch ( err ) {
-      log.log({
-        level: 'error',
-        message: 'Object Manager: Could not add',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack,
-        },
+      log( 'error', 'rb-base-server ObjectManager add: failed', {
+        fields,
+        entityName,
+        err,
       })
-      throw err
+      throw new NestedError( 'Add failed', err )
     }
 
     this.invalidateLoaderCache( entityName, fields )
@@ -536,8 +524,7 @@ export default class ObjectManager {
 
   async update( entityName: string, fields: Object ): Promise<void> {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     try {
       // Apply artifact_id, User_id security
@@ -571,17 +558,12 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.update( entityName, fields )
     } catch ( err ) {
-      log.log({
-        level: 'error',
-        message: 'Object Manager: Could not update',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack,
-        },
+      log( 'error', 'rb-base-server ObjectManager update: failed', {
+        fields,
+        entityName,
+        err,
       })
-      throw err
+      throw new NestedError( 'Update failed', err )
     }
 
     this.invalidateLoaderCache( entityName, fields )
@@ -589,8 +571,7 @@ export default class ObjectManager {
 
   async remove( entityName: string, fields: Object ) {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null )
-      throw new Error( 'Object Manager: Cound not find entity ' + entityName )
+    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
 
     try {
       // Apply artifact_id, User_id security
@@ -613,17 +594,11 @@ export default class ObjectManager {
 
       await entityDefinition.Persister.remove( entityName, fields )
     } catch ( err ) {
-      log.log({
-        level: 'error',
-        message: 'Object Manager: Could not remove',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack,
-        },
+      log( 'error', 'rb-base-server ObjectManager remove: failed', {
+        fields,
+        entityName,
       })
-      throw err
+      throw new NestedError( 'Remove failed', err )
     }
 
     this.invalidateLoaderCache( entityName, fields )
@@ -657,16 +632,13 @@ export default class ObjectManager {
       }
     }
     let cursor = cursorForObjectInConnection( arr, obj )
-    if ( cursor == null )
-      log.log({
-        level: 'error',
-        message: 'Object Manager: Could not create cursor for object in connection',
-        details: {
-          arr,
-          entityName,
-          obj,
-        },
-      })
+    if ( cursor == null ) {
+      log(
+        'error',
+        'rb-base-server ObjectManager cursorForObjectInConnection: Failed to create cursor',
+        { arr, entityName, obj },
+      )
+    }
     return cursor
   }
 

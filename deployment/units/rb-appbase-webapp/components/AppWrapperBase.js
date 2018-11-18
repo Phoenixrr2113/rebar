@@ -31,12 +31,18 @@ class AppWrapperBase extends _react.default.Component
 
 
 
+
+
+
+
+
+
     handle_onResize = () => {
       const totalWidth = window.innerWidth;
       const totalHeight = window.innerHeight;
 
       this.setState({ totalWidth, totalHeight });
-    };this.state = { totalWidth: 100, totalHeight: 100 };}componentDidMount() {this.handle_onResize(); // Will populate the data structures for dimensions with current values
+    };this.state = { totalWidth: 100, totalHeight: 100 };}componentDidCatch(err, err_info) {if (window && window.__rebar_error_handler__) {window.__rebar_error_handler__({ err, err_info });}}componentDidMount() {this.handle_onResize(); // Will populate the data structures for dimensions with current values
   } // This should be overridden in AppDrawer
   createMUITheme() {return null;}render() {
     const { totalWidth, totalHeight } = this.state;

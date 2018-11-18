@@ -83,12 +83,11 @@ function getAssetsPath( siteInformation: SiteInformation ): string {
 const render = createRender({
   renderError( obj: Object ): React$Element<*> {
     const { error } = obj
-    if ( error.status !== 404 )
-      log.log({
-        level: 'error',
-        message: 'Error: Render on server createRender renderError',
-        details: obj,
-      })
+
+    if ( error.status !== 404 ) {
+      log( 'error', 'Error: Render on server createRender renderError', error )
+    }
+
     return <ErrorComponent httpStatus={error.status} />
   },
 })
@@ -147,6 +146,17 @@ export default ( async function contentCreatorWebApp_async(
     }
 
     const relayPayloads = serialize( fetcher, { isJSON: true })
+
+    if (
+      relayPayloads.indexOf(
+        '{"message":"GraphQL server was given a session, but the session is invalid"}',
+      ) > 0
+    ) {
+      return {
+        status: 403,
+        htmlContent: 'The server was given a session, but the session is invalid',
+      }
+    }
 
     const sheets = new SheetsRegistry()
     const helmet = Helmet.rewind()

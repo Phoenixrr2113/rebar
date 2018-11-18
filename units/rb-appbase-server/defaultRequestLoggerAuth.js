@@ -4,7 +4,7 @@ import { debugWriteToLogServerRequestAuth } from '../_configuration/debug'
 import log from '../rb-base-server/log'
 import matchInDepth from '../rb-base-universal/matchInDepth'
 
-export default function defaultrequestLoggerAuth( requestAndResponse ) {
+export default function defaultrequestLoggerAuth({ req, clientIP, userSession }) {
   let logLevel = null
 
   // TODO: [2 Crossroads][server] Audit errors for Auth and decide which ones to log. For instasnce, 401 is a bad idea.
@@ -13,9 +13,11 @@ export default function defaultrequestLoggerAuth( requestAndResponse ) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ( matchInDepth( requestAndResponse, debugWriteToLogServerRequestAuth ) ) {
+  if ( matchInDepth({ req, clientIP, userSession }, debugWriteToLogServerRequestAuth ) ) {
     logLevel = 'info'
   }
 
-  if ( logLevel ) log.log({ level: logLevel, message: 'Auth request', details: requestAndResponse })
+  if ( logLevel ) {
+    log( logLevel, 'rb-appbase-server auth request', { req, clientIP, userSession })
+  }
 }

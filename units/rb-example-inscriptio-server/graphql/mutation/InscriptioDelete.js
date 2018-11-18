@@ -21,7 +21,7 @@ export default mutationWithClientMutationId({
     Viewer: {
       type: ViewerType,
       resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject( 'User', {
+        objectManager.getOneObject_async( 'User', {
           id: objectManager.getViewerUserId(),
         }),
     },

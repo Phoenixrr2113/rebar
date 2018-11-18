@@ -10,7 +10,6 @@ var _artifactSettings = require("../_configuration/rb-base-server/artifactSettin
 var _package = require("../../package.json");
 var _servers = _interopRequireDefault(require("../_configuration/rb-base-server/servers"));
 
-var _getLocalIP = _interopRequireDefault(require("./getLocalIP"));
 var _log = _interopRequireDefault(require("./log"));
 var _ObjectCache = require("./ObjectCache");
 var _ObjectManager = _interopRequireDefault(require("./ObjectManager"));
@@ -49,20 +48,38 @@ try {
 
 //
 
-// Log startup information
-_log.default.log({
-  level: 'info',
-  message: 'Start ' + _package.name,
-  details: {
-    version: _package.version,
-    NODE_ENV: process.env.NODE_ENV,
-    host,
-    port,
-    accessControlAllowedOrigins,
-    process_title: process.title,
-    process_pid: process.pid,
-    local_ip: (0, _getLocalIP.default)() } });
+// Global eror handling
+process.on('uncaughtException', function (err) {
+  try {
+    try {
+      console.error(err.message);
+      console.error(err.stack);
+    } catch (ignoreErr) {}
 
+    (0, _log.default)('error', 'rb-base-server server: uncaughtException', { err });
+  } catch (globalErr) {
+    try {
+      console.error(globalErr.message);
+      console.error(globalErr.stack);
+    } catch (ignoreErr) {}
+  }
+  // Handle your errors here
+
+  // global.__current__ is added via middleware
+  // Be aware that this is a bad practice,
+  // global.__current__ being a global, can change
+  // without advice, so you might end responding with
+  // serverError() to a different request than the one
+  // that originated the error if this one happened async
+  //  global.__current__.res.serverError()
+});
+
+// Log startup information
+(0, _log.default)('info', 'rb-base-server start', {
+  name: _package.name,
+  version: _package.version,
+  NODE_ENV: process.env.NODE_ENV,
+  accessControlAllowedOrigins });
 
 
 // Get object cache ready

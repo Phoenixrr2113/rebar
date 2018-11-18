@@ -18,7 +18,7 @@ export default {
     },
 
     resolve: async( obj, { status, ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList( 'ToDo', {})
+      const arr = await objectManager.getObjectList_async( 'ToDo', {})
 
       return connectionFromArray(
         arr.filter( a_ToDo => status === 'any' || a_ToDo.ToDo_Complete === ( status === 'completed' ) ),
@@ -31,7 +31,7 @@ export default {
     type: GraphQLInt,
 
     resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList( 'ToDo', {})
+      const arr = await objectManager.getObjectList_async( 'ToDo', {})
 
       return arr.length
     },
@@ -41,7 +41,7 @@ export default {
     type: GraphQLInt,
 
     resolve: async( obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList( 'ToDo', {})
+      const arr = await objectManager.getObjectList_async( 'ToDo', {})
 
       return arr.filter( a_ToDo => a_ToDo.ToDo_Complete ).length
     },

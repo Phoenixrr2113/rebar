@@ -17,7 +17,7 @@ var _default =
     ToDo: {
       type: _ToDoType.default,
       resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('ToDo', { id: local_id }) } },
+      objectManager.getOneObject_async('ToDo', { id: local_id }) } },
 
 
 

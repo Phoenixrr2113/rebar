@@ -10,7 +10,6 @@ import { firstPathElementIsArtifactName } from '../_configuration/rb-base-server
 import { name, version } from '../../package.json'
 import servers from '../_configuration/rb-base-server/servers'
 
-import getLocalIP from './getLocalIP'
 import log from './log'
 import { initializeObjectCache } from './ObjectCache'
 import ObjectManager from './ObjectManager'
@@ -49,20 +48,38 @@ try {
 
 //
 
+// Global eror handling
+process.on( 'uncaughtException', function( err ) {
+  try {
+    try {
+      console.error( err.message )
+      console.error( err.stack )
+    } catch ( ignoreErr ) {}
+
+    log( 'error', 'rb-base-server server: uncaughtException', { err })
+  } catch ( globalErr ) {
+    try {
+      console.error( globalErr.message )
+      console.error( globalErr.stack )
+    } catch ( ignoreErr ) {}
+  }
+  // Handle your errors here
+
+  // global.__current__ is added via middleware
+  // Be aware that this is a bad practice,
+  // global.__current__ being a global, can change
+  // without advice, so you might end responding with
+  // serverError() to a different request than the one
+  // that originated the error if this one happened async
+  //  global.__current__.res.serverError()
+})
+
 // Log startup information
-log.log({
-  level: 'info',
-  message: 'Start ' + name,
-  details: {
-    version,
-    NODE_ENV: process.env.NODE_ENV,
-    host,
-    port,
-    accessControlAllowedOrigins,
-    process_title: process.title,
-    process_pid: process.pid,
-    local_ip: getLocalIP(),
-  },
+log( 'info', 'rb-base-server start', {
+  name,
+  version,
+  NODE_ENV: process.env.NODE_ENV,
+  accessControlAllowedOrigins,
 })
 
 // Get object cache ready

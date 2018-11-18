@@ -148,4 +148,4 @@ $ export NODE_ENV=production
 $ node ./deployment/units/rb-base-server/server
 ```
 
-A production  setup would include the `deployment` directory, with appropriate `.env` file, and running `units/rb-base-server/server` in some sort or fashion.
+A production  setup would include the `deployment` directory, with appropriate `.env` file, and running `units/rb-base-server/server` in some sort of fashion.

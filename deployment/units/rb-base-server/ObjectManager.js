@@ -2,12 +2,14 @@
 
 var _dataloader = _interopRequireDefault(require("dataloader"));
 var _graphqlRelay = require("graphql-relay");
+var _nestedErrorStacks = _interopRequireDefault(require("nested-error-stacks"));
 
 var _UserToken2Anonymous = _interopRequireDefault(require("../_configuration/rb-base-server/UserToken2Anonymous"));
 var _defaultPersister = _interopRequireDefault(require("../_configuration/rb-base-server/graphql/defaultPersister"));
 var _getNewUser = _interopRequireDefault(require("../_configuration/rb-base-server/graphql/model/getNewUser"));
 var _siteSettings = require("../_configuration/rb-base-server/siteSettings");
-var _User = _interopRequireDefault(require("../_configuration/rb-base-server/graphql/model/User"));
+
+var _User = _interopRequireDefault(require("../rb-appbase-server/graphql/model/User"));
 
 var _log = _interopRequireDefault(require("./log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
@@ -86,7 +88,12 @@ class ObjectManager {
     // also, in order to be able to better detect errors when not set
     this.siteInformation = {
       artifact_id: 'Object Manager: artifact_id has not been set',
-      siteConfiguration: {} };
+      filesDirectory: '',
+      latestPublishedDirectory: '',
+      inEditingMode: false,
+      isMaDesignerDisabled: false,
+      siteConfiguration: {},
+      siteDirectory: '' };
 
   }
 
@@ -133,25 +140,22 @@ class ObjectManager {
       { use: false }
 
 
-      // Determine fields by fields with suffix
+      // Determine supported fields by fields with suffix
       // For the User-related tables, there is no automatic support:
       // User_id and artifact_id have to be explicitly specified
-    };if (entityName !== 'User' && entityName !== 'UserAccount' && entityName !== 'UserSession') {
-      const example = new EntityType({});
-      for (let suffix of [
-      '_artifact_id',
-      '_user_id',
-      '_created_by',
-      '_created_on',
-      '_modified_on',
-      '_modified_by'])
-      {
-        const fieldName = entityDefinition.EntityName + suffix;
+    };const supportedSuffixes =
+    entityName === 'User' || entityName === 'UserAccount' || entityName === 'UserSession' ?
+    ['_created_by', '_created_on', '_modified_on', '_modified_by'] :
+    ['_artifact_id', '_user_id', '_created_by', '_created_on', '_modified_on', '_modified_by'];
 
-        // Does the object type have it?
-        if (example.hasOwnProperty(fieldName)) {
-          entityDefinition.fieldsWithSuffix[suffix] = true;
-        }
+    // Create sample entity and go through the fields looking for special fields
+    const example = new EntityType({});
+    for (let suffix of supportedSuffixes) {
+      const fieldName = entityDefinition.EntityName + suffix;
+
+      // Does the object type have it?
+      if (example.hasOwnProperty(fieldName)) {
+        entityDefinition.fieldsWithSuffix[suffix] = true;
       }
     }
 
@@ -212,8 +216,7 @@ class ObjectManager {
       if (entityDefinition.fieldsWithSuffix[suffix]) {
         const fieldName = entityDefinition.EntityName + suffix;
 
-        // Is the filter/fields collection missing it?
-        if (!fields.hasOwnProperty(fieldName))
+        // Assign the modified/created field
         fields[fieldName] =
         suffix === '_modified_by' || suffix === '_created_by' ? this.Viewer_User_id : dtNow;
       }
@@ -299,17 +302,16 @@ class ObjectManager {
         try {
           return entityDefinition.Persister.getObjectList(entityName, entityType, filter);
         } catch (err) {
-          _log.default.log({
-            level: 'error',
-            message: 'Object Manager: Could not load multiple results',
-            details: {
-              fieldName,
-              entityName,
-              err,
-              stack: err.stack } });
+          (0, _log.default)(
+          'error',
+          'rb-base-server ObjectManager getLoader: Could not load multiple results',
+          {
+            fieldName,
+            entityName,
+            err });
 
 
-          throw err;
+          throw new _nestedErrorStacks.default('getLoader failed', err);
         }
       });else
 
@@ -317,17 +319,12 @@ class ObjectManager {
         try {
           return entityDefinition.Persister.getOneObject(entityName, entityType, filter);
         } catch (err) {
-          _log.default.log({
-            level: 'error',
-            message: 'Object Manager: Could not load single result',
-            details: {
-              fieldName,
-              entityName,
-              err,
-              stack: err.stack } });
+          (0, _log.default)('error', 'rb-base-server ObjectManager getLoader: Could not load single result', {
+            fieldName,
+            entityName,
+            err });
 
-
-          throw err;
+          throw new _nestedErrorStacks.default('getLoader failed', err);
         }
       });
 
@@ -339,8 +336,7 @@ class ObjectManager {
 
   async getOneObject_async(entityName, query) {
     const entityDefinition = entityDefinitions[entityName];
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     // Special hack for anonymous users
     if (entityName === 'User')
@@ -369,7 +365,7 @@ class ObjectManager {
     let result = await loader.load(query);
 
     const changes = this.changes[entityName];
-    if (changes) {
+    if (changes && result) {
       const change = changes[result.id];
 
       if (change != null) {
@@ -388,8 +384,7 @@ class ObjectManager {
 
   async getObjectList_async(entityName, query) {
     const entityDefinition = entityDefinitions[entityName];
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields(entityDefinition, query);
@@ -463,8 +458,7 @@ class ObjectManager {
   assignPrimaryKey(entityName, fields) {
     const entityDefinition = entityDefinitions[entityName];
 
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     // Generate primary key, overwrite if already present
     fields.id = entityDefinition.Persister.uuidRandom();
@@ -472,8 +466,7 @@ class ObjectManager {
 
   async add(entityName, fields) {
     const entityDefinition = entityDefinitions[entityName];
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields(entityDefinition, fields);
@@ -516,17 +509,12 @@ class ObjectManager {
         await this.add('UserPermissionForObject', a_UserPermissionForObject);
       }
     } catch (err) {
-      _log.default.log({
-        level: 'error',
-        message: 'Object Manager: Could not add',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack } });
+      (0, _log.default)('error', 'rb-base-server ObjectManager add: failed', {
+        fields,
+        entityName,
+        err });
 
-
-      throw err;
+      throw new _nestedErrorStacks.default('Add failed', err);
     }
 
     this.invalidateLoaderCache(entityName, fields);
@@ -536,8 +524,7 @@ class ObjectManager {
 
   async update(entityName, fields) {
     const entityDefinition = entityDefinitions[entityName];
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     try {
       // Apply artifact_id, User_id security
@@ -571,17 +558,12 @@ class ObjectManager {
 
       await entityDefinition.Persister.update(entityName, fields);
     } catch (err) {
-      _log.default.log({
-        level: 'error',
-        message: 'Object Manager: Could not update',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack } });
+      (0, _log.default)('error', 'rb-base-server ObjectManager update: failed', {
+        fields,
+        entityName,
+        err });
 
-
-      throw err;
+      throw new _nestedErrorStacks.default('Update failed', err);
     }
 
     this.invalidateLoaderCache(entityName, fields);
@@ -589,8 +571,7 @@ class ObjectManager {
 
   async remove(entityName, fields) {
     const entityDefinition = entityDefinitions[entityName];
-    if (entityDefinition == null)
-    throw new Error('Object Manager: Cound not find entity ' + entityName);
+    if (entityDefinition == null) throw new Error('Cound not find entity: ' + entityName);
 
     try {
       // Apply artifact_id, User_id security
@@ -613,17 +594,11 @@ class ObjectManager {
 
       await entityDefinition.Persister.remove(entityName, fields);
     } catch (err) {
-      _log.default.log({
-        level: 'error',
-        message: 'Object Manager: Could not remove',
-        details: {
-          fields,
-          entityName,
-          err,
-          stack: err.stack } });
+      (0, _log.default)('error', 'rb-base-server ObjectManager remove: failed', {
+        fields,
+        entityName });
 
-
-      throw err;
+      throw new _nestedErrorStacks.default('Remove failed', err);
     }
 
     this.invalidateLoaderCache(entityName, fields);
@@ -657,16 +632,13 @@ class ObjectManager {
       }
     }
     let cursor = (0, _graphqlRelay.cursorForObjectInConnection)(arr, obj);
-    if (cursor == null)
-    _log.default.log({
-      level: 'error',
-      message: 'Object Manager: Could not create cursor for object in connection',
-      details: {
-        arr,
-        entityName,
-        obj } });
+    if (cursor == null) {
+      (0, _log.default)(
+      'error',
+      'rb-base-server ObjectManager cursorForObjectInConnection: Failed to create cursor',
+      { arr, entityName, obj });
 
-
+    }
     return cursor;
   }
 

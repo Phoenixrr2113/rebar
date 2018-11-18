@@ -28,35 +28,63 @@ serverGraphQL.use(_bodyParser.default.json());
 // Set up logging
 serverGraphQL.use((req, res, next) => (0, _logServerRequest.default)(req, res, next, _requestLoggers.requestLoggerGraphQL));
 
+//
+
+function graphQLError(message) {
+  return JSON.stringify({
+    errors: [
+    {
+      message,
+      locations: [
+      {
+        line: 888,
+        column: 777 }],
+
+
+      stack: 'No stack information available',
+      path: ['node'] }],
+
+
+    data: null });
+
+}
+
+//
+
 async function root(req, res, next) {
   try {
     const objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
-    if (objectManager.siteInformation) {
-      try {
-        const a_User = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1)(objectManager, req)).User;
 
-        res.injectedByRebarFrameworks = { user: a_User };
-        await (0, _checkCredentials.verifyUserAuthToken)(a_User, req);
-
-        (0, _expressGraphql.default)(() => {
-          return {
-            schema: _schema.default,
-            rootValue: objectManager,
-            pretty: true,
-            graphiql: true };
-
-        })(req, res, next);
-      } catch (err) {
-        (0, _checkCredentials.serveAuthenticationFailed)(req, res, err, true);
-      }
+    const UserAndSession = await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, true);
+    if (!UserAndSession) {
+      res.
+      status(500).
+      send(graphQLError('GraphQL server was given a session, but the session is invalid'));
+      return;
     }
+
+    const a_User = UserAndSession.User;
+    const a_UserSession = UserAndSession.UserSession;
+
+    res.injectedByRebarFrameworks = { userSession: a_UserSession };
+
+    const verificationIssue = (0, _checkCredentials.verifyUserToken2)(a_User, req);
+    if (verificationIssue) {
+      (0, _checkCredentials.serveAuthenticationFailed)(req, res, verificationIssue, true);
+      return;
+    }
+
+    (0, _expressGraphql.default)(() => {
+      return {
+        schema: _schema.default,
+        rootValue: objectManager,
+        pretty: true,
+        graphiql: false // TODO [Sandstone][server] Look into re-enabling GraphiQL
+      };
+    })(req, res, next);
   } catch (err) {
-    _log.default.log({ level: 'error', message: 'Error: GraphQL', details: err });
-    res.status(500).send(
-    JSON.stringify({
-      error: 'An error has occurred while running GraphQL query' }));
-
-
+    (0, _log.default)('error', 'rb-appbase-server serverGraphQL root: Failed ', { err });
+    res.status(500).send(graphQLError('An error has occurred while running GraphQL query'));
   }
 }
 serverGraphQL.use('/', root);var _default =
