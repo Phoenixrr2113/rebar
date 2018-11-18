@@ -4,7 +4,7 @@ var _debug = require("../_configuration/debug");
 var _log = _interopRequireDefault(require("../rb-base-server/log"));
 var _matchInDepth = _interopRequireDefault(require("../rb-base-universal/matchInDepth"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
-function defaultrequestLoggerWebApp(requestAndResponse) {
+function defaultrequestLoggerWebApp({ req, clientIP, userSession }) {
   let logLevel = null;
 
   // TODO: [2 Crossroads][server] Audit errors for WebApp and decide which ones to log. For instasnce, 401 is a bad idea.
@@ -13,11 +13,12 @@ function defaultrequestLoggerWebApp(requestAndResponse) {
   //   logLevel = 'error'
   // Otherwise, if it is a trace, log it as info
   //else
-  if ((0, _matchInDepth.default)(requestAndResponse, _debug.debugWriteToLogServerRequestWebApp)) {
+  if ((0, _matchInDepth.default)({ req, clientIP, userSession }, _debug.debugWriteToLogServerRequestWebApp)) {
     logLevel = 'info';
   }
 
-  if (logLevel)
-  _log.default.log({ level: logLevel, message: 'Render on server request', details: requestAndResponse });
+  if (logLevel) {
+    (0, _log.default)(logLevel, 'rb-appbase-server render on server request', { req, clientIP, userSession });
+  }
 }
 //# sourceMappingURL=defaultrequestLoggerWebApp.js.map

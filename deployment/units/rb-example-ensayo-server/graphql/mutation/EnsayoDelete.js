@@ -21,7 +21,7 @@ var _default =
     Viewer: {
       type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', {
+      objectManager.getOneObject_async('User', {
         id: objectManager.getViewerUserId() }) } },
 
 

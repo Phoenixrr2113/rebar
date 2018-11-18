@@ -1,5 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.initializeObjectCache = initializeObjectCache;exports.addObjectToCache = addObjectToCache;exports.getObjectFromCache = getObjectFromCache;exports.getOrCreateObjectFromCahce = getOrCreateObjectFromCahce;
 
+var _nestedErrorStacks = _interopRequireDefault(require("nested-error-stacks"));
+
 var _CacheableCategoryDefinitions = _interopRequireDefault(require("../_configuration/rb-base-server/CacheableCategoryDefinitions"));
 var _debug = require("../_configuration/debug");
 
@@ -28,15 +30,9 @@ objectPromise)
   try {
     await discardFunction(objectPromise);
   } catch (err) {
-    // Record the problem and throw exception further
-    _log.default.log({
-      level: 'error',
-      message: 'executeDiscard failed',
-      details: {
-        cacheKey,
-        err } });
-
-
+    const message = 'rb-base-server ObjectCache executeDiscard: failed';
+    (0, _log.default)('error', message, { cacheKey, err });
+    throw new _nestedErrorStacks.default(message, err);
   }
 }
 
@@ -204,16 +200,12 @@ cacheKey)
       cachedEntry.validityVerificationPromise = Promise.resolve(false);
 
       // Record the problem and throw exception further
-      _log.default.log({
-        level: 'error',
-        message: 'getCachedEntryFromCache: validityVerificationPromise failed',
-        details: {
-          categoryName,
-          cacheKey,
-          err } });
+      (0, _log.default)(
+      'error',
+      'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed',
+      { categoryName, cacheKey, err });
 
-
-      throw err;
+      throw new _nestedErrorStacks.default('XXX', err);
     }
   }
 
@@ -245,16 +237,12 @@ creationFunction)
   try {
     newObjectPromise = creationFunction();
   } catch (err) {
-    _log.default.log({
-      level: 'error',
-      message: 'getOrCreateObjectFromCahce: creationFunction failed',
-      details: {
-        categoryName,
-        cacheKey,
-        err } });
+    (0, _log.default)('error', 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed', {
+      categoryName,
+      cacheKey,
+      err });
 
-
-    throw err;
+    throw new _nestedErrorStacks.default('XXX', err);
   }
 
   // Add the promise to the cache now, so that other requests to the cache
@@ -267,13 +255,13 @@ creationFunction)
   try {
     return await newObjectPromise;
   } catch (err) {
-    _log.default.log({
-      level: 'error',
-      message: 'getOrCreateObjectFromCahce: await creationFunction failed',
-      details: {
-        categoryName,
-        cacheKey,
-        err } });
+    (0, _log.default)(
+    'error',
+    'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed',
+    {
+      categoryName,
+      cacheKey,
+      err });
 
 
 
@@ -283,7 +271,7 @@ creationFunction)
     const { entries } = cachedEntriesForCategory;
     entries.delete(cacheKey);
 
-    throw err;
+    throw new _nestedErrorStacks.default('XXX', err);
   }
 }
 

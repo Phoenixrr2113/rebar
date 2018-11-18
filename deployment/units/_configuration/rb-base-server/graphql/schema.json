@@ -190,7 +190,7 @@
               "deprecationReason": null
             },
             {
-              "name": "User_Email",
+              "name": "User_PrimaryEmail",
               "description": null,
               "args": [],
               "type": {
@@ -202,7 +202,7 @@
               "deprecationReason": null
             },
             {
-              "name": "User_PhoneNumberMobile",
+              "name": "User_PrimaryPhone",
               "description": null,
               "args": [],
               "type": {

@@ -1,6 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-require("../../../rb-appbase-server/graphql/model/User.schemas");
+require("../../../rb-appbase-server/graphql/model/User");
+require("../../../rb-appbase-server/graphql/model/User.schema");
 require("../../../rb-appbase-server/graphql/model/UserAccount");
 require("../../../rb-appbase-server/graphql/model/UserAccount.schema");
 require("../../../rb-appbase-server/graphql/model/UserPermissionForObject");

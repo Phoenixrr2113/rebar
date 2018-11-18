@@ -1,20 +1,18 @@
-"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
+"use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = log;
 
 var _winston = _interopRequireDefault(require("winston"));
 
-var _debug = require("../_configuration/debug");
 var _defaultPersister = _interopRequireDefault(require("../_configuration/rb-base-server/graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+//
 
 // Read environment
 require('dotenv').load();
 
+//
+
 // Set up transports
 const transports = [];
-
-// If set, show all log messages on console
-if (_debug.debugWriteToConsoleLog) {
-  transports.push(new _winston.default.transports.Console());
-}
 
 // If persister specified logger, use it
 const defaultPersisterLogger = _defaultPersister.default.createLogger();
@@ -22,8 +20,12 @@ if (defaultPersisterLogger) {
   transports.push(defaultPersisterLogger);
 }
 
-// Create winston. Not sure why Flow does not like it. $AssureFlow
-const log = _winston.default.createLogger({ transports });var _default =
+// Create winston
+const logger = _winston.default.createLogger({ transports });
 
-log;exports.default = _default;
+//
+
+function log(level, message, details) {
+  logger.log({ level, message, details });
+}
 //# sourceMappingURL=log.js.map
