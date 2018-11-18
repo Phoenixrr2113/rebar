@@ -18,7 +18,7 @@ var _default =
 
 
     resolve: async (obj, { status, ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList('ToDo', {});
+      const arr = await objectManager.getObjectList_async('ToDo', {});
 
       return (0, _graphqlRelay.connectionFromArray)(
       arr.filter(a_ToDo => status === 'any' || a_ToDo.ToDo_Complete === (status === 'completed')),
@@ -31,7 +31,7 @@ var _default =
     type: _graphql.GraphQLInt,
 
     resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList('ToDo', {});
+      const arr = await objectManager.getObjectList_async('ToDo', {});
 
       return arr.length;
     } },
@@ -41,7 +41,7 @@ var _default =
     type: _graphql.GraphQLInt,
 
     resolve: async (obj, { ...args }, context, { rootValue: objectManager }) => {
-      const arr = await objectManager.getObjectList('ToDo', {});
+      const arr = await objectManager.getObjectList_async('ToDo', {});
 
       return arr.filter(a_ToDo => a_ToDo.ToDo_Complete).length;
     } } };exports.default = _default;

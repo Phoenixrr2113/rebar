@@ -3,6 +3,8 @@
 var _fs = _interopRequireDefault(require("fs"));
 var _path = _interopRequireDefault(require("path"));
 
+var _nestedErrorStacks = _interopRequireDefault(require("nested-error-stacks"));
+
 var _ensureFileContent = _interopRequireDefault(require("./ensureFileContent"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const fs = _fs.default.promises;
@@ -27,7 +29,9 @@ class MasterWriter {
       try {
         await fs.mkdir(_path.default.resolve(this.basePath, filePath));
       } catch (err) {
-        if (err.code !== 'EEXIST') throw err;
+        if (err.code !== 'EEXIST') {
+          throw new _nestedErrorStacks.default('XXX', err);
+        }
       }
 
       this.directories.set(filePath, true);

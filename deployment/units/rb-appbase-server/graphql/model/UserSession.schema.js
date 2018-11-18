@@ -8,7 +8,12 @@ _defaultPersister.default.addTableSchema('UserSession', {
     UserSession_artifact_id: 'uuid',
     UserSession_User_id: 'uuid',
     UserSession_Start: 'timestamp',
-    UserSession_Expired: 'boolean' },
+    UserSession_Expired: 'boolean',
+    UserSession_IsAnonymous: 'boolean',
+    UserSession_created_by: 'uuid',
+    UserSession_created_on: 'timestamp',
+    UserSession_modified_by: 'uuid',
+    UserSession_modified_on: 'timestamp' },
 
 
   key: [['id'], 'UserSession_artifact_id', 'UserSession_User_id'],

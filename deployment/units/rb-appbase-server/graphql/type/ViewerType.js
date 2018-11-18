@@ -12,7 +12,7 @@ var _graphqlRelay = require("graphql-relay");
 var _defaultPersister = _interopRequireDefault(require("../../../_configuration/rb-base-server/graphql/defaultPersister"));
 var _NodeInterface = _interopRequireDefault(require("../NodeInterface"));
 var _ViewerFields2 = _interopRequireDefault(require("../../../_configuration/rb-base-server/graphql/_ViewerFields"));
-var _User = _interopRequireDefault(require("../../../_configuration/rb-base-server/graphql/model/User"));
+var _User = _interopRequireDefault(require("../model/User"));
 
 var _UserPermissionForObjectsConnection = _interopRequireDefault(require("./UserPermissionForObjectsConnection"));
 var _UserPermissionForObjectType = _interopRequireDefault(require("./UserPermissionForObjectType"));
@@ -34,10 +34,10 @@ new _graphql.GraphQLObjectType({
       type: _graphql.GraphQLString,
       resolve: obj => obj.User_DisplayName },
 
-    User_Email: { type: _graphql.GraphQLString, resolve: obj => obj.User_Email },
-    User_PhoneNumberMobile: {
+    User_PrimaryEmail: { type: _graphql.GraphQLString, resolve: obj => obj.User_PrimaryEmail },
+    User_PrimaryPhone: {
       type: _graphql.GraphQLString,
-      resolve: obj => obj.User_PhoneNumberMobile },
+      resolve: obj => obj.User_PrimaryPhone },
 
 
     UserPermissionForObjects: {

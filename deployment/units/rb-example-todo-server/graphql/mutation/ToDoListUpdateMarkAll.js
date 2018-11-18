@@ -19,14 +19,14 @@ var _default =
       type: new _graphql.GraphQLList(_ToDoType.default),
       resolve: ({ arr_local_ids_Changed_ToDos }, args, context, { rootValue: objectManager }) =>
       arr_local_ids_Changed_ToDos.map((local_id) =>
-      objectManager.getOneObject('ToDo', { id: local_id })) },
+      objectManager.getOneObject_async('ToDo', { id: local_id })) },
 
 
 
     Viewer: {
       type: _ViewerType.default,
       resolve: (parent, args, context, { rootValue: objectManager }) =>
-      objectManager.getOneObject('User', {
+      objectManager.getOneObject_async('User', {
         id: objectManager.getViewerUserId() }) } },
 
 

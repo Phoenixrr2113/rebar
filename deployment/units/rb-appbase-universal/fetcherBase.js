@@ -1,6 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 require("isomorphic-fetch");
+var _nestedErrorStacks = _interopRequireDefault(require("nested-error-stacks"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 class FetcherBase {
 
@@ -22,14 +23,30 @@ class FetcherBase {
         'Content-Type': 'application/json',
         UserToken2: this.UserToken2 },
 
-      body: JSON.stringify({ query: operation.text, variables })
+      body: JSON.stringify({ query: operation.text, variables }) };
 
 
-      // $AssureFlow we can add the cookie, will be used on server
-    };if (this.UserToken1) request.headers.UserToken1 = this.UserToken1;
+    try {
+      if (this.UserToken1) {
+        // $AssureFlow we can add the cookie, will be used on server
+        request.headers.UserToken1 = this.UserToken1;
+      }
 
-    const response = await fetch(this.url, request);
+      const response = await fetch(this.url, request);
 
-    return response.json();
+      return response.json();
+    } catch (err) {
+      throw new _nestedErrorStacks.default(
+      'FetcherBase failed UserToken1=' + (
+      this.UserToken1 ? this.UserToken1 : '<null>') +
+      ' UserToken2=' +
+      this.UserToken2 +
+      ' request=' +
+      JSON.stringify(request) +
+      ' with' +
+      err.message,
+      err);
+
+    }
   }}exports.default = FetcherBase;
 //# sourceMappingURL=fetcherBase.js.map

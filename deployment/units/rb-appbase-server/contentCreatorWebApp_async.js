@@ -83,11 +83,10 @@ function getAssetsPath(siteInformation) {
 const render = (0, _createRender.default)({
   renderError(obj) {
     const { error } = obj;
-    if (error.status !== 404)
-    _log.default.log({
-      level: 'error',
-      message: 'Error: Render on server createRender renderError',
-      details: obj });
+
+    if (error.status !== 404) {
+      (0, _log.default)('error', 'Error: Render on server createRender renderError', error);
+    }
 
     return _react.default.createElement(_ErrorComponent.default, { httpStatus: error.status });
   } });var
@@ -147,6 +146,17 @@ reqUserToken1)
     }
 
     const relayPayloads = (0, _serializeJavascript.default)(fetcher, { isJSON: true });
+
+    if (
+    relayPayloads.indexOf(
+    '{"message":"GraphQL server was given a session, but the session is invalid"}') >
+    0)
+    {
+      return {
+        status: 403,
+        htmlContent: 'The server was given a session, but the session is invalid' };
+
+    }
 
     const sheets = new _reactJss.SheetsRegistry();
     const helmet = _reactHelmet.default.rewind();

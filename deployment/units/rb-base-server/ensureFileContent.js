@@ -2,10 +2,13 @@
 
 var _fs = _interopRequireDefault(require("fs"));
 
-var _chalk = _interopRequireDefault(require("chalk"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _chalk = _interopRequireDefault(require("chalk"));
+var _nestedErrorStacks = _interopRequireDefault(require("nested-error-stacks"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const fs = _fs.default.promises;var
+const fs = _fs.default.promises;
 
+//
+var
 ensureFileContent = async function ensureFileContent(
 fileName,
 currentFileContent,
@@ -17,7 +20,9 @@ logToConsole)
     try {
       currentFileContent = (await fs.readFile(fileName)).toString();
     } catch (err) {
-      if (err.code !== 'ENOENT') throw err;
+      if (err.code !== 'ENOENT') {
+        throw new _nestedErrorStacks.default('XXX', err);
+      }
     }
   }
 
