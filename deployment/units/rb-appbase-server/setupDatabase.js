@@ -8,10 +8,8 @@ var _ObjectManager = _interopRequireDefault(require("../rb-base-server/ObjectMan
 
 require("../_configuration/rb-base-server/graphql/_schemas");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Guarantee that all object registrations and schema definitions are executed
 
-(0, _log.default)('info', 'rb-appbase-server setupDatabase', { step: 'starting' });
-
 _ObjectManager.default.initializePersisters(true, () => {
-  (0, _log.default)('info', 'rb-appbase-server setupDatabase', { step: 'finished' });
+  (0, _log.default)('info', 'rb-appbase-server setupDatabase completed', {});
   _process.default.exit();
 });
 //# sourceMappingURL=setupDatabase.js.map
