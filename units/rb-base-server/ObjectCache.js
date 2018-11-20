@@ -200,12 +200,10 @@ async function getCachedEntryFromCache(
       cachedEntry.validityVerificationPromise = Promise.resolve( false )
 
       // Record the problem and throw exception further
-      log(
-        'error',
-        'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed',
-        { categoryName, cacheKey, err },
-      )
-      throw new NestedError( 'XXX', err )
+      const message =
+        'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed'
+      log( 'error', message, { categoryName, cacheKey, err })
+      throw new NestedError( message, err )
     }
   }
 
@@ -237,12 +235,9 @@ export async function getOrCreateObjectFromCahce(
   try {
     newObjectPromise = creationFunction()
   } catch ( err ) {
-    log( 'error', 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed', {
-      categoryName,
-      cacheKey,
-      err,
-    })
-    throw new NestedError( 'XXX', err )
+    const message = 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed'
+    log( 'error', message, { cacheKey, err })
+    throw new NestedError( message, err )
   }
 
   // Add the promise to the cache now, so that other requests to the cache
@@ -255,15 +250,9 @@ export async function getOrCreateObjectFromCahce(
   try {
     return await newObjectPromise
   } catch ( err ) {
-    log(
-      'error',
-      'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed',
-      {
-        categoryName,
-        cacheKey,
-        err,
-      },
-    )
+    const message =
+      'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed'
+    log( 'error', message, { categoryName, cacheKey, err })
 
     const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
 
@@ -271,7 +260,7 @@ export async function getOrCreateObjectFromCahce(
     const { entries } = cachedEntriesForCategory
     entries.delete( cacheKey )
 
-    throw new NestedError( 'XXX', err )
+    throw new NestedError( message, err )
   }
 }
 

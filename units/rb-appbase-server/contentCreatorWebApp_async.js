@@ -85,7 +85,7 @@ const render = createRender({
     const { error } = obj
 
     if ( error.status !== 404 ) {
-      log( 'error', 'Error: Render on server createRender renderError', error )
+      log( 'error', 'Error: rb-appbase-webapp createRender renderError', error )
     }
 
     return <ErrorComponent httpStatus={error.status} />
@@ -148,8 +148,13 @@ export default ( async function contentCreatorWebApp_async(
     const relayPayloads = serialize( fetcher, { isJSON: true })
 
     if (
+      typeof relayPayloads === 'string' &&
       relayPayloads.indexOf(
-        '{"message":"GraphQL server was given a session, but the session is invalid"}',
+        // Notice that the string has no closing brace. A typical error string looks like:
+        // '[{"errors":[{"message":"GraphQL server was given a session, but the session is invalid",
+        // "locations":[{"line":888,"column":777}],"stack":"No stack information available",
+        // "path":["node"]}],"data":null}]'
+        '{"message":"GraphQL server was given a session, but the session is invalid"',
       ) > 0
     ) {
       return {

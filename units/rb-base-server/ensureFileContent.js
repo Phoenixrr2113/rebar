@@ -21,7 +21,7 @@ export default ( async function ensureFileContent(
       currentFileContent = ( await fs.readFile( fileName ) ).toString()
     } catch ( err ) {
       if ( err.code !== 'ENOENT' ) {
-        throw new NestedError( 'XXX', err )
+        throw new NestedError( 'rb-base-server ensureFileContent: Failed', err )
       }
     }
   }
