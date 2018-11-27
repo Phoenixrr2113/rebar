@@ -124,11 +124,11 @@ export async function getUserAndSessionIDByUserToken1_async(
   }
 }
 
-export function verifyUserToken2( a_User, req ): ?string {
+export function verifyUserToken2( a_User, req, location: 'headers' | 'query' ): ?string {
   if ( !a_User ) {
     return 'User not found'
   } else {
-    const request_UserToken2 = req.get( 'UserToken2' )
+    const request_UserToken2 = location === 'headers' ? req.get( 'UserToken2' ) : req.query.UserToken2
     if (
       request_UserToken2 === a_User.UserToken2 ||
       // A request coming from webapp will come from localhost and will bear the server's user token

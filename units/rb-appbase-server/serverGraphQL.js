@@ -68,7 +68,7 @@ async function root( req, res, next ) {
 
     res.injectedByRebarFrameworks = { userSession: a_UserSession }
 
-    const verificationIssue = verifyUserToken2( a_User, req )
+    const verificationIssue = verifyUserToken2( a_User, req, 'headers' )
     if ( verificationIssue ) {
       serveAuthenticationFailed( req, res, verificationIssue, true )
       return
@@ -79,7 +79,7 @@ async function root( req, res, next ) {
         schema: schema,
         rootValue: objectManager,
         pretty: true,
-        graphiql: false, // TODO [Sandstone][server] Look into re-enabling GraphiQL
+        graphiql: false, // TODO [3 Sandstone][server] Look into re-enabling GraphiQL
       }
     })( req, res, next )
   } catch ( err ) {

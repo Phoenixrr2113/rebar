@@ -163,6 +163,7 @@ export default ( async function contentCreatorWebApp_async(
       }
     }
 
+    // [2 Crossroads][server] Update server rendering according to https://material-ui.com/guides/server-rendering/
     const sheets = new SheetsRegistry()
     const helmet = Helmet.rewind()
 

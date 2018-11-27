@@ -14,12 +14,10 @@ import AppWrapper from '../_configuration/rb-appbase-webapp/AppWrapper'
 
 import FetcherClient from './fetcherClient'
 import { createResolver, historyMiddlewares, routeConfig } from './router'
+import { getUserToken2, setUserToken2 } from './scripts/userToken2'
 
 // Include global CSS used in all units. Will not be chunked
 import '../_configuration/rb-appbase-webapp/global.css'
-
-// User token will be recorded upon startup and used when passing on client errors
-let UserToken2 = 'unknown'
 
 // Handler for error reporting
 async function rebarErrorHandler( err, err_info ) {
@@ -41,7 +39,7 @@ async function rebarErrorHandler( err, err_info ) {
 
     // Pakcage up error details
     const body = JSON.stringify({
-      UserToken2,
+      UserToken2: getUserToken2(),
       err: { message: err.message, stack: err.stack },
       err_info,
     })
@@ -78,10 +76,10 @@ const render = createRender({})
   const { relayPayloads, siteConfiguration } = window.__rebar_properties__
 
   // It is critical that the app frame has UserToken2 retrieved
-  UserToken2 = relayPayloads[0].data.Viewer.UserToken2
+  setUserToken2( relayPayloads[0].data.Viewer.UserToken2 )
 
   // eslint-disable-next-line no-underscore-dangle
-  const fetcher = new FetcherClient( getGraphQLServerURL(), relayPayloads, UserToken2 )
+  const fetcher = new FetcherClient( getGraphQLServerURL(), relayPayloads, getUserToken2() )
   const resolver = createResolver( fetcher )
 
   const Router = await createInitialFarceRouter({
