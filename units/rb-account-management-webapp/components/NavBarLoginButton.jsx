@@ -1,6 +1,8 @@
 // @flow
 
-import Button from '@material-ui/core/Button'
+import { withRouter } from 'found'
+
+import IconButton from '@material-ui/core/IconButton'
 
 import Menu from '@material-ui/core/Menu'
 
@@ -8,7 +10,10 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import { withRouter } from 'found'
+import IconPerson from '@material-ui/icons/Person'
+
+import IconPersonOutline from '@material-ui/icons/PersonOutline'
+
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -18,15 +23,14 @@ import {
 } from './RequiresAuthentication'
 import LoginDialog from './LoginDialog'
 
-const styles = theme => ({
-  buttonRoot: {
-    color: '#ffffff',
-  },
-})
+//
+
+const styles = {}
+
+//
 
 class NavBarLoginButton extends React.Component<
   {
-    classes: Object,
     Viewer: Object,
     relay: Object,
     router: Object,
@@ -62,6 +66,8 @@ class NavBarLoginButton extends React.Component<
 
   _handle_onClick_Profile = () => {
     this.setState({ userMenuIsOpen: false })
+
+    this.props.router.push( '/user/profile' )
   }
 
   _handle_Login_Close = () => {
@@ -88,27 +94,25 @@ class NavBarLoginButton extends React.Component<
   }
 
   render() {
-    const { classes } = this.props
     const { User_IsAnonymous, User_DisplayName } = this.props.Viewer
     const { loginDialogIsOpen, userMenuIsOpen } = this.state
 
     return (
       <div>
-        {User_IsAnonymous && (
-          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_Login}>
-            Login
-          </Button>
-        )}
-        {!User_IsAnonymous && (
-          <Button classes={{ root: classes.buttonRoot }} onClick={this._handle_onClick_UserMenu}>
-            {User_DisplayName}
-          </Button>
-        )}
+        <IconButton
+          aria-haspopup="true"
+          onClick={User_IsAnonymous ? this._handle_onClick_Login : this._handle_onClick_UserMenu}
+          color="inherit"
+        >
+          {User_IsAnonymous ? <IconPersonOutline /> : <IconPerson />}
+        </IconButton>
+
         <LoginDialog
           open={loginDialogIsOpen}
           handlerClose={this._handle_Login_Close}
           handlerNewUser={this._handle_Login_NewUser}
         />
+
         <Menu
           id="lock-menu"
           anchorEl={this.state.anchorEl}
@@ -116,10 +120,10 @@ class NavBarLoginButton extends React.Component<
           onClose={this._handle_UserMenu_Close}
         >
           <MenuItem key="profile" onClick={this._handle_onClick_Profile}>
-            Profile
+            {User_DisplayName}
           </MenuItem>
           <MenuItem key="login" onClick={this._handle_onClick_Login}>
-            Login as a different user
+            Change user
           </MenuItem>
           <MenuItem key="logout" onClick={this._handle_onClick_Logout}>
             Log out

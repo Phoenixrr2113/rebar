@@ -26,39 +26,23 @@ import NewUserSecretInput from './NewUserSecretInput'
 
 //
 
-export function validateEmail( accountIdentifier: string ) {
-  // eslint-disable-next-line no-control-regex
-  const reEmail = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/
-  return reEmail.test( accountIdentifier )
-}
-
-//
-
 const styles = {
   card: {
     minWidth: 320,
   },
-  userName: {
-    borderWidth: 1,
-    borderColor: '#c0c0c0',
-    fontWeight: 'bold',
-    paddingLeft: 10,
-    paddingRight: 10,
-  },
 }
 
 //
 
-class NewUserScreen extends React.Component<
+class ChangeSecretScreen extends React.Component<
   {
     classes: Object,
   },
   {
-    currentOperation: 'prompt' | 'creating' | 'success' | 'failure',
+    currentOperation: 'prompt' | 'changing' | 'success' | 'failure',
     executionStatus: string,
-    UserAccount_Identifier: string,
-    UserAccount_IdentifierValidity: boolean,
-    User_Secret: string,
+    User_CurrentSecret: string,
+    User_NewSecret: string,
   },
 > {
   constructor( props: Object, context: Object ) {
@@ -67,33 +51,31 @@ class NewUserScreen extends React.Component<
     this.state = {
       currentOperation: 'prompt',
       executionStatus: '',
-      UserAccount_Identifier: '',
-      UserAccount_IdentifierValidity: false,
-      User_Secret: '',
+      User_CurrentSecret: '',
+      User_NewSecret: '',
     }
   }
 
-  _handle_onClick_Create = async() => {
-    const { UserAccount_Identifier, User_Secret } = this.state
+  _handle_onClick_Change = async() => {
+    const { User_CurrentSecret, User_NewSecret } = this.state
 
     this.setState({
-      currentOperation: 'creating',
-      User_Secret: '', // In order to prevent the password from being accessed later
+      currentOperation: 'changing',
     })
 
     try {
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/createuser', {
+      const response = await fetch( host + '/auth/change-secret', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          UserAccount_Identifier: UserAccount_Identifier,
-          User_Secret: User_Secret,
+          User_CurrentSecret,
+          User_NewSecret,
         }),
       })
 
@@ -120,7 +102,7 @@ class NewUserScreen extends React.Component<
     }
   }
 
-  _handle_onClick_CancelCreation = () => {
+  _handle_onClick_CancelChange = () => {
     this.setState({
       currentOperation: 'failure',
       executionStatus: 'User creation has been canceled',
@@ -129,33 +111,30 @@ class NewUserScreen extends React.Component<
 
   _handle_onClick_TryAgain = () => {
     this.setState({
+      User_CurrentSecret: '',
       currentOperation: 'prompt',
       executionStatus: '',
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/' )
+    window.location.replace( '/user/profile' )
   }
 
-  renderCreating() {
+  renderChanging() {
     const { classes } = this.props
-    const { UserAccount_Identifier } = this.state
 
     return (
       <Card className={classes.card}>
-        <CardHeader title="Creating user" />
+        <CardHeader title="Changing password" />
         <CardContent>
-          <Typography component="p">
-            Creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>, please wait.
-          </Typography>
+          <Typography component="p">Updating, please wait.</Typography>
           <br />
           <br />
           <LinearProgress mode="query" />
         </CardContent>
         <CardActions>
-          <Button onClick={this._handle_onClick_CancelCreation}>Cancel</Button>
+          <Button onClick={this._handle_onClick_CancelChange}>Cancel</Button>
         </CardActions>
       </Card>
     )
@@ -163,16 +142,12 @@ class NewUserScreen extends React.Component<
 
   renderSuccess() {
     const { classes } = this.props
-    const { UserAccount_Identifier } = this.state
 
     return (
       <Card className={classes.card}>
-        <CardHeader title="Creating user" />
+        <CardHeader title="Changing password" />
         <CardContent>
-          <Typography component="p">
-            Created user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>.
-          </Typography>
+          <Typography component="p">Password successfully changed.</Typography>
         </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_Continue}>Continue</Button>
@@ -183,17 +158,13 @@ class NewUserScreen extends React.Component<
 
   renderFailure() {
     const { classes } = this.props
-    const { UserAccount_Identifier, executionStatus } = this.state
+    const { executionStatus } = this.state
 
     return (
       <Card className={classes.card}>
-        <CardHeader title="Creating user" />
+        <CardHeader title="Changing password" />
         <CardContent>
-          <Typography component="p">
-            Failed creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>
-            because {executionStatus}.
-          </Typography>
+          <Typography component="p">Changing password failed because {executionStatus}.</Typography>
         </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
@@ -203,32 +174,32 @@ class NewUserScreen extends React.Component<
   }
 
   _handle_onChange_Identifier = event => {
-    const UserAccount_Identifier = event.target.value
-    const UserAccount_IdentifierValidity = validateEmail( UserAccount_Identifier )
+    const User_CurrentSecret = event.target.value
 
-    this.setState({ UserAccount_Identifier, UserAccount_IdentifierValidity })
+    this.setState({ User_CurrentSecret })
   }
 
   _handle_onUpdateSecret = secret => {
-    this.setState({ User_Secret: secret })
+    this.setState({ User_NewSecret: secret })
   }
 
   renderPrompt() {
     const { classes } = this.props
-    const { UserAccount_Identifier, UserAccount_IdentifierValidity, User_Secret } = this.state
+    const { User_CurrentSecret, User_NewSecret } = this.state
 
     // User account identifier must be valid and secret must be present
-    const createDisabled = !UserAccount_IdentifierValidity || User_Secret === ''
+    const createDisabled = User_CurrentSecret.length < 5 || User_NewSecret === ''
 
     return (
       <Card className={classes.card}>
-        <CardHeader title="Create New User" />
+        <CardHeader title="Change Password" />
         <CardContent>
           <TextField
-            autoComplete="username"
+            autoComplete="password"
             fullWidth={true}
-            label="E-Mail Address"
-            value={UserAccount_Identifier}
+            label="Current (old) password"
+            type="password"
+            value={User_CurrentSecret}
             onChange={this._handle_onChange_Identifier}
           />
 
@@ -238,8 +209,8 @@ class NewUserScreen extends React.Component<
           <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
         </CardContent>
         <CardActions>
-          <Button disabled={createDisabled} onClick={this._handle_onClick_Create}>
-            Create
+          <Button disabled={createDisabled} onClick={this._handle_onClick_Change}>
+            Change
           </Button>
         </CardActions>
       </Card>
@@ -252,7 +223,7 @@ class NewUserScreen extends React.Component<
     return (
       <ResponsiveContentArea>
         {currentOperation === 'prompt' && this.renderPrompt()}
-        {currentOperation === 'creating' && this.renderCreating()}
+        {currentOperation === 'changing' && this.renderChanging()}
         {currentOperation === 'success' && this.renderSuccess()}
         {currentOperation === 'failure' && this.renderFailure()}
       </ResponsiveContentArea>
@@ -260,4 +231,4 @@ class NewUserScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( NewUserScreen )
+export default withStyles( styles )( ChangeSecretScreen )

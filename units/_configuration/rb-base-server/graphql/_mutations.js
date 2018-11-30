@@ -1,5 +1,6 @@
 // @flow
 
+import UserUpdate from '../../../rb-account-management-server/graphql/mutation/UserUpdate'
 import EnsayoAdd from '../../../rb-example-ensayo-server/graphql/mutation/EnsayoAdd'
 import EnsayoDelete from '../../../rb-example-ensayo-server/graphql/mutation/EnsayoDelete'
 import EnsayoUpdate from '../../../rb-example-ensayo-server/graphql/mutation/EnsayoUpdate'
@@ -16,6 +17,7 @@ import TranslaticiarumDelete from '../../../rb-example-translaticiarum-server/gr
 import TranslaticiarumUpdate from '../../../rb-example-translaticiarum-server/graphql/mutation/TranslaticiarumUpdate'
 
 export default {
+  UserUpdate,
   EnsayoAdd,
   EnsayoDelete,
   EnsayoUpdate,
