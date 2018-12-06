@@ -124,9 +124,9 @@ export async function getUserAndSessionIDByUserToken1_async(
   }
 }
 
-export function verifyUserToken2( a_User, req, location: 'headers' | 'query' ): ?string {
+export function verifyUserToken2( a_User, req, location: 'headers' | 'query' ): ?Object {
   if ( !a_User ) {
-    return 'User not found'
+    return { issue: 'User not found' }
   } else {
     const request_UserToken2 = location === 'headers' ? req.get( 'UserToken2' ) : req.query.UserToken2
     if (
@@ -139,9 +139,12 @@ export function verifyUserToken2( a_User, req, location: 'headers' | 'query' ): 
     )
       return null
     else
-      return (
-        'Authentication token expected: ' + a_User.UserToken2 + ', provided:' + request_UserToken2
-      )
+      return {
+        issue: 'Authentication token expected',
+        User_id: a_User.id,
+        UserToken2: a_User.UserToken2,
+        UserToken2FromRequest: request_UserToken2,
+      }
   }
 }
 

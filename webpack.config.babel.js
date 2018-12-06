@@ -15,8 +15,8 @@ const sassets_configuration_version = process.env.CFSB_SASSETS_CONFIGURATION_VER
 const publicPath = sassets_configuration_version
   ? `/sassets/${version}.${sassets_configuration_version}/`
   : node_env === 'production'
-    ? `/assets/${version}/`
-    : `http://${host}:${port_webpack}/${version}/`
+  ? `/assets/${version}/`
+  : `http://${host}:${port_webpack}/${version}/`
 
 console.log(
   'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
@@ -114,6 +114,12 @@ const config = {
       {
         test: /\.css$/,
         use: [ { loader: 'style-loader' }, { loader: 'css-loader' } ],
+      },
+
+      // Load images and files
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
+        loader: 'file-loader?name=assets/[name].[hash].[ext]',
       },
     ],
   },
