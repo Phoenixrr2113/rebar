@@ -43,7 +43,7 @@ class ChangeSecretScreen extends React.Component<
     executionStatus: string,
     User_CurrentSecret: string,
     User_NewSecret: string,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -97,7 +97,8 @@ class ChangeSecretScreen extends React.Component<
       this.setState({
         currentOperation: 'failure',
         executionStatus:
-          'Did not receive proper response from server. Please try again. Message:' + err.message,
+          'Did not receive proper response from server. Please try again. Message:' +
+          err.message,
       })
     }
   }
@@ -164,7 +165,9 @@ class ChangeSecretScreen extends React.Component<
       <Card className={classes.card}>
         <CardHeader title="Changing password" />
         <CardContent>
-          <Typography component="p">Changing password failed because {executionStatus}.</Typography>
+          <Typography component="p">
+            Changing password failed because {executionStatus}.
+          </Typography>
         </CardContent>
         <CardActions>
           <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
@@ -188,7 +191,8 @@ class ChangeSecretScreen extends React.Component<
     const { User_CurrentSecret, User_NewSecret } = this.state
 
     // User account identifier must be valid and secret must be present
-    const createDisabled = User_CurrentSecret.length < 5 || User_NewSecret === ''
+    const createDisabled =
+      User_CurrentSecret.length < 5 || User_NewSecret === ''
 
     return (
       <Card className={classes.card}>
@@ -198,8 +202,10 @@ class ChangeSecretScreen extends React.Component<
             autoComplete="password"
             fullWidth={true}
             label="Current (old) password"
+            margin="normal"
             type="password"
             value={User_CurrentSecret}
+            variant="outlined"
             onChange={this._handle_onChange_Identifier}
           />
 
@@ -209,7 +215,10 @@ class ChangeSecretScreen extends React.Component<
           <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
         </CardContent>
         <CardActions>
-          <Button disabled={createDisabled} onClick={this._handle_onClick_Change}>
+          <Button
+            disabled={createDisabled}
+            onClick={this._handle_onClick_Change}
+          >
             Change
           </Button>
         </CardActions>

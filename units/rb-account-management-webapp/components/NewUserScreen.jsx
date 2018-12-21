@@ -59,7 +59,7 @@ class NewUserScreen extends React.Component<
     UserAccount_Identifier: string,
     UserAccount_IdentifierValidity: boolean,
     User_Secret: string,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -115,7 +115,8 @@ class NewUserScreen extends React.Component<
       this.setState({
         currentOperation: 'failure',
         executionStatus:
-          'Did not receive proper response from server. Please try again. Message:' + err.message,
+          'Did not receive proper response from server. Please try again. Message:' +
+          err.message,
       })
     }
   }
@@ -148,7 +149,8 @@ class NewUserScreen extends React.Component<
         <CardContent>
           <Typography component="p">
             Creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>, please wait.
+            <span className={classes.userName}>{UserAccount_Identifier}</span>,
+            please wait.
           </Typography>
           <br />
           <br />
@@ -215,7 +217,11 @@ class NewUserScreen extends React.Component<
 
   renderPrompt() {
     const { classes } = this.props
-    const { UserAccount_Identifier, UserAccount_IdentifierValidity, User_Secret } = this.state
+    const {
+      UserAccount_Identifier,
+      UserAccount_IdentifierValidity,
+      User_Secret,
+    } = this.state
 
     // User account identifier must be valid and secret must be present
     const createDisabled = !UserAccount_IdentifierValidity || User_Secret === ''
@@ -228,7 +234,9 @@ class NewUserScreen extends React.Component<
             autoComplete="username"
             fullWidth={true}
             label="E-Mail Address"
+            margin="normal"
             value={UserAccount_Identifier}
+            variant="outlined"
             onChange={this._handle_onChange_Identifier}
           />
 
@@ -238,7 +246,10 @@ class NewUserScreen extends React.Component<
           <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
         </CardContent>
         <CardActions>
-          <Button disabled={createDisabled} onClick={this._handle_onClick_Create}>
+          <Button
+            disabled={createDisabled}
+            onClick={this._handle_onClick_Create}
+          >
             Create
           </Button>
         </CardActions>

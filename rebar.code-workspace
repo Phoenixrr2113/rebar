@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+		"[javascript]": {
+			"editor.formatOnSave": true
+		}
+	}
+}

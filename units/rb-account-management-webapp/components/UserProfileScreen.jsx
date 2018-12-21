@@ -43,12 +43,20 @@ class UserProfileScreen extends React.Component<
       User_PrimaryPhone: string,
     },
   },
-  { User_DisplayName: string, User_PrimaryEmail: string, User_PrimaryPhone: string },
+  {
+    User_DisplayName: string,
+    User_PrimaryEmail: string,
+    User_PrimaryPhone: string,
+  }
 > {
   constructor( props, context ) {
     super( props, context )
 
-    const { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone } = props.Viewer
+    const {
+      User_DisplayName,
+      User_PrimaryEmail,
+      User_PrimaryPhone,
+    } = props.Viewer
 
     this.state = { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone }
   }
@@ -76,14 +84,18 @@ class UserProfileScreen extends React.Component<
   }
 
   _handle_onClick_Update = () => {
-    const { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone } = this.state
+    const {
+      User_DisplayName,
+      User_PrimaryEmail,
+      User_PrimaryPhone,
+    } = this.state
     const { relay } = this.props
 
     UserUpdateMutation.commit(
       relay.environment,
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone,
+      User_PrimaryPhone
     )
   }
 
@@ -92,7 +104,11 @@ class UserProfileScreen extends React.Component<
 
     if ( Viewer.User_IsAnonymous ) return <RequiresAuthenticationNotice />
 
-    const { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone } = this.state
+    const {
+      User_DisplayName,
+      User_PrimaryEmail,
+      User_PrimaryPhone,
+    } = this.state
 
     return (
       <ResponsiveContentArea>
@@ -104,7 +120,9 @@ class UserProfileScreen extends React.Component<
               autoComplete="name"
               fullWidth={true}
               label="Display Name"
+              margin="normal"
               value={User_DisplayName}
+              variant="outlined"
               onChange={this._handle_onChange_DisplayName}
             />
 
@@ -112,7 +130,9 @@ class UserProfileScreen extends React.Component<
               autoComplete="email"
               fullWidth={true}
               label="Contact email (not account identifier)"
+              margin="normal"
               value={User_PrimaryEmail}
+              variant="outlined"
               onChange={this._handle_onChange_PrimaryEmail}
             />
 
@@ -120,14 +140,18 @@ class UserProfileScreen extends React.Component<
               autoComplete="tel"
               fullWidth={true}
               label="Contact phone"
+              margin="normal"
               value={User_PrimaryPhone}
+              variant="outlined"
               onChange={this._handle_onChange_PrimaryPhone}
             />
           </CardContent>
 
           <CardActions>
             <Button onClick={this._handle_onClick_Update}>Update</Button>
-            <Button onClick={this._handle_onClick_ChangePassword}>Change password</Button>
+            <Button onClick={this._handle_onClick_ChangePassword}>
+              Change password
+            </Button>
           </CardActions>
         </Card>
       </ResponsiveContentArea>
@@ -145,5 +169,5 @@ export default createFragmentContainer(
       User_PrimaryEmail
       User_PrimaryPhone
     }
-  `,
+  `
 )

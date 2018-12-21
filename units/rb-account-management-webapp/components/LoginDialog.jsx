@@ -50,7 +50,7 @@ class LoginDialog extends React.Component<
     errorMessage: string,
     UserAccount_Identifier: string,
     User_Secret: string,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -96,7 +96,9 @@ class LoginDialog extends React.Component<
       if ( responseData.success ) {
         // In case of success, realod the application from server
         window.location.replace(
-          window.location.pathname === '/' ? routeAfterLogin : window.location.pathname,
+          window.location.pathname === '/'
+            ? routeAfterLogin
+            : window.location.pathname
         )
       } else {
         // In case of error, tell user what the error is
@@ -140,30 +142,42 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, User_Secret } = this.state
 
     return (
-      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        onClose={this._handle_Close}
+      >
         <DialogTitle>Log In</DialogTitle>
 
         <DialogContent>
           <TextField
             autoComplete="username"
-            label="E-Mail Address"
             fullWidth={true}
+            label="E-Mail Address"
+            margin="normal"
             value={UserAccount_Identifier}
-            onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
+            variant="outlined"
+            onChange={event =>
+              this.setState({ UserAccount_Identifier: event.target.value })
+            }
           />
           <TextField
             autoComplete="current-password"
-            label="Password"
-            type="password"
             fullWidth={true}
+            label="Password"
+            margin="normal"
+            type="password"
+            value={User_Secret}
+            variant="outlined"
+            onChange={event =>
+              this.setState({ User_Secret: event.target.value })
+            }
             onKeyPress={ev => {
               if ( ev.key === 'Enter' ) {
                 this._handle_onClick_LogIn()
                 ev.preventDefault()
               }
             }}
-            value={User_Secret}
-            onChange={event => this.setState({ User_Secret: event.target.value })}
           />
         </DialogContent>
         <DialogActions>
@@ -185,13 +199,20 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier } = this.state
 
     return (
-      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        onClose={this._handle_Close}
+      >
         <DialogTitle>Logging in</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Logging in as
-            <span className={classes.userName}>{UserAccount_Identifier}</span> ...
+            <span className={classes.userName}>
+              {UserAccount_Identifier}
+            </span>{' '}
+            ...
           </Typography>
           <br />
           <br />
@@ -211,14 +232,20 @@ class LoginDialog extends React.Component<
     const { UserAccount_Identifier, errorMessage } = this.state
 
     return (
-      <Dialog classes={{ paper: classes.dialogPaper }} open={open} onClose={this._handle_Close}>
+      <Dialog
+        classes={{ paper: classes.dialogPaper }}
+        open={open}
+        onClose={this._handle_Close}
+      >
         <DialogTitle>Log In Failed</DialogTitle>
 
         <DialogContent>
           <Typography component="p">
             Failed loggin in as
-            <span className={classes.userName}>{UserAccount_Identifier}</span> because:{' '}
-            {errorMessage}!
+            <span className={classes.userName}>
+              {UserAccount_Identifier}
+            </span>{' '}
+            because: {errorMessage}!
           </Typography>
         </DialogContent>
         <DialogActions>

@@ -22,7 +22,7 @@ import {
 function scoreSecret(
   secret: string,
   uniqueLettersAwardUntilRepetitions: number,
-  variationAwardCoefficient: number,
+  variationAwardCoefficient: number
 ) {
   let score = 0
   if ( !secret ) return 0
@@ -43,7 +43,8 @@ function scoreSecret(
   }
 
   let variationCount = 0
-  for ( let check in variations ) variationCount += variations[check] === true ? 1 : 0
+  for ( let check in variations )
+    variationCount += variations[check] === true ? 1 : 0
 
   score += ( variationCount - 1 ) * variationAwardCoefficient
 
@@ -78,7 +79,7 @@ class NewUserSecretInput extends React.Component<
     userSecretPrompt: string,
     userSecretStrength: number,
     userSecretQuality: 'poor' | 'fair' | 'good',
-  },
+  }
 > {
   constructor( props: any, context: any ) {
     super( props, context )
@@ -107,7 +108,7 @@ class NewUserSecretInput extends React.Component<
     const userSecretStrength = scoreSecret(
       userSecret,
       uniqueLettersAwardUntilRepetitions,
-      variationAwardCoefficient,
+      variationAwardCoefficient
     )
 
     // Determine secret quality
@@ -162,19 +163,23 @@ class NewUserSecretInput extends React.Component<
       <div>
         <TextField
           autoComplete="new-password"
-          label="Password"
           fullWidth={true}
+          label="Password"
+          margin="normal"
           type="password"
           value={userSecret}
+          variant="outlined"
           onChange={this._handle_onChange_Secret}
         />
 
         <TextField
           autoComplete="new-password"
-          label="Confirm password"
           fullWidth={true}
+          label="Confirm password"
+          margin="normal"
           type="password"
           value={userSecretConfirm}
+          variant="outlined"
           onChange={this._handle_onChange_SecretConfirm}
         />
 
@@ -186,7 +191,8 @@ class NewUserSecretInput extends React.Component<
         <LinearProgress
           classes={{
             colorPrimary: classes.strengthColorPrimary,
-            barColorPrimary: classes['strengthBarColorPrimary_' + userSecretQuality],
+            barColorPrimary:
+              classes['strengthBarColorPrimary_' + userSecretQuality],
           }}
           value={( 50 * userSecretStrength ) / userSecretStrengthGood}
           variant="determinate"

@@ -3,8 +3,13 @@
 import FetcherBase from '../rb-appbase-universal/fetcherBase'
 
 export default class FetcherClient extends FetcherBase {
-  constructor( url: string, payloads: any, UserToken2: string ) {
-    super( url, null, UserToken2 )
+  constructor(
+    url: string,
+    payloads: any,
+    UserToken1: ?string,
+    UserToken2: string
+  ) {
+    super( url, UserToken1, UserToken2 )
 
     this.payloads = payloads
   }
