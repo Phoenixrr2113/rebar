@@ -262,6 +262,10 @@ declare module '@material-ui/core/Collapse' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/colors' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/colors/amber' {
   declare module.exports: any;
 }
@@ -1890,11 +1894,19 @@ declare module '@material-ui/core/Grid/index' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/Grid' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/GridList/GridList' {
   declare module.exports: any;
 }
 
 declare module '@material-ui/core/GridList/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/GridList' {
   declare module.exports: any;
 }
 
@@ -1906,11 +1918,19 @@ declare module '@material-ui/core/GridListTile/index' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/GridListTile' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/GridListTileBar/GridListTileBar' {
   declare module.exports: any;
 }
 
 declare module '@material-ui/core/GridListTileBar/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/GridListTileBar' {
   declare module.exports: any;
 }
 
@@ -1975,6 +1995,10 @@ declare module '@material-ui/core/Input/Input' {
 }
 
 declare module '@material-ui/core/InputAdornment/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/InputAdornment' {
   declare module.exports: any;
 }
 
@@ -2210,6 +2234,10 @@ declare module '@material-ui/core/Modal/index' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/Modal' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/Modal/isOverflowing' {
   declare module.exports: any;
 }
@@ -2259,6 +2287,10 @@ declare module '@material-ui/core/OutlinedInput/OutlinedInput' {
 }
 
 declare module '@material-ui/core/Paper/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/Paper' {
   declare module.exports: any;
 }
 
@@ -2315,6 +2347,10 @@ declare module '@material-ui/core/RootRef/RootRef' {
 }
 
 declare module '@material-ui/core/Select/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/Select' {
   declare module.exports: any;
 }
 
@@ -2541,6 +2577,10 @@ declare module '@material-ui/core/Switch/Switch' {
 }
 
 declare module '@material-ui/core/Tab/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/Tab' {
   declare module.exports: any;
 }
 
@@ -2809,6 +2849,10 @@ declare module '@material-ui/core/utils/unsupportedProp' {
 }
 
 declare module '@material-ui/core/withMobileDialog/index' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/withMobileDialog' {
   declare module.exports: any;
 }
 
