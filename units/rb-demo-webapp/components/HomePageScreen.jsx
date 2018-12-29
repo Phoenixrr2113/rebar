@@ -45,27 +45,22 @@ class HomePageScreen extends React.Component<{
           const data = [
             {
               name: 'Rebar Version',
-              // $AssureFlow
               value: siteConfiguration.webapp.rebarDemo.version,
             },
             {
               name: 'Server OS',
-              // $AssureFlow
               value: siteConfiguration.webapp.rebarDemo.OSType,
             },
             {
               name: 'Server Host Name',
-              // $AssureFlow
               value: siteConfiguration.webapp.rebarDemo.OSHostName,
             },
             {
               name: 'Server Free Memory',
-              // $AssureFlow
               value: siteConfiguration.webapp.rebarDemo.OSFreeMem,
             },
             {
               name: 'Google Maps API Key',
-              // $AssureFlow
               value: siteConfiguration.webapp.api.googleMapsJavascriptAPI,
             },
           ]
@@ -76,29 +71,36 @@ class HomePageScreen extends React.Component<{
                 <CardHeader title="Rebar Demo" />
                 <CardContent>
                   <Typography component="p">
-                    The <a href="https://github.com/MachineAcuity/rebar">Rebar</a> is and open
-                    source project representing basic foundation of the solutions we provide. It
-                    fully utilizes the react stack, and Node.js and Cassandra on the back end. It
-                    can be used both as boilerplate, as well as an educational tool with multiple
-                    examples available. Basic user account management including account creation,
-                    password strength indicator and user profile is also included. The boilerplate
-                    is optimized for supportability and update-ability. It allows us to update the
-                    multiple projects based on the boilerplate with minimum effort, providing new
-                    features, improvements and bug fixes. This is achieved through the following two
+                    The{' '}
+                    <a href="https://github.com/MachineAcuity/rebar">Rebar</a>{' '}
+                    is and open source project representing basic foundation of
+                    the solutions we provide. It fully utilizes the react stack,
+                    and Node.js and Cassandra on the back end. It can be used
+                    both as boilerplate, as well as an educational tool with
+                    multiple examples available. Basic user account management
+                    including account creation, password strength indicator and
+                    user profile is also included. The boilerplate is optimized
+                    for supportability and update-ability. It allows us to
+                    update the multiple projects based on the boilerplate with
+                    minimum effort, providing new features, improvements and bug
+                    fixes. This is achieved through the following two
                     approaches:
                     <br />
                     <br />
                   </Typography>
                   <Typography component="ul">
                     <li>
-                      <b>Configurability</b> - All the configuration files, which include settings,
-                      CQL, JSON, snippets of JavaScript and JSX are separated from the common code.
+                      <b>Configurability</b> - All the configuration files,
+                      which include settings, CQL, JSON, snippets of JavaScript
+                      and JSX are separated from the common code.
                     </li>
                     <li>
-                      <b>Modularity</b> - The applications built upon the boilerplate are separated
-                      into semi-independent units, which contain the necessary front-end, back end,
-                      relay, CQL, etc. code. The parameters and settings for those units are stored
-                      in the configuration folder for eacy updating.
+                      <b>Modularity</b> - The applications built upon the
+                      boilerplate are separated into semi-independent units,
+                      which contain the necessary front-end, back end, relay,
+                      CQL, etc. code. The parameters and settings for those
+                      units are stored in the configuration folder for eacy
+                      updating.
                     </li>
                   </Typography>
                 </CardContent>
@@ -145,5 +147,5 @@ export default createFragmentContainer(
     fragment HomePageScreen_Viewer on Viewer {
       id
     }
-  `,
+  `
 )
