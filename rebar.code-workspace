@@ -9,6 +9,9 @@
 		"[javascript]": {
 			"editor.formatOnSave": true
 		},
+		"[javascriptreact]": {
+			"editor.formatOnSave": true
+		},
 		"search.exclude": {
 			"/deployment": true
 		},

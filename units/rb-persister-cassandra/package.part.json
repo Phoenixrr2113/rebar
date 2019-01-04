@@ -1,7 +1,7 @@
 {
   "dependencies": {
     "cassandra-driver": "3.5.0",
-    "express-cassandra": "2.2.4",
+    "express-cassandra": "2.3.0",
     "json-stringify-safe": "5.0.1"
   }
 }
