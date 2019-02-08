@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-              import type { ConcreteFragment } from 'relay-runtime';
+              import type { ReaderFragment } from 'relay-runtime';
               type EnsayoInPlaceEditItem_Ensayo$ref = any;
               type EnsayoInPlaceEditItem_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
@@ -28,7 +28,7 @@
               */
 
 
-const node /*: ConcreteFragment*/ = function () {
+const node /*: ReaderFragment*/ = function () {
   var v0 = {
     "kind": "ScalarField",
     "alias": null,
@@ -81,7 +81,7 @@ const node /*: ConcreteFragment*/ = function () {
           "concreteType": "Ensayo",
           "plural": false,
           "selections": [
-          v0,
+          v0 /*: any*/,
           {
             "kind": "FragmentSpread",
             "name": "EnsayoInPlaceEditItem_Ensayo",
@@ -132,7 +132,7 @@ const node /*: ConcreteFragment*/ = function () {
 
 
 
-    v0,
+    v0 /*: any*/,
     {
       "kind": "FragmentSpread",
       "name": "EnsayoInPlaceEditItem_Viewer",

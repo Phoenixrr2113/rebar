@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash f3a251dcef20ac9e52e64aa28c751eb4
+ * @relayHash 618ffd6a54dd24a336dd616c13c1eeed
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type TranslaticiarumUpdateInput = {
+              export type TranslaticiarumUpdateInput = {|
                 id: string,
                 Translaticiarum_Start: string,
                 Translaticiarum_Stop: string,
                 Translaticiarum_Description: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type TranslaticiarumUpdateMutationVariables = {|
                 input: TranslaticiarumUpdateInput
               |};
@@ -121,24 +121,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "TranslaticiarumUpdateMutation",
-    "id": null,
-    "text": "mutation TranslaticiarumUpdateMutation(\n  $input: TranslaticiarumUpdateInput!\n) {\n  TranslaticiarumUpdate(input: $input) {\n    Translaticiarum {\n      id\n      Translaticiarum_Start\n      Translaticiarum_Stop\n      Translaticiarum_Description\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "TranslaticiarumUpdateMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "TranslaticiarumUpdateMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "TranslaticiarumUpdateMutation",
+      "id": null,
+      "text": "mutation TranslaticiarumUpdateMutation(\n  $input: TranslaticiarumUpdateInput!\n) {\n  TranslaticiarumUpdate(input: $input) {\n    Translaticiarum {\n      id\n      Translaticiarum_Start\n      Translaticiarum_Stop\n      Translaticiarum_Description\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

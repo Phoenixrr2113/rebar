@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 4ba6854ae9790c1954533db028a0631e
+ * @relayHash 41fdacc5c6965c6a52fdba733ed937eb
  */
 
 /* eslint-disable */
@@ -9,12 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type EnsayoAddInput = {
+              export type EnsayoAddInput = {|
                 Ensayo_Title: string,
                 Ensayo_Description: string,
                 Ensayo_Content: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type EnsayoAddMutationVariables = {|
                 input: EnsayoAddInput
               |};
@@ -104,7 +104,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "Viewer",
       "plural": false,
       "selections": [
-      v1] },
+      v1 /*: any*/] },
 
 
     {
@@ -132,7 +132,7 @@ const node /*: ConcreteRequest*/ = function () {
         "concreteType": "Ensayo",
         "plural": false,
         "selections": [
-        v1,
+        v1 /*: any*/,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -163,24 +163,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "EnsayoAddMutation",
-    "id": null,
-    "text": "mutation EnsayoAddMutation(\n  $input: EnsayoAddInput!\n) {\n  EnsayoAdd(input: $input) {\n    Viewer {\n      id\n    }\n    EnsayosEdge {\n      cursor\n      node {\n        id\n        Ensayo_Title\n        Ensayo_Description\n        Ensayo_Content\n      }\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "EnsayoAddMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v2 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "EnsayoAddMutation",
-      "argumentDefinitions": v0,
-      "selections": v2 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "EnsayoAddMutation",
+      "id": null,
+      "text": "mutation EnsayoAddMutation(\n  $input: EnsayoAddInput!\n) {\n  EnsayoAdd(input: $input) {\n    Viewer {\n      id\n    }\n    EnsayosEdge {\n      cursor\n      node {\n        id\n        Ensayo_Title\n        Ensayo_Description\n        Ensayo_Content\n      }\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

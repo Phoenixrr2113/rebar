@@ -1,17 +1,16 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _Add = _interopRequireDefault(require("@material-ui/icons/Add"));
-
-var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
 
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
 var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
 
+var _Fab = _interopRequireDefault(require("@material-ui/core/Fab"));
+
 var _styles = require("@material-ui/core/styles");
 
+var _Plus = _interopRequireDefault(require("mdi-material-ui/Plus"));
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
 
@@ -45,7 +44,11 @@ class EnsayoInPaceEditScreen extends _react.default.Component
 
 
     _handle_updateHandler_Ensayo = EnsayoInPlaceEditProperties => {
-      const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties;
+      const {
+        Ensayo_Title,
+        Ensayo_Description,
+        Ensayo_Content } =
+      EnsayoInPlaceEditProperties;
       const { relay, Viewer } = this.props;
 
       _EnsayoAddMutation.default.commit(
@@ -76,13 +79,12 @@ class EnsayoInPaceEditScreen extends _react.default.Component
 
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement("div", { className: classes.addNewButton },
-      _react.default.createElement(_Button.default, {
-        variant: "fab",
+      _react.default.createElement(_Fab.default, {
         color: "primary",
         className: classes.button,
         onClick: this._handle_onClick_Add },
 
-      _react.default.createElement(_Add.default, null))),
+      _react.default.createElement(_Plus.default, null))),
 
 
 

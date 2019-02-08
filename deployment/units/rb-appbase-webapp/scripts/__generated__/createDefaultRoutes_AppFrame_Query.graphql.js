@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 1a259977dff1976b6450b95a3cd62081
+ * @relayHash a2741a3fc90232a2dcfe004e0dc6020a
  */
 
 /* eslint-disable */
@@ -44,11 +44,6 @@
 
 const node /*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "createDefaultRoutes_AppFrame_Query",
-  "id": null,
-  "text": "query createDefaultRoutes_AppFrame_Query {\n  Viewer {\n    ...AppFrame_Viewer\n    id\n  }\n}\n\nfragment AppFrame_Viewer on Viewer {\n  UserToken2\n  ...NavBarLoginButton_Viewer\n}\n\nfragment NavBarLoginButton_Viewer on Viewer {\n  User_IsAnonymous\n  User_DisplayName\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "createDefaultRoutes_AppFrame_Query",
@@ -114,11 +109,18 @@ const node /*: ConcreteRequest*/ = {
         "alias": null,
         "name": "id",
         "args": null,
-        "storageKey": null }] }] } };
+        "storageKey": null }] }] },
 
 
 
 
+
+  "params": {
+    "operationKind": "query",
+    "name": "createDefaultRoutes_AppFrame_Query",
+    "id": null,
+    "text": "query createDefaultRoutes_AppFrame_Query {\n  Viewer {\n    ...AppFrame_Viewer\n    id\n  }\n}\n\nfragment AppFrame_Viewer on Viewer {\n  UserToken2\n  ...NavBarLoginButton_Viewer\n}\n\nfragment NavBarLoginButton_Viewer on Viewer {\n  User_IsAnonymous\n  User_DisplayName\n}\n",
+    "metadata": {} } };
 
 
 // prettier-ignore

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 16d26f2d2acf147c24e029ea6489399f
+ * @relayHash 7c9794b3a5a2619f14bdaa501c610434
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type ToDoListUpdateMarkAllInput = {
+              export type ToDoListUpdateMarkAllInput = {|
                 ToDo_Complete: boolean,
                 clientMutationId?: ?string,
-              };
+              |};
               export type ToDoListUpdateMarkAllMutationVariables = {|
                 input: ToDoListUpdateMarkAllInput,
                 status: string,
@@ -161,8 +161,8 @@ const node /*: ConcreteRequest*/ = function () {
             "concreteType": "ToDo",
             "plural": false,
             "selections": [
-            v1,
-            v2,
+            v1 /*: any*/,
+            v2 /*: any*/,
             {
               "kind": "ScalarField",
               "alias": null,
@@ -176,7 +176,7 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 
-      v1,
+      v1 /*: any*/,
       {
         "kind": "ScalarField",
         "alias": null,
@@ -195,8 +195,8 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "ToDo",
       "plural": true,
       "selections": [
-      v1,
-      v2] }] }];
+      v1 /*: any*/,
+      v2 /*: any*/] }] }];
 
 
 
@@ -204,24 +204,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "ToDoListUpdateMarkAllMutation",
-    "id": null,
-    "text": "mutation ToDoListUpdateMarkAllMutation(\n  $input: ToDoListUpdateMarkAllInput!\n  $status: String!\n) {\n  ToDoListUpdateMarkAll(input: $input) {\n    Viewer {\n      ToDos(status: $status) {\n        edges {\n          node {\n            id\n            ToDo_Complete\n            ToDo_Text\n          }\n        }\n      }\n      id\n      ToDo_CompletedCount\n    }\n    changedToDos {\n      id\n      ToDo_Complete\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "ToDoListUpdateMarkAllMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v3 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v3 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "ToDoListUpdateMarkAllMutation",
-      "argumentDefinitions": v0,
-      "selections": v3 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v3 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "ToDoListUpdateMarkAllMutation",
+      "id": null,
+      "text": "mutation ToDoListUpdateMarkAllMutation(\n  $input: ToDoListUpdateMarkAllInput!\n  $status: String!\n) {\n  ToDoListUpdateMarkAll(input: $input) {\n    Viewer {\n      ToDos(status: $status) {\n        edges {\n          node {\n            id\n            ToDo_Complete\n            ToDo_Text\n          }\n        }\n      }\n      id\n      ToDo_CompletedCount\n    }\n    changedToDos {\n      id\n      ToDo_Complete\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

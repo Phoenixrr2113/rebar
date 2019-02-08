@@ -25,13 +25,23 @@ serverWebApp.use(async (req, res) => {
       const reqUserAgent = req.headers['user-agent'];
       // Notice that anonymous user creation may 'inject' newly created
       // UserToken1 into request cookies
-      const reqUserToken1 = req.cookies.UserToken1;
+      let reqUserToken1 = req.cookies.UserToken1;
+      let passUserToken1ToHeaders = false;
+
+      // UserToken1 can be passed if content is loaded in iFrame,
+      // the domain is difference, hence the iFrame is unable to set
+      // cookies on (mobile?) Safari
+      if (!reqUserToken1 && req.query.UserToken1) {
+        reqUserToken1 = req.query.UserToken1;
+        passUserToken1ToHeaders = true;
+      }
 
       const content = await (0, _contentCreatorWebApp_async.default)(
       siteInformation,
       reqUrl,
       reqUserAgent,
-      reqUserToken1);
+      reqUserToken1,
+      passUserToken1ToHeaders);
 
 
       if (content.status === 200) {
@@ -44,11 +54,19 @@ serverWebApp.use(async (req, res) => {
         // Log out for next attempt
         res.cookie('UserToken1', '', { httpOnly: true, expires: new Date(1) });
         // Return error information
-        res.status(403).send(_server.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 403 })));
+        res.
+        status(403).
+        send(
+        _server.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 403 })));
+
       }
     } catch (err) {
       (0, _log.default)('error', 'rb-appbase-server serverWebApp.use : Failed', { err });
-      res.status(500).send(_server.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 500 })));
+      res.
+      status(500).
+      send(
+      _server.default.renderToString(_react.default.createElement(_ErrorComponent.default, { httpStatus: 500 })));
+
     }
   } else {
     res.status(200).send('disassociated');

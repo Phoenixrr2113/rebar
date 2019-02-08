@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash f07a74c1babdced3e82d15abaf30cf7c
+ * @relayHash 3317de29a2e7914d93ef7d46e46f0ee1
  */
 
 /* eslint-disable */
@@ -9,12 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type TranslaticiarumAddInput = {
+              export type TranslaticiarumAddInput = {|
                 Translaticiarum_Start: string,
                 Translaticiarum_Stop: string,
                 Translaticiarum_Description: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type TranslaticiarumAddMutationVariables = {|
                 input: TranslaticiarumAddInput
               |};
@@ -104,7 +104,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "Viewer",
       "plural": false,
       "selections": [
-      v1] },
+      v1 /*: any*/] },
 
 
     {
@@ -132,7 +132,7 @@ const node /*: ConcreteRequest*/ = function () {
         "concreteType": "Translaticiarum",
         "plural": false,
         "selections": [
-        v1,
+        v1 /*: any*/,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -163,24 +163,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "TranslaticiarumAddMutation",
-    "id": null,
-    "text": "mutation TranslaticiarumAddMutation(\n  $input: TranslaticiarumAddInput!\n) {\n  TranslaticiarumAdd(input: $input) {\n    Viewer {\n      id\n    }\n    TranslaticiarumsEdge {\n      cursor\n      node {\n        id\n        Translaticiarum_Start\n        Translaticiarum_Stop\n        Translaticiarum_Description\n      }\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "TranslaticiarumAddMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v2 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "TranslaticiarumAddMutation",
-      "argumentDefinitions": v0,
-      "selections": v2 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "TranslaticiarumAddMutation",
+      "id": null,
+      "text": "mutation TranslaticiarumAddMutation(\n  $input: TranslaticiarumAddInput!\n) {\n  TranslaticiarumAdd(input: $input) {\n    Viewer {\n      id\n    }\n    TranslaticiarumsEdge {\n      cursor\n      node {\n        id\n        Translaticiarum_Start\n        Translaticiarum_Stop\n        Translaticiarum_Description\n      }\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

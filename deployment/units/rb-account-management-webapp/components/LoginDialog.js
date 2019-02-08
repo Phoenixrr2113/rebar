@@ -96,7 +96,9 @@ class LoginDialog extends _react.default.Component
         if (responseData.success) {
           // In case of success, realod the application from server
           window.location.replace(
-          window.location.pathname === '/' ? _routeAfterLogin.default : window.location.pathname);
+          window.location.pathname === '/' ?
+          _routeAfterLogin.default :
+          window.location.pathname);
 
         } else {
           // In case of error, tell user what the error is
@@ -140,28 +142,42 @@ class LoginDialog extends _react.default.Component
     const { UserAccount_Identifier, User_Secret } = this.state;
 
     return (
-      _react.default.createElement(_Dialog.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
+      _react.default.createElement(_Dialog.default, {
+        classes: { paper: classes.dialogPaper },
+        open: open,
+        onClose: this._handle_Close },
+
       _react.default.createElement(_DialogTitle.default, null, "Log In"),
 
       _react.default.createElement(_DialogContent.default, null,
       _react.default.createElement(_TextField.default, {
-        label: "E-Mail Address",
+        autoComplete: "username",
         fullWidth: true,
+        label: "E-Mail Address",
+        margin: "normal",
         value: UserAccount_Identifier,
-        onChange: event => this.setState({ UserAccount_Identifier: event.target.value }) }),
+        variant: "outlined",
+        onChange: (event) =>
+        this.setState({ UserAccount_Identifier: event.target.value }) }),
+
 
       _react.default.createElement(_TextField.default, {
-        label: "Password",
-        type: "password",
+        autoComplete: "current-password",
         fullWidth: true,
+        label: "Password",
+        margin: "normal",
+        type: "password",
+        value: User_Secret,
+        variant: "outlined",
+        onChange: (event) =>
+        this.setState({ User_Secret: event.target.value }),
+
         onKeyPress: ev => {
           if (ev.key === 'Enter') {
             this._handle_onClick_LogIn();
             ev.preventDefault();
           }
-        },
-        value: User_Secret,
-        onChange: event => this.setState({ User_Secret: event.target.value }) })),
+        } })),
 
 
       _react.default.createElement(_DialogActions.default, null,
@@ -183,13 +199,20 @@ class LoginDialog extends _react.default.Component
     const { UserAccount_Identifier } = this.state;
 
     return (
-      _react.default.createElement(_Dialog.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
+      _react.default.createElement(_Dialog.default, {
+        classes: { paper: classes.dialogPaper },
+        open: open,
+        onClose: this._handle_Close },
+
       _react.default.createElement(_DialogTitle.default, null, "Logging in"),
 
       _react.default.createElement(_DialogContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Logging in as",
 
-      _react.default.createElement("span", { className: classes.userName }, UserAccount_Identifier), " ..."),
+      _react.default.createElement("span", { className: classes.userName },
+      UserAccount_Identifier),
+      ' ', "..."),
+
 
       _react.default.createElement("br", null),
       _react.default.createElement("br", null),
@@ -209,13 +232,19 @@ class LoginDialog extends _react.default.Component
     const { UserAccount_Identifier, errorMessage } = this.state;
 
     return (
-      _react.default.createElement(_Dialog.default, { classes: { paper: classes.dialogPaper }, open: open, onClose: this._handle_Close },
+      _react.default.createElement(_Dialog.default, {
+        classes: { paper: classes.dialogPaper },
+        open: open,
+        onClose: this._handle_Close },
+
       _react.default.createElement(_DialogTitle.default, null, "Log In Failed"),
 
       _react.default.createElement(_DialogContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Failed loggin in as",
 
-      _react.default.createElement("span", { className: classes.userName }, UserAccount_Identifier), " because:", ' ',
+      _react.default.createElement("span", { className: classes.userName },
+      UserAccount_Identifier),
+      ' ', "because: ",
       errorMessage, "!")),
 
 

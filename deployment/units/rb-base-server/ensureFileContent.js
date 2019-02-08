@@ -21,7 +21,7 @@ logToConsole)
       currentFileContent = (await fs.readFile(fileName)).toString();
     } catch (err) {
       if (err.code !== 'ENOENT') {
-        throw new _nestedErrorStacks.default('XXX', err);
+        throw new _nestedErrorStacks.default('rb-base-server ensureFileContent: Failed', err);
       }
     }
   }

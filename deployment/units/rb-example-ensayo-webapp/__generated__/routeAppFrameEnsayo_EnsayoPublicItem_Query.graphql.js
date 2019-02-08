@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 25f1cbdaf1cd7d3957ec530ee8d9e2ee
+ * @relayHash 0f37ca495170c2c3b090ae3b5c7f778a
  */
 
 /* eslint-disable */
@@ -63,17 +63,12 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "query",
-    "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
-    "id": null,
-    "text": "query routeAppFrameEnsayo_EnsayoPublicItem_Query(\n  $id: ID!\n) {\n  Viewer {\n    ...EnsayoPublicItem_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicItem_Viewer on Viewer {\n  Ensayo(id: $id) {\n    Ensayo_Title\n    Ensayo_Description\n    Ensayo_Content\n    id\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
       "type": "Query",
       "metadata": null,
-      "argumentDefinitions": v0,
+      "argumentDefinitions": v0 /*: any*/,
       "selections": [
       {
         "kind": "LinkedField",
@@ -96,7 +91,7 @@ const node /*: ConcreteRequest*/ = function () {
     "operation": {
       "kind": "Operation",
       "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
-      "argumentDefinitions": v0,
+      "argumentDefinitions": v0 /*: any*/,
       "selections": [
       {
         "kind": "LinkedField",
@@ -144,13 +139,20 @@ const node /*: ConcreteRequest*/ = function () {
             "args": null,
             "storageKey": null },
 
-          v1] },
+          v1 /*: any*/] },
 
 
-        v1] }] } };
+        v1 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "query",
+      "name": "routeAppFrameEnsayo_EnsayoPublicItem_Query",
+      "id": null,
+      "text": "query routeAppFrameEnsayo_EnsayoPublicItem_Query(\n  $id: ID!\n) {\n  Viewer {\n    ...EnsayoPublicItem_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicItem_Viewer on Viewer {\n  Ensayo(id: $id) {\n    Ensayo_Title\n    Ensayo_Description\n    Ensayo_Content\n    id\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

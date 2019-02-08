@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash dcac591f53efb2d09a4b3ad7aea6a64f
+ * @relayHash e78c68f545eb607de71d964ec2df13c4
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type EnsayoDeleteInput = {
+              export type EnsayoDeleteInput = {|
                 id: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type EnsayoDeleteMutationVariables = {|
                 input: EnsayoDeleteInput
               |};
@@ -76,24 +76,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "EnsayoDeleteMutation",
-    "id": null,
-    "text": "mutation EnsayoDeleteMutation(\n  $input: EnsayoDeleteInput!\n) {\n  EnsayoDelete(input: $input) {\n    deletedId\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "EnsayoDeleteMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "EnsayoDeleteMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "EnsayoDeleteMutation",
+      "id": null,
+      "text": "mutation EnsayoDeleteMutation(\n  $input: EnsayoDeleteInput!\n) {\n  EnsayoDelete(input: $input) {\n    deletedId\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

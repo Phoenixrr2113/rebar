@@ -23,6 +23,10 @@ var _htmlHeadAdditions = _interopRequireDefault(require("../_configuration/rb-ap
 
 var _router = require("../rb-appbase-webapp/router");
 
+
+
+
+
 var _fetcherServer = _interopRequireDefault(require("./fetcherServer"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
@@ -30,16 +34,22 @@ require('dotenv').load();
 
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')
-throw new Error('Error: rb-appbase-webapp requires the environment variable HOST to be set');
+throw new Error(
+'Error: rb-appbase-webapp requires the environment variable HOST to be set');
+
 
 const envPort = process.env.PORT;
 if (envPort == null || typeof envPort !== 'string')
-throw new Error('Error: rb-appbase-webapp requires the environment variable PORT to be set');
+throw new Error(
+'Error: rb-appbase-webapp requires the environment variable PORT to be set');
+
 
 //
 
 // HTML page template
-var htmlEjs = _ejs.default.compile(_fs.default.readFileSync(_path.default.resolve(__dirname, 'html.ejs'), 'utf8'));
+var htmlEjs = _ejs.default.compile(
+_fs.default.readFileSync(_path.default.resolve(__dirname, 'html.ejs'), 'utf8'));
+
 
 //
 
@@ -85,7 +95,7 @@ const render = (0, _createRender.default)({
     const { error } = obj;
 
     if (error.status !== 404) {
-      (0, _log.default)('error', 'Error: Render on server createRender renderError', error);
+      (0, _log.default)('error', 'Error: rb-appbase-webapp createRender renderError', error);
     }
 
     return _react.default.createElement(_ErrorComponent.default, { httpStatus: error.status });
@@ -96,7 +106,8 @@ contentCreatorWebApp_async = async function contentCreatorWebApp_async(
 siteInformation,
 reqUrl,
 reqUserAgent,
-reqUserToken1)
+reqUserToken1,
+passUserToken1ToHeaders)
 {
   try {
     const assetsPath = getAssetsPath(siteInformation);
@@ -115,14 +126,20 @@ reqUserToken1)
     siteInformation.siteConfiguration.webapp &&
     siteInformation.siteConfiguration.webapp.artifactNamePrefix)
     {
-      artifactNamePrefix = siteInformation.siteConfiguration.webapp.artifactNamePrefix;
+      artifactNamePrefix =
+      siteInformation.siteConfiguration.webapp.artifactNamePrefix;
     }
 
     const graphQLServerUrl =
     `http://${envHost}:${envPort}` +
     artifactNamePrefix +
     (0, _getGraphQLLocalServerURL.default)(siteInformation);
-    const fetcher = new _fetcherServer.default(graphQLServerUrl, reqUserToken1, _UserToken2ServerRendering.default);
+
+    const fetcher = new _fetcherServer.default(
+    graphQLServerUrl,
+    reqUserToken1,
+    _UserToken2ServerRendering.default);
+
 
     const userAgent = reqUserAgent;
     const { siteConfiguration } = siteInformation;
@@ -148,22 +165,33 @@ reqUserToken1)
     const relayPayloads = (0, _serializeJavascript.default)(fetcher, { isJSON: true });
 
     if (
+    typeof relayPayloads === 'string' &&
     relayPayloads.indexOf(
-    '{"message":"GraphQL server was given a session, but the session is invalid"}') >
+    // Notice that the string has no closing brace. A typical error string looks like:
+    // '[{"errors":[{"message":"GraphQL server was given a session, but the session is invalid",
+    // "locations":[{"line":888,"column":777}],"stack":"No stack information available",
+    // "path":["node"]}],"data":null}]'
+    '{"message":"GraphQL server was given a session, but the session is invalid"') >
     0)
     {
       return {
         status: 403,
-        htmlContent: 'The server was given a session, but the session is invalid' };
+        htmlContent:
+        'The server was given a session, but the session is invalid' };
 
     }
 
+    // [2 Crossroads][server] Update server rendering according to https://material-ui.com/guides/server-rendering/
     const sheets = new _reactJss.SheetsRegistry();
     const helmet = _reactHelmet.default.rewind();
 
     const rootHTML = _server2.default.renderToString(
     _react.default.createElement(_reactJss.JssProvider, { registry: sheets },
-    _react.default.createElement(_AppWrapper.default, { userAgent: userAgent, siteConfiguration: siteConfigurationSubset, url: reqUrl },
+    _react.default.createElement(_AppWrapper.default, {
+      userAgent: userAgent,
+      siteConfiguration: siteConfigurationSubset,
+      url: reqUrl },
+
     element)));
 
 
@@ -176,7 +204,10 @@ reqUserToken1)
       helmet,
       htmlHeadAdditions: _htmlHeadAdditions.default,
       siteConfiguration: JSON.stringify(siteConfigurationSubset),
-      relayPayloads });
+      relayPayloads,
+      UserToken1: JSON.stringify(
+      passUserToken1ToHeaders ? reqUserToken1 : null) });
+
 
 
     return {

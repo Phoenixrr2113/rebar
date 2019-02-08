@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash bdab26f641b9c02970e2e282ffddf484
+ * @relayHash 34fc12e0f14085cbef3d499df490e0d9
  */
 
 /* eslint-disable */
@@ -38,11 +38,6 @@
 
 const node /*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
-  "id": null,
-  "text": "query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {\n  Viewer {\n    ...ViewportDimensionsScreen_Viewer\n    id\n  }\n}\n\nfragment ViewportDimensionsScreen_Viewer on Viewer {\n  id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
@@ -87,11 +82,18 @@ const node /*: ConcreteRequest*/ = {
         "alias": null,
         "name": "id",
         "args": null,
-        "storageKey": null }] }] } };
+        "storageKey": null }] }] },
 
 
 
 
+
+  "params": {
+    "operationKind": "query",
+    "name": "routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query",
+    "id": null,
+    "text": "query routeAppFrameViewportDimensions_ViewportDimensionsScreen_Query {\n  Viewer {\n    ...ViewportDimensionsScreen_Viewer\n    id\n  }\n}\n\nfragment ViewportDimensionsScreen_Viewer on Viewer {\n  id\n}\n",
+    "metadata": {} } };
 
 
 // prettier-ignore

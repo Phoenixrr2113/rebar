@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 20343115606e30d61edd6ee22fc91964
+ * @relayHash 54301a62dc59203ddeaa14523b860077
  */
 
 /* eslint-disable */
@@ -38,11 +38,6 @@
 
 const node /*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query",
-  "id": null,
-  "text": "query routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query {\n  Viewer {\n    ...EnsayoInPaceEditScreen_Viewer\n    id\n  }\n}\n\nfragment EnsayoInPaceEditScreen_Viewer on Viewer {\n  id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query",
@@ -87,11 +82,18 @@ const node /*: ConcreteRequest*/ = {
         "alias": null,
         "name": "id",
         "args": null,
-        "storageKey": null }] }] } };
+        "storageKey": null }] }] },
 
 
 
 
+
+  "params": {
+    "operationKind": "query",
+    "name": "routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query",
+    "id": null,
+    "text": "query routeAppFrameEnsayo_EnsayoInPaceEditScreen_Query {\n  Viewer {\n    ...EnsayoInPaceEditScreen_Viewer\n    id\n  }\n}\n\nfragment EnsayoInPaceEditScreen_Viewer on Viewer {\n  id\n}\n",
+    "metadata": {} } };
 
 
 // prettier-ignore

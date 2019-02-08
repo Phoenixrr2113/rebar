@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash b77f2a0a45271111502a0fd1aaec21ad
+ * @relayHash 4d751140b3dffe783c57d6b7b5d98f47
  */
 
 /* eslint-disable */
@@ -9,11 +9,11 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type ToDoUpdateRenameInput = {
+              export type ToDoUpdateRenameInput = {|
                 id: string,
                 ToDo_Text: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type ToDoUpdateRenameMutationVariables = {|
                 input: ToDoUpdateRenameInput
               |};
@@ -101,24 +101,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "ToDoUpdateRenameMutation",
-    "id": null,
-    "text": "mutation ToDoUpdateRenameMutation(\n  $input: ToDoUpdateRenameInput!\n) {\n  ToDoUpdateRename(input: $input) {\n    ToDo {\n      id\n      ToDo_Text\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "ToDoUpdateRenameMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "ToDoUpdateRenameMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "ToDoUpdateRenameMutation",
+      "id": null,
+      "text": "mutation ToDoUpdateRenameMutation(\n  $input: ToDoUpdateRenameInput!\n) {\n  ToDoUpdateRename(input: $input) {\n    ToDo {\n      id\n      ToDo_Text\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 44901c06ee1444e74d5aa413256611cb
+ * @relayHash 9847c4ff333e4952f39d4fca0ec15c82
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type EnsayoUpdateInput = {
+              export type EnsayoUpdateInput = {|
                 id: string,
                 Ensayo_Title: string,
                 Ensayo_Description: string,
                 Ensayo_Content: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type EnsayoUpdateMutationVariables = {|
                 input: EnsayoUpdateInput
               |};
@@ -121,24 +121,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "EnsayoUpdateMutation",
-    "id": null,
-    "text": "mutation EnsayoUpdateMutation(\n  $input: EnsayoUpdateInput!\n) {\n  EnsayoUpdate(input: $input) {\n    Ensayo {\n      id\n      Ensayo_Title\n      Ensayo_Description\n      Ensayo_Content\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "EnsayoUpdateMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "EnsayoUpdateMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "EnsayoUpdateMutation",
+      "id": null,
+      "text": "mutation EnsayoUpdateMutation(\n  $input: EnsayoUpdateInput!\n) {\n  EnsayoUpdate(input: $input) {\n    Ensayo {\n      id\n      Ensayo_Title\n      Ensayo_Description\n      Ensayo_Content\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

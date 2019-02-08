@@ -4,16 +4,13 @@ var _bodyParser = _interopRequireDefault(require("body-parser"));
 var _express = _interopRequireDefault(require("express"));
 var _expressGraphql = _interopRequireDefault(require("express-graphql"));
 
+var _delayPromise = _interopRequireDefault(require("../rb-base-universal/delayPromise"));
 var _log = _interopRequireDefault(require("../rb-base-server/log"));
 var _requestLoggers = require("../_configuration/rb-base-server/requestLoggers");
 var _logServerRequest = _interopRequireDefault(require("../rb-base-server/logServerRequest"));
 var _ObjectManager = require("../rb-base-server/ObjectManager");
 
 var _checkCredentials = require("./checkCredentials");
-
-
-
-
 var _schema = _interopRequireDefault(require("./graphql/schema"));
 
 
@@ -52,26 +49,57 @@ function graphQLError(message) {
 //
 
 async function root(req, res, next) {
+  let objectManager;
   try {
-    const objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
+    for (let ixTry = 1;; ixTry++) {
+      objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
 
-    const UserAndSession = await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, true);
-    if (!UserAndSession) {
-      res.
-      status(500).
-      send(graphQLError('GraphQL server was given a session, but the session is invalid'));
-      return;
-    }
+      const UserAndSession = await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, true);
+      if (!UserAndSession) {
+        res.
+        status(500).
+        send(graphQLError('GraphQL server was given a session, but the session is invalid'));
+        return;
+      }
 
-    const a_User = UserAndSession.User;
-    const a_UserSession = UserAndSession.UserSession;
+      const a_User = UserAndSession.User;
+      const a_UserSession = UserAndSession.UserSession;
 
-    res.injectedByRebarFrameworks = { userSession: a_UserSession };
+      res.injectedByRebarFrameworks = { userSession: a_UserSession
 
-    const verificationIssue = (0, _checkCredentials.verifyUserToken2)(a_User, req);
-    if (verificationIssue) {
-      (0, _checkCredentials.serveAuthenticationFailed)(req, res, verificationIssue, true);
-      return;
+        // Verify user
+      };const verificationResult = (0, _checkCredentials.verifyUserToken2)(a_User, req, 'headers');
+
+      // If UserToken2 was provided, but verification fails, wait
+
+      if (
+      ixTry <= 5 &&
+      verificationResult &&
+      verificationResult.issue === 'Authentication token expected' &&
+      verificationResult.UserToken2FromRequest)
+      {
+        // Wait for the user to 'appear' in the database as eventual consistency kicks in
+        await (0, _delayPromise.default)(100 * ixTry);
+        console.log('XXX user not eventually consistently found');
+      } else if (verificationResult) {
+        (0, _log.default)('warn', 'rb-appbase-server serverGraphQL root: Checking credentials failed', {
+          ixTry,
+          verificationResult,
+          req,
+          res,
+          UserSession_id: UserAndSession.UserSession ? UserAndSession.UserSession.id : 'no session' });
+
+
+        // Expire cookie. This is the only way to 'delete' a cookie
+        res.cookie('UserToken1', '', { httpOnly: true, expires: new Date(1) });
+        res.status(403).send('{ "error": "Authentication Failed" }');
+
+        return;
+      } else {
+        // verificationResult is null which means verification succeeded, proceed to
+        // server GraphQL
+        break;
+      }
     }
 
     (0, _expressGraphql.default)(() => {
@@ -79,11 +107,11 @@ async function root(req, res, next) {
         schema: _schema.default,
         rootValue: objectManager,
         pretty: true,
-        graphiql: false // TODO [Sandstone][server] Look into re-enabling GraphiQL
+        graphiql: false // TODO [3 Sandstone][server] Look into re-enabling GraphiQL
       };
     })(req, res, next);
   } catch (err) {
-    (0, _log.default)('error', 'rb-appbase-server serverGraphQL root: Failed ', { err });
+    (0, _log.default)('error', 'rb-appbase-server serverGraphQL root: Failed ', { err, req, objectManager });
     res.status(500).send(graphQLError('An error has occurred while running GraphQL query'));
   }
 }

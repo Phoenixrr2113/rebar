@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-              import type { ConcreteFragment } from 'relay-runtime';
+              import type { ReaderFragment } from 'relay-runtime';
               type NavBarLoginButton_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type AppFrame_Viewer$ref: FragmentReference;
@@ -19,7 +19,7 @@
               */
 
 
-const node /*: ConcreteFragment*/ = {
+const node /*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "AppFrame_Viewer",
   "type": "Viewer",
