@@ -30,7 +30,11 @@ class PersisterCassandra {
     this.tableSchemas = new Map();
   }
 
-  getOneObject(entityName, ObjectType, filters) {
+  getOneObject(
+  entityName,
+  ObjectType,
+  filters)
+  {
     const resultPromises = [];
 
     for (let filter of filters) {
@@ -55,21 +59,42 @@ class PersisterCassandra {
         try {
           this.updateUuidsInFields(entityName, filter);
 
-          ExpressCassandraClient.instance[entityName].findOne(filter, options, (err, entity) => {
-            if (err)
-            reject(
-            'getOneObject findOne failed: ' +
-            JSON.stringify({ entityName, filter, message: err.message }));else
+          ExpressCassandraClient.instance[entityName].findOne(
+          filter,
+          options,
+          (err, entity) => {
+            // TODO: Would be nice to have a STRONG fild one that fails if object is not found.
+            // Also, not possible to distignuish key error from not found, apparently
+            // if ( entity === undefined ) {
+            //   reject(
+            //     'getOneObject findOne failed by producing undefined: ' +
+            //       JSON.stringify({ entityName, filter, err }),
+            //   )
+            // } else
+            if (err) {
+              reject(
+              'getOneObject findOne failed: ' +
+              JSON.stringify({
+                entityName,
+                filter,
+                message: err.message }));
 
-            {
+
+            } else {
               if (entity != null) resolve(new ObjectType(entity));else
               resolve(null);
             }
           });
+
         } catch (err) {
           reject(
           'getOneObject failed: ' +
-          JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }));
+          JSON.stringify({
+            entityName,
+            filter,
+            message: err.message,
+            stack: err.stack }));
+
 
         }
       }));
@@ -79,7 +104,11 @@ class PersisterCassandra {
     return Promise.all(resultPromises);
   }
 
-  getObjectList(entityName, ObjectType, filters) {
+  getObjectList(
+  entityName,
+  ObjectType,
+  filters)
+  {
     const resultPromises = [];
 
     for (let filter of filters) {
@@ -108,14 +137,19 @@ class PersisterCassandra {
           filter,
           options,
           (err, arrEntities) => {
-            if (err)
-            reject(
-            'getObjectList find failed: ' +
-            JSON.stringify({ entityName, filter, message: err.message }));else
+            if (err) {
+              reject(
+              'getObjectList find failed: ' +
+              JSON.stringify({
+                entityName,
+                filter,
+                message: err.message }));
 
-            {
+
+            } else {
               const arrRetObj = [];
-              for (let entity of arrEntities) arrRetObj.push(new ObjectType(entity));
+              for (let entity of arrEntities)
+              arrRetObj.push(new ObjectType(entity));
               resolve(arrRetObj);
             }
           });
@@ -123,7 +157,12 @@ class PersisterCassandra {
         } catch (err) {
           reject(
           'getObjectList failed: ' +
-          JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }));
+          JSON.stringify({
+            entityName,
+            filter,
+            message: err.message,
+            stack: err.stack }));
+
 
         }
       }));
@@ -134,13 +173,14 @@ class PersisterCassandra {
   }
 
   updateUuidsInFields(entityName, fields) {
-    const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields;
+    const schemaFields =
+    ExpressCassandraClient.instance[entityName]._properties.schema.fields;
 
     for (let fieldName in fields) {
       const fieldValue = fields[fieldName];
 
       // $in should only be used with UUID, no strings will be allowed
-      if (fieldValue.$in) continue;
+      if (fieldValue && fieldValue.$in) continue;
 
       const fieldType = schemaFields[fieldName];
 
@@ -170,8 +210,11 @@ class PersisterCassandra {
     return new Promise((resolve, reject) => {
       const entity = new ExpressCassandraClient.instance[entityName](fields);
       entity.save(options, err => {
-        if (err) reject(err);else
-        resolve();
+        if (err) {
+          reject(err);
+        } else {
+          resolve();
+        }
       });
     });
   }
@@ -234,14 +277,19 @@ class PersisterCassandra {
 
   confirmHealth() {
     return new Promise((resolve, reject) => {
-      ExpressCassandraClient.modelInstance.User.get_cql_client((err, client) => {
+      ExpressCassandraClient.modelInstance.User.get_cql_client(
+      (err, client) => {
         if (err) reject(err);else
 
-        client.execute('select release_version from system.local;', (err, result) => {
+        client.execute(
+        'select release_version from system.local;',
+        (err, result) => {
           if (err) reject(err);else
           resolve();
         });
+
       });
+
     });
   }
 
@@ -275,7 +323,9 @@ class PersisterCassandra {
       ExpressCassandraClient.loadSchema(tableName, tableSchema).syncDB(err => {
         if (err) {
           console.log(
-          'Error:  Initializing Cassandra persister - error while creating ' + tableName + '!');
+          'Error:  Initializing Cassandra persister - error while creating ' +
+          tableName +
+          '!');
 
           console.error(err.message);
           process.exit(1);
@@ -283,10 +333,15 @@ class PersisterCassandra {
           if (runAsPartOfSetupDatabase)
           console.log(
           ' Table ' +
-          ExpressCassandraClient.modelInstance[tableName]._properties.name +
+          ExpressCassandraClient.modelInstance[tableName]._properties.
+          name +
           ' ready.');
 
-          this.loadOneTableSchemaFromArray(arrSchemas, runAsPartOfSetupDatabase, cb);
+          this.loadOneTableSchemaFromArray(
+          arrSchemas,
+          runAsPartOfSetupDatabase,
+          cb);
+
           // Load the next table
           return;
         }

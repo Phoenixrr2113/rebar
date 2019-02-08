@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash d40750ba76f96ab92a67ef094f34c02a
+ * @relayHash b10a2489b344b33f704a0b9b5c3d51fa
  */
 
 /* eslint-disable */
@@ -38,11 +38,6 @@
 
 const node /*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routeAppFrameForceLogin_ForceLogin_Query",
-  "id": null,
-  "text": "query routeAppFrameForceLogin_ForceLogin_Query {\n  Viewer {\n    ...ForceLogin_Viewer\n    id\n  }\n}\n\nfragment ForceLogin_Viewer on Viewer {\n  User_IsAnonymous\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routeAppFrameForceLogin_ForceLogin_Query",
@@ -94,11 +89,18 @@ const node /*: ConcreteRequest*/ = {
         "alias": null,
         "name": "id",
         "args": null,
-        "storageKey": null }] }] } };
+        "storageKey": null }] }] },
 
 
 
 
+
+  "params": {
+    "operationKind": "query",
+    "name": "routeAppFrameForceLogin_ForceLogin_Query",
+    "id": null,
+    "text": "query routeAppFrameForceLogin_ForceLogin_Query {\n  Viewer {\n    ...ForceLogin_Viewer\n    id\n  }\n}\n\nfragment ForceLogin_Viewer on Viewer {\n  User_IsAnonymous\n}\n",
+    "metadata": {} } };
 
 
 // prettier-ignore

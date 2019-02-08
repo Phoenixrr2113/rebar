@@ -3,8 +3,13 @@
 var _fetcherBase = _interopRequireDefault(require("../rb-appbase-universal/fetcherBase"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 class FetcherClient extends _fetcherBase.default {
-  constructor(url, payloads, UserToken2) {
-    super(url, null, UserToken2);
+  constructor(
+  url,
+  payloads,
+  UserToken1,
+  UserToken2)
+  {
+    super(url, UserToken1, UserToken2);
 
     this.payloads = payloads;
   }

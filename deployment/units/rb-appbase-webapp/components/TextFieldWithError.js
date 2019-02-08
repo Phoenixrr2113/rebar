@@ -12,11 +12,7 @@ var _styles = require("@material-ui/core/styles");
 
 var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const styles = theme => ({
-  formControl: {
-    marginBottom: theme.spacing.unit } });
-
-
+const styles = {};
 
 class TextFieldWithError extends _react.default.Component
 
@@ -27,13 +23,26 @@ class TextFieldWithError extends _react.default.Component
 
 {
   render() {
-    const { classes, errorText, id, label, onChange, value } = this.props;
+    const { errorText, id, label, onChange, value } = this.props;
 
     const isError = errorText !== '';
 
+    // TODO [2 Crossroads][App Base] TextFieldWithError does not show outline border
     return (
-      _react.default.createElement(_FormControl.default, { className: classes.formControl, error: isError, id: id, fullWidth: true },
-      _react.default.createElement(_InputLabel.default, { htmlFor: isError ? 'name-simple' : 'name-error' }, label),
+      _react.default.createElement(_FormControl.default, {
+        error: isError,
+        fullWidth: true,
+        id: id,
+        margin: "dense",
+        variant: "outlined" },
+
+      _react.default.createElement(_InputLabel.default, {
+        htmlFor: isError ? 'name-simple' : 'name-error',
+        margin: "dense",
+        variant: "outlined" },
+
+      label),
+
       _react.default.createElement(_Input.default, { id: "value", value: value, onChange: onChange }),
       _react.default.createElement(_FormHelperText.default, null, isError ? errorText : '')));
 

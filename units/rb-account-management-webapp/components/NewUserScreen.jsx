@@ -22,7 +22,19 @@ import React from 'react'
 
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
-const styles = theme => ({
+import NewUserSecretInput from './NewUserSecretInput'
+
+//
+
+export function validateEmail( accountIdentifier: string ) {
+  // eslint-disable-next-line no-control-regex
+  const reEmail = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/
+  return reEmail.test( accountIdentifier )
+}
+
+//
+
+const styles = {
   card: {
     minWidth: 320,
   },
@@ -33,7 +45,9 @@ const styles = theme => ({
     paddingLeft: 10,
     paddingRight: 10,
   },
-})
+}
+
+//
 
 class NewUserScreen extends React.Component<
   {
@@ -41,18 +55,20 @@ class NewUserScreen extends React.Component<
   },
   {
     currentOperation: 'prompt' | 'creating' | 'success' | 'failure',
-    errorMessage: string,
+    executionStatus: string,
     UserAccount_Identifier: string,
+    UserAccount_IdentifierValidity: boolean,
     User_Secret: string,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
     this.state = {
       currentOperation: 'prompt',
-      errorMessage: '',
+      executionStatus: '',
       UserAccount_Identifier: '',
+      UserAccount_IdentifierValidity: false,
       User_Secret: '',
     }
   }
@@ -90,7 +106,7 @@ class NewUserScreen extends React.Component<
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          errorMessage: responseData.error,
+          executionStatus: responseData.error,
         })
       }
     } catch ( err ) {
@@ -98,8 +114,9 @@ class NewUserScreen extends React.Component<
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
-        errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' + err.message,
+        executionStatus:
+          'Did not receive proper response from server. Please try again. Message:' +
+          err.message,
       })
     }
   }
@@ -107,14 +124,14 @@ class NewUserScreen extends React.Component<
   _handle_onClick_CancelCreation = () => {
     this.setState({
       currentOperation: 'failure',
-      errorMessage: 'User creation has been canceled',
+      executionStatus: 'User creation has been canceled',
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'prompt',
-      errorMessage: '',
+      executionStatus: '',
     })
   }
 
@@ -132,7 +149,8 @@ class NewUserScreen extends React.Component<
         <CardContent>
           <Typography component="p">
             Creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>, please wait.
+            <span className={classes.userName}>{UserAccount_Identifier}</span>,
+            please wait.
           </Typography>
           <br />
           <br />
@@ -167,7 +185,7 @@ class NewUserScreen extends React.Component<
 
   renderFailure() {
     const { classes } = this.props
-    const { UserAccount_Identifier, errorMessage } = this.state
+    const { UserAccount_Identifier, executionStatus } = this.state
 
     return (
       <Card className={classes.card}>
@@ -176,7 +194,7 @@ class NewUserScreen extends React.Component<
           <Typography component="p">
             Failed creating user
             <span className={classes.userName}>{UserAccount_Identifier}</span>
-            because {errorMessage}.
+            because {executionStatus}.
           </Typography>
         </CardContent>
         <CardActions>
@@ -186,30 +204,54 @@ class NewUserScreen extends React.Component<
     )
   }
 
+  _handle_onChange_Identifier = event => {
+    const UserAccount_Identifier = event.target.value
+    const UserAccount_IdentifierValidity = validateEmail( UserAccount_Identifier )
+
+    this.setState({ UserAccount_Identifier, UserAccount_IdentifierValidity })
+  }
+
+  _handle_onUpdateSecret = secret => {
+    this.setState({ User_Secret: secret })
+  }
+
   renderPrompt() {
     const { classes } = this.props
-    const { UserAccount_Identifier, User_Secret } = this.state
+    const {
+      UserAccount_Identifier,
+      UserAccount_IdentifierValidity,
+      User_Secret,
+    } = this.state
+
+    // User account identifier must be valid and secret must be present
+    const createDisabled = !UserAccount_IdentifierValidity || User_Secret === ''
 
     return (
       <Card className={classes.card}>
         <CardHeader title="Create New User" />
         <CardContent>
           <TextField
+            autoComplete="username"
+            fullWidth={true}
             label="E-Mail Address"
-            fullWidth={true}
+            margin="normal"
             value={UserAccount_Identifier}
-            onChange={event => this.setState({ UserAccount_Identifier: event.target.value })}
+            variant="outlined"
+            onChange={this._handle_onChange_Identifier}
           />
-          <TextField
-            label="Password"
-            type="password"
-            fullWidth={true}
-            value={User_Secret}
-            onChange={event => this.setState({ User_Secret: event.target.value })}
-          />
+
+          <br />
+          <br />
+
+          <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
         </CardContent>
         <CardActions>
-          <Button onClick={this._handle_onClick_Create}>Create</Button>
+          <Button
+            disabled={createDisabled}
+            onClick={this._handle_onClick_Create}
+          >
+            Create
+          </Button>
         </CardActions>
       </Card>
     )

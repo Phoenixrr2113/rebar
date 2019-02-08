@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-              import type { ConcreteFragment } from 'relay-runtime';
+              import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type ToDoItem_ToDo$ref: FragmentReference;
               export type ToDoItem_ToDo = {|
@@ -19,7 +19,7 @@
               */
 
 
-const node /*: ConcreteFragment*/ = {
+const node /*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "ToDoItem_ToDo",
   "type": "ToDo",

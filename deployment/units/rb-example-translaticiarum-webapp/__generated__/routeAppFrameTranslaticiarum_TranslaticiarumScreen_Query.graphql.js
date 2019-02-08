@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 97d753e2e73d5f850d7068fbbbe43206
+ * @relayHash bc7fbef4b79005251af7273cb2249183
  */
 
 /* eslint-disable */
@@ -69,11 +69,6 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "query",
-    "name": "routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query",
-    "id": null,
-    "text": "query routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query {\n  Viewer {\n    ...TranslaticiarumScreen_Viewer\n    id\n  }\n}\n\nfragment TranslaticiarumScreen_Viewer on Viewer {\n  Translaticiarums(first: 2147483647) {\n    edges {\n      node {\n        id\n        Translaticiarum_Description\n        Translaticiarum_Start\n        Translaticiarum_Stop\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query",
@@ -118,7 +113,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Translaticiarums",
           "storageKey": "Translaticiarums(first:2147483647)",
-          "args": v0,
+          "args": v0 /*: any*/,
           "concreteType": "TranslaticiarumsConnection",
           "plural": false,
           "selections": [
@@ -140,7 +135,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Translaticiarum",
               "plural": false,
               "selections": [
-              v1,
+              v1 /*: any*/,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -211,15 +206,22 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Translaticiarums",
-          "args": v0,
+          "args": v0 /*: any*/,
           "handle": "connection",
           "key": "TranslaticiarumScreen_Translaticiarums",
           "filters": null },
 
-        v1] }] } };
+        v1 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "query",
+      "name": "routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query",
+      "id": null,
+      "text": "query routeAppFrameTranslaticiarum_TranslaticiarumScreen_Query {\n  Viewer {\n    ...TranslaticiarumScreen_Viewer\n    id\n  }\n}\n\nfragment TranslaticiarumScreen_Viewer on Viewer {\n  Translaticiarums(first: 2147483647) {\n    edges {\n      node {\n        id\n        Translaticiarum_Description\n        Translaticiarum_Start\n        Translaticiarum_Stop\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

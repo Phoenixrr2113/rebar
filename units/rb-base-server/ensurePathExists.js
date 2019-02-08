@@ -13,7 +13,7 @@ export default ( async function ensurePathExists( filePath: string ) {
     await fs.mkdir( filePath )
   } catch ( err ) {
     if ( err.code !== 'EEXIST' ) {
-      throw new NestedError( 'XXX', err )
+      throw new NestedError( 'rb-base-server ensurePathExists: Failed', err )
     }
   }
 })

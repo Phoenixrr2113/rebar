@@ -53,7 +53,7 @@ class ViewportDimensionsScreen extends React.Component<{
                   <TableHead>
                     <TableRow>
                       <TableCell>Property</TableCell>
-                      <TableCell numeric>Value</TableCell>
+                      <TableCell align="right">Value</TableCell>
                     </TableRow>
                   </TableHead>
                   <TableBody>
@@ -61,7 +61,7 @@ class ViewportDimensionsScreen extends React.Component<{
                       return (
                         <TableRow key={n.name}>
                           <TableCell>{n.name}</TableCell>
-                          <TableCell numeric>{n.value}</TableCell>
+                          <TableCell align="right">{n.value}</TableCell>
                         </TableRow>
                       )
                     })}
@@ -83,5 +83,5 @@ export default createFragmentContainer(
     fragment ViewportDimensionsScreen_Viewer on Viewer {
       id
     }
-  `,
+  `
 )

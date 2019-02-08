@@ -14,12 +14,10 @@ import AppWrapper from '../_configuration/rb-appbase-webapp/AppWrapper'
 
 import FetcherClient from './fetcherClient'
 import { createResolver, historyMiddlewares, routeConfig } from './router'
+import { getUserToken2, setUserToken2 } from './scripts/userToken2'
 
 // Include global CSS used in all units. Will not be chunked
 import '../_configuration/rb-appbase-webapp/global.css'
-
-// User token will be recorded upon startup and used when passing on client errors
-let UserToken2 = 'unknown'
 
 // Handler for error reporting
 async function rebarErrorHandler( err, err_info ) {
@@ -30,7 +28,7 @@ async function rebarErrorHandler( err, err_info ) {
     if (
       typeof err.message === 'string' &&
       err.message.startsWith(
-        'An error was thrown inside one of your components, but React doesn\'t know what it was.',
+        'An error was thrown inside one of your components, but React doesn\'t know what it was.'
       )
     )
       return
@@ -41,7 +39,7 @@ async function rebarErrorHandler( err, err_info ) {
 
     // Pakcage up error details
     const body = JSON.stringify({
-      UserToken2,
+      UserToken2: getUserToken2(),
       err: { message: err.message, stack: err.stack },
       err_info,
     })
@@ -61,13 +59,18 @@ async function rebarErrorHandler( err, err_info ) {
     if ( responseAsObject.success ) {
       alert(
         'An error has occurred. Use the following identifier when reporting to support:\n' +
-          responseAsObject.issue_id,
+          responseAsObject.issue_id
       )
     } else {
-      alert( 'An error has occurred. Attempt to assign an identifier has failed.' )
+      alert(
+        'An error has occurred. Attempt to assign an identifier has failed.'
+      )
     }
   } catch ( err ) {
-    alert( 'An error has occurred. We were not able to assign an identifier to it.\nReason:' + err )
+    alert(
+      'An error has occurred. We were not able to assign an identifier to it.\nReason:' +
+        err
+    )
   }
 }
 
@@ -75,13 +78,22 @@ async function rebarErrorHandler( err, err_info ) {
 
 const render = createRender({})
 ;( async() => {
-  const { relayPayloads, siteConfiguration } = window.__rebar_properties__
+  const {
+    relayPayloads,
+    siteConfiguration,
+    UserToken1,
+  } = window.__rebar_properties__
 
   // It is critical that the app frame has UserToken2 retrieved
-  UserToken2 = relayPayloads[0].data.Viewer.UserToken2
+  setUserToken2( relayPayloads[0].data.Viewer.UserToken2 )
 
   // eslint-disable-next-line no-underscore-dangle
-  const fetcher = new FetcherClient( getGraphQLServerURL(), relayPayloads, UserToken2 )
+  const fetcher = new FetcherClient(
+    getGraphQLServerURL(),
+    relayPayloads,
+    UserToken1,
+    getUserToken2()
+  )
   const resolver = createResolver( fetcher )
 
   const Router = await createInitialFarceRouter({
@@ -93,7 +105,10 @@ const render = createRender({})
   })
 
   const contentComponent = (
-    <AppWrapper siteConfiguration={siteConfiguration} url={document.location.href}>
+    <AppWrapper
+      siteConfiguration={siteConfiguration}
+      url={document.location.href}
+    >
       <Router resolver={resolver} />
     </AppWrapper>
   )
@@ -109,7 +124,7 @@ const render = createRender({})
       // // We don't need the static css any more once we have launched our application.
       // const ssStyles = document.getElementById( 'server-side-styles' )
       // ssStyles.parentNode.removeChild( ssStyles )
-    },
+    }
   )
 
   window.__rebar_error_handler__ = rebarErrorHandler

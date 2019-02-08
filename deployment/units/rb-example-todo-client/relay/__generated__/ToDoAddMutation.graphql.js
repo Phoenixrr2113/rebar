@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 4b3044ae3b2201fdfd4eee86a617394d
+ * @relayHash 92bc899c92c6035611112cf2f84592c9
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type ToDoAddInput = {
+              export type ToDoAddInput = {|
                 ToDo_Text: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type ToDoAddMutationVariables = {|
                 input: ToDoAddInput
               |};
@@ -102,7 +102,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "Viewer",
       "plural": false,
       "selections": [
-      v1,
+      v1 /*: any*/,
       {
         "kind": "ScalarField",
         "alias": null,
@@ -137,7 +137,7 @@ const node /*: ConcreteRequest*/ = function () {
         "concreteType": "ToDo",
         "plural": false,
         "selections": [
-        v1,
+        v1 /*: any*/,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -161,24 +161,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "ToDoAddMutation",
-    "id": null,
-    "text": "mutation ToDoAddMutation(\n  $input: ToDoAddInput!\n) {\n  ToDoAdd(input: $input) {\n    Viewer {\n      id\n      ToDo_TotalCount\n    }\n    ToDosEdge {\n      cursor\n      node {\n        id\n        ToDo_Complete\n        ToDo_Text\n      }\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "ToDoAddMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v2 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "ToDoAddMutation",
-      "argumentDefinitions": v0,
-      "selections": v2 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "ToDoAddMutation",
+      "id": null,
+      "text": "mutation ToDoAddMutation(\n  $input: ToDoAddInput!\n) {\n  ToDoAdd(input: $input) {\n    Viewer {\n      id\n      ToDo_TotalCount\n    }\n    ToDosEdge {\n      cursor\n      node {\n        id\n        ToDo_Complete\n        ToDo_Text\n      }\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

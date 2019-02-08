@@ -45,27 +45,22 @@ class HomePageScreen extends _react.default.Component
         const data = [
         {
           name: 'Rebar Version',
-          // $AssureFlow
           value: siteConfiguration.webapp.rebarDemo.version },
 
         {
           name: 'Server OS',
-          // $AssureFlow
           value: siteConfiguration.webapp.rebarDemo.OSType },
 
         {
           name: 'Server Host Name',
-          // $AssureFlow
           value: siteConfiguration.webapp.rebarDemo.OSHostName },
 
         {
           name: 'Server Free Memory',
-          // $AssureFlow
           value: siteConfiguration.webapp.rebarDemo.OSFreeMem },
 
         {
           name: 'Google Maps API Key',
-          // $AssureFlow
           value: siteConfiguration.webapp.api.googleMapsJavascriptAPI }];
 
 
@@ -75,8 +70,12 @@ class HomePageScreen extends _react.default.Component
           _react.default.createElement(_Card.default, { className: classes.card },
           _react.default.createElement(_CardHeader.default, { title: "Rebar Demo" }),
           _react.default.createElement(_CardContent.default, null,
-          _react.default.createElement(_Typography.default, { component: "p" }, "The ",
-          _react.default.createElement("a", { href: "https://github.com/MachineAcuity/rebar" }, "Rebar"), " is and open source project representing basic foundation of the solutions we provide. It fully utilizes the react stack, and Node.js and Cassandra on the back end. It can be used both as boilerplate, as well as an educational tool with multiple examples available. Basic user account management including account creation, password strength indicator and user profile is also included. The boilerplate is optimized for supportability and update-ability. It allows us to update the multiple projects based on the boilerplate with minimum effort, providing new features, improvements and bug fixes. This is achieved through the following two approaches:",
+          _react.default.createElement(_Typography.default, { component: "p" }, "The",
+          ' ',
+          _react.default.createElement("a", { href: "https://github.com/MachineAcuity/rebar" }, "Rebar"), ' ', "is and open source project representing basic foundation of the solutions we provide. It fully utilizes the react stack, and Node.js and Cassandra on the back end. It can be used both as boilerplate, as well as an educational tool with multiple examples available. Basic user account management including account creation, password strength indicator and user profile is also included. The boilerplate is optimized for supportability and update-ability. It allows us to update the multiple projects based on the boilerplate with minimum effort, providing new features, improvements and bug fixes. This is achieved through the following two approaches:",
+
+
+
 
 
 
@@ -94,8 +93,11 @@ class HomePageScreen extends _react.default.Component
           _react.default.createElement("b", null, "Configurability"), " - All the configuration files, which include settings, CQL, JSON, snippets of JavaScript and JSX are separated from the common code."),
 
 
+
           _react.default.createElement("li", null,
           _react.default.createElement("b", null, "Modularity"), " - The applications built upon the boilerplate are separated into semi-independent units, which contain the necessary front-end, back end, relay, CQL, etc. code. The parameters and settings for those units are stored in the configuration folder for eacy updating.")))),
+
+
 
 
 
@@ -115,7 +117,7 @@ class HomePageScreen extends _react.default.Component
           _react.default.createElement(_TableHead.default, null,
           _react.default.createElement(_TableRow.default, null,
           _react.default.createElement(_TableCell.default, null, "Property"),
-          _react.default.createElement(_TableCell.default, { numeric: true }, "Value"))),
+          _react.default.createElement(_TableCell.default, { align: "right" }, "Value"))),
 
 
           _react.default.createElement(_TableBody.default, null,
@@ -123,7 +125,7 @@ class HomePageScreen extends _react.default.Component
             return (
               _react.default.createElement(_TableRow.default, { key: n.name },
               _react.default.createElement(_TableCell.default, null, n.name),
-              _react.default.createElement(_TableCell.default, { numeric: true }, n.value)));
+              _react.default.createElement(_TableCell.default, { align: "right" }, n.value)));
 
 
           })))))));

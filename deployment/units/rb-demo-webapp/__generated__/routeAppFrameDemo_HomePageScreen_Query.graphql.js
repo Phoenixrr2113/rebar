@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 44b1f5574f552409d37ec3285bad81e6
+ * @relayHash 5295dc0ca5907421b635b917fa1ebb28
  */
 
 /* eslint-disable */
@@ -38,11 +38,6 @@
 
 const node /*: ConcreteRequest*/ = {
   "kind": "Request",
-  "operationKind": "query",
-  "name": "routeAppFrameDemo_HomePageScreen_Query",
-  "id": null,
-  "text": "query routeAppFrameDemo_HomePageScreen_Query {\n  Viewer {\n    ...HomePageScreen_Viewer\n    id\n  }\n}\n\nfragment HomePageScreen_Viewer on Viewer {\n  id\n}\n",
-  "metadata": {},
   "fragment": {
     "kind": "Fragment",
     "name": "routeAppFrameDemo_HomePageScreen_Query",
@@ -87,11 +82,18 @@ const node /*: ConcreteRequest*/ = {
         "alias": null,
         "name": "id",
         "args": null,
-        "storageKey": null }] }] } };
+        "storageKey": null }] }] },
 
 
 
 
+
+  "params": {
+    "operationKind": "query",
+    "name": "routeAppFrameDemo_HomePageScreen_Query",
+    "id": null,
+    "text": "query routeAppFrameDemo_HomePageScreen_Query {\n  Viewer {\n    ...HomePageScreen_Viewer\n    id\n  }\n}\n\nfragment HomePageScreen_Viewer on Viewer {\n  id\n}\n",
+    "metadata": {} } };
 
 
 // prettier-ignore

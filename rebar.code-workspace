@@ -1,0 +1,27 @@
+{
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+		"[javascript]": {
+			"editor.formatOnSave": true
+		},
+		"[javascriptreact]": {
+			"editor.formatOnSave": true
+		},
+		"search.exclude": {
+			"/deployment": true
+		},
+		"prettier.eslintIntegration": true,
+		"prettier.bracketSpacing": true,
+		"prettier.printWidth": 100,
+		"prettier.semi": false,
+		"prettier.singleQuote": true,
+		"prettier.tabWidth": 2,
+		"prettier.trailingComma": "all",
+		"prettier.useTabs": false	
+	}
+}

@@ -19,7 +19,7 @@ const User_0 = new User(
     id: defaultPersister.uuidNull(),
     UserToken2: UserToken2Anonymous,
     User_DisplayName: 'Anonymous',
-  }),
+  })
 )
 
 export { User_0 }
@@ -111,9 +111,10 @@ export default class ObjectManager {
           miscAsJSON: string,
         },
       },
-    },
+    }
   ): void {
-    if ( entityName in entityDefinitions ) throw new Error( 'Entity already registered: ' + entityName )
+    if ( entityName in entityDefinitions )
+      throw new Error( 'Entity already registered: ' + entityName )
 
     // In order to be able to access the name as a static property of the type
     EntityType.entityName = entityName
@@ -144,9 +145,18 @@ export default class ObjectManager {
     // For the User-related tables, there is no automatic support:
     // User_id and artifact_id have to be explicitly specified
     const supportedSuffixes =
-      entityName === 'User' || entityName === 'UserAccount' || entityName === 'UserSession'
+      entityName === 'User' ||
+      entityName === 'UserAccount' ||
+      entityName === 'UserSession'
         ? [ '_created_by', '_created_on', '_modified_on', '_modified_by' ]
-        : [ '_artifact_id', '_user_id', '_created_by', '_created_on', '_modified_on', '_modified_by' ]
+        : [
+            '_artifact_id',
+            '_user_id',
+            '_created_by',
+            '_created_on',
+            '_modified_on',
+            '_modified_by',
+          ]
 
     // Create sample entity and go through the fields looking for special fields
     const example = new EntityType({})
@@ -169,15 +179,20 @@ export default class ObjectManager {
   static RegisterTriggerForUpdate(
     entityName: string,
     handler: Function,
-    shouldRetrieveCurrentRecord: boolean,
+    shouldRetrieveCurrentRecord: boolean
   ): void {
     entityDefinitions[entityName].TriggersForUpdate.push( handler )
 
     if ( shouldRetrieveCurrentRecord )
-      entityDefinitions[entityName].TriggersForUpdateShouldRetrieveCurrentRecord = true
+      entityDefinitions[
+        entityName
+      ].TriggersForUpdateShouldRetrieveCurrentRecord = true
   }
 
-  static RegisterTriggerForAddAndUpdate( entityName: string, handler: Function ): void {
+  static RegisterTriggerForAddAndUpdate(
+    entityName: string,
+    handler: Function
+  ): void {
     ObjectManager.RegisterTriggerForAdd( entityName, handler )
     ObjectManager.RegisterTriggerForUpdate( entityName, handler, false )
   }
@@ -187,16 +202,29 @@ export default class ObjectManager {
   }
 
   // Apply artifact_id, User_id security
-  addUserIdAndOrSiteIdToFilterOrFields( entityDefinition: EntityDefinition, filterOrFields: Object ) {
+  addUserIdAndOrSiteIdToFilterOrFields(
+    entityDefinition: EntityDefinition,
+    filterOrFields: Object
+  ) {
     for ( let suffix of [ '_artifact_id', '_user_id' ]) {
       // Does the object type have it?
       if ( entityDefinition.fieldsWithSuffix[suffix]) {
         const fieldName = entityDefinition.EntityName + suffix
 
-        // Is the filter/fields collection missing it?
-        if ( !filterOrFields.hasOwnProperty( fieldName ) )
+        const doNotAddFieldName = 'do_not_add_' + fieldName
+        const hasDoNotAdd = filterOrFields.hasOwnProperty( doNotAddFieldName )
+
+        // Is the filter/fields collection missing it, and are we not prevented from adding it?
+        if ( !filterOrFields.hasOwnProperty( fieldName ) && !hasDoNotAdd ) {
           filterOrFields[fieldName] =
-            suffix === '_artifact_id' ? this.siteInformation.artifact_id : this.Viewer_User_id
+            suffix === '_artifact_id'
+              ? this.siteInformation.artifact_id
+              : this.Viewer_User_id
+        }
+
+        if ( hasDoNotAdd ) {
+          delete filterOrFields[doNotAddFieldName]
+        }
       }
     }
   }
@@ -205,7 +233,7 @@ export default class ObjectManager {
   updatedCreatedAndModifiedFields(
     entityDefinition: EntityDefinition,
     fields: Object,
-    isCreating: boolean,
+    isCreating: boolean
   ) {
     const dtNow = new Date()
 
@@ -218,7 +246,9 @@ export default class ObjectManager {
 
         // Assign the modified/created field
         fields[fieldName] =
-          suffix === '_modified_by' || suffix === '_created_by' ? this.Viewer_User_id : dtNow
+          suffix === '_modified_by' || suffix === '_created_by'
+            ? this.Viewer_User_id
+            : dtNow
       }
     }
   }
@@ -272,14 +302,17 @@ export default class ObjectManager {
   }
 
   getViewerUserId(): string {
-    if ( this.Viewer_User_id === 'Object Manager: viewer user id has not been set' )
+    if (
+      this.Viewer_User_id === 'Object Manager: viewer user id has not been set'
+    )
       throw new Error( 'Object Manager: viewer user id has not been set' )
 
     return this.Viewer_User_id
   }
 
   getRequest(): any {
-    if ( this.request == null ) throw new Error( 'Object Manager: request has not been set' )
+    if ( this.request == null )
+      throw new Error( 'Object Manager: request has not been set' )
 
     return this.request
   }
@@ -300,7 +333,11 @@ export default class ObjectManager {
       if ( multipleResults )
         loader = new DataLoader( filter => {
           try {
-            return entityDefinition.Persister.getObjectList( entityName, entityType, filter )
+            return entityDefinition.Persister.getObjectList(
+              entityName,
+              entityType,
+              filter
+            )
           } catch ( err ) {
             log(
               'error',
@@ -309,7 +346,7 @@ export default class ObjectManager {
                 fieldName,
                 entityName,
                 err,
-              },
+              }
             )
             throw new NestedError( 'getLoader failed', err )
           }
@@ -317,13 +354,21 @@ export default class ObjectManager {
       else
         loader = new DataLoader( filter => {
           try {
-            return entityDefinition.Persister.getOneObject( entityName, entityType, filter )
-          } catch ( err ) {
-            log( 'error', 'rb-base-server ObjectManager getLoader: Could not load single result', {
-              fieldName,
+            return entityDefinition.Persister.getOneObject(
               entityName,
-              err,
-            })
+              entityType,
+              filter
+            )
+          } catch ( err ) {
+            log(
+              'error',
+              'rb-base-server ObjectManager getLoader: Could not load single result',
+              {
+                fieldName,
+                entityName,
+                err,
+              }
+            )
             throw new NestedError( 'getLoader failed', err )
           }
         })
@@ -334,26 +379,35 @@ export default class ObjectManager {
     return loader
   }
 
-  async getOneObject_async( entityName: string, query: Object ): Promise<Object | null> {
+  async getOneObject_async(
+    entityName: string,
+    query: Object
+  ): Promise<Object | null> {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
     // Special hack for anonymous users
     if ( entityName === 'User' )
-      if ( defaultPersister.uuidEquals( defaultPersister.uuidNull(), query.id ) ) return User_0
+      if ( defaultPersister.uuidEquals( defaultPersister.uuidNull(), query.id ) )
+        return User_0
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, query )
 
     // Verify user object permission, if applies
     if ( entityDefinition.UserPermissionsForObject.use ) {
-      const permission = await this.getOneObject_async( 'UserPermissionForObject', {
-        UserPermissionForObject_ObjectType: entityName,
-        UserPermissionForObject_object_id: query.id,
-      })
+      const permission = await this.getOneObject_async(
+        'UserPermissionForObject',
+        {
+          UserPermissionForObject_ObjectType: entityName,
+          UserPermissionForObject_object_id: query.id,
+        }
+      )
 
       // If object is not found, or read permission not found, bail out
-      if ( permission == null || !permission.UserPermissionForObject_PermitRead ) return null
+      if ( permission == null || !permission.UserPermissionForObject_PermitRead )
+        return null
     }
 
     // For all non-user, non 0 ids, load from data loader per protocol
@@ -384,16 +438,20 @@ export default class ObjectManager {
 
   async getObjectList_async( entityName: string, query: Object ) {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, query )
 
     // Add user object permissions to query, if they apply
     if ( entityDefinition.UserPermissionsForObject.use ) {
-      const arrPermissions = await this.getObjectList_async( 'UserPermissionForObject', {
-        UserPermissionForObject_ObjectType: entityName,
-      })
+      const arrPermissions = await this.getObjectList_async(
+        'UserPermissionForObject',
+        {
+          UserPermissionForObject_ObjectType: entityName,
+        }
+      )
 
       // Determine ID values that are permitted for user
       const arrIDValues = []
@@ -441,12 +499,17 @@ export default class ObjectManager {
 
     const loadersSingle = this.getLoadersSingle( entityName )
     for ( let loaderFieldName in loadersSingle ) {
-      if ( loaderFieldName === 'id' ) loadersSingle[loaderFieldName].clear( fields.id )
+      if ( loaderFieldName === 'id' )
+        loadersSingle[loaderFieldName].clear( fields.id )
       else delete loadersSingle[loaderFieldName]
     }
   }
 
-  executeTriggers( arrTriggers: Array<Function>, fields: Object, oldFields: ?Object ) {
+  executeTriggers(
+    arrTriggers: Array<Function>,
+    fields: Object,
+    oldFields: ?Object
+  ) {
     const arrPromises = []
     for ( let trigger of arrTriggers ) {
       arrPromises.push( trigger( this, fields, oldFields ) )
@@ -458,7 +521,8 @@ export default class ObjectManager {
   assignPrimaryKey( entityName: string, fields: any ) {
     const entityDefinition = entityDefinitions[entityName]
 
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
     // Generate primary key, overwrite if already present
     fields.id = entityDefinition.Persister.uuidRandom()
@@ -466,7 +530,8 @@ export default class ObjectManager {
 
   async add( entityName: string, fields: Object ): any {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
     // Apply artifact_id, User_id security
     this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
@@ -485,10 +550,15 @@ export default class ObjectManager {
     try {
       await this.executeTriggers( entityDefinition.TriggersForAdd, fields )
 
-      await entityDefinition.Persister.add( entityName, fields, entityDefinition.EntityType )
+      await entityDefinition.Persister.add(
+        entityName,
+        fields,
+        entityDefinition.EntityType
+      )
 
       if ( entityDefinition.UserPermissionsForObject.use ) {
-        const permissions = entityDefinition.UserPermissionsForObject.defaultOnAdd
+        const permissions = entityDefinition.UserPermissionsForObject
+          .defaultOnAdd
           ? entityDefinition.UserPermissionsForObject.defaultOnAdd
           : {
               read: true,
@@ -524,27 +594,36 @@ export default class ObjectManager {
 
   async update( entityName: string, fields: Object ): Promise<void> {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
+    let executionStep = ''
     try {
-      // Apply artifact_id, User_id security
+      executionStep = 'Apply artifact_id, User_id security'
       this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
 
-      // Verify user object permission, if applies
+      executionStep = 'Verify user object permission, if applies'
       if ( entityDefinition.UserPermissionsForObject.use ) {
-        const permission = await this.getOneObject_async( 'UserPermissionForObject', {
-          UserPermissionForObject_ObjectType: entityName,
-          UserPermissionForObject_object_id: fields.id,
-        })
+        const permission = await this.getOneObject_async(
+          'UserPermissionForObject',
+          {
+            UserPermissionForObject_ObjectType: entityName,
+            UserPermissionForObject_object_id: fields.id,
+          }
+        )
 
         // If object is not found, or read permission not found, bail out
-        if ( permission == null || !permission.UserPermissionForObject_PermitUpdate ) return
+        if (
+          permission == null ||
+          !permission.UserPermissionForObject_PermitUpdate
+        )
+          return
       }
 
-      // Update created and modified fields
+      executionStep = 'Update created and modified fields'
       this.updatedCreatedAndModifiedFields( entityDefinition, fields, false )
 
-      // Retrieve the current values, if triggers will be used
+      executionStep = 'Retrieve the current values, if triggers will be used'
       let oldFields = null
       if ( entityDefinition.TriggersForUpdateShouldRetrieveCurrentRecord ) {
         oldFields = await this.getOneObject_async( entityName, {
@@ -552,16 +631,24 @@ export default class ObjectManager {
         })
       }
 
+      executionStep = 'Record change'
       this.recordChange( entityName, fields, false )
 
-      await this.executeTriggers( entityDefinition.TriggersForUpdate, fields, oldFields )
+      executionStep = 'Execute triggers'
+      await this.executeTriggers(
+        entityDefinition.TriggersForUpdate,
+        fields,
+        oldFields
+      )
 
+      executionStep = 'Execute persister update'
       await entityDefinition.Persister.update( entityName, fields )
     } catch ( err ) {
       log( 'error', 'rb-base-server ObjectManager update: failed', {
-        fields,
         entityName,
         err,
+        executionStep,
+        fields,
       })
       throw new NestedError( 'Update failed', err )
     }
@@ -571,7 +658,8 @@ export default class ObjectManager {
 
   async remove( entityName: string, fields: Object ) {
     const entityDefinition = entityDefinitions[entityName]
-    if ( entityDefinition == null ) throw new Error( 'Cound not find entity: ' + entityName )
+    if ( entityDefinition == null )
+      throw new Error( 'Cound not find entity: ' + entityName )
 
     try {
       // Apply artifact_id, User_id security
@@ -579,13 +667,20 @@ export default class ObjectManager {
 
       // Verify user object permission, if applies
       if ( entityDefinition.UserPermissionsForObject.use ) {
-        const permission = await this.getOneObject_async( 'UserPermissionForObject', {
-          UserPermissionForObject_ObjectType: entityName,
-          UserPermissionForObject_object_id: fields.id,
-        })
+        const permission = await this.getOneObject_async(
+          'UserPermissionForObject',
+          {
+            UserPermissionForObject_ObjectType: entityName,
+            UserPermissionForObject_object_id: fields.id,
+          }
+        )
 
         // If object is not found, or read permission not found, bail out
-        if ( permission == null || !permission.UserPermissionForObject_PermitDelete ) return
+        if (
+          permission == null ||
+          !permission.UserPermissionForObject_PermitDelete
+        )
+          return
       }
 
       this.recordChange( entityName, fields, true )
@@ -616,7 +711,11 @@ export default class ObjectManager {
     return entityDefinition.Persister.uuidToString( id )
   }
 
-  cursorForObjectInConnection( entityName: string, arr: Array<Object>, obj: Object ) {
+  cursorForObjectInConnection(
+    entityName: string,
+    arr: Array<Object>,
+    obj: Object
+  ) {
     const entityDefinition = entityDefinitions[entityName]
 
     // IDs can be both strings and Uuid. Check that first, and convert to String
@@ -636,13 +735,16 @@ export default class ObjectManager {
       log(
         'error',
         'rb-base-server ObjectManager cursorForObjectInConnection: Failed to create cursor',
-        { arr, entityName, obj },
+        { arr, entityName, obj }
       )
     }
     return cursor
   }
 
-  static initializePersisters( runAsPartOfSetupDatabase: boolean, cb: Function ): void {
+  static initializePersisters(
+    runAsPartOfSetupDatabase: boolean,
+    cb: Function
+  ): void {
     for ( let persister of setPersisters )
       persister.initialize( runAsPartOfSetupDatabase, () => {
         cb()
@@ -654,7 +756,10 @@ export default class ObjectManager {
 ObjectManager.registerEntity( 'User', User, {})
 
 // Get an Object Manager with site information
-export async function getObjectManager( req: Object, res: Object ): Promise<ObjectManager> {
+export async function getObjectManager(
+  req: Object,
+  res: Object
+): Promise<ObjectManager> {
   // Set site information
   const siteInformation = await getSiteInformation( req, res ) // Create individual object manager for each request
   const objectManager = new ObjectManager() // Set request and response

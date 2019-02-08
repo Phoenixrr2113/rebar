@@ -5,15 +5,20 @@ var _styles = require("@material-ui/core/styles");
 var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
-  content: theme.mixins.gutters({
+  content: {
     margin: '0 auto',
     flex: '1 1 100%',
     maxWidth: '100%',
-    paddingTop: theme.mixins.toolbar.minHeight + 16 }) });
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: theme.spacing.unit * 3 } });
 
 
 
-class ResponsiveContentArea extends _react.default.Component {
+class ResponsiveContentArea extends _react.default.Component
+
+
+{
   render() {
     const { classes } = this.props;
 

@@ -1,17 +1,16 @@
 // @flow
 
-import AddIcon from '@material-ui/icons/Add'
-
-import Button from '@material-ui/core/Button'
-
 import Card from '@material-ui/core/Card'
 
 import CardContent from '@material-ui/core/CardContent'
 
 import CardHeader from '@material-ui/core/CardHeader'
 
+import Fab from '@material-ui/core/Fab'
+
 import { withStyles } from '@material-ui/core/styles'
 
+import IconPlus from 'mdi-material-ui/Plus'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -36,7 +35,7 @@ class EnsayoInPaceEditScreen extends React.Component<
   },
   {
     propertiesIsOpen: boolean,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -45,7 +44,11 @@ class EnsayoInPaceEditScreen extends React.Component<
   }
 
   _handle_updateHandler_Ensayo = EnsayoInPlaceEditProperties => {
-    const { Ensayo_Title, Ensayo_Description, Ensayo_Content } = EnsayoInPlaceEditProperties
+    const {
+      Ensayo_Title,
+      Ensayo_Description,
+      Ensayo_Content,
+    } = EnsayoInPlaceEditProperties
     const { relay, Viewer } = this.props
 
     EnsayoAddMutation.commit(
@@ -53,7 +56,7 @@ class EnsayoInPaceEditScreen extends React.Component<
       Viewer,
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content,
+      Ensayo_Content
     )
   }
 
@@ -76,14 +79,13 @@ class EnsayoInPaceEditScreen extends React.Component<
 
           <CardContent>
             <div className={classes.addNewButton}>
-              <Button
-                variant="fab"
+              <Fab
                 color="primary"
                 className={classes.button}
                 onClick={this._handle_onClick_Add}
               >
-                <AddIcon />
-              </Button>
+                <IconPlus />
+              </Fab>
             </div>
 
             {this.props.children}
@@ -110,5 +112,5 @@ export default createFragmentContainer(
     fragment EnsayoInPaceEditScreen_Viewer on Viewer {
       id
     }
-  `,
+  `
 )

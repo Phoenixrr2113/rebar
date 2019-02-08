@@ -12,9 +12,8 @@ import Toolbar from '@material-ui/core/Toolbar'
 
 import Typography from '@material-ui/core/Typography'
 
-import IconMenu from '@material-ui/icons/Menu'
-
 import { withRouter } from 'found'
+import IconMenu from 'mdi-material-ui/Menu'
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { createFragmentContainer, graphql } from 'react-relay'
@@ -100,14 +99,23 @@ const styles = theme => ({
     width: '100%',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    [theme.breakpoints.down( 'sm' )]: {
+      padding: 0,
+    },
+    [theme.breakpoints.between( 'sm', 'lg' )]: {
+      padding: theme.spacing.unit,
+    },
+    [theme.breakpoints.up( 'lg' )]: {
+      padding: theme.spacing.unit * 2,
+    },
     transition: theme.transitions.create( 'margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
     overflow: 'scroll',
-    height: 'calc(100% - 56px)',
-    marginTop: 56,
+    overflowScrolling: 'touch',
+    height: 'calc(100% - 48px)',
+    marginTop: 48,
   },
 })
 
@@ -118,12 +126,15 @@ class AppFrame extends React.Component<
   {
     drawerIsOpen: boolean,
     title: string,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
 
-    this.state = { drawerIsOpen: false, title: titlePrefix + NavBarDefaultTitle }
+    this.state = {
+      drawerIsOpen: false,
+      title: titlePrefix + NavBarDefaultTitle,
+    }
   }
 
   _handle_Drawer_Open = () => {
@@ -206,5 +217,5 @@ export default createFragmentContainer(
       UserToken2
       ...NavBarLoginButton_Viewer
     }
-  `,
+  `
 )

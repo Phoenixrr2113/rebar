@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 03148fce6e313f20524807e2acac5b40
+ * @relayHash 1152fdf69dece647b060e7c18e7b9f01
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type TranslaticiarumDeleteInput = {
+              export type TranslaticiarumDeleteInput = {|
                 id: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type TranslaticiarumDeleteMutationVariables = {|
                 input: TranslaticiarumDeleteInput
               |};
@@ -76,24 +76,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "TranslaticiarumDeleteMutation",
-    "id": null,
-    "text": "mutation TranslaticiarumDeleteMutation(\n  $input: TranslaticiarumDeleteInput!\n) {\n  TranslaticiarumDelete(input: $input) {\n    deletedId\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "TranslaticiarumDeleteMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "TranslaticiarumDeleteMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "TranslaticiarumDeleteMutation",
+      "id": null,
+      "text": "mutation TranslaticiarumDeleteMutation(\n  $input: TranslaticiarumDeleteInput!\n) {\n  TranslaticiarumDelete(input: $input) {\n    deletedId\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

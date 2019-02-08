@@ -13,7 +13,9 @@ require( 'dotenv' ).load()
 
 const envHost = process.env.HOST
 if ( envHost == null || typeof envHost !== 'string' )
-  throw new Error( 'Error: rb-appbase-webapp requires the environment variable HOST to be set' )
+  throw new Error(
+    'Error: rb-appbase-webapp requires the environment variable HOST to be set'
+  )
 
 //
 
@@ -30,31 +32,63 @@ const maxAgeOfAnonymousSessionInSec =
 
 //
 
-export function getSessionIdFromRequest( req: Object ): ?string {
-  const UserToken1 = req.cookies.UserToken1 || req.headers.usertoken1
+export function getUserTokenFrom_UserToken1( req: Object ): ?string {
+  return req.cookies.UserToken1 || req.headers.usertoken1
+}
 
-  if ( UserToken1 ) {
+export function getUserTokenFrom_machineAcuityUserToken3( req: Object ): ?string {
+  return req.cookies.machineAcuityUserToken3
+}
+
+export async function getUserAndSessionIDByUserToken1_async(
+  objectManager,
+  req,
+  bAllowAnonymous: boolean
+) {
+  const userToken = getUserTokenFrom_UserToken1( req )
+
+  return await getUserAndSessionIDByUserToken_async(
+    objectManager,
+    req,
+    bAllowAnonymous,
+    userToken
+  )
+}
+
+export async function getUserAndSessionIDByUserToken3_async(
+  objectManager,
+  req,
+  bAllowAnonymous: boolean
+) {
+  const userToken = getUserTokenFrom_machineAcuityUserToken3( req )
+
+  return await getUserAndSessionIDByUserToken_async(
+    objectManager,
+    req,
+    bAllowAnonymous,
+    userToken
+  )
+}
+
+export async function getUserAndSessionIDByUserToken_async(
+  objectManager,
+  req,
+  bAllowAnonymous: boolean,
+  userToken: ?string
+) {
+  // Retrieve session id from user token
+  let session_id = null
+  if ( userToken ) {
     try {
-      if ( UserToken1.length > 10 ) {
-        const decoded = jwt.decode( UserToken1, process.env.JWT_SECRET )
-        return defaultPersister.uuidFromString( decoded.session_id )
+      if ( userToken.length > 10 ) {
+        const decoded = jwt.decode( userToken, process.env.JWT_SECRET )
+        session_id = defaultPersister.uuidFromString( decoded.session_id )
       }
     } catch ( err ) {
       // Do nothing. This most probably means an expired session, or
       // new session secret. Either way the user is consindered not logged in
     }
   }
-
-  return null // Anonymous, unless cookie is passed
-}
-
-export async function getUserAndSessionIDByUserToken1_async(
-  objectManager,
-  req,
-  bAllowAnonymous: boolean,
-) {
-  // Get session, and if session is present, user from session
-  const session_id = getSessionIdFromRequest( req )
 
   // Track if an anonymous session (and user) need a TTL refresh
   let bAnonymousUserAndSessionRefresh = false
@@ -89,7 +123,9 @@ export async function getUserAndSessionIDByUserToken1_async(
   if ( !bAllowAnonymous && !a_UserSession ) return null
 
   // If session is found, use User_id, otherwise use anonymous user id 0
-  const user_id = a_UserSession ? a_UserSession.UserSession_User_id : defaultPersister.uuidNull()
+  const user_id = a_UserSession
+    ? a_UserSession.UserSession_User_id
+    : defaultPersister.uuidNull()
 
   // Retrieve user
   const a_User = await objectManager.getOneObject_async( 'User', {
@@ -108,11 +144,13 @@ export async function getUserAndSessionIDByUserToken1_async(
       await Promise.all([
         objectManager.update(
           'User',
-          Object.assign({}, a_User, { _ttl: maxAgeOfAnonymousSessionInSec }),
+          Object.assign({}, a_User, { _ttl: maxAgeOfAnonymousSessionInSec })
         ),
         objectManager.update(
           'UserSession',
-          Object.assign({}, a_UserSession, { _ttl: maxAgeOfAnonymousSessionInSec }),
+          Object.assign({}, a_UserSession, {
+            _ttl: maxAgeOfAnonymousSessionInSec,
+          })
         ),
       ])
     }
@@ -124,11 +162,16 @@ export async function getUserAndSessionIDByUserToken1_async(
   }
 }
 
-export function verifyUserToken2( a_User, req ): ?string {
+export function verifyUserToken2(
+  a_User,
+  req,
+  location: 'headers' | 'query'
+): ?Object {
   if ( !a_User ) {
-    return 'User not found'
+    return { issue: 'User not found' }
   } else {
-    const request_UserToken2 = req.get( 'UserToken2' )
+    const request_UserToken2 =
+      location === 'headers' ? req.get( 'UserToken2' ) : req.query.UserToken2
     if (
       request_UserToken2 === a_User.UserToken2 ||
       // A request coming from webapp will come from localhost and will bear the server's user token
@@ -139,19 +182,26 @@ export function verifyUserToken2( a_User, req ): ?string {
     )
       return null
     else
-      return (
-        'Authentication token expected: ' + a_User.UserToken2 + ', provided:' + request_UserToken2
-      )
+      return {
+        issue: 'Authentication token expected',
+        User_id: a_User.id,
+        UserToken2: a_User.UserToken2,
+        UserToken2FromRequest: request_UserToken2,
+      }
   }
 }
 
 const httpError403FileName = path.resolve(
   __dirname,
-  '../_configuration/rb-base-server/httpError/403.html',
+  '../_configuration/rb-base-server/httpError/403.html'
 )
 
 export function serveAuthenticationFailed( req, res, err, respondWithJSON ) {
-  log( 'warn', 'rb-appbase-server Checking credentials failed', { err, req, res })
+  log( 'warn', 'rb-appbase-server Checking credentials failed', {
+    err,
+    req,
+    res,
+  })
 
   // Expire cookie. This is the only way to 'delete' a cookie
   res.cookie( 'UserToken1', '', { httpOnly: true, expires: new Date( 1 ) })

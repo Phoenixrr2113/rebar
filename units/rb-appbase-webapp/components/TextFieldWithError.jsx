@@ -12,11 +12,7 @@ import { withStyles } from '@material-ui/core/styles'
 
 import React from 'react'
 
-const styles = theme => ({
-  formControl: {
-    marginBottom: theme.spacing.unit,
-  },
-})
+const styles = {}
 
 class TextFieldWithError extends React.Component<{
   classes: Object,
@@ -27,13 +23,26 @@ class TextFieldWithError extends React.Component<{
   value: string,
 }> {
   render() {
-    const { classes, errorText, id, label, onChange, value } = this.props
+    const { errorText, id, label, onChange, value } = this.props
 
     const isError = errorText !== ''
 
+    // TODO [2 Crossroads][App Base] TextFieldWithError does not show outline border
     return (
-      <FormControl className={classes.formControl} error={isError} id={id} fullWidth={true}>
-        <InputLabel htmlFor={isError ? 'name-simple' : 'name-error'}>{label}</InputLabel>
+      <FormControl
+        error={isError}
+        fullWidth={true}
+        id={id}
+        margin="dense"
+        variant="outlined"
+      >
+        <InputLabel
+          htmlFor={isError ? 'name-simple' : 'name-error'}
+          margin="dense"
+          variant="outlined"
+        >
+          {label}
+        </InputLabel>
         <Input id="value" value={value} onChange={onChange} />
         <FormHelperText>{isError ? errorText : ''}</FormHelperText>
       </FormControl>

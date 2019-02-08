@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-              import type { ConcreteFragment } from 'relay-runtime';
+              import type { ReaderFragment } from 'relay-runtime';
               type ToDoItem_ToDo$ref = any;
               type ToDoItem_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
@@ -31,7 +31,7 @@
               */
 
 
-const node /*: ConcreteFragment*/ = function () {
+const node /*: ReaderFragment*/ = function () {
   var v0 = {
     "kind": "ScalarField",
     "alias": null,
@@ -97,7 +97,7 @@ const node /*: ConcreteFragment*/ = function () {
           "concreteType": "ToDo",
           "plural": false,
           "selections": [
-          v0,
+          v0 /*: any*/,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -155,7 +155,7 @@ const node /*: ConcreteFragment*/ = function () {
 
 
 
-    v0,
+    v0 /*: any*/,
     {
       "kind": "ScalarField",
       "alias": null,

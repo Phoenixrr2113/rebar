@@ -30,7 +30,10 @@ export default class MasterWriter {
         await fs.mkdir( path.resolve( this.basePath, filePath ) )
       } catch ( err ) {
         if ( err.code !== 'EEXIST' ) {
-          throw new NestedError( 'XXX', err )
+          throw new NestedError(
+            'rb-base-server MasterWriter ensureRelativePathExistsHelper: Failed',
+            err,
+          )
         }
       }
 

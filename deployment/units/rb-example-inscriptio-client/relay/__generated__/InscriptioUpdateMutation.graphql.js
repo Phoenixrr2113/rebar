@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 47a9a6b37e24989bb83876981c4bd805
+ * @relayHash 7a3abfe40291389906693b410372f804
  */
 
 /* eslint-disable */
@@ -9,13 +9,13 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type InscriptioUpdateInput = {
+              export type InscriptioUpdateInput = {|
                 id: string,
                 Inscriptio_LocationLat: string,
                 Inscriptio_LocationLon: string,
                 Inscriptio_Notes: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type InscriptioUpdateMutationVariables = {|
                 input: InscriptioUpdateInput
               |};
@@ -121,24 +121,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "InscriptioUpdateMutation",
-    "id": null,
-    "text": "mutation InscriptioUpdateMutation(\n  $input: InscriptioUpdateInput!\n) {\n  InscriptioUpdate(input: $input) {\n    Inscriptio {\n      id\n      Inscriptio_LocationLat\n      Inscriptio_LocationLon\n      Inscriptio_Notes\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "InscriptioUpdateMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v1 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "InscriptioUpdateMutation",
-      "argumentDefinitions": v0,
-      "selections": v1 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v1 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "InscriptioUpdateMutation",
+      "id": null,
+      "text": "mutation InscriptioUpdateMutation(\n  $input: InscriptioUpdateInput!\n) {\n  InscriptioUpdate(input: $input) {\n    Inscriptio {\n      id\n      Inscriptio_LocationLat\n      Inscriptio_LocationLon\n      Inscriptio_Notes\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

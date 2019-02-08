@@ -8,6 +8,9 @@ var _debug = require("../_configuration/debug");
 var _log = _interopRequireDefault(require("./log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 
+
+
+
 const expirationCheckInterval = 5000;
 let expirationIntervalTimer = null;
 
@@ -36,7 +39,9 @@ objectPromise)
   }
 }
 
-async function cleanupCategory(cachedEntriesForCategory) {
+async function cleanupCategory(
+cachedEntriesForCategory)
+{
   const { definition, entries } = cachedEntriesForCategory;
 
   // If the number if cached elements does not exceed max, no cleanup is necessary
@@ -69,7 +74,8 @@ async function cleanupCategory(cachedEntriesForCategory) {
 }
 
 async function removeExpired() {
-  if (_debug.debugWriteToConsoleObjectCacheActivity) logEntries('removeExpired - before');
+  if (_debug.debugWriteToConsoleObjectCacheActivity)
+  logEntries('removeExpired - before');
 
   let bPerishableItemsLeft = false;
 
@@ -101,12 +107,12 @@ async function removeExpired() {
 
   // If there are no more perishable items, simply remove the timer
   if (!bPerishableItemsLeft) {
-    // $AssureFlow expirationIntervalTimer is guaranteed to be set
     clearInterval(expirationIntervalTimer);
     expirationIntervalTimer = null;
   }
 
-  if (_debug.debugWriteToConsoleObjectCacheActivity) logEntries('removeExpired - after');
+  if (_debug.debugWriteToConsoleObjectCacheActivity)
+  logEntries('removeExpired - after');
 }
 
 async function addObjectToCache(
@@ -116,7 +122,9 @@ objectPromise)
 {
   const cachedEntriesForCategory = MapCachesByCategory.get(categoryName);
   if (cachedEntriesForCategory == null)
-  throw new Error('addObjectToCache: can not find cacheable category ' + categoryName);
+  throw new Error(
+  'addObjectToCache: can not find cacheable category ' + categoryName);
+
 
   const { definition, entries } = cachedEntriesForCategory;
 
@@ -134,7 +142,10 @@ objectPromise)
     // Only start timer when first object with expiration is added. No reason to run it before
     // that.
     if (expirationIntervalTimer == null) {
-      expirationIntervalTimer = setInterval(removeExpired, expirationCheckInterval);
+      expirationIntervalTimer = setInterval(
+      removeExpired,
+      expirationCheckInterval);
+
     }
 
     cachedEntry.expiresAtMs = timeMsNow + definition.expirationDurationMs;
@@ -144,10 +155,14 @@ objectPromise)
 
   await cleanupCategory(cachedEntriesForCategory);
 
-  if (_debug.debugWriteToConsoleObjectCacheActivity) logEntries('addObjectToCache key=' + cacheKey);
+  if (_debug.debugWriteToConsoleObjectCacheActivity)
+  logEntries('addObjectToCache key=' + cacheKey);
 }
 
-async function getObjectFromCache(categoryName, cacheKey) {
+async function getObjectFromCache(
+categoryName,
+cacheKey)
+{
   const cachedEntry = await getCachedEntryFromCache(categoryName, cacheKey);
 
   if (cachedEntry) {
@@ -163,7 +178,9 @@ cacheKey)
 {
   const cachedEntriesForCategory = MapCachesByCategory.get(categoryName);
   if (cachedEntriesForCategory == null)
-  throw new Error('getCachedEntryFromCache: can not find cacheable category ' + categoryName);
+  throw new Error(
+  'getCachedEntryFromCache: can not find cacheable category ' + categoryName);
+
 
   const { definition, entries } = cachedEntriesForCategory;
   const cachedEntry = entries.get(cacheKey);
@@ -193,19 +210,20 @@ cacheKey)
   let isValid = false;
   if (cachedEntry.validityVerificationPromise == null) {
     try {
-      cachedEntry.validityVerificationPromise = definition.validityVerifier(cacheKey, cachedEntry);
+      cachedEntry.validityVerificationPromise = definition.validityVerifier(
+      cacheKey,
+      cachedEntry);
+
       isValid = await cachedEntry.validityVerificationPromise;
     } catch (err) {
       // Indicate that the entry is invalid
       cachedEntry.validityVerificationPromise = Promise.resolve(false);
 
       // Record the problem and throw exception further
-      (0, _log.default)(
-      'error',
-      'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed',
-      { categoryName, cacheKey, err });
-
-      throw new _nestedErrorStacks.default('XXX', err);
+      const message =
+      'rb-base-server ObjectCache getCachedEntryFromCache: validityVerificationPromise failed';
+      (0, _log.default)('error', message, { categoryName, cacheKey, err });
+      throw new _nestedErrorStacks.default(message, err);
     }
   }
 
@@ -225,7 +243,10 @@ categoryName,
 cacheKey,
 creationFunction)
 {
-  const currentCachedEntry = await getCachedEntryFromCache(categoryName, cacheKey);
+  const currentCachedEntry = await getCachedEntryFromCache(
+  categoryName,
+  cacheKey);
+
 
   // If it is already present in cache, return
   if (currentCachedEntry) {
@@ -237,12 +258,10 @@ creationFunction)
   try {
     newObjectPromise = creationFunction();
   } catch (err) {
-    (0, _log.default)('error', 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed', {
-      categoryName,
-      cacheKey,
-      err });
-
-    throw new _nestedErrorStacks.default('XXX', err);
+    const message =
+    'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed';
+    (0, _log.default)('error', message, { cacheKey, err });
+    throw new _nestedErrorStacks.default(message, err);
   }
 
   // Add the promise to the cache now, so that other requests to the cache
@@ -250,20 +269,15 @@ creationFunction)
   // creation function
   addObjectToCache(categoryName, cacheKey, newObjectPromise);
 
-  if (_debug.debugWriteToConsoleObjectCacheActivity) logEntries('getOrCreateObjectFromCahce');
+  if (_debug.debugWriteToConsoleObjectCacheActivity)
+  logEntries('getOrCreateObjectFromCahce');
 
   try {
     return await newObjectPromise;
   } catch (err) {
-    (0, _log.default)(
-    'error',
-    'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed',
-    {
-      categoryName,
-      cacheKey,
-      err });
-
-
+    const message =
+    'rb-base-server ObjectCache getOrCreateObjectFromCahce: await creationFunction failed';
+    (0, _log.default)('error', message, { categoryName, cacheKey, err });
 
     const cachedEntriesForCategory = MapCachesByCategory.get(categoryName);
 
@@ -271,7 +285,7 @@ creationFunction)
     const { entries } = cachedEntriesForCategory;
     entries.delete(cacheKey);
 
-    throw new _nestedErrorStacks.default('XXX', err);
+    throw new _nestedErrorStacks.default(message, err);
   }
 }
 
@@ -302,7 +316,7 @@ function logEntries(title) {
     }
   }
 
-  console.log(title + ' @ ' + timeMsNow);
+  console.log('XXX ' + title + ' @ ' + timeMsNow);
   console.table(values);
 }
 //# sourceMappingURL=ObjectCache.js.map

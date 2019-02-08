@@ -23,7 +23,6 @@ export class UserError extends Error {
     // $AssureFlow
     this[IsUserError] = true
 
-    // $AssureFlow
     Error.captureStackTrace( this, 'Error' )
   }
 }

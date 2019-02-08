@@ -21,7 +21,11 @@ import { version } from '../../package.json'
 import UserToken2ServerRendering from '../_configuration/rb-base-server/UserToken2ServerRendering'
 import htmlHeadAdditions from '../_configuration/rb-appbase-webapp/htmlHeadAdditions'
 import type { SiteInformation } from '../rb-appbase-server/types/SiteInformation.types'
-import { createResolver, historyMiddlewares, routeConfig } from '../rb-appbase-webapp/router'
+import {
+  createResolver,
+  historyMiddlewares,
+  routeConfig,
+} from '../rb-appbase-webapp/router'
 
 import FetcherServer from './fetcherServer'
 
@@ -30,16 +34,22 @@ require( 'dotenv' ).load()
 
 const envHost = process.env.HOST
 if ( envHost == null || typeof envHost !== 'string' )
-  throw new Error( 'Error: rb-appbase-webapp requires the environment variable HOST to be set' )
+  throw new Error(
+    'Error: rb-appbase-webapp requires the environment variable HOST to be set'
+  )
 
 const envPort = process.env.PORT
 if ( envPort == null || typeof envPort !== 'string' )
-  throw new Error( 'Error: rb-appbase-webapp requires the environment variable PORT to be set' )
+  throw new Error(
+    'Error: rb-appbase-webapp requires the environment variable PORT to be set'
+  )
 
 //
 
 // HTML page template
-var htmlEjs = ejs.compile( fs.readFileSync( path.resolve( __dirname, 'html.ejs' ), 'utf8' ) )
+var htmlEjs = ejs.compile(
+  fs.readFileSync( path.resolve( __dirname, 'html.ejs' ), 'utf8' )
+)
 
 //
 
@@ -72,7 +82,7 @@ function getAssetsPath( siteInformation: SiteInformation ): string {
     const envPortWebpack = process.env.PORT_WEBPACK
     if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
       throw new Error(
-        'Error: rb-appbase-webapp requires the environment variable PORT_WEBPACK to be set',
+        'Error: rb-appbase-webapp requires the environment variable PORT_WEBPACK to be set'
       )
 
     // When in development, always go to webpack over http
@@ -85,7 +95,7 @@ const render = createRender({
     const { error } = obj
 
     if ( error.status !== 404 ) {
-      log( 'error', 'Error: Render on server createRender renderError', error )
+      log( 'error', 'Error: rb-appbase-webapp createRender renderError', error )
     }
 
     return <ErrorComponent httpStatus={error.status} />
@@ -97,6 +107,7 @@ export default ( async function contentCreatorWebApp_async(
   reqUrl: string,
   reqUserAgent: string,
   reqUserToken1: ?string,
+  passUserToken1ToHeaders: boolean
 ) {
   try {
     const assetsPath = getAssetsPath( siteInformation )
@@ -115,14 +126,20 @@ export default ( async function contentCreatorWebApp_async(
       siteInformation.siteConfiguration.webapp &&
       siteInformation.siteConfiguration.webapp.artifactNamePrefix
     ) {
-      artifactNamePrefix = siteInformation.siteConfiguration.webapp.artifactNamePrefix
+      artifactNamePrefix =
+        siteInformation.siteConfiguration.webapp.artifactNamePrefix
     }
 
     const graphQLServerUrl =
       `http://${envHost}:${envPort}` +
       artifactNamePrefix +
       getGraphQLLocalServerURL( siteInformation )
-    const fetcher = new FetcherServer( graphQLServerUrl, reqUserToken1, UserToken2ServerRendering )
+
+    const fetcher = new FetcherServer(
+      graphQLServerUrl,
+      reqUserToken1,
+      UserToken2ServerRendering
+    )
 
     const userAgent = reqUserAgent
     const { siteConfiguration } = siteInformation
@@ -148,25 +165,36 @@ export default ( async function contentCreatorWebApp_async(
     const relayPayloads = serialize( fetcher, { isJSON: true })
 
     if (
+      typeof relayPayloads === 'string' &&
       relayPayloads.indexOf(
-        '{"message":"GraphQL server was given a session, but the session is invalid"}',
+        // Notice that the string has no closing brace. A typical error string looks like:
+        // '[{"errors":[{"message":"GraphQL server was given a session, but the session is invalid",
+        // "locations":[{"line":888,"column":777}],"stack":"No stack information available",
+        // "path":["node"]}],"data":null}]'
+        '{"message":"GraphQL server was given a session, but the session is invalid"'
       ) > 0
     ) {
       return {
         status: 403,
-        htmlContent: 'The server was given a session, but the session is invalid',
+        htmlContent:
+          'The server was given a session, but the session is invalid',
       }
     }
 
+    // [2 Crossroads][server] Update server rendering according to https://material-ui.com/guides/server-rendering/
     const sheets = new SheetsRegistry()
     const helmet = Helmet.rewind()
 
     const rootHTML = ReactDOMServer.renderToString(
       <JssProvider registry={sheets}>
-        <AppWrapper userAgent={userAgent} siteConfiguration={siteConfigurationSubset} url={reqUrl}>
+        <AppWrapper
+          userAgent={userAgent}
+          siteConfiguration={siteConfigurationSubset}
+          url={reqUrl}
+        >
           {element}
         </AppWrapper>
-      </JssProvider>,
+      </JssProvider>
     )
 
     const htmlContent = htmlEjs({
@@ -177,6 +205,9 @@ export default ( async function contentCreatorWebApp_async(
       htmlHeadAdditions,
       siteConfiguration: JSON.stringify( siteConfigurationSubset ),
       relayPayloads,
+      UserToken1: JSON.stringify(
+        passUserToken1ToHeaders ? reqUserToken1 : null
+      ),
     })
 
     return {
