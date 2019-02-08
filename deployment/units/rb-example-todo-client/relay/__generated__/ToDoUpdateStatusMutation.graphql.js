@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 3ddccacc81913fd1cbfffffc00042006
+ * @relayHash 21c59fceb8c0416a08da74b0128e9276
  */
 
 /* eslint-disable */
@@ -9,11 +9,11 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type ToDoUpdateStatusInput = {
+              export type ToDoUpdateStatusInput = {|
                 id: string,
                 ToDo_Complete: boolean,
                 clientMutationId?: ?string,
-              };
+              |};
               export type ToDoUpdateStatusMutationVariables = {|
                 input: ToDoUpdateStatusInput
               |};
@@ -95,7 +95,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "Viewer",
       "plural": false,
       "selections": [
-      v1,
+      v1 /*: any*/,
       {
         "kind": "ScalarField",
         "alias": null,
@@ -114,7 +114,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "ToDo",
       "plural": false,
       "selections": [
-      v1,
+      v1 /*: any*/,
       {
         "kind": "ScalarField",
         "alias": null,
@@ -129,24 +129,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "ToDoUpdateStatusMutation",
-    "id": null,
-    "text": "mutation ToDoUpdateStatusMutation(\n  $input: ToDoUpdateStatusInput!\n) {\n  ToDoUpdateStatus(input: $input) {\n    Viewer {\n      id\n      ToDo_CompletedCount\n    }\n    ToDo {\n      id\n      ToDo_Complete\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "ToDoUpdateStatusMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v2 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "ToDoUpdateStatusMutation",
-      "argumentDefinitions": v0,
-      "selections": v2 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "ToDoUpdateStatusMutation",
+      "id": null,
+      "text": "mutation ToDoUpdateStatusMutation(\n  $input: ToDoUpdateStatusInput!\n) {\n  ToDoUpdateStatus(input: $input) {\n    Viewer {\n      id\n      ToDo_CompletedCount\n    }\n    ToDo {\n      id\n      ToDo_Complete\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

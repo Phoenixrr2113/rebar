@@ -30,7 +30,10 @@ class MasterWriter {
         await fs.mkdir(_path.default.resolve(this.basePath, filePath));
       } catch (err) {
         if (err.code !== 'EEXIST') {
-          throw new _nestedErrorStacks.default('XXX', err);
+          throw new _nestedErrorStacks.default(
+          'rb-base-server MasterWriter ensureRelativePathExistsHelper: Failed',
+          err);
+
         }
       }
 

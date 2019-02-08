@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash a960838317f409df29a52ee717e9e8df
+ * @relayHash c3db19f033369205654d6b1cd5a326f5
  */
 
 /* eslint-disable */
@@ -9,12 +9,12 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type InscriptioAddInput = {
+              export type InscriptioAddInput = {|
                 Inscriptio_LocationLat: string,
                 Inscriptio_LocationLon: string,
                 Inscriptio_Notes: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type InscriptioAddMutationVariables = {|
                 input: InscriptioAddInput
               |};
@@ -104,7 +104,7 @@ const node /*: ConcreteRequest*/ = function () {
       "concreteType": "Viewer",
       "plural": false,
       "selections": [
-      v1] },
+      v1 /*: any*/] },
 
 
     {
@@ -132,7 +132,7 @@ const node /*: ConcreteRequest*/ = function () {
         "concreteType": "Inscriptio",
         "plural": false,
         "selections": [
-        v1,
+        v1 /*: any*/,
         {
           "kind": "ScalarField",
           "alias": null,
@@ -163,24 +163,26 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "InscriptioAddMutation",
-    "id": null,
-    "text": "mutation InscriptioAddMutation(\n  $input: InscriptioAddInput!\n) {\n  InscriptioAdd(input: $input) {\n    Viewer {\n      id\n    }\n    InscriptiosEdge {\n      cursor\n      node {\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n        Inscriptio_Notes\n      }\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "InscriptioAddMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
-      "selections": v2 },
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
 
     "operation": {
       "kind": "Operation",
       "name": "InscriptioAddMutation",
-      "argumentDefinitions": v0,
-      "selections": v2 } };
+      "argumentDefinitions": v0 /*: any*/,
+      "selections": v2 /*: any*/ },
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "InscriptioAddMutation",
+      "id": null,
+      "text": "mutation InscriptioAddMutation(\n  $input: InscriptioAddInput!\n) {\n  InscriptioAdd(input: $input) {\n    Viewer {\n      id\n    }\n    InscriptiosEdge {\n      cursor\n      node {\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n        Inscriptio_Notes\n      }\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

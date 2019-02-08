@@ -12,9 +12,8 @@ var _Toolbar = _interopRequireDefault(require("@material-ui/core/Toolbar"));
 
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
-var _Menu = _interopRequireDefault(require("@material-ui/icons/Menu"));
-
 var _found = require("found");
+var _Menu = _interopRequireDefault(require("mdi-material-ui/Menu"));
 var _react = _interopRequireDefault(require("react"));
 var _reactHelmet = require("react-helmet");
 var _reactRelay = require("react-relay");
@@ -100,14 +99,23 @@ const styles = theme => ({
     width: '100%',
     flexGrow: 1,
     backgroundColor: theme.palette.background.default,
-    padding: theme.spacing.unit * 3,
+    [theme.breakpoints.down('sm')]: {
+      padding: 0 },
+
+    [theme.breakpoints.between('sm', 'lg')]: {
+      padding: theme.spacing.unit },
+
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing.unit * 2 },
+
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen }),
 
     overflow: 'scroll',
-    height: 'calc(100% - 56px)',
-    marginTop: 56 } });
+    overflowScrolling: 'touch',
+    height: 'calc(100% - 48px)',
+    marginTop: 48 } });
 
 
 
@@ -122,6 +130,9 @@ class AppFrame extends _react.default.Component
 {
   constructor(props, context) {
     super(props, context);this.
+
+
+
 
 
 

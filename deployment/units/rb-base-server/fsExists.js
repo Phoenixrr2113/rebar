@@ -15,7 +15,7 @@ fsExists = async function fsExists(path) {
   } catch (err) {
     if (err.code === 'ENOENT') return false;else
     {
-      throw new _nestedErrorStacks.default('XXX', err);
+      throw new _nestedErrorStacks.default('rb-base-server fsExists: Failed', err);
     }
   }
 };exports.default = fsExists;

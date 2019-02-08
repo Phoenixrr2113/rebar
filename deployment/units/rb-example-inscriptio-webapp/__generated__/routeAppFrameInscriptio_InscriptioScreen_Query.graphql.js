@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 51fe18bdc48253116a059a6778667037
+ * @relayHash 143980767a65e2448492310606b2edea
  */
 
 /* eslint-disable */
@@ -68,11 +68,6 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "query",
-    "name": "routeAppFrameInscriptio_InscriptioScreen_Query",
-    "id": null,
-    "text": "query routeAppFrameInscriptio_InscriptioScreen_Query {\n  Viewer {\n    ...InscriptioScreen_Viewer\n    id\n  }\n}\n\nfragment InscriptioScreen_Viewer on Viewer {\n  Inscriptios(first: 2147483647) {\n    edges {\n      node {\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "routeAppFrameInscriptio_InscriptioScreen_Query",
@@ -117,7 +112,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Inscriptios",
           "storageKey": "Inscriptios(first:2147483647)",
-          "args": v0,
+          "args": v0 /*: any*/,
           "concreteType": "InscriptiosConnection",
           "plural": false,
           "selections": [
@@ -139,7 +134,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Inscriptio",
               "plural": false,
               "selections": [
-              v1,
+              v1 /*: any*/,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -203,15 +198,22 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Inscriptios",
-          "args": v0,
+          "args": v0 /*: any*/,
           "handle": "connection",
           "key": "InscriptioScreen_Inscriptios",
           "filters": null },
 
-        v1] }] } };
+        v1 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "query",
+      "name": "routeAppFrameInscriptio_InscriptioScreen_Query",
+      "id": null,
+      "text": "query routeAppFrameInscriptio_InscriptioScreen_Query {\n  Viewer {\n    ...InscriptioScreen_Viewer\n    id\n  }\n}\n\nfragment InscriptioScreen_Viewer on Viewer {\n  Inscriptios(first: 2147483647) {\n    edges {\n      node {\n        id\n        Inscriptio_LocationLat\n        Inscriptio_LocationLon\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

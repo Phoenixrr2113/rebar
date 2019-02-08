@@ -7,7 +7,7 @@
 'use strict';
 
 /*::
-              import type { ConcreteFragment } from 'relay-runtime';
+              import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoInPlaceEditItem_Viewer$ref: FragmentReference;
               export type EnsayoInPlaceEditItem_Viewer = {|
@@ -17,7 +17,7 @@
               */
 
 
-const node /*: ConcreteFragment*/ = {
+const node /*: ReaderFragment*/ = {
   "kind": "Fragment",
   "name": "EnsayoInPlaceEditItem_Viewer",
   "type": "Viewer",

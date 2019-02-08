@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash b1a8f519bd1713b84955283d45294b9b
+ * @relayHash c3817844295eb1c115e834122000df3a
  */
 
 /* eslint-disable */
@@ -80,11 +80,6 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "query",
-    "name": "routeAppFrameEnsayo_EnsayoInPaceEditList_Query",
-    "id": null,
-    "text": "query routeAppFrameEnsayo_EnsayoInPaceEditList_Query {\n  Viewer {\n    ...EnsayoInPaceEditList_Viewer\n    id\n  }\n}\n\nfragment EnsayoInPaceEditList_Viewer on Viewer {\n  Ensayos(first: 2147483647) {\n    edges {\n      node {\n        id\n        ...EnsayoInPlaceEditItem_Ensayo\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...EnsayoInPlaceEditItem_Viewer\n}\n\nfragment EnsayoInPlaceEditItem_Ensayo on Ensayo {\n  id\n  Ensayo_Title\n  Ensayo_Description\n  Ensayo_Content\n}\n\nfragment EnsayoInPlaceEditItem_Viewer on Viewer {\n  id\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "routeAppFrameEnsayo_EnsayoInPaceEditList_Query",
@@ -129,7 +124,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Ensayos",
           "storageKey": "Ensayos(first:2147483647)",
-          "args": v0,
+          "args": v0 /*: any*/,
           "concreteType": "EnsayosConnection",
           "plural": false,
           "selections": [
@@ -151,7 +146,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Ensayo",
               "plural": false,
               "selections": [
-              v1,
+              v1 /*: any*/,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -222,15 +217,22 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Ensayos",
-          "args": v0,
+          "args": v0 /*: any*/,
           "handle": "connection",
           "key": "EnsayoList_Ensayos",
           "filters": null },
 
-        v1] }] } };
+        v1 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "query",
+      "name": "routeAppFrameEnsayo_EnsayoInPaceEditList_Query",
+      "id": null,
+      "text": "query routeAppFrameEnsayo_EnsayoInPaceEditList_Query {\n  Viewer {\n    ...EnsayoInPaceEditList_Viewer\n    id\n  }\n}\n\nfragment EnsayoInPaceEditList_Viewer on Viewer {\n  Ensayos(first: 2147483647) {\n    edges {\n      node {\n        id\n        ...EnsayoInPlaceEditItem_Ensayo\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...EnsayoInPlaceEditItem_Viewer\n}\n\nfragment EnsayoInPlaceEditItem_Ensayo on Ensayo {\n  id\n  Ensayo_Title\n  Ensayo_Description\n  Ensayo_Content\n}\n\nfragment EnsayoInPlaceEditItem_Viewer on Viewer {\n  id\n}\n",
+      "metadata": {} } };
 
 
 }();

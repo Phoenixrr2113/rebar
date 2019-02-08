@@ -53,7 +53,7 @@ class ViewportDimensionsScreen extends _react.default.Component
           _react.default.createElement(_TableHead.default, null,
           _react.default.createElement(_TableRow.default, null,
           _react.default.createElement(_TableCell.default, null, "Property"),
-          _react.default.createElement(_TableCell.default, { numeric: true }, "Value"))),
+          _react.default.createElement(_TableCell.default, { align: "right" }, "Value"))),
 
 
           _react.default.createElement(_TableBody.default, null,
@@ -61,7 +61,7 @@ class ViewportDimensionsScreen extends _react.default.Component
             return (
               _react.default.createElement(_TableRow.default, { key: n.name },
               _react.default.createElement(_TableCell.default, null, n.name),
-              _react.default.createElement(_TableCell.default, { numeric: true }, n.value)));
+              _react.default.createElement(_TableCell.default, { align: "right" }, n.value)));
 
 
           }))),

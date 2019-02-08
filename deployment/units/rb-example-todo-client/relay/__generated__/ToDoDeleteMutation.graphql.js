@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 69cce729b8f0ee6bd80b1011c01cb4e8
+ * @relayHash a2731da66746794cfa5b65045d5eb1f2
  */
 
 /* eslint-disable */
@@ -9,10 +9,10 @@
 
 /*::
               import type { ConcreteRequest } from 'relay-runtime';
-              export type ToDoDeleteInput = {
+              export type ToDoDeleteInput = {|
                 id: string,
                 clientMutationId?: ?string,
-              };
+              |};
               export type ToDoDeleteMutationVariables = {|
                 input: ToDoDeleteInput
               |};
@@ -87,24 +87,19 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "mutation",
-    "name": "ToDoDeleteMutation",
-    "id": null,
-    "text": "mutation ToDoDeleteMutation(\n  $input: ToDoDeleteInput!\n) {\n  ToDoDelete(input: $input) {\n    Viewer {\n      ToDo_TotalCount\n      ToDo_CompletedCount\n      id\n    }\n    deletedId\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "ToDoDeleteMutation",
       "type": "Mutation",
       "metadata": null,
-      "argumentDefinitions": v0,
+      "argumentDefinitions": v0 /*: any*/,
       "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "ToDoDelete",
         "storageKey": null,
-        "args": v1,
+        "args": v1 /*: any*/,
         "concreteType": "ToDoDeletePayload",
         "plural": false,
         "selections": [
@@ -117,11 +112,11 @@ const node /*: ConcreteRequest*/ = function () {
           "concreteType": "Viewer",
           "plural": false,
           "selections": [
-          v2,
-          v3] },
+          v2 /*: any*/,
+          v3 /*: any*/] },
 
 
-        v4] }] },
+        v4 /*: any*/] }] },
 
 
 
@@ -129,14 +124,14 @@ const node /*: ConcreteRequest*/ = function () {
     "operation": {
       "kind": "Operation",
       "name": "ToDoDeleteMutation",
-      "argumentDefinitions": v0,
+      "argumentDefinitions": v0 /*: any*/,
       "selections": [
       {
         "kind": "LinkedField",
         "alias": null,
         "name": "ToDoDelete",
         "storageKey": null,
-        "args": v1,
+        "args": v1 /*: any*/,
         "concreteType": "ToDoDeletePayload",
         "plural": false,
         "selections": [
@@ -149,8 +144,8 @@ const node /*: ConcreteRequest*/ = function () {
           "concreteType": "Viewer",
           "plural": false,
           "selections": [
-          v2,
-          v3,
+          v2 /*: any*/,
+          v3 /*: any*/,
           {
             "kind": "ScalarField",
             "alias": null,
@@ -160,10 +155,17 @@ const node /*: ConcreteRequest*/ = function () {
 
 
 
-        v4] }] } };
+        v4 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "mutation",
+      "name": "ToDoDeleteMutation",
+      "id": null,
+      "text": "mutation ToDoDeleteMutation(\n  $input: ToDoDeleteInput!\n) {\n  ToDoDelete(input: $input) {\n    Viewer {\n      ToDo_TotalCount\n      ToDo_CompletedCount\n      id\n    }\n    deletedId\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

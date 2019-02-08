@@ -14,8 +14,7 @@ var _Menu = _interopRequireDefault(require("@material-ui/core/Menu"));
 
 var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
 
-var _icons = require("@material-ui/icons");
-
+var _DotsVertical = _interopRequireDefault(require("mdi-material-ui/DotsVertical"));
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
 
@@ -50,13 +49,22 @@ class ToDoItem extends _react.default.Component
     _handle_onClickCheckbox = (event, ToDo_Complete) => {
       const { relay, Viewer, ToDo } = this.props;
 
-      _ToDoUpdateStatusMutation.default.commit(relay.environment, Viewer, ToDo, ToDo_Complete);
+      _ToDoUpdateStatusMutation.default.commit(
+      relay.environment,
+      Viewer,
+      ToDo,
+      ToDo_Complete);
+
     };this.
 
     _handle_Update_Properties = ToDo_properties => {
       const { relay, ToDo } = this.props;
 
-      _ToDoUpdateRenameMutation.default.commit(relay.environment, ToDo, ToDo_properties.ToDo_Text);
+      _ToDoUpdateRenameMutation.default.commit(
+      relay.environment,
+      ToDo,
+      ToDo_properties.ToDo_Text);
+
     };this.
 
     _handle_Close_Properties = () => {
@@ -98,7 +106,7 @@ class ToDoItem extends _react.default.Component
       _react.default.createElement(_ListItemText.default, { primary: ToDo_Text }),
       _react.default.createElement(_ListItemSecondaryAction.default, null,
       _react.default.createElement(_IconButton.default, { onClick: this.handleClickListItem },
-      _react.default.createElement(_icons.MoreVert, null)))),
+      _react.default.createElement(_DotsVertical.default, null)))),
 
 
 
@@ -108,10 +116,16 @@ class ToDoItem extends _react.default.Component
         open: this.state.menuIsOpen,
         onClose: this.handleRequestClose },
 
-      _react.default.createElement(_MenuItem.default, { key: "edit", onClick: event => this._handle_Menu_onClick_Edit(event) }, "Edit"),
+      _react.default.createElement(_MenuItem.default, {
+        key: "edit",
+        onClick: event => this._handle_Menu_onClick_Edit(event) }, "Edit"),
 
 
-      _react.default.createElement(_MenuItem.default, { key: "delete", onClick: event => this._handle_Menu_onClick_Delete(event) }, "Delete")),
+
+      _react.default.createElement(_MenuItem.default, {
+        key: "delete",
+        onClick: event => this._handle_Menu_onClick_Delete(event) }, "Delete")),
+
 
 
 

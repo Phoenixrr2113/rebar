@@ -1,5 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
+var _UserUpdate = _interopRequireDefault(require("../../../rb-account-management-server/graphql/mutation/UserUpdate"));
 var _EnsayoAdd = _interopRequireDefault(require("../../../rb-example-ensayo-server/graphql/mutation/EnsayoAdd"));
 var _EnsayoDelete = _interopRequireDefault(require("../../../rb-example-ensayo-server/graphql/mutation/EnsayoDelete"));
 var _EnsayoUpdate = _interopRequireDefault(require("../../../rb-example-ensayo-server/graphql/mutation/EnsayoUpdate"));
@@ -16,6 +17,7 @@ var _TranslaticiarumDelete = _interopRequireDefault(require("../../../rb-example
 var _TranslaticiarumUpdate = _interopRequireDefault(require("../../../rb-example-translaticiarum-server/graphql/mutation/TranslaticiarumUpdate"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}var _default =
 
 {
+  UserUpdate: _UserUpdate.default,
   EnsayoAdd: _EnsayoAdd.default,
   EnsayoDelete: _EnsayoDelete.default,
   EnsayoUpdate: _EnsayoUpdate.default,

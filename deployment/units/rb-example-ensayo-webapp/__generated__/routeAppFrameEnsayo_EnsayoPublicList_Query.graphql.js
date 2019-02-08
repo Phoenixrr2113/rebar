@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 38312c0b5b6d35ef4caeaeb91762b63d
+ * @relayHash bad791bfe3f1cf5d63133704e997a3ba
  */
 
 /* eslint-disable */
@@ -68,11 +68,6 @@ const node /*: ConcreteRequest*/ = function () {
 
   return {
     "kind": "Request",
-    "operationKind": "query",
-    "name": "routeAppFrameEnsayo_EnsayoPublicList_Query",
-    "id": null,
-    "text": "query routeAppFrameEnsayo_EnsayoPublicList_Query {\n  Viewer {\n    ...EnsayoPublicList_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicList_Viewer on Viewer {\n  Ensayos(first: 2147483647) {\n    edges {\n      node {\n        id\n        Ensayo_Title\n        Ensayo_Description\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
-    "metadata": {},
     "fragment": {
       "kind": "Fragment",
       "name": "routeAppFrameEnsayo_EnsayoPublicList_Query",
@@ -117,7 +112,7 @@ const node /*: ConcreteRequest*/ = function () {
           "alias": null,
           "name": "Ensayos",
           "storageKey": "Ensayos(first:2147483647)",
-          "args": v0,
+          "args": v0 /*: any*/,
           "concreteType": "EnsayosConnection",
           "plural": false,
           "selections": [
@@ -139,7 +134,7 @@ const node /*: ConcreteRequest*/ = function () {
               "concreteType": "Ensayo",
               "plural": false,
               "selections": [
-              v1,
+              v1 /*: any*/,
               {
                 "kind": "ScalarField",
                 "alias": null,
@@ -203,15 +198,22 @@ const node /*: ConcreteRequest*/ = function () {
           "kind": "LinkedHandle",
           "alias": null,
           "name": "Ensayos",
-          "args": v0,
+          "args": v0 /*: any*/,
           "handle": "connection",
           "key": "EnsayoPublicList_Ensayos",
           "filters": null },
 
-        v1] }] } };
+        v1 /*: any*/] }] },
 
 
 
+
+    "params": {
+      "operationKind": "query",
+      "name": "routeAppFrameEnsayo_EnsayoPublicList_Query",
+      "id": null,
+      "text": "query routeAppFrameEnsayo_EnsayoPublicList_Query {\n  Viewer {\n    ...EnsayoPublicList_Viewer\n    id\n  }\n}\n\nfragment EnsayoPublicList_Viewer on Viewer {\n  Ensayos(first: 2147483647) {\n    edges {\n      node {\n        id\n        Ensayo_Title\n        Ensayo_Description\n        __typename\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n}\n",
+      "metadata": {} } };
 
 
 }();

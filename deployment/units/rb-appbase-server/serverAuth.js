@@ -241,13 +241,73 @@ async function createuser(req, res) {
 }
 serverAuth.post('/createuser', createuser);
 
-serverAuth.post('/logout', async (req, res) => {
+async function changeSecret(req, res) {
+  let step = 'initialize';
+
+  try {
+    const objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
+
+    step = 'Verify that caller is a correctly logged in user';
+    await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, false);
+
+    step = 'Locate user account';
+    // user id and artifact id will be picked up from object manager
+    const arr_UserAccount = await objectManager.getObjectList_async('UserAccount', {
+      UserAccount_Type: 'un' });
+
+
+    if (arr_UserAccount.length === 0) {
+      res.status(401).json({ error: 'User account not found' });
+      return;
+    }
+
+    // Use first user found, there should be only one anyway
+    const a_UserAccount = arr_UserAccount[0];
+
+    step = 'Verify the current user secret';
+    const { User_CurrentSecret } = req.body;
+    if (
+    !(await new Promise((resolve) =>
+    _bcryptjs.default.compare(
+    User_CurrentSecret,
+    a_UserAccount.UserAccount_Secret,
+    (err, passwordMatch) => resolve(passwordMatch)))))
+
+
+    {
+      res.status(401).json({ error: 'Incorrect current password' });
+      return;
+    }
+
+    step = 'Hash the new user secret';
+    const { User_NewSecret } = req.body;
+    const UserAccount_Secret = await new Promise((resolve) =>
+    _bcryptjs.default.hash(User_NewSecret, 8, (err, hash) => resolve(hash)));
+
+
+    step = 'Write new secret hash to db';
+    a_UserAccount.UserAccount_Secret = UserAccount_Secret;
+    await objectManager.update('UserAccount', a_UserAccount);
+
+    res.json({ success: true });
+  } catch (err) {
+    (0, _log.default)('error', 'rb-appbase-server serverAuth change-secret: Failed', { err, step });
+    res.status(500).send(
+    JSON.stringify({
+      error: 'An error has occurred while attempting to change password' }));
+
+
+  }
+}
+serverAuth.post('/change-secret', changeSecret);
+
+async function logout(req, res) {
   try {
     const objectManager = await (0, _ObjectManager.getObjectManager)(req, res);
 
     // Notice that get user and session will return null if user is not found, hence the next line would
     // fail. This is OK because we have a catch in the end.
-    const userSession = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, true)).
+    const userSession = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, false)).
     UserSession;
 
     await objectManager.remove('UserSession', {
@@ -264,9 +324,11 @@ serverAuth.post('/logout', async (req, res) => {
 
 
   }
-});
+}
+serverAuth.post('/logout', logout);
 
 // Add extensions - custom configurations
 (0, _authExtensions.default)(serverAuth);var _default =
+
 serverAuth;exports.default = _default;
 //# sourceMappingURL=serverAuth.js.map

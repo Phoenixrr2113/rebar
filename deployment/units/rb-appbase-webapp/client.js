@@ -14,13 +14,11 @@ var _AppWrapper = _interopRequireDefault(require("../_configuration/rb-appbase-w
 
 var _fetcherClient = _interopRequireDefault(require("./fetcherClient"));
 var _router = require("./router");
+var _userToken = require("./scripts/userToken2");
 
 
 require("../_configuration/rb-appbase-webapp/global.css");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // In order to use ES7 async/await
 // Include global CSS used in all units. Will not be chunked
-// User token will be recorded upon startup and used when passing on client errors
-let UserToken2 = 'unknown';
-
 // Handler for error reporting
 async function rebarErrorHandler(err, err_info) {
   try {
@@ -41,7 +39,7 @@ async function rebarErrorHandler(err, err_info) {
 
     // Pakcage up error details
     const body = JSON.stringify({
-      UserToken2,
+      UserToken2: (0, _userToken.getUserToken2)(),
       err: { message: err.message, stack: err.stack },
       err_info });
 
@@ -64,10 +62,15 @@ async function rebarErrorHandler(err, err_info) {
       responseAsObject.issue_id);
 
     } else {
-      alert('An error has occurred. Attempt to assign an identifier has failed.');
+      alert(
+      'An error has occurred. Attempt to assign an identifier has failed.');
+
     }
   } catch (err) {
-    alert('An error has occurred. We were not able to assign an identifier to it.\nReason:' + err);
+    alert(
+    'An error has occurred. We were not able to assign an identifier to it.\nReason:' +
+    err);
+
   }
 }
 
@@ -75,13 +78,22 @@ async function rebarErrorHandler(err, err_info) {
 
 const render = (0, _createRender.default)({});
 (async () => {
-  const { relayPayloads, siteConfiguration } = window.__rebar_properties__;
+  const {
+    relayPayloads,
+    siteConfiguration,
+    UserToken1 } =
+  window.__rebar_properties__;
 
   // It is critical that the app frame has UserToken2 retrieved
-  UserToken2 = relayPayloads[0].data.Viewer.UserToken2;
+  (0, _userToken.setUserToken2)(relayPayloads[0].data.Viewer.UserToken2);
 
   // eslint-disable-next-line no-underscore-dangle
-  const fetcher = new _fetcherClient.default((0, _getGraphQLServerURL.default)(), relayPayloads, UserToken2);
+  const fetcher = new _fetcherClient.default(
+  (0, _getGraphQLServerURL.default)(),
+  relayPayloads,
+  UserToken1,
+  (0, _userToken.getUserToken2)());
+
   const resolver = (0, _router.createResolver)(fetcher);
 
   const Router = await (0, _createInitialFarceRouter.default)({
@@ -93,7 +105,10 @@ const render = (0, _createRender.default)({});
 
 
   const contentComponent =
-  _react.default.createElement(_AppWrapper.default, { siteConfiguration: siteConfiguration, url: document.location.href },
+  _react.default.createElement(_AppWrapper.default, {
+    siteConfiguration: siteConfiguration,
+    url: document.location.href },
+
   _react.default.createElement(Router, { resolver: resolver }));
 
 
