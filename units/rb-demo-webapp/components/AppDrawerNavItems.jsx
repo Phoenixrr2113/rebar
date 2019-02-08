@@ -6,20 +6,13 @@ import List from '@material-ui/core/List'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import IconInbox from '@material-ui/icons/Inbox'
-
-import IconToday from '@material-ui/icons/Today'
-
-import IconEdit from '@material-ui/icons/Edit'
-
-import IconImportContacts from '@material-ui/icons/ImportContacts'
-
-import IconMyLocation from '@material-ui/icons/MyLocation'
-
-import IconOpenWith from '@material-ui/icons/OpenWith'
-
-import IconLock from '@material-ui/icons/Lock'
-
+import IconInbox from 'mdi-material-ui/Inbox'
+import IconToday from 'mdi-material-ui/Today'
+import IconEdit from 'mdi-material-ui/Edit'
+import IconImportContacts from 'mdi-material-ui/ImportContacts'
+import IconMyLocation from 'mdi-material-ui/MyLocation'
+import IconOpenWith from 'mdi-material-ui/OpenWith'
+import IconLock from 'mdi-material-ui/Lock'
 import React from 'react'
 
 import NavMenuItemWithIcon from '../../rb-appdrawer-webapp/components/NavMenuItemWithIcon'
@@ -31,7 +24,10 @@ const styles = {
   },
 }
 
-class AppDrawerNavItems extends React.Component<{ classes: Object, onClick: Function }> {
+class AppDrawerNavItems extends React.Component<{
+  classes: Object,
+  onClick: Function,
+}> {
   render() {
     const { classes, onClick } = this.props
 

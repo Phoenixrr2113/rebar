@@ -597,11 +597,12 @@ export default class ObjectManager {
     if ( entityDefinition == null )
       throw new Error( 'Cound not find entity: ' + entityName )
 
+    let executionStep = ''
     try {
-      // Apply artifact_id, User_id security
+      executionStep = 'Apply artifact_id, User_id security'
       this.addUserIdAndOrSiteIdToFilterOrFields( entityDefinition, fields )
 
-      // Verify user object permission, if applies
+      executionStep = 'Verify user object permission, if applies'
       if ( entityDefinition.UserPermissionsForObject.use ) {
         const permission = await this.getOneObject_async(
           'UserPermissionForObject',
@@ -619,10 +620,10 @@ export default class ObjectManager {
           return
       }
 
-      // Update created and modified fields
+      executionStep = 'Update created and modified fields'
       this.updatedCreatedAndModifiedFields( entityDefinition, fields, false )
 
-      // Retrieve the current values, if triggers will be used
+      executionStep = 'Retrieve the current values, if triggers will be used'
       let oldFields = null
       if ( entityDefinition.TriggersForUpdateShouldRetrieveCurrentRecord ) {
         oldFields = await this.getOneObject_async( entityName, {
@@ -630,20 +631,24 @@ export default class ObjectManager {
         })
       }
 
+      executionStep = 'Record change'
       this.recordChange( entityName, fields, false )
 
+      executionStep = 'Execute triggers'
       await this.executeTriggers(
         entityDefinition.TriggersForUpdate,
         fields,
         oldFields
       )
 
+      executionStep = 'Execute persister update'
       await entityDefinition.Persister.update( entityName, fields )
     } catch ( err ) {
       log( 'error', 'rb-base-server ObjectManager update: failed', {
-        fields,
         entityName,
         err,
+        executionStep,
+        fields,
       })
       throw new NestedError( 'Update failed', err )
     }

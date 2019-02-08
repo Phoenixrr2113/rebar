@@ -1,6 +1,6 @@
 // @flow
 
-import AddIcon from '@material-ui/icons/Add'
+import AddIcon from 'mdi-material-ui/Add'
 
 import Card from '@material-ui/core/Card'
 

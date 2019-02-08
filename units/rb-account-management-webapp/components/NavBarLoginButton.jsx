@@ -10,10 +10,8 @@ import MenuItem from '@material-ui/core/MenuItem'
 
 import { withStyles } from '@material-ui/core/styles'
 
-import IconPerson from '@material-ui/icons/Person'
-
-import IconPersonOutline from '@material-ui/icons/PersonOutline'
-
+import IconAccount from 'mdi-material-ui/Account'
+import IconAccountOutline from 'mdi-material-ui/AccountOutline'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -39,7 +37,7 @@ class NavBarLoginButton extends React.Component<
     anchorEl: ?Object,
     loginDialogIsOpen: boolean,
     userMenuIsOpen: boolean,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -101,10 +99,14 @@ class NavBarLoginButton extends React.Component<
       <div>
         <IconButton
           aria-haspopup="true"
-          onClick={User_IsAnonymous ? this._handle_onClick_Login : this._handle_onClick_UserMenu}
+          onClick={
+            User_IsAnonymous
+              ? this._handle_onClick_Login
+              : this._handle_onClick_UserMenu
+          }
           color="inherit"
         >
-          {User_IsAnonymous ? <IconPersonOutline /> : <IconPerson />}
+          {User_IsAnonymous ? <IconAccountOutline /> : <IconAccount />}
         </IconButton>
 
         <LoginDialog
@@ -141,5 +143,5 @@ export default createFragmentContainer(
       User_IsAnonymous
       User_DisplayName
     }
-  `,
+  `
 )

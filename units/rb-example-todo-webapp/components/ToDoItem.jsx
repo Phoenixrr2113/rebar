@@ -14,8 +14,7 @@ import Menu from '@material-ui/core/Menu'
 
 import MenuItem from '@material-ui/core/MenuItem'
 
-import { MoreVert } from '@material-ui/icons'
-
+import { MoreVert } from 'mdi-material-ui'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -35,7 +34,7 @@ class ToDoItem extends React.Component<
     anchorEl: ?Object,
     menuIsOpen: boolean,
     propertiesIsOpen: boolean,
-  },
+  }
 > {
   constructor( props: Object, context: Object ) {
     super( props, context )
@@ -50,13 +49,22 @@ class ToDoItem extends React.Component<
   _handle_onClickCheckbox = ( event, ToDo_Complete ) => {
     const { relay, Viewer, ToDo } = this.props
 
-    ToDoUpdateStatusMutation.commit( relay.environment, Viewer, ToDo, ToDo_Complete )
+    ToDoUpdateStatusMutation.commit(
+      relay.environment,
+      Viewer,
+      ToDo,
+      ToDo_Complete
+    )
   }
 
   _handle_Update_Properties = ToDo_properties => {
     const { relay, ToDo } = this.props
 
-    ToDoUpdateRenameMutation.commit( relay.environment, ToDo, ToDo_properties.ToDo_Text )
+    ToDoUpdateRenameMutation.commit(
+      relay.environment,
+      ToDo,
+      ToDo_properties.ToDo_Text
+    )
   }
 
   _handle_Close_Properties = () => {
@@ -108,10 +116,16 @@ class ToDoItem extends React.Component<
           open={this.state.menuIsOpen}
           onClose={this.handleRequestClose}
         >
-          <MenuItem key="edit" onClick={event => this._handle_Menu_onClick_Edit( event )}>
+          <MenuItem
+            key="edit"
+            onClick={event => this._handle_Menu_onClick_Edit( event )}
+          >
             Edit
           </MenuItem>
-          <MenuItem key="delete" onClick={event => this._handle_Menu_onClick_Delete( event )}>
+          <MenuItem
+            key="delete"
+            onClick={event => this._handle_Menu_onClick_Delete( event )}
+          >
             Delete
           </MenuItem>
         </Menu>

@@ -5,15 +5,20 @@ import { withStyles } from '@material-ui/core/styles'
 import React from 'react'
 
 const styles = theme => ({
-  content: theme.mixins.gutters({
+  content: {
     margin: '0 auto',
     flex: '1 1 100%',
     maxWidth: '100%',
-    paddingTop: theme.mixins.toolbar.minHeight + 16,
-  }),
+    paddingLeft: 0,
+    paddingRight: 0,
+    paddingTop: theme.spacing.unit * 3,
+  },
 })
 
-class ResponsiveContentArea extends React.Component<{ classes: Object, children: any }> {
+class ResponsiveContentArea extends React.Component<{
+  classes: Object,
+  children: any,
+}> {
   render() {
     const { classes } = this.props
 

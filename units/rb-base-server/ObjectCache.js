@@ -6,7 +6,10 @@ import CacheableCategoryDefinitions from '../_configuration/rb-base-server/Cache
 import { debugWriteToConsoleObjectCacheActivity } from '../_configuration/debug'
 
 import log from './log'
-import type { CachedEntriesForCategory, CachedEntry } from './types/ObjectCache.types'
+import type {
+  CachedEntriesForCategory,
+  CachedEntry,
+} from './types/ObjectCache.types'
 
 const expirationCheckInterval = 5000
 let expirationIntervalTimer = null
@@ -25,7 +28,7 @@ export function initializeObjectCache() {
 async function executeDiscard(
   cacheKey: string,
   discardFunction: Function,
-  objectPromise: Promise<Object>,
+  objectPromise: Promise<Object>
 ) {
   try {
     await discardFunction( objectPromise )
@@ -36,7 +39,9 @@ async function executeDiscard(
   }
 }
 
-async function cleanupCategory( cachedEntriesForCategory: CachedEntriesForCategory ) {
+async function cleanupCategory(
+  cachedEntriesForCategory: CachedEntriesForCategory
+) {
   const { definition, entries } = cachedEntriesForCategory
 
   // If the number if cached elements does not exceed max, no cleanup is necessary
@@ -69,7 +74,8 @@ async function cleanupCategory( cachedEntriesForCategory: CachedEntriesForCatego
 }
 
 async function removeExpired() {
-  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'removeExpired - before' )
+  if ( debugWriteToConsoleObjectCacheActivity )
+    logEntries( 'removeExpired - before' )
 
   let bPerishableItemsLeft = false
 
@@ -101,22 +107,24 @@ async function removeExpired() {
 
   // If there are no more perishable items, simply remove the timer
   if ( !bPerishableItemsLeft ) {
-    // $AssureFlow expirationIntervalTimer is guaranteed to be set
     clearInterval( expirationIntervalTimer )
     expirationIntervalTimer = null
   }
 
-  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'removeExpired - after' )
+  if ( debugWriteToConsoleObjectCacheActivity )
+    logEntries( 'removeExpired - after' )
 }
 
 export async function addObjectToCache(
   categoryName: string,
   cacheKey: string,
-  objectPromise: Promise<Object>,
+  objectPromise: Promise<Object>
 ) {
   const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
   if ( cachedEntriesForCategory == null )
-    throw new Error( 'addObjectToCache: can not find cacheable category ' + categoryName )
+    throw new Error(
+      'addObjectToCache: can not find cacheable category ' + categoryName
+    )
 
   const { definition, entries } = cachedEntriesForCategory
 
@@ -134,7 +142,10 @@ export async function addObjectToCache(
     // Only start timer when first object with expiration is added. No reason to run it before
     // that.
     if ( expirationIntervalTimer == null ) {
-      expirationIntervalTimer = setInterval( removeExpired, expirationCheckInterval )
+      expirationIntervalTimer = setInterval(
+        removeExpired,
+        expirationCheckInterval
+      )
     }
 
     cachedEntry.expiresAtMs = timeMsNow + definition.expirationDurationMs
@@ -144,10 +155,14 @@ export async function addObjectToCache(
 
   await cleanupCategory( cachedEntriesForCategory )
 
-  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'addObjectToCache key=' + cacheKey )
+  if ( debugWriteToConsoleObjectCacheActivity )
+    logEntries( 'addObjectToCache key=' + cacheKey )
 }
 
-export async function getObjectFromCache( categoryName: string, cacheKey: string ): ?Object {
+export async function getObjectFromCache(
+  categoryName: string,
+  cacheKey: string
+): ?Object {
   const cachedEntry = await getCachedEntryFromCache( categoryName, cacheKey )
 
   if ( cachedEntry ) {
@@ -159,11 +174,13 @@ export async function getObjectFromCache( categoryName: string, cacheKey: string
 
 async function getCachedEntryFromCache(
   categoryName: string,
-  cacheKey: string,
+  cacheKey: string
 ): Promise<?CachedEntry> {
   const cachedEntriesForCategory = MapCachesByCategory.get( categoryName )
   if ( cachedEntriesForCategory == null )
-    throw new Error( 'getCachedEntryFromCache: can not find cacheable category ' + categoryName )
+    throw new Error(
+      'getCachedEntryFromCache: can not find cacheable category ' + categoryName
+    )
 
   const { definition, entries } = cachedEntriesForCategory
   const cachedEntry = entries.get( cacheKey )
@@ -193,7 +210,10 @@ async function getCachedEntryFromCache(
   let isValid: boolean = false
   if ( cachedEntry.validityVerificationPromise == null ) {
     try {
-      cachedEntry.validityVerificationPromise = definition.validityVerifier( cacheKey, cachedEntry )
+      cachedEntry.validityVerificationPromise = definition.validityVerifier(
+        cacheKey,
+        cachedEntry
+      )
       isValid = await cachedEntry.validityVerificationPromise
     } catch ( err ) {
       // Indicate that the entry is invalid
@@ -221,9 +241,12 @@ async function getCachedEntryFromCache(
 export async function getOrCreateObjectFromCahce(
   categoryName: string,
   cacheKey: string,
-  creationFunction: Function,
+  creationFunction: Function
 ): Object {
-  const currentCachedEntry = await getCachedEntryFromCache( categoryName, cacheKey )
+  const currentCachedEntry = await getCachedEntryFromCache(
+    categoryName,
+    cacheKey
+  )
 
   // If it is already present in cache, return
   if ( currentCachedEntry ) {
@@ -235,7 +258,8 @@ export async function getOrCreateObjectFromCahce(
   try {
     newObjectPromise = creationFunction()
   } catch ( err ) {
-    const message = 'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed'
+    const message =
+      'rb-base-server ObjectCache getOrCreateObjectFromCahce: creationFunction failed'
     log( 'error', message, { cacheKey, err })
     throw new NestedError( message, err )
   }
@@ -245,7 +269,8 @@ export async function getOrCreateObjectFromCahce(
   // creation function
   addObjectToCache( categoryName, cacheKey, newObjectPromise )
 
-  if ( debugWriteToConsoleObjectCacheActivity ) logEntries( 'getOrCreateObjectFromCahce' )
+  if ( debugWriteToConsoleObjectCacheActivity )
+    logEntries( 'getOrCreateObjectFromCahce' )
 
   try {
     return await newObjectPromise
@@ -291,6 +316,6 @@ function logEntries( title: string ) {
     }
   }
 
-  console.log( title + ' @ ' + timeMsNow )
+  console.log( 'XXX ' + title + ' @ ' + timeMsNow )
   console.table( values )
 }

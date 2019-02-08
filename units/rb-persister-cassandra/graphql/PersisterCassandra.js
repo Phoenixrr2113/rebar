@@ -30,7 +30,11 @@ export default class PersisterCassandra {
     this.tableSchemas = new Map()
   }
 
-  getOneObject( entityName: string, ObjectType: any, filters: Array<any> ): Promise<any> {
+  getOneObject(
+    entityName: string,
+    ObjectType: any,
+    filters: Array<any>
+  ): Promise<any> {
     const resultPromises = []
 
     for ( let filter of filters ) {
@@ -55,31 +59,56 @@ export default class PersisterCassandra {
           try {
             this.updateUuidsInFields( entityName, filter )
 
-            ExpressCassandraClient.instance[entityName].findOne( filter, options, ( err, entity ) => {
-              if ( err )
-                reject(
-                  'getOneObject findOne failed: ' +
-                    JSON.stringify({ entityName, filter, message: err.message }),
-                )
-              else {
-                if ( entity != null ) resolve( new ObjectType( entity ) )
-                else resolve( null )
+            ExpressCassandraClient.instance[entityName].findOne(
+              filter,
+              options,
+              ( err, entity ) => {
+                // TODO: Would be nice to have a STRONG fild one that fails if object is not found.
+                // Also, not possible to distignuish key error from not found, apparently
+                // if ( entity === undefined ) {
+                //   reject(
+                //     'getOneObject findOne failed by producing undefined: ' +
+                //       JSON.stringify({ entityName, filter, err }),
+                //   )
+                // } else
+                if ( err ) {
+                  reject(
+                    'getOneObject findOne failed: ' +
+                      JSON.stringify({
+                        entityName,
+                        filter,
+                        message: err.message,
+                      })
+                  )
+                } else {
+                  if ( entity != null ) resolve( new ObjectType( entity ) )
+                  else resolve( null )
+                }
               }
-            })
+            )
           } catch ( err ) {
             reject(
               'getOneObject failed: ' +
-                JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }),
+                JSON.stringify({
+                  entityName,
+                  filter,
+                  message: err.message,
+                  stack: err.stack,
+                })
             )
           }
-        }),
+        })
       )
     }
 
     return Promise.all( resultPromises )
   }
 
-  getObjectList( entityName: string, ObjectType: any, filters: Array<any> ): Promise<Array<any>> {
+  getObjectList(
+    entityName: string,
+    ObjectType: any,
+    filters: Array<any>
+  ): Promise<Array<any>> {
     const resultPromises = []
 
     for ( let filter of filters ) {
@@ -108,25 +137,35 @@ export default class PersisterCassandra {
               filter,
               options,
               ( err, arrEntities ) => {
-                if ( err )
+                if ( err ) {
                   reject(
                     'getObjectList find failed: ' +
-                      JSON.stringify({ entityName, filter, message: err.message }),
+                      JSON.stringify({
+                        entityName,
+                        filter,
+                        message: err.message,
+                      })
                   )
-                else {
+                } else {
                   const arrRetObj = []
-                  for ( let entity of arrEntities ) arrRetObj.push( new ObjectType( entity ) )
+                  for ( let entity of arrEntities )
+                    arrRetObj.push( new ObjectType( entity ) )
                   resolve( arrRetObj )
                 }
-              },
+              }
             )
           } catch ( err ) {
             reject(
               'getObjectList failed: ' +
-                JSON.stringify({ entityName, filter, message: err.message, stack: err.stack }),
+                JSON.stringify({
+                  entityName,
+                  filter,
+                  message: err.message,
+                  stack: err.stack,
+                })
             )
           }
-        }),
+        })
       )
     }
 
@@ -134,13 +173,14 @@ export default class PersisterCassandra {
   }
 
   updateUuidsInFields( entityName: string, fields: any ) {
-    const schemaFields = ExpressCassandraClient.instance[entityName]._properties.schema.fields
+    const schemaFields =
+      ExpressCassandraClient.instance[entityName]._properties.schema.fields
 
     for ( let fieldName in fields ) {
       const fieldValue = fields[fieldName]
 
       // $in should only be used with UUID, no strings will be allowed
-      if ( fieldValue.$in ) continue
+      if ( fieldValue && fieldValue.$in ) continue
 
       const fieldType = schemaFields[fieldName]
 
@@ -170,8 +210,11 @@ export default class PersisterCassandra {
     return new Promise( ( resolve, reject ) => {
       const entity = new ExpressCassandraClient.instance[entityName]( fields )
       entity.save( options, err => {
-        if ( err ) reject( err )
-        else resolve()
+        if ( err ) {
+          reject( err )
+        } else {
+          resolve()
+        }
       })
     })
   }
@@ -226,7 +269,7 @@ export default class PersisterCassandra {
     if ( this.tableSchemas ) this.tableSchemas.set( tableName, tableSchema )
     else {
       console.error(
-        'Error: Attempting to add table schemas after express-cassandra client connect.',
+        'Error: Attempting to add table schemas after express-cassandra client connect.'
       )
       process.exit( 1 )
     }
@@ -234,14 +277,19 @@ export default class PersisterCassandra {
 
   confirmHealth(): Promise<any> {
     return new Promise( ( resolve, reject ) => {
-      ExpressCassandraClient.modelInstance.User.get_cql_client( ( err, client ) => {
-        if ( err ) reject( err )
-        else
-          client.execute( 'select release_version from system.local;', ( err, result ) => {
-            if ( err ) reject( err )
-            else resolve()
-          })
-      })
+      ExpressCassandraClient.modelInstance.User.get_cql_client(
+        ( err, client ) => {
+          if ( err ) reject( err )
+          else
+            client.execute(
+              'select release_version from system.local;',
+              ( err, result ) => {
+                if ( err ) reject( err )
+                else resolve()
+              }
+            )
+        }
+      )
     })
   }
 
@@ -262,7 +310,7 @@ export default class PersisterCassandra {
   loadOneTableSchemaFromArray(
     arrSchemas: Array<any>,
     runAsPartOfSetupDatabase: boolean,
-    cb: Function,
+    cb: Function
   ): void {
     if ( arrSchemas.length > 0 ) {
       const tableName = arrSchemas[0][0]
@@ -275,7 +323,9 @@ export default class PersisterCassandra {
       ExpressCassandraClient.loadSchema( tableName, tableSchema ).syncDB( err => {
         if ( err ) {
           console.log(
-            'Error:  Initializing Cassandra persister - error while creating ' + tableName + '!',
+            'Error:  Initializing Cassandra persister - error while creating ' +
+              tableName +
+              '!'
           )
           console.error( err.message )
           process.exit( 1 )
@@ -283,10 +333,15 @@ export default class PersisterCassandra {
           if ( runAsPartOfSetupDatabase )
             console.log(
               ' Table ' +
-                ExpressCassandraClient.modelInstance[tableName]._properties.name +
-                ' ready.',
+                ExpressCassandraClient.modelInstance[tableName]._properties
+                  .name +
+                ' ready.'
             )
-          this.loadOneTableSchemaFromArray( arrSchemas, runAsPartOfSetupDatabase, cb )
+          this.loadOneTableSchemaFromArray(
+            arrSchemas,
+            runAsPartOfSetupDatabase,
+            cb
+          )
           // Load the next table
           return
         }
