@@ -1,7 +1,5 @@
 // @flow
 
-import AddIcon from 'mdi-material-ui/Add'
-
 import Card from '@material-ui/core/Card'
 
 import CardContent from '@material-ui/core/CardContent'
@@ -12,6 +10,7 @@ import Fab from '@material-ui/core/Fab'
 
 import { withStyles } from '@material-ui/core/styles'
 
+import IconPlus from 'mdi-material-ui/Plus'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -85,7 +84,7 @@ class EnsayoInPaceEditScreen extends React.Component<
                 className={classes.button}
                 onClick={this._handle_onClick_Add}
               >
-                <AddIcon />
+                <IconPlus />
               </Fab>
             </div>
 

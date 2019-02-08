@@ -14,7 +14,7 @@ import Menu from '@material-ui/core/Menu'
 
 import MenuItem from '@material-ui/core/MenuItem'
 
-import { MoreVert } from 'mdi-material-ui'
+import IconDotsVertical from 'mdi-material-ui/DotsVertical'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
@@ -106,7 +106,7 @@ class ToDoItem extends React.Component<
           <ListItemText primary={ToDo_Text} />
           <ListItemSecondaryAction>
             <IconButton onClick={this.handleClickListItem}>
-              <MoreVert />
+              <IconDotsVertical />
             </IconButton>
           </ListItemSecondaryAction>
         </ListItem>
