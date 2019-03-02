@@ -8,8 +8,6 @@ import CardActions from '@material-ui/core/CardActions'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -18,8 +16,12 @@ import TextField from '@material-ui/core/TextField'
 
 import Typography from '@material-ui/core/Typography'
 
+import IconLockReset from 'mdi-material-ui/LockReset'
 import React from 'react'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles,
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
 import NewUserSecretInput from './NewUserSecretInput'
@@ -28,8 +30,10 @@ import NewUserSecretInput from './NewUserSecretInput'
 
 const styles = {
   card: {
-    minWidth: 320,
+    minWidth: 350,
+    maxWidth: 1200,
   },
+  ...cardHeaderContentStyles,
 }
 
 //
@@ -126,18 +130,24 @@ class ChangeSecretScreen extends React.Component<
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">Updating, please wait.</Typography>
-          <br />
-          <br />
-          <LinearProgress mode="query" />
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_CancelChange}>Cancel</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset nativeColor="#003c78" />}
+          title="Changing password"
+        />
+
+        <Card className={classes.card} raised={true}>
+          <CardContent>
+            <Typography component="p">Updating, please wait.</Typography>
+            <br />
+            <br />
+            <LinearProgress mode="query" />
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_CancelChange}>Cancel</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -145,15 +155,23 @@ class ChangeSecretScreen extends React.Component<
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">Password successfully changed.</Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_Continue}>Continue</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset nativeColor="#003c78" />}
+          title="Password changed"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Password successfully changed.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_Continue}>Continue</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -162,17 +180,23 @@ class ChangeSecretScreen extends React.Component<
     const { executionStatus } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">
-            Changing password failed because {executionStatus}.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset nativeColor="#003c78" />}
+          title="Failed to change password"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Changing password failed because {executionStatus}.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -195,34 +219,40 @@ class ChangeSecretScreen extends React.Component<
       User_CurrentSecret.length < 5 || User_NewSecret === ''
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Change Password" />
-        <CardContent>
-          <TextField
-            autoComplete="password"
-            fullWidth={true}
-            label="Current (old) password"
-            margin="normal"
-            type="password"
-            value={User_CurrentSecret}
-            variant="outlined"
-            onChange={this._handle_onChange_Identifier}
-          />
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset nativeColor="#003c78" />}
+          title="Change password"
+        />
 
-          <br />
-          <br />
+        <Card className={classes.card}>
+          <CardContent>
+            <TextField
+              autoComplete="password"
+              fullWidth={true}
+              label="Current (old) password"
+              margin="normal"
+              type="password"
+              value={User_CurrentSecret}
+              variant="outlined"
+              onChange={this._handle_onChange_Identifier}
+            />
 
-          <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
-        </CardContent>
-        <CardActions>
-          <Button
-            disabled={createDisabled}
-            onClick={this._handle_onClick_Change}
-          >
-            Change
-          </Button>
-        </CardActions>
-      </Card>
+            <br />
+            <br />
+
+            <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
+          </CardContent>
+          <CardActions>
+            <Button
+              disabled={createDisabled}
+              onClick={this._handle_onClick_Change}
+            >
+              Change
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 

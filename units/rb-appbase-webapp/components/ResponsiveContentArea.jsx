@@ -5,13 +5,18 @@ import { withStyles } from '@material-ui/core/styles'
 import React from 'react'
 
 const styles = theme => ({
+  container: {
+    textAlign: 'center',
+    width: '100%',
+  },
   content: {
-    margin: '0 auto',
     flex: '1 1 100%',
-    maxWidth: '100%',
+    margin: '0 auto',
+    maxWidth: 1200,
     paddingLeft: 0,
     paddingRight: 0,
     paddingTop: theme.spacing.unit * 3,
+    textAlign: 'left',
   },
 })
 
@@ -22,7 +27,11 @@ class ResponsiveContentArea extends React.Component<{
   render() {
     const { classes } = this.props
 
-    return <div className={classes.content}>{this.props.children}</div>
+    return (
+      <div className={classes.container}>
+        <div className={classes.content}>{this.props.children}</div>
+      </div>
+    )
   }
 }
 

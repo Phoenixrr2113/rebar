@@ -10,15 +10,17 @@ import CardActions from '@material-ui/core/CardActions'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import TextField from '@material-ui/core/TextField'
 
 import { withStyles } from '@material-ui/core/styles'
 
+import IconAccountSettings from 'mdi-material-ui/AccountSettings'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles,
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import UserUpdateMutation from '../../rb-account-management-client/relay/UserUpdateMutation'
 import RequiresAuthenticationNotice from '../../rb-account-management-webapp/components/RequiresAuthentication'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
@@ -26,7 +28,11 @@ import ResponsiveContentArea from '../../rb-appbase-webapp/components/Responsive
 //
 
 const styles = {
-  card: { minWidth: 320 },
+  card: {
+    minWidth: 350,
+    maxWidth: 1200,
+  },
+  ...cardHeaderContentStyles,
 }
 
 //
@@ -112,9 +118,13 @@ class UserProfileScreen extends React.Component<
 
     return (
       <ResponsiveContentArea>
-        <Card className={classes.card}>
-          <CardHeader title="User Profile" />
+        <CompositeCardHeader
+          icon={<IconAccountSettings nativeColor="#003c78" />}
+          title="User"
+          subTitle="Profile &amp; settings"
+        />
 
+        <Card className={classes.card}>
           <CardContent>
             <TextField
               autoComplete="name"

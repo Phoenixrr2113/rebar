@@ -1,16 +1,10 @@
 // @flow
 
-import AppBar from '@material-ui/core/AppBar'
-
 import Drawer from '@material-ui/core/Drawer'
 
-import IconButton from '@material-ui/core/IconButton'
+import Fab from '@material-ui/core/Fab'
 
 import { withStyles } from '@material-ui/core/styles'
-
-import Toolbar from '@material-ui/core/Toolbar'
-
-import Typography from '@material-ui/core/Typography'
 
 import { withRouter } from 'found'
 import IconMenu from 'mdi-material-ui/Menu'
@@ -20,7 +14,6 @@ import { createFragmentContainer, graphql } from 'react-relay'
 
 import AppDrawerNavItems from '../../_configuration/rb-appdrawer-webapp/AppDrawerNavItems'
 import AppDrawerTitle from '../../_configuration/rb-appdrawer-webapp/AppDrawerTitle'
-import NavBarLoginButton from '../../rb-account-management-webapp/components/NavBarLoginButton'
 import NavBarDefaultTitle from '../../_configuration/rb-appdrawer-webapp/NavBarDefaultTitle'
 
 import AppFrameContext from './AppFrameContext'
@@ -62,23 +55,23 @@ const styles = theme => ({
     width: '100%',
     height: '100%',
   },
-  appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create([ 'margin', 'width' ], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-  },
-  grow: {
-    flex: '1 1 auto',
-  },
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20,
+    position: 'absolute',
+    zIndex: 1199, // Drawer is 1200
+    [theme.breakpoints.down( 'sm' )]: {
+      marginLeft: 4,
+      marginTop: 4,
+    },
+    [theme.breakpoints.between( 'sm', 'lg' )]: {
+      marginLeft: 8,
+      marginTop: 8,
+    },
+    [theme.breakpoints.up( 'lg' )]: {
+      marginLeft: 12,
+      marginTop: 12,
+    },
   },
-  menuButtonRoot: {
-    color: '#ffffff',
-  },
+
   drawerInner: {
     // Make the items inside not wrap when transitioning:
     width: drawerWidth,
@@ -96,9 +89,8 @@ const styles = theme => ({
     width: drawerWidth,
   },
   content: {
-    width: '100%',
-    flexGrow: 1,
     backgroundColor: theme.palette.background.default,
+    flexGrow: 1,
     [theme.breakpoints.down( 'sm' )]: {
       padding: 0,
     },
@@ -114,8 +106,8 @@ const styles = theme => ({
     }),
     overflow: 'scroll',
     overflowScrolling: 'touch',
-    height: 'calc(100% - 48px)',
-    marginTop: 48,
+    width: '100%',
+    height: '100%',
   },
 })
 
@@ -171,26 +163,15 @@ class AppFrame extends React.Component<
         </Helmet>
 
         <div className={classes.appFrame}>
-          <AppBar className={classes.appBar}>
-            <Toolbar disableGutters={true} variant="dense">
-              <IconButton
-                aria-label="open drawer"
-                onClick={this._handle_Drawer_Open}
-                className={classes.menuButton}
-                classes={{ root: classes.menuButtonRoot }}
-              >
-                <IconMenu />
-              </IconButton>
-
-              <Typography variant="h6" color="inherit" noWrap>
-                {title}
-              </Typography>
-
-              <div className={classes.grow} />
-
-              <NavBarLoginButton Viewer={Viewer} />
-            </Toolbar>
-          </AppBar>
+          <Fab
+            aria-label="open drawer"
+            className={classes.menuButton}
+            color="primary"
+            size="small"
+            onClick={this._handle_Drawer_Open}
+          >
+            <IconMenu />
+          </Fab>
 
           <Drawer open={drawerIsOpen} onClose={this._handle_Drawer_Close}>
             <div className={classes.drawerInner}>
@@ -198,7 +179,8 @@ class AppFrame extends React.Component<
                 <AppDrawerTitle handle_GoTo={this._handle_GoTo} />
               </div>
             </div>
-            <AppDrawerNavItems onClick={this._handle_GoTo} />
+
+            <AppDrawerNavItems Viewer={Viewer} onClick={this._handle_GoTo} />
           </Drawer>
 
           <AppFrameContext.Provider value={{ setTitle, clearTitle }}>
@@ -215,7 +197,7 @@ export default createFragmentContainer(
   graphql`
     fragment AppFrame_Viewer on Viewer {
       UserToken2
-      ...NavBarLoginButton_Viewer
+      ...AppDrawerNavItems_Viewer
     }
   `
 )

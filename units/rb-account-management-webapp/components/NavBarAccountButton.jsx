@@ -27,7 +27,7 @@ const styles = {}
 
 //
 
-class NavBarLoginButton extends React.Component<
+class NavBarAccountButton extends React.Component<
   {
     Viewer: Object,
     relay: Object,
@@ -92,7 +92,8 @@ class NavBarLoginButton extends React.Component<
   }
 
   render() {
-    const { User_IsAnonymous, User_DisplayName } = this.props.Viewer
+    const { Viewer } = this.props
+    const { User_IsAnonymous, User_DisplayName } = Viewer
     const { loginDialogIsOpen, userMenuIsOpen } = this.state
 
     return (
@@ -137,9 +138,9 @@ class NavBarLoginButton extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( withRouter( NavBarLoginButton ) ),
+  withStyles( styles )( withRouter( NavBarAccountButton ) ),
   graphql`
-    fragment NavBarLoginButton_Viewer on Viewer {
+    fragment NavBarAccountButton_Viewer on Viewer {
       User_IsAnonymous
       User_DisplayName
     }
