@@ -6,8 +6,26 @@ import React from 'react'
 
 const styles = theme => ({
   container: {
+    backgroundColor: theme.palette.background.default,
+    flexGrow: 1,
+    overflow: 'scroll',
+    overflowScrolling: 'touch',
+    [theme.breakpoints.down( 'sm' )]: {
+      padding: 0,
+    },
+    [theme.breakpoints.between( 'sm', 'lg' )]: {
+      padding: theme.spacing.unit,
+    },
+    [theme.breakpoints.up( 'lg' )]: {
+      padding: theme.spacing.unit * 2,
+    },
+    transition: theme.transitions.create( 'margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
     textAlign: 'center',
     width: '100%',
+    height: '100%',
   },
   content: {
     flex: '1 1 100%',
@@ -28,9 +46,9 @@ class ResponsiveContentArea extends React.Component<{
     const { classes } = this.props
 
     return (
-      <div className={classes.container}>
+      <main className={classes.container}>
         <div className={classes.content}>{this.props.children}</div>
-      </div>
+      </main>
     )
   }
 }

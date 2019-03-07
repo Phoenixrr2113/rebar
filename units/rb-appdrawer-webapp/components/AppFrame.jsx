@@ -88,27 +88,6 @@ const styles = theme => ({
     height: '100%',
     width: drawerWidth,
   },
-  content: {
-    backgroundColor: theme.palette.background.default,
-    flexGrow: 1,
-    [theme.breakpoints.down( 'sm' )]: {
-      padding: 0,
-    },
-    [theme.breakpoints.between( 'sm', 'lg' )]: {
-      padding: theme.spacing.unit,
-    },
-    [theme.breakpoints.up( 'lg' )]: {
-      padding: theme.spacing.unit * 2,
-    },
-    transition: theme.transitions.create( 'margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    overflow: 'scroll',
-    overflowScrolling: 'touch',
-    width: '100%',
-    height: '100%',
-  },
 })
 
 const titlePrefix = process.env.NODE_ENV === 'production' ? '' : '<DEV> '
@@ -184,7 +163,7 @@ class AppFrame extends React.Component<
           </Drawer>
 
           <AppFrameContext.Provider value={{ setTitle, clearTitle }}>
-            <main className={classes.content}>{children}</main>
+            {children}
           </AppFrameContext.Provider>
         </div>
       </div>
