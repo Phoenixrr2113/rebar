@@ -43,6 +43,7 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
 | [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
+| [Jest](https://jestjs.io/)                                      | A delightful JavaScript Testing Framework with a focus on simplicity |
 | [LocalTunnel](https://localtunnel.github.io/www/)               | Expose yourself to the world. |
 | [Prettier](https://github.com/prettier/prettier/)               | Code formatter for javaScript. |
 | [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Allows tweaking of React components in real time. |
