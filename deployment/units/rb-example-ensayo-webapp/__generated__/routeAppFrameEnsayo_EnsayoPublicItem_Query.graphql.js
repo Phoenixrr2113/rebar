@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 0f37ca495170c2c3b090ae3b5c7f778a
+ * @relayHash 8b5815fb128e97ecd44127f25a8009f6
  */
 
 /* eslint-disable */
@@ -111,8 +111,7 @@ const node /*: ConcreteRequest*/ = function () {
           {
             "kind": "Variable",
             "name": "id",
-            "variableName": "id",
-            "type": "ID" }],
+            "variableName": "id" }],
 
 
           "concreteType": "Ensayo",

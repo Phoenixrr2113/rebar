@@ -8,8 +8,6 @@ var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions
 
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
-
 var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
 
 var _styles = require("@material-ui/core/styles");
@@ -18,22 +16,28 @@ var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
 
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
+var _LockReset = _interopRequireDefault(require("mdi-material-ui/LockReset"));
 var _react = _interopRequireDefault(require("react"));
+
+var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
+
 
 var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));
 
-var _NewUserSecretInput = _interopRequireDefault(require("./NewUserSecretInput"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _NewUserSecretInput = _interopRequireDefault(require("./NewUserSecretInput"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 //
 
 const styles = {
   card: {
-    minWidth: 320 }
+    minWidth: 350,
+    maxWidth: 1200 },
+
+  ..._CompositeCardHeader.cardHeaderContentStyles };
 
 
+//
 
-  //
-};
 class ChangeSecretScreen extends _react.default.Component
 
 
@@ -176,6 +180,26 @@ class ChangeSecretScreen extends _react.default.Component
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     _handle_onChange_Identifier = event => {
       const User_CurrentSecret = event.target.value;
 
@@ -184,7 +208,7 @@ class ChangeSecretScreen extends _react.default.Component
 
     _handle_onUpdateSecret = secret => {
       this.setState({ User_NewSecret: secret });
-    };this.state = { currentOperation: 'prompt', executionStatus: '', User_CurrentSecret: '', User_NewSecret: '' };}renderChanging() {const { classes } = this.props;return _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardHeader.default, { title: "Changing password" }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Updating, please wait."), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_LinearProgress.default, { mode: "query" })), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelChange }, "Cancel")));}renderSuccess() {const { classes } = this.props;return _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardHeader.default, { title: "Changing password" }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Password successfully changed.")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue")));}renderFailure() {const { classes } = this.props;const { executionStatus } = this.state;return _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardHeader.default, { title: "Changing password" }), _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Changing password failed because ", executionStatus, ".")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again")));}
+    };this.state = { currentOperation: 'prompt', executionStatus: '', User_CurrentSecret: '', User_NewSecret: '' };}renderChanging() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Changing password" }), _react.default.createElement(_Card.default, { className: classes.card, raised: true }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Updating, please wait."), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_LinearProgress.default, { mode: "query" })), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelChange }, "Cancel"))));}renderSuccess() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Password changed" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Password successfully changed.")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));}renderFailure() {const { classes } = this.props;const { executionStatus } = this.state;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Failed to change password" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Changing password failed because ", executionStatus, ".")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));}
 
   renderPrompt() {
     const { classes } = this.props;
@@ -195,8 +219,13 @@ class ChangeSecretScreen extends _react.default.Component
     User_CurrentSecret.length < 5 || User_NewSecret === '';
 
     return (
+      _react.default.createElement("div", null,
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }),
+        title: "Change password" }),
+
+
       _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "Change Password" }),
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_TextField.default, {
         autoComplete: "password",
@@ -217,7 +246,8 @@ class ChangeSecretScreen extends _react.default.Component
       _react.default.createElement(_CardActions.default, null,
       _react.default.createElement(_Button.default, {
         disabled: createDisabled,
-        onClick: this._handle_onClick_Change }, "Change"))));
+        onClick: this._handle_onClick_Change }, "Change")))));
+
 
 
 

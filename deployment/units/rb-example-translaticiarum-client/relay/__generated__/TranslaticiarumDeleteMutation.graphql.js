@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 1152fdf69dece647b060e7c18e7b9f01
+ * @relayHash e31b4f1c62a9a10cd4b62fd5ce28bae1
  */
 
 /* eslint-disable */
@@ -57,8 +57,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "TranslaticiarumDeleteInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "TranslaticiarumDeletePayload",

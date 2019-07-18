@@ -700,9 +700,16 @@ class ObjectManager {
   }
 
   uuidFromString(entityName, id) {
-    const entityDefinition = entityDefinitions[entityName];
+    try {
+      const entityDefinition = entityDefinitions[entityName];
 
-    return entityDefinition.Persister.uuidFromString(id);
+      return entityDefinition.Persister.uuidFromString(id);
+    } catch (err) {
+      throw new _nestedErrorStacks.default(
+      'uuidFromString for entity [' + entityName + '] and id = ' + id,
+      err);
+
+    }
   }
 
   uuidToString(entityName, id) {

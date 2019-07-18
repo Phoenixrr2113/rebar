@@ -18,17 +18,22 @@ var _serverHealthz = _interopRequireDefault(require("./serverHealthz"));function
 //
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const port = process.env.PORT;
 if (port == null || typeof port !== 'string')
-throw new Error('rb-base-server/server.js requires the environment variable PORT to be set');
+throw new Error(
+'rb-base-server/server.js requires the environment variable PORT to be set');
+
 
 const host = process.env.HOST;
 if (host == null || typeof host !== 'string')
-throw new Error('rb-base-server/server.js requires the environment variable HOST to be set');
+throw new Error(
+'rb-base-server/server.js requires the environment variable HOST to be set');
 
-const accessControlAllowedOriginsAsString = process.env.ACCESS_CONTROL_ALLOWED_ORIGINS;
+
+const accessControlAllowedOriginsAsString =
+process.env.ACCESS_CONTROL_ALLOWED_ORIGINS;
 if (
 accessControlAllowedOriginsAsString == null ||
 typeof accessControlAllowedOriginsAsString !== 'string')
@@ -99,10 +104,16 @@ server.use(function (req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', origin);
 
     // Request methods you wish to allow
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+    res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
 
     // Request headers you wish to allow
-    res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+    res.setHeader(
+    'Access-Control-Allow-Headers',
+    'X-Requested-With,content-type');
+
 
     // Set to true if you need the website to include cookies in the requests sent
     // to the API (e.g. in case you use sessions)

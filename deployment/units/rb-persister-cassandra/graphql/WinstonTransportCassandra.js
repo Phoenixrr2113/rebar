@@ -10,7 +10,7 @@ var _getLocalIP = _interopRequireDefault(require("../../rb-base-server/getLocalI
 //
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 //
 
@@ -127,7 +127,9 @@ class WinstonTransportCassandra extends _winstonTransport.default {
         if (req.body && req.body.__DO_NOT_INCLUDE__ !== true) {
           req_body = stringifyIfRequired(req.body);
         }
-        req_ip = stringifyIfRequired(req.headers['x-real-ip'] || req.connection.remoteAddress);
+        req_ip = stringifyIfRequired(
+        req.headers['x-real-ip'] || req.connection.remoteAddress);
+
       }
     } catch (ignoreErr) {
       console.error(ignoreErr);
@@ -264,7 +266,12 @@ class WinstonTransportCassandra extends _winstonTransport.default {
       callback);
 
     } catch (writeErr) {
-      console.error('Failed to write to log because ' + writeErr.message + '\n' + writeErr.stack);
+      console.error(
+      'Failed to write to log because ' +
+      writeErr.message +
+      '\n' +
+      writeErr.stack);
+
     }
   }}exports.default = WinstonTransportCassandra;
 //# sourceMappingURL=WinstonTransportCassandra.js.map

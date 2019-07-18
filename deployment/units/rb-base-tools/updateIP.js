@@ -6,11 +6,13 @@ var _fs = _interopRequireDefault(require("fs"));
 var _getLocalIP = _interopRequireDefault(require("../rb-base-server/getLocalIP"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //import AppRegistryName from '../_configuration/rb-base-app/AppRegistryName'
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const port = process.env.PORT;
 if (port == null || typeof port !== 'string')
-throw new Error('Error: update-ip requires the environment variable PORT to be set');
+throw new Error(
+'Error: update-ip requires the environment variable PORT to be set');
+
 
 let IPAddress = process.argv[2];
 
@@ -42,7 +44,9 @@ function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
           fileLines[index] = newContentOfLine;
           _fs.default.writeFileSync(fileName, fileLines.join('\n'));
 
-          console.log('[' + fileName + '] has been updated with local IP ' + IPAddress);
+          console.log(
+          '[' + fileName + '] has been updated with local IP ' + IPAddress);
+
         }
         break;
       } else {
@@ -50,7 +54,12 @@ function updateIPInFile(fileName, searchString, newContentOfLine, IPAddress) {
       }
     }
   } catch (err) {
-    console.log('[' + fileName + '] has not been been updated with local IP because ' + err);
+    console.log(
+    '[' +
+    fileName +
+    '] has not been been updated with local IP because ' +
+    err);
+
   }
 }
 //# sourceMappingURL=updateIP.js.map

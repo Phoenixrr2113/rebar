@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 7c9794b3a5a2619f14bdaa501c610434
+ * @relayHash 663865bbb85f89d70eadfeda9d12b87e
  */
 
 /* eslint-disable */
@@ -111,8 +111,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "ToDoListUpdateMarkAllInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "ToDoListUpdateMarkAllPayload",
@@ -136,8 +135,7 @@ const node /*: ConcreteRequest*/ = function () {
         {
           "kind": "Variable",
           "name": "status",
-          "variableName": "status",
-          "type": "String" }],
+          "variableName": "status" }],
 
 
         "concreteType": "ToDosConnection",

@@ -2,58 +2,67 @@
 
 var _matchInDepthMarkers = require("./matchInDepthMarkers");
 
+
+
+
+
 function matchInDepth(payload, condition) {
-  for (let ix in condition) {
-    const payloadValue = payload[ix];
-    const conditionValue = condition[ix];
+  if (
+  typeof condition === 'string' ||
+  typeof condition === 'number' ||
+  typeof condition === 'boolean')
+  {
+    return payload === condition;
+  }
 
-    if (conditionValue === _matchInDepthMarkers.midMarker_notNull) {
-      if (payloadValue == null) {
-        return false;
-      } else {
-        continue;
-      }
-    }
-    if (conditionValue === _matchInDepthMarkers.midMarker_isNull) {
-      if (payloadValue != null) {
-        return false;
-      } else {
-        continue;
-      }
-    }
+  // Check for in condition
+  if (typeof condition === 'object') {
+    const inCondition = condition[_matchInDepthMarkers.midMarker_in];
 
-    const typeOfValue = typeof payloadValue;
-    const typeOfCondition = typeof conditionValue;
-
-    if (typeOfCondition === 'object') {
-      const inCondition = conditionValue[_matchInDepthMarkers.midMarker_in];
-
-      if (inCondition) {
-        // In condition - match until one match is found
-        let bMatchFound = false;
-        for (let inConditionOption of inCondition) {
-          if (matchInDepth(payloadValue, inConditionOption)) {
-            bMatchFound = true;
-            break;
-          }
+    if (inCondition) {
+      // In condition - match until one match is found
+      for (let inConditionOption of inCondition) {
+        if (matchInDepth(payload, inConditionOption)) {
+          return true;
         }
+      }
+    }
 
-        if (!bMatchFound) {
+    for (let ix in condition) {
+      const payloadValue = payload[ix];
+      const conditionValue = condition[ix];
+
+      if (conditionValue === _matchInDepthMarkers.midMarker_notNull) {
+        if (payloadValue == null) {
+          return false;
+        } else {
+          continue;
+        }
+      }
+      if (conditionValue === _matchInDepthMarkers.midMarker_isNull) {
+        if (payloadValue != null) {
+          return false;
+        } else {
+          continue;
+        }
+      }
+
+      const typeOfValue = typeof payloadValue;
+      const typeOfCondition = typeof conditionValue;
+
+      if (typeOfCondition === 'object') {
+        // Regular object - match recursively, if the object is of the same type
+
+        if (typeOfValue !== typeOfCondition) {
           return false;
         }
-      }
-      // Regular object - match recursively, if the object is of the same type
-      else {
-          if (typeOfValue !== typeOfCondition) {
-            return false;
-          }
-          if (!matchInDepth(payloadValue, conditionValue)) {
-            return false;
-          }
+        if (!matchInDepth(payloadValue, conditionValue)) {
+          return false;
         }
-    } else {
-      if (payloadValue !== conditionValue) {
-        return false;
+      } else {
+        if (payloadValue !== conditionValue) {
+          return false;
+        }
       }
     }
   }

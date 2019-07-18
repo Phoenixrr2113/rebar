@@ -31,5 +31,5 @@ class EnsayoInPaceEditList extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-EnsayoInPaceEditList, { Viewer: function () {return require("./__generated__/EnsayoInPaceEditList_Viewer.graphql");} });exports.default = _default;
+EnsayoInPaceEditList, function () {return require("./__generated__/EnsayoInPaceEditList_Viewer.graphql");});exports.default = _default;
 //# sourceMappingURL=EnsayoInPaceEditList.js.map

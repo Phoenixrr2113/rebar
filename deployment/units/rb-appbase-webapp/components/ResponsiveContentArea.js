@@ -5,13 +5,36 @@ var _styles = require("@material-ui/core/styles");
 var _react = _interopRequireDefault(require("react"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
+  container: {
+    backgroundColor: theme.palette.background.default,
+    flexGrow: 1,
+    overflow: 'scroll',
+    overflowScrolling: 'touch',
+    [theme.breakpoints.down('sm')]: {
+      padding: 0 },
+
+    [theme.breakpoints.between('sm', 'lg')]: {
+      padding: theme.spacing.unit },
+
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing.unit * 2 },
+
+    transition: theme.transitions.create('margin', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen }),
+
+    textAlign: 'center',
+    width: '100%',
+    height: '100%' },
+
   content: {
-    margin: '0 auto',
     flex: '1 1 100%',
-    maxWidth: '100%',
+    margin: '0 auto',
+    maxWidth: 1200,
     paddingLeft: 0,
     paddingRight: 0,
-    paddingTop: theme.spacing.unit * 3 } });
+    paddingTop: theme.spacing.unit * 3,
+    textAlign: 'left' } });
 
 
 
@@ -22,7 +45,11 @@ class ResponsiveContentArea extends _react.default.Component
   render() {
     const { classes } = this.props;
 
-    return _react.default.createElement("div", { className: classes.content }, this.props.children);
+    return (
+      _react.default.createElement("main", { className: classes.container },
+      _react.default.createElement("div", { className: classes.content }, this.props.children)));
+
+
   }}var _default =
 
 

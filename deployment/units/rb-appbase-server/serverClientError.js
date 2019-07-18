@@ -9,7 +9,7 @@ var _ObjectManager = require("../rb-base-server/ObjectManager");
 var _checkCredentials = require("./checkCredentials");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 //
 

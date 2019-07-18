@@ -78,5 +78,7 @@ class ViewportDimensionsScreen extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(ViewportDimensionsScreen), { Viewer: function () {return require("./__generated__/ViewportDimensionsScreen_Viewer.graphql");} });exports.default = _default;
+(0, _styles.withStyles)(styles)(ViewportDimensionsScreen),
+{
+  Viewer: function () {return require("./__generated__/ViewportDimensionsScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=ViewportDimensionsScreen.js.map

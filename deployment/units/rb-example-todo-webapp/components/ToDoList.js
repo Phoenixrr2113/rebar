@@ -16,11 +16,13 @@ var _found = require("found");
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
 
-var _Tabs = _interopRequireWildcard(require("@material-ui/core/Tabs"));
+var _Tabs = _interopRequireDefault(require("@material-ui/core/Tabs"));
+
+var _Tab = _interopRequireDefault(require("@material-ui/core/Tab"));
 
 var _ToDoListUpdateMarkAllMutation = _interopRequireDefault(require("../../rb-example-todo-client/relay/ToDoListUpdateMarkAllMutation"));
 
-var _ToDoItem = _interopRequireDefault(require("./ToDoItem"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ToDoItem = _interopRequireDefault(require("./ToDoItem"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 const styles = theme => ({
   root: {
@@ -53,7 +55,12 @@ class ToDoList extends _react.default.Component
     }, this.
 
     _handle_onChange = (event, tabsValue) => {
-      const url = tabsValue === 2 ? '/todo/completed' : tabsValue === 1 ? '/todo/active' : '/todo';
+      const url =
+      tabsValue === 2 ?
+      '/todo/completed' :
+      tabsValue === 1 ?
+      '/todo/active' :
+      '/todo';
       this.context.router.push(url);
     }, _temp;}
 
@@ -64,9 +71,9 @@ class ToDoList extends _react.default.Component
     return (
       _react.default.createElement(_AppBar.default, { position: "static" },
       _react.default.createElement(_Tabs.default, { value: tabsValue, onChange: this._handle_onChange },
-      _react.default.createElement(_Tabs.Tab, { label: "All" }),
-      _react.default.createElement(_Tabs.Tab, { label: "Active" }),
-      _react.default.createElement(_Tabs.Tab, { label: "Completed" }))));
+      _react.default.createElement(_Tab.default, { label: "All" }),
+      _react.default.createElement(_Tab.default, { label: "Active" }),
+      _react.default.createElement(_Tab.default, { label: "Completed" }))));
 
 
 
@@ -105,5 +112,5 @@ class ToDoList extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(ToDoList)), { Viewer: function () {return require("./__generated__/ToDoList_Viewer.graphql");} });exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(ToDoList)), function () {return require("./__generated__/ToDoList_Viewer.graphql");});exports.default = _default;
 //# sourceMappingURL=ToDoList.js.map

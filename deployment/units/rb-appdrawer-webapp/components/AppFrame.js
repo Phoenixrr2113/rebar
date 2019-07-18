@@ -1,16 +1,10 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
-var _AppBar = _interopRequireDefault(require("@material-ui/core/AppBar"));
-
 var _Drawer = _interopRequireDefault(require("@material-ui/core/Drawer"));
 
-var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
+var _Fab = _interopRequireDefault(require("@material-ui/core/Fab"));
 
 var _styles = require("@material-ui/core/styles");
-
-var _Toolbar = _interopRequireDefault(require("@material-ui/core/Toolbar"));
-
-var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
 var _found = require("found");
 var _Menu = _interopRequireDefault(require("mdi-material-ui/Menu"));
@@ -20,7 +14,6 @@ var _reactRelay = require("react-relay");
 
 var _AppDrawerNavItems = _interopRequireDefault(require("../../_configuration/rb-appdrawer-webapp/AppDrawerNavItems"));
 var _AppDrawerTitle = _interopRequireDefault(require("../../_configuration/rb-appdrawer-webapp/AppDrawerTitle"));
-var _NavBarLoginButton = _interopRequireDefault(require("../../rb-account-management-webapp/components/NavBarLoginButton"));
 var _NavBarDefaultTitle = _interopRequireDefault(require("../../_configuration/rb-appdrawer-webapp/NavBarDefaultTitle"));
 
 var _AppFrameContext = _interopRequireDefault(require("./AppFrameContext"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
@@ -62,22 +55,22 @@ const styles = theme => ({
     width: '100%',
     height: '100%' },
 
-  appBar: {
-    position: 'absolute',
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen }) },
-
-
-  grow: {
-    flex: '1 1 auto' },
-
   menuButton: {
-    marginLeft: 12,
-    marginRight: 20 },
+    position: 'absolute',
+    zIndex: 1199, // Drawer is 1200
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 4,
+      marginTop: 4 },
 
-  menuButtonRoot: {
-    color: '#ffffff' },
+    [theme.breakpoints.between('sm', 'lg')]: {
+      marginLeft: 8,
+      marginTop: 8 },
+
+    [theme.breakpoints.up('lg')]: {
+      marginLeft: 12,
+      marginTop: 12 } },
+
+
 
   drawerInner: {
     // Make the items inside not wrap when transitioning:
@@ -93,29 +86,7 @@ const styles = theme => ({
   drawerPaper: {
     position: 'relative',
     height: '100%',
-    width: drawerWidth },
-
-  content: {
-    width: '100%',
-    flexGrow: 1,
-    backgroundColor: theme.palette.background.default,
-    [theme.breakpoints.down('sm')]: {
-      padding: 0 },
-
-    [theme.breakpoints.between('sm', 'lg')]: {
-      padding: theme.spacing.unit },
-
-    [theme.breakpoints.up('lg')]: {
-      padding: theme.spacing.unit * 2 },
-
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen }),
-
-    overflow: 'scroll',
-    overflowScrolling: 'touch',
-    height: 'calc(100% - 48px)',
-    marginTop: 48 } });
+    width: drawerWidth } });
 
 
 
@@ -171,25 +142,14 @@ class AppFrame extends _react.default.Component
 
 
       _react.default.createElement("div", { className: classes.appFrame },
-      _react.default.createElement(_AppBar.default, { className: classes.appBar },
-      _react.default.createElement(_Toolbar.default, { disableGutters: true, variant: "dense" },
-      _react.default.createElement(_IconButton.default, {
+      _react.default.createElement(_Fab.default, {
         "aria-label": "open drawer",
-        onClick: this._handle_Drawer_Open,
         className: classes.menuButton,
-        classes: { root: classes.menuButtonRoot } },
+        color: "primary",
+        size: "small",
+        onClick: this._handle_Drawer_Open },
 
       _react.default.createElement(_Menu.default, null)),
-
-
-      _react.default.createElement(_Typography.default, { variant: "h6", color: "inherit", noWrap: true },
-      title),
-
-
-      _react.default.createElement("div", { className: classes.grow }),
-
-      _react.default.createElement(_NavBarLoginButton.default, { Viewer: Viewer }))),
-
 
 
       _react.default.createElement(_Drawer.default, { open: drawerIsOpen, onClose: this._handle_Drawer_Close },
@@ -198,11 +158,12 @@ class AppFrame extends _react.default.Component
       _react.default.createElement(_AppDrawerTitle.default, { handle_GoTo: this._handle_GoTo }))),
 
 
-      _react.default.createElement(_AppDrawerNavItems.default, { onClick: this._handle_GoTo })),
+
+      _react.default.createElement(_AppDrawerNavItems.default, { Viewer: Viewer, onClick: this._handle_GoTo })),
 
 
       _react.default.createElement(_AppFrameContext.default.Provider, { value: { setTitle, clearTitle } },
-      _react.default.createElement("main", { className: classes.content }, children)))));
+      children))));
 
 
 
@@ -211,5 +172,7 @@ class AppFrame extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(AppFrame)), { Viewer: function () {return require("./__generated__/AppFrame_Viewer.graphql");} });exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(AppFrame)),
+{
+  Viewer: function () {return require("./__generated__/AppFrame_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=AppFrame.js.map

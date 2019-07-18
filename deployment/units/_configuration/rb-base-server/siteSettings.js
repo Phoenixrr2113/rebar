@@ -7,10 +7,13 @@ var _package = require("../../../package.json");
 var _defaultPersister = _interopRequireDefault(require("./graphql/defaultPersister"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // Import to demonstrate server-based site settings
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const googleMapsJavascriptAPI = process.env.GOOGLE_MAPS_JAVASCRIPT_API;
-if (googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'string')
+if (
+googleMapsJavascriptAPI == null ||
+typeof googleMapsJavascriptAPI !== 'string')
+
 throw new Error(
 'rb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set');
 
@@ -22,7 +25,12 @@ const siteInformation = {
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
-      rebarDemo: { version: _package.version, OSType: _os.default.type(), OSHostName: _os.default.hostname(), OSFreeMem: _os.default.freemem() } },
+      rebarDemo: {
+        version: _package.version,
+        OSType: _os.default.type(),
+        OSHostName: _os.default.hostname(),
+        OSFreeMem: _os.default.freemem() } },
+
 
     server: {},
     builderClient: {} } };
