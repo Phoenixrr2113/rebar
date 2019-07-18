@@ -141,6 +141,6 @@ class HomePageScreen extends _react.default.Component
   }}var _default =
 
 
-(0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(HomePageScreen), { Viewer: function () {return require("./__generated__/HomePageScreen_Viewer.graphql");} });exports.default = _default;
+(0, _reactRelay.createFragmentContainer)((0, _styles.withStyles)(styles)(HomePageScreen), {
+  Viewer: function () {return require("./__generated__/HomePageScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=HomePageScreen.js.map

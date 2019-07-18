@@ -4,21 +4,23 @@ import Card from '@material-ui/core/Card'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import { withStyles } from '@material-ui/core/styles'
 
+import IconShieldKeyOutline from 'mdi-material-ui/ShieldKeyOutline'
 import React from 'react'
 
 import Typography from '@material-ui/core/Typography'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
 const doNothing = () => {}
 
 let authenticationRequiredCallback: Function = doNothing
 
-export function registerAuthenticationRequiredCallback( cb: Function ) {
+export function registerAuthenticationRequiredCallback(cb: Function) {
   authenticationRequiredCallback = cb
 }
 
@@ -26,14 +28,20 @@ export function unregisterAuthenticationRequiredCallback() {
   authenticationRequiredCallback = doNothing
 }
 
+//
+
 const styles = theme => ({
   card: {
-    maxWidth: 400,
+    minWidth: 350,
+    maxWidth: 1200
   },
+  ...cardHeaderContentStyles
 })
 
+//
+
 class RequiresAuthenticationNotice extends React.Component<{
-  classes: Object,
+  classes: Object
 }> {
   componentDidMount() {
     authenticationRequiredCallback()
@@ -44,11 +52,16 @@ class RequiresAuthenticationNotice extends React.Component<{
 
     return (
       <ResponsiveContentArea>
+        <CompositeCardHeader
+          icon={<IconShieldKeyOutline htmlColor="#003c78" />}
+          title="Please log in"
+        />
+
         <Card className={classes.card}>
-          <CardHeader title="Please log in" />
           <CardContent>
             <Typography paragraph>
-              Accessing this area of the application requires you to be logged in.
+              Accessing this area of the application requires you to be logged
+              in.
             </Typography>
           </CardContent>
         </Card>
@@ -57,4 +70,4 @@ class RequiresAuthenticationNotice extends React.Component<{
   }
 }
 
-export default withStyles( styles )( RequiresAuthenticationNotice )
+export default withStyles(styles)(RequiresAuthenticationNotice)

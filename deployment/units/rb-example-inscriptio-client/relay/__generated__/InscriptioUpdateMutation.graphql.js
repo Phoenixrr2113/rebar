@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 7a3abfe40291389906693b410372f804
+ * @relayHash 398c42a8f50ddcb596ac014fd6c30d86
  */
 
 /* eslint-disable */
@@ -70,8 +70,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "InscriptioUpdateInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "InscriptioUpdatePayload",

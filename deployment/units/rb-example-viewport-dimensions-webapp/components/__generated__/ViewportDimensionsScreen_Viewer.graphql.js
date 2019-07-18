@@ -10,10 +10,16 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type ViewportDimensionsScreen_Viewer$ref: FragmentReference;
+              declare export opaque type ViewportDimensionsScreen_Viewer$fragmentType: ViewportDimensionsScreen_Viewer$ref;
               export type ViewportDimensionsScreen_Viewer = {|
                 +id: string,
                 +$refType: ViewportDimensionsScreen_Viewer$ref,
               |};
+              export type ViewportDimensionsScreen_Viewer$data = ViewportDimensionsScreen_Viewer;
+              export type ViewportDimensionsScreen_Viewer$key = {
+                +$data?: ViewportDimensionsScreen_Viewer$data,
+                +$fragmentRefs: ViewportDimensionsScreen_Viewer$ref,
+              };
               */
 
 

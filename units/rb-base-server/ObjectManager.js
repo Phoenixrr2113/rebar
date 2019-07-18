@@ -700,9 +700,16 @@ export default class ObjectManager {
   }
 
   uuidFromString( entityName: string, id: string ) {
-    const entityDefinition = entityDefinitions[entityName]
+    try {
+      const entityDefinition = entityDefinitions[entityName]
 
-    return entityDefinition.Persister.uuidFromString( id )
+      return entityDefinition.Persister.uuidFromString( id )
+    } catch ( err ) {
+      throw new NestedError(
+        'uuidFromString for entity [' + entityName + '] and id = ' + id,
+        err
+      )
+    }
   }
 
   uuidToString( entityName: string, id: Object ) {

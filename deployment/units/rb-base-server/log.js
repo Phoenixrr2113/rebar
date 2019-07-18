@@ -7,7 +7,7 @@ var _defaultPersister = _interopRequireDefault(require("../_configuration/rb-bas
 //
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 //
 
@@ -25,7 +25,11 @@ const logger = _winston.default.createLogger({ transports });
 
 //
 
-function log(level, message, details) {
+function log(
+level,
+message,
+details)
+{
   logger.log({ level, message, details });
 }
 //# sourceMappingURL=log.js.map

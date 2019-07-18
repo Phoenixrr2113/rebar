@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash bad791bfe3f1cf5d63133704e997a3ba
+ * @relayHash 29c403eeaa06015c0c6f8e3c35eab82c
  */
 
 /* eslint-disable */
@@ -55,8 +55,7 @@ const node /*: ConcreteRequest*/ = function () {
   {
     "kind": "Literal",
     "name": "first",
-    "value": 2147483647,
-    "type": "Int" }],
+    "value": 2147483647 }],
 
 
   v1 = {

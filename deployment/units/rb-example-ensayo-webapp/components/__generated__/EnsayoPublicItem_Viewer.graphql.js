@@ -10,6 +10,7 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoPublicItem_Viewer$ref: FragmentReference;
+              declare export opaque type EnsayoPublicItem_Viewer$fragmentType: EnsayoPublicItem_Viewer$ref;
               export type EnsayoPublicItem_Viewer = {|
                 +Ensayo: ?{|
                   +Ensayo_Title: ?string,
@@ -18,6 +19,11 @@
                 |},
                 +$refType: EnsayoPublicItem_Viewer$ref,
               |};
+              export type EnsayoPublicItem_Viewer$data = EnsayoPublicItem_Viewer;
+              export type EnsayoPublicItem_Viewer$key = {
+                +$data?: EnsayoPublicItem_Viewer$data,
+                +$fragmentRefs: EnsayoPublicItem_Viewer$ref,
+              };
               */
 
 
@@ -43,8 +49,7 @@ const node /*: ReaderFragment*/ = {
     {
       "kind": "Variable",
       "name": "id",
-      "variableName": "id",
-      "type": "ID" }],
+      "variableName": "id" }],
 
 
     "concreteType": "Ensayo",

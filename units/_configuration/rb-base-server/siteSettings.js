@@ -7,12 +7,15 @@ import { version } from '../../../package.json'
 import defaultPersister from './graphql/defaultPersister'
 
 // Read environment
-require( 'dotenv' ).load()
+require('dotenv').config()
 
 const googleMapsJavascriptAPI = process.env.GOOGLE_MAPS_JAVASCRIPT_API
-if ( googleMapsJavascriptAPI == null || typeof googleMapsJavascriptAPI !== 'string' )
+if (
+  googleMapsJavascriptAPI == null ||
+  typeof googleMapsJavascriptAPI !== 'string'
+)
   throw new Error(
-    'rb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set',
+    'rb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set'
   )
 
 const siteInformation = {
@@ -22,13 +25,18 @@ const siteInformation = {
   siteConfiguration: {
     webapp: {
       api: { googleMapsJavascriptAPI },
-      rebarDemo: { version, OSType: os.type(), OSHostName: os.hostname(), OSFreeMem: os.freemem() },
+      rebarDemo: {
+        version,
+        OSType: os.type(),
+        OSHostName: os.hostname(),
+        OSFreeMem: os.freemem()
+      }
     },
     server: {},
-    builderClient: {},
-  },
+    builderClient: {}
+  }
 }
 
-export async function getSiteInformation( req: Object, res: Object ): Object {
+export async function getSiteInformation(req: Object, res: Object): Object {
   return siteInformation
 }

@@ -10,6 +10,7 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type TranslaticiarumScreen_Viewer$ref: FragmentReference;
+              declare export opaque type TranslaticiarumScreen_Viewer$fragmentType: TranslaticiarumScreen_Viewer$ref;
               export type TranslaticiarumScreen_Viewer = {|
                 +Translaticiarums: ?{|
                   +edges: ?$ReadOnlyArray<?{|
@@ -23,6 +24,11 @@
                 |},
                 +$refType: TranslaticiarumScreen_Viewer$ref,
               |};
+              export type TranslaticiarumScreen_Viewer$data = TranslaticiarumScreen_Viewer;
+              export type TranslaticiarumScreen_Viewer$key = {
+                +$data?: TranslaticiarumScreen_Viewer$data,
+                +$fragmentRefs: TranslaticiarumScreen_Viewer$ref,
+              };
               */
 
 

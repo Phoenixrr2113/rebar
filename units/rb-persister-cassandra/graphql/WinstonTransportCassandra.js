@@ -10,7 +10,7 @@ import getLocalIP from '../../rb-base-server/getLocalIP'
 //
 
 // Read environment
-require( 'dotenv' ).load()
+require('dotenv').config()
 
 //
 
@@ -23,18 +23,18 @@ const Uuid = cql.types.Uuid
 
 //
 
-function stringifyIfRequired( obj ) {
-  if ( typeof obj === 'string' ) return obj
-  else return jsonStringifySafe( obj )
+function stringifyIfRequired(obj) {
+  if (typeof obj === 'string') return obj
+  else return jsonStringifySafe(obj)
 }
 
-function createCopyWithNonNull( obj ) {
+function createCopyWithNonNull(obj) {
   const res = {}
 
-  for ( let key in obj ) {
+  for (let key in obj) {
     const value = obj[key]
 
-    if ( value ) res[key] = value
+    if (value) res[key] = value
   }
 
   return res
@@ -46,34 +46,34 @@ export default class WinstonTransportCassandra extends transport {
   client: Object
   options: Object
 
-  constructor( options: Object ) {
-    super( options )
+  constructor(options: Object) {
+    super(options)
 
-    if ( !options.keyspace ) {
+    if (!options.keyspace) {
       throw new Error(
-        'rb-persister-cassandra WinstonTransportCassandra: options.keyspace is missing',
+        'rb-persister-cassandra WinstonTransportCassandra: options.keyspace is missing'
       )
     }
 
-    this.client = new cql.Client( options )
+    this.client = new cql.Client(options)
   }
 
-  log( info: Object, callback: Function ) {
-    setImmediate( () => {
-      this.emit( 'logged', info )
+  log(info: Object, callback: Function) {
+    setImmediate(() => {
+      this.emit('logged', info)
     })
 
     const { level, message, details } = info
 
     const self = this
-    return self._insertLog( level, message, details, function( err ) {
-      callback( err, !err )
+    return self._insertLog(level, message, details, function(err) {
+      callback(err, !err)
     })
   }
 
-  _insertLog( level, message, detailsSupplied, callback ) {
+  _insertLog(level, message, detailsSupplied, callback) {
     // Create shallow copy of details
-    const detailsPrep = Object.assign({}, detailsSupplied )
+    const detailsPrep = Object.assign({}, detailsSupplied)
 
     let issue_id = null
     let err_message = null
@@ -87,50 +87,52 @@ export default class WinstonTransportCassandra extends transport {
     let site_id = null
 
     // Retrieve issue_id
-    if ( detailsPrep.issue_id ) {
-      issue_id = stringifyIfRequired( detailsPrep.issue_id )
+    if (detailsPrep.issue_id) {
+      issue_id = stringifyIfRequired(detailsPrep.issue_id)
       delete detailsPrep.issue_id
     }
 
     // Retrieve error message, if available
     try {
-      if ( detailsPrep.err ) {
+      if (detailsPrep.err) {
         const { message, stack } = detailsPrep.err
 
-        if ( message && stack ) {
-          err_message = stringifyIfRequired( message )
-          err_stack = stringifyIfRequired( stack )
+        if (message && stack) {
+          err_message = stringifyIfRequired(message)
+          err_stack = stringifyIfRequired(stack)
         } else {
-          err_message = stringifyIfRequired( detailsPrep.err )
+          err_message = stringifyIfRequired(detailsPrep.err)
         }
 
         delete detailsPrep.err
       }
-    } catch ( ignoreErr ) {
-      console.error( ignoreErr )
+    } catch (ignoreErr) {
+      console.error(ignoreErr)
     }
 
     // Retrieve err_info
-    if ( detailsPrep.err_info ) {
-      err_info = stringifyIfRequired( detailsPrep.err_info )
+    if (detailsPrep.err_info) {
+      err_info = stringifyIfRequired(detailsPrep.err_info)
       delete detailsPrep.err_info
     }
 
     // Retrieve request
     try {
-      if ( detailsPrep.req ) {
+      if (detailsPrep.req) {
         const req = detailsPrep.req
         delete detailsPrep.req
 
-        req_headers = stringifyIfRequired( req.headers )
-        req_cookies = stringifyIfRequired( req.cookies )
-        if ( req.body && req.body.__DO_NOT_INCLUDE__ !== true ) {
-          req_body = stringifyIfRequired( req.body )
+        req_headers = stringifyIfRequired(req.headers)
+        req_cookies = stringifyIfRequired(req.cookies)
+        if (req.body && req.body.__DO_NOT_INCLUDE__ !== true) {
+          req_body = stringifyIfRequired(req.body)
         }
-        req_ip = stringifyIfRequired( req.headers['x-real-ip'] || req.connection.remoteAddress )
+        req_ip = stringifyIfRequired(
+          req.headers['x-real-ip'] || req.connection.remoteAddress
+        )
       }
-    } catch ( ignoreErr ) {
-      console.error( ignoreErr )
+    } catch (ignoreErr) {
+      console.error(ignoreErr)
     }
 
     // Remove res. At a later point it might be interesting to retrieve data from res but at this
@@ -140,7 +142,7 @@ export default class WinstonTransportCassandra extends transport {
     // Retrieve details from ObjectManager
     try {
       // Retrieve user_id, site_id
-      if ( detailsPrep.objectManager ) {
+      if (detailsPrep.objectManager) {
         const objectManager: Object = { detailsPrep }
         // Delete object first so that we do not fail json.stringify later
         delete detailsPrep.objectManager
@@ -148,40 +150,40 @@ export default class WinstonTransportCassandra extends transport {
         // Get user_id
         try {
           user_id = objectManager.Viewer_User_id
-          if ( !user_id instanceof Uuid ) user_id = Uuid.fromString( user_id )
-        } catch ( ignoreErr ) {
+          if (!user_id instanceof Uuid) user_id = Uuid.fromString(user_id)
+        } catch (ignoreErr) {
           user_id = null
         }
 
         // Get site_id
         try {
           site_id = objectManager.siteInformation.artifact_id
-          if ( !site_id instanceof Uuid ) site_id = Uuid.fromString( site_id )
-        } catch ( ignoreErr ) {
+          if (!site_id instanceof Uuid) site_id = Uuid.fromString(site_id)
+        } catch (ignoreErr) {
           site_id = null
         }
       }
 
       // If artifact_id is provided, and site_id is not determined, use it
-      if ( !site_id && detailsPrep.artifact_id ) {
+      if (!site_id && detailsPrep.artifact_id) {
         try {
           site_id = detailsPrep.artifact_id
-          if ( !site_id instanceof Uuid ) site_id = Uuid.fromString( site_id )
+          if (!site_id instanceof Uuid) site_id = Uuid.fromString(site_id)
           delete detailsPrep.artifact_id
-        } catch ( ignoreErr ) {
+        } catch (ignoreErr) {
           site_id = null
         }
       }
-    } catch ( ignoreErr ) {
-      console.error( ignoreErr )
+    } catch (ignoreErr) {
+      console.error(ignoreErr)
     }
 
     // Stringify trimmed down details
-    const detailsRemaining = stringifyIfRequired( detailsPrep )
+    const detailsRemaining = stringifyIfRequired(detailsPrep)
     const details = detailsRemaining === '{}' ? null : detailsRemaining
 
     const event = {
-      date: new Date().toISOString().slice( 0, 10 ),
+      date: new Date().toISOString().slice(0, 10),
       datetime: new Date(),
       level,
       message,
@@ -199,17 +201,17 @@ export default class WinstonTransportCassandra extends transport {
       req_ip,
       req_body,
       user_id,
-      site_id,
+      site_id
     }
 
     // Print to console, if so specified
-    if ( debugWriteToConsoleLog ) {
-      const eventForConsole = createCopyWithNonNull( event )
+    if (debugWriteToConsoleLog) {
+      const eventForConsole = createCopyWithNonNull(event)
 
-      if ( level === 'erorr' ) {
-        console.error( eventForConsole )
+      if (level === 'erorr') {
+        console.error(eventForConsole)
       } else {
-        console.log( eventForConsole )
+        console.log(eventForConsole)
       }
     }
 
@@ -258,13 +260,18 @@ export default class WinstonTransportCassandra extends transport {
           event.req_ip,
           event.req_body,
           event.user_id,
-          event.site_id,
+          event.site_id
         ],
         { prepare: true, consistency: cql.types.consistencies.one },
-        callback,
+        callback
       )
-    } catch ( writeErr ) {
-      console.error( 'Failed to write to log because ' + writeErr.message + '\n' + writeErr.stack )
+    } catch (writeErr) {
+      console.error(
+        'Failed to write to log because ' +
+          writeErr.message +
+          '\n' +
+          writeErr.stack
+      )
     }
   }
 }

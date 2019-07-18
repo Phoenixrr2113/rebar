@@ -10,6 +10,7 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type InscriptioScreen_Viewer$ref: FragmentReference;
+              declare export opaque type InscriptioScreen_Viewer$fragmentType: InscriptioScreen_Viewer$ref;
               export type InscriptioScreen_Viewer = {|
                 +Inscriptios: ?{|
                   +edges: ?$ReadOnlyArray<?{|
@@ -22,6 +23,11 @@
                 |},
                 +$refType: InscriptioScreen_Viewer$ref,
               |};
+              export type InscriptioScreen_Viewer$data = InscriptioScreen_Viewer;
+              export type InscriptioScreen_Viewer$key = {
+                +$data?: InscriptioScreen_Viewer$data,
+                +$fragmentRefs: InscriptioScreen_Viewer$ref,
+              };
               */
 
 

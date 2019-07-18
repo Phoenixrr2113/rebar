@@ -9,7 +9,7 @@ var _UserToken2ServerRendering = _interopRequireDefault(require("../_configurati
 var _log = _interopRequireDefault(require("../rb-base-server/log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')

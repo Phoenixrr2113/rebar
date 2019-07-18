@@ -3,7 +3,7 @@
 var _cassandraDriver = _interopRequireDefault(require("cassandra-driver"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const CassandraOptions = {
   // Assume localhost if not defined

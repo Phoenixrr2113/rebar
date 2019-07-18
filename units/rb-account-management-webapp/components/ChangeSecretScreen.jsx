@@ -8,8 +8,6 @@ import CardActions from '@material-ui/core/CardActions'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -18,8 +16,12 @@ import TextField from '@material-ui/core/TextField'
 
 import Typography from '@material-ui/core/Typography'
 
+import IconLockReset from 'mdi-material-ui/LockReset'
 import React from 'react'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
 import NewUserSecretInput from './NewUserSecretInput'
@@ -28,31 +30,33 @@ import NewUserSecretInput from './NewUserSecretInput'
 
 const styles = {
   card: {
-    minWidth: 320,
+    minWidth: 350,
+    maxWidth: 1200
   },
+  ...cardHeaderContentStyles
 }
 
 //
 
 class ChangeSecretScreen extends React.Component<
   {
-    classes: Object,
+    classes: Object
   },
   {
     currentOperation: 'prompt' | 'changing' | 'success' | 'failure',
     executionStatus: string,
     User_CurrentSecret: string,
-    User_NewSecret: string,
+    User_NewSecret: string
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       currentOperation: 'prompt',
       executionStatus: '',
       User_CurrentSecret: '',
-      User_NewSecret: '',
+      User_NewSecret: ''
     }
   }
 
@@ -60,45 +64,45 @@ class ChangeSecretScreen extends React.Component<
     const { User_CurrentSecret, User_NewSecret } = this.state
 
     this.setState({
-      currentOperation: 'changing',
+      currentOperation: 'changing'
     })
 
     try {
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/change-secret', {
+      const response = await fetch(host + '/auth/change-secret', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           User_CurrentSecret,
-          User_NewSecret,
-        }),
+          User_NewSecret
+        })
       })
 
       const responseData = await response.json()
 
-      if ( responseData.success ) {
+      if (responseData.success) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
       } else {
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          executionStatus: responseData.error,
+          executionStatus: responseData.error
         })
       }
-    } catch ( err ) {
+    } catch (err) {
       // In case response could not be received properly, tell the user
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
         executionStatus:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          err.message
       })
     }
   }
@@ -106,7 +110,7 @@ class ChangeSecretScreen extends React.Component<
   _handle_onClick_CancelChange = () => {
     this.setState({
       currentOperation: 'failure',
-      executionStatus: 'User creation has been canceled',
+      executionStatus: 'User creation has been canceled'
     })
   }
 
@@ -114,30 +118,36 @@ class ChangeSecretScreen extends React.Component<
     this.setState({
       User_CurrentSecret: '',
       currentOperation: 'prompt',
-      executionStatus: '',
+      executionStatus: ''
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/user/profile' )
+    window.location.replace('/user/profile')
   }
 
   renderChanging() {
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">Updating, please wait.</Typography>
-          <br />
-          <br />
-          <LinearProgress mode="query" />
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_CancelChange}>Cancel</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset htmlColor="#003c78" />}
+          title="Changing password"
+        />
+
+        <Card className={classes.card} raised={true}>
+          <CardContent>
+            <Typography component="p">Updating, please wait.</Typography>
+            <br />
+            <br />
+            <LinearProgress mode="query" />
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_CancelChange}>Cancel</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -145,15 +155,23 @@ class ChangeSecretScreen extends React.Component<
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">Password successfully changed.</Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_Continue}>Continue</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset htmlColor="#003c78" />}
+          title="Password changed"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Password successfully changed.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_Continue}>Continue</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -162,17 +180,23 @@ class ChangeSecretScreen extends React.Component<
     const { executionStatus } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Changing password" />
-        <CardContent>
-          <Typography component="p">
-            Changing password failed because {executionStatus}.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset htmlColor="#003c78" />}
+          title="Failed to change password"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Changing password failed because {executionStatus}.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -195,34 +219,40 @@ class ChangeSecretScreen extends React.Component<
       User_CurrentSecret.length < 5 || User_NewSecret === ''
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Change Password" />
-        <CardContent>
-          <TextField
-            autoComplete="password"
-            fullWidth={true}
-            label="Current (old) password"
-            margin="normal"
-            type="password"
-            value={User_CurrentSecret}
-            variant="outlined"
-            onChange={this._handle_onChange_Identifier}
-          />
+      <div>
+        <CompositeCardHeader
+          icon={<IconLockReset htmlColor="#003c78" />}
+          title="Change password"
+        />
 
-          <br />
-          <br />
+        <Card className={classes.card}>
+          <CardContent>
+            <TextField
+              autoComplete="password"
+              fullWidth={true}
+              label="Current (old) password"
+              margin="normal"
+              type="password"
+              value={User_CurrentSecret}
+              variant="outlined"
+              onChange={this._handle_onChange_Identifier}
+            />
 
-          <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
-        </CardContent>
-        <CardActions>
-          <Button
-            disabled={createDisabled}
-            onClick={this._handle_onClick_Change}
-          >
-            Change
-          </Button>
-        </CardActions>
-      </Card>
+            <br />
+            <br />
+
+            <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
+          </CardContent>
+          <CardActions>
+            <Button
+              disabled={createDisabled}
+              onClick={this._handle_onClick_Change}
+            >
+              Change
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -240,4 +270,4 @@ class ChangeSecretScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( ChangeSecretScreen )
+export default withStyles(styles)(ChangeSecretScreen)

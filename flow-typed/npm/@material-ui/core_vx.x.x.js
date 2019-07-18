@@ -862,6 +862,10 @@ declare module '@material-ui/core/es/FilledInput/FilledInput' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/es/FilledInput' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/es/FilledInput/index' {
   declare module.exports: any;
 }
@@ -1231,6 +1235,10 @@ declare module '@material-ui/core/es/NoSsr/index' {
 }
 
 declare module '@material-ui/core/es/NoSsr/NoSsr' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/es/OutlinedInput' {
   declare module.exports: any;
 }
 
@@ -1814,6 +1822,10 @@ declare module '@material-ui/core/FilledInput/FilledInput' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/FilledInput' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/FilledInput/index' {
   declare module.exports: any;
 }
@@ -2271,6 +2283,10 @@ declare module '@material-ui/core/NoSsr/index' {
 }
 
 declare module '@material-ui/core/NoSsr/NoSsr' {
+  declare module.exports: any;
+}
+
+declare module '@material-ui/core/OutlinedInput' {
   declare module.exports: any;
 }
 

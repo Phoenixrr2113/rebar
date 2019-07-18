@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash a2741a3fc90232a2dcfe004e0dc6020a
+ * @relayHash aa2d70217fc34f915d1904af4e1f7007
  */
 
 /* eslint-disable */
@@ -33,10 +33,15 @@
                  
                  fragment AppFrame_Viewer on Viewer {
                    UserToken2
-                   ...NavBarLoginButton_Viewer
+                   ...AppDrawerNavItems_Viewer
                  }
                  
-                 fragment NavBarLoginButton_Viewer on Viewer {
+                 fragment AppDrawerNavItems_Viewer on Viewer {
+                   ...AppDrawerAccountItem_Viewer
+                   User_IsAnonymous
+                 }
+                 
+                 fragment AppDrawerAccountItem_Viewer on Viewer {
                    User_IsAnonymous
                    User_DisplayName
                  }
@@ -119,7 +124,7 @@ const node /*: ConcreteRequest*/ = {
     "operationKind": "query",
     "name": "createDefaultRoutes_AppFrame_Query",
     "id": null,
-    "text": "query createDefaultRoutes_AppFrame_Query {\n  Viewer {\n    ...AppFrame_Viewer\n    id\n  }\n}\n\nfragment AppFrame_Viewer on Viewer {\n  UserToken2\n  ...NavBarLoginButton_Viewer\n}\n\nfragment NavBarLoginButton_Viewer on Viewer {\n  User_IsAnonymous\n  User_DisplayName\n}\n",
+    "text": "query createDefaultRoutes_AppFrame_Query {\n  Viewer {\n    ...AppFrame_Viewer\n    id\n  }\n}\n\nfragment AppFrame_Viewer on Viewer {\n  UserToken2\n  ...AppDrawerNavItems_Viewer\n}\n\nfragment AppDrawerNavItems_Viewer on Viewer {\n  ...AppDrawerAccountItem_Viewer\n  User_IsAnonymous\n}\n\nfragment AppDrawerAccountItem_Viewer on Viewer {\n  User_IsAnonymous\n  User_DisplayName\n}\n",
     "metadata": {} } };
 
 

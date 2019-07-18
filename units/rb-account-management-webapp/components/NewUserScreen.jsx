@@ -8,8 +8,6 @@ import CardActions from '@material-ui/core/CardActions'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { withStyles } from '@material-ui/core/styles'
@@ -18,58 +16,64 @@ import TextField from '@material-ui/core/TextField'
 
 import Typography from '@material-ui/core/Typography'
 
+import IconAccount from 'mdi-material-ui/Account'
 import React from 'react'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
 import NewUserSecretInput from './NewUserSecretInput'
 
 //
 
-export function validateEmail( accountIdentifier: string ) {
+export function validateEmail(accountIdentifier: string) {
   // eslint-disable-next-line no-control-regex
   const reEmail = /^([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x22([^\x0d\x22\x5c\x80-\xff]|\x5c[\x00-\x7f])*\x22))*\x40([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d)(\x2e([^\x00-\x20\x22\x28\x29\x2c\x2e\x3a-\x3c\x3e\x40\x5b-\x5d\x7f-\xff]+|\x5b([^\x0d\x5b-\x5d\x80-\xff]|\x5c[\x00-\x7f])*\x5d))*$/
-  return reEmail.test( accountIdentifier )
+  return reEmail.test(accountIdentifier)
 }
 
 //
 
 const styles = {
   card: {
-    minWidth: 320,
+    minWidth: 350,
+    maxWidth: 1200
   },
+  ...cardHeaderContentStyles,
   userName: {
     borderWidth: 1,
     borderColor: '#c0c0c0',
     fontWeight: 'bold',
     paddingLeft: 10,
-    paddingRight: 10,
-  },
+    paddingRight: 10
+  }
 }
 
 //
 
 class NewUserScreen extends React.Component<
   {
-    classes: Object,
+    classes: Object
   },
   {
     currentOperation: 'prompt' | 'creating' | 'success' | 'failure',
     executionStatus: string,
     UserAccount_Identifier: string,
     UserAccount_IdentifierValidity: boolean,
-    User_Secret: string,
+    User_Secret: string
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       currentOperation: 'prompt',
       executionStatus: '',
       UserAccount_Identifier: '',
       UserAccount_IdentifierValidity: false,
-      User_Secret: '',
+      User_Secret: ''
     }
   }
 
@@ -78,45 +82,45 @@ class NewUserScreen extends React.Component<
 
     this.setState({
       currentOperation: 'creating',
-      User_Secret: '', // In order to prevent the password from being accessed later
+      User_Secret: '' // In order to prevent the password from being accessed later
     })
 
     try {
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/createuser', {
+      const response = await fetch(host + '/auth/createuser', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           UserAccount_Identifier: UserAccount_Identifier,
-          User_Secret: User_Secret,
-        }),
+          User_Secret: User_Secret
+        })
       })
 
       const responseData = await response.json()
 
-      if ( responseData.success ) {
+      if (responseData.success) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
       } else {
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          executionStatus: responseData.error,
+          executionStatus: responseData.error
         })
       }
-    } catch ( err ) {
+    } catch (err) {
       // In case response could not be received properly, tell the user
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
         executionStatus:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          err.message
       })
     }
   }
@@ -124,19 +128,19 @@ class NewUserScreen extends React.Component<
   _handle_onClick_CancelCreation = () => {
     this.setState({
       currentOperation: 'failure',
-      executionStatus: 'User creation has been canceled',
+      executionStatus: 'User creation has been canceled'
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'prompt',
-      executionStatus: '',
+      executionStatus: ''
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/' )
+    window.location.replace('/')
   }
 
   renderCreating() {
@@ -144,22 +148,31 @@ class NewUserScreen extends React.Component<
     const { UserAccount_Identifier } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Creating user" />
-        <CardContent>
-          <Typography component="p">
-            Creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>,
-            please wait.
-          </Typography>
-          <br />
-          <br />
-          <LinearProgress mode="query" />
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_CancelCreation}>Cancel</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconAccount htmlColor="#003c78" />}
+          title="New User"
+          subTitle="Creating, please wait"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Creating user
+              <span className={classes.userName}>{UserAccount_Identifier}</span>
+              , please wait.
+            </Typography>
+            <br />
+            <br />
+            <LinearProgress mode="query" />
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_CancelCreation}>
+              Cancel
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -168,18 +181,26 @@ class NewUserScreen extends React.Component<
     const { UserAccount_Identifier } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Creating user" />
-        <CardContent>
-          <Typography component="p">
-            Created user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_Continue}>Continue</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconAccount htmlColor="#003c78" />}
+          title="New User"
+          subTitle="Created"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Created user
+              <span className={classes.userName}>{UserAccount_Identifier}</span>
+              .
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_Continue}>Continue</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -188,25 +209,32 @@ class NewUserScreen extends React.Component<
     const { UserAccount_Identifier, executionStatus } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Creating user" />
-        <CardContent>
-          <Typography component="p">
-            Failed creating user
-            <span className={classes.userName}>{UserAccount_Identifier}</span>
-            because {executionStatus}.
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconAccount htmlColor="#ff0000" />}
+          title="New User"
+          subTitle="Failed"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Failed creating user
+              <span className={classes.userName}>{UserAccount_Identifier}</span>
+              because {executionStatus}.
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
   _handle_onChange_Identifier = event => {
     const UserAccount_Identifier = event.target.value
-    const UserAccount_IdentifierValidity = validateEmail( UserAccount_Identifier )
+    const UserAccount_IdentifierValidity = validateEmail(UserAccount_Identifier)
 
     this.setState({ UserAccount_Identifier, UserAccount_IdentifierValidity })
   }
@@ -220,40 +248,47 @@ class NewUserScreen extends React.Component<
     const {
       UserAccount_Identifier,
       UserAccount_IdentifierValidity,
-      User_Secret,
+      User_Secret
     } = this.state
 
     // User account identifier must be valid and secret must be present
     const createDisabled = !UserAccount_IdentifierValidity || User_Secret === ''
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Create New User" />
-        <CardContent>
-          <TextField
-            autoComplete="username"
-            fullWidth={true}
-            label="E-Mail Address"
-            margin="normal"
-            value={UserAccount_Identifier}
-            variant="outlined"
-            onChange={this._handle_onChange_Identifier}
-          />
+      <div>
+        <CompositeCardHeader
+          icon={<IconAccount htmlColor="#003c78" />}
+          title="New User"
+          subTitle="Create new user"
+        />
 
-          <br />
-          <br />
+        <Card className={classes.card}>
+          <CardContent>
+            <TextField
+              autoComplete="username"
+              fullWidth={true}
+              label="E-Mail Address"
+              margin="normal"
+              value={UserAccount_Identifier}
+              variant="outlined"
+              onChange={this._handle_onChange_Identifier}
+            />
 
-          <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
-        </CardContent>
-        <CardActions>
-          <Button
-            disabled={createDisabled}
-            onClick={this._handle_onClick_Create}
-          >
-            Create
-          </Button>
-        </CardActions>
-      </Card>
+            <br />
+            <br />
+
+            <NewUserSecretInput onUpdateSecret={this._handle_onUpdateSecret} />
+          </CardContent>
+          <CardActions>
+            <Button
+              disabled={createDisabled}
+              onClick={this._handle_onClick_Create}
+            >
+              Create
+            </Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -271,4 +306,4 @@ class NewUserScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( NewUserScreen )
+export default withStyles(styles)(NewUserScreen)

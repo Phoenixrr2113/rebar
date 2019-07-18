@@ -9,39 +9,47 @@ import CardHeader from '@material-ui/core/CardHeader'
 import { withStyles } from '@material-ui/core/styles'
 
 import React from 'react'
-import { GoogleMap, Marker, withGoogleMap, withScriptjs } from 'react-google-maps'
+import {
+  GoogleMap,
+  Marker,
+  withGoogleMap,
+  withScriptjs
+} from 'react-google-maps'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 import SiteConfigurationContext from '../../rb-appbase-webapp/components/SiteConfigurationContext'
 
 const MapComponent = withScriptjs(
-  withGoogleMap( props => (
+  withGoogleMap(props => (
     <GoogleMap defaultZoom={props.defaultZoom} center={props.center}>
-      {props.markers.map( ( marker, index ) => (
+      {props.markers.map((marker, index) => (
         <Marker key={index} position={marker.position} />
-      ) )}
+      ))}
     </GoogleMap>
-  ) ),
+  ))
 )
 
 const styles = {
   card: {
     minWidth: 275,
-    minHeight: 400,
-  },
+    minHeight: 400
+  }
 }
 
-class InscriptioScreen extends React.Component<{ classes: Object, Viewer: Object }, Object> {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+class InscriptioScreen extends React.Component<
+  { classes: Object, Viewer: Object },
+  Object
+> {
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       center: {
         lat: 34.0522,
-        lng: -118.243,
+        lng: -118.243
       },
-      markers: [],
+      markers: []
     }
   }
 
@@ -57,8 +65,8 @@ class InscriptioScreen extends React.Component<{ classes: Object, Viewer: Object
           <CardContent>
             <SiteConfigurationContext.Consumer>
               {siteConfiguration => {
-                // $AssureFlow
-                const googleMapURL = siteConfiguration.webapp.api.googleMapsJavascriptAPI
+                const googleMapURL =
+                  siteConfiguration.webapp.api.googleMapsJavascriptAPI
                 return (
                   <MapComponent
                     defaultZoom={16}
@@ -80,11 +88,11 @@ class InscriptioScreen extends React.Component<{ classes: Object, Viewer: Object
   }
 }
 
-export default createFragmentContainer(
-  withStyles( styles )( InscriptioScreen ),
-  graphql`
+export default createFragmentContainer(withStyles(styles)(InscriptioScreen), {
+  Viewer: graphql`
     fragment InscriptioScreen_Viewer on Viewer {
-      Inscriptios(first: 2147483647) @connection(key: "InscriptioScreen_Inscriptios") {
+      Inscriptios(first: 2147483647)
+        @connection(key: "InscriptioScreen_Inscriptios") {
         edges {
           node {
             id
@@ -94,5 +102,5 @@ export default createFragmentContainer(
         }
       }
     }
-  `,
-)
+  `
+})

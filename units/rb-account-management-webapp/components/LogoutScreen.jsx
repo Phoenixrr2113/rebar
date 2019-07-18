@@ -8,39 +8,47 @@ import CardActions from '@material-ui/core/CardActions'
 
 import CardContent from '@material-ui/core/CardContent'
 
-import CardHeader from '@material-ui/core/CardHeader'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
 
 import { withStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 
+import IconLogout from 'mdi-material-ui/Logout'
 import React from 'react'
 
+import CompositeCardHeader, {
+  cardHeaderContentStyles
+} from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
+
+//
 
 const styles = theme => ({
   card: {
-    minWidth: 400,
+    minWidth: 350,
+    maxWidth: 1200
   },
+  ...cardHeaderContentStyles
 })
+
+//
 
 class LogoutScreen extends React.Component<
   {
-    classes: Object,
+    classes: Object
   },
   {
     currentOperation: 'confirm' | 'logging out' | 'success' | 'failure',
-    errorMessage: string,
-  },
+    errorMessage: string
+  }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       currentOperation: 'confirm',
-      errorMessage: '',
+      errorMessage: ''
     }
   }
 
@@ -51,34 +59,35 @@ class LogoutScreen extends React.Component<
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/logout', {
+      const response = await fetch(host + '/auth/logout', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: '{}',
+        body: '{}'
       })
 
       const responseData = await response.json()
 
-      if ( responseData.success ) {
+      if (responseData.success) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
       } else {
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          errorMessage: responseData.error,
+          errorMessage: responseData.error
         })
       }
-    } catch ( err ) {
+    } catch (err) {
       // In case response could not be received properly, tell the user
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
         errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' + err.message,
+          'Did not receive proper response from server. Please try again. Message:' +
+          err.message
       })
     }
   }
@@ -86,36 +95,42 @@ class LogoutScreen extends React.Component<
   _handle_onClick_CancelLogout = () => {
     this.setState({
       currentOperation: 'failure',
-      errorMessage: 'User log out has been canceled',
+      errorMessage: 'User log out has been canceled'
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'confirm',
-      errorMessage: '',
+      errorMessage: ''
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/' )
+    window.location.replace('/')
   }
 
   renderCreating() {
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Log Out" />
-        <CardContent>
-          <Typography component="p">Logging out. Please wait ...</Typography>
-          <br /> <br />
-          <LinearProgress mode="query" />
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_CancelLogout}>Cancel</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLogout htmlColor="#003c78" />}
+          title="Log Out"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">Logging out. Please wait ...</Typography>
+            <br /> <br />
+            <LinearProgress mode="query" />
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_CancelLogout}>Cancel</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -123,15 +138,21 @@ class LogoutScreen extends React.Component<
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Logout" />
-        <CardContent>
-          <Typography component="p">You have been logged out.</Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_Continue}>Continue</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLogout htmlColor="#003c78" />}
+          title="Log Out"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">You have been logged out.</Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_Continue}>Continue</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -140,15 +161,23 @@ class LogoutScreen extends React.Component<
     const { errorMessage } = this.state
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Log out" />
-        <CardContent>
-          <Typography component="p">Failed logging out because: {errorMessage}!</Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLogout htmlColor="#003c78" />}
+          title="Log Out"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              Failed logging out because: {errorMessage}!
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_TryAgain}>Try Again</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -156,17 +185,23 @@ class LogoutScreen extends React.Component<
     const { classes } = this.props
 
     return (
-      <Card className={classes.card}>
-        <CardHeader title="Log Out" />
-        <CardContent>
-          <Typography component="p">
-            You are currently logged in. Are you sure you want to log out?
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button onClick={this._handle_onClick_Logout}>Yes, Log Out</Button>
-        </CardActions>
-      </Card>
+      <div>
+        <CompositeCardHeader
+          icon={<IconLogout htmlColor="#003c78" />}
+          title="Log Out"
+        />
+
+        <Card className={classes.card}>
+          <CardContent>
+            <Typography component="p">
+              You are currently logged in. Are you sure you want to log out?
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button onClick={this._handle_onClick_Logout}>Yes, Log Out</Button>
+          </CardActions>
+        </Card>
+      </div>
     )
   }
 
@@ -184,4 +219,4 @@ class LogoutScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( LogoutScreen )
+export default withStyles(styles)(LogoutScreen)

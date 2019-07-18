@@ -12,6 +12,7 @@
               type EnsayoInPlaceEditItem_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoInPaceEditList_Viewer$ref: FragmentReference;
+              declare export opaque type EnsayoInPaceEditList_Viewer$fragmentType: EnsayoInPaceEditList_Viewer$ref;
               export type EnsayoInPaceEditList_Viewer = {|
                 +Ensayos: ?{|
                   +edges: ?$ReadOnlyArray<?{|
@@ -25,6 +26,11 @@
                 +$fragmentRefs: EnsayoInPlaceEditItem_Viewer$ref,
                 +$refType: EnsayoInPaceEditList_Viewer$ref,
               |};
+              export type EnsayoInPaceEditList_Viewer$data = EnsayoInPaceEditList_Viewer;
+              export type EnsayoInPaceEditList_Viewer$key = {
+                +$data?: EnsayoInPaceEditList_Viewer$data,
+                +$fragmentRefs: EnsayoInPaceEditList_Viewer$ref,
+              };
               */
 
 
@@ -83,16 +89,16 @@ const node /*: ReaderFragment*/ = function () {
           "selections": [
           v0 /*: any*/,
           {
-            "kind": "FragmentSpread",
-            "name": "EnsayoInPlaceEditItem_Ensayo",
-            "args": null },
-
-          {
             "kind": "ScalarField",
             "alias": null,
             "name": "__typename",
             "args": null,
-            "storageKey": null }] },
+            "storageKey": null },
+
+          {
+            "kind": "FragmentSpread",
+            "name": "EnsayoInPlaceEditItem_Ensayo",
+            "args": null }] },
 
 
 

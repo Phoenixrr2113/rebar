@@ -12,18 +12,8 @@ _defaultPersister.default.addTableSchema('Ensayo', {
     Ensayo_Title: 'text' },
 
 
-  indexes: ['Ensayo_User_id'],
+  key: ['Ensayo_User_id', 'id'] });var _default =
 
-  key: ['id']
-
-  // custom_indexes: [
-  //   {
-  //     on: 'Ensayo_User_id',
-  //     using: 'org.apache.cassandra.index.sasi.SASIIndex',
-  //     options: {},
-  //   },
-  // ],
-});var _default =
 
 true;exports.default = _default;
 //# sourceMappingURL=Ensayo.schema.js.map

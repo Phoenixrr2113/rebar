@@ -10,10 +10,16 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoInPlaceEditItem_Viewer$ref: FragmentReference;
+              declare export opaque type EnsayoInPlaceEditItem_Viewer$fragmentType: EnsayoInPlaceEditItem_Viewer$ref;
               export type EnsayoInPlaceEditItem_Viewer = {|
                 +id: string,
                 +$refType: EnsayoInPlaceEditItem_Viewer$ref,
               |};
+              export type EnsayoInPlaceEditItem_Viewer$data = EnsayoInPlaceEditItem_Viewer;
+              export type EnsayoInPlaceEditItem_Viewer$key = {
+                +$data?: EnsayoInPlaceEditItem_Viewer$data,
+                +$fragmentRefs: EnsayoInPlaceEditItem_Viewer$ref,
+              };
               */
 
 

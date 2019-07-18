@@ -57,15 +57,6 @@ fastlane/screenshots
 .env
 ios/main.jsbundle
 
-# Mobile bundles
-#
-android/app/src/main/assets/index.android.bundle
-android/app/src/main/assets/index.android.bundle.meta
-android/app/src/main/assets/index.android.map
-ios/main.jsbundle
-ios/main.jsbundle.meta
-/ios/main.map
-
 # Relay
 #
 units/**/__generated__/
@@ -74,3 +65,4 @@ units/**/__generated__/
 #
 logs
 *.log
+units/rb-log-viewer-tools/log/*

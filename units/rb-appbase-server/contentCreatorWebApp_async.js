@@ -24,22 +24,22 @@ import type { SiteInformation } from '../rb-appbase-server/types/SiteInformation
 import {
   createResolver,
   historyMiddlewares,
-  routeConfig,
+  routeConfig
 } from '../rb-appbase-webapp/router'
 
 import FetcherServer from './fetcherServer'
 
 // Read environment
-require( 'dotenv' ).load()
+require('dotenv').config()
 
 const envHost = process.env.HOST
-if ( envHost == null || typeof envHost !== 'string' )
+if (envHost == null || typeof envHost !== 'string')
   throw new Error(
     'Error: rb-appbase-webapp requires the environment variable HOST to be set'
   )
 
 const envPort = process.env.PORT
-if ( envPort == null || typeof envPort !== 'string' )
+if (envPort == null || typeof envPort !== 'string')
   throw new Error(
     'Error: rb-appbase-webapp requires the environment variable PORT to be set'
   )
@@ -48,13 +48,13 @@ if ( envPort == null || typeof envPort !== 'string' )
 
 // HTML page template
 var htmlEjs = ejs.compile(
-  fs.readFileSync( path.resolve( __dirname, 'html.ejs' ), 'utf8' )
+  fs.readFileSync(path.resolve(__dirname, 'html.ejs'), 'utf8')
 )
 
 //
 
-function getAssetsPath( siteInformation: SiteInformation ): string {
-  if ( process.env.NODE_ENV === 'production' ) {
+function getAssetsPath(siteInformation: SiteInformation): string {
+  if (process.env.NODE_ENV === 'production') {
     // For when per-site assets are created
     /*
     const assetsPath =
@@ -80,7 +80,7 @@ function getAssetsPath( siteInformation: SiteInformation ): string {
   } else {
     // Get webpack port only in development. In production it can be omitted
     const envPortWebpack = process.env.PORT_WEBPACK
-    if ( envPortWebpack == null || typeof envPortWebpack !== 'string' )
+    if (envPortWebpack == null || typeof envPortWebpack !== 'string')
       throw new Error(
         'Error: rb-appbase-webapp requires the environment variable PORT_WEBPACK to be set'
       )
@@ -91,18 +91,18 @@ function getAssetsPath( siteInformation: SiteInformation ): string {
 }
 
 const render = createRender({
-  renderError( obj: Object ): React$Element<*> {
+  renderError(obj: Object): React$Element<*> {
     const { error } = obj
 
-    if ( error.status !== 404 ) {
-      log( 'error', 'Error: rb-appbase-webapp createRender renderError', error )
+    if (error.status !== 404) {
+      log('error', 'Error: rb-appbase-webapp createRender renderError', error)
     }
 
     return <ErrorComponent httpStatus={error.status} />
-  },
+  }
 })
 
-export default ( async function contentCreatorWebApp_async(
+export default (async function contentCreatorWebApp_async(
   siteInformation: SiteInformation,
   reqUrl: string,
   reqUserAgent: string,
@@ -110,13 +110,13 @@ export default ( async function contentCreatorWebApp_async(
   passUserToken1ToHeaders: boolean
 ) {
   try {
-    const assetsPath = getAssetsPath( siteInformation )
+    const assetsPath = getAssetsPath(siteInformation)
 
     // It is possible that artifact_id can not be determined during development. For instance, when browsing
     // the project on localhost using a specific port, Chrome will request robots.txt and favicon.ico and
     // they will not have the proper dev-host header. In this case simply report the file missing.
     // This does not affect operation in production, since host will be passed for all requests.
-    if ( !siteInformation ) {
+    if (!siteInformation) {
       return { status: 404 }
     }
 
@@ -133,7 +133,7 @@ export default ( async function contentCreatorWebApp_async(
     const graphQLServerUrl =
       `http://${envHost}:${envPort}` +
       artifactNamePrefix +
-      getGraphQLLocalServerURL( siteInformation )
+      getGraphQLLocalServerURL(siteInformation)
 
     const fetcher = new FetcherServer(
       graphQLServerUrl,
@@ -145,24 +145,24 @@ export default ( async function contentCreatorWebApp_async(
     const { siteConfiguration } = siteInformation
     const siteConfigurationSubset = {
       webapp: siteConfiguration.webapp,
-      builder: siteConfiguration.builder,
+      builder: siteConfiguration.builder
     }
 
-    const siteRouteConfig = routeConfig( siteConfigurationSubset )
+    const siteRouteConfig = routeConfig(siteConfigurationSubset)
 
     const { redirect, element } = await getFarceResult({
       url: reqUrl,
       historyMiddlewares,
       routeConfig: siteRouteConfig,
-      resolver: createResolver( fetcher ),
-      render,
+      resolver: createResolver(fetcher),
+      render
     })
 
-    if ( redirect ) {
+    if (redirect) {
       return { status: 302, redirectUrl: redirect.url }
     }
 
-    const relayPayloads = serialize( fetcher, { isJSON: true })
+    const relayPayloads = serialize(fetcher, { isJSON: true })
 
     if (
       typeof relayPayloads === 'string' &&
@@ -177,7 +177,7 @@ export default ( async function contentCreatorWebApp_async(
       return {
         status: 403,
         htmlContent:
-          'The server was given a session, but the session is invalid',
+          'The server was given a session, but the session is invalid'
       }
     }
 
@@ -203,18 +203,16 @@ export default ( async function contentCreatorWebApp_async(
       server_side_styles: sheets.toString(),
       helmet,
       htmlHeadAdditions,
-      siteConfiguration: JSON.stringify( siteConfigurationSubset ),
+      siteConfiguration: JSON.stringify(siteConfigurationSubset),
       relayPayloads,
-      UserToken1: JSON.stringify(
-        passUserToken1ToHeaders ? reqUserToken1 : null
-      ),
+      UserToken1: JSON.stringify(passUserToken1ToHeaders ? reqUserToken1 : null)
     })
 
     return {
       status: 200,
-      htmlContent,
+      htmlContent
     }
-  } catch ( err ) {
-    throw new NestedError( 'Rendering failed', err )
+  } catch (err) {
+    throw new NestedError('Rendering failed', err)
   }
 })

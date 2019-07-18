@@ -30,7 +30,7 @@ var _router = require("../rb-appbase-webapp/router");
 var _fetcherServer = _interopRequireDefault(require("./fetcherServer"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const envHost = process.env.HOST;
 if (envHost == null || typeof envHost !== 'string')
@@ -205,9 +205,7 @@ passUserToken1ToHeaders)
       htmlHeadAdditions: _htmlHeadAdditions.default,
       siteConfiguration: JSON.stringify(siteConfigurationSubset),
       relayPayloads,
-      UserToken1: JSON.stringify(
-      passUserToken1ToHeaders ? reqUserToken1 : null) });
-
+      UserToken1: JSON.stringify(passUserToken1ToHeaders ? reqUserToken1 : null) });
 
 
     return {

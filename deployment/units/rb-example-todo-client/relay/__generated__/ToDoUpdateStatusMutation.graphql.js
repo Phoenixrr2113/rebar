@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 21c59fceb8c0416a08da74b0128e9276
+ * @relayHash c1919329b051782e3460ef530ffed773
  */
 
 /* eslint-disable */
@@ -79,8 +79,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "ToDoUpdateStatusInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "ToDoUpdateStatusPayload",

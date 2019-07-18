@@ -16,7 +16,9 @@ import { withRouter } from 'found'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
-import Tabs, { Tab } from '@material-ui/core/Tabs'
+import Tabs from '@material-ui/core/Tabs'
+
+import Tab from '@material-ui/core/Tab'
 
 import ToDoListUpdateMarkAllMutation from '../../rb-example-todo-client/relay/ToDoListUpdateMarkAllMutation'
 
@@ -26,19 +28,19 @@ const styles = theme => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    background: theme.palette.background.paper,
-  },
+    background: theme.palette.background.paper
+  }
 })
 
 class ToDoList extends React.Component<
   {
     Viewer: Object,
     relay: Object,
-    router: Object,
+    router: Object
   },
-  null,
+  null
 > {
-  _handle_onClick_MarkAll = ( event, checked ) => {
+  _handle_onClick_MarkAll = (event, checked) => {
     const { relay, Viewer } = this.props
     const { variables } = this.context.relay
     const ToDo_Complete = checked
@@ -48,13 +50,18 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status,
+      variables.status
     )
   }
 
-  _handle_onChange = ( event, tabsValue ) => {
-    const url = tabsValue === 2 ? '/todo/completed' : tabsValue === 1 ? '/todo/active' : '/todo'
-    this.context.router.push( url )
+  _handle_onChange = (event, tabsValue) => {
+    const url =
+      tabsValue === 2
+        ? '/todo/completed'
+        : tabsValue === 1
+        ? '/todo/active'
+        : '/todo'
+    this.context.router.push(url)
   }
 
   renderTabs() {
@@ -76,7 +83,7 @@ class ToDoList extends React.Component<
     const { Viewer } = this.props
     const { ToDos, ToDo_TotalCount, ToDo_CompletedCount } = Viewer
 
-    if ( !ToDo_TotalCount ) {
+    if (!ToDo_TotalCount) {
       return null
     }
 
@@ -95,9 +102,9 @@ class ToDoList extends React.Component<
           />
         </FormGroup>
         <List>
-          {ToDos.edges.map( ({ node }) => (
+          {ToDos.edges.map(({ node }) => (
             <ToDoItem key={node.id} Viewer={Viewer} ToDo={node} />
-          ) )}
+          ))}
         </List>
       </div>
     )
@@ -105,10 +112,11 @@ class ToDoList extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( withRouter( ToDoList ) ),
+  withStyles(styles)(withRouter(ToDoList)),
   graphql`
     fragment ToDoList_Viewer on Viewer {
-      ToDos(status: $status, first: 2147483647) @connection(key: "ToDoList_ToDos") {
+      ToDos(status: $status, first: 2147483647)
+        @connection(key: "ToDoList_ToDos") {
         edges {
           node {
             id
@@ -122,5 +130,5 @@ export default createFragmentContainer(
       ToDo_CompletedCount
       ...ToDoItem_Viewer
     }
-  `,
+  `
 )

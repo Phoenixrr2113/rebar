@@ -26,13 +26,13 @@ import ViewportContext from '../../rb-appbase-webapp/components/ViewportContext'
 
 const styles = {
   card: {
-    minWidth: 275,
-  },
+    minWidth: 275
+  }
 }
 
 class ViewportDimensionsScreen extends React.Component<{
   classes: Object,
-  Viewer: Object,
+  Viewer: Object
 }> {
   render() {
     const { classes } = this.props
@@ -43,7 +43,7 @@ class ViewportDimensionsScreen extends React.Component<{
           {({ totalWidth, totalHeight }) => {
             const data = [
               { name: 'totalWidth', value: totalWidth },
-              { name: 'totalHeight', value: totalHeight },
+              { name: 'totalHeight', value: totalHeight }
             ]
 
             return (
@@ -57,7 +57,7 @@ class ViewportDimensionsScreen extends React.Component<{
                     </TableRow>
                   </TableHead>
                   <TableBody>
-                    {data.map( n => {
+                    {data.map(n => {
                       return (
                         <TableRow key={n.name}>
                           <TableCell>{n.name}</TableCell>
@@ -78,10 +78,12 @@ class ViewportDimensionsScreen extends React.Component<{
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( ViewportDimensionsScreen ),
-  graphql`
-    fragment ViewportDimensionsScreen_Viewer on Viewer {
-      id
-    }
-  `
+  withStyles(styles)(ViewportDimensionsScreen),
+  {
+    Viewer: graphql`
+      fragment ViewportDimensionsScreen_Viewer on Viewer {
+        id
+      }
+    `
+  }
 )

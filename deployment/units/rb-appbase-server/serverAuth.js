@@ -18,7 +18,7 @@ var _ObjectManager = require("../rb-base-server/ObjectManager");
 var _checkCredentials = require("./checkCredentials");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 // Read environment
-require('dotenv').load();
+require('dotenv').config();
 
 const envJWTSecret = process.env.JWT_SECRET;
 if (envJWTSecret == null || typeof envJWTSecret !== 'string')
@@ -31,9 +31,11 @@ throw new Error(
 const serverAuth = (0, _express.default)();
 
 serverAuth.use(_bodyParser.default.json());
-serverAuth.use((req, res, next) => (0, _logServerRequest.default)(req, res, next, _requestLoggers.requestLoggerAuth));
+serverAuth.use((req, res, next) =>
+(0, _logServerRequest.default)(req, res, next, _requestLoggers.requestLoggerAuth));
 
-// TODO: [2 Crossroads][server] When logging in as a different user, logout of the old session should be performed first so that the session is deleted.
+
+// IDEA: When logging in as a different user, logout of the old session should be performed first so that the session is deleted.
 
 //
 
@@ -55,10 +57,13 @@ async function login(req, res) {
 
     step = 'Find user';
 
-    const arr_UserAccount = await objectManager.getObjectList_async('UserAccount', {
+    const arr_UserAccount = await objectManager.getObjectList_async(
+    'UserAccount',
+    {
       UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
       UserAccount_Identifier,
       UserAccount_Type: 'un' });
+
 
 
     if (arr_UserAccount.length === 0) {
@@ -72,8 +77,10 @@ async function login(req, res) {
     step = 'Check password';
     if (
     !(await new Promise((resolve) =>
-    _bcryptjs.default.compare(User_Secret, a_UserAccount.UserAccount_Secret, (err, passwordMatch) =>
-    resolve(passwordMatch)))))
+    _bcryptjs.default.compare(
+    User_Secret,
+    a_UserAccount.UserAccount_Secret,
+    (err, passwordMatch) => resolve(passwordMatch)))))
 
 
     {
@@ -144,9 +151,12 @@ async function createuser(req, res) {
     const UserAccount_Identifier = req.body.UserAccount_Identifier.toLowerCase();
     const User_Secret = req.body.User_Secret;
 
-    const arr_UserAccount = await objectManager.getObjectList_async('UserAccount', {
+    const arr_UserAccount = await objectManager.getObjectList_async(
+    'UserAccount',
+    {
       UserAccount_artifact_id: objectManager.siteInformation.artifact_id,
       UserAccount_Identifier });
+
 
 
     if (arr_UserAccount.length > 0) {
@@ -164,10 +174,14 @@ async function createuser(req, res) {
 
     // If account name looks like email address, use it as email
     const accountNameIsValidEmail = (0, _validation.validateEmail)(UserAccount_Identifier);
-    const User_PrimaryEmail = accountNameIsValidEmail ? UserAccount_Identifier : '';
+    const User_PrimaryEmail = accountNameIsValidEmail ?
+    UserAccount_Identifier :
+    '';
 
     step = 'Create the user object';
-    const a_User = Object.assign((0, _getNewUser.default)(objectManager.siteInformation.artifact_id), {
+    const a_User = Object.assign(
+    (0, _getNewUser.default)(objectManager.siteInformation.artifact_id),
+    {
       User_artifact_id: objectManager.siteInformation.artifact_id,
       UserToken2:
       Math.random().
@@ -184,6 +198,7 @@ async function createuser(req, res) {
       substring(2),
       User_DisplayName: UserAccount_Identifier,
       User_PrimaryEmail: User_PrimaryEmail });
+
 
     objectManager.assignPrimaryKey('User', a_User);
     objectManager.setViewerUserId(a_User.id);
@@ -226,12 +241,18 @@ async function createuser(req, res) {
 
 
     step = 'Set user token 1 cookie';
-    res.cookie('UserToken1', UserToken1, { httpOnly: true, maxAge: 30 * 24 * 60 * 60 * 1000 });
+    res.cookie('UserToken1', UserToken1, {
+      httpOnly: true,
+      maxAge: 30 * 24 * 60 * 60 * 1000 });
+
 
     step = 'Respond with success';
     res.json({ success: true });
   } catch (err) {
-    (0, _log.default)('error', 'rb-appbase-server serverAuth create user: Failed', { step, err });
+    (0, _log.default)('error', 'rb-appbase-server serverAuth create user: Failed', {
+      step,
+      err });
+
     res.status(500).send(
     JSON.stringify({
       error: 'An error has occurred while attempting to create user' }));
@@ -252,8 +273,11 @@ async function changeSecret(req, res) {
 
     step = 'Locate user account';
     // user id and artifact id will be picked up from object manager
-    const arr_UserAccount = await objectManager.getObjectList_async('UserAccount', {
+    const arr_UserAccount = await objectManager.getObjectList_async(
+    'UserAccount',
+    {
       UserAccount_Type: 'un' });
+
 
 
     if (arr_UserAccount.length === 0) {
@@ -291,7 +315,10 @@ async function changeSecret(req, res) {
 
     res.json({ success: true });
   } catch (err) {
-    (0, _log.default)('error', 'rb-appbase-server serverAuth change-secret: Failed', { err, step });
+    (0, _log.default)('error', 'rb-appbase-server serverAuth change-secret: Failed', {
+      err,
+      step });
+
     res.status(500).send(
     JSON.stringify({
       error: 'An error has occurred while attempting to change password' }));
@@ -307,7 +334,10 @@ async function logout(req, res) {
 
     // Notice that get user and session will return null if user is not found, hence the next line would
     // fail. This is OK because we have a catch in the end.
-    const userSession = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(objectManager, req, false)).
+    const userSession = (await (0, _checkCredentials.getUserAndSessionIDByUserToken1_async)(
+    objectManager,
+    req,
+    false)).
     UserSession;
 
     await objectManager.remove('UserSession', {
