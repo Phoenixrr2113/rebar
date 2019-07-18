@@ -10,27 +10,33 @@ var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions
 
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
-
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
 
 var _styles = require("@material-ui/core/styles");
 
+var _AccountSettings = _interopRequireDefault(require("mdi-material-ui/AccountSettings"));
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
 
+var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
+
+
 var _UserUpdateMutation = _interopRequireDefault(require("../../rb-account-management-client/relay/UserUpdateMutation"));
 var _RequiresAuthentication = _interopRequireDefault(require("../../rb-account-management-webapp/components/RequiresAuthentication"));
-var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 //
 
 const styles = {
-  card: { minWidth: 320 }
+  card: {
+    minWidth: 350,
+    maxWidth: 1200 },
+
+  ..._CompositeCardHeader.cardHeaderContentStyles };
 
 
-  //
-};
+//
+
 class UserProfileScreen extends _react.default.Component
 
 
@@ -112,9 +118,13 @@ class UserProfileScreen extends _react.default.Component
 
     return (
       _react.default.createElement(_ResponsiveContentArea.default, null,
-      _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "User Profile" }),
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_AccountSettings.default, { htmlColor: "#003c78" }),
+        title: "User",
+        subTitle: "Profile & settings" }),
 
+
+      _react.default.createElement(_Card.default, { className: classes.card },
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_TextField.default, {
         autoComplete: "name",
@@ -160,5 +170,7 @@ class UserProfileScreen extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(UserProfileScreen)), { Viewer: function () {return require("./__generated__/UserProfileScreen_Viewer.graphql");} });exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(UserProfileScreen)),
+{
+  Viewer: function () {return require("./__generated__/UserProfileScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=UserProfileScreen.js.map

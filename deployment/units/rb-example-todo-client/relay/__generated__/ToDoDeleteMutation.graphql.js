@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash a2731da66746794cfa5b65045d5eb1f2
+ * @relayHash 7324f134c249e46c90850ae28c422e40
  */
 
 /* eslint-disable */
@@ -60,8 +60,7 @@ const node /*: ConcreteRequest*/ = function () {
   {
     "kind": "Variable",
     "name": "input",
-    "variableName": "input",
-    "type": "ToDoDeleteInput!" }],
+    "variableName": "input" }],
 
 
   v2 = {

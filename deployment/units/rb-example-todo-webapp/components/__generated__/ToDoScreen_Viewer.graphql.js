@@ -10,10 +10,16 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type ToDoScreen_Viewer$ref: FragmentReference;
+              declare export opaque type ToDoScreen_Viewer$fragmentType: ToDoScreen_Viewer$ref;
               export type ToDoScreen_Viewer = {|
                 +id: string,
                 +$refType: ToDoScreen_Viewer$ref,
               |};
+              export type ToDoScreen_Viewer$data = ToDoScreen_Viewer;
+              export type ToDoScreen_Viewer$key = {
+                +$data?: ToDoScreen_Viewer$data,
+                +$fragmentRefs: ToDoScreen_Viewer$ref,
+              };
               */
 
 

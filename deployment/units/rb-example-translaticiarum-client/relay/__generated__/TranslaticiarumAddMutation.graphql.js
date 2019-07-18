@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 3317de29a2e7914d93ef7d46e46f0ee1
+ * @relayHash 861b96e44c430de8aef20d5af05e549b
  */
 
 /* eslint-disable */
@@ -88,8 +88,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "TranslaticiarumAddInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "TranslaticiarumAddPayload",

@@ -10,6 +10,11 @@ var _styles = require("@material-ui/core/styles");
 
 var _react = _interopRequireDefault(require("react"));
 var _reactGoogleMaps = require("react-google-maps");
+
+
+
+
+
 var _reactRelay = require("react-relay");
 
 var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));
@@ -32,7 +37,10 @@ const styles = {
 
 
 
-class InscriptioScreen extends _react.default.Component {
+class InscriptioScreen extends _react.default.Component
+
+
+{
   constructor(props, context) {
     super(props, context);this.
 
@@ -57,8 +65,8 @@ class InscriptioScreen extends _react.default.Component {
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_SiteConfigurationContext.default.Consumer, null,
       siteConfiguration => {
-        // $AssureFlow
-        const googleMapURL = siteConfiguration.webapp.api.googleMapsJavascriptAPI;
+        const googleMapURL =
+        siteConfiguration.webapp.api.googleMapsJavascriptAPI;
         return (
           _react.default.createElement(MapComponent, {
             defaultZoom: 16,
@@ -80,6 +88,6 @@ class InscriptioScreen extends _react.default.Component {
   }}var _default =
 
 
-(0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(InscriptioScreen), { Viewer: function () {return require("./__generated__/InscriptioScreen_Viewer.graphql");} });exports.default = _default;
+(0, _reactRelay.createFragmentContainer)((0, _styles.withStyles)(styles)(InscriptioScreen), {
+  Viewer: function () {return require("./__generated__/InscriptioScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=InscriptioScreen.js.map

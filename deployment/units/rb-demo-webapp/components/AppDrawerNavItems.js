@@ -14,26 +14,47 @@ var _Crosshairs = _interopRequireDefault(require("mdi-material-ui/Crosshairs"));
 var _MoveResize = _interopRequireDefault(require("mdi-material-ui/MoveResize"));
 var _Lock = _interopRequireDefault(require("mdi-material-ui/Lock"));
 var _react = _interopRequireDefault(require("react"));
+var _reactRelay = require("react-relay");
 
+var _AppDrawerAccountItem = _interopRequireDefault(require("../../rb-account-management-webapp/components/AppDrawerAccountItem"));
 var _NavMenuItemWithIcon = _interopRequireDefault(require("../../rb-appdrawer-webapp/components/NavMenuItemWithIcon"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const styles = {
+//
+
+const styles = theme => ({
+  container: {
+    flex: 'initial',
+    width: 250 },
+
+  formControl: {
+    marginTop: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit },
+
   list: {
-    width: 250,
-    flex: 'initial' } };
+    flex: 'initial',
+    width: 250 } });
 
 
+
+//
 
 class AppDrawerNavItems extends _react.default.Component
 
 
+
+
 {
   render() {
-    const { classes, onClick } = this.props;
+    const { classes, Viewer, onClick } = this.props;
 
     return (
-      _react.default.createElement("div", null,
-      _react.default.createElement(_Divider.default, null),
+      _react.default.createElement("div", { className: classes.container },
+      _react.default.createElement(_AppDrawerAccountItem.default, {
+        key: "account",
+        Viewer: Viewer,
+        onClick: this.props.onClick }),
+
       _react.default.createElement(_List.default, { className: classes.list },
       _react.default.createElement(_NavMenuItemWithIcon.default, {
         icon: _react.default.createElement(_Inbox.default, null),
@@ -74,8 +95,11 @@ class AppDrawerNavItems extends _react.default.Component
 
 
 
-  }}var _default =
+  }}
 
 
-(0, _styles.withStyles)(styles)(AppDrawerNavItems);exports.default = _default;
+//export default withStyles(styles)(AppDrawerNavItems)
+var _default =
+(0, _reactRelay.createFragmentContainer)((0, _styles.withStyles)(styles)(AppDrawerNavItems), {
+  Viewer: function () {return require("./__generated__/AppDrawerNavItems_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=AppDrawerNavItems.js.map

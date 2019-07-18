@@ -12,6 +12,7 @@
               type ToDoItem_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type ToDoList_Viewer$ref: FragmentReference;
+              declare export opaque type ToDoList_Viewer$fragmentType: ToDoList_Viewer$ref;
               export type ToDoList_Viewer = {|
                 +ToDos: ?{|
                   +edges: ?$ReadOnlyArray<?{|
@@ -28,6 +29,11 @@
                 +$fragmentRefs: ToDoItem_Viewer$ref,
                 +$refType: ToDoList_Viewer$ref,
               |};
+              export type ToDoList_Viewer$data = ToDoList_Viewer;
+              export type ToDoList_Viewer$key = {
+                +$data?: ToDoList_Viewer$data,
+                +$fragmentRefs: ToDoList_Viewer$ref,
+              };
               */
 
 
@@ -72,8 +78,7 @@ const node /*: ReaderFragment*/ = function () {
       {
         "kind": "Variable",
         "name": "status",
-        "variableName": "status",
-        "type": "String" }],
+        "variableName": "status" }],
 
 
       "concreteType": "ToDosConnection",
@@ -106,16 +111,16 @@ const node /*: ReaderFragment*/ = function () {
             "storageKey": null },
 
           {
-            "kind": "FragmentSpread",
-            "name": "ToDoItem_ToDo",
-            "args": null },
-
-          {
             "kind": "ScalarField",
             "alias": null,
             "name": "__typename",
             "args": null,
-            "storageKey": null }] },
+            "storageKey": null },
+
+          {
+            "kind": "FragmentSpread",
+            "name": "ToDoItem_ToDo",
+            "args": null }] },
 
 
 

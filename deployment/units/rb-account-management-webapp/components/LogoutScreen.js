@@ -8,23 +8,31 @@ var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions
 
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
 
-var _CardHeader = _interopRequireDefault(require("@material-ui/core/CardHeader"));
-
 var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
 
 var _styles = require("@material-ui/core/styles");
 
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
 
+var _Logout = _interopRequireDefault(require("mdi-material-ui/Logout"));
 var _react = _interopRequireDefault(require("react"));
 
-var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
+
+
+var _ResponsiveContentArea = _interopRequireDefault(require("../../rb-appbase-webapp/components/ResponsiveContentArea"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+
+//
 
 const styles = theme => ({
   card: {
-    minWidth: 400 } });
+    minWidth: 350,
+    maxWidth: 1200 },
+
+  ..._CompositeCardHeader.cardHeaderContentStyles });
 
 
+//
 
 class LogoutScreen extends _react.default.Component
 
@@ -78,7 +86,8 @@ class LogoutScreen extends _react.default.Component
         this.setState({
           currentOperation: 'failure',
           errorMessage:
-          'Did not receive proper response from server. Please try again. Message:' + err.message });
+          'Did not receive proper response from server. Please try again. Message:' +
+          err.message });
 
       }
     };this.
@@ -105,15 +114,21 @@ class LogoutScreen extends _react.default.Component
     const { classes } = this.props;
 
     return (
+      _react.default.createElement("div", null,
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        title: "Log Out" }),
+
+
       _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "Log Out" }),
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "Logging out. Please wait ..."),
       _react.default.createElement("br", null), " ", _react.default.createElement("br", null),
       _react.default.createElement(_LinearProgress.default, { mode: "query" })),
 
       _react.default.createElement(_CardActions.default, null,
-      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelLogout }, "Cancel"))));
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelLogout }, "Cancel")))));
+
 
 
 
@@ -123,13 +138,19 @@ class LogoutScreen extends _react.default.Component
     const { classes } = this.props;
 
     return (
+      _react.default.createElement("div", null,
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        title: "Log Out" }),
+
+
       _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "Logout" }),
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "You have been logged out.")),
 
       _react.default.createElement(_CardActions.default, null,
-      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue")))));
+
 
 
 
@@ -140,13 +161,21 @@ class LogoutScreen extends _react.default.Component
     const { errorMessage } = this.state;
 
     return (
+      _react.default.createElement("div", null,
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        title: "Log Out" }),
+
+
       _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "Log out" }),
       _react.default.createElement(_CardContent.default, null,
-      _react.default.createElement(_Typography.default, { component: "p" }, "Failed logging out because: ", errorMessage, "!")),
+      _react.default.createElement(_Typography.default, { component: "p" }, "Failed logging out because: ",
+      errorMessage, "!")),
+
 
       _react.default.createElement(_CardActions.default, null,
-      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again")))));
+
 
 
 
@@ -156,15 +185,21 @@ class LogoutScreen extends _react.default.Component
     const { classes } = this.props;
 
     return (
+      _react.default.createElement("div", null,
+      _react.default.createElement(_CompositeCardHeader.default, {
+        icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        title: "Log Out" }),
+
+
       _react.default.createElement(_Card.default, { className: classes.card },
-      _react.default.createElement(_CardHeader.default, { title: "Log Out" }),
       _react.default.createElement(_CardContent.default, null,
       _react.default.createElement(_Typography.default, { component: "p" }, "You are currently logged in. Are you sure you want to log out?")),
 
 
 
       _react.default.createElement(_CardActions.default, null,
-      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Logout }, "Yes, Log Out"))));
+      _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Logout }, "Yes, Log Out")))));
+
 
 
 

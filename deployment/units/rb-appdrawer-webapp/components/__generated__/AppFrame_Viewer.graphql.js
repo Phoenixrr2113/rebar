@@ -8,14 +8,20 @@
 
 /*::
               import type { ReaderFragment } from 'relay-runtime';
-              type NavBarLoginButton_Viewer$ref = any;
+              type AppDrawerNavItems_Viewer$ref = any;
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type AppFrame_Viewer$ref: FragmentReference;
+              declare export opaque type AppFrame_Viewer$fragmentType: AppFrame_Viewer$ref;
               export type AppFrame_Viewer = {|
                 +UserToken2: ?string,
-                +$fragmentRefs: NavBarLoginButton_Viewer$ref,
+                +$fragmentRefs: AppDrawerNavItems_Viewer$ref,
                 +$refType: AppFrame_Viewer$ref,
               |};
+              export type AppFrame_Viewer$data = AppFrame_Viewer;
+              export type AppFrame_Viewer$key = {
+                +$data?: AppFrame_Viewer$data,
+                +$fragmentRefs: AppFrame_Viewer$ref,
+              };
               */
 
 
@@ -35,12 +41,12 @@ const node /*: ReaderFragment*/ = {
 
   {
     "kind": "FragmentSpread",
-    "name": "NavBarLoginButton_Viewer",
+    "name": "AppDrawerNavItems_Viewer",
     "args": null }] };
 
 
 
 // prettier-ignore
-node /*: any*/.hash = 'd2d21205cf198c3560f270c0ab6040bd';
+node /*: any*/.hash = '3312dd5bd71574ff44d378a918d037d4';
 module.exports = node;
 //# sourceMappingURL=AppFrame_Viewer.graphql.js.map

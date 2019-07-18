@@ -63,14 +63,6 @@ class PersisterCassandra {
           filter,
           options,
           (err, entity) => {
-            // TODO: Would be nice to have a STRONG fild one that fails if object is not found.
-            // Also, not possible to distignuish key error from not found, apparently
-            // if ( entity === undefined ) {
-            //   reject(
-            //     'getOneObject findOne failed by producing undefined: ' +
-            //       JSON.stringify({ entityName, filter, err }),
-            //   )
-            // } else
             if (err) {
               reject(
               'getOneObject findOne failed: ' +
@@ -321,6 +313,16 @@ class PersisterCassandra {
         console.log(' Prepare table ' + tableName + '.');
       }
       ExpressCassandraClient.loadSchema(tableName, tableSchema).syncDB(err => {
+        // When used with scylla, this always happens. Just ignore the message
+        if (
+        err &&
+        err.message.startsWith(
+        'Given Schema does not match existing DB Table'))
+
+        {
+          err = null;
+        }
+
         if (err) {
           console.log(
           'Error:  Initializing Cassandra persister - error while creating ' +

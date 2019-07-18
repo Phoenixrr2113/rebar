@@ -10,6 +10,7 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type EnsayoPublicList_Viewer$ref: FragmentReference;
+              declare export opaque type EnsayoPublicList_Viewer$fragmentType: EnsayoPublicList_Viewer$ref;
               export type EnsayoPublicList_Viewer = {|
                 +Ensayos: ?{|
                   +edges: ?$ReadOnlyArray<?{|
@@ -22,6 +23,11 @@
                 |},
                 +$refType: EnsayoPublicList_Viewer$ref,
               |};
+              export type EnsayoPublicList_Viewer$data = EnsayoPublicList_Viewer;
+              export type EnsayoPublicList_Viewer$key = {
+                +$data?: EnsayoPublicList_Viewer$data,
+                +$fragmentRefs: EnsayoPublicList_Viewer$ref,
+              };
               */
 
 

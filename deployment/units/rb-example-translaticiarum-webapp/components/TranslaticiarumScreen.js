@@ -45,7 +45,11 @@ class TranslaticiarumScreen extends _react.default.Component
       this.setState({ calendarView: view });
     };this.
 
-    _handle_onSelectSlot = slotInfo => {
+    _handle_onSelectSlot = (slotInfo) =>
+
+
+
+    {
       console.log(slotInfo);
     };this.state = { calendarView: 'week' };}
 
@@ -88,5 +92,7 @@ class TranslaticiarumScreen extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)(TranslaticiarumScreen), { Viewer: function () {return require("./__generated__/TranslaticiarumScreen_Viewer.graphql");} });exports.default = _default;
+(0, _styles.withStyles)(styles)(TranslaticiarumScreen),
+{
+  Viewer: function () {return require("./__generated__/TranslaticiarumScreen_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=TranslaticiarumScreen.js.map

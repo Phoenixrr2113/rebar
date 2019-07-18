@@ -10,6 +10,7 @@
               import type { ReaderFragment } from 'relay-runtime';
               import type { FragmentReference } from "relay-runtime";
               declare export opaque type UserProfileScreen_Viewer$ref: FragmentReference;
+              declare export opaque type UserProfileScreen_Viewer$fragmentType: UserProfileScreen_Viewer$ref;
               export type UserProfileScreen_Viewer = {|
                 +id: string,
                 +User_IsAnonymous: ?boolean,
@@ -18,6 +19,11 @@
                 +User_PrimaryPhone: ?string,
                 +$refType: UserProfileScreen_Viewer$ref,
               |};
+              export type UserProfileScreen_Viewer$data = UserProfileScreen_Viewer;
+              export type UserProfileScreen_Viewer$key = {
+                +$data?: UserProfileScreen_Viewer$data,
+                +$fragmentRefs: UserProfileScreen_Viewer$ref,
+              };
               */
 
 

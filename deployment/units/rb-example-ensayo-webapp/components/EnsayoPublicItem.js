@@ -36,5 +36,5 @@ class EnsayoPublicItem extends _react.default.Component {
 
 
 (0, _reactRelay.createFragmentContainer)(
-EnsayoPublicItem, { Viewer: function () {return require("./__generated__/EnsayoPublicItem_Viewer.graphql");} });exports.default = _default;
+EnsayoPublicItem, function () {return require("./__generated__/EnsayoPublicItem_Viewer.graphql");});exports.default = _default;
 //# sourceMappingURL=EnsayoPublicItem.js.map

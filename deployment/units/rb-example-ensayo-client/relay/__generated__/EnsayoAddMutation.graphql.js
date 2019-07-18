@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 41fdacc5c6965c6a52fdba733ed937eb
+ * @relayHash 01473e9685d7de1ed8d1e512ef303edd
  */
 
 /* eslint-disable */
@@ -88,8 +88,7 @@ const node /*: ConcreteRequest*/ = function () {
     {
       "kind": "Variable",
       "name": "input",
-      "variableName": "input",
-      "type": "EnsayoAddInput!" }],
+      "variableName": "input" }],
 
 
     "concreteType": "EnsayoAddPayload",
