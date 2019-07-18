@@ -5,7 +5,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn flow && yarn jest && lint-staged"
+      "pre-commit": "yarn flow && yarn jest && lint-staged && yarn doc"
     }
   },
   "lint-staged": {
