@@ -18,7 +18,7 @@ import IconLogout from 'mdi-material-ui/Logout'
 import React from 'react'
 
 import CompositeCardHeader, {
-  cardHeaderContentStyles,
+  cardHeaderContentStyles
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
@@ -27,28 +27,28 @@ import ResponsiveContentArea from '../../rb-appbase-webapp/components/Responsive
 const styles = theme => ({
   card: {
     minWidth: 350,
-    maxWidth: 1200,
+    maxWidth: 1200
   },
-  ...cardHeaderContentStyles,
+  ...cardHeaderContentStyles
 })
 
 //
 
 class LogoutScreen extends React.Component<
   {
-    classes: Object,
+    classes: Object
   },
   {
     currentOperation: 'confirm' | 'logging out' | 'success' | 'failure',
-    errorMessage: string,
+    errorMessage: string
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       currentOperation: 'confirm',
-      errorMessage: '',
+      errorMessage: ''
     }
   }
 
@@ -59,35 +59,35 @@ class LogoutScreen extends React.Component<
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/logout', {
+      const response = await fetch(host + '/auth/logout', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
-        body: '{}',
+        body: '{}'
       })
 
       const responseData = await response.json()
 
-      if ( responseData.success ) {
+      if (responseData.success) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
       } else {
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          errorMessage: responseData.error,
+          errorMessage: responseData.error
         })
       }
-    } catch ( err ) {
+    } catch (err) {
       // In case response could not be received properly, tell the user
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
         errorMessage:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          err.message
       })
     }
   }
@@ -95,19 +95,19 @@ class LogoutScreen extends React.Component<
   _handle_onClick_CancelLogout = () => {
     this.setState({
       currentOperation: 'failure',
-      errorMessage: 'User log out has been canceled',
+      errorMessage: 'User log out has been canceled'
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'confirm',
-      errorMessage: '',
+      errorMessage: ''
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/' )
+    window.location.replace('/')
   }
 
   renderCreating() {
@@ -116,7 +116,7 @@ class LogoutScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLogout nativeColor="#003c78" />}
+          icon={<IconLogout htmlColor="#003c78" />}
           title="Log Out"
         />
 
@@ -140,7 +140,7 @@ class LogoutScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLogout nativeColor="#003c78" />}
+          icon={<IconLogout htmlColor="#003c78" />}
           title="Log Out"
         />
 
@@ -163,7 +163,7 @@ class LogoutScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLogout nativeColor="#003c78" />}
+          icon={<IconLogout htmlColor="#003c78" />}
           title="Log Out"
         />
 
@@ -187,7 +187,7 @@ class LogoutScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLogout nativeColor="#003c78" />}
+          icon={<IconLogout htmlColor="#003c78" />}
           title="Log Out"
         />
 
@@ -219,4 +219,4 @@ class LogoutScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( LogoutScreen )
+export default withStyles(styles)(LogoutScreen)

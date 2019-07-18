@@ -3,16 +3,16 @@
 import fs from 'fs'
 
 // Read environment
-require( 'dotenv' ).load()
+require('dotenv').config()
 
-const packageJSON = require( '../../package.json' )
+const packageJSON = require('../../package.json')
 
-console.log( 'Current version in package.json: ' + packageJSON.version )
+console.log('Current version in package.json: ' + packageJSON.version)
 
-const arrVersion = packageJSON.version.split( '.' )
+const arrVersion = packageJSON.version.split('.')
 arrVersion[2]++
-packageJSON.version = arrVersion.join( '.' )
+packageJSON.version = arrVersion.join('.')
 
-console.log( 'New version in package.json: ' + packageJSON.version )
+console.log('New version in package.json: ' + packageJSON.version)
 
-fs.writeFileSync( 'package.json', JSON.stringify( packageJSON, null, 2 ) )
+fs.writeFileSync('package.json', JSON.stringify(packageJSON, null, 2))

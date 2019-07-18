@@ -23,10 +23,10 @@ const drawerWidth = 240
 const styles = theme => ({
   '@global': {
     html: {
-      boxSizing: 'border-box',
+      boxSizing: 'border-box'
     },
     '*, *:before, *:after': {
-      boxSizing: 'inherit',
+      boxSizing: 'inherit'
     },
     body: {
       margin: 0,
@@ -35,59 +35,59 @@ const styles = theme => ({
       lineHeight: '1.2',
       overflowX: 'hidden',
       WebkitFontSmoothing: 'antialiased', // Antialiasing.
-      MozOsxFontSmoothing: 'grayscale', // Antialiasing.
+      MozOsxFontSmoothing: 'grayscale' // Antialiasing.
     },
     img: {
       maxWidth: '100%',
       height: 'auto',
-      width: 'auto',
-    },
+      width: 'auto'
+    }
   },
   root: {
     width: '100%',
     height: '100vh',
     zIndex: 1,
-    overflow: 'hidden',
+    overflow: 'hidden'
   },
   appFrame: {
     position: 'relative',
     display: 'flex',
     width: '100%',
-    height: '100%',
+    height: '100%'
   },
   menuButton: {
     position: 'absolute',
     zIndex: 1199, // Drawer is 1200
-    [theme.breakpoints.down( 'sm' )]: {
+    [theme.breakpoints.down('sm')]: {
       marginLeft: 4,
-      marginTop: 4,
+      marginTop: 4
     },
-    [theme.breakpoints.between( 'sm', 'lg' )]: {
+    [theme.breakpoints.between('sm', 'lg')]: {
       marginLeft: 8,
-      marginTop: 8,
+      marginTop: 8
     },
-    [theme.breakpoints.up( 'lg' )]: {
+    [theme.breakpoints.up('lg')]: {
       marginLeft: 12,
-      marginTop: 12,
-    },
+      marginTop: 12
+    }
   },
 
   drawerInner: {
     // Make the items inside not wrap when transitioning:
-    width: drawerWidth,
+    width: drawerWidth
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'flex-start',
     padding: '0 8px',
-    ...theme.mixins.toolbar,
+    ...theme.mixins.toolbar
   },
   drawerPaper: {
     position: 'relative',
     height: '100%',
-    width: drawerWidth,
-  },
+    width: drawerWidth
+  }
 })
 
 const titlePrefix = process.env.NODE_ENV === 'production' ? '' : '<DEV> '
@@ -96,15 +96,15 @@ class AppFrame extends React.Component<
   { children?: any, classes: Object, router: Object, Viewer: Object },
   {
     drawerIsOpen: boolean,
-    title: string,
+    title: string
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       drawerIsOpen: false,
-      title: titlePrefix + NavBarDefaultTitle,
+      title: titlePrefix + NavBarDefaultTitle
     }
   }
 
@@ -116,13 +116,13 @@ class AppFrame extends React.Component<
     this.setState({ drawerIsOpen: false })
   }
 
-  _handle_GoTo = ( to: string ) => {
+  _handle_GoTo = (to: string) => {
     this.setState({ drawerIsOpen: false })
 
-    this.props.router.push( to )
+    this.props.router.push(to)
   }
 
-  setTitle = ( title: string ) => {
+  setTitle = (title: string) => {
     this.setState({ title: titlePrefix + title })
   }
 
@@ -172,11 +172,13 @@ class AppFrame extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( withRouter( AppFrame ) ),
-  graphql`
-    fragment AppFrame_Viewer on Viewer {
-      UserToken2
-      ...AppDrawerNavItems_Viewer
-    }
-  `
+  withStyles(styles)(withRouter(AppFrame)),
+  {
+    Viewer: graphql`
+      fragment AppFrame_Viewer on Viewer {
+        UserToken2
+        ...AppDrawerNavItems_Viewer
+      }
+    `
+  }
 )

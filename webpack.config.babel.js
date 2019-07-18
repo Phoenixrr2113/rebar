@@ -4,13 +4,14 @@ import webpack from 'webpack'
 import ExtractTextPlugin from 'extract-text-webpack-plugin'
 
 // Read environment
-require( 'dotenv' ).load()
+require('dotenv').config()
 
-const version = require( './package.json' ).version
+const version = require('./package.json').version
 const host = process.env.HOST
 const port_webpack = process.env.PORT_WEBPACK
 const node_env = process.env.NODE_ENV
-const sassets_configuration_version = process.env.CFSB_SASSETS_CONFIGURATION_VERSION
+const sassets_configuration_version =
+  process.env.CFSB_SASSETS_CONFIGURATION_VERSION
 
 const publicPath = sassets_configuration_version
   ? `/sassets/${version}.${sassets_configuration_version}/`
@@ -19,21 +20,27 @@ const publicPath = sassets_configuration_version
   : `http://${host}:${port_webpack}/${version}/`
 
 console.log(
-  'Webpack ' + JSON.stringify({ node_env, version, sassets_configuration_version, publicPath }),
+  'Webpack ' +
+    JSON.stringify({
+      node_env,
+      version,
+      sassets_configuration_version,
+      publicPath
+    })
 )
 
-const ifNotProd = plugin => ( node_env !== 'production' ? plugin : undefined )
-const removeEmpty = array => array.filter( p => !!p )
+const ifNotProd = plugin => (node_env !== 'production' ? plugin : undefined)
+const removeEmpty = array => array.filter(p => !!p)
 
 const config = {
   devServer: {
     host,
     port: port_webpack,
-    headers: { 'Access-Control-Allow-Origin': '*' },
+    headers: { 'Access-Control-Allow-Origin': '*' }
   },
 
   entry: {
-    client: [ 'whatwg-fetch', path.resolve( 'units/rb-appbase-webapp/client.js' ) ],
+    client: ['whatwg-fetch', path.resolve('units/rb-appbase-webapp/client.js')],
     vendor: [
       'babel-polyfill',
       'farce',
@@ -48,8 +55,8 @@ const config = {
       'react-event-listener',
       'react-helmet',
       'react-relay',
-      'relay-runtime',
-    ],
+      'relay-runtime'
+    ]
   },
 
   optimization: {
@@ -58,18 +65,18 @@ const config = {
         commons: {
           test: /[\\/]node_modules[\\/]/,
           name: 'vendor',
-          chunks: 'all',
-        },
-      },
-    },
+          chunks: 'all'
+        }
+      }
+    }
   },
 
   output: {
     path: path.resolve(
-      `deployment/units/_configuration/rb-base-server/public_files/assets/${version}`,
+      `deployment/units/_configuration/rb-base-server/public_files/assets/${version}`
     ),
     filename: '[name].js',
-    publicPath,
+    publicPath
   },
 
   module: {
@@ -87,45 +94,45 @@ const config = {
                 [
                   '@babel/preset-env',
                   {
-                    targets: '> 0.25%, not dead',
-                  },
-                ],
+                    targets: '> 5%, not dead'
+                  }
+                ]
               ],
               plugins: removeEmpty([
                 'dynamic-import-webpack',
-                ifNotProd( 'flow-react-proptypes' ),
+                ifNotProd('flow-react-proptypes'),
                 'syntax-dynamic-import',
                 'transform-class-properties',
                 [
                   'relay',
                   {
-                    schema: 'schema.graphql',
-                  },
-                ],
-              ]),
-            },
+                    schema: 'schema.graphql'
+                  }
+                ]
+              ])
+            }
           },
-          ifNotProd({ loader: 'eslint-loader' }),
+          ifNotProd({ loader: 'eslint-loader' })
         ]),
-        exclude: /node_modules/,
+        exclude: /node_modules/
       },
 
       // Code for CSS loader tested with react-table
       {
         test: /\.css$/,
-        use: [ { loader: 'style-loader' }, { loader: 'css-loader' } ],
+        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }]
       },
 
       // Load images and files
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[hash].[ext]',
-      },
-    ],
+        loader: 'file-loader?name=assets/[name].[hash].[ext]'
+      }
+    ]
   },
 
   resolve: {
-    extensions: [ '.js', '.jsx' ],
+    extensions: ['.js', '.jsx']
   },
 
   plugins: removeEmpty([
@@ -134,15 +141,15 @@ const config = {
     new webpack.DefinePlugin({
       process: {
         env: {
-          NODE_ENV: JSON.stringify( process.env.NODE_ENV ),
-        },
-      },
+          NODE_ENV: JSON.stringify(process.env.NODE_ENV)
+        }
+      }
     }),
-    ifNotProd( new webpack.NamedModulesPlugin() ),
-  ]),
+    ifNotProd(new webpack.NamedModulesPlugin())
+  ])
 }
 
-if ( node_env !== 'production' ) {
+if (node_env !== 'production') {
   config.devtool = 'source-map'
 
   // Introduce relatively large timeout to allow babel-node to restart and avoid
@@ -151,7 +158,7 @@ if ( node_env !== 'production' ) {
   config.watch = true
   config.watchOptions = {
     aggregateTimeout: 2000,
-    poll: true,
+    poll: false
   }
 }
 

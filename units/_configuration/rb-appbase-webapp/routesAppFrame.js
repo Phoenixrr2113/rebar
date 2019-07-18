@@ -17,5 +17,5 @@ export default [
   routeAppFrameInscriptio,
   routeAppFrameTodo,
   routeAppFrameTranslaticiarum,
-  routeAppFrameViewportDimensions,
+  routeAppFrameViewportDimensions
 ]

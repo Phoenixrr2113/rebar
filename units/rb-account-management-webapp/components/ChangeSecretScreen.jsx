@@ -20,7 +20,7 @@ import IconLockReset from 'mdi-material-ui/LockReset'
 import React from 'react'
 
 import CompositeCardHeader, {
-  cardHeaderContentStyles,
+  cardHeaderContentStyles
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
@@ -31,32 +31,32 @@ import NewUserSecretInput from './NewUserSecretInput'
 const styles = {
   card: {
     minWidth: 350,
-    maxWidth: 1200,
+    maxWidth: 1200
   },
-  ...cardHeaderContentStyles,
+  ...cardHeaderContentStyles
 }
 
 //
 
 class ChangeSecretScreen extends React.Component<
   {
-    classes: Object,
+    classes: Object
   },
   {
     currentOperation: 'prompt' | 'changing' | 'success' | 'failure',
     executionStatus: string,
     User_CurrentSecret: string,
-    User_NewSecret: string,
+    User_NewSecret: string
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       currentOperation: 'prompt',
       executionStatus: '',
       User_CurrentSecret: '',
-      User_NewSecret: '',
+      User_NewSecret: ''
     }
   }
 
@@ -64,45 +64,45 @@ class ChangeSecretScreen extends React.Component<
     const { User_CurrentSecret, User_NewSecret } = this.state
 
     this.setState({
-      currentOperation: 'changing',
+      currentOperation: 'changing'
     })
 
     try {
       const loc = window.location
       const host = loc.protocol + '//' + loc.hostname + ':' + loc.port
 
-      const response = await fetch( host + '/auth/change-secret', {
+      const response = await fetch(host + '/auth/change-secret', {
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json',
+          'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           User_CurrentSecret,
-          User_NewSecret,
-        }),
+          User_NewSecret
+        })
       })
 
       const responseData = await response.json()
 
-      if ( responseData.success ) {
+      if (responseData.success) {
         // In case of success, notify user
         this.setState({ currentOperation: 'success' })
       } else {
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          executionStatus: responseData.error,
+          executionStatus: responseData.error
         })
       }
-    } catch ( err ) {
+    } catch (err) {
       // In case response could not be received properly, tell the user
       // In case of error, tell user what the error is
       this.setState({
         currentOperation: 'failure',
         executionStatus:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message,
+          err.message
       })
     }
   }
@@ -110,7 +110,7 @@ class ChangeSecretScreen extends React.Component<
   _handle_onClick_CancelChange = () => {
     this.setState({
       currentOperation: 'failure',
-      executionStatus: 'User creation has been canceled',
+      executionStatus: 'User creation has been canceled'
     })
   }
 
@@ -118,12 +118,12 @@ class ChangeSecretScreen extends React.Component<
     this.setState({
       User_CurrentSecret: '',
       currentOperation: 'prompt',
-      executionStatus: '',
+      executionStatus: ''
     })
   }
 
   _handle_onClick_Continue = () => {
-    window.location.replace( '/user/profile' )
+    window.location.replace('/user/profile')
   }
 
   renderChanging() {
@@ -132,7 +132,7 @@ class ChangeSecretScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLockReset nativeColor="#003c78" />}
+          icon={<IconLockReset htmlColor="#003c78" />}
           title="Changing password"
         />
 
@@ -157,7 +157,7 @@ class ChangeSecretScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLockReset nativeColor="#003c78" />}
+          icon={<IconLockReset htmlColor="#003c78" />}
           title="Password changed"
         />
 
@@ -182,7 +182,7 @@ class ChangeSecretScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLockReset nativeColor="#003c78" />}
+          icon={<IconLockReset htmlColor="#003c78" />}
           title="Failed to change password"
         />
 
@@ -221,7 +221,7 @@ class ChangeSecretScreen extends React.Component<
     return (
       <div>
         <CompositeCardHeader
-          icon={<IconLockReset nativeColor="#003c78" />}
+          icon={<IconLockReset htmlColor="#003c78" />}
           title="Change password"
         />
 
@@ -270,4 +270,4 @@ class ChangeSecretScreen extends React.Component<
   }
 }
 
-export default withStyles( styles )( ChangeSecretScreen )
+export default withStyles(styles)(ChangeSecretScreen)

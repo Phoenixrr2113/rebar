@@ -31,5 +31,5 @@ export default {
   ToDoUpdateStatus,
   TranslaticiarumAdd,
   TranslaticiarumDelete,
-  TranslaticiarumUpdate,
+  TranslaticiarumUpdate
 }

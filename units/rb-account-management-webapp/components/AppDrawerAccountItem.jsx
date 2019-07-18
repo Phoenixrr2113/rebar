@@ -21,7 +21,7 @@ import { createFragmentContainer, graphql } from 'react-relay'
 
 import {
   registerAuthenticationRequiredCallback,
-  unregisterAuthenticationRequiredCallback,
+  unregisterAuthenticationRequiredCallback
 } from './RequiresAuthentication'
 import LoginDialog from './LoginDialog'
 
@@ -30,12 +30,12 @@ import LoginDialog from './LoginDialog'
 const styles = theme => ({
   formControl: {
     paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
+    paddingRight: theme.spacing.unit
   },
   loginButtonContainer: {
     paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit,
-  },
+    paddingRight: theme.spacing.unit
+  }
 })
 
 //
@@ -43,20 +43,20 @@ const styles = theme => ({
 class AppDrawerAccountItem extends React.Component<
   { classes: Object, Viewer: Object, relay: Object, onClick: Function },
   {
-    loginDialogIsOpen: boolean,
+    loginDialogIsOpen: boolean
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
-      loginDialogIsOpen: false,
+      loginDialogIsOpen: false
     }
   }
 
   // Handle popping open the login dialog if authentication is required
   UNSAFE_componentWillMount() {
-    registerAuthenticationRequiredCallback( () =>
+    registerAuthenticationRequiredCallback(() =>
       this.setState({ loginDialogIsOpen: true })
     )
   }
@@ -72,12 +72,12 @@ class AppDrawerAccountItem extends React.Component<
   _handle_onChange_Account = event => {
     const operation = event.target.value
 
-    if ( operation === 'profile' ) {
-      this.props.onClick( '/user/profile' )
-    } else if ( operation === 'login' ) {
+    if (operation === 'profile') {
+      this.props.onClick('/user/profile')
+    } else if (operation === 'login') {
       this.setState({ loginDialogIsOpen: true })
-    } else if ( operation === 'logout' ) {
-      this.props.onClick( '/user/logout' )
+    } else if (operation === 'logout') {
+      this.props.onClick('/user/logout')
     }
   }
 
@@ -88,7 +88,7 @@ class AppDrawerAccountItem extends React.Component<
   _handle_Login_NewUser = () => {
     this.setState({ loginDialogIsOpen: false })
 
-    this.props.onClick( '/user/new' )
+    this.props.onClick('/user/new')
   }
 
   render() {
@@ -155,11 +155,13 @@ class AppDrawerAccountItem extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( AppDrawerAccountItem ),
-  graphql`
-    fragment AppDrawerAccountItem_Viewer on Viewer {
-      User_IsAnonymous
-      User_DisplayName
-    }
-  `
+  withStyles(styles)(AppDrawerAccountItem),
+  {
+    Viewer: graphql`
+      fragment AppDrawerAccountItem_Viewer on Viewer {
+        User_IsAnonymous
+        User_DisplayName
+      }
+    `
+  }
 )

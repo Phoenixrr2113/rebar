@@ -14,62 +14,83 @@ import IconCrosshairs from 'mdi-material-ui/Crosshairs'
 import IconMoveResize from 'mdi-material-ui/MoveResize'
 import IconLock from 'mdi-material-ui/Lock'
 import React from 'react'
+import { createFragmentContainer, graphql } from 'react-relay'
 
+import AppDrawerAccountItem from '../../rb-account-management-webapp/components/AppDrawerAccountItem'
 import NavMenuItemWithIcon from '../../rb-appdrawer-webapp/components/NavMenuItemWithIcon'
 
-const styles = {
-  list: {
-    width: 250,
+//
+
+const styles = theme => ({
+  container: {
     flex: 'initial',
+    width: 250
   },
-}
+  formControl: {
+    marginTop: theme.spacing.unit * 3,
+    paddingLeft: theme.spacing.unit,
+    paddingRight: theme.spacing.unit
+  },
+  list: {
+    flex: 'initial',
+    width: 250
+  }
+})
+
+//
 
 class AppDrawerNavItems extends React.Component<{
   classes: Object,
-  onClick: Function,
+  relay: Object,
+  Viewer: Object,
+  onClick: Function
 }> {
   render() {
-    const { classes, onClick } = this.props
+    const { classes, Viewer, onClick } = this.props
 
     return (
-      <div>
-        <Divider />
+      <div className={classes.container}>
+        <AppDrawerAccountItem
+          key="account"
+          Viewer={Viewer}
+          onClick={this.props.onClick}
+        />
         <List className={classes.list}>
           <NavMenuItemWithIcon
             icon={<IconInbox />}
             label="To Dos"
-            onClick={() => onClick( '/todo/' )}
+            onClick={() => onClick('/todo/')}
           />
           <NavMenuItemWithIcon
             icon={<IconPencil />}
             label="Ensayo Edit"
-            onClick={() => onClick( '/ensayo/in-place-edit/' )}
+            onClick={() => onClick('/ensayo/in-place-edit/')}
           />
           <NavMenuItemWithIcon
             icon={<IconContacts />}
             label="Ensayo Public"
-            onClick={() => onClick( '/ensayo/' )}
+            onClick={() => onClick('/ensayo/')}
           />
           <NavMenuItemWithIcon
             icon={<IconCrosshairs />}
             label="Inscriptio"
-            onClick={() => onClick( '/inscriptio/' )}
+            onClick={() => onClick('/inscriptio/')}
           />
           <NavMenuItemWithIcon
             icon={<IconCalendarBlank />}
             label="Translaticiarum"
-            onClick={() => onClick( '/translaticiarum/' )}
+            onClick={() => onClick('/translaticiarum/')}
           />
           <Divider />
           <NavMenuItemWithIcon
             icon={<IconMoveResize />}
             label="Viewport Dimensions"
-            onClick={() => onClick( '/viewport-dimensions/' )}
+            onClick={() => onClick('/viewport-dimensions/')}
           />
           <NavMenuItemWithIcon
             icon={<IconLock />}
             label="Force Login"
-            onClick={() => onClick( '/force-login/' )}
+            onClick={() => onClick('/force-login/')}
           />
         </List>
       </div>
@@ -77,4 +98,13 @@ class AppDrawerNavItems extends React.Component<{
   }
 }
 
-export default withStyles( styles )( AppDrawerNavItems )
+//export default withStyles(styles)(AppDrawerNavItems)
+
+export default createFragmentContainer(withStyles(styles)(AppDrawerNavItems), {
+  Viewer: graphql`
+    fragment AppDrawerNavItems_Viewer on Viewer {
+      ...AppDrawerAccountItem_Viewer
+      User_IsAnonymous
+    }
+  `
+})

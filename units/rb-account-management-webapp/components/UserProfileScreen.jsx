@@ -19,7 +19,7 @@ import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
 
 import CompositeCardHeader, {
-  cardHeaderContentStyles,
+  cardHeaderContentStyles
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import UserUpdateMutation from '../../rb-account-management-client/relay/UserUpdateMutation'
 import RequiresAuthenticationNotice from '../../rb-account-management-webapp/components/RequiresAuthentication'
@@ -30,9 +30,9 @@ import ResponsiveContentArea from '../../rb-appbase-webapp/components/Responsive
 const styles = {
   card: {
     minWidth: 350,
-    maxWidth: 1200,
+    maxWidth: 1200
   },
-  ...cardHeaderContentStyles,
+  ...cardHeaderContentStyles
 }
 
 //
@@ -46,22 +46,22 @@ class UserProfileScreen extends React.Component<
       User_IsAnonymous: boolean,
       User_DisplayName: string,
       User_PrimaryEmail: string,
-      User_PrimaryPhone: string,
-    },
+      User_PrimaryPhone: string
+    }
   },
   {
     User_DisplayName: string,
     User_PrimaryEmail: string,
-    User_PrimaryPhone: string,
+    User_PrimaryPhone: string
   }
 > {
-  constructor( props, context ) {
-    super( props, context )
+  constructor(props, context) {
+    super(props, context)
 
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone,
+      User_PrimaryPhone
     } = props.Viewer
 
     this.state = { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone }
@@ -86,14 +86,14 @@ class UserProfileScreen extends React.Component<
   }
 
   _handle_onClick_ChangePassword = () => {
-    this.props.router.push( '/user/change-secret' )
+    this.props.router.push('/user/change-secret')
   }
 
   _handle_onClick_Update = () => {
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone,
+      User_PrimaryPhone
     } = this.state
     const { relay } = this.props
 
@@ -108,18 +108,18 @@ class UserProfileScreen extends React.Component<
   render() {
     const { classes, Viewer } = this.props
 
-    if ( Viewer.User_IsAnonymous ) return <RequiresAuthenticationNotice />
+    if (Viewer.User_IsAnonymous) return <RequiresAuthenticationNotice />
 
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone,
+      User_PrimaryPhone
     } = this.state
 
     return (
       <ResponsiveContentArea>
         <CompositeCardHeader
-          icon={<IconAccountSettings nativeColor="#003c78" />}
+          icon={<IconAccountSettings htmlColor="#003c78" />}
           title="User"
           subTitle="Profile &amp; settings"
         />
@@ -170,14 +170,16 @@ class UserProfileScreen extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( withRouter( UserProfileScreen ) ),
-  graphql`
-    fragment UserProfileScreen_Viewer on Viewer {
-      id
-      User_IsAnonymous
-      User_DisplayName
-      User_PrimaryEmail
-      User_PrimaryPhone
-    }
-  `
+  withStyles(styles)(withRouter(UserProfileScreen)),
+  {
+    Viewer: graphql`
+      fragment UserProfileScreen_Viewer on Viewer {
+        id
+        User_IsAnonymous
+        User_DisplayName
+        User_PrimaryEmail
+        User_PrimaryPhone
+      }
+    `
+  }
 )

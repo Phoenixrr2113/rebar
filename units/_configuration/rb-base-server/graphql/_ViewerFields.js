@@ -9,5 +9,5 @@ export default {
   ...rb_example_ensayo_server,
   ...rb_example_inscriptio_server,
   ...rb_example_todo_server,
-  ...rb_example_translaticiarum_server,
+  ...rb_example_translaticiarum_server
 }
