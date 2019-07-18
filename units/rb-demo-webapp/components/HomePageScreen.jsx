@@ -28,13 +28,13 @@ import SiteConfigurationContext from '../../rb-appbase-webapp/components/SiteCon
 
 const styles = {
   card: {
-    minWidth: 275,
-  },
+    minWidth: 275
+  }
 }
 
 class HomePageScreen extends React.Component<{
   classes: Object,
-  Viewer: Object,
+  Viewer: Object
 }> {
   render() {
     const { classes } = this.props
@@ -45,24 +45,24 @@ class HomePageScreen extends React.Component<{
           const data = [
             {
               name: 'Rebar Version',
-              value: siteConfiguration.webapp.rebarDemo.version,
+              value: siteConfiguration.webapp.rebarDemo.version
             },
             {
               name: 'Server OS',
-              value: siteConfiguration.webapp.rebarDemo.OSType,
+              value: siteConfiguration.webapp.rebarDemo.OSType
             },
             {
               name: 'Server Host Name',
-              value: siteConfiguration.webapp.rebarDemo.OSHostName,
+              value: siteConfiguration.webapp.rebarDemo.OSHostName
             },
             {
               name: 'Server Free Memory',
-              value: siteConfiguration.webapp.rebarDemo.OSFreeMem,
+              value: siteConfiguration.webapp.rebarDemo.OSFreeMem
             },
             {
               name: 'Google Maps API Key',
-              value: siteConfiguration.webapp.api.googleMapsJavascriptAPI,
-            },
+              value: siteConfiguration.webapp.api.googleMapsJavascriptAPI
+            }
           ]
 
           return (
@@ -121,7 +121,7 @@ class HomePageScreen extends React.Component<{
                       </TableRow>
                     </TableHead>
                     <TableBody>
-                      {data.map( n => {
+                      {data.map(n => {
                         return (
                           <TableRow key={n.name}>
                             <TableCell>{n.name}</TableCell>
@@ -141,11 +141,10 @@ class HomePageScreen extends React.Component<{
   }
 }
 
-export default createFragmentContainer(
-  withStyles( styles )( HomePageScreen ),
-  graphql`
+export default createFragmentContainer(withStyles(styles)(HomePageScreen), {
+  Viewer: graphql`
     fragment HomePageScreen_Viewer on Viewer {
       id
     }
   `
-)
+})

@@ -21,9 +21,9 @@ import EnsayoInPlaceEditProperties from './EnsayoInPlaceEditProperties'
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
+    minWidth: 275
   },
-  addNewButton: { float: 'right', marginTop: -58, marginRight: 20 },
+  addNewButton: { float: 'right', marginTop: -58, marginRight: 20 }
 })
 
 class EnsayoInPaceEditScreen extends React.Component<
@@ -31,14 +31,14 @@ class EnsayoInPaceEditScreen extends React.Component<
     classes: Object,
     Viewer: Object,
     children: Object,
-    relay: Object,
+    relay: Object
   },
   {
-    propertiesIsOpen: boolean,
+    propertiesIsOpen: boolean
   }
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = { propertiesIsOpen: false }
   }
@@ -47,7 +47,7 @@ class EnsayoInPaceEditScreen extends React.Component<
     const {
       Ensayo_Title,
       Ensayo_Description,
-      Ensayo_Content,
+      Ensayo_Content
     } = EnsayoInPlaceEditProperties
     const { relay, Viewer } = this.props
 
@@ -107,10 +107,12 @@ class EnsayoInPaceEditScreen extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( EnsayoInPaceEditScreen ),
-  graphql`
-    fragment EnsayoInPaceEditScreen_Viewer on Viewer {
-      id
-    }
-  `
+  withStyles(styles)(EnsayoInPaceEditScreen),
+  {
+    Viewer: graphql`
+      fragment EnsayoInPaceEditScreen_Viewer on Viewer {
+        id
+      }
+    `
+  }
 )

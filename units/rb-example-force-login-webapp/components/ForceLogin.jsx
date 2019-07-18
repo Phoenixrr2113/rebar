@@ -47,11 +47,10 @@ class ForceLogin extends React.Component<{ classes: Object, Viewer: Object }> {
   }
 }
 
-export default createFragmentContainer(
-  withStyles(styles)(ForceLogin),
-  graphql`
+export default createFragmentContainer(withStyles(styles)(ForceLogin), {
+  Viewer: graphql`
     fragment ForceLogin_Viewer on Viewer {
       User_IsAnonymous
     }
   `
-)
+})

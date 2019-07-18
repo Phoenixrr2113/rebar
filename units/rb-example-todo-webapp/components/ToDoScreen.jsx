@@ -83,11 +83,10 @@ class ToDoScreen extends React.Component<
   }
 }
 
-export default createFragmentContainer(
-  withStyles(styles)(ToDoScreen),
-  graphql`
+export default createFragmentContainer(withStyles(styles)(ToDoScreen), {
+  Viewer: graphql`
     fragment ToDoScreen_Viewer on Viewer {
       id
     }
   `
-)
+})
