@@ -58,6 +58,10 @@ const deletedRecord = {
   deleted: true
 }
 
+/**
+ * Class for loading and storing objects
+ * @class ObjectManager
+ */
 export default class ObjectManager {
   loadersSingle: Object
   loadersMultiple: Object
@@ -69,8 +73,8 @@ export default class ObjectManager {
 
   /**
    * Creates a new instance of Object Manager
-   * @memberof ObjectManager
-   */
+   * @memberOf ObjectManager
+\  */
   constructor() {
     // Loaders for a single record, by entity name
     this.loadersSingle = {}
@@ -104,7 +108,8 @@ export default class ObjectManager {
   /**
    * Registers an entity with Object Manager. This is to be used exclusively from
    * the model definition unit/unit-name/graphql/mode/EntityName.js
-   */
+   * @memberOf ObjectManager
+\ \*/
   static registerEntity(
     entityName: string,
     EntityType: Function,
@@ -182,7 +187,8 @@ export default class ObjectManager {
 
   /**
    * Registers a trigger for when an entity is added
-   */
+   * @memberOf ObjectManager
+\  */
   static RegisterTriggerForAdd(entityName: string, handler: Function): void {
     entityDefinitions[entityName].TriggersForAdd.push(handler)
   }
