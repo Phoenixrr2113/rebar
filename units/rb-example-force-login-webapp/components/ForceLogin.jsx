@@ -1,6 +1,10 @@
 // @flow
 
-import Card, { CardHeader, CardContent } from '@material-ui/core/Card'
+import Card from '@material-ui/core/Card'
+
+import CardContent from '@material-ui/core/CardContent'
+
+import CardHeader from '@material-ui/core/CardHeader'
 
 import { withStyles } from '@material-ui/core/styles'
 
@@ -14,23 +18,28 @@ import ResponsiveContentArea from '../../rb-appbase-webapp/components/Responsive
 
 const styles = theme => ({
   card: {
-    minWidth: 275,
-  },
+    minWidth: 275
+  }
 })
 
 class ForceLogin extends React.Component<{ classes: Object, Viewer: Object }> {
   render() {
     const { classes, Viewer } = this.props
 
-    if ( Viewer.User_IsAnonymous ) return <RequiresAuthenticationNotice />
+    if (Viewer.User_IsAnonymous) return <RequiresAuthenticationNotice />
     // Anonymous users do not get to have a profile
     else
       return (
         <ResponsiveContentArea>
           <Card className={classes.card}>
-            <CardHeader title="Only Authorized" subheader="Only users who log in see this." />
+            <CardHeader
+              title="Only Authorized"
+              subheader="Only users who log in see this."
+            />
             <CardContent>
-              <Typography paragraph>Content seen by authorized users</Typography>
+              <Typography paragraph>
+                Content seen by authorized users
+              </Typography>
             </CardContent>
           </Card>
         </ResponsiveContentArea>
@@ -39,10 +48,10 @@ class ForceLogin extends React.Component<{ classes: Object, Viewer: Object }> {
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( ForceLogin ),
+  withStyles(styles)(ForceLogin),
   graphql`
     fragment ForceLogin_Viewer on Viewer {
       User_IsAnonymous
     }
-  `,
+  `
 )
