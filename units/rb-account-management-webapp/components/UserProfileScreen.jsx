@@ -120,8 +120,8 @@ class UserProfileScreen extends React.Component<
       <ResponsiveContentArea>
         <CompositeCardHeader
           icon={<IconAccountSettings htmlColor="#003c78" />}
-          title="User"
           subTitle="Profile &amp; settings"
+          title="User"
         />
 
         <Card className={classes.card}>

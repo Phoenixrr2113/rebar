@@ -77,7 +77,7 @@ class NewUserScreen extends React.Component<
     }
   }
 
-  _handle_onClick_Create = async() => {
+  _handle_onClick_Create = async () => {
     const { UserAccount_Identifier, User_Secret } = this.state
 
     this.setState({
@@ -151,8 +151,8 @@ class NewUserScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconAccount htmlColor="#003c78" />}
-          title="New User"
           subTitle="Creating, please wait"
+          title="New User"
         />
 
         <Card className={classes.card}>
@@ -184,8 +184,8 @@ class NewUserScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconAccount htmlColor="#003c78" />}
-          title="New User"
           subTitle="Created"
+          title="New User"
         />
 
         <Card className={classes.card}>
@@ -212,8 +212,8 @@ class NewUserScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconAccount htmlColor="#ff0000" />}
-          title="New User"
           subTitle="Failed"
+          title="New User"
         />
 
         <Card className={classes.card}>
@@ -258,8 +258,8 @@ class NewUserScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconAccount htmlColor="#003c78" />}
-          title="New User"
           subTitle="Create new user"
+          title="New User"
         />
 
         <Card className={classes.card}>

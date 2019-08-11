@@ -60,7 +60,7 @@ class ChangeSecretScreen extends React.Component<
     }
   }
 
-  _handle_onClick_Change = async() => {
+  _handle_onClick_Change = async () => {
     const { User_CurrentSecret, User_NewSecret } = this.state
 
     this.setState({
@@ -133,6 +133,7 @@ class ChangeSecretScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLockReset htmlColor="#003c78" />}
+          subTitle=""
           title="Changing password"
         />
 
@@ -158,6 +159,7 @@ class ChangeSecretScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLockReset htmlColor="#003c78" />}
+          subTitle=""
           title="Password changed"
         />
 
@@ -183,6 +185,7 @@ class ChangeSecretScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLockReset htmlColor="#003c78" />}
+          subTitle=""
           title="Failed to change password"
         />
 
@@ -222,6 +225,7 @@ class ChangeSecretScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLockReset htmlColor="#003c78" />}
+          subTitle=""
           title="Change password"
         />
 

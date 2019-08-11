@@ -6,13 +6,14 @@ import cassandraDriver from 'cassandra-driver'
 require('dotenv').config()
 
 const CassandraOptions = {
+  authProvider: null,
   // Assume localhost if not defined
   contactPoints:
     process.env.CASSANDRA_CONNECTION_POINTS != null
       ? process.env.CASSANDRA_CONNECTION_POINTS.split(',')
       : ['localhost'],
   keyspace: process.env.CASSANDRA_KEYSPACE,
-  authProvider: null
+  localDataCenter: 'datacenter1'
 }
 
 if (process.env.CASSANDRA_USER) {

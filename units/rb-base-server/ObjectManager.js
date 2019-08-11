@@ -74,7 +74,7 @@ export default class ObjectManager {
   /**
    * Creates a new instance of Object Manager
    * @memberOf ObjectManager
-\  */
+   */
   constructor() {
     // Loaders for a single record, by entity name
     this.loadersSingle = {}
@@ -109,7 +109,7 @@ export default class ObjectManager {
    * Registers an entity with Object Manager. This is to be used exclusively from
    * the model definition unit/unit-name/graphql/mode/EntityName.js
    * @memberOf ObjectManager
-\ \*/
+   */
   static registerEntity(
     entityName: string,
     EntityType: Function,
@@ -188,7 +188,7 @@ export default class ObjectManager {
   /**
    * Registers a trigger for when an entity is added
    * @memberOf ObjectManager
-\  */
+   */
   static RegisterTriggerForAdd(entityName: string, handler: Function): void {
     entityDefinitions[entityName].TriggersForAdd.push(handler)
   }
@@ -233,10 +233,14 @@ export default class ObjectManager {
 
         // Is the filter/fields collection missing it, and are we not prevented from adding it?
         if (!filterOrFields.hasOwnProperty(fieldName) && !hasDoNotAdd) {
-          filterOrFields[fieldName] =
-            suffix === '_artifact_id'
-              ? this.siteInformation.artifact_id
-              : this.Viewer_User_id
+          if (suffix === '_artifact_id') {
+            filterOrFields[fieldName] = this.siteInformation.artifact_id
+          } else if (
+            this.Viewer_User_id !==
+            'Object Manager: viewer user id has not been set'
+          ) {
+            filterOrFields[fieldName] = this.Viewer_User_id
+          }
         }
 
         if (hasDoNotAdd) {
@@ -264,7 +268,10 @@ export default class ObjectManager {
         // Assign the modified/created field
         fields[fieldName] =
           suffix === '_modified_by' || suffix === '_created_by'
-            ? this.Viewer_User_id
+            ? this.Viewer_User_id !==
+              'Object Manager: viewer user id has not been set'
+              ? this.Viewer_User_id
+              : '00000000-0000-0000-0000-000000000000'
             : dtNow
       }
     }

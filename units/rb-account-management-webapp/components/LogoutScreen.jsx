@@ -52,7 +52,7 @@ class LogoutScreen extends React.Component<
     }
   }
 
-  _handle_onClick_Logout = async() => {
+  _handle_onClick_Logout = async () => {
     this.setState({ currentOperation: 'logging out' })
 
     try {
@@ -117,6 +117,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -141,6 +142,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -164,6 +166,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -188,6 +191,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 

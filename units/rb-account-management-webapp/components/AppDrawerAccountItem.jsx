@@ -29,12 +29,12 @@ import LoginDialog from './LoginDialog'
 
 const styles = theme => ({
   formControl: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   },
   loginButtonContainer: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1)
   }
 })
 

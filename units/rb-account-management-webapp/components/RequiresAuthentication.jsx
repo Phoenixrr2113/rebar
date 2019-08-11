@@ -54,6 +54,7 @@ class RequiresAuthenticationNotice extends React.Component<{
       <ResponsiveContentArea>
         <CompositeCardHeader
           icon={<IconShieldKeyOutline htmlColor="#003c78" />}
+          subTitle=""
           title="Please log in"
         />
 
