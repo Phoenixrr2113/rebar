@@ -59,7 +59,7 @@ export default new GraphQLObjectType({
         }
       },
 
-      resolve: async ( 
+      resolve: async (
         obj,
         { ...args },
         context,
