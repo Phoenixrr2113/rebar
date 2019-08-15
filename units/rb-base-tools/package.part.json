@@ -1,23 +1,15 @@
 {
+  "devDependencies": {
+    "ignore": "5.1.2",
+    "micromatch": "4.0.2"
+  },
   "engines": {
     "node": ">=10.6.0",
     "npm": ">=6.1.0"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "yarn flow && yarn jest && lint-staged && yarn doc"
-    }
-  },
-  "lint-staged": {
-    "ignore": [
-      "deployment/**"
-    ],
-    "linters": {
-      "*.{js,jsx}": [
-        "eslint --fix",
-        "prettier-eslint --write",
-        "git add"
-      ]
+      "pre-commit": "yarn flow && yarn jest && lint-staged && yarn doc && git add doc/*"
     }
   },
   "scripts": {
