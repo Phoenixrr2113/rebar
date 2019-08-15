@@ -59,7 +59,7 @@ export default new GraphQLObjectType({
         }
       },
 
-      resolve: async(
+      resolve: async ( 
         obj,
         { ...args },
         context,
@@ -81,7 +81,7 @@ export default new GraphQLObjectType({
 
       args: { ...{ id: { type: GraphQLID } } },
 
-      resolve: async(
+      resolve: async (
         parent,
         { id },
         context,
@@ -108,7 +108,7 @@ export default new GraphQLObjectType({
 
       args: { ...connectionArgs },
 
-      resolve: async(
+      resolve: async (
         obj,
         { ...args },
         context,
@@ -127,7 +127,7 @@ export default new GraphQLObjectType({
 
       args: { ...{ id: { type: GraphQLID } } },
 
-      resolve: async(
+      resolve: async (
         parent,
         { id },
         context,
