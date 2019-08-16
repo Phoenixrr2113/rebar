@@ -12,21 +12,21 @@ export default new GraphQLObjectType({
 
   interfaces: [ NodeInterface ],
 
-  isTypeOf: object => object instanceof Translaticiarum,
+  isTypeOf: (object) => object instanceof Translaticiarum,
 
   fields: {
-    id: globalIdField( 'Translaticiarum' ),
+    id: globalIdField('Translaticiarum'),
     Translaticiarum_Start: {
       type: GraphQLDateTime,
-      resolve: obj => obj.Translaticiarum_Start,
+      resolve: (obj) => obj.Translaticiarum_Start,
     },
     Translaticiarum_Stop: {
       type: GraphQLDateTime,
-      resolve: obj => obj.Translaticiarum_Stop,
+      resolve: (obj) => obj.Translaticiarum_Stop,
     },
     Translaticiarum_Description: {
       type: GraphQLString,
-      resolve: obj => obj.Translaticiarum_Description,
+      resolve: (obj) => obj.Translaticiarum_Description,
     },
   },
 })

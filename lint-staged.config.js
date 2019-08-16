@@ -40,7 +40,7 @@ module.exports = {
         !eslint.ignores(file) &&
         !prettier.ignores(file)
       ) {
-        cmd.push(`prettier-eslint --write ${file}`)
+        cmd.push(`prettier-eslint --prettier-last --write ${file}`)
       }
 
       if (cmd.length > 0) {

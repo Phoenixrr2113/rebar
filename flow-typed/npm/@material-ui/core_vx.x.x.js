@@ -2018,6 +2018,10 @@ declare module '@material-ui/core/InputAdornment/InputAdornment' {
   declare module.exports: any;
 }
 
+declare module '@material-ui/core/InputBase' {
+  declare module.exports: any;
+}
+
 declare module '@material-ui/core/InputBase/index' {
   declare module.exports: any;
 }

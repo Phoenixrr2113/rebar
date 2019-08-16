@@ -77,7 +77,7 @@ async function rebarErrorHandler(err, err_info) {
 // Load up react, relay and set up error handling
 
 const render = createRender({})
-;(async () => {
+;(async() => {
   const {
     relayPayloads,
     siteConfiguration,

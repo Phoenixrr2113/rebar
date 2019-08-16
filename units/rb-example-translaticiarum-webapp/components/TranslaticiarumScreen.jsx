@@ -19,8 +19,8 @@ BigCalendar.momentLocalizer(moment)
 
 const styles = {
   card: {
-    minWidth: 275
-  }
+    minWidth: 275,
+  },
 }
 
 // truncate "Translaticiarum";
@@ -30,25 +30,25 @@ const styles = {
 class TranslaticiarumScreen extends React.Component<
   any,
   {
-    calendarView: 'month' | 'week' | 'day' | 'agenda'
-  }
+    calendarView: 'month' | 'week' | 'day' | 'agenda',
+  },
 > {
   constructor(props: Object, context: Object) {
     super(props, context)
 
     this.state = {
-      calendarView: 'week'
+      calendarView: 'week',
     }
   }
 
-  _handle_onView = view => {
+  _handle_onView = (view) => {
     this.setState({ calendarView: view })
   }
 
   _handle_onSelectSlot = (slotInfo: {
     start: Date,
     end: Date,
-    slots: Array<Date>
+    slots: Array<Date>,
   }) => {
     console.log(slotInfo)
   }
@@ -58,13 +58,13 @@ class TranslaticiarumScreen extends React.Component<
 
     const translaticiarumEdges = Viewer.Translaticiarums.edges
 
-    const calendarEvents = translaticiarumEdges.map(translaticiarumEdge => {
+    const calendarEvents = translaticiarumEdges.map((translaticiarumEdge) => {
       const translaticiarum = translaticiarumEdge.node
 
       return {
         title: translaticiarum.Translaticiarum_Description,
         start: moment(translaticiarum.Translaticiarum_Start).toDate(),
-        end: moment(translaticiarum.Translaticiarum_Stop).toDate()
+        end: moment(translaticiarum.Translaticiarum_Stop).toDate(),
       }
     })
 
@@ -108,6 +108,6 @@ export default createFragmentContainer(
           }
         }
       }
-    `
-  }
+    `,
+  },
 )
