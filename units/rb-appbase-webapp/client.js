@@ -28,7 +28,7 @@ async function rebarErrorHandler(err, err_info) {
     if (
       typeof err.message === 'string' &&
       err.message.startsWith(
-        "An error was thrown inside one of your components, but React doesn't know what it was.",
+        'An error was thrown inside one of your components, but React does not know what it was.',
       )
     )
       return
