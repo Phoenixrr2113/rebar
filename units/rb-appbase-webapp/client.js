@@ -28,7 +28,7 @@ async function rebarErrorHandler(err, err_info) {
     if (
       typeof err.message === 'string' &&
       err.message.startsWith(
-        'An error was thrown inside one of your components, but React doesn\'t know what it was.'
+        "An error was thrown inside one of your components, but React doesn't know what it was.",
       )
     )
       return
@@ -41,7 +41,7 @@ async function rebarErrorHandler(err, err_info) {
     const body = JSON.stringify({
       UserToken2: getUserToken2(),
       err: { message: err.message, stack: err.stack },
-      err_info
+      err_info,
     })
 
     // Send away
@@ -49,9 +49,9 @@ async function rebarErrorHandler(err, err_info) {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
       },
-      body
+      body,
     })
 
     // Inform user of the result
@@ -59,17 +59,17 @@ async function rebarErrorHandler(err, err_info) {
     if (responseAsObject.success) {
       alert(
         'An error has occurred. Use the following identifier when reporting to support:\n' +
-          responseAsObject.issue_id
+          responseAsObject.issue_id,
       )
     } else {
       alert(
-        'An error has occurred. Attempt to assign an identifier has failed.'
+        'An error has occurred. Attempt to assign an identifier has failed.',
       )
     }
   } catch (err) {
     alert(
       'An error has occurred. We were not able to assign an identifier to it.\nReason:' +
-        err
+        err,
     )
   }
 }
@@ -77,11 +77,11 @@ async function rebarErrorHandler(err, err_info) {
 // Load up react, relay and set up error handling
 
 const render = createRender({})
-;(async() => {
+;(async () => {
   const {
     relayPayloads,
     siteConfiguration,
-    UserToken1
+    UserToken1,
   } = window.__rebar_properties__
 
   // It is critical that the app frame has UserToken2 retrieved
@@ -92,7 +92,7 @@ const render = createRender({})
     getGraphQLServerURL(),
     relayPayloads,
     UserToken1,
-    getUserToken2()
+    getUserToken2(),
   )
   const resolver = createResolver(fetcher)
 
@@ -101,7 +101,7 @@ const render = createRender({})
     historyMiddlewares,
     routeConfig: routeConfig(siteConfiguration),
     resolver,
-    render
+    render,
   })
 
   const contentComponent = (
@@ -123,7 +123,7 @@ const render = createRender({})
       // // We don't need the static css any more once we have launched our application.
       // const ssStyles = document.getElementById( 'server-side-styles' )
       // ssStyles.parentNode.removeChild( ssStyles )
-    }
+    },
   )
 
   window.__rebar_error_handler__ = rebarErrorHandler
