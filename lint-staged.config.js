@@ -1,7 +1,7 @@
 // modeled after: https://github.com/docta/docta/blob/3569255b94789c7b205f97d225b31de7cd2c7b26/.lintstagedrc.js
 
 const read = require('fs').readFileSync
-const relative = require('path').relative
+// const relative = require('path').relative
 const resolve = require('path').resolve
 
 const ignore = require('ignore')
@@ -24,7 +24,7 @@ module.exports = {
     files = files.map((file) => {
       const cmd = []
 
-      file = relative(process.cwd(), file)
+      // file = relative(process.cwd(), file)
 
       //   if (
       //     micromatch.isMatch(file, 'units/**/*.{js,jsx}', { dot: true }) &&
@@ -35,21 +35,29 @@ module.exports = {
 
       if (
         micromatch.isMatch(file, 'units/**/*.{css,js,jsx,json,md,scss,yml}', {
-          dot: true
+          dot: true,
         }) &&
         !eslint.ignores(file) &&
         !prettier.ignores(file)
       ) {
-        cmd.push(`prettier-eslint --prettier-last --write ${file}`)
+        cmd.push(
+          `./node_modules/.bin/eslint --config ./.eslintrc.json ${file}'`,
+        )
+        cmd.push(
+          `./node_modules/.bin/prettier --config ./.prettierrc.json --write '${file}'`,
+        )
       }
 
       if (cmd.length > 0) {
-        cmd.push(`git add ${file}`)
-      }
+        cmd.push(`git add '${file}'`)
 
-      return cmd.length > 0 ? cmd.join(' && ') : null
+        const command = cmd.join(' && ')
+        return command
+      } else {
+        return null
+      }
     })
 
     return files.filter((cmd) => cmd !== null)
-  }
+  },
 }

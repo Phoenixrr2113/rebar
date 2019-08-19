@@ -1,7 +1,7 @@
 {
-  "arrowParens": true,
-  "bracesSpacing": true,
+  "arrowParens": "always",
   "bracketSpacing": true,
+  "jsxSingleQuote": true, 
   "printWidth": 80,
   "parser": "flow",
   "semi": false,

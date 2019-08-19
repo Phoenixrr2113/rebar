@@ -1,41 +1,32 @@
 // @flow
 
 import Button from '@material-ui/core/Button'
-
 import Divider from '@material-ui/core/Divider'
-
 import FormControl from '@material-ui/core/FormControl'
-
 import MenuItem from '@material-ui/core/MenuItem'
-
 import FilledInput from '@material-ui/core/FilledInput'
-
 import InputLabel from '@material-ui/core/InputLabel'
-
 import Select from '@material-ui/core/Select'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-
 import {
   registerAuthenticationRequiredCallback,
-  unregisterAuthenticationRequiredCallback
+  unregisterAuthenticationRequiredCallback,
 } from './RequiresAuthentication'
 import LoginDialog from './LoginDialog'
 
 //
 
-const styles = theme => ({
+const styles = (theme) => ({
   formControl: {
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1)
+    paddingRight: theme.spacing(1),
   },
   loginButtonContainer: {
     paddingLeft: theme.spacing(1),
-    paddingRight: theme.spacing(1)
-  }
+    paddingRight: theme.spacing(1),
+  },
 })
 
 //
@@ -43,21 +34,21 @@ const styles = theme => ({
 class AppDrawerAccountItem extends React.Component<
   { classes: Object, Viewer: Object, relay: Object, onClick: Function },
   {
-    loginDialogIsOpen: boolean
-  }
+    loginDialogIsOpen: boolean,
+  },
 > {
   constructor(props: Object, context: Object) {
     super(props, context)
 
     this.state = {
-      loginDialogIsOpen: false
+      loginDialogIsOpen: false,
     }
   }
 
   // Handle popping open the login dialog if authentication is required
   UNSAFE_componentWillMount() {
     registerAuthenticationRequiredCallback(() =>
-      this.setState({ loginDialogIsOpen: true })
+      this.setState({ loginDialogIsOpen: true }),
     )
   }
 
@@ -69,7 +60,7 @@ class AppDrawerAccountItem extends React.Component<
     this.setState({ loginDialogIsOpen: true })
   }
 
-  _handle_onChange_Account = event => {
+  _handle_onChange_Account = (event) => {
     const operation = event.target.value
 
     if (operation === 'profile') {
@@ -162,6 +153,6 @@ export default createFragmentContainer(
         User_IsAnonymous
         User_DisplayName
       }
-    `
-  }
+    `,
+  },
 )

@@ -1,29 +1,19 @@
 // @flow
 
 import Button from '@material-ui/core/Button'
-
 import Card from '@material-ui/core/Card'
-
 import CardActions from '@material-ui/core/CardActions'
-
 import CardContent from '@material-ui/core/CardContent'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import TextField from '@material-ui/core/TextField'
-
 import Typography from '@material-ui/core/Typography'
-
 import IconAccount from 'mdi-material-ui/Account'
 import React from 'react'
-
 import CompositeCardHeader, {
-  cardHeaderContentStyles
+  cardHeaderContentStyles,
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
-
 import NewUserSecretInput from './NewUserSecretInput'
 
 //
@@ -39,7 +29,7 @@ export function validateEmail(accountIdentifier: string) {
 const styles = {
   card: {
     minWidth: 350,
-    maxWidth: 1200
+    maxWidth: 1200,
   },
   ...cardHeaderContentStyles,
   userName: {
@@ -47,23 +37,23 @@ const styles = {
     borderColor: '#c0c0c0',
     fontWeight: 'bold',
     paddingLeft: 10,
-    paddingRight: 10
-  }
+    paddingRight: 10,
+  },
 }
 
 //
 
 class NewUserScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'prompt' | 'creating' | 'success' | 'failure',
     executionStatus: string,
     UserAccount_Identifier: string,
     UserAccount_IdentifierValidity: boolean,
-    User_Secret: string
-  }
+    User_Secret: string,
+  },
 > {
   constructor(props: Object, context: Object) {
     super(props, context)
@@ -73,7 +63,7 @@ class NewUserScreen extends React.Component<
       executionStatus: '',
       UserAccount_Identifier: '',
       UserAccount_IdentifierValidity: false,
-      User_Secret: ''
+      User_Secret: '',
     }
   }
 
@@ -82,7 +72,7 @@ class NewUserScreen extends React.Component<
 
     this.setState({
       currentOperation: 'creating',
-      User_Secret: '' // In order to prevent the password from being accessed later
+      User_Secret: '', // In order to prevent the password from being accessed later
     })
 
     try {
@@ -93,12 +83,12 @@ class NewUserScreen extends React.Component<
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           UserAccount_Identifier: UserAccount_Identifier,
-          User_Secret: User_Secret
-        })
+          User_Secret: User_Secret,
+        }),
       })
 
       const responseData = await response.json()
@@ -110,7 +100,7 @@ class NewUserScreen extends React.Component<
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          executionStatus: responseData.error
+          executionStatus: responseData.error,
         })
       }
     } catch (err) {
@@ -120,7 +110,7 @@ class NewUserScreen extends React.Component<
         currentOperation: 'failure',
         executionStatus:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message
+          err.message,
       })
     }
   }
@@ -128,14 +118,14 @@ class NewUserScreen extends React.Component<
   _handle_onClick_CancelCreation = () => {
     this.setState({
       currentOperation: 'failure',
-      executionStatus: 'User creation has been canceled'
+      executionStatus: 'User creation has been canceled',
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'prompt',
-      executionStatus: ''
+      executionStatus: '',
     })
   }
 
@@ -232,14 +222,14 @@ class NewUserScreen extends React.Component<
     )
   }
 
-  _handle_onChange_Identifier = event => {
+  _handle_onChange_Identifier = (event) => {
     const UserAccount_Identifier = event.target.value
     const UserAccount_IdentifierValidity = validateEmail(UserAccount_Identifier)
 
     this.setState({ UserAccount_Identifier, UserAccount_IdentifierValidity })
   }
 
-  _handle_onUpdateSecret = secret => {
+  _handle_onUpdateSecret = (secret) => {
     this.setState({ User_Secret: secret })
   }
 
@@ -248,7 +238,7 @@ class NewUserScreen extends React.Component<
     const {
       UserAccount_Identifier,
       UserAccount_IdentifierValidity,
-      User_Secret
+      User_Secret,
     } = this.state
 
     // User account identifier must be valid and secret must be present

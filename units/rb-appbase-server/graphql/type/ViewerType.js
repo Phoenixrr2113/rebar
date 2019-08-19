@@ -5,13 +5,13 @@ import {
   GraphQLID,
   GraphQLNonNull,
   GraphQLString,
-  GraphQLObjectType,
+  GraphQLObjectType
 } from 'graphql'
 import {
   connectionArgs,
   connectionFromArray,
   fromGlobalId,
-  globalIdField,
+  globalIdField
 } from 'graphql-relay'
 
 import defaultPersister from '../../../_configuration/rb-base-server/graphql/defaultPersister'
@@ -26,27 +26,27 @@ import UserQuotaForObjectType from './UserQuotaForObjectType'
 
 export default new GraphQLObjectType({
   name: 'Viewer',
-  interfaces: [ NodeInterface ],
-  isTypeOf: (object) => object instanceof User,
+  interfaces: [NodeInterface],
+  isTypeOf: object => object instanceof User,
   fields: {
     id: globalIdField('Viewer'),
     User_IsAnonymous: {
       type: GraphQLBoolean,
-      resolve: (obj) =>
-        defaultPersister.uuidEquals(obj.id, defaultPersister.uuidNull()),
+      resolve: obj =>
+        defaultPersister.uuidEquals(obj.id, defaultPersister.uuidNull())
     },
-    UserToken2: { type: GraphQLString, resolve: (obj) => obj.UserToken2 },
+    UserToken2: { type: GraphQLString, resolve: obj => obj.UserToken2 },
     User_DisplayName: {
       type: GraphQLString,
-      resolve: (obj) => obj.User_DisplayName,
+      resolve: obj => obj.User_DisplayName
     },
     User_PrimaryEmail: {
       type: GraphQLString,
-      resolve: (obj) => obj.User_PrimaryEmail,
+      resolve: obj => obj.User_PrimaryEmail
     },
     User_PrimaryPhone: {
       type: GraphQLString,
-      resolve: (obj) => obj.User_PrimaryPhone,
+      resolve: obj => obj.User_PrimaryPhone
     },
 
     UserPermissionForObjects: {
@@ -55,25 +55,25 @@ export default new GraphQLObjectType({
       args: {
         ...connectionArgs,
         UserPermissionForObject_ObjectType: {
-          type: new GraphQLNonNull(GraphQLString),
-        },
+          type: new GraphQLNonNull(GraphQLString)
+        }
       },
 
-      resolve: async (
+      resolve: async(
         obj,
         { ...args },
         context,
-        { rootValue: objectManager },
+        { rootValue: objectManager }
       ) => {
         const { UserPermissionForObject_ObjectType } = args
         const arr = await objectManager.getObjectList_async(
           'UserPermissionForObject',
           {
-            UserPermissionForObject_ObjectType,
-          },
+            UserPermissionForObject_ObjectType
+          }
         )
         return connectionFromArray(arr, args)
-      },
+      }
     },
 
     UserPermissionForObject: {
@@ -81,15 +81,15 @@ export default new GraphQLObjectType({
 
       args: { ...{ id: { type: GraphQLID } } },
 
-      resolve: async (
+      resolve: async(
         parent,
         { id },
         context,
-        { rootValue: objectManager },
+        { rootValue: objectManager }
       ) => {
         const local_id = objectManager.uuidFromString(
           'UserPermissionForObject',
-          fromGlobalId(id).id,
+          fromGlobalId(id).id
         )
 
         // TODO Materialized view UserPermissionForObject_by_ID does not exist
@@ -97,10 +97,10 @@ export default new GraphQLObjectType({
           'UserPermissionForObject',
           {
             id: local_id,
-            _materialized_view: 'UserPermissionForObject_by_ID',
-          },
+            _materialized_view: 'UserPermissionForObject_by_ID'
+          }
         )
-      },
+      }
     },
 
     UserQuotaForObjects: {
@@ -108,18 +108,18 @@ export default new GraphQLObjectType({
 
       args: { ...connectionArgs },
 
-      resolve: async (
+      resolve: async(
         obj,
         { ...args },
         context,
-        { rootValue: objectManager },
+        { rootValue: objectManager }
       ) => {
         const arr = await objectManager.getObjectList_async(
           'UserQuotaForObject',
-          {},
+          {}
         )
         return connectionFromArray(arr, args)
-      },
+      }
     },
 
     UserQuotaForObject: {
@@ -127,26 +127,26 @@ export default new GraphQLObjectType({
 
       args: { ...{ id: { type: GraphQLID } } },
 
-      resolve: async (
+      resolve: async(
         parent,
         { id },
         context,
-        { rootValue: objectManager },
+        { rootValue: objectManager }
       ) => {
         const local_id = objectManager.uuidFromString(
           'UserQuotaForObject',
-          fromGlobalId(id).id,
+          fromGlobalId(id).id
         )
 
         return await objectManager.getOneObject_async('UserQuotaForObject', {
           id: local_id,
 
           // TODO Materialized view UserQuotaForObject_by_ID does not exist
-          _materialized_view: 'UserQuotaForObject_by_ID',
+          _materialized_view: 'UserQuotaForObject_by_ID'
         })
-      },
+      }
     },
 
-    ..._ViewerFields,
-  },
+    ..._ViewerFields
+  }
 })

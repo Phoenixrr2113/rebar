@@ -1,26 +1,18 @@
 // @flow
 
 import Button from '@material-ui/core/Button'
-
 import Card from '@material-ui/core/Card'
-
 import CardActions from '@material-ui/core/CardActions'
-
 import CardContent from '@material-ui/core/CardContent'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import TextField from '@material-ui/core/TextField'
-
 import Typography from '@material-ui/core/Typography'
-
 import IconLockReset from 'mdi-material-ui/LockReset'
 import React from 'react'
 
 import CompositeCardHeader, {
-  cardHeaderContentStyles
+  cardHeaderContentStyles,
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
@@ -31,23 +23,23 @@ import NewUserSecretInput from './NewUserSecretInput'
 const styles = {
   card: {
     minWidth: 350,
-    maxWidth: 1200
+    maxWidth: 1200,
   },
-  ...cardHeaderContentStyles
+  ...cardHeaderContentStyles,
 }
 
 //
 
 class ChangeSecretScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'prompt' | 'changing' | 'success' | 'failure',
     executionStatus: string,
     User_CurrentSecret: string,
-    User_NewSecret: string
-  }
+    User_NewSecret: string,
+  },
 > {
   constructor(props: Object, context: Object) {
     super(props, context)
@@ -56,7 +48,7 @@ class ChangeSecretScreen extends React.Component<
       currentOperation: 'prompt',
       executionStatus: '',
       User_CurrentSecret: '',
-      User_NewSecret: ''
+      User_NewSecret: '',
     }
   }
 
@@ -64,7 +56,7 @@ class ChangeSecretScreen extends React.Component<
     const { User_CurrentSecret, User_NewSecret } = this.state
 
     this.setState({
-      currentOperation: 'changing'
+      currentOperation: 'changing',
     })
 
     try {
@@ -75,12 +67,12 @@ class ChangeSecretScreen extends React.Component<
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           User_CurrentSecret,
-          User_NewSecret
-        })
+          User_NewSecret,
+        }),
       })
 
       const responseData = await response.json()
@@ -92,7 +84,7 @@ class ChangeSecretScreen extends React.Component<
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          executionStatus: responseData.error
+          executionStatus: responseData.error,
         })
       }
     } catch (err) {
@@ -102,7 +94,7 @@ class ChangeSecretScreen extends React.Component<
         currentOperation: 'failure',
         executionStatus:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message
+          err.message,
       })
     }
   }
@@ -110,7 +102,7 @@ class ChangeSecretScreen extends React.Component<
   _handle_onClick_CancelChange = () => {
     this.setState({
       currentOperation: 'failure',
-      executionStatus: 'User creation has been canceled'
+      executionStatus: 'User creation has been canceled',
     })
   }
 
@@ -118,7 +110,7 @@ class ChangeSecretScreen extends React.Component<
     this.setState({
       User_CurrentSecret: '',
       currentOperation: 'prompt',
-      executionStatus: ''
+      executionStatus: '',
     })
   }
 
@@ -203,13 +195,13 @@ class ChangeSecretScreen extends React.Component<
     )
   }
 
-  _handle_onChange_Identifier = event => {
+  _handle_onChange_Identifier = (event) => {
     const User_CurrentSecret = event.target.value
 
     this.setState({ User_CurrentSecret })
   }
 
-  _handle_onUpdateSecret = secret => {
+  _handle_onUpdateSecret = (secret) => {
     this.setState({ User_NewSecret: secret })
   }
 

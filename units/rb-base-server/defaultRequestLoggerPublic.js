@@ -1,13 +1,13 @@
 // @flow weak
 
 import { debugWriteToLogServerRequestPublic } from '../_configuration/debug'
-import matchInDepth from '../rb-base-universal/matchInDepth'
+import { matchObject } from '../rb-base-universal/template'
 import log from '../rb-base-server/log'
 
 export default function defaultrequestLoggerPublic({
   req,
   clientIP,
-  userSession
+  userSession,
 }) {
   let logLevel = null
 
@@ -18,9 +18,9 @@ export default function defaultrequestLoggerPublic({
   // Otherwise, if it is a trace, log it as info
   //else
   if (
-    matchInDepth(
+    matchObject(
       { req, clientIP, userSession },
-      debugWriteToLogServerRequestPublic
+      debugWriteToLogServerRequestPublic,
     )
   ) {
     logLevel = 'info'
@@ -30,7 +30,7 @@ export default function defaultrequestLoggerPublic({
     log(logLevel, 'rb-base-server public request', {
       req,
       clientIP,
-      userSession
+      userSession,
     })
   }
 }

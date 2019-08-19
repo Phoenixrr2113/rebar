@@ -1,20 +1,14 @@
 // @flow
 
 import { withRouter } from 'found'
-
 import IconButton from '@material-ui/core/IconButton'
-
 import Menu from '@material-ui/core/Menu'
-
 import MenuItem from '@material-ui/core/MenuItem'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import IconAccount from 'mdi-material-ui/Account'
 import IconAccountOutline from 'mdi-material-ui/AccountOutline'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-
 import {
   registerAuthenticationRequiredCallback,
   unregisterAuthenticationRequiredCallback,
@@ -37,10 +31,10 @@ class NavBarAccountButton extends React.Component<
     anchorEl: ?Object,
     loginDialogIsOpen: boolean,
     userMenuIsOpen: boolean,
-  }
+  },
 > {
-  constructor( props: Object, context: Object ) {
-    super( props, context )
+  constructor(props: Object, context: Object) {
+    super(props, context)
 
     this.state = {
       anchorEl: undefined,
@@ -51,7 +45,7 @@ class NavBarAccountButton extends React.Component<
 
   // Handle popping open the login dialog if authentication is required
   UNSAFE_componentWillMount() {
-    registerAuthenticationRequiredCallback( this._handle_onClick_Login )
+    registerAuthenticationRequiredCallback(this._handle_onClick_Login)
   }
 
   componentWillUnmount() {
@@ -65,14 +59,14 @@ class NavBarAccountButton extends React.Component<
   _handle_onClick_Profile = () => {
     this.setState({ userMenuIsOpen: false })
 
-    this.props.router.push( '/user/profile' )
+    this.props.router.push('/user/profile')
   }
 
   _handle_Login_Close = () => {
     this.setState({ loginDialogIsOpen: false })
   }
 
-  _handle_onClick_UserMenu = event => {
+  _handle_onClick_UserMenu = (event) => {
     this.setState({ userMenuIsOpen: true, anchorEl: event.currentTarget })
   }
 
@@ -82,13 +76,13 @@ class NavBarAccountButton extends React.Component<
 
   _handle_onClick_Logout = () => {
     this.setState({ userMenuIsOpen: false })
-    this.props.router.push( '/user/logout' )
+    this.props.router.push('/user/logout')
   }
 
   _handle_Login_NewUser = () => {
     this.setState({ loginDialogIsOpen: false })
 
-    this.props.router.push( '/user/new' )
+    this.props.router.push('/user/new')
   }
 
   render() {
@@ -101,9 +95,11 @@ class NavBarAccountButton extends React.Component<
         <IconButton
           aria-haspopup="true"
           onClick={
-            User_IsAnonymous
-              ? this._handle_onClick_Login
-              : this._handle_onClick_UserMenu
+            User_IsAnonymous ? (
+              this._handle_onClick_Login
+            ) : (
+              this._handle_onClick_UserMenu
+            )
           }
           color="inherit"
         >
@@ -138,11 +134,11 @@ class NavBarAccountButton extends React.Component<
 }
 
 export default createFragmentContainer(
-  withStyles( styles )( withRouter( NavBarAccountButton ) ),
+  withStyles(styles)(withRouter(NavBarAccountButton)),
   graphql`
     fragment NavBarAccountButton_Viewer on Viewer {
       User_IsAnonymous
       User_DisplayName
     }
-  `
+  `,
 )

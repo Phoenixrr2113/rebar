@@ -2,12 +2,12 @@
 
 import { debugWriteToLogServerRequestWebApp } from '../_configuration/debug'
 import log from '../rb-base-server/log'
-import matchInDepth from '../rb-base-universal/matchInDepth'
+import { matchObject } from '../rb-base-universal/template'
 
 export default function defaultrequestLoggerWebApp({
   req,
   clientIP,
-  userSession
+  userSession,
 }) {
   let logLevel = null
 
@@ -18,9 +18,9 @@ export default function defaultrequestLoggerWebApp({
   // Otherwise, if it is a trace, log it as info
   //else
   if (
-    matchInDepth(
+    matchObject(
       { req, clientIP, userSession },
-      debugWriteToLogServerRequestWebApp
+      debugWriteToLogServerRequestWebApp,
     )
   ) {
     logLevel = 'info'
@@ -30,7 +30,7 @@ export default function defaultrequestLoggerWebApp({
     log(logLevel, 'rb-appbase-server render on server request', {
       req,
       clientIP,
-      userSession
+      userSession,
     })
   }
 }
