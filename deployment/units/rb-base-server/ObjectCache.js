@@ -115,6 +115,9 @@ async function removeExpired() {
   logEntries('removeExpired - after');
 }
 
+/**
+   * Adds an object to cache by category and cache key
+   */
 async function addObjectToCache(
 categoryName,
 cacheKey,

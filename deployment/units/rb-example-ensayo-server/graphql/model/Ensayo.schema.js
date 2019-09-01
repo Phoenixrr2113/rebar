@@ -6,13 +6,13 @@ _defaultPersister.default.addTableSchema('Ensayo', {
   fields: {
     id: 'uuid',
     Ensayo_artifact_id: 'uuid',
-    Ensayo_User_id: 'uuid',
+    Ensayo_user_id: 'uuid',
     Ensayo_Content: 'text',
     Ensayo_Description: 'text',
     Ensayo_Title: 'text' },
 
 
-  key: ['Ensayo_User_id', 'id'] });var _default =
+  key: ['Ensayo_user_id', 'id'] });var _default =
 
 
 true;exports.default = _default;

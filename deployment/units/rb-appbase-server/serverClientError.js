@@ -35,19 +35,11 @@ async function report(req, res) {
     req.body.__DO_NOT_INCLUDE__ = true;
 
     // Generate random ticket
-    const issue_id = (
-    Math.random().
-    toString(36).
-    substring(2, 5) +
+    const issue_id = (Math.random().toString(36).substring(2, 5) +
     '-' +
-    Math.random().
-    toString(36).
-    substring(2, 5) +
+    Math.random().toString(36).substring(2, 5) +
     '-' +
-    Math.random().
-    toString(36).
-    substring(2, 5)).
-
+    Math.random().toString(36).substring(2, 5)).
     toUpperCase().
     replace('O', '0').
     replace('I', '1');
@@ -74,6 +66,7 @@ async function report(req, res) {
 
   }
 }
+
 serverClientError.post('/report', report);var _default =
 
 serverClientError;exports.default = _default;

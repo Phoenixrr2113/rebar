@@ -14,10 +14,10 @@ const styles = theme => ({
       padding: 0 },
 
     [theme.breakpoints.between('sm', 'lg')]: {
-      padding: theme.spacing.unit },
+      padding: theme.spacing(1) },
 
     [theme.breakpoints.up('lg')]: {
-      padding: theme.spacing.unit * 2 },
+      padding: theme.spacing(2) },
 
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
@@ -33,7 +33,7 @@ const styles = theme => ({
     maxWidth: 1200,
     paddingLeft: 0,
     paddingRight: 0,
-    paddingTop: theme.spacing.unit * 3,
+    paddingTop: theme.spacing(3),
     textAlign: 'left' } });
 
 

@@ -22,7 +22,11 @@ class EnsayoInPaceEditList extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_List.default, null,
       Ensayos.edges.map(({ node }) =>
-      _react.default.createElement(_EnsayoInPlaceEditItem.default, { key: node.id, Viewer: Viewer, Ensayo: node })))));
+      _react.default.createElement(_EnsayoInPlaceEditItem.default, {
+        key: node.id,
+        Viewer: Viewer,
+        Ensayo: node })))));
+
 
 
 
@@ -30,6 +34,6 @@ class EnsayoInPaceEditList extends _react.default.Component
   }}var _default =
 
 
-(0, _reactRelay.createFragmentContainer)(
-EnsayoInPaceEditList, function () {return require("./__generated__/EnsayoInPaceEditList_Viewer.graphql");});exports.default = _default;
+(0, _reactRelay.createFragmentContainer)(EnsayoInPaceEditList, {
+  Viewer: function () {return require("./__generated__/EnsayoInPaceEditList_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoInPaceEditList.js.map

@@ -1,16 +1,11 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.registerAuthenticationRequiredCallback = registerAuthenticationRequiredCallback;exports.unregisterAuthenticationRequiredCallback = unregisterAuthenticationRequiredCallback;exports.default = void 0;
 
 var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
-
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _ShieldKeyOutline = _interopRequireDefault(require("mdi-material-ui/ShieldKeyOutline"));
 var _react = _interopRequireDefault(require("react"));
-
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
 var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
 
 
@@ -43,7 +38,7 @@ const styles = theme => ({
 class RequiresAuthenticationNotice extends _react.default.Component
 
 {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     authenticationRequiredCallback();
   }
 
@@ -54,6 +49,7 @@ class RequiresAuthenticationNotice extends _react.default.Component
       _react.default.createElement(_ResponsiveContentArea.default, null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_ShieldKeyOutline.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Please log in" }),
 
 

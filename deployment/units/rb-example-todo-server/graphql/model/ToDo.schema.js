@@ -6,12 +6,12 @@ _defaultPersister.default.addTableSchema('ToDo', {
   fields: {
     id: 'uuid',
     ToDo_artifact_id: 'uuid',
-    ToDo_User_id: 'uuid',
+    ToDo_user_id: 'uuid',
     ToDo_Text: 'text',
     ToDo_Complete: 'boolean' },
 
 
-  key: ['ToDo_User_id', 'id'] });var _default =
+  key: [['ToDo_artifact_id', 'ToDo_user_id'], 'id'] });var _default =
 
 
 true;exports.default = _default;

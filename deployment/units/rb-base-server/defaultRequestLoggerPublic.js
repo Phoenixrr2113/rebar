@@ -1,7 +1,7 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = defaultrequestLoggerPublic;
 
 var _debug = require("../_configuration/debug");
-var _matchInDepth = _interopRequireDefault(require("../rb-base-universal/matchInDepth"));
+var _template = require("../rb-base-universal/template");
 var _log = _interopRequireDefault(require("../rb-base-server/log"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
 function defaultrequestLoggerPublic({
@@ -18,7 +18,7 @@ function defaultrequestLoggerPublic({
   // Otherwise, if it is a trace, log it as info
   //else
   if (
-  (0, _matchInDepth.default)(
+  (0, _template.matchObject)(
   { req, clientIP, userSession },
   _debug.debugWriteToLogServerRequestPublic))
 

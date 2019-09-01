@@ -9,7 +9,7 @@ class AppFrameUpdateExecutor extends _react.default.Component
 
 
 {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     const { title, setTitle } = this.props;
 
     setTitle(title);
@@ -35,7 +35,11 @@ class AppFrameUpdate extends _react.default.Component
     return (
       _react.default.createElement(_AppFrameContext.default.Consumer, null,
       ({ setTitle, clearTitle }) =>
-      _react.default.createElement(AppFrameUpdateExecutor, { title: title, setTitle: setTitle, clearTitle: clearTitle })));
+      _react.default.createElement(AppFrameUpdateExecutor, {
+        title: title,
+        setTitle: setTitle,
+        clearTitle: clearTitle })));
+
 
 
 

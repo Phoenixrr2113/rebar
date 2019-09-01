@@ -1,24 +1,15 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _Divider = _interopRequireDefault(require("@material-ui/core/Divider"));
-
 var _FormControl = _interopRequireDefault(require("@material-ui/core/FormControl"));
-
 var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
-
 var _FilledInput = _interopRequireDefault(require("@material-ui/core/FilledInput"));
-
 var _InputLabel = _interopRequireDefault(require("@material-ui/core/InputLabel"));
-
 var _Select = _interopRequireDefault(require("@material-ui/core/Select"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
-
 var _RequiresAuthentication = require("./RequiresAuthentication");
 
 
@@ -29,12 +20,12 @@ var _LoginDialog = _interopRequireDefault(require("./LoginDialog"));function _in
 
 const styles = theme => ({
   formControl: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit },
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1) },
 
   loginButtonContainer: {
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit } });
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1) } });
 
 
 
