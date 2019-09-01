@@ -24,25 +24,21 @@ import ToDoListUpdateMarkAllMutation from '../../rb-example-todo-client/relay/To
 
 import ToDoItem from './ToDoItem'
 
-const styles = (theme) => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    background: theme.palette.background.paper,
-  },
-})
+const styles = (theme) => ({})
 
 class ToDoList extends React.Component<
   {
-    Viewer: Object,
+    classes: Object,
     relay: Object,
+    match: { params: { status?: string } },
     router: Object,
+    Viewer: Object,
   },
   null,
 > {
   _handle_onClick_MarkAll = (event, checked) => {
-    const { relay, Viewer } = this.props
-    const { variables } = this.context.relay
+    const { match, relay, Viewer } = this.props
+    const { status } = match.params
     const ToDo_Complete = checked
 
     ToDoListUpdateMarkAllMutation.commit(
@@ -50,20 +46,25 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status,
+      status,
     )
   }
 
   _handle_onChange = (event, tabsValue) => {
+    const { router } = this.props
+
     const url =
       tabsValue === 2
         ? '/todo/completed'
         : tabsValue === 1 ? '/todo/active' : '/todo'
-    this.context.router.push(url)
+
+    router.push(url)
   }
 
   renderTabs() {
-    const status = this.context.relay.variables.status
+    const { match } = this.props
+    const { status } = match.params
+
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0
 
     return (

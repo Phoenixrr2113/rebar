@@ -47,7 +47,7 @@ async function rebarErrorHandler(err, err_info) {
     // TODO Must provide correct name to client
 
     // Send away
-    const response = await fetch(host + '/xyz/client-error/report', {
+    const response = await fetch(host + '/client-error/report', {
       method: 'POST',
       credentials: 'same-origin',
       headers: {

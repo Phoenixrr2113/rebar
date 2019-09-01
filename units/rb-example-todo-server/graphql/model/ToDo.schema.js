@@ -11,7 +11,7 @@ defaultPersister.addTableSchema('ToDo', {
     ToDo_Complete: 'boolean',
   },
 
-  key: [ 'ToDo_user_id', 'id' ],
+  key: [ [ 'ToDo_artifact_id', 'ToDo_user_id' ], 'id' ],
 })
 
 export default true
