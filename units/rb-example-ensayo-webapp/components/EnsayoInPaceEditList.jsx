@@ -21,18 +21,21 @@ class EnsayoInPaceEditList extends React.Component<
     return (
       <div>
         <List>
-          {Ensayos.edges.map( ({ node }) => (
-            <EnsayoInPlaceEditItem key={node.id} Viewer={Viewer} Ensayo={node} />
-          ) )}
+          {Ensayos.edges.map(({ node }) => (
+            <EnsayoInPlaceEditItem
+              key={node.id}
+              Viewer={Viewer}
+              Ensayo={node}
+            />
+          ))}
         </List>
       </div>
     )
   }
 }
 
-export default createFragmentContainer(
-  EnsayoInPaceEditList,
-  graphql`
+export default createFragmentContainer(EnsayoInPaceEditList, {
+  Viewer: graphql`
     fragment EnsayoInPaceEditList_Viewer on Viewer {
       Ensayos(first: 2147483647) @connection(key: "EnsayoList_Ensayos") {
         edges {
@@ -46,4 +49,4 @@ export default createFragmentContainer(
       ...EnsayoInPlaceEditItem_Viewer
     }
   `,
-)
+})

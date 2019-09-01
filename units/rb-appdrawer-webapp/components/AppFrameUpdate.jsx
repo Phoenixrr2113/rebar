@@ -9,10 +9,10 @@ class AppFrameUpdateExecutor extends React.Component<{
   setTitle: Function,
   clearTitle: Function,
 }> {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     const { title, setTitle } = this.props
 
-    setTitle( title )
+    setTitle(title)
   }
 
   componentWillUnmount() {
@@ -35,7 +35,11 @@ class AppFrameUpdate extends React.Component<{
     return (
       <AppFrameContext.Consumer>
         {({ setTitle, clearTitle }) => (
-          <AppFrameUpdateExecutor title={title} setTitle={setTitle} clearTitle={clearTitle} />
+          <AppFrameUpdateExecutor
+            title={title}
+            setTitle={setTitle}
+            clearTitle={clearTitle}
+          />
         )}
       </AppFrameContext.Consumer>
     )

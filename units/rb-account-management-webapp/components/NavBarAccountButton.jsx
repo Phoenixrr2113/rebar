@@ -135,10 +135,12 @@ class NavBarAccountButton extends React.Component<
 
 export default createFragmentContainer(
   withStyles(styles)(withRouter(NavBarAccountButton)),
-  graphql`
-    fragment NavBarAccountButton_Viewer on Viewer {
-      User_IsAnonymous
-      User_DisplayName
-    }
-  `,
+  {
+    Viewer: graphql`
+      fragment NavBarAccountButton_Viewer on Viewer {
+        User_IsAnonymous
+        User_DisplayName
+      }
+    `,
+  },
 )

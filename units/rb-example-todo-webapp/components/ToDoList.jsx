@@ -24,21 +24,21 @@ import ToDoListUpdateMarkAllMutation from '../../rb-example-todo-client/relay/To
 
 import ToDoItem from './ToDoItem'
 
-const styles = theme => ({
+const styles = (theme) => ({
   root: {
     width: '100%',
     maxWidth: 360,
-    background: theme.palette.background.paper
-  }
+    background: theme.palette.background.paper,
+  },
 })
 
 class ToDoList extends React.Component<
   {
     Viewer: Object,
     relay: Object,
-    router: Object
+    router: Object,
   },
-  null
+  null,
 > {
   _handle_onClick_MarkAll = (event, checked) => {
     const { relay, Viewer } = this.props
@@ -50,7 +50,7 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status
+      variables.status,
     )
   }
 
@@ -58,9 +58,7 @@ class ToDoList extends React.Component<
     const url =
       tabsValue === 2
         ? '/todo/completed'
-        : tabsValue === 1
-        ? '/todo/active'
-        : '/todo'
+        : tabsValue === 1 ? '/todo/active' : '/todo'
     this.context.router.push(url)
   }
 
@@ -113,22 +111,24 @@ class ToDoList extends React.Component<
 
 export default createFragmentContainer(
   withStyles(styles)(withRouter(ToDoList)),
-  graphql`
-    fragment ToDoList_Viewer on Viewer {
-      ToDos(status: $status, first: 2147483647)
-        @connection(key: "ToDoList_ToDos") {
-        edges {
-          node {
-            id
-            ToDo_Complete
-            ...ToDoItem_ToDo
+  {
+    Viewer: graphql`
+      fragment ToDoList_Viewer on Viewer {
+        ToDos(status: $status, first: 2147483647)
+          @connection(key: "ToDoList_ToDos") {
+          edges {
+            node {
+              id
+              ToDo_Complete
+              ...ToDoItem_ToDo
+            }
           }
         }
+        id
+        ToDo_TotalCount
+        ToDo_CompletedCount
+        ...ToDoItem_Viewer
       }
-      id
-      ToDo_TotalCount
-      ToDo_CompletedCount
-      ...ToDoItem_Viewer
-    }
-  `
+    `,
+  },
 )

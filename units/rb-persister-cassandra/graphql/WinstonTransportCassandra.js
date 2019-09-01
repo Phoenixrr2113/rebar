@@ -1,5 +1,6 @@
 // @flow
 
+import chalk from 'chalk'
 import cql from 'cassandra-driver'
 import jsonStringifySafe from 'json-stringify-safe'
 import transport from 'winston-transport'
@@ -51,7 +52,7 @@ export default class WinstonTransportCassandra extends transport {
 
     if (!options.keyspace) {
       throw new Error(
-        'rb-persister-cassandra WinstonTransportCassandra: options.keyspace is missing'
+        'rb-persister-cassandra WinstonTransportCassandra: options.keyspace is missing',
       )
     }
 
@@ -128,7 +129,7 @@ export default class WinstonTransportCassandra extends transport {
           req_body = stringifyIfRequired(req.body)
         }
         req_ip = stringifyIfRequired(
-          req.headers['x-real-ip'] || req.connection.remoteAddress
+          req.headers['x-real-ip'] || req.connection.remoteAddress,
         )
       }
     } catch (ignoreErr) {
@@ -201,17 +202,26 @@ export default class WinstonTransportCassandra extends transport {
       req_ip,
       req_body,
       user_id,
-      site_id
+      site_id,
     }
 
     // Print to console, if so specified
     if (debugWriteToConsoleLog) {
       const eventForConsole = createCopyWithNonNull(event)
 
-      if (level === 'erorr') {
-        console.error(eventForConsole)
+      const { err_message, err_stack, message } = eventForConsole
+      delete eventForConsole.err_message
+      delete eventForConsole.err_stack
+      delete eventForConsole.message
+
+      if (level === 'error') {
+        if (err_message) console.error(chalk.black.bgYellowBright(err_message))
+        if (message) console.error(chalk.redBright.bgBlack(message))
+        if (err_stack) console.error(err_stack)
       } else {
-        console.log(eventForConsole)
+        if (err_message) console.log(chalk.black.bgBlueBright(err_message))
+        if (message) console.log(chalk.blueBright.bgBlack(message))
+        if (err_stack) console.log(err_stack)
       }
     }
 
@@ -260,17 +270,17 @@ export default class WinstonTransportCassandra extends transport {
           event.req_ip,
           event.req_body,
           event.user_id,
-          event.site_id
+          event.site_id,
         ],
         { prepare: true, consistency: cql.types.consistencies.one },
-        callback
+        callback,
       )
     } catch (writeErr) {
       console.error(
         'Failed to write to log because ' +
           writeErr.message +
           '\n' +
-          writeErr.stack
+          writeErr.stack,
       )
     }
   }

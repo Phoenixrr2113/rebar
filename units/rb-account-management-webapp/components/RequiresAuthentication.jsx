@@ -38,7 +38,7 @@ const styles = (theme) => ({
 class RequiresAuthenticationNotice extends React.Component<{
   classes: Object,
 }> {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     authenticationRequiredCallback()
   }
 

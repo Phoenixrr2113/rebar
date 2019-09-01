@@ -9,6 +9,7 @@
     "import-order-autofix/order": ["error", { "newlines-between": "ignore" }],
     "jsx-a11y/href-no-hash": "off",
     "max-len": "off",
+    "no-use-before-define": "off",
     "no-unused-vars": "error",
     "semi": "off",
     "quotes": [2, "single"],
