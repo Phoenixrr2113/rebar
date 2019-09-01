@@ -6,6 +6,7 @@
 	],
 	"settings": {
 		"flow.pathToFlow": "${workspaceRoot}/node_modules/.bin/flow",
+		"flow.useNPMPackagedFlow": true,
 		"[javascript]": {
 			"editor.formatOnSave": true
 		},
@@ -13,15 +14,33 @@
 			"editor.formatOnSave": true
 		},
 		"search.exclude": {
-			"/deployment": true
+			"/deployment": true,
+			"/jsdoc": true,
 		},
-		"prettier.eslintIntegration": true,
+		"prettier.arrowParens": true,
+		"prettier.bracesSpacing": true,
 		"prettier.bracketSpacing": true,
-		"prettier.printWidth": 100,
+		"prettier.eslintIntegration": true,
+		"prettier.parser": "flow",
+		"prettier.printWidth": 80,
 		"prettier.semi": false,
 		"prettier.singleQuote": true,
 		"prettier.tabWidth": 2,
 		"prettier.trailingComma": "all",
-		"prettier.useTabs": false	
+		"prettier.useTabs": false,
+		"files.exclude": {
+			"doc/**": true,
+			"flow-typed/**": true,
+			"deployment/**": true,
+			"node_modules/**":true,
+			"**/.vscode/**":true
+		},
+		"vscode-language-todo.globs": [
+			"!**/node_modules/**",
+			"!**/.vscode/**",
+			"!**/.git/**",
+			"!**/deployment/**",
+			"!**/doc/**"
+		]
 	}
 }

@@ -6,26 +6,26 @@ import ObjectManager from '../../../../units/rb-base-server/ObjectManager'
 export default class Translaticiarum {
   id: string
   Translaticiarum_artifact_id: string
-  Translaticiarum_User_id: string
+  Translaticiarum_user_id: string
   Translaticiarum_Start: string
   Translaticiarum_Stop: string
   Translaticiarum_Description: string
 
-  constructor( fields: {
+  constructor(fields: {
     id: string,
     Translaticiarum_artifact_id: string,
-    Translaticiarum_User_id: string,
+    Translaticiarum_user_id: string,
     Translaticiarum_Start: string,
     Translaticiarum_Stop: string,
     Translaticiarum_Description: string,
   }) {
     this.id = fields.id
     this.Translaticiarum_artifact_id = fields.Translaticiarum_artifact_id
-    this.Translaticiarum_User_id = fields.Translaticiarum_User_id
+    this.Translaticiarum_user_id = fields.Translaticiarum_user_id
     this.Translaticiarum_Start = fields.Translaticiarum_Start
     this.Translaticiarum_Stop = fields.Translaticiarum_Stop
     this.Translaticiarum_Description = fields.Translaticiarum_Description
   }
 }
 
-ObjectManager.registerEntity( 'Translaticiarum', Translaticiarum, {})
+ObjectManager.registerEntity('Translaticiarum', Translaticiarum, {})

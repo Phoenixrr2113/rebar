@@ -20,15 +20,15 @@ import { getUserToken2, setUserToken2 } from './scripts/userToken2'
 import '../_configuration/rb-appbase-webapp/global.css'
 
 // Handler for error reporting
-async function rebarErrorHandler( err, err_info ) {
+async function rebarErrorHandler(err, err_info) {
   try {
     // Do not report errors that do not carry meaningful information
-    if ( typeof err === 'string' && err.trimLeft() === '' ) return
-    if ( typeof err.message === 'string' && err.message.trimLeft() === '' ) return
+    if (typeof err === 'string' && err.trimLeft() === '') return
+    if (typeof err.message === 'string' && err.message.trimLeft() === '') return
     if (
       typeof err.message === 'string' &&
       err.message.startsWith(
-        'An error was thrown inside one of your components, but React doesn\'t know what it was.'
+        'An error was thrown inside one of your components, but React does not know what it was.',
       )
     )
       return
@@ -44,8 +44,10 @@ async function rebarErrorHandler( err, err_info ) {
       err_info,
     })
 
+    // TODO Must provide correct name to client
+
     // Send away
-    const response = await fetch( host + '/client-error/report', {
+    const response = await fetch(host + '/client-error/report', {
       method: 'POST',
       credentials: 'same-origin',
       headers: {
@@ -56,20 +58,20 @@ async function rebarErrorHandler( err, err_info ) {
 
     // Inform user of the result
     const responseAsObject = await response.json()
-    if ( responseAsObject.success ) {
+    if (responseAsObject.success) {
       alert(
         'An error has occurred. Use the following identifier when reporting to support:\n' +
-          responseAsObject.issue_id
+          responseAsObject.issue_id,
       )
     } else {
       alert(
-        'An error has occurred. Attempt to assign an identifier has failed.'
+        'An error has occurred. Attempt to assign an identifier has failed.',
       )
     }
-  } catch ( err ) {
+  } catch (err) {
     alert(
       'An error has occurred. We were not able to assign an identifier to it.\nReason:' +
-        err
+        err,
     )
   }
 }
@@ -77,7 +79,7 @@ async function rebarErrorHandler( err, err_info ) {
 // Load up react, relay and set up error handling
 
 const render = createRender({})
-;( async() => {
+;(async () => {
   const {
     relayPayloads,
     siteConfiguration,
@@ -85,21 +87,21 @@ const render = createRender({})
   } = window.__rebar_properties__
 
   // It is critical that the app frame has UserToken2 retrieved
-  setUserToken2( relayPayloads[0].data.Viewer.UserToken2 )
+  setUserToken2(relayPayloads[0].data.Viewer.UserToken2)
 
   // eslint-disable-next-line no-underscore-dangle
   const fetcher = new FetcherClient(
     getGraphQLServerURL(),
     relayPayloads,
     UserToken1,
-    getUserToken2()
+    getUserToken2(),
   )
-  const resolver = createResolver( fetcher )
+  const resolver = createResolver(fetcher)
 
   const Router = await createInitialFarceRouter({
     historyProtocol: new BrowserProtocol(),
     historyMiddlewares,
-    routeConfig: routeConfig( siteConfiguration ),
+    routeConfig: routeConfig(siteConfiguration),
     resolver,
     render,
   })
@@ -112,19 +114,18 @@ const render = createRender({})
       <Router resolver={resolver} />
     </AppWrapper>
   )
-
   ReactDOM.hydrate(
     contentComponent,
     // $AssureFlow
-    document.getElementById( 'root' ),
+    document.getElementById('root'),
     () => {
-      // TODO [2 Crossroads][Designer][webapp] Research if removal of styles if necessary
+      // IDEA Research if removal of styles if necessary
       // Previous version of react required removing of JSS styles but the new one seems to handle
       // them OK.
       // // We don't need the static css any more once we have launched our application.
       // const ssStyles = document.getElementById( 'server-side-styles' )
       // ssStyles.parentNode.removeChild( ssStyles )
-    }
+    },
   )
 
   window.__rebar_error_handler__ = rebarErrorHandler

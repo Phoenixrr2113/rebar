@@ -49,5 +49,7 @@ class EnsayoPublicList extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(EnsayoPublicList)), function () {return require("./__generated__/EnsayoPublicList_Viewer.graphql");});exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(EnsayoPublicList)),
+{
+  Viewer: function () {return require("./__generated__/EnsayoPublicList_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoPublicList.js.map

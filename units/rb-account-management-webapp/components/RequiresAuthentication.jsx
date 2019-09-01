@@ -1,18 +1,13 @@
 // @flow
 
 import Card from '@material-ui/core/Card'
-
 import CardContent from '@material-ui/core/CardContent'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import IconShieldKeyOutline from 'mdi-material-ui/ShieldKeyOutline'
 import React from 'react'
-
 import Typography from '@material-ui/core/Typography'
-
 import CompositeCardHeader, {
-  cardHeaderContentStyles
+  cardHeaderContentStyles,
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
@@ -30,20 +25,20 @@ export function unregisterAuthenticationRequiredCallback() {
 
 //
 
-const styles = theme => ({
+const styles = (theme) => ({
   card: {
     minWidth: 350,
-    maxWidth: 1200
+    maxWidth: 1200,
   },
-  ...cardHeaderContentStyles
+  ...cardHeaderContentStyles,
 })
 
 //
 
 class RequiresAuthenticationNotice extends React.Component<{
-  classes: Object
+  classes: Object,
 }> {
-  componentDidMount() {
+  UNSAFE_componentWillMount() {
     authenticationRequiredCallback()
   }
 
@@ -54,6 +49,7 @@ class RequiresAuthenticationNotice extends React.Component<{
       <ResponsiveContentArea>
         <CompositeCardHeader
           icon={<IconShieldKeyOutline htmlColor="#003c78" />}
+          subTitle=""
           title="Please log in"
         />
 

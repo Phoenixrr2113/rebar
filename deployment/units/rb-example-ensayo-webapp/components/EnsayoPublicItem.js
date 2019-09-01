@@ -24,17 +24,24 @@ class EnsayoPublicItem extends _react.default.Component {
       _react.default.createElement(_ResponsiveContentArea.default, null,
       _react.default.createElement(_reactHelmet.default, {
         title: Viewer.Ensayo.Ensayo_Title,
-        meta: [{ name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
+        meta: [
+        { name: 'description', content: Viewer.Ensayo.Ensayo_Description }] }),
+
 
       _react.default.createElement(_Card.default, null,
-      _react.default.createElement(_CardHeader.default, { title: _react.default.createElement("h1", null, contentH1), subheader: _react.default.createElement("h2", null, contentH2) }),
-      _react.default.createElement(_CardContent.default, null, new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
+      _react.default.createElement(_CardHeader.default, {
+        title: _react.default.createElement("h1", null, contentH1),
+        subheader: _react.default.createElement("h2", null, contentH2) }),
+
+      _react.default.createElement(_CardContent.default, null,
+      new _htmlToReact.Parser().parse(Viewer.Ensayo.Ensayo_Content)))));
+
 
 
 
   }}var _default =
 
 
-(0, _reactRelay.createFragmentContainer)(
-EnsayoPublicItem, function () {return require("./__generated__/EnsayoPublicItem_Viewer.graphql");});exports.default = _default;
+(0, _reactRelay.createFragmentContainer)(EnsayoPublicItem, {
+  Viewer: function () {return require("./__generated__/EnsayoPublicItem_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=EnsayoPublicItem.js.map

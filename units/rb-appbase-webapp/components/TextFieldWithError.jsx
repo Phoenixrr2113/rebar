@@ -20,14 +20,14 @@ class TextFieldWithError extends React.Component<{
   id: string,
   label: string,
   onChange: Function,
-  value: string,
+  value: string
 }> {
   render() {
     const { errorText, id, label, onChange, value } = this.props
 
     const isError = errorText !== ''
 
-    // TODO [2 Crossroads][App Base] TextFieldWithError does not show outline border
+    // TODO TextFieldWithError does not show outline border
     return (
       <FormControl
         error={isError}
@@ -50,4 +50,4 @@ class TextFieldWithError extends React.Component<{
   }
 }
 
-export default withStyles( styles )( TextFieldWithError )
+export default withStyles(styles)(TextFieldWithError)

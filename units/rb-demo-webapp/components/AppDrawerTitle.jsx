@@ -18,14 +18,19 @@ class AppDrawerTitle extends React.Component<{
   handle_GoTo: Function,
 }> {
   _handle_GoToHome = () => {
-    this.props.handle_GoTo( '/' )
+    this.props.handle_GoTo('/')
   }
   render() {
     const { classes } = this.props
 
     return (
       <div onClick={this._handle_GoToHome}>
-        <Typography className={classes.title} variant="title" gutterBottom color="inherit">
+        <Typography
+          className={classes.title}
+          variant="subtitle1"
+          gutterBottom
+          color="inherit"
+        >
           Machine Acuity's Rebar
         </Typography>
       </div>
@@ -33,4 +38,4 @@ class AppDrawerTitle extends React.Component<{
   }
 }
 
-export default withStyles( styles )( AppDrawerTitle )
+export default withStyles(styles)(AppDrawerTitle)

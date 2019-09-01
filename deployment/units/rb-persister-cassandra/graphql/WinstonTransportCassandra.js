@@ -1,5 +1,6 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
+var _chalk = _interopRequireDefault(require("chalk"));
 var _cassandraDriver = _interopRequireDefault(require("cassandra-driver"));
 var _jsonStringifySafe = _interopRequireDefault(require("json-stringify-safe"));
 var _winstonTransport = _interopRequireDefault(require("winston-transport"));
@@ -208,10 +209,19 @@ class WinstonTransportCassandra extends _winstonTransport.default {
     };if (_debug.debugWriteToConsoleLog) {
       const eventForConsole = createCopyWithNonNull(event);
 
-      if (level === 'erorr') {
-        console.error(eventForConsole);
+      const { err_message, err_stack, message } = eventForConsole;
+      delete eventForConsole.err_message;
+      delete eventForConsole.err_stack;
+      delete eventForConsole.message;
+
+      if (level === 'error') {
+        if (err_message) console.error(_chalk.default.black.bgYellowBright(err_message));
+        if (message) console.error(_chalk.default.redBright.bgBlack(message));
+        if (err_stack) console.error(err_stack);
       } else {
-        console.log(eventForConsole);
+        if (err_message) console.log(_chalk.default.black.bgBlueBright(err_message));
+        if (message) console.log(_chalk.default.blueBright.bgBlack(message));
+        if (err_stack) console.log(err_stack);
       }
     }
 

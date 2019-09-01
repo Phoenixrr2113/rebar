@@ -15,7 +15,10 @@ var _ensureFileContent = _interopRequireDefault(require("../rb-base-server/ensur
 
 const fs = _fs.default.promises;
 
-const prettierESLintOptions = { eslintConfig: _eslintrc.default, prettierOptions: _package.default.prettier };
+const prettierESLintOptions = {
+  eslintConfig: _eslintrc.default,
+  prettierOptions: _package.default.prettier };
+
 
 function mergeScripts(scripts1, scripts2) {
   const scripts = Object.assign({}, scripts1);
@@ -36,14 +39,15 @@ function mergeScripts(scripts1, scripts2) {
 
 async function createPackageJson(units) {
   const packageJsonFileName = _path.default.resolve('./package.json');
-  const currentPackageAsJSONString = (await fs.readFile(packageJsonFileName)).toString();
+  const currentPackageAsJSONString = (await fs.readFile(
+  packageJsonFileName)).
+  toString();
   const currentPackageAsObject = JSON.parse(currentPackageAsJSONString);
   const packageAsObject = {
     dependencies: {},
     devDependencies: {},
     engines: {},
     husky: {},
-    'lint-staged': {},
     name: null,
     prettier: {},
     scripts: {},
@@ -56,20 +60,30 @@ async function createPackageJson(units) {
 
   // Add packages to object
   for (let unitName of units) {
-    const packageAsObjectName = _path.default.resolve('./units', unitName, 'package.part.json');
+    const packageAsObjectName = _path.default.resolve(
+    './units',
+    unitName,
+    'package.part.json');
+
     if (await (0, _fsExists.default)(packageAsObjectName)) {
-      const packageToAddAsObject = JSON.parse((await fs.readFile(packageAsObjectName)).toString());
+      const packageToAddAsObject = JSON.parse(
+      (await fs.readFile(packageAsObjectName)).toString());
+
 
       if (packageToAddAsObject.dependencies)
-      Object.assign(packageAsObject.dependencies, packageToAddAsObject.dependencies);
+      Object.assign(
+      packageAsObject.dependencies,
+      packageToAddAsObject.dependencies);
+
       if (packageToAddAsObject.devDependencies)
-      Object.assign(packageAsObject.devDependencies, packageToAddAsObject.devDependencies);
+      Object.assign(
+      packageAsObject.devDependencies,
+      packageToAddAsObject.devDependencies);
+
       if (packageToAddAsObject.engines)
       Object.assign(packageAsObject.engines, packageToAddAsObject.engines);
       if (packageToAddAsObject.husky)
       Object.assign(packageAsObject.husky, packageToAddAsObject.husky);
-      if (packageToAddAsObject['lint-staged'])
-      Object.assign(packageAsObject['lint-staged'], packageToAddAsObject['lint-staged']);
       if (packageToAddAsObject.prettier)
       Object.assign(packageAsObject.prettier, packageToAddAsObject.prettier);
       if (packageToAddAsObject.scripts)
@@ -100,7 +114,10 @@ async function createMutations(units) {
 
       for (let mutationFileName of mutationFileNames) {
         if (mutationFileName.endsWith('.js')) {
-          const mutation = mutationFileName.substring(0, mutationFileName.length - 3);
+          const mutation = mutationFileName.substring(
+          0,
+          mutationFileName.length - 3);
+
           mutationsImports.push(
           'import ' +
           mutation.replace('.', '_') +
@@ -141,9 +158,16 @@ async function createSchemas(units) {
 
       for (let objectTypeFileName of objectTypeFileNames) {
         if (objectTypeFileName.endsWith('.js')) {
-          const objectType = objectTypeFileName.substring(0, objectTypeFileName.length - 3);
+          const objectType = objectTypeFileName.substring(
+          0,
+          objectTypeFileName.length - 3);
+
           schemasImports.push(
-          'import \'../../../' + unitName + '/graphql/model/' + objectType + '\'');
+          'import \'../../../' +
+          unitName +
+          '/graphql/model/' +
+          objectType +
+          '\'');
 
         }
       }
@@ -193,9 +217,14 @@ async function createViewerFields(units) {
   viewerFields = viewerFields.concat(['}']);
 
   await (0, _ensureFileContent.default)(
-  _path.default.resolve('./units/_configuration/rb-base-server/graphql/_ViewerFields.js'),
+  _path.default.resolve(
+  './units/_configuration/rb-base-server/graphql/_ViewerFields.js'),
+
   null,
-  (0, _prettierEslint.default)({ text: viewerFields.join('\r\n'), ...prettierESLintOptions }),
+  (0, _prettierEslint.default)({
+    text: viewerFields.join('\r\n'),
+    ...prettierESLintOptions }),
+
   true);
 
 }

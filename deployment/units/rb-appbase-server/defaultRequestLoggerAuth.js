@@ -2,7 +2,7 @@
 
 var _debug = require("../_configuration/debug");
 var _log = _interopRequireDefault(require("../rb-base-server/log"));
-var _matchInDepth = _interopRequireDefault(require("../rb-base-universal/matchInDepth"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
+var _template = require("../rb-base-universal/template");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} //  weak
 
 function defaultrequestLoggerAuth({
   req,
@@ -18,7 +18,7 @@ function defaultrequestLoggerAuth({
   // Otherwise, if it is a trace, log it as info
   //else
   if (
-  (0, _matchInDepth.default)(
+  (0, _template.matchObject)(
   { req, clientIP, userSession },
   _debug.debugWriteToLogServerRequestAuth))
 

@@ -4,16 +4,18 @@
   "plugins": ["import-order-autofix", "react-hooks"],
   "rules": {
     "array-bracket-spacing": "off",
+    "arrow-parens": 0,
     "comma-dangle": "off",
-    "import-order-autofix/order": ["error", { "newlines-between": "always" }],
+    "import-order-autofix/order": ["error", { "newlines-between": "ignore" }],
     "jsx-a11y/href-no-hash": "off",
     "max-len": "off",
+    "no-use-before-define": "off",
     "no-unused-vars": "error",
-    "semi": [2, "never"],
+    "semi": "off",
     "quotes": [2, "single"],
     "space-in-parens": "off",
     "space-in-brackets": "off",
-    "space-before-function-paren": [2, "never"],
+    "space-before-function-paren": "off",
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn"
   }

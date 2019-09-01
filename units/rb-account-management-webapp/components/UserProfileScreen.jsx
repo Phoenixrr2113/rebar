@@ -1,25 +1,17 @@
 // @flow
 
 import { withRouter } from 'found'
-
 import Button from '@material-ui/core/Button'
-
 import Card from '@material-ui/core/Card'
-
 import CardActions from '@material-ui/core/CardActions'
-
 import CardContent from '@material-ui/core/CardContent'
-
 import TextField from '@material-ui/core/TextField'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import IconAccountSettings from 'mdi-material-ui/AccountSettings'
 import React from 'react'
 import { createFragmentContainer, graphql } from 'react-relay'
-
 import CompositeCardHeader, {
-  cardHeaderContentStyles
+  cardHeaderContentStyles,
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import UserUpdateMutation from '../../rb-account-management-client/relay/UserUpdateMutation'
 import RequiresAuthenticationNotice from '../../rb-account-management-webapp/components/RequiresAuthentication'
@@ -30,9 +22,9 @@ import ResponsiveContentArea from '../../rb-appbase-webapp/components/Responsive
 const styles = {
   card: {
     minWidth: 350,
-    maxWidth: 1200
+    maxWidth: 1200,
   },
-  ...cardHeaderContentStyles
+  ...cardHeaderContentStyles,
 }
 
 //
@@ -46,14 +38,14 @@ class UserProfileScreen extends React.Component<
       User_IsAnonymous: boolean,
       User_DisplayName: string,
       User_PrimaryEmail: string,
-      User_PrimaryPhone: string
-    }
+      User_PrimaryPhone: string,
+    },
   },
   {
     User_DisplayName: string,
     User_PrimaryEmail: string,
-    User_PrimaryPhone: string
-  }
+    User_PrimaryPhone: string,
+  },
 > {
   constructor(props, context) {
     super(props, context)
@@ -61,25 +53,25 @@ class UserProfileScreen extends React.Component<
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone
+      User_PrimaryPhone,
     } = props.Viewer
 
     this.state = { User_DisplayName, User_PrimaryEmail, User_PrimaryPhone }
   }
 
-  _handle_onChange_DisplayName = event => {
+  _handle_onChange_DisplayName = (event) => {
     const User_DisplayName = event.target.value
 
     this.setState({ User_DisplayName })
   }
 
-  _handle_onChange_PrimaryEmail = event => {
+  _handle_onChange_PrimaryEmail = (event) => {
     const User_PrimaryEmail = event.target.value
 
     this.setState({ User_PrimaryEmail })
   }
 
-  _handle_onChange_PrimaryPhone = event => {
+  _handle_onChange_PrimaryPhone = (event) => {
     const User_PrimaryPhone = event.target.value
 
     this.setState({ User_PrimaryPhone })
@@ -93,7 +85,7 @@ class UserProfileScreen extends React.Component<
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone
+      User_PrimaryPhone,
     } = this.state
     const { relay } = this.props
 
@@ -101,7 +93,7 @@ class UserProfileScreen extends React.Component<
       relay.environment,
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone
+      User_PrimaryPhone,
     )
   }
 
@@ -113,15 +105,15 @@ class UserProfileScreen extends React.Component<
     const {
       User_DisplayName,
       User_PrimaryEmail,
-      User_PrimaryPhone
+      User_PrimaryPhone,
     } = this.state
 
     return (
       <ResponsiveContentArea>
         <CompositeCardHeader
           icon={<IconAccountSettings htmlColor="#003c78" />}
-          title="User"
           subTitle="Profile &amp; settings"
+          title="User"
         />
 
         <Card className={classes.card}>
@@ -180,6 +172,6 @@ export default createFragmentContainer(
         User_PrimaryEmail
         User_PrimaryPhone
       }
-    `
-  }
+    `,
+  },
 )

@@ -1,15 +1,10 @@
 // @flow
 
 import LinearProgress from '@material-ui/core/LinearProgress'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import TextField from '@material-ui/core/TextField'
-
 import Typography from '@material-ui/core/Typography'
-
 import React from 'react'
-
 import {
   uniqueLettersAwardUntilRepetitions,
   userSecretStrengthGood,
@@ -22,31 +17,31 @@ import {
 function scoreSecret(
   secret: string,
   uniqueLettersAwardUntilRepetitions: number,
-  variationAwardCoefficient: number
+  variationAwardCoefficient: number,
 ) {
   let score = 0
-  if ( !secret ) return 0
+  if (!secret) return 0
 
   // Award every unique letter until 5 repetitions
   let letters: Object = {}
-  for ( let i = 0; i < secret.length; i++ ) {
-    letters[secret[i]] = ( letters[secret[i]] || 0 ) + 1
+  for (let i = 0; i < secret.length; i++) {
+    letters[secret[i]] = (letters[secret[i]] || 0) + 1
     score += uniqueLettersAwardUntilRepetitions / letters[secret[i]]
   }
 
   // Bonus points for mixing it up
   let variations = {
-    digits: /\d/.test( secret ),
-    lower: /[a-z]/.test( secret ),
-    upper: /[A-Z]/.test( secret ),
-    nonWords: /\W/.test( secret ),
+    digits: /\d/.test(secret),
+    lower: /[a-z]/.test(secret),
+    upper: /[A-Z]/.test(secret),
+    nonWords: /\W/.test(secret),
   }
 
   let variationCount = 0
-  for ( let check in variations )
+  for (let check in variations)
     variationCount += variations[check] === true ? 1 : 0
 
-  score += ( variationCount - 1 ) * variationAwardCoefficient
+  score += (variationCount - 1) * variationAwardCoefficient
 
   return score
 }
@@ -79,10 +74,10 @@ class NewUserSecretInput extends React.Component<
     userSecretPrompt: string,
     userSecretStrength: number,
     userSecretQuality: 'poor' | 'fair' | 'good',
-  }
+  },
 > {
-  constructor( props: any, context: any ) {
-    super( props, context )
+  constructor(props: any, context: any) {
+    super(props, context)
 
     this.state = {
       userSecret: '',
@@ -93,14 +88,14 @@ class NewUserSecretInput extends React.Component<
     }
   }
 
-  updateErrorAndValue( userSecret: string, userSecretConfirm: string ) {
+  updateErrorAndValue(userSecret: string, userSecretConfirm: string) {
     // Collect errors
     let userSecretPrompt = ''
 
     // If secrets match ....
     const bPasswordsMatch = userSecret === userSecretConfirm
     let determinedValue = bPasswordsMatch ? userSecret : ''
-    if ( !bPasswordsMatch ) {
+    if (!bPasswordsMatch) {
       userSecretPrompt = 'Passwords do not match'
     }
 
@@ -108,45 +103,43 @@ class NewUserSecretInput extends React.Component<
     const userSecretStrength = scoreSecret(
       userSecret,
       uniqueLettersAwardUntilRepetitions,
-      variationAwardCoefficient
+      variationAwardCoefficient,
     )
 
     // Determine secret quality
     const userSecretQuality =
       userSecretStrength >= userSecretStrengthGood
         ? 'good'
-        : userSecretStrength >= userSecretStrengthFair
-        ? 'fair'
-        : 'poor'
+        : userSecretStrength >= userSecretStrengthFair ? 'fair' : 'poor'
 
-    if ( userSecretPrompt === '' ) {
+    if (userSecretPrompt === '') {
       userSecretPrompt = 'Password strength: ' + userSecretQuality
     }
 
     // If quality is not gooe enough, clear
-    if ( userSecretQuality === 'poor' ) {
+    if (userSecretQuality === 'poor') {
       determinedValue = ''
     }
 
-    this.props.onUpdateSecret( determinedValue )
+    this.props.onUpdateSecret(determinedValue)
 
     this.setState({ userSecretPrompt, userSecretQuality, userSecretStrength })
   }
 
-  _handle_onChange_Secret = event => {
+  _handle_onChange_Secret = (event) => {
     const userSecret = event.target.value
 
     this.setState({ userSecret })
 
-    this.updateErrorAndValue( userSecret, this.state.userSecretConfirm )
+    this.updateErrorAndValue(userSecret, this.state.userSecretConfirm)
   }
 
-  _handle_onChange_SecretConfirm = event => {
+  _handle_onChange_SecretConfirm = (event) => {
     const userSecretConfirm = event.target.value
 
     this.setState({ userSecretConfirm })
 
-    this.updateErrorAndValue( this.state.userSecret, userSecretConfirm )
+    this.updateErrorAndValue(this.state.userSecret, userSecretConfirm)
   }
 
   render() {
@@ -194,7 +187,7 @@ class NewUserSecretInput extends React.Component<
             barColorPrimary:
               classes['strengthBarColorPrimary_' + userSecretQuality],
           }}
-          value={( 50 * userSecretStrength ) / userSecretStrengthGood}
+          value={50 * userSecretStrength / userSecretStrengthGood}
           variant="determinate"
         />
       </div>
@@ -202,4 +195,4 @@ class NewUserSecretInput extends React.Component<
   }
 }
 
-export default withStyles( styles )( NewUserSecretInput )
+export default withStyles(styles)(NewUserSecretInput)

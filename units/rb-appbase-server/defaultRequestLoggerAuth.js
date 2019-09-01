@@ -2,12 +2,12 @@
 
 import { debugWriteToLogServerRequestAuth } from '../_configuration/debug'
 import log from '../rb-base-server/log'
-import matchInDepth from '../rb-base-universal/matchInDepth'
+import { matchObject } from '../rb-base-universal/template'
 
 export default function defaultrequestLoggerAuth({
   req,
   clientIP,
-  userSession
+  userSession,
 }) {
   let logLevel = null
 
@@ -18,9 +18,9 @@ export default function defaultrequestLoggerAuth({
   // Otherwise, if it is a trace, log it as info
   //else
   if (
-    matchInDepth(
+    matchObject(
       { req, clientIP, userSession },
-      debugWriteToLogServerRequestAuth
+      debugWriteToLogServerRequestAuth,
     )
   ) {
     logLevel = 'info'
@@ -30,7 +30,7 @@ export default function defaultrequestLoggerAuth({
     log(logLevel, 'rb-appbase-server auth request', {
       req,
       clientIP,
-      userSession
+      userSession,
     })
   }
 }

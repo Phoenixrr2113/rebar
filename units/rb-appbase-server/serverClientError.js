@@ -35,19 +35,11 @@ async function report(req, res) {
     req.body.__DO_NOT_INCLUDE__ = true
 
     // Generate random ticket
-    const issue_id = (
-      Math.random()
-        .toString(36)
-        .substring(2, 5) +
+    const issue_id = (Math.random().toString(36).substring(2, 5) +
       '-' +
-      Math.random()
-        .toString(36)
-        .substring(2, 5) +
+      Math.random().toString(36).substring(2, 5) +
       '-' +
-      Math.random()
-        .toString(36)
-        .substring(2, 5)
-    )
+      Math.random().toString(36).substring(2, 5))
       .toUpperCase()
       .replace('O', '0')
       .replace('I', '1')
@@ -57,7 +49,7 @@ async function report(req, res) {
       err_info: req.body.err_info,
       objectManager,
       req,
-      issue_id
+      issue_id,
     })
 
     res.json({ success: true, issue_id })
@@ -65,15 +57,16 @@ async function report(req, res) {
     log('error', 'rb-appbase-server serverClientError report: Failed', {
       step,
       err,
-      body: req.body
+      body: req.body,
     })
     res.status(500).send(
       JSON.stringify({
-        error: 'Could not record error from client'
-      })
+        error: 'Could not record error from client',
+      }),
     )
   }
 }
+
 serverClientError.post('/report', report)
 
 export default serverClientError

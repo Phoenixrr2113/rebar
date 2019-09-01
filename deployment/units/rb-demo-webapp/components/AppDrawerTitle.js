@@ -25,7 +25,12 @@ class AppDrawerTitle extends _react.default.Component
 
     return (
       _react.default.createElement("div", { onClick: this._handle_GoToHome },
-      _react.default.createElement(_Typography.default, { className: classes.title, variant: "title", gutterBottom: true, color: "inherit" }, "Machine Acuity's Rebar")));
+      _react.default.createElement(_Typography.default, {
+        className: classes.title,
+        variant: "subtitle1",
+        gutterBottom: true,
+        color: "inherit" }, "Machine Acuity's Rebar")));
+
 
 
 

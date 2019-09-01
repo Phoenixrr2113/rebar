@@ -27,7 +27,11 @@ var _default =
 
 
 
-  mutateAndGetPayload: async ({ id }, context, { rootValue: objectManager }) => {
+  mutateAndGetPayload: async (
+  { id },
+  context,
+  { rootValue: objectManager }) =>
+  {
     const local_id = (0, _graphqlRelay.fromGlobalId)(id).id;
 
     await objectManager.remove('Translaticiarum', { id: local_id });

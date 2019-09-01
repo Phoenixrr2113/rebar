@@ -9,7 +9,7 @@ export default mutationWithClientMutationId({
   name: 'TranslaticiarumDelete',
 
   inputFields: {
-    id: { type: new GraphQLNonNull( GraphQLID ) },
+    id: { type: new GraphQLNonNull(GraphQLID) },
   },
 
   outputFields: {
@@ -20,17 +20,21 @@ export default mutationWithClientMutationId({
 
     Viewer: {
       type: ViewerType,
-      resolve: ( parent, args, context, { rootValue: objectManager }) =>
-        objectManager.getOneObject_async( 'User', {
+      resolve: (parent, args, context, { rootValue: objectManager }) =>
+        objectManager.getOneObject_async('User', {
           id: objectManager.getViewerUserId(),
         }),
     },
   },
 
-  mutateAndGetPayload: async({ id }, context, { rootValue: objectManager }) => {
-    const local_id = fromGlobalId( id ).id
+  mutateAndGetPayload: async (
+    { id },
+    context,
+    { rootValue: objectManager },
+  ) => {
+    const local_id = fromGlobalId(id).id
 
-    await objectManager.remove( 'Translaticiarum', { id: local_id })
+    await objectManager.remove('Translaticiarum', { id: local_id })
 
     return { id }
   },

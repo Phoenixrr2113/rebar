@@ -1,0 +1,37 @@
+{
+  "applications": [
+    {
+      "local": {
+        "applicationPort": 28611
+      },
+      "instance": [
+        {
+          "headers": { },
+          "port": 13102
+        }
+      ]
+    }
+  ],
+  "example-of-populating-applications": [
+    {
+      "local": {
+        "applicationPort": 28605
+      },
+      "instance": [
+        {
+          "headers": {
+            "host": "host-that-will-be-passed-to-node.example.com"
+          },
+          "subdomain": "subdomain-on-local-tunnell",
+          "port": 10201
+        },
+        {
+          "headers": {
+            "host": "without-localtunnel-host-that-will-be-passed-to-node.example.com"
+          },
+          "port": 10102
+        }
+      ]
+    }
+  ]
+}

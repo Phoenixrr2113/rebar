@@ -1,6 +1,6 @@
 /**
  * 
- * @relayHash 0348829bb40d8ebfb8523a58ef98bbe5
+ * @relayHash de7efa038196affa611ffaaa28ef57b9
  */
 
 /* eslint-disable */
@@ -23,6 +23,7 @@
                     +ToDo_TotalCount: ?number,
                   |},
                   +ToDosEdge: ?{|
+                    +__typename: string,
                     +cursor: string,
                     +node: ?{|
                       +id: string,
@@ -49,6 +50,7 @@
                        ToDo_TotalCount
                      }
                      ToDosEdge {
+                       __typename
                        cursor
                        node {
                          id
@@ -123,6 +125,13 @@ const node /*: ConcreteRequest*/ = function () {
       {
         "kind": "ScalarField",
         "alias": null,
+        "name": "__typename",
+        "args": null,
+        "storageKey": null },
+
+      {
+        "kind": "ScalarField",
+        "alias": null,
         "name": "cursor",
         "args": null,
         "storageKey": null },
@@ -178,12 +187,12 @@ const node /*: ConcreteRequest*/ = function () {
       "operationKind": "mutation",
       "name": "ToDoAddMutation",
       "id": null,
-      "text": "mutation ToDoAddMutation(\n  $input: ToDoAddInput!\n) {\n  ToDoAdd(input: $input) {\n    Viewer {\n      id\n      ToDo_TotalCount\n    }\n    ToDosEdge {\n      cursor\n      node {\n        id\n        ToDo_Complete\n        ToDo_Text\n      }\n    }\n  }\n}\n",
+      "text": "mutation ToDoAddMutation(\n  $input: ToDoAddInput!\n) {\n  ToDoAdd(input: $input) {\n    Viewer {\n      id\n      ToDo_TotalCount\n    }\n    ToDosEdge {\n      __typename\n      cursor\n      node {\n        id\n        ToDo_Complete\n        ToDo_Text\n      }\n    }\n  }\n}\n",
       "metadata": {} } };
 
 
 }();
 // prettier-ignore
-node /*: any*/.hash = '684ae97e6e6d46d3fd07c9e663e1a314';
+node /*: any*/.hash = '91b4bedd9baa04b077f5bcb84fb786a1';
 module.exports = node;
 //# sourceMappingURL=ToDoAddMutation.graphql.js.map

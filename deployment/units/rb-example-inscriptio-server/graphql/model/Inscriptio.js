@@ -21,7 +21,7 @@ class Inscriptio {
   {
     this.id = fields.id;
     this.Inscriptio_artifact_id = fields.Inscriptio_artifact_id;
-    this.Inscriptio_User_id = fields.Inscriptio_User_id;
+    this.Inscriptio_user_id = fields.Inscriptio_user_id;
     this.Inscriptio_LocationLat = fields.Inscriptio_LocationLat;
     this.Inscriptio_LocationLon = fields.Inscriptio_LocationLon;
     this.Inscriptio_Notes = fields.Inscriptio_Notes;

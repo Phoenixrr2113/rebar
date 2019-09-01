@@ -1,58 +1,50 @@
 // @flow
 
 import Button from '@material-ui/core/Button'
-
 import Card from '@material-ui/core/Card'
-
 import CardActions from '@material-ui/core/CardActions'
-
 import CardContent from '@material-ui/core/CardContent'
-
 import LinearProgress from '@material-ui/core/LinearProgress'
-
 import { withStyles } from '@material-ui/core/styles'
-
 import Typography from '@material-ui/core/Typography'
-
 import IconLogout from 'mdi-material-ui/Logout'
 import React from 'react'
-
 import CompositeCardHeader, {
-  cardHeaderContentStyles
+  cardHeaderContentStyles,
 } from '../../rb-appbase-webapp/components/CompositeCardHeader'
 import ResponsiveContentArea from '../../rb-appbase-webapp/components/ResponsiveContentArea'
 
 //
 
-const styles = theme => ({
+const styles = (theme) => ({
   card: {
     minWidth: 350,
-    maxWidth: 1200
+    maxWidth: 1200,
   },
-  ...cardHeaderContentStyles
+  ...cardHeaderContentStyles,
 })
 
 //
 
 class LogoutScreen extends React.Component<
   {
-    classes: Object
+    classes: Object,
   },
   {
     currentOperation: 'confirm' | 'logging out' | 'success' | 'failure',
-    errorMessage: string
-  }
+    errorMessage: string,
+  },
 > {
   constructor(props: Object, context: Object) {
     super(props, context)
 
     this.state = {
       currentOperation: 'confirm',
-      errorMessage: ''
+      errorMessage: '',
     }
   }
 
-  _handle_onClick_Logout = async() => {
+  _handle_onClick_Logout = async () => {
     this.setState({ currentOperation: 'logging out' })
 
     try {
@@ -63,9 +55,9 @@ class LogoutScreen extends React.Component<
         method: 'POST',
         credentials: 'same-origin',
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
         },
-        body: '{}'
+        body: '{}',
       })
 
       const responseData = await response.json()
@@ -77,7 +69,7 @@ class LogoutScreen extends React.Component<
         // In case of error, tell user what the error is
         this.setState({
           currentOperation: 'failure',
-          errorMessage: responseData.error
+          errorMessage: responseData.error,
         })
       }
     } catch (err) {
@@ -87,7 +79,7 @@ class LogoutScreen extends React.Component<
         currentOperation: 'failure',
         errorMessage:
           'Did not receive proper response from server. Please try again. Message:' +
-          err.message
+          err.message,
       })
     }
   }
@@ -95,14 +87,14 @@ class LogoutScreen extends React.Component<
   _handle_onClick_CancelLogout = () => {
     this.setState({
       currentOperation: 'failure',
-      errorMessage: 'User log out has been canceled'
+      errorMessage: 'User log out has been canceled',
     })
   }
 
   _handle_onClick_TryAgain = () => {
     this.setState({
       currentOperation: 'confirm',
-      errorMessage: ''
+      errorMessage: '',
     })
   }
 
@@ -117,6 +109,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -141,6 +134,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -164,6 +158,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 
@@ -188,6 +183,7 @@ class LogoutScreen extends React.Component<
       <div>
         <CompositeCardHeader
           icon={<IconLogout htmlColor="#003c78" />}
+          subTitle=""
           title="Log Out"
         />
 

@@ -1,22 +1,14 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
-
 var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions"));
-
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
-
 var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
 var _Logout = _interopRequireDefault(require("mdi-material-ui/Logout"));
 var _react = _interopRequireDefault(require("react"));
-
 var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
 
 
@@ -117,6 +109,7 @@ class LogoutScreen extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Log Out" }),
 
 
@@ -141,6 +134,7 @@ class LogoutScreen extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Log Out" }),
 
 
@@ -164,6 +158,7 @@ class LogoutScreen extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Log Out" }),
 
 
@@ -188,6 +183,7 @@ class LogoutScreen extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_Logout.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Log Out" }),
 
 

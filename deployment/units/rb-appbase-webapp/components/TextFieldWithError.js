@@ -27,7 +27,7 @@ class TextFieldWithError extends _react.default.Component
 
     const isError = errorText !== '';
 
-    // TODO [2 Crossroads][App Base] TextFieldWithError does not show outline border
+    // TODO TextFieldWithError does not show outline border
     return (
       _react.default.createElement(_FormControl.default, {
         error: isError,

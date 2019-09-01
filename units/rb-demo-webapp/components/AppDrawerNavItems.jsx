@@ -21,20 +21,20 @@ import NavMenuItemWithIcon from '../../rb-appdrawer-webapp/components/NavMenuIte
 
 //
 
-const styles = theme => ({
+const styles = (theme) => ({
   container: {
     flex: 'initial',
-    width: 250
+    width: 250,
   },
   formControl: {
-    marginTop: theme.spacing.unit * 3,
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit
+    marginTop: theme.spacing(3),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1),
   },
   list: {
     flex: 'initial',
-    width: 250
-  }
+    width: 250,
+  },
 })
 
 //
@@ -43,7 +43,7 @@ class AppDrawerNavItems extends React.Component<{
   classes: Object,
   relay: Object,
   Viewer: Object,
-  onClick: Function
+  onClick: Function,
 }> {
   render() {
     const { classes, Viewer, onClick } = this.props
@@ -106,5 +106,5 @@ export default createFragmentContainer(withStyles(styles)(AppDrawerNavItems), {
       ...AppDrawerAccountItem_Viewer
       User_IsAnonymous
     }
-  `
+  `,
 })

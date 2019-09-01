@@ -24,25 +24,21 @@ import ToDoListUpdateMarkAllMutation from '../../rb-example-todo-client/relay/To
 
 import ToDoItem from './ToDoItem'
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    background: theme.palette.background.paper
-  }
-})
+const styles = (theme) => ({})
 
 class ToDoList extends React.Component<
   {
-    Viewer: Object,
+    classes: Object,
     relay: Object,
-    router: Object
+    match: { params: { status?: string } },
+    router: Object,
+    Viewer: Object,
   },
-  null
+  null,
 > {
   _handle_onClick_MarkAll = (event, checked) => {
-    const { relay, Viewer } = this.props
-    const { variables } = this.context.relay
+    const { match, relay, Viewer } = this.props
+    const { status } = match.params
     const ToDo_Complete = checked
 
     ToDoListUpdateMarkAllMutation.commit(
@@ -50,22 +46,25 @@ class ToDoList extends React.Component<
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status
+      status,
     )
   }
 
   _handle_onChange = (event, tabsValue) => {
+    const { router } = this.props
+
     const url =
       tabsValue === 2
         ? '/todo/completed'
-        : tabsValue === 1
-        ? '/todo/active'
-        : '/todo'
-    this.context.router.push(url)
+        : tabsValue === 1 ? '/todo/active' : '/todo'
+
+    router.push(url)
   }
 
   renderTabs() {
-    const status = this.context.relay.variables.status
+    const { match } = this.props
+    const { status } = match.params
+
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0
 
     return (
@@ -113,22 +112,24 @@ class ToDoList extends React.Component<
 
 export default createFragmentContainer(
   withStyles(styles)(withRouter(ToDoList)),
-  graphql`
-    fragment ToDoList_Viewer on Viewer {
-      ToDos(status: $status, first: 2147483647)
-        @connection(key: "ToDoList_ToDos") {
-        edges {
-          node {
-            id
-            ToDo_Complete
-            ...ToDoItem_ToDo
+  {
+    Viewer: graphql`
+      fragment ToDoList_Viewer on Viewer {
+        ToDos(status: $status, first: 2147483647)
+          @connection(key: "ToDoList_ToDos") {
+          edges {
+            node {
+              id
+              ToDo_Complete
+              ...ToDoItem_ToDo
+            }
           }
         }
+        id
+        ToDo_TotalCount
+        ToDo_CompletedCount
+        ...ToDoItem_Viewer
       }
-      id
-      ToDo_TotalCount
-      ToDo_CompletedCount
-      ...ToDoItem_Viewer
-    }
-  `
+    `,
+  },
 )
