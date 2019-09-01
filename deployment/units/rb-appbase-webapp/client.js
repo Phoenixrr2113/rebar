@@ -28,7 +28,7 @@ async function rebarErrorHandler(err, err_info) {
     if (
     typeof err.message === 'string' &&
     err.message.startsWith(
-    'An error was thrown inside one of your components, but React doesn\'t know what it was.'))
+    'An error was thrown inside one of your components, but React does not know what it was.'))
 
 
     return;
@@ -43,6 +43,8 @@ async function rebarErrorHandler(err, err_info) {
       err: { message: err.message, stack: err.stack },
       err_info });
 
+
+    // TODO Must provide correct name to client
 
     // Send away
     const response = await fetch(host + '/client-error/report', {
@@ -112,13 +114,12 @@ const render = (0, _createRender.default)({});
   _react.default.createElement(Router, { resolver: resolver }));
 
 
-
   _reactDom.default.hydrate(
   contentComponent,
   // $AssureFlow
   document.getElementById('root'),
   () => {
-    // TODO [2 Crossroads][Designer][webapp] Research if removal of styles if necessary
+    // IDEA Research if removal of styles if necessary
     // Previous version of react required removing of JSS styles but the new one seems to handle
     // them OK.
     // // We don't need the static css any more once we have launched our application.

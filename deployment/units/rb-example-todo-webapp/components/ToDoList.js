@@ -24,13 +24,7 @@ var _ToDoListUpdateMarkAllMutation = _interopRequireDefault(require("../../rb-ex
 
 var _ToDoItem = _interopRequireDefault(require("./ToDoItem"));function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-const styles = theme => ({
-  root: {
-    width: '100%',
-    maxWidth: 360,
-    background: theme.palette.background.paper } });
-
-
+const styles = theme => ({});
 
 class ToDoList extends _react.default.Component
 
@@ -39,10 +33,12 @@ class ToDoList extends _react.default.Component
 
 
 
+
+
 {constructor(...args) {var _temp;return _temp = super(...args), this.
     _handle_onClick_MarkAll = (event, checked) => {
-      const { relay, Viewer } = this.props;
-      const { variables } = this.context.relay;
+      const { match, relay, Viewer } = this.props;
+      const { status } = match.params;
       const ToDo_Complete = checked;
 
       _ToDoListUpdateMarkAllMutation.default.commit(
@@ -50,22 +46,25 @@ class ToDoList extends _react.default.Component
       Viewer,
       Viewer.ToDos,
       ToDo_Complete,
-      variables.status);
+      status);
 
     }, this.
 
     _handle_onChange = (event, tabsValue) => {
+      const { router } = this.props;
+
       const url =
       tabsValue === 2 ?
       '/todo/completed' :
-      tabsValue === 1 ?
-      '/todo/active' :
-      '/todo';
-      this.context.router.push(url);
+      tabsValue === 1 ? '/todo/active' : '/todo';
+
+      router.push(url);
     }, _temp;}
 
   renderTabs() {
-    const status = this.context.relay.variables.status;
+    const { match } = this.props;
+    const { status } = match.params;
+
     const tabsValue = status === 'active' ? 1 : status === 'completed' ? 2 : 0;
 
     return (
@@ -112,5 +111,7 @@ class ToDoList extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(ToDoList)), function () {return require("./__generated__/ToDoList_Viewer.graphql");});exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(ToDoList)),
+{
+  Viewer: function () {return require("./__generated__/ToDoList_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=ToDoList.js.map

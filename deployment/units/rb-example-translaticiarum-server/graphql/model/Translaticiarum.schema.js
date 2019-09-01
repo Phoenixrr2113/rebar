@@ -6,13 +6,13 @@ _defaultPersister.default.addTableSchema('Translaticiarum', {
   fields: {
     id: 'uuid',
     Translaticiarum_artifact_id: 'uuid',
-    Translaticiarum_User_id: 'uuid',
+    Translaticiarum_user_id: 'uuid',
     Translaticiarum_Stop: 'timestamp',
     Translaticiarum_Start: 'timestamp',
     Translaticiarum_Description: 'text' },
 
 
-  key: ['Translaticiarum_User_id', 'id'] });var _default =
+  key: ['Translaticiarum_user_id', 'id'] });var _default =
 
 
 true;exports.default = _default;

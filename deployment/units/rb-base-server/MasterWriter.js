@@ -9,6 +9,10 @@ var _ensureFileContent = _interopRequireDefault(require("./ensureFileContent"));
 
 const fs = _fs.default.promises;
 
+/**
+                                  * Manages writing of multiple files
+                                  * @class MasterWriter
+                                  */
 class MasterWriter {
 
 
@@ -53,7 +57,9 @@ class MasterWriter {
   async copyFile(sourceAbsolute, destinationRelative) {
     await this.ensureRelativePathExists(destinationRelative);
 
-    this.arrPromises.push(fs.copyFile(sourceAbsolute, this.basePath + '/' + destinationRelative));
+    this.arrPromises.push(
+    fs.copyFile(sourceAbsolute, this.basePath + '/' + destinationRelative));
+
   }
 
   async writeFile(destinationRelative, fileContent) {

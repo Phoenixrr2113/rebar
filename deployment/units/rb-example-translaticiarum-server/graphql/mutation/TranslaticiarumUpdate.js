@@ -18,13 +18,23 @@ var _default =
   outputFields: {
     Translaticiarum: {
       type: _TranslaticiarumType.default,
-      resolve: ({ local_id }, { ...args }, context, { rootValue: objectManager }) =>
+      resolve: (
+      { local_id },
+      { ...args },
+      context,
+      { rootValue: objectManager }) =>
+
       objectManager.getOneObject_async('Translaticiarum', { id: local_id }) } },
 
 
 
   mutateAndGetPayload: async (
-  { id, Translaticiarum_Start, Translaticiarum_Stop, Translaticiarum_Description },
+  {
+    id,
+    Translaticiarum_Start,
+    Translaticiarum_Stop,
+    Translaticiarum_Description },
+
   context,
   { rootValue: objectManager }) =>
   {

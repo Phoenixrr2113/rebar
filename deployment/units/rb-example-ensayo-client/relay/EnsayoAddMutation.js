@@ -25,7 +25,10 @@ const mutation = function () {return require("./__generated__/EnsayoAddMutation.
 function sharedUpdater(store, user, EnsayosEdge) {
   const userProxy = store.get(user.id);
 
-  const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'EnsayoList_Ensayos');
+  const connection = _relayRuntime.ConnectionHandler.getConnection(
+  userProxy,
+  'EnsayoList_Ensayos');
+
   if (connection) {
     _relayRuntime.ConnectionHandler.insertEdgeAfter(connection, EnsayosEdge);
   }
@@ -33,7 +36,13 @@ function sharedUpdater(store, user, EnsayosEdge) {
 
 let nextClientMutationId = 0;
 
-function commit(environment, user, Ensayo_Title, Ensayo_Description, Ensayo_Content) {
+function commit(
+environment,
+user,
+Ensayo_Title,
+Ensayo_Description,
+Ensayo_Content)
+{
   const clientMutationId = nextClientMutationId++;
 
   return (0, _reactRelay.commitMutation)(environment, {
@@ -43,7 +52,7 @@ function commit(environment, user, Ensayo_Title, Ensayo_Description, Ensayo_Cont
         Ensayo_Title,
         Ensayo_Description,
         Ensayo_Content,
-        clientMutationId } },
+        clientMutationId: `${clientMutationId}` } },
 
 
 

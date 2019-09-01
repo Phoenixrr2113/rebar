@@ -27,9 +27,9 @@ const styles = theme => ({
     width: 250 },
 
   formControl: {
-    marginTop: theme.spacing.unit * 3,
-    paddingLeft: theme.spacing.unit,
-    paddingRight: theme.spacing.unit },
+    marginTop: theme.spacing(3),
+    paddingLeft: theme.spacing(1),
+    paddingRight: theme.spacing(1) },
 
   list: {
     flex: 'initial',

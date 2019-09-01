@@ -1,20 +1,14 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 var _found = require("found");
-
 var _IconButton = _interopRequireDefault(require("@material-ui/core/IconButton"));
-
 var _Menu = _interopRequireDefault(require("@material-ui/core/Menu"));
-
 var _MenuItem = _interopRequireDefault(require("@material-ui/core/MenuItem"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _Account = _interopRequireDefault(require("mdi-material-ui/Account"));
 var _AccountOutline = _interopRequireDefault(require("mdi-material-ui/AccountOutline"));
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
-
 var _RequiresAuthentication = require("./RequiresAuthentication");
 
 
@@ -103,7 +97,9 @@ class NavBarAccountButton extends _react.default.Component
         onClick:
         User_IsAnonymous ?
         this._handle_onClick_Login :
+
         this._handle_onClick_UserMenu,
+
 
         color: "inherit" },
 
@@ -138,5 +134,7 @@ class NavBarAccountButton extends _react.default.Component
 
 
 (0, _reactRelay.createFragmentContainer)(
-(0, _styles.withStyles)(styles)((0, _found.withRouter)(NavBarAccountButton)), function () {return require("./__generated__/NavBarAccountButton_Viewer.graphql");});exports.default = _default;
+(0, _styles.withStyles)(styles)((0, _found.withRouter)(NavBarAccountButton)),
+{
+  Viewer: function () {return require("./__generated__/NavBarAccountButton_Viewer.graphql");} });exports.default = _default;
 //# sourceMappingURL=NavBarAccountButton.js.map

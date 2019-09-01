@@ -1,23 +1,15 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 var _found = require("found");
-
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
-
 var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions"));
-
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
-
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _AccountSettings = _interopRequireDefault(require("mdi-material-ui/AccountSettings"));
 var _react = _interopRequireDefault(require("react"));
 var _reactRelay = require("react-relay");
-
 var _CompositeCardHeader = _interopRequireWildcard(require("../../rb-appbase-webapp/components/CompositeCardHeader"));
 
 
@@ -120,8 +112,8 @@ class UserProfileScreen extends _react.default.Component
       _react.default.createElement(_ResponsiveContentArea.default, null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_AccountSettings.default, { htmlColor: "#003c78" }),
-        title: "User",
-        subTitle: "Profile & settings" }),
+        subTitle: "Profile & settings",
+        title: "User" }),
 
 
       _react.default.createElement(_Card.default, { className: classes.card },

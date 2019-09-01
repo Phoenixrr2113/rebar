@@ -1,21 +1,13 @@
 "use strict";Object.defineProperty(exports, "__esModule", { value: true });exports.default = void 0;
 
 var _Button = _interopRequireDefault(require("@material-ui/core/Button"));
-
 var _Card = _interopRequireDefault(require("@material-ui/core/Card"));
-
 var _CardActions = _interopRequireDefault(require("@material-ui/core/CardActions"));
-
 var _CardContent = _interopRequireDefault(require("@material-ui/core/CardContent"));
-
 var _LinearProgress = _interopRequireDefault(require("@material-ui/core/LinearProgress"));
-
 var _styles = require("@material-ui/core/styles");
-
 var _TextField = _interopRequireDefault(require("@material-ui/core/TextField"));
-
 var _Typography = _interopRequireDefault(require("@material-ui/core/Typography"));
-
 var _LockReset = _interopRequireDefault(require("mdi-material-ui/LockReset"));
 var _react = _interopRequireDefault(require("react"));
 
@@ -200,6 +192,9 @@ class ChangeSecretScreen extends _react.default.Component
 
 
 
+
+
+
     _handle_onChange_Identifier = event => {
       const User_CurrentSecret = event.target.value;
 
@@ -208,7 +203,7 @@ class ChangeSecretScreen extends _react.default.Component
 
     _handle_onUpdateSecret = secret => {
       this.setState({ User_NewSecret: secret });
-    };this.state = { currentOperation: 'prompt', executionStatus: '', User_CurrentSecret: '', User_NewSecret: '' };}renderChanging() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Changing password" }), _react.default.createElement(_Card.default, { className: classes.card, raised: true }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Updating, please wait."), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_LinearProgress.default, { mode: "query" })), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelChange }, "Cancel"))));}renderSuccess() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Password changed" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Password successfully changed.")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));}renderFailure() {const { classes } = this.props;const { executionStatus } = this.state;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), title: "Failed to change password" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Changing password failed because ", executionStatus, ".")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));}
+    };this.state = { currentOperation: 'prompt', executionStatus: '', User_CurrentSecret: '', User_NewSecret: '' };}renderChanging() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), subTitle: "", title: "Changing password" }), _react.default.createElement(_Card.default, { className: classes.card, raised: true }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Updating, please wait."), _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_LinearProgress.default, { mode: "query" })), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_CancelChange }, "Cancel"))));}renderSuccess() {const { classes } = this.props;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), subTitle: "", title: "Password changed" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Password successfully changed.")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_Continue }, "Continue"))));}renderFailure() {const { classes } = this.props;const { executionStatus } = this.state;return _react.default.createElement("div", null, _react.default.createElement(_CompositeCardHeader.default, { icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }), subTitle: "", title: "Failed to change password" }), _react.default.createElement(_Card.default, { className: classes.card }, _react.default.createElement(_CardContent.default, null, _react.default.createElement(_Typography.default, { component: "p" }, "Changing password failed because ", executionStatus, ".")), _react.default.createElement(_CardActions.default, null, _react.default.createElement(_Button.default, { onClick: this._handle_onClick_TryAgain }, "Try Again"))));}
 
   renderPrompt() {
     const { classes } = this.props;
@@ -222,6 +217,7 @@ class ChangeSecretScreen extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_CompositeCardHeader.default, {
         icon: _react.default.createElement(_LockReset.default, { htmlColor: "#003c78" }),
+        subTitle: "",
         title: "Change password" }),
 
 

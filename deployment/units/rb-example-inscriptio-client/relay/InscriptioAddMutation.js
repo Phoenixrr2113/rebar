@@ -25,7 +25,10 @@ const mutation = function () {return require("./__generated__/InscriptioAddMutat
 function sharedUpdater(store, user, InscriptiosEdge) {
   const userProxy = store.get(user.id);
 
-  const connection = _relayRuntime.ConnectionHandler.getConnection(userProxy, 'InscriptioList_Inscriptios');
+  const connection = _relayRuntime.ConnectionHandler.getConnection(
+  userProxy,
+  'InscriptioList_Inscriptios');
+
   if (connection) {
     _relayRuntime.ConnectionHandler.insertEdgeAfter(connection, InscriptiosEdge);
   }
@@ -49,7 +52,7 @@ Inscriptio_Notes)
         Inscriptio_LocationLat,
         Inscriptio_LocationLon,
         Inscriptio_Notes,
-        clientMutationId } },
+        clientMutationId: `${clientMutationId}` } },
 
 
 
