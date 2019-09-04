@@ -15,7 +15,7 @@ class NavMenuItemWithIcon extends React.Component<{
 }> {
   render() {
     return (
-      <ListItem button onClick={this.props.onClick}>
+      <ListItem button={true} onClick={this.props.onClick}>
         <ListItemIcon>{this.props.icon}</ListItemIcon>
         <ListItemText primary={this.props.label} />
       </ListItem>

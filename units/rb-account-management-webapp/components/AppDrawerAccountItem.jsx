@@ -118,17 +118,21 @@ class AppDrawerAccountItem extends React.Component<
               variant="filled"
               onChange={this._handle_onChange_Account}
             >
-              <MenuItem key="userdisplayname" value="userdisplayname">
+              <MenuItem
+                component="div"
+                key="userdisplayname"
+                value="userdisplayname"
+              >
                 <em>{User_DisplayName}</em>
               </MenuItem>
-              <MenuItem key="profile" value="profile">
+              <MenuItem component="div" key="profile" value="profile">
                 Edit Profile
               </MenuItem>
               <Divider />
-              <MenuItem key="login" value="login">
+              <MenuItem component="div" key="login" value="login">
                 Change user
               </MenuItem>
-              <MenuItem key="logout" value="logout">
+              <MenuItem component="div" key="logout" value="logout">
                 Log out
               </MenuItem>
             </Select>

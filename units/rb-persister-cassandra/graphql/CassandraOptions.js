@@ -1,6 +1,7 @@
 // @flow
 
 import cassandraDriver from 'cassandra-driver'
+import ExpressCassandra from 'express-cassandra'
 
 // Read environment
 require('dotenv').config()
@@ -11,15 +12,22 @@ const CassandraOptions = {
   contactPoints:
     process.env.CASSANDRA_CONNECTION_POINTS != null
       ? process.env.CASSANDRA_CONNECTION_POINTS.split(',')
-      : ['localhost'],
+      : [ 'localhost' ],
   keyspace: process.env.CASSANDRA_KEYSPACE,
-  localDataCenter: 'datacenter1'
+  localDataCenter: 'datacenter1',
+  policies: {
+    loadBalancing: new cassandraDriver.policies.loadBalancing
+      .RoundRobinPolicy(),
+  },
+  queryOptions: { consistency: ExpressCassandra.consistencies.one },
+  socketOptions: { readTimeout: 0 },
 }
 
 if (process.env.CASSANDRA_USER) {
-  CassandraOptions.authProvider = new cassandraDriver.auth.PlainTextAuthProvider(
+  CassandraOptions.authProvider = new cassandraDriver.auth
+    .PlainTextAuthProvider(
     process.env.CASSANDRA_USER,
-    process.env.CASSANDRA_PASSWORD
+    process.env.CASSANDRA_PASSWORD,
   )
 }
 
