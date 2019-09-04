@@ -94,6 +94,7 @@ class NavBarAccountButton extends React.Component<
       <div>
         <IconButton
           aria-haspopup="true"
+          component="div"
           onClick={
             User_IsAnonymous ? (
               this._handle_onClick_Login
@@ -118,13 +119,25 @@ class NavBarAccountButton extends React.Component<
           open={userMenuIsOpen}
           onClose={this._handle_UserMenu_Close}
         >
-          <MenuItem key="profile" onClick={this._handle_onClick_Profile}>
+          <MenuItem
+            component="div"
+            key="profile"
+            onClick={this._handle_onClick_Profile}
+          >
             {User_DisplayName}
           </MenuItem>
-          <MenuItem key="login" onClick={this._handle_onClick_Login}>
+          <MenuItem
+            component="div"
+            key="login"
+            onClick={this._handle_onClick_Login}
+          >
             Change user
           </MenuItem>
-          <MenuItem key="logout" onClick={this._handle_onClick_Logout}>
+          <MenuItem
+            component="div"
+            key="logout"
+            onClick={this._handle_onClick_Logout}
+          >
             Log out
           </MenuItem>
         </Menu>
