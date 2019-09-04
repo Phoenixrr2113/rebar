@@ -15,7 +15,7 @@ const ExpressCassandraClient = _expressCassandra.default.createClient({
   ormOptions: {
     defaultReplicationStrategy: {
       class: 'SimpleStrategy',
-      replication_factor: 1 },
+      replication_factor: _CassandraOptions.default.contactPoints.length > 1 ? 2 : 1 },
 
     migration: 'alter',
     disableTTYConfirmation: true,
@@ -59,10 +59,9 @@ class PersisterCassandra {
         try {
           this.updateUuidsInFields(entityName, filter);
 
-          ExpressCassandraClient.instance[entityName].findOne(
-          filter,
-          options,
-          (err, entity) => {
+          ExpressCassandraClient.instance[
+          entityName].
+          findOne(filter, options, (err, entity) => {
             if (err) {
               reject(
               'getOneObject findOne failed: ' +
@@ -77,7 +76,6 @@ class PersisterCassandra {
               resolve(null);
             }
           });
-
         } catch (err) {
           reject(
           'getOneObject failed: ' +
@@ -125,10 +123,9 @@ class PersisterCassandra {
         try {
           this.updateUuidsInFields(entityName, filter);
 
-          ExpressCassandraClient.instance[entityName].find(
-          filter,
-          options,
-          (err, arrEntities) => {
+          ExpressCassandraClient.instance[
+          entityName].
+          find(filter, options, (err, arrEntities) => {
             if (err) {
               reject(
               'getObjectList find failed: ' +
@@ -145,7 +142,6 @@ class PersisterCassandra {
               resolve(arrRetObj);
             }
           });
-
         } catch (err) {
           reject(
           'getObjectList failed: ' +
@@ -312,7 +308,10 @@ class PersisterCassandra {
       if (runAsPartOfSetupDatabase) {
         console.log(' Prepare table ' + tableName + '.');
       }
-      ExpressCassandraClient.loadSchema(tableName, tableSchema).syncDB(err => {
+      ExpressCassandraClient.loadSchema(
+      tableName,
+      tableSchema).
+      syncDB(err => {
         // When used with scylla, this always happens. Just ignore the message
         if (
         err &&
