@@ -94,6 +94,7 @@ class NavBarAccountButton extends _react.default.Component
       _react.default.createElement("div", null,
       _react.default.createElement(_IconButton.default, {
         "aria-haspopup": "true",
+        component: "div",
         onClick:
         User_IsAnonymous ?
         this._handle_onClick_Login :
@@ -118,13 +119,25 @@ class NavBarAccountButton extends _react.default.Component
         open: userMenuIsOpen,
         onClose: this._handle_UserMenu_Close },
 
-      _react.default.createElement(_MenuItem.default, { key: "profile", onClick: this._handle_onClick_Profile },
+      _react.default.createElement(_MenuItem.default, {
+        component: "div",
+        key: "profile",
+        onClick: this._handle_onClick_Profile },
+
       User_DisplayName),
 
-      _react.default.createElement(_MenuItem.default, { key: "login", onClick: this._handle_onClick_Login }, "Change user"),
+      _react.default.createElement(_MenuItem.default, {
+        component: "div",
+        key: "login",
+        onClick: this._handle_onClick_Login }, "Change user"),
 
 
-      _react.default.createElement(_MenuItem.default, { key: "logout", onClick: this._handle_onClick_Logout }, "Log out"))));
+
+      _react.default.createElement(_MenuItem.default, {
+        component: "div",
+        key: "logout",
+        onClick: this._handle_onClick_Logout }, "Log out"))));
+
 
 
 

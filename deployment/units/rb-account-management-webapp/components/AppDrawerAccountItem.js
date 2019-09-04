@@ -118,17 +118,21 @@ class AppDrawerAccountItem extends _react.default.Component
         variant: "filled",
         onChange: this._handle_onChange_Account },
 
-      _react.default.createElement(_MenuItem.default, { key: "userdisplayname", value: "userdisplayname" },
+      _react.default.createElement(_MenuItem.default, {
+        component: "div",
+        key: "userdisplayname",
+        value: "userdisplayname" },
+
       _react.default.createElement("em", null, User_DisplayName)),
 
-      _react.default.createElement(_MenuItem.default, { key: "profile", value: "profile" }, "Edit Profile"),
+      _react.default.createElement(_MenuItem.default, { component: "div", key: "profile", value: "profile" }, "Edit Profile"),
 
 
       _react.default.createElement(_Divider.default, null),
-      _react.default.createElement(_MenuItem.default, { key: "login", value: "login" }, "Change user"),
+      _react.default.createElement(_MenuItem.default, { component: "div", key: "login", value: "login" }, "Change user"),
 
 
-      _react.default.createElement(_MenuItem.default, { key: "logout", value: "logout" }, "Log out"))),
+      _react.default.createElement(_MenuItem.default, { component: "div", key: "logout", value: "logout" }, "Log out"))),
 
 
 
