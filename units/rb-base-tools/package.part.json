@@ -45,8 +45,8 @@
     "prettier-eslint-cli": "5.0.0"
  },
   "engines": {
-    "node": ">=10.6.0",
-    "npm": ">=6.1.0"
+    "node": ">=10.13.0",
+    "npm": ">=6.11.2"
   },
   "husky": {
     "hooks": {

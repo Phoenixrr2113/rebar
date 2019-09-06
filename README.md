@@ -1,14 +1,15 @@
 # Rebar
 
-Boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, Apache Cassandra / Elassandra. Heavy focus on SaaS and multi-tenancy support.
+Multi-tenant SaaS boilerplate + examples for universal web application with React, Material-UI, Relay, GraphQL, JWT, Node.js, C* DB - Cassandra/Elassandra/Scylla.
 
 
-[*Live demo*](http://rebar-demo.MachineAcuity.com/)
+[*Live demo*](http://rebar-demo.MachineAcuity.com/).
+
 
 
 # Technology stack
 
-## Client stack
+## Client
 
 | **Technology** | **Description**|
 |----------------|----------------|
@@ -20,15 +21,19 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
-## Server stack
+## Server
+
+| **Database** | **Description**|
+|----------------|----------------|
+| [Cassandra](http://cassandra.apache.org/)                       | The right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra's support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. |
+| [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. |
+| [Scylla](https://www.scylladb.com/)                             | The Real-Time Big Data Database. Scale-up performance of 1,000,000 IOPS per node, scale-out to hundreds of nodes and 99% latency of <1 msec. |
 
 | **Technology** | **Description**|
 |----------------|----------------|
-| [Apache Cassandra](http://cassandra.apache.org/)                | The right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra's support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. |
 | [Data Loader](https://github.com/facebook/dataloader)           | Generic utility to be used as part of your application's data fetching layer to provide a consistent API over various backends and reduce requests to those backends via batching and caching. |
-| [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. URB works well with Elassandra. |
-| [Express](https://expressjs.com)                                | Fast, unopinionated, minimalist web framework for Node.js |
-| [express-cassandra](https://express-cassandra.readthedocs.io)   | Cassandra ORM/ODM/OGM for Node.js with optional support for Elassandra & JanusGraph |
+| [Express](https://expressjs.com)                                | Fast, unopinionated, minimalist web framework for Node.js. |
+| [express-cassandra](https://express-cassandra.readthedocs.io)   | Cassandra ORM/ODM/OGM for Node.js with optional support for Elassandra & JanusGraph. |
 | [Express GraphQL](https://github.com/graphql/express-graphql)   | A Node.js express library that allows the creation of GraphQL servers. |
 | [JWT](https://jwt.io/)                                          | JSON Web Tokens is an industry standard [RFC 7519](https://tools.ietf.org/html/rfc7519) method for representing claims securely between two parties. |
 | [Node.js](https://nodejs.org/en/)                               | Event-driven, non-blocking I/O runtime based on JavaScript that is lightweight and efficient. |
@@ -40,55 +45,62 @@ Boilerplate + examples for universal web application with React, Material-UI, Re
 |----------------|----------------|
 | [Babel](http://babeljs.io)                                      | Transpiles ESX to ESX and performs relay transformations. |
 | [concurrently](https://www.npmjs.com/package/concurrently)      | Run multiple commands concurrently. |
+| [documentation](https://www.npmjs.com/package/documentation)    | The documentation system for modern JavaScript. |
 | [ESLint](https://eslint.org)                                    | A fully pluggable tool for identifying and reporting on patterns in JavaScript. |
 | [Flow](http://flowtype.org/)                                    | Static type checker, designed to find type errors in JavaScript programs. |
 | [Husky](https://github.com/typicode/husky)                      | Git hooks for eslint and prettier. |
-| [Jest](https://jestjs.io/)                                      | A delightful JavaScript Testing Framework with a focus on simplicity |
+| [Jest](https://jestjs.io/)                                      | A delightful JavaScript Testing Framework with a focus on simplicity. |
 | [LocalTunnel](https://localtunnel.github.io/www/)               | Expose yourself to the world. |
 | [Prettier](https://github.com/prettier/prettier/)               | Code formatter for javaScript. |
-| [React Hot Loader](gaearon.github.io/react-hot-loader/)         | Allows tweaking of React components in real time. |
+| [Puppeteer](https://github.com/GoogleChrome/puppeteer)           | Headless Chrome Node API . |
 | [Webpack](http://webpack.github.io)                             | Bundles npm packages, application Java Script, CSS, images, etc. into bundles. |
 
 
 
+# Development Setup
 
-# Setup
+## Prerequisites
 
-## Development Environment Setup
+The setup is for OS X only:
 
-The setup is for OS X only. Prerequisites:
+* **[Node.js](https://nodejs.org)**: minimum version as specified in [`package.json`](package.json#L106).  
+* **yarn**: install using `npm install -g yarn`.
+* **[cqlah](http://cassandra.apache.org/doc/latest/tools/cqlsh.html)**: optionally installed locally.
 
-* **[Node.js](https://nodejs.org)** minimum version as specified in [`package.json`](package.json#L101).  
-* **yarn** run `npm install -g yarn`
-
-## Setting up Elassandra in docker
+## Setting up Scylla in docker
 
 ### Setup
 
 ```
-docker pull strapdata/elassandra:6.2.3.4
-docker run -d -p 9042:9042 --name=elassie strapdata/elassandra:6.2.3.4
+docker pull scylladb/scylla:3.0.8
+docker run --privileged -it --link scylly --rm scylladb/scylla:3.0.8 cqlsh scylly
 ```
 
 ### Start/Stop
 
 ```
-docker start elassie
-docker stop elassie
+docker start scylly
+docker stop scylly
 ```
 
 ### Troubleshooting
 
 ```
+cqlsh
+docker logs scylly
+```
+
+If cqlsh does not manage to connect to docker, or is not installed locally, use:
+
+```
 docker run --privileged -it --link elassie --rm strapdata/elassandra cqlsh elassie
-docker logs elassie
 ```
 
 ### Cleanup
 
 ```
-docker stop elassie
-docker rm elassie
+docker stop scylly
+docker rm scylly
 ```
 
 ## Setup on local development machine
@@ -109,36 +121,49 @@ In addition to the above, you might want to specify `JWT_SECRET` by modifying th
 
 # Development
 
-## Running in development mode
+## Running in Development Mode
 
 In order to develop, three servers need to be started:
 
 * Web server.
 * Webpack server.
 * Relay compiler (watching).
+* Local tunnel.
 
 This can be done with one command: `yarn dev`.
 To open the web app: navigate to `http://localhost:28605`, or whatever IP was assigned when running `yarn update-ip`.
 
-## Running through Local Tunnel
+## Configuring Local Tunnel
 
-In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [_configuration/rb-devtunnel/tunnels.json](https://github.com/MachineAcuity/rebar/blob/0750afbfd6320f814131ae86d909384d9a153f1b/units/_configuration/rb-devtunnel/tunnels.json#L10). Replace the value of
+In some cases it is necessary to make your development environment publicly available under HTTPS. The service [Local Tunnel](https://localtunnel.github.io/www/) allows you to easily share a Rebar project on your local development machine without messing with DNS and firewall settings. In order to use LocalTunnel, edit [units/_configuration/rb-base-tools/tunnels.json](https://github.com/MachineAcuity/rebar/blob/master/units/_configuration/rb-base-tools/tunnels.json). Replace the value of
 
 ```
 "subdomain": "replace-with-your-own-domain"
 ```
 
-with your preferred value. Please notice that LocalTunnel allocates subdomain names on a first come first serve basis, for the duration of using the service. You can also add headers that will be passed to your Rebar server. In order to run LocalTunnel with the rest of the development environment, use
-
-```
-yarn dev-t
-```
-
-Then you can navigate to `https://replace-with-your-own-domain.localtunnel.me`.
+with your preferred value. Please notice that LocalTunnel allocates subdomain names on a first come first serve basis, for the duration of using the service. Navigate to `https://replace-with-your-own-domain.localtunnel.me`.
 
 
 
-# Production
+# Documentation
+
+Documentation can be added to code in JSDoc format and is produced by documentation. This is done because of the superior flow support. It is generated in [doc/code](https://github.com/MachineAcuity/rebar/tree/master/doc/code).
+
+
+
+# Testing
+
+## Unit Testing
+
+Examples of Jest unit tests are available in [units/rb-base-test](https://github.com/MachineAcuity/rebar/tree/master/units/rb-base-test).
+
+## End to End Testing
+
+Example of end-to-end tests suing Jest and Puppeteer are available on github in repository [MachineAcuity/rebar-test-e2e](https://github.com/MachineAcuity/rebar-test-e2e).
+
+
+
+# Production Setup
 
 In order to run rebar in production-like mode you can:
 
