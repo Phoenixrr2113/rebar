@@ -145,9 +145,15 @@ with your preferred value. Please notice that LocalTunnel allocates subdomain na
 
 
 
+# Documentation
+
+Documentation can be added to code in JSDoc format and is produced by documentation. This is done because of the superior flow support. It is generated in [doc/code](https://github.com/MachineAcuity/rebar/tree/master/doc/code).
+
+
+
 # Testing
 
-## Jest
+## Unit Testing
 
 Examples of Jest unit tests are available in [units/rb-base-test](https://github.com/MachineAcuity/rebar/tree/master/units/rb-base-test).
 
