@@ -16,11 +16,11 @@ var _schema = _interopRequireDefault(require("../../../rb-appbase-server/graphql
 
 const fs = _fs.default.promises;
 
-const prettierESLintOptions = { eslintConfig: _eslintrc.default, prettierOptions: _package.default.prettier
+const prettierESLintOptions = { eslintConfig: _eslintrc.default, prettierOptions: _package.default.prettier };
 
-  // It is a complete mystery to me why the comments are encased in """ but the relay
-  // compiler does not like them. Either way, this sanitizes the schema and removes the comment.
-};const reRemoveComments = new RegExp('"""[^"]*"""', 'g');
+// It is a complete mystery to me why the comments are encased in """ but the relay
+// compiler does not like them. Either way, this sanitizes the schema and removes the comment.
+const reRemoveComments = new RegExp('"""[^"]*"""', 'g');
 
 async function createGraphQLSchema(units) {
   const result = await (0, _graphql.graphql)(_schema.default, _utilities.introspectionQuery);

@@ -7,10 +7,8 @@ var _List = _interopRequireDefault(require("@material-ui/core/List"));
 var _styles = require("@material-ui/core/styles");
 
 var _Inbox = _interopRequireDefault(require("mdi-material-ui/Inbox"));
-var _CalendarBlank = _interopRequireDefault(require("mdi-material-ui/CalendarBlank"));
 var _Pencil = _interopRequireDefault(require("mdi-material-ui/Pencil"));
 var _Contacts = _interopRequireDefault(require("mdi-material-ui/Contacts"));
-var _Crosshairs = _interopRequireDefault(require("mdi-material-ui/Crosshairs"));
 var _MoveResize = _interopRequireDefault(require("mdi-material-ui/MoveResize"));
 var _Lock = _interopRequireDefault(require("mdi-material-ui/Lock"));
 var _react = _interopRequireDefault(require("react"));
@@ -70,16 +68,6 @@ class AppDrawerNavItems extends _react.default.Component
         icon: _react.default.createElement(_Contacts.default, null),
         label: "Ensayo Public",
         onClick: () => onClick('/ensayo/') }),
-
-      _react.default.createElement(_NavMenuItemWithIcon.default, {
-        icon: _react.default.createElement(_Crosshairs.default, null),
-        label: "Inscriptio",
-        onClick: () => onClick('/inscriptio/') }),
-
-      _react.default.createElement(_NavMenuItemWithIcon.default, {
-        icon: _react.default.createElement(_CalendarBlank.default, null),
-        label: "Translaticiarum",
-        onClick: () => onClick('/translaticiarum/') }),
 
       _react.default.createElement(_Divider.default, null),
       _react.default.createElement(_NavMenuItemWithIcon.default, {

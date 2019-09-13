@@ -144,9 +144,9 @@ class WinstonTransportCassandra extends _winstonTransport.default {
     try {
       // Retrieve user_id, site_id
       if (detailsPrep.objectManager) {
-        const objectManager = { detailsPrep
-          // Delete object first so that we do not fail json.stringify later
-        };delete detailsPrep.objectManager;
+        const objectManager = { detailsPrep };
+        // Delete object first so that we do not fail json.stringify later
+        delete detailsPrep.objectManager;
 
         // Get user_id
         try {
@@ -202,11 +202,11 @@ class WinstonTransportCassandra extends _winstonTransport.default {
       req_ip,
       req_body,
       user_id,
-      site_id
+      site_id };
 
 
-      // Print to console, if so specified
-    };if (_debug.debugWriteToConsoleLog) {
+    // Print to console, if so specified
+    if (_debug.debugWriteToConsoleLog) {
       const eventForConsole = createCopyWithNonNull(event);
 
       const { err_message, err_stack, message } = eventForConsole;

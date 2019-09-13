@@ -78,10 +78,10 @@ async function root(req, res, next) {
       const a_User = UserAndSession.User;
       const a_UserSession = UserAndSession.UserSession;
 
-      res.injectedByRebarFrameworks = { userSession: a_UserSession
+      res.injectedByRebarFrameworks = { userSession: a_UserSession };
 
-        // Verify user
-      };const verificationResult = (0, _checkCredentials.verifyUserToken2)(a_User, req, 'headers');
+      // Verify user
+      const verificationResult = (0, _checkCredentials.verifyUserToken2)(a_User, req, 'headers');
 
       // If UserToken2 was provided, but verification fails, wait
 

@@ -51,11 +51,11 @@ async function createPackageJson(units) {
     name: null,
     prettier: {},
     scripts: {},
-    version: null
+    version: null };
 
 
-    // Make sure not to overwrite version information
-  };packageAsObject.version = currentPackageAsObject.version;
+  // Make sure not to overwrite version information
+  packageAsObject.version = currentPackageAsObject.version;
   packageAsObject.name = currentPackageAsObject.name;
 
   // Add packages to object

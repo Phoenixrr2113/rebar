@@ -15,7 +15,7 @@ googleMapsJavascriptAPI == null ||
 typeof googleMapsJavascriptAPI !== 'string')
 
 throw new Error(
-'rb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set');
+'as an example, an environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set');
 
 
 const siteInformation = {

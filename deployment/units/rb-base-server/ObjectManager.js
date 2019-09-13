@@ -55,13 +55,13 @@ const setPersisters = new Set();
 
 // Value for a change indicating that the record is deleted
 const deletedRecord = {
-  deleted: true
+  deleted: true };
 
 
-  /**
-                 * Class for loading and storing objects
-                 * @class ObjectManager
-                 */ };
+/**
+                    * Class for loading and storing objects
+                    * @class ObjectManager
+                    */
 class ObjectManager {
 
 
@@ -151,13 +151,13 @@ class ObjectManager {
       UserPermissionsForObject:
       options.UserPermissionsForObject != null ?
       options.UserPermissionsForObject :
-      { use: false }
+      { use: false } };
 
 
-      // Determine supported fields by fields with suffix
-      // For the User-related tables, there is no automatic support:
-      // User_id and artifact_id have to be explicitly specified
-    };const supportedSuffixes =
+    // Determine supported fields by fields with suffix
+    // For the User-related tables, there is no automatic support:
+    // User_id and artifact_id have to be explicitly specified
+    const supportedSuffixes =
     entityName === 'User' ||
     entityName === 'UserAccount' ||
     entityName === 'UserSession' ?
