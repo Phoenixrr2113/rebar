@@ -4,7 +4,7 @@ var _Typography = _interopRequireDefault(require("@material-ui/core/Typography")
 
 var _styles = require("@material-ui/core/styles");
 
-var React = _interopRequireWildcard(require("react"));function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;} else {var newObj = {};if (obj != null) {for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = Object.defineProperty && Object.getOwnPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : {};if (desc.get || desc.set) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;return newObj;}}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
+var React = _interopRequireWildcard(require("react"));function _getRequireWildcardCache() {if (typeof WeakMap !== "function") return null;var cache = new WeakMap();_getRequireWildcardCache = function () {return cache;};return cache;}function _interopRequireWildcard(obj) {if (obj && obj.__esModule) {return obj;}var cache = _getRequireWildcardCache();if (cache && cache.has(obj)) {return cache.get(obj);}var newObj = {};if (obj != null) {var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor;for (var key in obj) {if (Object.prototype.hasOwnProperty.call(obj, key)) {var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null;if (desc && (desc.get || desc.set)) {Object.defineProperty(newObj, key, desc);} else {newObj[key] = obj[key];}}}}newObj.default = obj;if (cache) {cache.set(obj, newObj);}return newObj;}function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
 //
 
@@ -55,12 +55,12 @@ const styles = {
     color: '#c0c0c0' },
 
   cardHeaderTitle: {
-    color: '#ffffff' }
+    color: '#ffffff' } };
 
 
 
-  //
-};
+//
+
 const cardHeaderContentStyles = {
   cardHeaderLink: {
     backgroundColor: 'transparent',
@@ -106,12 +106,12 @@ const cardHeaderContentStyles = {
 
   cardHeaderStrong: {
     color: '#ffffff',
-    fontWeight: 'bold' }
+    fontWeight: 'bold' } };
 
 
 
-  //
-};exports.cardHeaderContentStyles = cardHeaderContentStyles;
+//
+exports.cardHeaderContentStyles = cardHeaderContentStyles;
 class CompositeCardHeader extends React.Component
 
 

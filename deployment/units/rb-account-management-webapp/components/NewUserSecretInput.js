@@ -12,7 +12,7 @@ var _userIDAndSecret = require("../../_configuration/rb-account-management-webap
 
 
 
-//
+
 
 function scoreSecret(
 secret,
@@ -60,12 +60,12 @@ const styles = {
     backgroundColor: '#0000a0' },
 
   strengthBarColorPrimary_good: {
-    backgroundColor: '#00a000' }
+    backgroundColor: '#00a000' } };
 
 
 
-  //
-};
+//
+
 class NewUserSecretInput extends _react.default.Component
 
 

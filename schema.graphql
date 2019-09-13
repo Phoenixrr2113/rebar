@@ -1,6 +1,3 @@
-#
-scalar DateTime
-
 type Ensayo implements Node {
   #
   id: ID!
@@ -64,85 +61,16 @@ type EnsayoUpdatePayload {
   clientMutationId: String
 }
 
-type Inscriptio implements Node {
-  #
-  id: ID!
-  Inscriptio_LocationLat: String
-  Inscriptio_LocationLon: String
-  Inscriptio_Notes: String
-}
-
-input InscriptioAddInput {
-  Inscriptio_LocationLat: String!
-  Inscriptio_LocationLon: String!
-  Inscriptio_Notes: String!
-  clientMutationId: String
-}
-
-type InscriptioAddPayload {
-  InscriptiosEdge: InscriptiosEdge
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-input InscriptioDeleteInput {
-  id: ID!
-  clientMutationId: String
-}
-
-type InscriptioDeletePayload {
-  deletedId: ID
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-#
-type InscriptiosConnection {
-  #
-  pageInfo: PageInfo!
-
-  #
-  edges: [InscriptiosEdge]
-}
-
-#
-type InscriptiosEdge {
-  #
-  node: Inscriptio
-
-  #
-  cursor: String!
-}
-
-input InscriptioUpdateInput {
-  id: ID!
-  Inscriptio_LocationLat: String!
-  Inscriptio_LocationLon: String!
-  Inscriptio_Notes: String!
-  clientMutationId: String
-}
-
-type InscriptioUpdatePayload {
-  Inscriptio: Inscriptio
-  clientMutationId: String
-}
-
 type Mutation {
   UserUpdate(input: UserUpdateInput!): UserUpdatePayload
   EnsayoAdd(input: EnsayoAddInput!): EnsayoAddPayload
   EnsayoDelete(input: EnsayoDeleteInput!): EnsayoDeletePayload
   EnsayoUpdate(input: EnsayoUpdateInput!): EnsayoUpdatePayload
-  InscriptioAdd(input: InscriptioAddInput!): InscriptioAddPayload
-  InscriptioDelete(input: InscriptioDeleteInput!): InscriptioDeletePayload
-  InscriptioUpdate(input: InscriptioUpdateInput!): InscriptioUpdatePayload
   ToDoAdd(input: ToDoAddInput!): ToDoAddPayload
   ToDoDelete(input: ToDoDeleteInput!): ToDoDeletePayload
   ToDoListUpdateMarkAll(input: ToDoListUpdateMarkAllInput!): ToDoListUpdateMarkAllPayload
   ToDoUpdateRename(input: ToDoUpdateRenameInput!): ToDoUpdateRenamePayload
   ToDoUpdateStatus(input: ToDoUpdateStatusInput!): ToDoUpdateStatusPayload
-  TranslaticiarumAdd(input: TranslaticiarumAddInput!): TranslaticiarumAddPayload
-  TranslaticiarumDelete(input: TranslaticiarumDeleteInput!): TranslaticiarumDeletePayload
-  TranslaticiarumUpdate(input: TranslaticiarumUpdateInput!): TranslaticiarumUpdatePayload
 }
 
 #
@@ -252,69 +180,6 @@ type ToDoUpdateStatusPayload {
   clientMutationId: String
 }
 
-type Translaticiarum implements Node {
-  #
-  id: ID!
-  Translaticiarum_Start: DateTime
-  Translaticiarum_Stop: DateTime
-  Translaticiarum_Description: String
-}
-
-input TranslaticiarumAddInput {
-  Translaticiarum_Start: String!
-  Translaticiarum_Stop: String!
-  Translaticiarum_Description: String!
-  clientMutationId: String
-}
-
-type TranslaticiarumAddPayload {
-  TranslaticiarumsEdge: TranslaticiarumsEdge
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-input TranslaticiarumDeleteInput {
-  id: ID!
-  clientMutationId: String
-}
-
-type TranslaticiarumDeletePayload {
-  deletedId: ID
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-#
-type TranslaticiarumsConnection {
-  #
-  pageInfo: PageInfo!
-
-  #
-  edges: [TranslaticiarumsEdge]
-}
-
-#
-type TranslaticiarumsEdge {
-  #
-  node: Translaticiarum
-
-  #
-  cursor: String!
-}
-
-input TranslaticiarumUpdateInput {
-  id: ID!
-  Translaticiarum_Start: String!
-  Translaticiarum_Stop: String!
-  Translaticiarum_Description: String!
-  clientMutationId: String
-}
-
-type TranslaticiarumUpdatePayload {
-  Translaticiarum: Translaticiarum
-  clientMutationId: String
-}
-
 type UserPermissionForObject implements Node {
   #
   id: ID!
@@ -399,11 +264,7 @@ type Viewer implements Node {
   UserQuotaForObject(id: ID): UserQuotaForObject
   Ensayos(after: String, first: Int, before: String, last: Int): EnsayosConnection
   Ensayo(id: ID): Ensayo
-  Inscriptios(after: String, first: Int, before: String, last: Int): InscriptiosConnection
-  Inscriptio(id: ID): Inscriptio
   ToDos(status: String = "any", after: String, first: Int, before: String, last: Int): ToDosConnection
   ToDo_TotalCount: Int
   ToDo_CompletedCount: Int
-  Translaticiarums(after: String, first: Int, before: String, last: Int): TranslaticiarumsConnection
-  Translaticiarum(id: ID): Translaticiarum
 }

@@ -41,11 +41,11 @@ class PersisterCassandra {
       // Configure our default options
       let options = {
         raw: true,
-        allow_filtering: true
+        allow_filtering: true };
 
 
-        // In order to use materialized view, we need to pass it to the opions
-      };if (filter.hasOwnProperty('_materialized_view')) {
+      // In order to use materialized view, we need to pass it to the opions
+      if (filter.hasOwnProperty('_materialized_view')) {
         // Set option to use materialized view
         options.materialized_view = filter._materialized_view;
 
@@ -105,11 +105,11 @@ class PersisterCassandra {
       // Configure our default options
       let options = {
         raw: true,
-        allow_filtering: true
+        allow_filtering: true };
 
 
-        // In order to use materialized view, we need to pass it to the opions
-      };if (filter.hasOwnProperty('_materialized_view')) {
+      // In order to use materialized view, we need to pass it to the opions
+      if (filter.hasOwnProperty('_materialized_view')) {
         // Set option to use materialized view
         options.materialized_view = filter._materialized_view;
 
