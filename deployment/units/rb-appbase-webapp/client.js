@@ -18,7 +18,7 @@ var _userToken = require("./scripts/userToken2");
 
 
 require("../_configuration/rb-appbase-webapp/global.css");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };} // In order to use ES7 async/await
-// Include global CSS used in all units. Will not be chunked
+
 // Handler for error reporting
 async function rebarErrorHandler(err, err_info) {
   try {

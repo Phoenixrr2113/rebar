@@ -17,7 +17,7 @@ var _ObjectManager = require("../rb-base-server/ObjectManager");
 
 var _checkCredentials = require("./checkCredentials");function _interopRequireDefault(obj) {return obj && obj.__esModule ? obj : { default: obj };}
 
-// Read environment
+
 require('dotenv').config();
 
 const envJWTSecret = process.env.JWT_SECRET;
@@ -98,11 +98,11 @@ async function login(req, res) {
       UserSession_User_id: a_UserAccount.UserAccount_User_id,
       UserSession_Start: new Date(),
       UserSession_Expired: false,
-      UserSession_IsAnonymous: false
+      UserSession_IsAnonymous: false };
 
 
-      // Add session to database
-    };await objectManager.add('UserSession', a_UserSession);
+    // Add session to database
+    await objectManager.add('UserSession', a_UserSession);
     res.injectedByRebarFrameworks = { userSession: a_UserSession };
 
     step = 'Create JWT token';
