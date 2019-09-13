@@ -9,9 +9,6 @@ import ToDoDelete from '../../../rb-example-todo-server/graphql/mutation/ToDoDel
 import ToDoListUpdateMarkAll from '../../../rb-example-todo-server/graphql/mutation/ToDoListUpdateMarkAll';
 import ToDoUpdateRename from '../../../rb-example-todo-server/graphql/mutation/ToDoUpdateRename';
 import ToDoUpdateStatus from '../../../rb-example-todo-server/graphql/mutation/ToDoUpdateStatus';
-import TranslaticiarumAdd from '../../../rb-example-translaticiarum-server/graphql/mutation/TranslaticiarumAdd';
-import TranslaticiarumDelete from '../../../rb-example-translaticiarum-server/graphql/mutation/TranslaticiarumDelete';
-import TranslaticiarumUpdate from '../../../rb-example-translaticiarum-server/graphql/mutation/TranslaticiarumUpdate';
 
 export default {
   UserUpdate,
@@ -22,8 +19,5 @@ export default {
   ToDoDelete,
   ToDoListUpdateMarkAll,
   ToDoUpdateRename,
-  ToDoUpdateStatus,
-  TranslaticiarumAdd,
-  TranslaticiarumDelete,
-  TranslaticiarumUpdate
+  ToDoUpdateStatus
 };

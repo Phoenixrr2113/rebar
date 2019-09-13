@@ -7,7 +7,6 @@ import List from '@material-ui/core/List'
 import { withStyles } from '@material-ui/core/styles'
 
 import IconInbox from 'mdi-material-ui/Inbox'
-import IconCalendarBlank from 'mdi-material-ui/CalendarBlank'
 import IconPencil from 'mdi-material-ui/Pencil'
 import IconContacts from 'mdi-material-ui/Contacts'
 import IconMoveResize from 'mdi-material-ui/MoveResize'
@@ -69,11 +68,6 @@ class AppDrawerNavItems extends React.Component<{
             icon={<IconContacts />}
             label="Ensayo Public"
             onClick={() => onClick('/ensayo/')}
-          />
-          <NavMenuItemWithIcon
-            icon={<IconCalendarBlank />}
-            label="Translaticiarum"
-            onClick={() => onClick('/translaticiarum/')}
           />
           <Divider />
           <NavMenuItemWithIcon

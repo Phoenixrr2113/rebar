@@ -15,7 +15,5 @@ import '../../../rb-example-ensayo-server/graphql/model/Ensayo';
 import '../../../rb-example-ensayo-server/graphql/model/Ensayo.schema';
 import '../../../rb-example-todo-server/graphql/model/ToDo';
 import '../../../rb-example-todo-server/graphql/model/ToDo.schema';
-import '../../../rb-example-translaticiarum-server/graphql/model/Translaticiarum';
-import '../../../rb-example-translaticiarum-server/graphql/model/Translaticiarum.schema';
 
 export default true;
