@@ -13,8 +13,6 @@ import '../../../rb-appbase-server/graphql/model/UserSession.schema';
 import '../../../rb-base-server/graphql/model/logs.schema';
 import '../../../rb-example-ensayo-server/graphql/model/Ensayo';
 import '../../../rb-example-ensayo-server/graphql/model/Ensayo.schema';
-import '../../../rb-example-inscriptio-server/graphql/model/Inscriptio';
-import '../../../rb-example-inscriptio-server/graphql/model/Inscriptio.schema';
 import '../../../rb-example-todo-server/graphql/model/ToDo';
 import '../../../rb-example-todo-server/graphql/model/ToDo.schema';
 import '../../../rb-example-translaticiarum-server/graphql/model/Translaticiarum';

@@ -64,77 +64,11 @@ type EnsayoUpdatePayload {
   clientMutationId: String
 }
 
-type Inscriptio implements Node {
-  #
-  id: ID!
-  Inscriptio_LocationLat: String
-  Inscriptio_LocationLon: String
-  Inscriptio_Notes: String
-}
-
-input InscriptioAddInput {
-  Inscriptio_LocationLat: String!
-  Inscriptio_LocationLon: String!
-  Inscriptio_Notes: String!
-  clientMutationId: String
-}
-
-type InscriptioAddPayload {
-  InscriptiosEdge: InscriptiosEdge
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-input InscriptioDeleteInput {
-  id: ID!
-  clientMutationId: String
-}
-
-type InscriptioDeletePayload {
-  deletedId: ID
-  Viewer: Viewer
-  clientMutationId: String
-}
-
-#
-type InscriptiosConnection {
-  #
-  pageInfo: PageInfo!
-
-  #
-  edges: [InscriptiosEdge]
-}
-
-#
-type InscriptiosEdge {
-  #
-  node: Inscriptio
-
-  #
-  cursor: String!
-}
-
-input InscriptioUpdateInput {
-  id: ID!
-  Inscriptio_LocationLat: String!
-  Inscriptio_LocationLon: String!
-  Inscriptio_Notes: String!
-  clientMutationId: String
-}
-
-type InscriptioUpdatePayload {
-  Inscriptio: Inscriptio
-  clientMutationId: String
-}
-
 type Mutation {
   UserUpdate(input: UserUpdateInput!): UserUpdatePayload
   EnsayoAdd(input: EnsayoAddInput!): EnsayoAddPayload
   EnsayoDelete(input: EnsayoDeleteInput!): EnsayoDeletePayload
   EnsayoUpdate(input: EnsayoUpdateInput!): EnsayoUpdatePayload
-  InscriptioAdd(input: InscriptioAddInput!): InscriptioAddPayload
-  InscriptioDelete(input: InscriptioDeleteInput!): InscriptioDeletePayload
-  InscriptioUpdate(input: InscriptioUpdateInput!): InscriptioUpdatePayload
   ToDoAdd(input: ToDoAddInput!): ToDoAddPayload
   ToDoDelete(input: ToDoDeleteInput!): ToDoDeletePayload
   ToDoListUpdateMarkAll(input: ToDoListUpdateMarkAllInput!): ToDoListUpdateMarkAllPayload
@@ -399,8 +333,6 @@ type Viewer implements Node {
   UserQuotaForObject(id: ID): UserQuotaForObject
   Ensayos(after: String, first: Int, before: String, last: Int): EnsayosConnection
   Ensayo(id: ID): Ensayo
-  Inscriptios(after: String, first: Int, before: String, last: Int): InscriptiosConnection
-  Inscriptio(id: ID): Inscriptio
   ToDos(status: String = "any", after: String, first: Int, before: String, last: Int): ToDosConnection
   ToDo_TotalCount: Int
   ToDo_CompletedCount: Int

@@ -15,7 +15,7 @@ if (
   typeof googleMapsJavascriptAPI !== 'string'
 )
   throw new Error(
-    'rb-example-inscriptio-webapp requires the environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set'
+    'as an example, an environment variable GOOGLE_MAPS_JAVASCRIPT_API to be set',
   )
 
 const siteInformation = {
@@ -29,12 +29,12 @@ const siteInformation = {
         version,
         OSType: os.type(),
         OSHostName: os.hostname(),
-        OSFreeMem: os.freemem()
-      }
+        OSFreeMem: os.freemem(),
+      },
     },
     server: {},
-    builderClient: {}
-  }
+    builderClient: {},
+  },
 }
 
 export async function getSiteInformation(req: Object, res: Object): Object {
