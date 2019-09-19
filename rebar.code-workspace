@@ -29,7 +29,7 @@
 		"prettier.trailingComma": "all",
 		"prettier.useTabs": false,
 		"files.exclude": {
-			"doc/**": true,
+			"doc/code/**": true,
 			"flow-typed/**": true,
 			"deployment/**": true,
 			"node_modules/**":true,
