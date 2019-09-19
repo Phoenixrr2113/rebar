@@ -143,6 +143,13 @@ In some cases it is necessary to make your development environment publicly avai
 
 with your preferred value. Please notice that LocalTunnel allocates subdomain names on a first come first serve basis, for the duration of using the service. Navigate to `https://replace-with-your-own-domain.localtunnel.me`.
 
+## Server Debugging
+
+* Run `yarn deb`.
+* Open a Chromium based browser and navigate to `about:inspect`.
+* Click `Open dedicated DevTools for Node`.
+
+Unfortunately source maps are not available at this moment.
 
 
 # Documentation
