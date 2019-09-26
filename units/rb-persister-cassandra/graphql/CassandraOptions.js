@@ -1,6 +1,6 @@
 // @flow
 
-import cassandraDriver from 'cassandra-driver'
+import CassandraDriver from 'cassandra-driver'
 import ExpressCassandra from 'express-cassandra'
 
 // Read environment
@@ -16,7 +16,7 @@ const CassandraOptions = {
   keyspace: process.env.CASSANDRA_KEYSPACE,
   localDataCenter: 'datacenter1',
   policies: {
-    loadBalancing: new cassandraDriver.policies.loadBalancing
+    loadBalancing: new CassandraDriver.policies.loadBalancing
       .RoundRobinPolicy(),
   },
   queryOptions: { consistency: ExpressCassandra.consistencies.one },
@@ -24,7 +24,7 @@ const CassandraOptions = {
 }
 
 if (process.env.CASSANDRA_USER) {
-  CassandraOptions.authProvider = new cassandraDriver.auth
+  CassandraOptions.authProvider = new CassandraDriver.auth
     .PlainTextAuthProvider(
     process.env.CASSANDRA_USER,
     process.env.CASSANDRA_PASSWORD,
