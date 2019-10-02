@@ -21,13 +21,15 @@ Multi-tenant SaaS boilerplate + examples for universal web application with Reac
 | [React Helmet](https://github.com/nfl/react-helmet)             | Reusable React component will manage all of your changes to the document head with support for document title, meta, link, script, and base tags. |
 | [Relay](https://facebook.github.io/relay/)                      | A Javascript framework for building data-driven react applications. |
 
-## Server
+## Database Server
 
-| **Database** | **Description**|
+| **Technology** | **Description**|
 |----------------|----------------|
 | [Cassandra](http://cassandra.apache.org/)                       | The right choice when you need scalability and high availability without compromising performance. Linear scalability and proven fault-tolerance on commodity hardware or cloud infrastructure make it the perfect platform for mission-critical data. Cassandra's support for replicating across multiple datacenters is best-in-class, providing lower latency for your users and the peace of mind of knowing that you can survive regional outages. |
 | [Elassandra](http://www.strapdata.com/)                         | Elassandra Combines Cassandra And Elasticsearch In A Single Powerful Integrated Solution. |
 | [Scylla](https://www.scylladb.com/)                             | The Real-Time Big Data Database. Scale-up performance of 1,000,000 IOPS per node, scale-out to hundreds of nodes and 99% latency of <1 msec. |
+
+## Web Server
 
 | **Technology** | **Description**|
 |----------------|----------------|
@@ -73,7 +75,6 @@ The setup is for OS X only:
 
 ```
 docker pull scylladb/scylla:3.0.8
-docker run --privileged -it --link scylly --rm scylladb/scylla:3.0.8 cqlsh scylly
 ```
 
 ### Start/Stop
@@ -93,7 +94,7 @@ docker logs scylly
 If cqlsh does not manage to connect to docker, or is not installed locally, use:
 
 ```
-docker run --privileged -it --link elassie --rm strapdata/elassandra cqlsh elassie
+docker run --privileged -it --link scylly --rm scylladb/scylla:3.0.8 cqlsh scylly
 ```
 
 ### Cleanup
