@@ -63,6 +63,7 @@ Multi-tenant SaaS boilerplate + examples for universal web application with Reac
 
 The setup is for OS X only:
 
+* **watchman**: install using `brew install watchman`.
 * **[Node.js](https://nodejs.org)**: minimum version as specified in [`package.json`](package.json#L106).  
 * **yarn**: install using `npm install -g yarn`.
 * **[cqlah](http://cassandra.apache.org/doc/latest/tools/cqlsh.html)**: optionally installed locally.
