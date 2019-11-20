@@ -72,8 +72,8 @@ The setup is for OS X only:
 ### Setup
 
 ```
-docker pull scylladb/scylla:3.0.8
-docker run --privileged -it --link scylly --rm scylladb/scylla:3.0.8 cqlsh scylly
+docker pull scylladb/scylla:3.1.1
+docker run --name scylly -d -p 9042:9042 scylladb/scylla:3.1.1
 ```
 
 ### Start/Stop
@@ -86,20 +86,16 @@ docker stop scylly
 ### Troubleshooting
 
 ```
-cqlsh
-docker logs scylly
+docker exec -it scylly scylla --version
+docker exec -it scylly nodetool status
+docker exec -it scylly cqlsh
+docker logs scylly | tail
 ```
 
-If cqlsh does not manage to connect to docker, or is not installed locally, use:
-
-```
-docker run --privileged -it --link elassie --rm strapdata/elassandra cqlsh elassie
-```
 
 ### Cleanup
 
 ```
-docker stop scylly
 docker rm scylly
 ```
 
