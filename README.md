@@ -68,6 +68,18 @@ The setup is for OS X only:
 * **yarn**: install using `npm install -g yarn`.
 * **[cqlah](http://cassandra.apache.org/doc/latest/tools/cqlsh.html)**: optionally installed locally.
 
+## Recommended VSCode extensions
+
+* [Bracket Pair Colorizer 2](https://marketplace.visualstudio.com/items?itemName=CoenraadS.bracket-pair-colorizer-2).
+* [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
+* [Flow Language Support](https://marketplace.visualstudio.com/items?itemName=flowtype.flow-for-vscode).
+* [GraphQL for VSCode](https://marketplace.visualstudio.com/items?itemName=kumar-harsh.graphql-for-vscode).
+* [Markdown Preview Enhanced](https://marketplace.visualstudio.com/items?itemName=shd101wyy.markdown-preview-enhanced).
+* [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme).
+* [Path Intellisense](https://marketplace.visualstudio.com/items?itemName=christian-kohler.path-intellisense).
+* [Prettier Now](https://marketplace.visualstudio.com/items?itemName=remimarsal.prettier-now).
+* [vscode-language-todo](https://marketplace.visualstudio.com/items?itemName=fireyy.vscode-language-todo).
+
 ## Setting up Scylla in docker
 
 ### Setup
